@@ -1,0 +1,103 @@
+\section{Problem Formulation}
+
+We aim to adapt a visual-language model, initially trained on natural images (denoted as $\mathcal{M}_{nat}$), for anomaly detection (AD) in medical images, resulting in a medically adapted model ($\mathcal{M}_{med}$). This adaptation utilizes a medical training dataset $\mathcal{D}_{med}$, which consists of annotated samples from the medical field, enabling the transformation of $\mathcal{M}_{nat}$ into $\mathcal{M}_{med}$. Specifically, $\mathcal{D}_{med}$ is defined as a set of tuples $\{(x_i,c_i,\mathcal{S}_i)\}_{i=1}^{K}$, where $K$ is the total number of image samples in the dataset. Each tuple includes a training image $x_i$, its corresponding image-level anomaly classification (AC) label $c_i \in \{-, +\}$, and pixel-level anomaly segmentation (AS) annotations $\mathcal{S}_i\in \{-, +\}^{h\times w}$ for images of size $h\times w$. The label ‘$+$’ indicates an anomalous sample, while ‘$-$’ denotes a normal one. For a given test image $x_{\text{test}}$, the model aims to accurately predict both image-level and pixel-level anomalies for AC and AS, respectively.
+
+To model the detection of anomalies from unseen imaging modalities and anatomical regions, we approach the problem in a zero-shot learning context. Here, $\mathcal{D}_{med}$ is a pre-training dataset that is composed of medical data from different modalities and anatomical regions than those in the test samples, which assesses the model's generalization to unseen scenarios. Considering the practicality of obtaining a limited number of samples from the target scenario, we also extend the method to the few-shot learning context. Here, $\mathcal{D}_{med}$ includes a small collection of $K$ annotated images that are of the same modality and anatomical region as those in the test samples, with $K$ typically representing a small numerical value, such as $\{2,4,8,16\}$ in this study.
+
+Below we introduce our proposed multi-level adaptation and comparison framework for AD in medical images, comprising (i) multi-level feature adaptation (Sec.~\ref{sec:train}), and (ii) multi-level feature comparison (Sec.~\ref{sec:test}).
+
+\section{Train: Multi-Level Feature Adaptation}
+\label{sec:train}
+To adapt a pre-trained natural image visual-language model for anomaly detection (AD) in medical imaging, we introduce a multi-level feature adaptation framework specifically designed for AD in medical images, utilizing minimal data and lightweight multi-level feature adapters.
+
+\noindent\textbf{Multi-level Visual Feature Adapter (MVFA).}
+Addressing the challenge of overfitting due to a high parameter count and limited training examples, we apply the CLIP adapter across multiple feature levels. This method appends a small set of learnable bottleneck linear layers to the visual branches of CLIP while keeping its original backbone unchanged, thus enabling adaptation at multiple feature levels. 
+ 
+As shown in Figure~\ref{fig:pipeline} (a), for an image $x \in \mathbb{R}^{h\times w\times 3}$, a CLIP visual encoder with four sequential stages ($S_1$ to $S_4$) transforms the image $x$ into a feature space $\mathcal{F}_{vis} \in \mathbb{R}^{G\times d}$. Here, $G$ represents the grid number, and $d$ signifies the feature dimension. The output of the first three visual encoder stages ($S_1$ to $S_3$), denoted as $\mathcal{F}_l \in \mathbb{R}^{G\times d}, l\in\{1,2,3\}$, represents the three middle-stage features.
+
+The visual feature adaptation involves three feature adapters, $A_l(\cdot)$, $l\in\{1,2,3\}$, and one feature projector, $P(\cdot)$, at different levels. At each level $l\in\{1,2,3\}$, a learnable feature adapter $A_l(\cdot)$ is integrated into the feature $\mathcal{F}_l$, encompassing two (the minimum number) layers of linear transformations. This integration transforms the features for adaptation, represented as:
+\begin{equation}\label{eq:ada}
+    A_l(\mathcal{F}_l) = ReLU(\mathcal{F}_l^T W_{l,1})W_{l,2}, \text{where}~l\in\{1,2,3\}.
+\end{equation}
+Here, $W_{l,1}$ and $W_{l,2}$ denote the learnable parameters of the linear transformations. Consistent with~\cite{gao2023clip}, a residual connection is employed in the feature adapter to retain the original knowledge encoded by the pre-trained CLIP. Specifically, a constant value $\gamma$ serves as the residual ratio to adjust the degree of preserving the original knowledge for improved performance. Therefore, the feature adapter at the $l$-th feature level can be expressed as:
+\begin{equation}
+    \mathcal{F}_l^* =\gamma A_l(\mathcal{F}_l)^T + (1-\gamma)\mathcal{F}_l,\text{where}~l\in\{1,2,3\},
+\end{equation}
+with $\mathcal{F}_l^*$ serving as the input for the next encoder stage $S_{l+1}$. By default, we set $\gamma=0.1$. Moreover, as shown in Figure~\ref{fig:pipeline} (b), to simultaneously address both global and local features for AC and AS respectively, a dual-adapter architecture replaces the single-adapter used in Eq.~\eqref{eq:ada}, producing two parallel sets of features at each level, $\mathcal{F}_{cls,l}$ and $\mathcal{F}_{seg,l}$. For the final visual feature $\mathcal{F}_{vis}$ generated by the CLIP visual encoder, a feature projector $P(\cdot)$ projects it using linear layers with parameters $W_{cls}$ and $W_{seg}$, obtaining global and local features as $\mathcal{F}_{cls,4}=\mathcal{F}_{vis}^T W_{cls}$ and $\mathcal{F}_{seg,4}=\mathcal{F}_{vis}^T W_{seg}$. Utilizing the multi-level adapted features, the model is equipped to effectively discern both global anomalies for classification and local anomalies for segmentation, through the following visual-language feature alignment.
+
+\noindent\textbf{Language Feature Formatting.} 
+To develop an effective framework for anomaly classification and segmentation, we adopt a two-tiered approach for text prompts, inspired by methodologies used in~\cite{winclip,chen2023zero}. These methods leverage descriptions of both normal and abnormal objects. At the state level, our strategy involves using straightforward, generic text descriptions for normal and abnormal states, focusing on clarity and avoiding complex details. Moving to the template level, we conduct a thorough examination of the 35 templates referenced in~\cite{deng2009imagenet} (detailed in Appendix~\ref{sec:ap_text}). By calculating the average of the text features extracted by the text encoder for normal and abnormal states separately, we obtain a text feature represented as $\mathcal{F}_{text} \in \mathbb{R}^{2\times d}$, where $d$ is the feature dimension. 
+
+\begin{table*}[t]
+\centering
+\caption{Comparisons with state-of-the-art \textbf{few-shot} anomaly detection methods with K=4. The AUCs (in \%) for anomaly classification (AC) and anomaly segmentation (AS) are reported. The best result is in bold, and the second-best result is underlined.}
+\label{tal:few}
+\small
+\setlength{\tabcolsep}{1.7pt}{
+\begin{tabular}{C{2.5cm}C{2.2cm}C{1.8cm}|C{1.1cm}C{1.2cm}C{1.2cm}|C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}}
+\toprule
+\multirow{2}{*}{Setting} & \multirow{2}{*}{Method} & \multirow{2}{*}{Source} & HIS & ChestXray & OCT17 & \multicolumn{2}{c}{BrainMRI} & \multicolumn{2}{c}{LiverCT} & \multicolumn{2}{c}{RESC}\\
+\cmidrule(lr){4-12} 
+& & & AC & AC & AC & AC & AS & AC & AS & AC & AS\\
+\cmidrule(lr){1-12} 
+\multirow{4}{*}{full-normal-shot} 
+& CFlowAD~\cite{gudovskiy2022cflow} & WACV 2022 & 54.54 & 71.44 & 85.43 & 73.97 & 93.52 & 49.93 & 92.78 & 74.43 & 93.75 \\
+& RD4AD~\cite{deng2022anomaly} & CVPR 2022 & 66.59 & 67.53 & 97.24 & 89.38 & 96.54 & 60.02 & 95.86 & 87.53 & 96.17\\
+& PatchCore~\cite{patchcore} & CVPR 2022 & 69.34 & 75.17 & 98.56 & \underline{91.55} & \underline{96.97} & 60.40 & 96.58 & 91.50 & 96.39\\
+& MKD~\cite{MKD} & CVPR 2022 & \underline{77.74} & \underline{81.99} & 96.62 & 81.38 & 89.54 & 60.39 & 96.14 & 88.97 & 86.60 \\
+\cmidrule(lr){1-12}
+\multirow{2}{*}{few-normal-shot} 
+& CLIP~\cite{openclip} & OpenCLIP & 63.48 & 70.74 & 98.59 & 74.31 & 93.44 & 56.74 & 97.20 & 84.54 & 95.03\\
+& MedCLIP~\cite{wang2022medclip} & EMNLP 2022 & 75.89 & \textbf{84.06} & 81.39 & 76.87	& 90.91 & 60.65 & 94.45 & 66.58 & 88.98\\
+& WinCLIP~\cite{winclip} & CVPR 2023 & 67.49 & 70.00 & 97.89 & 66.85 & 94.16 & 67.19 & 96.75 & 88.83 & 96.68\\
+\cmidrule(lr){1-12}
+\multirow{4}{*}{\makecell[c]{few-shot}}
+& DRA~\cite{DRA} & CVPR 2022 & 68.73 & 75.81 & 99.06 & 80.62 & 74.77 & 59.64 & 71.79 & 90.90 & 77.28\\
+& BGAD~\cite{BGAD} & CVPR 2023 & - & - & - & 83.56 & 92.68 & \underline{72.48} & \underline{98.88} & 86.22 & 93.84\\
+& APRIL-GAN~\cite{chen2023zero} & arXiv 2023 & 76.11 & 77.43 & \textbf{99.41} & 89.18 & 94.67 & 53.05 & 96.24 & \underline{94.70} & \underline{97.98} \\
+\cmidrule(lr){2-12}
+& MVFA & Ours & \textbf{82.71} & 81.95 & \underline{99.38} & \textbf{92.44} & \textbf{97.30} & \textbf{81.18} & \textbf{99.73} & \textbf{96.18} & \textbf{98.97}\\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\noindent\textbf{Visual-Language Feature Alignment.} 
+For the image-level anomaly annotation $c \in \{-,+\}$ and the corresponding pixel-level anomaly map $\mathcal{S} \in \{-,+\}^{h\times w}$, we optimize the model at each feature level, $l \in \{1,2,3,4\}$, by aligning the adapted-visual features given by MVFA and the text features. This is achieved through a loss function that combines different components: 
+\begin{equation}
+\begin{aligned}
+    \mathcal{L}_l = &\lambda_1\textit{Dice}(\textit{softmax}(\mathcal{F}_{seg,l} \mathcal{F}_{text}^{T}), \mathcal{S})+ \\
+    &\lambda_2\textit{Focal}(\textit{softmax}(\mathcal{F}_{seg,l} \mathcal{F}_{text}^{T}), \mathcal{S})+\\
+    &\lambda_3\textit{BCE}(\max_{h\times w}(\textit{softmax}(\mathcal{F}_{cls,l} \mathcal{F}_{text}^{T})),c),\\
+\end{aligned}
+\end{equation}
+where $\textit{Dice}(\cdot,\cdot)$, $\textit{Focal}(\cdot,\cdot)$, and $\textit{BCE}(\cdot,\cdot)$ are dice loss~\cite{milletari2016v}, focal loss~\cite{lin2017focal}, and binary cross-entropy loss, respectively. $\lambda_1$, $\lambda_2$ and $\lambda_3$ are the individual loss weights where we set $\lambda_1=\lambda_2=\lambda_3=1.0$ as default. The overall adaptation loss $\mathcal{L}_{adapt}$ is then calculated as the sum of losses at each feature level, expressed as $\mathcal{L}_{adapt} = \sum_{l=1}^4 \mathcal{L}_l$. 
+
+\noindent\textbf{Discussion.} 
+WinCLIP~\cite{winclip} relies on the class token from pre-trained VLMs for natural image AD, with no adaptation performed. In contrast, MVFA introduces multi-level adaptation, freezing the main backbone while adapting features at each level via adapters in line with corresponding visual-language alignments. The resulting adapted features are residually integrated into subsequent encoder blocks, modifying input features of these blocks. This unique approach enables collaborative training of adapters across different levels via gradient propagation, enhancing the overall adaptation of the backbone model. As a result, unlike APRIL-GAN~\cite{chen2023zero}, which utilizes isolated feature projections that do not adapt the main backbone, MVFA leads to robust generalization in medical AD. The difference between MVFA and feature projection in~\cite{chen2023zero} is also evaluated in Sec.~\ref{sec:abl}.
+
+\section{Test: Multi-Level Feature Comparison}
+\label{sec:test}
+During testing, to accurately predict anomalies at the image level (AC) and pixel level (AS), our approach incorporates a two-branch multi-level feature comparison architecture, comprising a zero-shot branch and a few-shot branch, as illustrated in Figure~\ref{fig:pipeline} (c).
+
+\noindent\textbf{Zero-Shot Branch.} 
+A test image $x_{test}$ is processed through MVFA to produce multi-level adapted features. These features are then compared with the text feature $\mathcal{F}_{text}$. Zero-shot AC and AS results, denoted as $c_{\text{zero}}$ and $\mathcal{S}_{\text{zero}}$, are calculated using average softmax scores across the four levels, 
+\begin{equation}
+\begin{aligned}
+c_{\text{zero}} = \frac{1}{4}{\textstyle \sum_{l=1}^4}\max_{G}(\textit{softmax}(\mathcal{F}_{cls,l} \mathcal{F}_{text}^{T})),\\ \mathcal{S}_{\text{zero}} = \frac{1}{4}{\textstyle \sum_{l=1}^4}\text{BI}(\textit{softmax}(\mathcal{F}_{seg,l} \mathcal{F}_{text}^{T})).
+\end{aligned}
+\end{equation}
+Here, $\text{BI}(\cdot)$ reshapes the anomaly map to $\sqrt{G}\times\sqrt{G}$ and restores it to the original input image resolution using bilinear interpolation, with $G$ representing the grid number.
+
+\noindent\textbf{Few-Shot Branch.} 
+All the multi-level visual features of a few labeled normal images in $\mathcal{D}_{med}$ contribute to constructing a multi-level feature memory bank $\mathcal{G}$ facilitating the feature comparison. The few-shot AC and AS scores, denoted as $c_{\text{few}}$ and $\mathcal{S}_{\text{few}}$, are derived from the minimum distance between the test feature and the memory bank features at each level, through a nearest neighbor search process, 
+\begin{equation}
+\begin{aligned}
+    c_{\text{few}} = \frac{1}{4}{\textstyle \sum_{l=1}^4}\max_G(\min_{m\in\mathcal{G}}\textit{Dist}(\mathcal{F}_{cls,l},m)), \\ \mathcal{S}_{\text{few}} = \frac{1}{4}{\textstyle \sum_{l=1}^4}\text{BI}(\min_{m\in\mathcal{G}}\textit{Dist}(\mathcal{F}_{seg,l},m)).     
+\end{aligned}
+\end{equation}
+Here, $\textit{Dist}(\cdot, \cdot)$ represents the cosine distance, calculated as $1-\text{cosine}(\cdot,\cdot)$. The final predicted AC and AS results combine the outcomes from both branches:
+\begin{equation}
+    c_{\text{pred}} = \beta_1 c_{\text{zero}}+ \beta_2 c_{\text{few}}, \mathcal{S}_{\text{pred}} = \beta_1 \mathcal{S}_{\text{zero}}+ \beta_2 \mathcal{S}_{\text{few}}.
+\end{equation} 
+Here, $\beta_1$ and $\beta_2$ are weighting factors for the zero-shot and few-shot branches, respectively, set to 0.5 by default. 

@@ -1,0 +1,347 @@
+\begin{thebibliography}{68}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baid et~al.(2021)Baid, Ghodasara, Mohan, Bilello, Calabrese, Colak, Farahani, Kalpathy-Cramer, Kitamura, Pati, et~al.]{baid2021rsna}
+Ujjwal Baid, Satyam Ghodasara, Suyash Mohan, Michel Bilello, Evan Calabrese, Errol Colak, Keyvan Farahani, Jayashree Kalpathy-Cramer, Felipe~C Kitamura, Sarthak Pati, et~al.
+\newblock The rsna-asnr-miccai brats 2021 benchmark on brain tumor segmentation and radiogenomic classification.
+\newblock \emph{arXiv preprint arXiv:2107.02314}, 2021.
+
+\bibitem[Bakas et~al.(2017)Bakas, Akbari, Sotiras, Bilello, Rozycki, Kirby, Freymann, Farahani, and Davatzikos]{bakas2017advancing}
+Spyridon Bakas, Hamed Akbari, Aristeidis Sotiras, Michel Bilello, Martin Rozycki, Justin~S Kirby, John~B Freymann, Keyvan Farahani, and Christos Davatzikos.
+\newblock Advancing the cancer genome atlas glioma mri collections with expert segmentation labels and radiomic features.
+\newblock \emph{Scientific Data}, 4\penalty0 (1):\penalty0 1--13, 2017.
+
+\bibitem[Bao et~al.(2023)Bao, Sun, Deng, He, Zhang, and Li]{bao2023bmad}
+Jinan Bao, Hanshi Sun, Hanqiu Deng, Yinsheng He, Zhaoxiang Zhang, and Xingyu Li.
+\newblock Bmad: Benchmarks for medical anomaly detection.
+\newblock \emph{arXiv preprint arXiv:2306.11876}, 2023.
+
+\bibitem[Bejnordi et~al.(2017)Bejnordi, Veta, Van~Diest, Van~Ginneken, Karssemeijer, Litjens, Van Der~Laak, Hermsen, Manson, Balkenhol, et~al.]{bejnordi2017diagnostic}
+Babak~Ehteshami Bejnordi, Mitko Veta, Paul~Johannes Van~Diest, Bram Van~Ginneken, Nico Karssemeijer, Geert Litjens, Jeroen~AWM Van Der~Laak, Meyke Hermsen, Quirine~F Manson, Maschenka Balkenhol, et~al.
+\newblock Diagnostic assessment of deep learning algorithms for detection of lymph node metastases in women with breast cancer.
+\newblock \emph{Jama}, 318\penalty0 (22):\penalty0 2199--2210, 2017.
+
+\bibitem[Bergmann et~al.(2019)Bergmann, Fauser, Sattlegger, and Steger]{bergmann2019mvtec}
+Paul Bergmann, Michael Fauser, David Sattlegger, and Carsten Steger.
+\newblock Mvtec ad--a comprehensive real-world dataset for unsupervised anomaly detection.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Bergmann et~al.(2020)Bergmann, Fauser, Sattlegger, and Steger]{US}
+Paul Bergmann, Michael Fauser, David Sattlegger, and Carsten Steger.
+\newblock Uninformed students: Student-teacher anomaly detection with discriminative latent embeddings.
+\newblock In \emph{CVPR}, 2020.
+
+\bibitem[Bilic et~al.(2023)Bilic, Christ, Li, Vorontsov, Ben-Cohen, Kaissis, Szeskin, Jacobs, Mamani, Chartrand, et~al.]{bilic2023liver}
+Patrick Bilic, Patrick Christ, Hongwei~Bran Li, Eugene Vorontsov, Avi Ben-Cohen, Georgios Kaissis, Adi Szeskin, Colin Jacobs, Gabriel Efrain~Humpire Mamani, Gabriel Chartrand, et~al.
+\newblock The liver tumor segmentation benchmark (lits).
+\newblock \emph{Medical Image Analysis}, 84:\penalty0 102680, 2023.
+
+\bibitem[Cai et~al.(2023)Cai, Chen, Yang, Zhou, and Cheng]{cai2023dual}
+Yu Cai, Hao Chen, Xin Yang, Yu Zhou, and Kwang-Ting Cheng.
+\newblock Dual-distribution discrepancy with self-supervised refinement for anomaly detection in medical images.
+\newblock \emph{Medical Image Analysis}, 86:\penalty0 102794, 2023.
+
+\bibitem[Chen et~al.(2023)Chen, Han, and Zhang]{chen2023zero}
+Xuhai Chen, Yue Han, and Jiangning Zhang.
+\newblock A zero-/few-shot anomaly classification and segmentation method for cvpr 2023 vand workshop challenge tracks 1\&2: 1st place on zero-shot ad and 4th place on few-shot ad.
+\newblock \emph{arXiv preprint arXiv:2305.17382}, 2023.
+
+\bibitem[Deng and Li(2022)]{deng2022anomaly}
+Hanqiu Deng and Xingyu Li.
+\newblock Anomaly detection via reverse distillation from one-class embedding.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Deng et~al.(2009)Deng, Dong, Socher, Li, Li, and Fei-Fei]{deng2009imagenet}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In \emph{CVPR}, 2009.
+
+\bibitem[Ding et~al.(2022{\natexlab{a}})Ding, Pang, and Shen]{DRA}
+Choubo Ding, Guansong Pang, and Chunhua Shen.
+\newblock Catching both gray and black swans: Open-set supervised anomaly detection.
+\newblock In \emph{CVPR}, 2022{\natexlab{a}}.
+
+\bibitem[Ding et~al.(2022{\natexlab{b}})Ding, Dong, Xu, Li, Ding, and Huang]{ding2022unsupervised}
+Zhiyuan Ding, Qi Dong, Haote Xu, Chenxin Li, Xinghao Ding, and Yue Huang.
+\newblock Unsupervised anomaly segmentation for brain lesions using dual semantic-manifold reconstruction.
+\newblock In \emph{International Conference on Neural Information Processing}, 2022{\natexlab{b}}.
+
+\bibitem[Fernando et~al.(2021)Fernando, Gammulle, Denman, Sridharan, and Fookes]{fernando2021deep}
+Tharindu Fernando, Harshala Gammulle, Simon Denman, Sridha Sridharan, and Clinton Fookes.
+\newblock Deep learning for medical anomaly detection--a survey.
+\newblock \emph{ACM Computing Surveys (CSUR)}, 54\penalty0 (7):\penalty0 1--37, 2021.
+
+\bibitem[Gao et~al.(2023)Gao, Geng, Zhang, Ma, Fang, Zhang, Li, and Qiao]{gao2023clip}
+Peng Gao, Shijie Geng, Renrui Zhang, Teli Ma, Rongyao Fang, Yongfeng Zhang, Hongsheng Li, and Yu Qiao.
+\newblock Clip-adapter: Better vision-language models with feature adapters.
+\newblock \emph{IJCV}, pages 1--15, 2023.
+
+\bibitem[Goh et~al.(2021)Goh, Cammarata, Voss, Carter, Petrov, Schubert, Radford, and Olah]{goh2021multimodal}
+Gabriel Goh, Nick Cammarata, Chelsea Voss, Shan Carter, Michael Petrov, Ludwig Schubert, Alec Radford, and Chris Olah.
+\newblock Multimodal neurons in artificial neural networks.
+\newblock \emph{Distill}, 6\penalty0 (3):\penalty0 e30, 2021.
+
+\bibitem[Gong et~al.(2019)Gong, Liu, Le, Saha, Mansour, Venkatesh, and Hengel]{gong2019memorizing}
+Dong Gong, Lingqiao Liu, Vuong Le, Budhaditya Saha, Moussa~Reda Mansour, Svetha Venkatesh, and Anton van~den Hengel.
+\newblock Memorizing normality to detect anomaly: Memory-augmented deep autoencoder for unsupervised anomaly detection.
+\newblock In \emph{ICCV}, 2019.
+
+\bibitem[Gu et~al.(2021)Gu, Lin, Kuo, and Cui]{gu2021open}
+Xiuye Gu, Tsung-Yi Lin, Weicheng Kuo, and Yin Cui.
+\newblock Open-vocabulary object detection via vision and language knowledge distillation.
+\newblock In \emph{ICLR}, 2021.
+
+\bibitem[Gudovskiy et~al.(2022)Gudovskiy, Ishizaka, and Kozuka]{gudovskiy2022cflow}
+Denis Gudovskiy, Shun Ishizaka, and Kazuki Kozuka.
+\newblock Cflow-ad: Real-time unsupervised anomaly detection with localization via conditional normalizing flows.
+\newblock In \emph{WACV}, 2022.
+
+\bibitem[He et~al.(2023)He, Si, Lu, Huang, Wang, and Wang]{KejiNeurIPS23}
+Keji He, Chenyang Si, Zhihe Lu, Yan Huang, Liang Wang, and Xinchao Wang.
+\newblock Frequency-enhanced data augmentation for vision-and-language navigation.
+\newblock In \emph{NeurIPS}, 2023.
+
+\bibitem[Hu et~al.(2019)Hu, Chen, and Yi]{hu2019automated}
+Junjie Hu, Yuanyuan Chen, and Zhang Yi.
+\newblock Automated segmentation of macular edema in oct using deep neural networks.
+\newblock \emph{Medical Image Analysis}, 55:\penalty0 216--227, 2019.
+
+\bibitem[Huang et~al.(2022{\natexlab{a}})Huang, Guan, Jiang, Zhang, Spratling, and Wang]{regad}
+Chaoqin Huang, Haoyan Guan, Aofan Jiang, Ya Zhang, Michael Spratling, and Yan-Feng Wang.
+\newblock Registration based few-shot anomaly detection.
+\newblock In \emph{ECCV}, 2022{\natexlab{a}}.
+
+\bibitem[Huang et~al.(2023)Huang, Jiang, Zhang, and Wang]{huang2023multi}
+Chaoqin Huang, Aofan Jiang, Ya Zhang, and Yanfeng Wang.
+\newblock Multi-scale memory comparison for zero-/few-shot anomaly detection.
+\newblock \emph{arXiv preprint arXiv:2308.04789}, 2023.
+
+\bibitem[Huang et~al.(2022{\natexlab{b}})Huang, Huang, and Tang]{huang2022lesionpaste}
+Weikai Huang, Yijin Huang, and Xiaoying Tang.
+\newblock Lesionpaste: One-shot anomaly detection for medical images.
+\newblock \emph{arXiv preprint arXiv:2203.06354}, 2022{\natexlab{b}}.
+
+\bibitem[Ilharco et~al.(2021)Ilharco, Wortsman, Wightman, Gordon, Carlini, Taori, Dave, Shankar, Namkoong, Miller, Hajishirzi, Farhadi, and Schmidt]{openclip}
+Gabriel Ilharco, Mitchell Wortsman, Ross Wightman, Cade Gordon, Nicholas Carlini, Rohan Taori, Achal Dave, Vaishaal Shankar, Hongseok Namkoong, John Miller, Hannaneh Hajishirzi, Ali Farhadi, and Ludwig Schmidt.
+\newblock Openclip, 2021.
+
+\bibitem[Jeong et~al.(2023)Jeong, Zou, Kim, Zhang, Ravichandran, and Dabeer]{winclip}
+Jongheon Jeong, Yang Zou, Taewan Kim, Dongqing Zhang, Avinash Ravichandran, and Onkar Dabeer.
+\newblock Winclip: Zero-/few-shot anomaly classification and segmentation.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Jiang et~al.(2023)Jiang, Huang, Cao, Wu, Zeng, Chen, Zhang, and Wang]{jiang2023multi}
+Aofan Jiang, Chaoqin Huang, Qing Cao, Shuang Wu, Zi Zeng, Kang Chen, Ya Zhang, and Yanfeng Wang.
+\newblock Multi-scale cross-restoration framework for electrocardiogram anomaly detection.
+\newblock In \emph{MICCAI}, 2023.
+
+\bibitem[Kermany et~al.(2018)Kermany, Goldbaum, Cai, Valentim, Liang, Baxter, McKeown, Yang, Wu, Yan, et~al.]{kermany2018identifying}
+Daniel~S Kermany, Michael Goldbaum, Wenjia Cai, Carolina~CS Valentim, Huiying Liang, Sally~L Baxter, Alex McKeown, Ge Yang, Xiaokang Wu, Fangbing Yan, et~al.
+\newblock Identifying medical diagnoses and treatable diseases by image-based deep learning.
+\newblock \emph{Cell}, 172\penalty0 (5):\penalty0 1122--1131, 2018.
+
+\bibitem[Landman et~al.(2015)Landman, Xu, Igelsias, Styner, Langerak, and Klein]{landman2015miccai}
+Bennett Landman, Zhoubing Xu, J Igelsias, Martin Styner, T Langerak, and Arno Klein.
+\newblock Miccai multi-atlas labeling beyond the cranial vault--workshop and challenge.
+\newblock In \emph{Proc. MICCAI Multi-Atlas Labeling Beyond Cranial Vault—Workshop Challenge}, page~12, 2015.
+
+\bibitem[Li et~al.(2021{\natexlab{a}})Li, Zhang, Li, Huang, and Ding]{li2021unsupervised}
+Chenxin Li, Yunlong Zhang, Jiongcheng Li, Yue Huang, and Xinghao Ding.
+\newblock Unsupervised anomaly segmentation using image-semantic cycle translation.
+\newblock \emph{arXiv preprint arXiv:2103.09094}, 2021{\natexlab{a}}.
+
+\bibitem[Li et~al.(2021{\natexlab{b}})Li, Sohn, Yoon, and Pfister]{cutpaste}
+Chun-Liang Li, Kihyuk Sohn, Jinsung Yoon, and Tomas Pfister.
+\newblock Cutpaste: Self-supervised learning for anomaly detection and localization.
+\newblock In \emph{CVPR}, 2021{\natexlab{b}}.
+
+\bibitem[Li et~al.(2023)Li, Lian, Lu, Bai, Chen, and Wang]{LiXinNeurIPS23}
+Xin Li, Dongze Lian, Zhihe Lu, Jiawang Bai, Zhibo Chen, and Xinchao Wang.
+\newblock Graphadapter: Tuning vision-language models with dual knowledge graph.
+\newblock In \emph{NeurIPS}, 2023.
+
+\bibitem[Lin et~al.(2017)Lin, Goyal, Girshick, He, and Doll{\'a}r]{lin2017focal}
+Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Doll{\'a}r.
+\newblock Focal loss for dense object detection.
+\newblock In \emph{ICCV}, 2017.
+
+\bibitem[Ma et~al.(2024)Ma, Fang, and Wang]{DeepCacheCVPR24}
+Xinyin Ma, Gongfan Fang, and Xinchao Wang.
+\newblock Deepcache: Accelerating diffusion models for free.
+\newblock In \emph{CVPR}, 2024.
+
+\bibitem[Menze et~al.(2014)Menze, Jakab, Bauer, Kalpathy-Cramer, Farahani, Kirby, Burren, Porz, Slotboom, Wiest, et~al.]{menze2014multimodal}
+Bjoern~H Menze, Andras Jakab, Stefan Bauer, Jayashree Kalpathy-Cramer, Keyvan Farahani, Justin Kirby, Yuliya Burren, Nicole Porz, Johannes Slotboom, Roland Wiest, et~al.
+\newblock The multimodal brain tumor image segmentation benchmark (brats).
+\newblock \emph{IEEE Transactions on Medical Imaging}, 34\penalty0 (10):\penalty0 1993--2024, 2014.
+
+\bibitem[Milletari et~al.(2016)Milletari, Navab, and Ahmadi]{milletari2016v}
+Fausto Milletari, Nassir Navab, and Seyed-Ahmad Ahmadi.
+\newblock V-net: Fully convolutional neural networks for volumetric medical image segmentation.
+\newblock In \emph{International Conference on 3D Vision (3DV)}, pages 565--571. IEEE, 2016.
+
+\bibitem[Pang et~al.(2019)Pang, Shen, and van~den Hengel]{DEVNET}
+Guansong Pang, Chunhua Shen, and Anton van~den Hengel.
+\newblock Deep anomaly detection with deviation networks.
+\newblock In \emph{Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining}, pages 353--362, 2019.
+
+\bibitem[Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, Sastry, Askell, Mishkin, Clark, et~al.]{CLIP}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et~al.
+\newblock Learning transferable visual models from natural language supervision.
+\newblock In \emph{ICML}, 2021.
+
+\bibitem[Rao et~al.(2022)Rao, Zhao, Chen, Tang, Zhu, Huang, Zhou, and Lu]{rao2022denseclip}
+Yongming Rao, Wenliang Zhao, Guangyi Chen, Yansong Tang, Zheng Zhu, Guan Huang, Jie Zhou, and Jiwen Lu.
+\newblock Denseclip: Language-guided dense prediction with context-aware prompting.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Rombach et~al.(2022)Rombach, Blattmann, Lorenz, Esser, and Ommer]{rombach2022high}
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj{\"o}rn Ommer.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Roth et~al.(2022)Roth, Pemula, Zepeda, Sch{\"o}lkopf, Brox, and Gehler]{patchcore}
+Karsten Roth, Latha Pemula, Joaquin Zepeda, Bernhard Sch{\"o}lkopf, Thomas Brox, and Peter Gehler.
+\newblock Towards total recall in industrial anomaly detection.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Ruff et~al.(2020)Ruff, Vandermeulen, G{\"o}rnitz, Binder, M{\"u}ller, M{\"u}ller, and Kloft]{SAD}
+Lukas Ruff, Robert~A Vandermeulen, Nico G{\"o}rnitz, Alexander Binder, Emmanuel M{\"u}ller, Klaus-Robert M{\"u}ller, and Marius Kloft.
+\newblock Deep semi-supervised anomaly detection.
+\newblock In \emph{ICLR}, 2020.
+
+\bibitem[Sabokrou et~al.(2018)Sabokrou, Khalooei, Fathy, and Adeli]{Sabokrou2018Adversarially}
+Mohammad Sabokrou, Mohammad Khalooei, Mahmood Fathy, and Ehsan Adeli.
+\newblock Adversarially learned one-class classifier for novelty detection.
+\newblock In \emph{CVPR}, 2018.
+
+\bibitem[Salehi et~al.(2021)Salehi, Sadjadi, Baselizadeh, Rohban, and Rabiee]{MKD}
+Mohammadreza Salehi, Niousha Sadjadi, Soroosh Baselizadeh, Mohammad~Hossein Rohban, and Hamid~R Rabiee.
+\newblock Multiresolution knowledge distillation for anomaly detection.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Schuhmann et~al.(2022)Schuhmann, Beaumont, Vencu, Gordon, Wightman, Cherti, Coombes, Katta, Mullis, Wortsman, et~al.]{schuhmann2022laion}
+Christoph Schuhmann, Romain Beaumont, Richard Vencu, Cade Gordon, Ross Wightman, Mehdi Cherti, Theo Coombes, Aarush Katta, Clayton Mullis, Mitchell Wortsman, et~al.
+\newblock Laion-5b: An open large-scale dataset for training next generation image-text models.
+\newblock \emph{NeurIPS}, 2022.
+
+\bibitem[Sheynin et~al.(2021)Sheynin, Benaim, and Wolf]{TDG}
+Shelly Sheynin, Sagie Benaim, and Lior Wolf.
+\newblock A hierarchical transformation-discriminating generative model for few shot anomaly detection.
+\newblock In \emph{ICCV}, 2021.
+
+\bibitem[Su et~al.(2021)Su, Shen, Peng, and Hu]{su2021few}
+Jianpo Su, Hui Shen, Limin Peng, and Dewen Hu.
+\newblock Few-shot domain-adaptive anomaly detection for cross-site brain images.
+\newblock \emph{TPAMI}, 2021.
+
+\bibitem[Taori et~al.(2020)Taori, Dave, Shankar, Carlini, Recht, and Schmidt]{taori2020measuring}
+Rohan Taori, Achal Dave, Vaishaal Shankar, Nicholas Carlini, Benjamin Recht, and Ludwig Schmidt.
+\newblock Measuring robustness to natural distribution shifts in image classification.
+\newblock \emph{NeurIPS}, 2020.
+
+\bibitem[Van~der Maaten and Hinton(2008)]{van2008visualizing}
+Laurens Van~der Maaten and Geoffrey Hinton.
+\newblock Visualizing data using t-sne.
+\newblock \emph{JMLR}, 9\penalty0 (11), 2008.
+
+\bibitem[Wang et~al.(2021)Wang, Wu, Cui, and Shen]{GP}
+Shenzhi Wang, Liwei Wu, Lei Cui, and Yujun Shen.
+\newblock Glancing at the patch: Anomaly localization with global and local feature comparison.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Wang et~al.(2017)Wang, Peng, Lu, Lu, Bagheri, and Summers]{wang2017chestx}
+Xiaosong Wang, Yifan Peng, Le Lu, Zhiyong Lu, Mohammadhadi Bagheri, and Ronald~M Summers.
+\newblock Chestx-ray8: Hospital-scale chest x-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases.
+\newblock In \emph{CVPR}, 2017.
+
+\bibitem[Wang et~al.(2022)Wang, Wu, Agarwal, and Sun]{wang2022medclip}
+Zifeng Wang, Zhenbang Wu, Dinesh Agarwal, and Jimeng Sun.
+\newblock Medclip: Contrastive learning from unpaired medical images and text.
+\newblock In \emph{EMNLP}, 2022.
+
+\bibitem[Wolleb et~al.(2022)Wolleb, Bieder, Sandk{\"u}hler, and Cattin]{wolleb2022diffusion}
+Julia Wolleb, Florentin Bieder, Robin Sandk{\"u}hler, and Philippe~C Cattin.
+\newblock Diffusion models for medical anomaly detection.
+\newblock In \emph{MICCAI}, 2022.
+
+\bibitem[Wu et~al.(2021)Wu, Chen, Fuh, and Liu]{metaformer}
+Jhih-Ciang Wu, Ding-Jie Chen, Chiou-Shann Fuh, and Tyng-Luh Liu.
+\newblock Learning unsupervised metaformer for anomaly detection.
+\newblock In \emph{ICCV}, 2021.
+
+\bibitem[Xu et~al.(2022)Xu, Zhang, Sun, Li, Huang, and Ding]{xu2022afsc}
+Haote Xu, Yunlong Zhang, Liyan Sun, Chenxin Li, Yue Huang, and Xinghao Ding.
+\newblock Afsc: Adaptive fourier space compression for anomaly detection.
+\newblock \emph{arXiv preprint arXiv:2204.07963}, 2022.
+
+\bibitem[Yang and Wang(2023)]{XingyiICCV23}
+Xingyi Yang and Xinchao Wang.
+\newblock Diffusion model as representation learner.
+\newblock In \emph{ICCV}, 2023.
+
+\bibitem[Yao et~al.(2023)Yao, Li, Zhang, Sun, and Zhang]{BGAD}
+Xincheng Yao, Ruoqi Li, Jing Zhang, Jun Sun, and Chongyang Zhang.
+\newblock Explicit boundary guided semi-push-pull contrastive learning for supervised anomaly detection.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Ye et~al.(2022)Ye, Huang, Cao, Li, Zhang, and Lu]{ARNet}
+Fei Ye, Chaoqin Huang, Jinkun Cao, Maosen Li, Ya Zhang, and Cewu Lu.
+\newblock Attribute restoration framework for anomaly detection.
+\newblock \emph{IEEE Transactions on Multimedia}, 24:\penalty0 116--127, 2022.
+
+\bibitem[Ye et~al.(2024)Ye, Yu, Liu, and Wang]{JingwenAAAI24}
+Jingwen Ye, Ruonan Yu, Songhua Liu, and Xinchao Wang.
+\newblock Mutual-modality adversarial attack with semantic perturbation.
+\newblock In \emph{AAAI}, 2024.
+
+\bibitem[Yu et~al.(2023)Yu, Lu, Jin, Chen, and Wang]{YuTaoCVPR23}
+Tao Yu, Zhihe Lu, Xin Jin, Zhibo Chen, and Xinchao Wang.
+\newblock Task residual for tuning vision-language models.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Zhang et~al.(2021)Zhang, Xie, Liao, Pang, Verjans, Li, Sun, He, and Yi~Li]{zhang2020viral}
+Jianpeng Zhang, Yutong Xie, Zhibin Liao, Guansong Pang, Johan Verjans, Wenxin Li, Zongji Sun, Jian He, and Chunhua~Shen Yi~Li.
+\newblock Viral pneumonia screening on chest x-ray images using confidence-aware anomaly detection.
+\newblock \emph{IEEE Transactions on Medical Imaging}, 40\penalty0 (3):\penalty0 879--890, 2021.
+
+\bibitem[Zhang et~al.(2023)Zhang, Fan, Xu, Yao, Zhang, and Wang]{zhang2023grace}
+Ruipeng Zhang, Ziqing Fan, Qinwei Xu, Jiangchao Yao, Ya Zhang, and Yanfeng Wang.
+\newblock Grace: A generalized and personalized federated learning method for medical imaging.
+\newblock In \emph{MICCAI}, 2023.
+
+\bibitem[Zhong et~al.(2022)Zhong, Yang, Zhang, Li, Codella, Li, Zhou, Dai, Yuan, Li, et~al.]{zhong2022regionclip}
+Yiwu Zhong, Jianwei Yang, Pengchuan Zhang, Chunyuan Li, Noel Codella, Liunian~Harold Li, Luowei Zhou, Xiyang Dai, Lu Yuan, Yin Li, et~al.
+\newblock Regionclip: Region-based language-image pretraining.
+\newblock In \emph{CVPR}, pages 16793--16803, 2022.
+
+\bibitem[Zhou et~al.(2020)Zhou, Xiao, Yang, Cheng, Liu, Luo, Gu, Liu, and Gao]{zhou2020encoding}
+Kang Zhou, Yuting Xiao, Jianlong Yang, Jun Cheng, Wen Liu, Weixin Luo, Zaiwang Gu, Jiang Liu, and Shenghua Gao.
+\newblock Encoding structure-texture relation with p-net for anomaly detection in retinal images.
+\newblock In \emph{ECCV}, 2020.
+
+\bibitem[Zhou et~al.(2021{\natexlab{a}})Zhou, Li, Luo, Li, Yang, Fu, Cheng, Liu, and Gao]{zhou2021proxy}
+Kang Zhou, Jing Li, Weixin Luo, Zhengxin Li, Jianlong Yang, Huazhu Fu, Jun Cheng, Jiang Liu, and Shenghua Gao.
+\newblock Proxy-bridged image reconstruction network for anomaly detection in medical images.
+\newblock \emph{IEEE Transactions on Medical Imaging}, 41\penalty0 (3):\penalty0 582--594, 2021{\natexlab{a}}.
+
+\bibitem[Zhou et~al.(2021{\natexlab{b}})Zhou, Li, Xiao, Yang, Cheng, Liu, Luo, Liu, and Gao]{zhou2021memorizing}
+Kang Zhou, Jing Li, Yuting Xiao, Jianlong Yang, Jun Cheng, Wen Liu, Weixin Luo, Jiang Liu, and Shenghua Gao.
+\newblock Memorizing structure-texture correspondence for image anomaly detection.
+\newblock \emph{TNNLS}, 33\penalty0 (6):\penalty0 2335--2349, 2021{\natexlab{b}}.
+
+\bibitem[Zhou et~al.(2022)Zhou, Yang, Loy, and Liu]{zhou2022learning}
+Kaiyang Zhou, Jingkang Yang, Chen~Change Loy, and Ziwei Liu.
+\newblock Learning to prompt for vision-language models.
+\newblock \emph{IJCV}, 130\penalty0 (9):\penalty0 2337--2348, 2022.
+
+\bibitem[Zou et~al.(2023)Zou, Kim, Pemula, and Dabeer]{vand}
+Yang Zou, Taewan Kim, Latha Pemula, and Onkar Dabeer.
+\newblock Visual anomaly and novelty detection (vand) challenge in cvpr 2023 workshop, 2023.
+\newblock \url{https://sites.google.com/view/vand-cvpr23/challenge}.
+
+\end{thebibliography}

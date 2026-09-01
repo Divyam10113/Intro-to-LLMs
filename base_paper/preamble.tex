@@ -1,0 +1,37 @@
+%
+% --- inline annotations
+%
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\TODO}[1]{\textbf{\color{red}[TODO: #1]}}
+
+%\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+%\usepackage{enumitem}
+%\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{marvosym}
+\usepackage{makecell}
+\usepackage{bm}
+\usepackage{float}
+%\usepackage{subfigure}
+%\usepackage{subcaption}
+%\usepackage[page, header]{appendix}
+%\usepackage{wrapfig}
+%\usepackage{caption}
+%\usepackage[marginal]{footmisc}
+%\usepackage{colortbl}
+%\usepackage[pagebackref=false,breaklinks=true,colorlinks,bookmarks=true]{hyperref} 
+\newcommand{\highlightChange}{\color{red}}
+\def\HC{\highlightChange}
+\newcommand{\NoteHCQ}[1]{{\color{blue} \bf \small [NOTE: #1]}}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+% --- disable by uncommenting  
+% \renewcommand{\TODO}[1]{}
+% \renewcommand{\todo}[1]{#1}
+
