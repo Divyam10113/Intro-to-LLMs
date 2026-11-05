@@ -1,0 +1,9 @@
+  [baseline-zeroshot] gpt-6.1-sol ok (4906 chars)
+[baseline] zero_shot_sol: 19 limitations
+  [old-extractor] gpt-6.1-sol ok (6662 chars)
+  [old-analyzer] gpt-6.1-sol ok (11293 chars)
+  [old-reviewer] gpt-6.1-sol ok (11008 chars)
+  [old-judge] gpt-6.1-sol ok (9214 chars)
+  [old-selffeedback] gpt-6.1-sol ok (12014 chars)
+  [old-parse] gpt-6.1-sol ok (8913 chars)
+[baseline] old_pipeline_sol: 11 limitations

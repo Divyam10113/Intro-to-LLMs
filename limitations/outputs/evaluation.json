@@ -1,0 +1,804 @@
+{
+  "full": {
+    "n_generated": 27,
+    "C_GT": 0.6666666666666666,
+    "C_LLM": 0.07407407407407407,
+    "F1": 0.13333333333333333,
+    "matches": {
+      "R1": [
+        "G19"
+      ],
+      "R2": [],
+      "R3": [
+        "G25"
+      ]
+    },
+    "faithfulness": 5.0,
+    "soundness": 5.0,
+    "importance": 3.740740740740741,
+    "per_item": [
+      {
+        "id": "G1",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G2",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G3",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G4",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G5",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G6",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G7",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G8",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G9",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G10",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G11",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G12",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G13",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G14",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G15",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G16",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G17",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G18",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G19",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G20",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G21",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G22",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G23",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G24",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G25",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G26",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G27",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      }
+    ]
+  },
+  "full_nocite": {
+    "n_generated": 25,
+    "C_GT": 0.3333333333333333,
+    "C_LLM": 0.04,
+    "F1": 0.07142857142857142,
+    "matches": {
+      "R1": [],
+      "R2": [],
+      "R3": [
+        "G23"
+      ]
+    },
+    "faithfulness": 5.0,
+    "soundness": 5.0,
+    "importance": 3.72,
+    "per_item": [
+      {
+        "id": "G1",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G2",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G3",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G4",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G5",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G6",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G7",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G8",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G9",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G10",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G11",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G12",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G13",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G14",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G15",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G16",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G17",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G18",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G19",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G20",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G21",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G22",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G23",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G24",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 2
+      },
+      {
+        "id": "G25",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      }
+    ]
+  },
+  "zero_shot": {
+    "n_generated": 15,
+    "C_GT": 0.3333333333333333,
+    "C_LLM": 0.06666666666666667,
+    "F1": 0.1111111111111111,
+    "matches": {
+      "R1": [],
+      "R2": [],
+      "R3": [
+        "G13"
+      ]
+    },
+    "faithfulness": 5.0,
+    "soundness": 5.0,
+    "importance": 4.6,
+    "per_item": [
+      {
+        "id": "G1",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G2",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G3",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G4",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G5",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G6",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G7",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G8",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G9",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G10",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G11",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G12",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G13",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G14",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G15",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      }
+    ]
+  },
+  "old_pipeline": {
+    "n_generated": 11,
+    "C_GT": 0.6666666666666666,
+    "C_LLM": 0.2727272727272727,
+    "F1": 0.3870967741935484,
+    "matches": {
+      "R1": [
+        "G5"
+      ],
+      "R2": [],
+      "R3": [
+        "G8",
+        "G11"
+      ]
+    },
+    "faithfulness": 5.0,
+    "soundness": 5.0,
+    "importance": 4.0,
+    "per_item": [
+      {
+        "id": "G1",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G2",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G3",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G4",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G5",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G6",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G7",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G8",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G9",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      },
+      {
+        "id": "G10",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G11",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 3
+      }
+    ]
+  },
+  "full_nim": {
+    "n_generated": 39,
+    "C_GT": 1.0,
+    "C_LLM": 0.10256410256410256,
+    "F1": 0.18604651162790695,
+    "matches": {
+      "R1": [
+        "G9"
+      ],
+      "R2": [
+        "G16"
+      ],
+      "R3": [
+        "G6",
+        "G15"
+      ]
+    },
+    "faithfulness": 5.0,
+    "soundness": 4.666666666666667,
+    "importance": 4.615384615384615,
+    "per_item": [
+      {
+        "id": "G1",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G2",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G3",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G4",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G5",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G6",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G7",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G8",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G9",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G10",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G11",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G12",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G13",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G14",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G15",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G16",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 4
+      },
+      {
+        "id": "G17",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G18",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G19",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G20",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G21",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G22",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G23",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G24",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G25",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G26",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G27",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G28",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G29",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G30",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G31",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G32",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G33",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G34",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G35",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G36",
+        "faithfulness": 5,
+        "soundness": 5,
+        "importance": 5
+      },
+      {
+        "id": "G37",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G38",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      },
+      {
+        "id": "G39",
+        "faithfulness": 5,
+        "soundness": 4,
+        "importance": 4
+      }
+    ]
+  }
+}

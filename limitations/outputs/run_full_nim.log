@@ -1,0 +1,10 @@
+[retriever] 880 chunks, dense=tfidf-lsa
+[citation] queries: ['zero-shot medical anomaly detection evaluation protocol pretraining test overlap data leakage', 'pixel-level mask supervision annotation cost few-shot medical anomaly detection', 'CLIP patch features small lesion localization resolution anomaly segmentation limitations', '2D CLIP medical anomaly detection 3D volumetric CT MRI generalization limitations', 'medical anomaly detection benchmark baseline fairness WinCLIP APRIL-GAN comparison', 'vision-language medical anomaly detection prompt interpretability clinical semantics']
+[citation] 18 MVFA-mention passages, 26 reranked >= 8 -> using 30
+[workers] 116 raw limitations: extractor=28 (judge 7.1 -> regen), analyzer=25 (judge 7.9 -> regen), reviewer=38 (judge 7.7 -> regen), citation=25 (judge 7.6 -> regen)
+[verifier] 116 -> 116 with a verbatim quote -> 115 supported/partial
+[master] 39 consolidated limitations
+[retriever] 329 chunks, dense=tfidf-lsa
+  [problem] minimaxai/minimax-m3.1-flash ok (10164 chars)
+
+[done] /Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/outputs/full_nim/research_gaps.md

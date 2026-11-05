@@ -1,0 +1,10 @@
+  [baseline-zeroshot] gpt-6-astra ok (4282 chars)
+[baseline] zero_shot: 15 limitations
+  [old-extractor] gpt-6-astra ok (5350 chars)
+  [old-analyzer] gpt-6-astra ok (14064 chars)
+  [old-reviewer] gpt-6-astra ok (12379 chars)
+  [old-judge] gpt-6-astra ok (10185 chars)
+  [old-selffeedback] gpt-6-astra ok (12485 chars)
+  [old-parse] gpt-6-astra failed (attempt 1): APIError: Your requests to *** for *** in *** have exceeded token rate limit.
+  [old-parse] gpt-6.1-sol ok (9100 chars)
+[baseline] old_pipeline: 11 limitations

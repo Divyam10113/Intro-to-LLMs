@@ -1,0 +1,5 @@
+data/pdfs/
+data/http_cache/
+cache/
+__pycache__/
+.env

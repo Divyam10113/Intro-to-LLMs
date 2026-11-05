@@ -1,0 +1,95 @@
+{
+  "raw": [
+    {
+      "limitation": "MVFA relies on fixed, handcrafted prompts to represent medical concepts, limiting adaptability to diverse imaging contexts and textual variations.",
+      "quote": "However, these models rely on fixed, handcrafted prompts to represent medical concepts, limiting adaptability to diverse imaging contexts and textual variations.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "MVFA averages embeddings across multiple handcrafted prompt variations rather than learning adaptive prompt representations.",
+      "quote": "Unlike previous studies [17, 46] that average embeddings across multiple handcrafted prompt variations, we empirically observe that these learnable tokens are sufficient to capture the semantic variability between normal and abnormal states.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "In few-shot settings, MVFA produces noisy and scattered predictions on ambiguous, low-contrast data such as breast ultrasound.",
+      "quote": "With ambiguous and low-contrast data such as breast ultrasound, the few-shot model produces noisy and scattered predictions, whereas our supervised MedSAD-CLIP yields a clean and well-defined boundary closely matching the ground truth (GT).",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "MVFA tends to produce noisy or over-segmented predictions in both few-shot and fully supervised settings, especially in low-contrast regions like lung and breast images.",
+      "quote": "As shown in Fig. 3, the MVFA model under both fewshot and fully supervised settings tends to produce noisy or over-segmented predictions, especially in low-contrast regions such as lung and breast images.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "MVFA's few-shot setting generates wider and less precise segmentation masks compared to its fully supervised counterpart.",
+      "quote": "In particular, the MVFA with few-shot setting often generates wider and less precise masks than its fully supervised counterpart, further highlighting the performance gap between zero-/few-shot and fully supervised models.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "Even with limited labeled samples, MVFA's segmentation performance remains moderate (generally below 70% Dice), indicating constrained precise lesion localization.",
+      "quote": "Although the Dice scores also increase compared to the zero-shot setting, the overall segmentation performance remains moderate, generally below 70%, indicating that a limited number of labeled samples improves detection consistency but still constrains precise lesion localization.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "Under fully supervised fine-tuning, MVFA's performance remains notably below the proposed MedSAD-CLIP framework, with an average Dice improvement of +17% over MVFA.",
+      "quote": "Despite these gains, their performance remains notably below our proposed framework. Our method consistently achieves the highest results across all datasets... This corresponds to an average Dice improvement of +17% over MVFA and +46% over Aaclip.",
+      "pid": "P119",
+      "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+    },
+    {
+      "limitation": "MVFA requires memory banks, which are expensive and limit generalization.",
+      "quote": "Additionally, our pipeline eliminates the need for memory banks, as seen in e.g., [19]",
+      "pid": "P052",
+      "paper": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport"
+    },
+    {
+      "limitation": "MVFA uses fixed hand-crafted prompts, which are outperformed by learnable prompts.",
+      "quote": "The case where all components are excluded (first row in the table) corresponds to using fixed, hand-crafted prompts, specifically adopting those from MVFA [19]. ... Learnable prompts outperform fixed prompts",
+      "pid": "P052",
+      "paper": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport"
+    },
+    {
+      "limitation": "MVFA-AD relies on the original CLIP text encoder rather than learnable anomaly-aware prompts, inheriting CLIP's limitations in fine-grained semantic perception and reasoning for anomaly detection.",
+      "quote": "Among them, WinCLIP [18], VAND [6] and MVFA-AD [17] use original CLIP text encoder, and AnomalyCLIP [57] and AdaCLIP [5] incorporate learnable prompts.",
+      "pid": "P000",
+      "paper": "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+    },
+    {
+      "limitation": "MVFA-AD depends on text features that need to be anomaly-aware to effectively differentiate abnormalities, but the original CLIP text encoder has limitations in fine-grained semantic perception and reasoning.",
+      "quote": "These methods depend on text features that need to be anomaly-aware to effectively differentiate abnormalities. However, recent studies highlight CLIP's limitations in finegrained semantic perception and reasoning [20, 21, 35, 37, 44, 45].",
+      "pid": "P000",
+      "paper": "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+    }
+  ],
+  "reference": [
+    {
+      "limitation": "MVFA relies on fixed, handcrafted prompts (or the original CLIP text encoder) rather than learnable, adaptive prompt representations, limiting adaptability to diverse imaging contexts and fine-grained semantic perception for anomaly detection.",
+      "papers": [
+        "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
+        "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport",
+        "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+      ],
+      "rid": "R1"
+    },
+    {
+      "limitation": "MVFA produces noisy, over-segmented, and imprecise segmentation masks with low Dice scores (generally below 70%) in both few-shot and fully supervised settings, particularly in low-contrast regions such as lung and breast images.",
+      "papers": [
+        "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation"
+      ],
+      "rid": "R2"
+    },
+    {
+      "limitation": "MVFA requires memory banks, which are computationally expensive and limit generalization.",
+      "papers": [
+        "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport"
+      ],
+      "rid": "R3"
+    }
+  ]
+}

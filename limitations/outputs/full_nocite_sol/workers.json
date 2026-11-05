@@ -1,0 +1,1076 @@
+[
+  {
+    "agent": "extractor",
+    "judge_round1": {
+      "scores": {
+        "depth": 3.0,
+        "originality": 4.0,
+        "actionability": 5.0,
+        "topic_coverage": 2.0,
+        "faithfulness": 8.0,
+        "soundness": 5.0,
+        "importance": 3.0
+      },
+      "mean": 4.285714285714286,
+      "feedback": "The list is largely faithful to the text, but mostly restates disclosed evaluation scope and isolated performance exceptions rather than investigating threats to the main generalization and annotation-efficiency claims.\n\nItem-specific feedback:\n- EXT1 is valid and worth retaining. Distinguish missing segmentation evidence on additional datasets from missing modalities: OCT17 and RESC are both retinal OCT.\n- EXT2 substantially duplicates EXT1 and concerns comparator applicability rather than an independent weakness of MVFA. Also reconcile the prose saying BGAD is used exclusively for segmentation with the tables reporting BGAD classification scores on pixel-annotated datasets. Frame this around annotation budgets and comparison coverage.\n- EXT3 accurately reports the ChestXray exception, but the authors already acknowledge it, and their main improvement claims are averages, not uniform superiority. The pretraining-overlap explanation is not supported by a reported image-level overlap audit. Recommend auditing overlap and stratifying results rather than assuming a disjoint MedCLIP checkpoint is available.\n- EXT4 is a low-priority scope qualification: industrial superiority is not the paper's main objective. Tuning on industrial validation data does not address medical generalization. If retained, examine the supplementary overstatement of industrial superiority against the nearly identical average segmentation AUCs and category-specific regressions.\n- EXT5 correctly identifies a 0.49-percentage-point difference near the AUC ceiling, but without uncertainty estimates it does not establish a reliable architectural disadvantage. Recommend repeated matched-support-set experiments; account for any additional model-selection labels within the few-shot budget.\n- EXT6 should be removed or rewritten. A generic statement about future exploration is not a research limitation, as its own explanation admits. Ultrasound evaluation would address an independently justified coverage gap, not this quotation.\n\nImportant missing limitations to prioritize:\n1. Generalization protocol ambiguity: zero-shot here means target-domain transfer after supervised medical adaptation, not adaptation without medical labels. Clarify the source datasets and supervision. Because OCT17 and RESC share modality and anatomy, verify whether both are excluded together; dataset-wise leave-one-out alone cannot establish unseen-modality/unseen-anatomy transfer. Add grouped modality/anatomy holdouts.\n2. Annotation-budget and reproducibility gaps: specify the normal/abnormal composition of K, normal-reference-bank size, source-training volume, and whether all methods receive identical support sets. Normal-only comparisons differ in supervision, although April-GAN is a more relevant supervised control. Explain how Dice/Focal losses are handled on classification-only datasets lacking masks.\n3. Missing statistical reliability: random few-shot sampling is reported without repeated trials, seeds, confidence intervals, or paired significance tests. This especially matters for the ensemble's gains over Layer 2—only 0.13 points for classification and 0.05 for segmentation. Supplementary results also show per-dataset regressions under multi-level training, qualifying the claimed consistency. Repeat support-set sampling and use patient/volume/slide-clustered uncertainty estimates.\n4. AUC-only evaluation: image and pixel AUROC do not establish clinical operating performance or accurate lesion delineation. Add Dice/IoU, lesion-level sensitivity or FROC, precision-recall metrics, sensitivity at clinically relevant specificity, and calibration.\n5. External validity and data granularity: document patient/volume-level separation for extracted MRI/CT slices and support sets rather than assuming independence. The 240-resolution, 2D slice/patch pipeline does not establish volumetric or whole-slide performance. Evaluate external institutions/scanners and stratify by lesion size and input resolution.\n6. Mechanistic and efficiency evidence: existing ablations do not isolate the text-comparison and normal-memory-bank contributions in few-shot inference or assess sensitivity to residual and branch weights. Add branch-only and weight-sensitivity experiments. The frozen ViT-L/14 backbone is still computationally substantial; report trainable parameters, latency, peak memory, and nearest-neighbor scaling before equating lightweight adaptation with lightweight deployment."
+    },
+    "regenerated": true,
+    "judge_round2": {
+      "scores": {
+        "depth": 6.0,
+        "originality": 8.0,
+        "actionability": 8.0,
+        "topic_coverage": 6.0,
+        "faithfulness": 10.0,
+        "soundness": 9.0,
+        "importance": 6.0
+      },
+      "mean": 7.571428571428571,
+      "feedback": "The list is unusually faithful and carefully qualified: the numerical comparisons are correct, EXT1 does not invent OCT cross-training, EXT5 does not allege patient leakage, and the performance exceptions are distinguished from statistical conclusions. EXT1–EXT6 identify useful supervision, evaluation, granularity and efficiency qualifications. No clear substantive factual errors were found.\n\nItems to revise or consolidate:\n- EXT7–EXT13 devote seven items to effect sizes or numerical exceptions, crowding out deeper methodological limitations. Consolidate EXT9–EXT11 into nonuniform target-domain performance. EXT11 and EXT12 largely restate exceptions the authors already acknowledge; EXT13 is peripheral to the central medical-transfer claim.\n- EXT7 is a useful ensemble cost–benefit caveat, but the Layer-2 comparison concerns prediction-level ensembling, not whether multi-level adapter training is necessary. Preserve that distinction and evaluate matched early-exit or reduced-adapter variants.\n- EXT8 concerns an intermediate layer's output. It does not establish that the final ensemble regresses on ChestXray. Its stronger research question is whether joint losses create domain-specific interference; examine per-domain gradients and loss balancing.\n- EXT4 and EXT6 are valid but relatively conventional. Deepen EXT4 by explaining how high pixel AUC can coexist with poor small-lesion localization. Frame EXT6 as unmeasured efficiency, not demonstrated excessive overhead, especially given the small tested support banks.\n- The repeated confidence-interval and annotation-budget fixes are sensible, but largely templated. Make statistical reliability a standalone limitation and specify source-only model/threshold selection for zero-shot evaluation.\n\nImportant missing or underdeveloped limitations:\n1. Statistical reliability of the main gains: random K-shot subsets are selected, but repeated-support/seed results, confidence intervals and significance tests are not reported. Nonmonotonic results, such as HIS falling from 85.10 at K=8 to 82.62 at K=16, make support sensitivity especially relevant. Use paired support draws, training seeds and patient/volume/slide-clustered uncertainty for the headline comparisons.\n2. Generalization beyond benchmark identities: leave-one-dataset-out transfer does not separately establish robustness to unseen diseases, hospitals, scanners or acquisition protocols. Modality, anatomy and pathology are largely coupled in this benchmark. Add pathology-withholding and external-site/protocol evaluations rather than relying only on dataset holdouts.\n3. Benchmark construction and split controls: LiverCT uses BTCV for all-normal training and LiTS for testing, introducing acquisition-source shift alongside the anomaly task. Audit this potential confound with source-balanced controls and explicitly document patient/volume-level support and test separation. Do not assert leakage without evidence.\n4. Spatial-information loss: all inputs use resolution 240 despite substantially larger CT, OCT and X-ray originals; segmentation maps are reconstructed through bilinear interpolation. EXT5 addresses unit granularity but not whether resizing and the patch grid erase subtle lesions. Add native/higher-resolution and lesion-size-stratified comparisons.\n5. Unisolated language and comparison contributions: the paper does not establish how much improvement requires text alignment versus supervised adapter learning and visual-memory matching. Test matched text-free classifier heads, prompt variants, and zero-shot-only/few-shot-only accuracy. Examine the fixed 0.5 fusion of softmax scores with cosine distances, whose scales need not be comparable, along with residual and loss-weight sensitivity.\n6. Incomplete supervision specification: the loss formulation assumes pixel masks, while three datasets provide only image labels. EXT3 mentions loss handling only as a fix; elevate this to a reproducibility limitation. Specify which losses and adapters are trained on image-only abnormal samples, source-domain annotation counts, K-shot class composition and normal-bank membership."
+    },
+    "items": [
+      {
+        "aspect": "Experimental Design",
+        "limitation": "MVFA's zero-shot setting requires supervised medical-source adaptation and evaluates transfer to a held-out target domain, rather than medical anomaly detection without medical labels.",
+        "explanation": "Annotated medical data are used to construct the medically adapted model before zero-shot testing. Consequently, zero-shot here describes the target scenario, not annotation-free medical adaptation. The benchmark also contains two retinal-OCT datasets, so dataset holdout and modality/anatomy holdout are not interchangeable descriptions; this does not establish that either OCT dataset actually trained the other.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "This adaptation utilizes a medical training dataset $\\mathcal{D}_{med}$, which consists of annotated samples from the medical field, enabling the transformation of $\\mathcal{M}_{nat}$ into $\\mathcal{M}_{med}$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Here, $\\mathcal{D}_{med}$ is a pre-training dataset that is composed of medical data from different modalities and anatomical regions than those in the test samples, which assesses the model's generalization to unseen scenarios."
+          },
+          {
+            "source": "BASE",
+            "quote": "In this configuration, a designated target dataset was chosen for testing, while the remaining datasets with different modalities and anatomical regions were employed for training."
+          },
+          {
+            "source": "BASE",
+            "quote": "The benchmark includes two different OCT AD datasets."
+          }
+        ],
+        "suggested_fix": "Run explicitly grouped modality/anatomy holdouts, jointly excluding RESC and OCT17 for retinal-OCT testing, and publish the source-dataset membership and source image/mask budgets for each target.",
+        "id": "EXT1",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "MVFA's comparisons with normal-only baselines change anomaly-label supervision as well as the training-data regime, rather than comparing methods under a common supervision condition.",
+        "explanation": "The authors explicitly attribute MVFA's advantage over CLIP and WinCLIP to using a few abnormal samples. They also state that the all-normal training sets contain considerably more images than the few-shot sets. These results compare different supervision regimes, whereas the supervised April-GAN comparison provides a more directly relevant control for the proposed adaptation.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "MVFA's advantage lies in its ability to effectively utilize a few abnormal samples, leading to significant gains over these methods."
+          },
+          {
+            "source": "BASE",
+            "quote": "It is important to highlight that this ``all-normal'' training set encompasses considerably more data compared to the limited data used in the few-shot scenario."
+          },
+          {
+            "source": "BASE",
+            "quote": "Building upon WinCLIP, April-GAN~ maps visual features extracted from CLIP to the linear space where the text features are located, supervised by pixel-level annotated data."
+          }
+        ],
+        "suggested_fix": "Run a fixed-K normal-only versus mixed normal/abnormal MVFA supervision ablation, documenting support identities, class/mask counts, source-training counts and normal-bank size, with April-GAN receiving matched supervised supports.",
+        "id": "EXT2",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "Anomaly-segmentation evidence and BGAD comparisons are restricted to BrainMRI, LiverCT and RESC, while OCT17, ChestXray and HIS contribute classification-only evidence.",
+        "explanation": "This limits demonstrated segmentation generality to the three mask-annotated datasets. OCT17 and RESC are both retinal OCT, so OCT17's classification-only status means missing additional segmentation evidence within that modality, not another untested modality. Although the setup describes BGAD as segmentation-only, the authors also report its classification comparison on pixel-annotated datasets; the restriction concerns annotation availability and comparison coverage, not complete absence of BGAD classification results.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Among these, BrainMRI~, LiverCT~, and RESC~ datasets are used for both anomaly classification (AC) and segmentation (AS), while OCT17~, ChestXray~, and HIS~ are solely for AC."
+          },
+          {
+            "source": "BASE",
+            "quote": "We evaluate these methods for AC and AS, excluding BGAD, which is exclusively applied for segmentation due to its requirement for pixel-level annotations during training."
+          },
+          {
+            "source": "BASE",
+            "quote": "Compared to BGAD~, MVFA shows an average improvement of 9.18\\% in AUC for AC and 3.53\\% in AUC for AS, in datasets with pixel-level annotations."
+          },
+          {
+            "source": "BASE",
+            "quote": "The RESC dataset~ offers pixel-level segmentation labels, delineating regions affected by retinal edema. In contrast, the OCT17 dataset~ primarily serves for classification tasks, featuring retinal OCT images categorized into three types of anomalies."
+          }
+        ],
+        "suggested_fix": "Add mask-annotated support and test subsets for OCT17, ChestXray and HIS, compare MVFA and BGAD on identical supports, and report separate image/mask budgets and segmentation-loss handling for image-only samples.",
+        "id": "EXT3",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "The paper quantifies both medical classification and segmentation performance using ROC AUC, restricting the reported gains to image-level and pixel-level discrimination scores.",
+        "explanation": "The evaluation protocol explicitly defines image-level AUC for classification and pixel-level AUC for segmentation. Consequently, the reported improvements quantify these metrics and cannot be recast as numerical improvements in lesion overlap or clinical sensitivity at a particular specificity.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The area under the Receiver Operating Characteristic curve metric (AUC) is used to quantify the performance."
+          },
+          {
+            "source": "BASE",
+            "quote": "This metric is a standard in AD evaluation, with separate considerations for image-level AUC in AC and pixel-level AUC in AS."
+          }
+        ],
+        "suggested_fix": "Re-score the existing test predictions with Dice/IoU where masks are available, lesion-level FROC, precision–recall metrics and calibration, counting any target-domain threshold-selection labels within the few-shot budget.",
+        "id": "EXT4",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The MRI/CT and histopathology evaluations use selected 2D slices and extracted patches, rather than complete-volume or whole-slide predictions.",
+        "explanation": "BrainMRI selects FLAIR slices within depths 60–100, LiverCT uses 2D axial slices, and HIS testing uses patches extracted from testing whole slides. The reported results therefore establish performance on those extracted units rather than complete-volume or whole-slide decisions. This is a task-granularity qualification, not an assertion of patient- or slide-level leakage.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "To account for variations in brain images at different depths, slices within the depth range of 60 to 100 of the 3D FLAIR volumes are selected."
+          },
+          {
+            "source": "BASE",
+            "quote": "Each extracted 2D slice was saved in PNG format and has an image size of $240\\times 240$ pixels."
+          },
+          {
+            "source": "BASE",
+            "quote": "The scans are then cropped into 2D axial slices, containing 1,452 2D slices for training and 1,493 2D slices for testing."
+          },
+          {
+            "source": "BASE",
+            "quote": "For testing, 1,003 normal and 997 abnormal patches from the 115 testing WSIs are utilized."
+          }
+        ],
+        "suggested_fix": "Evaluate an explicit slice-/patch-aggregation variant on patient-/volume-/slide-disjoint complete MRI/CT studies and HIS whole slides, reporting case-level performance alongside the existing 2D scores.",
+        "id": "EXT5",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "MVFA's lightweight adaptation retains the full 24-layer CLIP ViT-L/14 encoder and adds multi-level nearest-neighbor memory-bank comparisons during few-shot inference.",
+        "explanation": "The method adds small bottleneck layers while leaving the pretrained backbone unchanged. Its few-shot branch also compares test features against normal memory-bank features at each level. Thus, lightweight describes adapter-based tuning, not replacement of the encoder or a memory-free inference pipeline.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "This method appends a small set of learnable bottleneck linear layers to the visual branches of CLIP while keeping its original backbone unchanged, thus enabling adaptation at multiple feature levels."
+          },
+          {
+            "source": "BASE",
+            "quote": "We utilize the CLIP with ViT-L/14 architecture, with input images at a resolution of 240. The model comprises a total of 24 layers, which are divided into 4 stages, each encompassing 6 layers."
+          },
+          {
+            "source": "BASE",
+            "quote": "The few-shot AC and AS scores, denoted as $c_{few}$ and $\\mathcal{S}_{few}$, are derived from the minimum distance between the test feature and the memory bank features at each level, through a nearest neighbor search process,"
+          }
+        ],
+        "suggested_fix": "Benchmark zero-shot-only, few-shot-only and combined inference over increasing normal-bank sizes, reporting total/trainable parameters, per-image latency, peak memory and AUC on the reported GPU.",
+        "id": "EXT6",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "At K=4, the multi-level ensemble's reported average gain over Layer 2 is only 0.13 AUC points for classification and 0.05 for segmentation.",
+        "explanation": "Layer 2 achieves 88.84%/98.62% classification/segmentation AUC, compared with 88.97%/98.67% for the ensemble. The benefit over the strongest individual layer is therefore incremental in this averaged K=4 experiment. This is a magnitude caveat, not a claim that either architecture is statistically inferior.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The results presented in Table~ demonstrate that among individual layers, Layer 2 yielded the highest performance, achieving 88.84\\% in AC and 98.62\\% in AS."
+          },
+          {
+            "source": "BASE",
+            "quote": "However, the ensemble method, which integrates features from all layers, outperformed single-layer approaches, recording AUCs of 88.97\\% in AC and 98.67\\% in AS."
+          },
+          {
+            "source": "BASE",
+            "quote": "The average AUCs (in \\%) of all six datasets for AC and AS under the few-shot setting (K=4) are reported."
+          }
+        ],
+        "suggested_fix": "Repeat Layer-2-versus-ensemble testing on identical K=4 supports across random draws, report paired patient-/volume-/slide-clustered confidence intervals, and count any layer-selection labels within K.",
+        "id": "EXT7",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "The supplementary results contain numerical regressions under multi-level training, including ChestXray Layer 3 classification AUC decreasing from 79.75% to 58.32%.",
+        "explanation": "The main text's consistency statement concerns layer averages across datasets. The supplementary per-dataset tables nevertheless contain a lower ChestXray result for this layer under multi-level training. Consequently, consistency across layer averages should not be interpreted as improvement in every dataset–layer combination.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Moreover, multi-level training consistently exceeds the performance of single-layer training, reinforcing the benefits of our multi-level adaptation approach across all layers."
+          },
+          {
+            "source": "BASE",
+            "quote": "Ablation study of multi-level features without multi-level training."
+          },
+          {
+            "source": "BASE",
+            "quote": "Layer 3 & 69.00 & 79.75 & 98.68 & 83.01 & 94.34 & 63.78 & 95.35 & 93.29 & 98.40\\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "Ablation study of multi-level features with multi-level training."
+          },
+          {
+            "source": "BASE",
+            "quote": "Layer 3 & 82.35 & 58.32 & 96.96 & 93.01 & 97.14 & 81.10 & 99.59 & 94.18 & 98.90\\\\"
+          }
+        ],
+        "suggested_fix": "Repeat matched K=4 ChestXray experiments comparing single-layer training, uniform multi-level losses and adaptive loss balancing, reporting paired confidence intervals and counting model-selection labels within K.",
+        "id": "EXT8",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "In the reported zero-shot BrainMRI test, MVFA's segmentation AUC of 90.27% is below April-GAN's 91.79%.",
+        "explanation": "The average zero-shot segmentation improvement over April-GAN coexists with a 1.52-percentage-point numerical disadvantage on BrainMRI. This qualifies the cross-domain segmentation advantage at an individual target domain rather than contradicting the reported aggregate improvement.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "BrainMRI & 66.49~/~85.99 & 76.43~/~91.79 & 78.63~/~90.27 \\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "Similarly, against April-GAN~, MVFA achieves an average AUC improvement of 6.24\\% for AC and 2.03\\% for AS across all datasets, underscoring its effectiveness in the challenging zero-shot medical AD setting."
+          }
+        ],
+        "suggested_fix": "Repeat the BrainMRI holdout with matched source annotation budgets for MVFA and April-GAN, reporting volume-clustered uncertainty and lesion-size-stratified pixel AUC and Dice.",
+        "id": "EXT9",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "The few-shot tables show exceptions to MVFA's numerical superiority: April-GAN has higher OCT17 classification AUC at all four shot counts, and BGAD has higher LiverCT segmentation AUC at K=2.",
+        "explanation": "The OCT17 comparisons favor April-GAN at K=2,4,8,16 despite MVFA's stronger aggregate performance. At K=2, LiverCT segmentation AUC is 98.71% for BGAD versus 96.57% for MVFA. These dataset/task/shot-specific exceptions qualify uniform superiority, not the authors' average improvement claims.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "APRIL-GAN~ & arXiv 2023   & 69.57 & 69.84 & 99.21"
+          },
+          {
+            "source": "BASE",
+            "quote": "\\multirow{-4}{*}{2-shot} & MFA & ours & 82.61 & 81.32 & 97.98 & 92.72 & 96.55 & 81.08 & 96.57 & 91.36 & 98.11 \\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "APRIL-GAN~ & arXiv 2023   & 76.11 & 77.43 & 99.41"
+          },
+          {
+            "source": "BASE",
+            "quote": "\\multirow{-4}{*}{4-shot} & MFA & ours & 82.71 & 81.95 & 99.38"
+          },
+          {
+            "source": "BASE",
+            "quote": "APRIL-GAN~ & arXiv 2023   & 81.70  & 73.69 & 99.75"
+          },
+          {
+            "source": "BASE",
+            "quote": "\\multirow{-4}{*}{8-shot} & MFA & ours & 85.10  & 83.89 & 99.64"
+          },
+          {
+            "source": "BASE",
+            "quote": "APRIL-GAN~ & arXiv 2023   & 81.16 & 78.62 & 99.93"
+          },
+          {
+            "source": "BASE",
+            "quote": "\\multirow{-4}{*}{16-shot}  & MFA & ours & 82.62 & 85.72 & 99.66"
+          },
+          {
+            "source": "BASE",
+            "quote": "BGAD~ & CVPR 2023 & - & - & - & 78.70  & 92.42 & 72.27 & 98.71"
+          }
+        ],
+        "suggested_fix": "Repeat MVFA–April-GAN comparisons on OCT17 and MVFA–BGAD comparisons on LiverCT over matched K-shot draws, report patient-/volume-clustered intervals, and include any model-selection annotations in K.",
+        "id": "EXT10",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "On ChestXray at K=4, MVFA's 81.95% AUC is below MedCLIP's 84.06%, a comparison the authors qualify by attributing MedCLIP's advantage to overlapping ChestXray pretraining.",
+        "explanation": "The authors explicitly acknowledge the ChestXray exception and attribute it to overlapping pretraining data. Prior target-domain exposure is therefore a stated caveat in interpreting this comparison. The exception limits any claim of best performance on every dataset without negating the reported mean improvements.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "While MedCLIP~ shows superior results on ChestXray because it was trained on large-scale overlapping ChestXray data in our medical AD benchmark, it lacks broad generalization capabilities, as evidenced by its performance on other datasets."
+          },
+          {
+            "source": "BASE",
+            "quote": "MedCLIP~ & EMNLP 2022 & 75.89 & 84.06"
+          },
+          {
+            "source": "BASE",
+            "quote": "MVFA & Ours & 82.71 & 81.95"
+          }
+        ],
+        "suggested_fix": "Audit image-/patient-level overlap between MedCLIP pretraining and the ChestXray test set, then report AUC stratified by confirmed overlap, confirmed non-overlap and unknown exposure.",
+        "id": "EXT11",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The dual-adapter architecture's reported K=4 classification improvement does not extend to OCT17, where its AUC is 99.38% versus 99.87% for the single adapter.",
+        "explanation": "The authors appropriately qualify the dual adapter's advantage as applying to almost all datasets. Its average classification improvement coexists with this OCT17 exception. The 0.49-percentage-point difference near the AUC ceiling is a numerical exception, not by itself an established reliable architectural disadvantage.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "According to the results in Table~, the dual-adapter approach outperforms the single-adapter model on almost all the datasets."
+          },
+          {
+            "source": "BASE",
+            "quote": "OCT17 & 99.87 & 99.38 & - & - \\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "average & 87.68 & 88.97 & 98.31 & 98.67 \\\\"
+          }
+        ],
+        "suggested_fix": "Repeat the single-/dual-adapter comparison on identical K=4 OCT17 supports across random draws, report paired patient-clustered confidence intervals, and count architecture-selection labels within K.",
+        "id": "EXT12",
+        "agent": "extractor"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "MVFA's MVTec segmentation results are not uniformly superior, with only a 0.05-point average AUC gain over WinCLIP and lower AUCs on cable and transistor.",
+        "explanation": "The main text describes industrial performance as comparable. Average segmentation AUC is 96.32% for MVFA versus 96.27% for WinCLIP, while the supplementary results show cable at 87.3% versus 94.9% and transistor at 80.9% versus 88.5%. These exceptions qualify the supplementary statement of significant outperformance. They concern the industrial evaluation, not the paper's central medical-transfer objective.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "As shown in Table~, although our main focus is not in-domain scenarios, MVFA shows comparable performance to state-of-the-art methods in a few-shot setting (K=4)."
+          },
+          {
+            "source": "BASE",
+            "quote": "in-domain (MVTec) &  95.16/96.27 & 92.77/95.89 & 96.19/96.32\\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "MVFA significantly outperforms competing methods, highlighting its superior generalization capabilities."
+          },
+          {
+            "source": "BASE",
+            "quote": "cable & 82.9 & 95.5 & 90.9 & 94.9 & 76.7 & 91.8 & 88.0 & 87.3 \\\\"
+          },
+          {
+            "source": "BASE",
+            "quote": "transistor & 85.5 & 93.5 & 85.7 & 88.5 & 84.1 & 83.7 & 84.3 & 80.9 \\\\"
+          }
+        ],
+        "suggested_fix": "Repeat paired MVTec comparisons on shared K=4 supports and report category-specific and average effect sizes with confidence intervals, separately from the medical-transfer claims.",
+        "id": "EXT13",
+        "agent": "extractor"
+      }
+    ]
+  },
+  {
+    "agent": "analyzer",
+    "judge_round1": {
+      "scores": {
+        "depth": 9.0,
+        "originality": 8.0,
+        "actionability": 9.0,
+        "topic_coverage": 9.0,
+        "faithfulness": 9.0,
+        "soundness": 8.0,
+        "importance": 8.0
+      },
+      "mean": 8.571428571428571,
+      "feedback": "Strong, unusually paper-specific audit. ANA1, ANA3–5, ANA10–11, and ANA14–15 identify consequential protocol, supervision, attribution, and statistical weaknesses with concrete fixes. The quotations and numerical comparisons are accurate. ANA1 and ANA2 appropriately identify unverified safeguards rather than asserting proven leakage.\n\nTighten several interpretations:\n- ANA9 should acknowledge that the supplementary prompts include organ names and template ensembling. Two embeddings are appropriate for a binary task; their number alone does not establish inadequate pathology representation. Reframe this as untested prompt dependence and uncertain contribution of medical linguistic semantics.\n- ANA15 correctly identifies an intermediate-layer regression, but this does not demonstrate negative transfer in the final ensemble or establish its cause. Distinguish observed per-layer deterioration from causal cross-level interference, and retain the proposed repeated, paired comparisons. The tiny ensemble gains also do not negate the separately demonstrated adapter-versus-projector gains.\n- ANA21 conflates parameter-efficient adaptation with lightweight end-to-end inference. Trainable parameter counts and training-resource measurements directly test the paper's characterization; inference latency and whole-study processing costs are additional deployment gaps, not contradictions of an explicit speed claim.\n- ANA6 is a valuable boundary on unseen-disease generalization, but pathology holdouts are not required by the paper's stated target-domain zero-/few-shot formulation.\n- ANA10 identifies a valid fusion-validation gap, but different theoretical score ranges do not themselves prove harmful weighting. Request empirical branch distributions and matched-draw fusion ablations.\n\nThe more conventional items—AUROC-only evaluation, missing uncertainty, clinical operating points, and resource reporting—are still useful because they are grounded in this paper. Reduce repetition by coordinating ANA7/13/16 around lesion-size and boundary failures, and ANA8/20 around acquisition-artifact robustness. Prioritize protocol and statistical threats above optional deployment extensions.\n\nImportant omissions or underdeveloped issues:\n1. Specify exact source-training budgets for every zero-shot fold, including normal/anomalous counts and mask availability, and clarify whether few-shot training starts from original CLIP or an already medically adapted checkpoint. Expand ANA18 beyond annotation time to this essential supervision accounting, and verify identical source budgets for April-GAN.\n2. The validation/model-selection procedure is unspecified. Request source-only validation for zero-shot choices, sensitivity analyses for the residual ratio and loss weights, and explicit accounting for any target examples used for calibration or tuning within the K-shot budget. Also report the exact CLIP checkpoint and preprocessing.\n3. Reconcile the weak OCT17 projector ablation: 49.85 AC AUC versus April-GAN's 92.61 under the reported zero-shot setting. This is not automatically an invalid control, but implementation and training differences must explain why the apparently related projection approaches diverge so sharply.\n4. Extend ANA16 to the concentration of headline gains: LiverCT contributes 28.13 of the summed 43.96 AUC-point few-shot AC improvement over April-GAN, approximately 64%. Investigate that outlier and report domain-balanced summaries rather than relying mainly on the mean.\n5. For the broader universal-generalization claim, distinguish unseen modality from unseen anatomy: most benchmark domains pair one modality with one anatomical region. Additional organ/modality-factorial and explicitly held-out institution/vendor evaluations would establish which kinds of generalization actually hold."
+    },
+    "regenerated": false,
+    "items": [
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The dataset-level leave-one-out protocol does not clearly establish whether both retinal OCT datasets are excluded when claiming unseen-modality and unseen-anatomy generalization.",
+        "explanation": "RESC and OCT17 share retinal anatomy and OCT modality, while evaluation is described as leaving out one target dataset. Although the text says training uses different modalities, it does not provide per-fold dataset lists confirming joint exclusion; retaining the companion OCT dataset would make these results within-modality, within-anatomy transfer.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "In this configuration, a designated target dataset was chosen for testing, while the remaining datasets with different modalities and anatomical regions were employed for training."
+          },
+          {
+            "source": "BASE",
+            "quote": "Retinal OCT: The benchmark includes two different OCT AD datasets."
+          }
+        ],
+        "suggested_fix": "Jointly hold out RESC and OCT17 as one retinal-OCT domain, publish every fold's training datasets, and compare against the dataset-level holdout results.",
+        "id": "ANA1",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "BrainMRI converts volumes into multiple slices without documenting patient-disjoint training, testing, and few-shot sampling, leaving independence unverified.",
+        "explanation": "Neighboring slices from one FLAIR volume can share substantial anatomical and acquisition information, but the reported protocol does not specify patient or volume allocation. If patients overlap across splits, performance could be inflated; even with disjoint patients, correlated slice observations do not constitute independent patient-level evidence.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "To account for variations in brain images at different depths, slices within the depth range of 60 to 100 of the 3D FLAIR volumes are selected."
+          },
+          {
+            "source": "BASE",
+            "quote": "Each extracted 2D slice was saved in PNG format and has an image size of $240\\times 240$ pixels."
+          }
+        ],
+        "suggested_fix": "Partition patients before extracting slices, draw few-shot examples from distinct training patients, and evaluate with patient-clustered confidence intervals.",
+        "id": "ANA2",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "LiverCT lacks a source-matched normal-training control, leaving lesion-detection performance entangled with BTCV-to-LiTS acquisition and population shift.",
+        "explanation": "Normal-only baselines learn from BTCV, whereas test scans come from LiTS, so source differences can distort anomaly scores independently of lesions. This is a legitimate transfer challenge, but without a within-LiTS normal-training control, weak baseline results cannot be separated from mismatch to the learned normal-reference distribution.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The anomaly-free BTCV set, consisting of 50 abdominal 3D CT scans, constitutes the training set, while the test data comprises 131 abdominal 3D CT scans from LiTS."
+          }
+        ],
+        "suggested_fix": "Add patient-disjoint, within-LiTS training and testing alongside BTCV-to-LiTS transfer, using equal normal-image and annotation budgets.",
+        "id": "ANA3",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The pixel-wise alignment objective is incompletely specified for OCT17, ChestXray, and HIS, which provide only classification labels.",
+        "explanation": "The training formulation assigns every sample a segmentation mask and optimizes Dice/Focal alignment, yet three datasets are explicitly classification-only. The paper does not explain whether segmentation losses are omitted or masks are derived for these samples, undermining reproducibility and interpretation of the claimed pixel-wise adaptation.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Each tuple includes a training image $x_i$, its corresponding image-level anomaly classification (AC) label $c_i \\in \\{-, +\\}$, and pixel-level anomaly segmentation (AS) annotations $\\mathcal{S}_i\\in \\{-, +\\}^{h\\times w}$ for images of size $h\\times w$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Among these, BrainMRI~, LiverCT~, and RESC~ datasets are used for both anomaly classification (AC) and segmentation (AS), while OCT17~, ChestXray~, and HIS~ are solely for AC."
+          }
+        ],
+        "suggested_fix": "Specify a mask-availability indicator that disables segmentation losses for image-only samples, and ablate their inclusion in cross-domain training.",
+        "id": "ANA4",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The random K-shot sampling protocol does not specify normal/anomalous quotas despite requiring normal target images to construct the memory bank.",
+        "explanation": "Training samples are described as random labeled subsets, whereas the few-shot branch requires normal references. Without documented class quotas, some K=2 draws could contain no normal images, while other draws could provide substantially different reference coverage, making the branch's definition and comparisons dependent on unspecified sample composition.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "For the few-shot AD scenario, we select a random subset of labeled training samples, with $K\\in \\{2,4,8,16\\}$, from the labeled training set (designated as ``Train (with labels)'' in Table~)."
+          },
+          {
+            "source": "BASE",
+            "quote": "All the multi-level visual features of a few labeled normal images in $\\mathcal{D}_{med}$ contribute to constructing a multi-level feature memory bank $\\mathcal{G}$ facilitating the feature comparison."
+          }
+        ],
+        "suggested_fix": "Use fixed K/2 normal and K/2 anomalous patient-disjoint samples, share identical draws across methods, and report the actual normal-bank size.",
+        "id": "ANA5",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The few-shot experiments do not report pathology-level holdouts, so they cannot establish detection of unseen disease types after adaptation.",
+        "explanation": "OCT17 contains three anomaly categories, but the K-shot protocol samples from the labeled pool without specifying separation of disease types between adaptation and testing. High AUC can therefore reflect adaptation to familiar disease appearances rather than transfer to novel abnormalities, an issue highlighted in the paper's motivation for few-shot AD.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "In contrast, the OCT17 dataset~ primarily serves for classification tasks, featuring retinal OCT images categorized into three types of anomalies."
+          },
+          {
+            "source": "BASE",
+            "quote": "The utilization of a few known anomalies during training can present challenges, potentially biasing the model and hindering generalization to unseen anomalies."
+          }
+        ],
+        "suggested_fix": "Run leave-one-pathology-out OCT17 experiments, adapting on the other anomaly types and normal images while testing the held-out type against normals.",
+        "id": "ANA6",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The fixed 240-pixel input and bilinearly upsampled ViT patch maps impose a spatial bottleneck that is not evaluated for small lesions or precise boundaries.",
+        "explanation": "ChestXray and RESC begin at substantially higher resolutions than the model input, so fine diagnostic structures may be discarded before inference. Bilinear interpolation cannot recover missing detail, and combining transformer depths does not demonstrate that the resulting masks preserve small lesions or boundary accuracy.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "We utilize the CLIP with ViT-L/14 architecture, with input images at a resolution of 240."
+          },
+          {
+            "source": "BASE",
+            "quote": "Here, $BI(\\cdot)$ reshapes the anomaly map to $\\sqrt{G}\\times\\sqrt{G}$ and restores it to the original input image resolution using bilinear interpolation, with $G$ representing the grid number."
+          }
+        ],
+        "suggested_fix": "Compare the current pipeline with higher-resolution or tiled inputs and a spatial decoder, reporting lesion-size-stratified Dice and boundary accuracy.",
+        "id": "ANA7",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "Maximum grid-score pooling makes image-level predictions vulnerable to isolated artifacts without a robustness evaluation of this aggregation choice.",
+        "explanation": "At each level, the highest local anomaly score determines the image-level contribution, allowing one acquisition artifact or irrelevant high-scoring patch to control classification. No alternative pooling or artifact stress test establishes whether this extreme-value aggregation produces stable medical predictions.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "c_{zero} = \\frac{1}{4}{\\textstyle \\sum_{l=1}^4}\\max_{G}(softmax(\\mathcal{F}_{cls,l} \\mathcal{F}_{text}^{T})),"
+          }
+        ],
+        "suggested_fix": "Compare max, top-k, and attention pooling on clean images and paired artifact-corrupted normal images, measuring false positives at a locked threshold.",
+        "id": "ANA8",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "Reliance on two averaged generic normal/abnormal text embeddings is not validated for heterogeneous pathology-specific medical semantics.",
+        "explanation": "The text representation compresses diverse diseases into one binary distinction instead of representing their clinical appearances. Because the starting VLM is trained on natural imagery and no prompt-sensitivity comparison is reported, the generic semantic distinction may not align consistently with all target pathologies or organ contexts.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "At the state level, our strategy involves using straightforward, generic text descriptions for normal and abnormal states, focusing on clarity and avoiding complex details."
+          },
+          {
+            "source": "BASE",
+            "quote": "By calculating the average of the text features extracted by the text encoder for normal and abnormal states separately, we obtain a text feature represented as $\\mathcal{F}_{text} \\in \\mathbb{R}^{2\\times d}$, where $d$ is the feature dimension."
+          }
+        ],
+        "suggested_fix": "Compare generic prompts, medically worded prompts, and source-trained learned prompts under identical supervision and strict modality/pathology holdouts.",
+        "id": "ANA9",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "Equal-weight fusion combines softmax scores and cosine distances without demonstrating compatible score scales or calibrated branch contributions.",
+        "explanation": "Softmax scores lie between zero and one, whereas cosine distance can range from zero to two and has a different distribution. Setting both weights to 0.5 therefore does not ensure comparable contributions, and modality-dependent score scales can change fused rankings independently of representation quality.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Here, $Dist(\\cdot, \\cdot)$ represents the cosine distance, calculated as $1-cosine(\\cdot,\\cdot)$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Here, $\\beta_1$ and $\\beta_2$ are weighting factors for the zero-shot and few-shot branches, respectively, set to 0.5 by default."
+          }
+        ],
+        "suggested_fix": "Compare text-only, memory-only, raw fusion, and validation-calibrated fusion on the same K-shot draws, fitting all calibration parameters without test labels.",
+        "id": "ANA10",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "No language-free control establishes that visual-language alignment, rather than ordinary supervised multi-level adaptation, drives the transfer gains.",
+        "explanation": "The reported architectural ablations preserve the visual-language alignment objective. A supervised binary visual head could also learn anomaly separation using Dice, Focal, and BCE losses, so these experiments do not isolate the contribution of linguistic knowledge from adaptation and label supervision.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "For this purpose, we substitute the multi-level feature adapters with distinct multi-level feature projectors, while keeping the parameters and feature alignment loss functions the same."
+          }
+        ],
+        "suggested_fix": "Train a language-free two-class visual-head baseline with identical adapters, labels, losses, parameter budget, and held-out domain splits.",
+        "id": "ANA11",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Literature",
+        "limitation": "The dismissal of MedCLIP's broad generalization is not based on task-matched adaptation, weakening the positioning of natural-image CLIP against medical VLM pretraining.",
+        "explanation": "MedCLIP is evaluated in the few-normal-shot group, whereas MVFA benefits from labeled anomalies and adapter training. Its ChestXray advantage is also attributed to overlapping pretraining data, so the comparison confounds supervision, adaptation, and pretraining coverage rather than isolating the transfer value of medical pretraining.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "(ii) few-normal-shot methods (CLIP~, MedCLIP~, WinCLIP~), and (iii) few-shot methods (DRA~, BGAD~, and April-GAN~)."
+          },
+          {
+            "source": "BASE",
+            "quote": "While MedCLIP~ shows superior results on ChestXray because it was trained on large-scale overlapping ChestXray data in our medical AD benchmark, it lacks broad generalization capabilities, as evidenced by its performance on other datasets."
+          }
+        ],
+        "suggested_fix": "Adapt capacity-matched medical and natural-image VLMs with the same supervision and comparison scheme, auditing pretraining overlap before comparing generalization.",
+        "id": "ANA12",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "Segmentation evaluation relies solely on pixel-level AUROC, which does not establish accurate lesion masks or lesion-wise detection performance.",
+        "explanation": "Pixel AUROC measures ranking rather than thresholded overlap, boundary quality, or recovery of individual lesions. With coarse, interpolated score maps, high AUROC can coexist with missed small lesions or poorly delineated masks, so near-ceiling AS values do not establish clinically usable segmentation.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "This metric is a standard in AD evaluation, with separate considerations for image-level AUC in AC and pixel-level AUC in AS."
+          }
+        ],
+        "suggested_fix": "Report Dice, IoU, boundary distance, and lesion-wise FROC at validation-selected thresholds, stratifying results by lesion size.",
+        "id": "ANA13",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "Random K-shot evaluations are reported only as point estimates, without draw variability, training-seed variance, confidence intervals, or paired significance tests.",
+        "explanation": "Performance with two to sixteen examples can depend strongly on which patients and abnormalities are sampled, but the paper does not report the number of draws or their variability. Consequently, both large dataset-specific gains and small ablation differences lack reliability estimates, and descriptions of significant superiority cannot be interpreted as statistical evidence.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "For the few-shot AD scenario, we select a random subset of labeled training samples, with $K\\in \\{2,4,8,16\\}$, from the labeled training set (designated as ``Train (with labels)'' in Table~)."
+          },
+          {
+            "source": "BASE",
+            "quote": "In our main focus of out-domain evaluations on the medical AD benchmark, MVFA significantly outperforms competing methods, highlighting its superior generalization capabilities."
+          }
+        ],
+        "suggested_fix": "Repeat evaluation over multiple shared patient-level K-shot draws and training seeds, reporting paired AUC-difference confidence intervals using patient- or slide-clustered bootstrapping.",
+        "id": "ANA14",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "Averaged ablations obscure substantial dataset-specific negative transfer and leave the practical benefit of four-level ensembling unresolved.",
+        "explanation": "Ensembling improves the strongest individual level's mean AC from 88.84 to 88.97 and AS from 98.62 to 98.67, only 0.13 and 0.05 AUC points. Meanwhile, ChestXray Layer 3 AC falls from 79.75 under single-level training to 58.32 under multi-level training. Average improvements therefore do not establish uniformly beneficial cross-level interaction or justify the additional ensemble cost.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "AC & 80.96/83.39 & 88.83/88.84 & 81.25/84.32 & 83.33/84.62 & 88.97"
+          },
+          {
+            "source": "BASE",
+            "quote": "AS & 97.70/97.98 & 98.58/98.62 & 96.03/98.54 & 97.19/97.44 & 98.67"
+          },
+          {
+            "source": "BASE",
+            "quote": "Layer 3 & 69.00 & 79.75 & 98.68 & 83.01 & 94.34 & 63.78 & 95.35 & 93.29 & 98.40"
+          },
+          {
+            "source": "BASE",
+            "quote": "Layer 3 & 82.35 & 58.32 & 96.96 & 93.01 & 97.14 & 81.10 & 99.59 & 94.18 & 98.90"
+          }
+        ],
+        "suggested_fix": "Compare Layer-2-only and ensemble models over identical repeated draws, reporting per-domain paired differences and accuracy–latency trade-offs.",
+        "id": "ANA15",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "The analysis does not systematically explain failure modes, including the zero-shot BrainMRI segmentation regression relative to April-GAN.",
+        "explanation": "BrainMRI segmentation AUROC is 90.27 for MVFA versus 91.79 for April-GAN, but this regression is not investigated. Although visualizations mark some missed or erroneous regions, selected examples do not quantify errors by lesion size, pathology, or image quality. Without such decomposition, the conditions under which cross-domain adaptation fails remain unclear.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "BrainMRI & 66.49~/~85.99 & 76.43~/~91.79 & 78.63~/~90.27"
+          },
+          {
+            "source": "BASE",
+            "quote": "To qualitatively analyze how the proposed multi-level feature adaptation approach improves anomaly segmentation performance, we visualize the results of several cases from the BrainMRI, LiverCT, and RESC datasets."
+          }
+        ],
+        "suggested_fix": "Conduct a blinded expert audit of false positives and false negatives, tabulating rates by lesion size, pathology, and acquisition quality for each modality.",
+        "id": "ANA16",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "Balanced BrainMRI and nearly balanced HIS test sampling, combined with AUROC-only reporting, does not establish clinical operating thresholds or false-positive burden.",
+        "explanation": "Clinical anomaly prevalence and case spectrum can differ substantially from balanced slice or patch samples. AUROC neither selects a usable threshold nor determines positive predictive value, calibration, or false alarms per patient at deployment prevalence, so ranking performance alone cannot establish safe triage.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The training set encompasses 7,500 normal samples, while the test set comprises 3,715 samples with a balanced ratio of normal to anomaly instances."
+          },
+          {
+            "source": "BASE",
+            "quote": "For testing, 1,003 normal and 997 abnormal patches from the 115 testing WSIs are utilized."
+          },
+          {
+            "source": "BASE",
+            "quote": "The area under the Receiver Operating Characteristic curve metric (AUC) is used to quantify the performance."
+          }
+        ],
+        "suggested_fix": "Evaluate consecutive clinical cases at observed prevalence using a separately selected, locked threshold, reporting sensitivity, specificity, predictive values, calibration, and false alarms per study.",
+        "id": "ANA17",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "Image-count-based shot budgets omit dense source and target annotation costs, so practical annotation efficiency is not quantified.",
+        "explanation": "Zero-shot medical transfer still requires annotated source adaptation, and the AS datasets require pixel masks rather than only image labels. Counting K images does not capture clinician time, lesion complexity, or source-labeling costs, so efficiency relative to larger unannotated normal-image pools is not established.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "This adaptation utilizes a medical training dataset $\\mathcal{D}_{med}$, which consists of annotated samples from the medical field, enabling the transformation of $\\mathcal{M}_{nat}$ into $\\mathcal{M}_{med}$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Each tuple includes a training image $x_i$, its corresponding image-level anomaly classification (AC) label $c_i \\in \\{-, +\\}$, and pixel-level anomaly segmentation (AS) annotations $\\mathcal{S}_i\\in \\{-, +\\}^{h\\times w}$ for images of size $h\\times w$."
+          }
+        ],
+        "suggested_fix": "Compare full-mask, box, and image-only supervision at matched clinician annotation time, reporting source and target labeling costs separately.",
+        "id": "ANA18",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "Evaluation on selected MRI slices and extracted histopathology patches leaves whole-volume and whole-slide anomaly detection unvalidated.",
+        "explanation": "BrainMRI includes only a restricted depth range of FLAIR slices, while HIS evaluates extracted patches rather than complete slides. The experiments do not measure full-volume context, study-level aggregation, or false-positive accumulation across a complete scan or slide, so sample-level AUC does not establish end-to-end clinical performance.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "To account for variations in brain images at different depths, slices within the depth range of 60 to 100 of the 3D FLAIR volumes are selected."
+          },
+          {
+            "source": "BASE",
+            "quote": "For testing, 1,003 normal and 997 abnormal patches from the 115 testing WSIs are utilized."
+          }
+        ],
+        "suggested_fix": "Run complete held-out scans and WSIs through the full slicing or tiling pipeline and report patient/slide sensitivity at fixed false alarms per study.",
+        "id": "ANA19",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "Robustness to label-preserving CT windowing and H&E stain variation is not evaluated, although these shifts can alter normal-memory anomaly scores.",
+        "explanation": "LiverCT is rendered through an abdominal grayscale window, and HIS consists of H&E-stained tissue, but no controlled window or stain robustness results are provided. Such changes can move CLIP features away from a small normal reference bank without introducing pathology, so cross-modality AUC does not establish acquisition or preprocessing invariance.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "For both datasets, Hounsfield-Unit (HU) of the 3D scans are transformed into grayscale with an abdominal window."
+          },
+          {
+            "source": "BASE",
+            "quote": "Based on Camelyon16~, this dataset encompasses 400 whole-slide images (WSIs) of lymph node sections stained with hematoxylin and eosin (H\\&E) from breast cancer patients."
+          },
+          {
+            "source": "BASE",
+            "quote": "Here, $Dist(\\cdot, \\cdot)$ represents the cosine distance, calculated as $1-cosine(\\cdot,\\cdot)$."
+          }
+        ],
+        "suggested_fix": "Apply paired, label-preserving CT-window and H&E-stain perturbations to normal test images and measure score drift and false positives at a locked threshold.",
+        "id": "ANA20",
+        "agent": "analyzer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "The lightweight characterization is not supported by latency, memory, or compute measurements for the full ViT-L/14 and multi-level memory-bank pipeline.",
+        "explanation": "Freezing weights reduces trainable parameters, but inference still runs a 24-layer ViT-L/14 and comparisons against multi-level feature banks. Single-GPU training details do not establish deployment cost, particularly as reference banks grow with K or the model processes complete volumes and slides.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "We utilize the CLIP with ViT-L/14 architecture, with input images at a resolution of 240. The model comprises a total of 24 layers, which are divided into 4 stages, each encompassing 6 layers."
+          },
+          {
+            "source": "BASE",
+            "quote": "We use the Adam optimizer at a constant learning rate of 1e-3 and a batch size of 16, conducting 50 epochs for training on one single NVIDIA GeForce RTX 3090 GPU."
+          },
+          {
+            "source": "BASE",
+            "quote": "All the multi-level visual features of a few labeled normal images in $\\mathcal{D}_{med}$ contribute to constructing a multi-level feature memory bank $\\mathcal{G}$ facilitating the feature comparison."
+          }
+        ],
+        "suggested_fix": "Benchmark trainable/total parameters, peak memory, and inference latency across K values, comparing the full ensemble with Layer-2-only and competing methods on identical hardware.",
+        "id": "ANA21",
+        "agent": "analyzer"
+      }
+    ]
+  },
+  {
+    "agent": "reviewer",
+    "judge_round1": {
+      "scores": {
+        "depth": 9.0,
+        "originality": 9.0,
+        "actionability": 9.0,
+        "topic_coverage": 9.0,
+        "faithfulness": 9.0,
+        "soundness": 9.0,
+        "importance": 8.0
+      },
+      "mean": 8.857142857142858,
+      "feedback": "Strong, unusually paper-specific audit. REV1, REV3, REV6, REV8–10, and REV15 directly address the claimed unseen-domain generalization, supervision requirements, statistical reliability, and lightweight adaptation. The quotations and numerical comparisons are accurate, and potential leakage is appropriately framed as unverified rather than established.\n\nItems to qualify or tighten:\n- REV6 overstates that abnormal examples are required: the objective can technically be optimized using normal-only samples, although the intended abnormal supervision would then be absent. Request exact class composition and a nonempty normal reference set; present K/2-per-class sampling as a proposed standardized protocol, not a methodological necessity.\n- REV7 should remain a limitation of causal attribution, not an objection to reporting cross-supervision-regime performance. The paper explicitly separates these regimes and already includes parameter-matched projector, single-layer, and single-versus-dual-adapter controls. Specify exactly what additional causal contrast the proposed baseline supplies.\n- REV9 correctly identifies an unspecified fusion-calibration procedure, but different theoretical score ranges alone do not establish harmful miscalibration or degraded AUROC. Request empirical branch-score distributions and fusion sensitivity, and distinguish probability calibration from ranking performance.\n- REV11's BrainMRI regression is important; the industrial cable regression is secondary to the main medical claims. Prioritize medical and adaptation-specific failures rather than expanding industrial error analysis.\n- REV16 bundles examination-level evaluation, acquisition shifts, and demographic fairness. Its fairness component is relatively generic and beyond the paper's demonstrated benchmark claims. Split these concerns, and add a whole-slide evaluation: the proposed FLAIR-only experiment does not address the stated HIS limitation. Frame safety and equity as deployment-validation gaps rather than evidence that the reported benchmark findings are invalid.\n\nImportant limitations missing or insufficiently developed:\n1. The contribution of meaningful language remains unidentified. Text supervision uses only two averaged normal/abnormal vectors, with no organ-name/template sensitivity study or otherwise identical visual-only control. Replace the text comparison with learned binary heads while retaining the same multi-level adapters, supervision, and memory bank; compare organ-specific versus organ-agnostic prompts and, optionally, fixed random text vectors. REV9's branch ablation does not fully isolate semantic language value from an additional supervised scoring head.\n2. The source-domain training budget and transfer mechanism are underspecified. Publish per-fold source datasets, normal/abnormal counts, mask availability, sampling weights, and initialization. Clarify whether few-shot training starts from native CLIP or a medically adapted checkpoint. Add source-domain removal or source-to-target transfer experiments at matched annotation budgets to establish which domains support the claimed generalization. REV14 discusses labeling cost but does not resolve this experimental attribution issue.\n3. Average ablation gains conceal substantial domain-specific negative transfer. For example, ChestXray Layer 3 AC falls from 79.75 to 58.32 with multi-level training, while the jointly trained Layer 2 achieves 83.56 versus the ensemble's 81.95. Extend REV8/REV11 with paired per-domain changes and an analysis of gradient interference or layer weighting. These results warrant qualification of the broad benefits attributed to collaborative training and ensembling.\n4. The appendix's single-versus-dual-adapter comparison does not establish parameter parity. Consequently, additional capacity remains an alternative explanation for gains attributed to classification/segmentation specialization. Add a parameter-matched single-adapter control, and report source-validation sensitivity to the residual ratio and loss weights, complementing REV9's fusion-weight analysis.\n\nPrioritize these central mechanism and protocol gaps over the more peripheral industrial, annotation-economics, and demographic deployment extensions."
+    },
+    "regenerated": false,
+    "items": [
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The zero-shot split description does not clarify whether RESC and OCT17 are jointly excluded, leaving the claimed unseen-modality/anatomy condition unverifiable for the retinal folds.",
+        "explanation": "The protocol holds out a target dataset, but the benchmark contains two retinal OCT datasets. Although the text says training domains differ from the target, it does not provide explicit fold memberships. If the other retinal dataset remains in training, that fold measures same-modality and same-organ transfer rather than transfer to an entirely unseen medical domain.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "In this configuration, a designated target dataset was chosen for testing, while the remaining datasets with different modalities and anatomical regions were employed for training."
+          },
+          {
+            "source": "BASE",
+            "quote": "The benchmark includes two different OCT AD datasets."
+          }
+        ],
+        "suggested_fix": "Report strict leave-one-modality-and-organ-out results with RESC and OCT17 held out jointly, alongside explicit source/target dataset lists for every fold.",
+        "id": "REV1",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "Patient-disjoint partitions and patient-level sample counts are not documented for the slice-based BrainMRI and retinal OCT evaluations.",
+        "explanation": "BrainMRI is constructed from multiple slices per volume, yet its partition description reports image counts rather than patient or volume identities; the OCT descriptions likewise omit subject-level partitioning. Related slices or B-scans crossing training, support, and test partitions could introduce patient-specific information. Even without leakage, correlated images make the nominal test-image count an inadequate measure of independent evaluation evidence.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "slices within the depth range of 60 to 100 of the 3D FLAIR volumes are selected."
+          },
+          {
+            "source": "BASE",
+            "quote": "The training set encompasses 7,500 normal samples, while the test set comprises 3,715 samples with a balanced ratio of normal to anomaly instances."
+          }
+        ],
+        "suggested_fix": "Repeat evaluation using explicitly patient-disjoint training, support, and test partitions, publishing patient/volume counts and drawing support images from distinct patients.",
+        "id": "REV2",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The adaptation objective assumes pixel masks for every sample but does not specify how segmentation losses are handled on HIS, ChestXray, and OCT17, which provide only image labels.",
+        "explanation": "The stated objective includes Dice and focal losses at every feature level, while half of the benchmark datasets lack segmentation annotations. Whether these losses are disabled, assigned pseudo-masks, or replaced with weak supervision changes both optimization and the effective annotation budget. This omission particularly undermines reproducibility of mixed-domain zero-shot training and interpretation of the segmentation branch on classification-only datasets.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Each tuple includes a training image $x_i$, its corresponding image-level anomaly classification (AC) label $c_i \\in \\{-, +\\}$, and pixel-level anomaly segmentation (AS) annotations $\\mathcal{S}_i\\in \\{-, +\\}^{h\\times w}$ for images of size $h\\times w$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Among these, BrainMRI~, LiverCT~, and RESC~ datasets are used for both anomaly classification (AC) and segmentation (AS), while OCT17~, ChestXray~, and HIS~ are solely for AC."
+          }
+        ],
+        "suggested_fix": "Introduce an explicit mask-availability indicator that disables Dice/focal terms for image-only samples, and report AC/AS results under this fully specified mixed-supervision objective.",
+        "id": "REV3",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The implementation omits adapter bottleneck widths, the precise ViT-L/14 checkpoint, feature-normalization/logit-scaling rules, and focal-loss focusing parameters.",
+        "explanation": "The code link, stage layout, optimizer settings, and default loss/residual weights are useful, but do not resolve these paper-level implementation choices. They affect parameter counts, score sharpness, optimization, and pretrained representations, making the parameter-matched ablation and zero-shot results difficult to reproduce independently from the description. Baseline-specific checkpoint and validation/tuning configurations are also not documented, limiting auditability of comparison parity.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "This method appends a small set of learnable bottleneck linear layers to the visual branches of CLIP while keeping its original backbone unchanged, thus enabling adaptation at multiple feature levels."
+          },
+          {
+            "source": "BASE",
+            "quote": "We utilize the CLIP with ViT-L/14 architecture, with input images at a resolution of 240."
+          }
+        ],
+        "suggested_fix": "Publish complete configurations for MVFA and each baseline, including checkpoint identifiers and omitted adapter/loss settings, and verify them through an independently rerun K=4 benchmark.",
+        "id": "REV4",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The common 240-pixel input is used without a fully specified medical intensity, grayscale-channel, or aspect-ratio preprocessing pipeline.",
+        "explanation": "The liver preprocessing names an abdominal HU window without its width and level, while MRI intensity scaling and grayscale-to-RGB conversion are not specified. RESC images originally have a 512×1024 shape, so the unstated crop/resize strategy can affect lesion geometry and visibility. Without preprocessing and resolution controls, reproducibility and robustness to subtle or small abnormalities remain unresolved.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "We utilize the CLIP with ViT-L/14 architecture, with input images at a resolution of 240."
+          },
+          {
+            "source": "BASE",
+            "quote": "For both datasets, Hounsfield-Unit (HU) of the 3D scans are transformed into grayscale with an abdominal window."
+          }
+        ],
+        "suggested_fix": "Run a controlled preprocessing/resolution ablation with published HU limits and channel normalization, comparing the current 240-pixel inputs with aspect-preserving 448-pixel inputs using lesion-size-stratified segmentation metrics.",
+        "id": "REV5",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "The K-shot sampling protocol does not report normal/abnormal class composition or the exact normal support images used to construct the memory bank.",
+        "explanation": "K is defined as the total number of annotated images, but the appendix specifies random selection without a class-stratification rule. The method needs abnormal examples for supervised adaptation and normal examples for reference comparison, so support composition materially changes the available information, especially at K=2. Without these counts and identities, the few-shot annotation budget and comparisons cannot be audited consistently.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "For the few-shot AD scenario, we select a random subset of labeled training samples, with $K\\in \\{2,4,8,16\\}$, from the labeled training set (designated as ``Train (with labels)'' in Table~)."
+          },
+          {
+            "source": "BASE",
+            "quote": "All the multi-level visual features of a few labeled normal images in $\\mathcal{D}_{med}$ contribute to constructing a multi-level feature memory bank $\\mathcal{G}$ facilitating the feature comparison."
+          }
+        ],
+        "suggested_fix": "Use explicitly stratified support sets with K/2 normal and K/2 abnormal images, share their identities across methods, and construct memory banks only from the declared normal supports.",
+        "id": "REV6",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "Comparisons with normal-only baselines confound MVFA's architectural benefit with access to abnormal labels and pixel masks.",
+        "explanation": "The paper explicitly attributes gains over WinCLIP-style methods to using abnormal examples. Additional normal images in full-normal-shot baselines do not compensate for missing abnormal or segmentation supervision, so these comparisons evaluate different information regimes. April-GAN and the zero-shot projector ablation partly address this issue, but the larger gains against normal-only methods do not isolate the proposed architecture.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "MVFA's advantage lies in its ability to effectively utilize a few abnormal samples, leading to significant gains over these methods."
+          },
+          {
+            "source": "BASE",
+            "quote": "These settings encompass (i) vanilla methods that use all normal data  (CFlowAD~, RD4AD~, PatchCore~, and MKD~), (ii) few-normal-shot methods (CLIP~, MedCLIP~, WinCLIP~), and (iii) few-shot methods (DRA~, BGAD~, and April-GAN~)."
+          }
+        ],
+        "suggested_fix": "Add a supervised CLIP baseline with a parameter-matched single-stage adapter and conventional binary heads, trained on the same K images/masks and using the same normal memory bank.",
+        "id": "REV7",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "Few-shot and ablation gains lack uncertainty estimates across random support selections and optimization seeds.",
+        "explanation": "The tables report point AUCs despite support sets being randomly selected from very small labeled pools. The ensemble improves the strongest individual level by only 0.13 percentage points for AC and 0.05 for AS, differences that cannot be interpreted as reliable without variability estimates. This also weakens the broader claims of significant improvements and stable few-shot adaptation.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The results presented in Table~ demonstrate that among individual layers, Layer 2 yielded the highest performance, achieving 88.84\\% in AC and 98.62\\% in AS."
+          },
+          {
+            "source": "BASE",
+            "quote": "However, the ensemble method, which integrates features from all layers, outperformed single-layer approaches, recording AUCs of 88.97\\% in AC and 98.67\\% in AS."
+          }
+        ],
+        "suggested_fix": "Repeat methods over at least ten independent support draws and multiple training seeds, reporting paired patient-level bootstrap confidence intervals for AUC differences.",
+        "id": "REV8",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Methodology",
+        "limitation": "The fixed equal-weight fusion of text probabilities and cosine-distance scores is uncalibrated and lacks text-only versus memory-only ablations.",
+        "explanation": "The text branch produces softmax scores in [0,1], whereas cosine distance can range over [0,2], with potentially different distributions across domains and levels. Consequently, coefficients of 0.5 do not establish equal influence or a robust fusion rule. Without isolating the branches, the reported few-shot gains cannot be attributed specifically to language comparison, reference comparison, or their combination.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Here, $Dist(\\cdot, \\cdot)$ represents the cosine distance, calculated as $1-cosine(\\cdot,\\cdot)$."
+          },
+          {
+            "source": "BASE",
+            "quote": "Here, $\\beta_1$ and $\\beta_2$ are weighting factors for the zero-shot and few-shot branches, respectively, set to 0.5 by default."
+          }
+        ],
+        "suggested_fix": "Run a paired text-only, memory-only, and fusion ablation, calibrating branch scores and selecting fusion weights exclusively on held-out source-domain validation data.",
+        "id": "REV9",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "Reporting only image- and pixel-level AUROC leaves clinically relevant detection performance and segmentation quality unmeasured.",
+        "explanation": "Pixel AUROC evaluates score ranking rather than thresholded lesion overlap, boundary accuracy, or lesion-level detection, and aggregate pixel statistics can conceal small-lesion failures. Image AUROC likewise does not establish sensitivity at an acceptable false-positive rate or precision at deployment prevalence. The near-ceiling segmentation AUCs therefore do not by themselves demonstrate clinically usable masks or safe triage.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The area under the Receiver Operating Characteristic curve metric (AUC) is used to quantify the performance."
+          },
+          {
+            "source": "BASE",
+            "quote": "This metric is a standard in AD evaluation, with separate considerations for image-level AUC in AC and pixel-level AUC in AS."
+          }
+        ],
+        "suggested_fix": "Extend evaluation with Dice/IoU, lesion-level FROC, AUPRC, and sensitivity at validation-fixed specificity, keeping all operating thresholds independent of test data.",
+        "id": "REV10",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Results & Analysis",
+        "limitation": "The generalization claims lack a quantitative explanation of MVFA's zero-shot BrainMRI and MVTec cable segmentation regressions.",
+        "explanation": "Zero-shot BrainMRI AS AUROC is 90.27% versus April-GAN's 91.79%, while MVTec cable AS is 87.3% versus WinCLIP's 94.9%. The figures identify missed or erroneously segmented regions, but no population-level error rates, lesion-size breakdowns, or causes of these regressions are reported. These unexplained failures limit conclusions about robustness beyond the dataset-averaged improvements.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "BrainMRI & 66.49~/~85.99 & 76.43~/~91.79 & 78.63~/~90.27"
+          },
+          {
+            "source": "BASE",
+            "quote": "cable & 82.9 & 95.5 & 90.9 & 94.9 & 76.7 & 91.8 & 88.0 & 87.3"
+          },
+          {
+            "source": "BASE",
+            "quote": "The white dashed boxes demarcate regions that have been missed or erroneously segmented."
+          }
+        ],
+        "suggested_fix": "At validation-fixed thresholds, audit false-negative lesions/defects and sampled false-positive regions in these settings, stratifying errors by size and reporting worst-domain alongside mean performance.",
+        "id": "REV11",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Experimental Design",
+        "limitation": "No pathology-held-out few-shot test is performed on OCT17 despite its three anomaly categories, leaving supported-to-unseen disease generalization unverified.",
+        "explanation": "The related work identifies bias toward known anomalies as a central few-shot challenge, but support images are sampled without a reported pathology exclusion rule. OCT17 support and test sets can therefore share anomaly categories, allowing high AUC to reflect recognition of supported diseases. Zero-shot modality transfer addresses a different question and does not resolve this within-domain few-shot limitation.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "The utilization of a few known anomalies during training can present challenges, potentially biasing the model and hindering generalization to unseen anomalies."
+          },
+          {
+            "source": "BASE",
+            "quote": "In contrast, the OCT17 dataset~ primarily serves for classification tasks, featuring retinal OCT images categorized into three types of anomalies."
+          }
+        ],
+        "suggested_fix": "Run three OCT17 experiments restricting abnormal support images to one pathology and evaluating the other two separately, with fixed normal supports and patient-disjoint partitions.",
+        "id": "REV12",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Literature",
+        "limitation": "MedCLIP's generalization is characterized too broadly from a differently supervised baseline with acknowledged pretraining overlap.",
+        "explanation": "MedCLIP is evaluated in the few-normal-shot group, whereas MVFA receives abnormal supervision and adapter training. Its acknowledged ChestXray overlap is not quantified at image or patient level, further complicating interpretation. The experiments support conclusions about the reported baseline configuration, not a broad conclusion about the transfer potential of medically pretrained VLMs.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "While MedCLIP~ shows superior results on ChestXray because it was trained on large-scale overlapping ChestXray data in our medical AD benchmark, it lacks broad generalization capabilities, as evidenced by its performance on other datasets."
+          },
+          {
+            "source": "BASE",
+            "quote": "few-normal-shot methods (CLIP~, MedCLIP~, WinCLIP~)"
+          }
+        ],
+        "suggested_fix": "Repeat the CLIP-versus-MedCLIP comparison using identical annotated supports, matched adapter-training budgets, and test cohorts verified not to overlap with pretraining data.",
+        "id": "REV13",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "The practical few-shot efficiency argument counts images rather than the clinician effort required for dense masks and source-domain adaptation labels.",
+        "explanation": "For segmentation, a few annotated abnormal images can require substantially more expert effort than image-level labels or normal reference images. Zero-shot inference also depends on supervised medical source-domain adaptation, whose annotation cost is not included in the target-shot count. Without measured labeling effort or weak-supervision comparisons, the claimed practical advantage remains an image-count result rather than an annotation-cost result.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "Each tuple includes a training image $x_i$, its corresponding image-level anomaly classification (AC) label $c_i \\in \\{-, +\\}$, and pixel-level anomaly segmentation (AS) annotations $\\mathcal{S}_i\\in \\{-, +\\}^{h\\times w}$ for images of size $h\\times w$."
+          },
+          {
+            "source": "BASE",
+            "quote": "This highlights the value of incorporating a few abnormal samples as supervision, especially in medical diagnostics where acquiring a limited number of abnormal data can be more practical."
+          }
+        ],
+        "suggested_fix": "Compare dense-mask and image-only/box-supervised adaptation at equal measured clinician annotation time on BrainMRI, LiverCT, and RESC, including source-domain labeling in the budget.",
+        "id": "REV14",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "The lightweight characterization is not quantified with trainable parameter counts or end-to-end costs for ViT-L/14 and four-level memory-bank comparison.",
+        "explanation": "The GPU and epoch specification provides basic training context but not wall-clock time, peak memory, or inference latency. Freezing the backbone reduces trainable parameters, yet downstream frozen stages still require computation and gradient propagation to earlier adapters. Reference-bank storage and nearest-neighbor comparison also grow with support size, so deployment efficiency cannot be inferred from adapter tuning alone.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "We use the Adam optimizer at a constant learning rate of 1e-3 and a batch size of 16, conducting 50 epochs for training on one single NVIDIA GeForce RTX 3090 GPU."
+          },
+          {
+            "source": "BASE",
+            "quote": "All the multi-level visual features of a few labeled normal images in $\\mathcal{D}_{med}$ contribute to constructing a multi-level feature memory bank $\\mathcal{G}$ facilitating the feature comparison."
+          }
+        ],
+        "suggested_fix": "Benchmark total/trainable parameters, training time, peak memory, per-image latency, and reference-bank storage across K=2–16 against April-GAN and WinCLIP on identical hardware.",
+        "id": "REV15",
+        "agent": "reviewer"
+      },
+      {
+        "aspect": "Clinical & Deployment",
+        "limitation": "Depth-restricted FLAIR slices and selected histopathology patches do not establish full-examination safety, acquisition-shift robustness, or equitable patient-level performance.",
+        "explanation": "BrainMRI excludes slices outside a predefined depth range, while HIS evaluates sampled patches rather than complete whole-slide decisions. This leaves performance on unselected anatomy, full examinations, and scanner or staining variation unresolved. No patient-level operating rule or demographic subgroup analysis is reported, limiting the evidence for clinical triage and fair deployment.",
+        "evidence": [
+          {
+            "source": "BASE",
+            "quote": "To account for variations in brain images at different depths, slices within the depth range of 60 to 100 of the 3D FLAIR volumes are selected."
+          },
+          {
+            "source": "BASE",
+            "quote": "For testing, 1,003 normal and 997 abnormal patches from the 115 testing WSIs are utilized."
+          }
+        ],
+        "suggested_fix": "Validate a frozen model on complete FLAIR examinations from an external institution using a locked slice-to-patient decision rule and scanner/protocol- and age/sex-stratified sensitivity and false-positive rates.",
+        "id": "REV16",
+        "agent": "reviewer"
+      }
+    ]
+  }
+]
