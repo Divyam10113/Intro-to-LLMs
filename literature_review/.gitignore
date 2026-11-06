@@ -1,0 +1,10 @@
+# Secrets and per-run state - never commit.
+.env
+*.env
+qual_sg/intermediates/cache/
+qual_sg/intermediates/logs/
+qual_sg/models/
+baselines/
+qual_sg/__pycache__/
+__pycache__/
+*.pyc
