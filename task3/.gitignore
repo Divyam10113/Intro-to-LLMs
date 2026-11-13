@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# LaTeX build files (the PDFs themselves are committed)
+reports/*.aux
+reports/*.log
+reports/*.out
+reports/*.toc
+reports/*.tex
+
+# Transient prompts of the file backend (answers live in logs/cache)
+logs/pending/
+
+# Local secrets, never commit
+.env
+*.key

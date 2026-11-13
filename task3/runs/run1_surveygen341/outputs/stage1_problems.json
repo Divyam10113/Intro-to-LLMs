@@ -1,0 +1,812 @@
+{
+ "entities": [
+  "Convolutional neural network",
+  "Data mining",
+  "Inference",
+  "Autoencoder",
+  "Transformer",
+  "Feature learning",
+  "Contextual image classification",
+  "Feature extraction",
+  "Encoder",
+  "Software engineering",
+  "Unsupervised learning",
+  "Medical imaging",
+  "Bounding overwatch",
+  "Detector",
+  "Open research",
+  "Cognitive neuroscience of visual object recognition",
+  "Supervised learning",
+  "Machine Learning and Data Classification",
+  "Exploit",
+  "Architecture"
+ ],
+ "related": [
+  {
+   "title": "AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection",
+   "year": 2023,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Learning Transferable Visual Models From Natural Language Supervision",
+   "year": 2021,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "CLIP-AD: A Language-Guided Staged Dual-Path Model for Zero-shot Anomaly Detection",
+   "year": 2023,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Segment Any Anomaly without Training via Hybrid Prompt Regularization",
+   "year": 2023,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "AnomalyGPT: Detecting Industrial Anomalies Using Large Vision-Language Models",
+   "year": null,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "A Survey on Visual Anomaly Detection: Challenge, Approach, and Prospect",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "APRIL-GAN: A Zero-/Few-Shot Anomaly Classification and Segmentation Method for CVPR 2023 VAND Workshop Challenge Tracks 1&2: 1st Place on Zero-shot AD and 4th Place on Few-shot AD",
+   "year": 2023,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Bootstrap Fine-Grained Vision-Language Alignment for Unified Zero-Shot Anomaly Localization",
+   "year": 2023,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "PointAD: Comprehending 3D Anomalies from Points and Pixels for Zero-shot 3D Anomaly Detection",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "On the Out-Of-Distribution Generalization of Multimodal Large Language Models",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Generative and Contrastive Combined Support Sample Synthesis Model for Few-/Zero-Shot Surface Defect Recognition",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "MedicalCLIP: Anomaly-Detection Domain Generalization with Asymmetric Constraints",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Generalized Out-of-Distribution Detection and Beyond in Vision Language Model Era: A Survey",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "SEM-CLIP: Precise Few-Shot Learning for Nanoscale Defect Detection in Scanning Electron Microscope Image",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "MedCLIP-SAMv2: Towards Universal Text-Driven Medical Image Segmentation",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Exploiting Diffusion Prior for Out-of-Distribution Detection",
+   "year": 2024,
+   "source": "surveygen",
+   "similarity": null
+  },
+  {
+   "title": "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.394
+  },
+  {
+   "title": "HieClip: Hierarchical CLIP with Explicit Alignment for Zero-Shot Anomaly Detection",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.219
+  },
+  {
+   "title": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
+   "year": 2026,
+   "source": "s2-citing",
+   "similarity": 0.21
+  },
+  {
+   "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+   "year": 2026,
+   "source": "s2-citing",
+   "similarity": 0.21
+  },
+  {
+   "title": "Transferring Vision-Language Models for Zero-Shot Anomaly Detection via Adaptive Feature Fusion",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.2
+  },
+  {
+   "title": "ClipMPCAD: Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.193
+  },
+  {
+   "title": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.192
+  },
+  {
+   "title": "Zero-Shot Anomaly Detection in Medical Images Using Conditional Denoising Diffusion Models and Data Augmentation",
+   "year": 2024,
+   "source": "s2-citing",
+   "similarity": 0.186
+  },
+  {
+   "title": "Hybrid Semantic Alignment with Layer-Wise Residual Adaptation for Multi-Granular Industrial Anomaly Detection",
+   "year": 2026,
+   "source": "s2-citing",
+   "similarity": 0.184
+  },
+  {
+   "title": "AULoRA: Anomaly Understanding With Low-Rank Adaptation for Zero-Shot Anomaly Detection",
+   "year": 2025,
+   "source": "s2-citing",
+   "similarity": 0.17
+  }
+ ],
+ "candidates": [
+  {
+   "id": "B1",
+   "group": "Score calibration and robust aggregation",
+   "versions": [
+    {
+     "problem": "MVFA's few-shot image and pixel scores are produced by min-max normalising the zero-shot and the few-shot branch over the entire test set and adding them with weight 0.5, so the score of one image \u2014 and the ranking that defines the reported AUROC \u2014 depends on which other images are in the test set. How large is this dependence, and can it be removed by an inductive, per-image fusion that normalises each branch with statistics computed only from the K normal support images (leave-one-out scores of the supports against the memory bank and against the text anchors), together with a robust image-level aggregation (top-k mean instead of the max over the fused map)? Outcomes: (i) the spread of MVFA's fused AUROC across random sub-samples of the test set and under shifted prevalence (10% and 50% abnormal), (ii) image-level and pixel-level AUROC of the inductive fusion versus the transductive original, and (iii) sensitivity at 95% specificity, F1 and expected calibration error at a threshold fixed from the support scores alone, for every held-out BMAD modality and K in {2, 4, 8, 16}.",
+     "rationale": "The code verification changed this group of limitations: MVFA does normalise its branches (G8), but with test-set extremes, which makes the method non-deployable on a stream of single images and makes the reported numbers depend on the test set's composition; the image score is a max over the fused map for some datasets and a mean for others (G9, G17), and only AUROC is reported (G11). Related work concentrates on better representations and prompts (MLCA, ClipMPCAD, AnomalyCLIP, HieClip) and evaluates with the same threshold-free AUROC; AnomalyGPT removes thresholds only with a fine-tuned large vision-language model. The K normal support images are a label-free, per-modality reference that MVFA already loads but never uses for normalisation, which makes an inductive fusion possible without new data. The problem is confined to the scoring code (test_few.py), is inference-only on retrained baseline checkpoints, and measures exactly the deployment property \u2014 a per-image score with a transferable threshold \u2014 that the current evaluation hides.",
+     "reviews": {
+      "Clarity": {
+       "review": "The defect (test-set min-max normalisation before 0.5 fusion) and the proposed inductive replacement are precisely described, and the outcomes are concrete. However three outcomes are bundled \u2014 a sensitivity analysis of the original, a new fusion, and threshold transfer \u2014 so the primary question is not singled out.",
+       "feedback": "Make the inductive per-image fusion the primary question and treat the test-set dependence analysis as the motivating measurement; define the leave-one-out support scores exactly (memory bank built from the other K-1 supports).",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Highly relevant: the verified code shows that MVFA's reported few-shot AUROCs depend on test-set extremes and that the method cannot score single images, which matters both for the validity of the published comparison and for deployment.",
+       "feedback": "Note whether other CLIP-based baselines (e.g., APRIL-GAN) share the practice, which would broaden relevance.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "Quantifying how much a reported AUROC depends on transductive test-set normalisation is an unusual and useful perspective, and using the support normals as an inductive normalisation reference is a fresh, label-free idea, although score standardisation and top-k pooling themselves are classical.",
+       "feedback": "Keep the emphasis on the evaluation-validity question and on the support-based reference, which are the novel parts.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only changes to test_few.py on retrained baseline checkpoints; subsampling and prevalence-shift analyses are cheap.",
+       "feedback": "With K = 2 the leave-one-out statistics come from very few patches per level; pool patch scores across levels if needed.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Results bear on the trustworthiness of the published few-shot numbers and on whether MVFA can be deployed at all on a stream of images; the inductive fusion, if it matches the original AUROC, removes a hidden dependency at no cost.",
+       "feedback": "Report how often conclusions from the paper's tables would change under inductive scoring.",
+       "rating": 4
+      }
+     },
+     "mean": 4.4
+    },
+    {
+     "problem": "Can MVFA's few-shot fusion be made inductive \u2014 scoring each image on its own, without the test-set min-max normalisation in the released code \u2014 without losing AUROC, and does this give a threshold that transfers to unseen modalities? The inductive fusion standardises each branch using leave-one-out statistics of the K normal support images (each support's zero-shot map, and its few-shot map against a memory bank built from the other K-1 supports, pooled over patches and levels), adds the standardised branches, and pools the fused map with the mean of its top 2% pixels; the threshold is the 95th percentile of the supports' leave-one-out image scores. Primary outcome: image- and pixel-level AUROC of inductive versus transductive fusion on every held-out modality and K in {2, 4, 8, 16}. Motivating measurement: the spread of the transductive AUROC across random test subsets and at 10% and 50% prevalence. Secondary outcomes: sensitivity at the support-derived threshold, realised specificity, F1 and expected calibration error.",
+     "rationale": "Reviewers asked to single out the primary question and to define the leave-one-out statistics exactly. The primary question is now whether per-image (deployable) scoring matches the published transductive scoring; the test-set dependence analysis motivates it, and thresholded metrics are secondary. The leave-one-out procedure is fully specified, including pooling across levels to keep K = 2 well-defined. The change is confined to test_few.py, needs no training beyond re-running the baseline under the shared protocol, and directly addresses the verified limitations G8, G9, G11 and G17.",
+     "reviews": {
+      "Clarity": {
+       "review": "The primary question (inductive versus transductive fusion AUROC), the exact leave-one-out construction, pooling, threshold rule, and the separation of primary, motivating and secondary outcomes are all specified with no ambiguity.",
+       "feedback": "None of substance.",
+       "rating": 5
+      },
+      "Relevance": {
+       "review": "Directly grounded in verified properties of the released code that affect both the validity of the published few-shot results and deployability.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "The evaluation-validity angle (dependence of reported AUROC on test-set composition) and the support-based inductive reference are uncommon in this literature, though the statistical tools are classical.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only on baseline checkpoints re-run under the shared protocol; all analyses are cheap.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Determines whether MVFA's few-shot results hold under deployable scoring; applicable to other methods that normalise over the test set.",
+       "feedback": "Check and report whether common baselines share the practice.",
+       "rating": 4
+      }
+     },
+     "mean": 4.6
+    },
+    {
+     "problem": "Can MVFA's few-shot fusion be made inductive \u2014 scoring each image on its own, without the test-set min-max normalisation of the released code \u2014 without losing AUROC, and does this give a threshold that transfers to unseen modalities? The inductive fusion standardises each branch with leave-one-out statistics of the K normal support images (each support's zero-shot map, and its few-shot map against a memory bank built from the other K-1 supports, pooled over patches and levels), adds the standardised branches, and pools the fused map with the mean of its top 2% pixels; the threshold is the 95th percentile of the supports' leave-one-out image scores. Primary outcome: image- and pixel-level AUROC of inductive versus transductive fusion on every held-out modality and K in {2, 4, 8, 16}. Motivating measurement: the spread of the transductive AUROC across random test subsets and at 10% and 50% prevalence. Secondary outcomes: sensitivity, realised specificity, F1 and expected calibration error at the support-derived threshold. We also record whether the few-shot baselines compared in the target paper (APRIL-GAN, WinCLIP) normalise over the test set in their public code, to judge how widely the finding applies.",
+     "rationale": "The final review found the problem fully specified and asked only to check whether common baselines share the transductive practice, which is added as a recorded side outcome. The problem remains confined to the scoring code of the target method and is inference-only apart from re-running the baseline under the shared protocol.",
+     "reviews": {
+      "Clarity": {
+       "review": "Fully specified; primary, motivating and secondary outcomes are clearly separated.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Relevance": {
+       "review": "Grounded in verified properties of the released code that affect published results and deployability.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "Uncommon evaluation-validity angle with a label-free inductive reference; classical statistical tools.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only apart from re-running the baseline; cheap.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Bears on the validity of the published few-shot numbers and, via the baseline check, possibly on other methods.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.6
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 4.6
+  },
+  {
+   "id": "A1",
+   "group": "Label-efficient adaptation",
+   "versions": [
+    {
+     "problem": "In MVFA, only the segmentation adapters produce anomaly maps, and they are trained exclusively with Dice and Focal losses on pixel masks from three BMAD datasets (BrainMRI, LiverCT, RESC), while the image-labelled datasets (OCT17, ChestXray, HIS) only ever train the detection adapters. Can the segmentation adapters instead be trained from image-level labels alone \u2014 through a multiple-instance objective on each level's segmentation-branch patch-to-text similarity map (primary operator: top-k mean of patch anomaly probabilities, so that an abnormal image must contain a few highly abnormal patches and a normal image none) applied to all five source datasets with masks discarded \u2014 and how much of the mask-supervised zero-shot localisation (pixel-level AUROC and PRO) and detection (image-level AUROC) on the held-out modality does this retain? The comparison is mask-supervised MVFA versus image-label-supervised MVFA, both trained and model-selected under the shared protocol.",
+     "rationale": "Limitation G3, corrected against the released code, shows that MVFA's localisation depends entirely on dense expert masks from three datasets, and G4 shows that even its few-shot mode needs K abnormal images with masks. Image-level labels are cheap and already available for every BMAD dataset, but MVFA never uses them to teach the segmentation branch where anomalies are. The related literature does not answer whether text-anchored patch similarities in a multi-level CLIP adapter can learn localisation from weak labels: MedSAD-CLIP, MLCA and MadCLIP keep pixel or labelled abnormal supervision, AnoCLIP and SAA+ avoid training altogether, and MedCLIP-SAMv2 uses weak supervision only for a separate segmentation model. The question is narrow \u2014 it changes the training signal of one branch \u2014 and directly implementable by replacing the seg_loss term in the public training script; a negative result still quantifies what masks are worth for cross-modality localisation. Under the shared protocol, both variants are selected on a source-modality validation split rather than on the target test set, so the comparison is not biased in favour of either.",
+     "reviews": {
+      "Clarity": {
+       "review": "The problem identifies the exact component (segmentation adapters and their seg_loss), the change (image-level multiple-instance objective, primary operator top-k mean, masks discarded, all five source datasets), the comparison (mask- versus image-label-supervised MVFA under identical model selection) and the outcomes (pixel AUROC, PRO, image AUROC on the held-out modality).",
+       "feedback": "State k (or the fraction of patches) for the top-k operator and whether the image-level loss is applied at all four levels or only at the deepest; otherwise the problem is very well delimited.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Mask dependence of localisation is one of the most consequential limitations of the target paper for clinical use, and the corrected description (masks from only three datasets) makes the relevance concrete. It connects directly to the annotation-efficiency theme of MedicalCLIP, MedCLIP-SAMv2 and MadCLIP.",
+       "feedback": "None of substance; mention the weak-supervision setting of MedCLIP-SAMv2 as the closest related contrast.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "Weakly supervised localisation from image labels is an established idea, and MVFA already applies an image-level (mean-pooled) BCE to the patch map of its detection branch. The new element is narrower: supervising the segmentation branch's text-anchored, multi-level patch maps through MIL and testing whether that localisation transfers to unseen modalities. This is a moderately original combination.",
+       "feedback": "Make the distinctive hypothesis explicit, e.g. that text-anchored patch similarities allow MIL localisation to transfer across modalities better than visual-only weak supervision, or that the localisation emerges at specific levels.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Requires replacing one loss term in train_zero.py; BMAD provides image labels for all datasets; compute equals MVFA's original training on one GPU; the protocol's validation-based model selection is easy to add.",
+       "feedback": "Run a single-fold pilot to rule out degenerate all-zero maps before the full multi-seed study.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "If localisation can be learned without masks, MVFA-style adaptation becomes trainable from report-level labels, which is a substantial practical gain; a negative result quantifies the value of masks for cross-modality transfer.",
+       "feedback": "Add the label-budget view (many image-labelled versus few mask-labelled images) to make the result decision-relevant.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    },
+    {
+     "problem": "Can MVFA's segmentation adapters \u2014 which today learn localisation only from pixel masks of BrainMRI, LiverCT and RESC \u2014 learn transferable localisation from image-level labels alone? We replace the Dice and Focal seg_loss with a multiple-instance objective on the segmentation-branch patch-to-text similarity map at each of the four levels (primary operator: mean of the top 2% of patch anomaly probabilities; max and mean pooling as ablations) and train on all five source datasets with masks discarded. Hypothesis: because each patch is scored against a shared text anchor, image-level supervision forces patch-level anomaly evidence to align with the text 'abnormal' direction, so localisation learned this way transfers to the unseen modality and retains at least 80% of the mask-supervised pixel-level AUROC. Outcomes on the held-out modality: pixel-level AUROC and PRO, image-level AUROC, the per-level localisation quality (which levels produce useful maps), and a label-budget curve comparing image-labelled training on all datasets with mask-supervised training on 10-100% of the masked images.",
+     "rationale": "Reviewers rated relevance and feasibility highest and asked for an explicit, distinctive hypothesis, the value of k, the level at which the loss applies, and a decision-relevant label-budget view. The hypothesis now states what is specific to the vision-language setting: localisation through text-anchored patch similarities rather than class-activation maps, tested across modalities. The operator is fixed (top 2%) and applied at all four levels with a per-level analysis. The label-budget curve answers the practical question a site faces \u2014 whether many cheaply labelled images can substitute for few masked ones. The change remains a single loss term in the public training script, evaluated under the shared protocol with source-validation model selection.",
+     "reviews": {
+      "Clarity": {
+       "review": "The operator, levels, hypothesis (at least 80% retention, text-anchored mechanism) and outcomes are now specified. The problem has however grown to four outcomes including a label-budget curve, so it is less concise than before.",
+       "feedback": "Mark the retention question as primary and the per-level analysis and label-budget curve as secondary analyses.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Remains central to the target paper's clinical applicability and to annotation-efficient medical anomaly detection.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "The explicit hypothesis \u2014 that text-anchored patch similarities let weak image-level supervision yield localisation that transfers across modalities \u2014 and the label-budget comparison distinguish this from generic weakly supervised localisation and from MVFA's existing mean-pooled detection loss.",
+       "feedback": "Include a visual-only MIL control (same operator on patch features without text anchors) to test the text-anchoring hypothesis directly.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "The core comparison is cheap, but the label-budget curve multiplies training runs (several mask fractions x six folds x three seeds), which is heavy for one Colab GPU within a few weeks.",
+       "feedback": "Restrict the label-budget curve to two held-out modalities and three mask fractions.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "A positive result makes MVFA-style localisation trainable from report-level labels; the label-budget curve adds decision value for clinical sites.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    },
+    {
+     "problem": "Can MVFA's segmentation adapters learn transferable localisation from image-level labels alone? Today they learn only from pixel masks of BrainMRI, LiverCT and RESC. We replace the Dice and Focal seg_loss with a multiple-instance objective applied at all four levels to the segmentation-branch patch-to-text similarity map (mean of the top 2% patch anomaly probabilities; max and mean pooling as ablations), and train on all five source datasets with masks discarded. Primary question and hypothesis: because every patch is scored against a shared text anchor, image-level supervision aligns patch-level evidence with the text 'abnormal' direction, so the learned localisation transfers to the unseen modality and retains at least 80% of mask-supervised MVFA's pixel-level AUROC (with PRO and image AUROC also reported). A visual-only MIL control (same operator on a linear patch classifier without text anchors) tests whether text anchoring is responsible. Secondary analyses: per-level localisation quality, and a label-budget comparison on two held-out modalities between image-labelled training and mask-supervised training on 10%, 30% and 100% of the masked images.",
+     "rationale": "The final review asked to separate primary from secondary outcomes, to add a visual-only control that tests the text-anchoring hypothesis directly, and to limit the label-budget curve to fit one Colab GPU. All three are incorporated. The primary question is a single, falsifiable comparison on one component (the segmentation loss) of the public code, evaluated under the shared protocol with source-validation model selection.",
+     "reviews": {
+      "Clarity": {
+       "review": "The primary question, its falsifiable threshold (80% retention), the operator and levels, the visual-only control, and the secondary analyses are clearly separated and defined. It remains long rather than concise, which keeps it just short of the top rating.",
+       "feedback": "Condense the statement for the final write-up.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Central to the clinical applicability of the target method.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "The text-anchoring hypothesis with a visual-only control is a well-differentiated angle on weak supervision for multi-level vision-language adapters.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "With the label-budget curve limited to two modalities and three fractions, the full study fits a single Colab GPU over a few weeks; the visual-only control adds one inexpensive variant.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Potentially removes the dependence of MVFA's localisation on dense masks; informative either way.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.4
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 4.4
+  },
+  {
+   "id": "B2",
+   "group": "Score calibration and robust aggregation",
+   "versions": [
+    {
+     "problem": "A zero-shot deployment of MVFA has no target labels, so its decision threshold must be chosen on the source modalities; do split-conformal false-positive guarantees calibrated on normal source images survive the shift to an unseen modality, and can a label-free correction repair them? We calibrate per-image anomaly scores (computed without any test-set normalisation, under max-pixel, top-k-mean and mean aggregation) on held-out normal images of the source modalities at nominal false-positive rates of 1%, 5% and 10%, measure the realised false-positive rate and sensitivity on each held-out BMAD modality, and test weighted split conformal prediction, where calibration images are weighted by a density ratio between source calibration features and the unlabelled target test batch (estimated by a domain classifier on CLIP global features).",
+     "rationale": "Limitations G8, G9, G11 and G17 show that MVFA's scores are normalised with test-set statistics, aggregated inconsistently and judged only by AUROC, so its usability at a fixed operating point is unknown \u2014 and in the zero-shot setting there is not even a support set to normalise against. Conformal prediction provides guarantees only under exchangeability, which a modality shift violates; how badly, for CLIP-based medical anomaly scores, and whether covariate-shift weighting repairs it, is not addressed by the target paper or by related work, which optimises AUROC through features and prompts. The problem is confined to scoring and thresholding, is inference-only on baseline checkpoints selected under the shared protocol, and its per-modality results tell a practitioner which shifts break the guarantee.",
+     "reviews": {
+      "Clarity": {
+       "review": "Calibration data, nominal levels, aggregations and the weighted correction are all specified; outcomes are clear.",
+       "feedback": "Clarify that the density-ratio weighting uses the unlabelled target batch and is therefore transductive in features (though label-free), which should be stated as an assumption.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Zero-shot deployment requires a source-chosen threshold; this is the natural complement to MVFA's AUROC-only evaluation.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Testing conformal guarantees under modality shift for CLIP-based medical anomaly scores, with weighted conformal as a repair, is a distinct perspective not covered by the target paper or related works, though both conformal anomaly detection and weighted conformal prediction exist individually.",
+       "feedback": "Explain what is learned beyond applying the two known techniques.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only and computationally trivial; requires enough normal calibration images per source modality, which BMAD provides.",
+       "feedback": "Use bootstrap intervals for the realised FPR at the 1% level.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Safety-relevant for any zero-shot medical detector; a systematic violation would be an important warning, and a successful repair a practical tool.",
+       "feedback": "Report per modality pair.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    },
+    {
+     "problem": "In zero-shot deployment, does a false-positive guarantee calibrated on normal images of the source modalities hold on an unseen BMAD modality, and does label-free covariate-shift weighting repair it? Per-image scores are computed without test-set normalisation, with max, mean and top-2% aggregation. Split-conformal thresholds are calibrated on held-out normal source images at nominal false-positive rates of 1%, 5% and 10%. The weighted variant reweights calibration images by density ratios estimated from a domain classifier between source calibration features and the unlabelled target batch, an explicit transductive-in-features, label-free assumption. Outcomes per held-out modality: realised false-positive rate with bootstrap intervals, coverage violation, sensitivity at the threshold, and how violation size relates to the source-target feature distance.",
+     "rationale": "Reviewers asked to make the transductive assumption of the weighting explicit and to explain what is learned beyond applying known techniques. The new element is the relation between violation size and a measurable source-target distance, which turns the result into a predictor of when a zero-shot threshold can be trusted. Everything else stays inference-only and fine-grained.",
+     "reviews": {
+      "Clarity": {
+       "review": "Clear and complete, including the explicit transductive-in-features assumption.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to zero-shot deployment of the target method.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "The relation between guarantee violation and source-target feature distance adds a useful predictive element beyond applying conformal and weighted conformal prediction.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only, trivial compute.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Safety-relevant and transferable to other zero-shot detectors.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    },
+    {
+     "problem": "In zero-shot deployment, does a false-positive guarantee calibrated on normal images of the source modalities hold on an unseen BMAD modality, and does label-free covariate-shift weighting repair it? Per-image scores are computed without test-set normalisation, with max, mean and top-2% aggregation. Split-conformal thresholds are calibrated on held-out normal source images at nominal false-positive rates of 1%, 5% and 10%. The weighted variant reweights calibration images by density ratios from a domain classifier between source calibration features and the unlabelled target batch, an explicit transductive-in-features, label-free assumption. Outcomes per held-out modality: realised false-positive rate with bootstrap intervals, coverage violation, sensitivity at the threshold, and the relation between violation size and source-target feature distance.",
+     "rationale": "The final review raised no further issues; the problem is unchanged apart from wording.",
+     "reviews": {
+      "Clarity": {
+       "review": "Unchanged and clear.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to zero-shot deployment.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Distinct perspective via the violation-distance relation.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Inference-only.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Safety-relevant.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 4.2
+  },
+  {
+   "id": "D1",
+   "group": "Compact normality modelling",
+   "versions": [
+    {
+     "problem": "Nothing in MVFA's training objective encodes that normal tissue occupies a compact region of feature space while anomalies are diverse: patches are aligned symmetrically to one 'normal' and one 'abnormal' text anchor, and the few-shot branch memorises raw support patches. Does adding, at each of the four adapter levels, a small set of M learnable normal prototypes trained jointly with the adapters on the source modalities \u2014 with a compactness loss that pulls normal patches to their nearest prototype and a margin loss that keeps abnormal patches away \u2014 improve zero-shot image-level AUROC, pixel-level AUROC and PRO on the held-out modality, and can the prototypes, re-estimated from the K normal support images, replace the patch memory bank in the few-shot setting without loss of accuracy? M in {8, 32, 128}.",
+     "rationale": "Limitations G7 and G13 describe the same missing assumption \u2014 compactness of normality \u2014 from the architecture and the memory side, and G5 notes that the single static text notion of 'normal' is shared across all modalities. Related work addresses asymmetry differently: MadCLIP uses dual normal/abnormal adapter branches with a SigLIP loss, APRIL-GAN and MVFA keep per-level memory banks, and prototype methods in universal anomaly detection fit prototypes from one image or post hoc. Learning prototypes jointly with the adapters on multiple source modalities, and testing whether they transfer to an unseen modality, is a contained change to the training objective of the public code and is feasible on one GPU; the shared protocol prevents prototype hyper-parameters from being tuned on the target test set.",
+     "reviews": {
+      "Clarity": {
+       "review": "Losses, prototype set, outcomes and values of M are specified.",
+       "feedback": "Define how prototypes are initialised and how the margin is set.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to G7 and G13, and to the asymmetric treatment of normality seen in MadCLIP.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Compactness objectives for normal data (Deep SVDD, Patch SVDD, FCDD) and prototype memories are established; learning them jointly with multi-level CLIP adapters across source modalities is a moderate variation.",
+       "feedback": "Identify what is specific to the vision-language setting, e.g. tying prototypes to the normal text anchor.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Feasible, but adds two losses and several hyper-parameters (M, margin, weights) that must be tuned on source validation data only, which raises the tuning cost across six folds.",
+       "feedback": "Limit the grid; fix the margin from source statistics.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "Likely modest AUROC changes; the few-shot memory replacement has limited practical value at MVFA's small K.",
+       "feedback": "Clarify the expected benefit beyond small AUROC gains.",
+       "rating": 3
+      }
+     },
+     "mean": 3.6
+    },
+    {
+     "problem": "Does tying a compact set of learnable normal prototypes to MVFA's normal text anchor improve zero-shot transfer? At each adapter level, M prototypes are initialised from the normal text embedding plus small noise and trained jointly with the adapters on the source modalities, with a compactness loss pulling normal patches to their nearest prototype and a margin (set to the 95th percentile of normal-patch distances on source validation data) keeping abnormal patches away; the anomaly map adds the prototype distance to the text-similarity map. Outcomes: zero-shot image AUROC, pixel AUROC and PRO on the held-out modality for M in {8, 32}, versus MVFA and versus untied (randomly initialised) prototypes.",
+     "rationale": "Reviewers asked what is specific to the vision-language setting, how prototypes are initialised, and to limit tuning. Anchoring prototypes to the normal text embedding is the vision-language-specific element, comparing tied and untied prototypes tests it directly, and the margin is fixed from source statistics to keep tuning small.",
+     "reviews": {
+      "Clarity": {
+       "review": "Initialisation, margin rule, scoring and comparisons are specified.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to G7 and G13.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Tying prototypes to the normal text embedding is a modest vision-language twist on established compactness objectives.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Tuning is now limited (two values of M, margin fixed from source statistics).",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Expected gains remain modest.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.8
+    },
+    {
+     "problem": "Does tying a compact set of learnable normal prototypes to MVFA's normal text anchor improve zero-shot transfer? At each adapter level, M prototypes are initialised from the normal text embedding plus small noise and trained jointly with the adapters on the source modalities, with a compactness loss pulling normal patches to their nearest prototype and a margin (the 95th percentile of normal-patch distances on source validation data) keeping abnormal patches away; the anomaly map adds the prototype distance to the text-similarity map. Outcomes: zero-shot image AUROC, pixel AUROC and PRO on the held-out modality for M in {8, 32}, versus MVFA and versus untied (randomly initialised) prototypes.",
+     "rationale": "The final review raised no further issues; the problem is unchanged.",
+     "reviews": {
+      "Clarity": {
+       "review": "Unchanged and clear.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to G7 and G13.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Modest twist on established compactness objectives.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Limited tuning; feasible.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Modest expected gains.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.8
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 3.8
+  },
+  {
+   "id": "D2",
+   "group": "Compact normality modelling",
+   "versions": [
+    {
+     "problem": "Is MVFA's frozen, template-averaged 'normal' text anchor \u2014 one vector shared by brain MRI, liver CT, retinal OCT, chest X-ray and histopathology \u2014 a bottleneck, and can it be made modality-specific without seeing anomalies? As a precondition we measure the variance of MVFA's zero- and few-shot AUROC over 20 random subsets of 5, 10 and 20 of its 35 prompt templates. We then replace the static normal anchor with a support-conditioned one: a light projector, trained on the source modalities, maps the mean adapted feature of the K normal support images to an additive offset of the normal text embedding, while the abnormal side keeps several state-description anchors matched many-to-one. Outcomes: few-shot image- and pixel-level AUROC and PRO per held-out modality, and the template-sensitivity variance.",
+     "rationale": "G5 notes that MVFA presumes one universal concept of normality and reports no prompt-sensitivity analysis; G7 notes the symmetric treatment of a compact normal and a diverse abnormal distribution. Related work conditions prompts on the test image (AULoRA, AdaCLIP-style hybrid prompts) or learns object-agnostic prompts (AnomalyCLIP, HieClip); conditioning the normal anchor on the support normals instead gives it a modality-level reference without exposure to anomalies, and the sensitivity analysis decides first whether the text side matters at all. The change is limited to the text-anchor computation of the public code and is cheap on one GPU.",
+     "reviews": {
+      "Clarity": {
+       "review": "Precondition analysis and conditioned anchor are clearly described with outcomes.",
+       "feedback": "State the hypothesis for the conditioned anchor (e.g., gains largest on modalities most distant from the source pool).",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Addresses G5 and the field's move to adaptive text sides.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Conditioning the normal anchor on support normals rather than on the test image is a small but genuine twist on known prompt-conditioning methods.",
+       "feedback": "Compare explicitly with test-image conditioning to show the difference matters.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Light projector and template sampling are cheap on one GPU.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "The template-sensitivity analysis has reproducibility value; the conditioning likely yields modest gains.",
+       "feedback": "Explain the broader insight the study provides.",
+       "rating": 3
+      }
+     },
+     "mean": 3.8
+    },
+    {
+     "problem": "Is the text side of MVFA a bottleneck, and does conditioning the normal anchor on the support normals help most on the modalities furthest from the source pool? First, the variance of zero- and few-shot AUROC over 20 random subsets of 5, 10 and 20 of the 35 templates is measured. Then the static normal anchor is shifted by a light projector applied to the mean adapted feature of the K support normals, with abnormal anchors matched many-to-one, and compared with test-image conditioning of the same projector. Hypothesis: support conditioning helps more than test-image conditioning, and most on modalities with the largest source-target feature distance. Outcomes: few-shot image AUROC, pixel AUROC and PRO per held-out modality, and template-sensitivity variance.",
+     "rationale": "Reviewers asked for an explicit hypothesis and a direct comparison with test-image conditioning; both are now part of the problem.",
+     "reviews": {
+      "Clarity": {
+       "review": "Clear, with an explicit hypothesis and comparison.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to G5.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Support versus test-image conditioning is a small but testable twist.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Cheap on one GPU.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Modest; the sensitivity analysis is the most useful part.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.8
+    },
+    {
+     "problem": "Is the text side of MVFA a bottleneck, and does conditioning the normal anchor on the support normals help most on the modalities furthest from the source pool? First, the variance of zero- and few-shot AUROC over 20 random subsets of 5, 10 and 20 of the 35 templates is measured. Then the static normal anchor is shifted by a light projector applied to the mean adapted feature of the K support normals, with abnormal anchors matched many-to-one, and compared with test-image conditioning of the same projector. Hypothesis: support conditioning helps more than test-image conditioning, and most on modalities with the largest source-target feature distance. Outcomes: few-shot image AUROC, pixel AUROC and PRO per held-out modality, and template-sensitivity variance.",
+     "rationale": "The final review raised no further issues; the problem is unchanged.",
+     "reviews": {
+      "Clarity": {
+       "review": "Unchanged and clear.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to G5.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Small, testable twist.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Cheap.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "Modest.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.8
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 3.8
+  },
+  {
+   "id": "A2",
+   "group": "Label-efficient adaptation",
+   "versions": [
+    {
+     "problem": "MVFA's few-shot mode fine-tunes the adapters on K normal plus K abnormal target images with pixel masks; can this labelled support set be replaced by an unlabelled pool of target scans? We ask whether source-free self-training of the segmentation and detection adapters on pseudo-labels from MVFA's own zero-shot maps \u2014 where a pixel is pseudo-labelled only if all four feature levels agree (it lies in the lowest or highest 10% of scores at every level) and all other pixels are ignored \u2014 improves image-level AUROC, pixel-level AUROC and PRO on a disjoint test split of the target modality, and how many unlabelled scans N are needed to match few-shot MVFA with K = 4 labelled normal and abnormal images. Each target dataset is split 50/50 (by patient where identifiers exist) into the unlabelled pool and the test set.",
+     "rationale": "The corrected limitation G4 shows that MVFA's 'K-shot' setting requires 2K annotated target images including masks, while clinical reality at a new site is usually a large unlabelled archive and no annotation budget. Pseudo-label adaptation exists for CLIP-based localisation (AnoCLIP's test-time adaptation), but not for multi-level medical adapters under modality shift, where wrong pseudo-labels can reinforce errors. Agreement across MVFA's four levels is a confidence signal specific to its design, and the number of unlabelled scans needed to match K labelled pairs is a directly actionable answer. This differs from training with image-level labels on the source (the other problem of this group) because the target here has no labels at all. It is implementable with the existing training loop and mask-based losses restricted to confident pixels, and runs on one GPU.",
+     "reviews": {
+      "Clarity": {
+       "review": "Clear setting (unlabelled target pool, cross-level agreement pseudo-labels, 50/50 split) and clear outcome (N needed to match K = 4 labelled pairs).",
+       "feedback": "Specify the number of self-training rounds and whether the detection adapters are also updated.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Addresses the corrected G4: MVFA's few-shot mode needs 2K annotated images, which rarely exist at a new site.",
+       "feedback": "Position as source-free domain adaptation.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Pseudo-label self-training and test-time adaptation are well known; cross-level agreement as a confidence criterion is a modest, design-specific twist.",
+       "feedback": "Argue why cross-level agreement should be more reliable than single-level confidence under modality shift, and test it.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Implementable with existing losses, but halving small BMAD test sets increases variance, and on modalities where zero-shot performance is poor (ChestXray) confident pseudo-labels may be too few or wrong.",
+       "feedback": "Report the number of confident pixels per modality and include a failure analysis.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "Practically useful but likely incremental: it moves performance along the zero-shot/few-shot continuum without changing MVFA's dependence on masks at source-training time.",
+       "feedback": "Tie the result to a concrete deployment decision.",
+       "rating": 3
+      }
+     },
+     "mean": 3.6
+    },
+    {
+     "problem": "Is agreement across MVFA's four feature levels a reliable confidence signal for source-free adaptation to a new modality? Starting from source-trained MVFA, we pseudo-label pixels of an unlabelled target pool only where all four levels' zero-shot maps agree (lowest or highest 10% at every level), fine-tune both segmentation and detection adapters for three self-training rounds with losses restricted to those pixels, and compare against single-level (deepest-layer) confidence with the same pixel budget. Outcomes on a disjoint 50/50 test split: image AUROC, pixel AUROC and PRO versus unlabelled pool size N; the precision of the pseudo-labels against ground-truth masks; and the N at which performance matches few-shot MVFA with K = 4 labelled normal and abnormal images.",
+     "rationale": "Reviewers asked why cross-level agreement should be better than single-level confidence, for the self-training schedule, and for failure analysis. The problem is now centred on that comparison, measures pseudo-label precision directly, and fixes three rounds with both adapter sets updated. The deployment decision (how many unlabelled scans replace K labelled pairs) remains the practical outcome.",
+     "reviews": {
+      "Clarity": {
+       "review": "Well specified: rounds, adapters updated, comparison with single-level confidence, pseudo-label precision.",
+       "feedback": "State the confidence quantile choice as fixed in advance.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to the corrected few-shot requirement and to source-free adaptation.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "Now framed as a test of cross-level agreement as a confidence signal, which is a modest but specific contribution; the underlying self-training paradigm is standard.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Feasible; the 50/50 split still reduces test sizes for the smaller BMAD datasets.",
+       "feedback": "Report confidence intervals.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "Useful for deployment but incremental relative to the other problems in this group.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.6
+    },
+    {
+     "problem": "Is agreement across MVFA's four feature levels a better confidence signal than single-level confidence for source-free adaptation to a new modality? Pixels of an unlabelled target pool are pseudo-labelled only where all four zero-shot maps agree (lowest or highest 10% at every level, fixed in advance); both adapter sets are fine-tuned for three self-training rounds on confident pixels; the control uses deepest-layer confidence with the same pixel budget. Outcomes on a disjoint 50/50 test split, with bootstrap confidence intervals: image AUROC, pixel AUROC and PRO versus pool size N, pseudo-label precision against ground-truth masks, and the N at which few-shot MVFA with K = 4 labelled normal and abnormal images is matched.",
+     "rationale": "The reviewers' remaining requests \u2014 fix the quantile in advance and report confidence intervals \u2014 are incorporated; the problem remains a single comparison of confidence signals with a deployment-relevant secondary outcome.",
+     "reviews": {
+      "Clarity": {
+       "review": "Clear and fixed in advance.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Relevant to source-free deployment.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "A specific but modest contribution on top of standard self-training.",
+       "feedback": "None.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "Feasible; small test halves remain a limitation.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "Incremental.",
+       "feedback": "None.",
+       "rating": 3
+      }
+     },
+     "mean": 3.6
+    }
+   ],
+   "best_version": 2,
+   "best_mean": 3.6
+  }
+ ],
+ "proposed": [
+  "B1",
+  "A1"
+ ]
+}

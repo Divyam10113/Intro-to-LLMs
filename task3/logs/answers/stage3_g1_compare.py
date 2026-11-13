@@ -1,0 +1,60 @@
+import sys; sys.path.insert(0, "/home/claude/task3/logs/answers")
+from judge_lib import write_verdicts
+A1 = {  # id: (strength phrase, weakness phrase)
+ "A1-g0-C1": ("replaces the mask-based seg loss with one targeted change built on a verifiable fact — every patch of a normal image is normal — and a SigLIP patch loss grounded in MadCLIP",
+              "relies on the top-k patches of abnormal images being correct, with no mechanism to recover from wrong seeds"),
+ "A1-g1-o1": ("manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable",
+              "depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies"),
+ "A1-g1-o6": ("transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison",
+              "needs balanced multi-image batches and adds two regularisation weights to tune"),
+ "A1-g1-o4": ("measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU",
+              "depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions"),
+ "A1-g1-o2": ("repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA",
+              "inherits the known noisiness of gradient attributions as localisation signals"),
+ "A1-g0-C2": ("turns MVFA's existing image-label-trained detection branch into a teacher with a cross-level agreement filter",
+              "takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability"),
+ "A1-g0-C5": ("improves the text anchors that every patch score depends on, grounded in AA-CLIP",
+              "adds a learned anchor stage that may overfit source modalities and only indirectly addresses missing masks"),
+ "A1-g1-o3": ("reduces single-teacher confirmation bias by letting MVFA's two branches supervise each other",
+              "couples two weak teachers in a more complex training schedule whose gains are hard to attribute"),
+ "A1-g1-o5": ("combines better anchors, MIL and DINO refinement into one pipeline",
+              "stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded"),
+ "A1-g0-C4": ("adds spatial coherence from DINO affinities supported by Spatial-FAD",
+              "brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks"),
+ "A1-g0-C3": ("provides exact mask supervision through synthetic anomalies",
+              "relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal"),
+ "A1-g0-C6": ("adds a cheap smoothness prior",
+              "is a generic regulariser with weak evidence that does not itself supply supervision"),
+}
+A1_RANK = ["A1-g0-C1","A1-g1-o1","A1-g1-o6","A1-g1-o4","A1-g1-o2","A1-g0-C2","A1-g0-C5","A1-g1-o3","A1-g1-o5","A1-g0-C4","A1-g0-C3","A1-g0-C6"]
+B1 = {
+ "B1-g0-C2": ("removes test-set statistics with empirical p-values that put all levels and branches on a common, distribution-free scale with a direct false-positive meaning",
+              "uses top-2% pooling but no explicit treatment of region structure"),
+ "B1-g1-o2": ("fixes both verified scoring defects — transductive fusion and max-pixel image scores — with two minimal, support-only components and a single operating point",
+              "relies on Gaussian-style z-scores whose tails are a rough approximation of anomaly-score distributions"),
+ "B1-g1-o4": ("learns fusion and calibration from real labelled abnormal images of the source modalities through simulated few-shot episodes, avoiding synthetic data",
+              "assumes that the score-to-label relationship learned on source modalities transfers to the unseen modality"),
+ "B1-g0-C1": ("directly replaces the transductive fusion with bounded support-based z-scores and is inference-only",
+              "keeps the outlier-sensitive image pooling and only approximates calibration"),
+ "B1-g1-o6": ("extrapolates calibrated tail probabilities beyond the range of the support scores with extreme-value theory",
+              "adds a parametric tail fit that is fragile with few supports at K = 2"),
+ "B1-g1-o3": ("makes every image its own large normal reference, which reduces dependence on the support draw",
+              "breaks down for diffuse anomalies that cover much of the image and needs a safeguard"),
+ "B1-g0-C5": ("fixes the verified single-pixel max rule with a concrete robustness test",
+              "addresses only image pooling and presupposes a separate normalisation"),
+ "B1-g1-o1": ("assembles a complete per-image pipeline from analytic standardisation and region pooling",
+              "stacks a replacement of the few-shot branch on top of the fusion fix, changing more than the problem requires"),
+ "B1-g1-o5": ("gives a calibrated per-image decision through a two-sample permutation test",
+              "may lose sensitivity because localised anomalies shift only a small part of the patch distribution, and it is slow per image"),
+ "B1-g0-C4": ("gives the few-shot branch an analytic reference distribution",
+              "changes the whole few-shot branch and still needs a separate fusion rule"),
+ "B1-g0-C3": ("learns a probability mapping for the fused score",
+              "depends on synthetic anomalies being representative of real lesions, which cannot be checked without target labels"),
+ "B1-g0-C6": ("is causal for streaming deployment",
+              "updates statistics from self-selected arrivals, making scores depend on stream order and other test images"),
+}
+B1_RANK = ["B1-g0-C2","B1-g1-o2","B1-g1-o4","B1-g0-C1","B1-g1-o6","B1-g1-o3","B1-g0-C5","B1-g1-o1","B1-g1-o5","B1-g0-C4","B1-g0-C3","B1-g0-C6"]
+assess = {**A1, **B1}
+n = write_verdicts(assess, A1_RANK + B1_RANK, "/home/claude/task3/logs/answers/stage3_g1_compare.json",
+                   ties=[("A1-g0-C1", "A1-g1-o6")])
+print(n)

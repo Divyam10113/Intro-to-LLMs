@@ -1,0 +1,454 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\usepackage{microtype}
+\usepackage{xcolor}
+\definecolor{ink}{HTML}{172230}\definecolor{accent}{HTML}{2C55C7}\definecolor{heat}{HTML}{C86A12}\definecolor{muted}{HTML}{5A6878}\definecolor{soft}{HTML}{EEF2FB}
+\usepackage[colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent]{hyperref}
+\usepackage{amssymb}
+\usepackage{booktabs,longtable,tabularx,array,enumitem,parskip}
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries\color{ink}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{ink}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{ink}}{\thesubsubsection}{0.6em}{}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{muted}\sffamily Task 3 · Research problem discovery and ideation · MVFA}\fancyfoot[R]{\footnotesize\color{muted}\sffamily\thepage}
+\usepackage[most]{tcolorbox}
+\newtcolorbox{ideabox}[1]{colback=soft,colframe=accent,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,breakable,title={\sffamily\bfseries #1},fonttitle=\small,coltitle=white}
+\newtcolorbox{note}{colback=white,colframe=heat,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=4pt,bottom=4pt,breakable}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\lbl}[1]{{\sffamily\footnotesize\bfseries\color{muted}\MakeUppercase{#1}}\par}
+\emergencystretch=3em\setlength{\LTpre}{4pt}\setlength{\LTpost}{6pt}
+\begin{document}
+
+\begin{center}
+{\sffamily\bfseries\huge Research Problem Discovery and Ideation}\\[4pt]
+{\sffamily\large Task 3 — continuation of the limitations of \emph{Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical Images} (MVFA, CVPR 2024)}\\[6pt]
+{\color{muted}Course: Introduction to Large Language Models \quad·\quad Methods: ResearchAgent, HypER, HypoEvolve}
+\end{center}
+\vspace{4pt}
+\section*{Summary}
+Starting from the 15 limitations identified in our previous assignment, we formulated two fine-grained research problems with ResearchAgent and discovered ideas for each with a pipeline that grounds seed ideas in citation chains (HypER), evolves them with a generational genetic algorithm (HypoEvolve), and ranks them on Novelty, Feasibility, Clarity, Impact and Validity. Before formulating problems, every implementation-level limitation was checked against MVFA's public code; this corrected four limitations and revealed two new ones, including model selection on the target test set.
+
+\textbf{Problem 1 (Deployable per-image scoring for few-shot MVFA).} Top-5 ideas: (1) Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels; (2) Brown-corrected Fisher fusion: dependence-adjusted p-value combination estimated from support normals, with region-mass pooling; (3) LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point; (4) FDR-controlled anomaly maps: Benjamini-Yekutieli discoveries per image from support-anchored pixel p-values; (5) Episode-calibrated weighted Fisher fusion: learning per-level weights of support p-values on source-modality episodes.
+
+\textbf{Problem 2 (Mask-free localisation for MVFA's segmentation adapters).} Top-5 ideas: (1) Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled; (2) Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters; (3) Bank-informed positive-unlabelled learning: patch-specific class priors from position-aware normal-bank distances; (4) Bank-gated asymmetric MIL: positives must be both text-abnormal and unlike any normal patch of the dataset; (5) Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches.
+
+In total the pipeline made 579 logged LLM calls; all prompts, answers, code and an interactive explorer of every intermediate result accompany this submission.
+\section{Approach}
+The pipeline implements the three prescribed methods and connects them so that each one does the job it was designed for.
+
+\begin{tabularx}{\linewidth}{@{}l l Y@{}}\toprule
+Stage & Method & What it does here\\\midrule
+0 & Pre-processing & The 15 Task 2 limitations are parsed and grouped into five groups that a single problem could address.\\
+0b & Code verification & Every implementation claim is checked against MVFA's public code (file and line evidence); gaps are corrected.\\
+1 & ResearchAgent & Two candidate problems per group from the target paper, 26 related papers and 20 retrieved entities; ReviewingAgents score five criteria with human-induced rubrics; two refinement rounds; top-2 problems selected.\\
+2 & HypER & Papers citing MVFA are scored 0/1/2 (unrelated / inspired / dependent); six reasoning chains are built; one literature-grounded seed idea per problem and chain, with provenance.\\
+3 & HypoEvolve & Population of six seeds per problem; three generations of LLM crossover (combination, inspiration) and mutation (substitution, out-of-box); fitness from pairwise comparisons fitted with Bradley--Terry; $(\mu+\lambda)$ replacement.\\
+4 & Ranking & Twelve highest-fitness candidates per problem are reviewed on five criteria with a literature novelty search; final score combines reviews (70\%) and fitness (30\%); at most two ideas per method family in the top five.\\
+\bottomrule\end{tabularx}
+
+Shared evaluation protocol (limitation group C, attached to every problem and idea): checkpoints and hyper-parameters are selected on a held-out split of the source modalities and never on the target test set, and the MVFA baseline is re-run under the same rule; results are reported under a modality-disjoint leave-one-modality-out split (RESC and OCT17 held out together); patient-level separation where identifiers exist; at least 3 seeds and 3 few-shot support draws with mean and standard deviation.
+\section{Research problems}
+ResearchAgent produced six candidate problems from limitation groups A (label-efficient adaptation), B (score calibration and aggregation) and D (compact normality modelling). Each candidate was scored on its five problem criteria (1–5, human-induced rubric) and refined twice; the two highest-scoring problems, from different groups, were selected.
+
+\begin{tabularx}{\linewidth}{@{}l Y ccccc c c@{}}\toprule
+ID & Source group & Clar. & Rele. & Orig. & Feas. & Sign. & Rounds (mean) & Selected\\\midrule
+B1 & Score calibration and robust aggregation & 5 & 5 & 4 & 5 & 4 & 4.4 / 4.6 / 4.6 & yes\\
+A1 & Label-efficient adaptation & 4 & 5 & 4 & 5 & 4 & 4.2 / 4.2 / 4.4 & yes\\
+B2 & Score calibration and robust aggregation & 4 & 4 & 4 & 5 & 4 & 4.2 / 4.2 / 4.2 & \\
+D1 & Compact normality modelling & 4 & 4 & 3 & 5 & 3 & 3.6 / 3.8 / 3.8 & \\
+D2 & Compact normality modelling & 4 & 4 & 3 & 5 & 3 & 3.8 / 3.8 / 3.8 & \\
+A2 & Label-efficient adaptation & 4 & 4 & 3 & 4 & 3 & 3.6 / 3.6 / 3.6 & \\
+\bottomrule\end{tabularx}
+\subsection{Problem 1: Deployable per-image scoring for few-shot MVFA}
+\lbl{Problem statement}Can MVFA's few-shot fusion be made inductive — scoring each image on its own, without the test-set min-max normalisation of the released code — without losing AUROC, and does this give a threshold that transfers to unseen modalities? The inductive fusion standardises each branch with leave-one-out statistics of the K normal support images (each support's zero-shot map, and its few-shot map against a memory bank built from the other K-1 supports, pooled over patches and levels), adds the standardised branches, and pools the fused map with the mean of its top 2\% pixels; the threshold is the 95th percentile of the supports' leave-one-out image scores. Primary outcome: image- and pixel-level AUROC of inductive versus transductive fusion on every held-out modality and K in \{2, 4, 8, 16\}. Motivating measurement: the spread of the transductive AUROC across random test subsets and at 10\% and 50\% prevalence. Secondary outcomes: sensitivity, realised specificity, F1 and expected calibration error at the support-derived threshold. We also record whether the few-shot baselines compared in the target paper (APRIL-GAN, WinCLIP) normalise over the test set in their public code, to judge how widely the finding applies.
+
+\lbl{Rationale}The final review found the problem fully specified and asked only to check whether common baselines share the transductive practice, which is added as a recorded side outcome. The problem remains confined to the scoring code of the target method and is inference-only apart from re-running the baseline under the shared protocol.
+
+\lbl{Limitations addressed}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{G8} Score fusion relies on test-set statistics and fixed weights; hyper-parameters are under-ablated
+\item \textbf{G9} Image-level aggregation is inconsistent and outlier-sensitive
+\item \textbf{G11} Metrics are too narrow for clinical readiness
+\item \textbf{G17} Paper and code disagree on image-level pooling
+\end{itemize}
+\subsection{Problem 2: Mask-free localisation for MVFA's segmentation adapters}
+\lbl{Problem statement}Can MVFA's segmentation adapters learn transferable localisation from image-level labels alone? Today they learn only from pixel masks of BrainMRI, LiverCT and RESC. We replace the Dice and Focal seg\_\allowbreak{}loss with a multiple-instance objective applied at all four levels to the segmentation-branch patch-to-text similarity map (mean of the top 2\% patch anomaly probabilities; max and mean pooling as ablations), and train on all five source datasets with masks discarded. Primary question and hypothesis: because every patch is scored against a shared text anchor, image-level supervision aligns patch-level evidence with the text 'abnormal' direction, so the learned localisation transfers to the unseen modality and retains at least 80\% of mask-supervised MVFA's pixel-level AUROC (with PRO and image AUROC also reported). A visual-only MIL control (same operator on a linear patch classifier without text anchors) tests whether text anchoring is responsible. Secondary analyses: per-level localisation quality, and a label-budget comparison on two held-out modalities between image-labelled training and mask-supervised training on 10\%, 30\% and 100\% of the masked images.
+
+\lbl{Rationale}The final review asked to separate primary from secondary outcomes, to add a visual-only control that tests the text-anchoring hypothesis directly, and to limit the label-budget curve to fit one Colab GPU. All three are incorporated. The primary question is a single, falsifiable comparison on one component (the segmentation loss) of the public code, evaluated under the shared protocol with source-validation model selection.
+
+\lbl{Limitations addressed}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{G3} Localisation supervision requires dense masks
+\item \textbf{G4} The few-shot setting needs labelled abnormal images with masks and is evaluated on one draw
+\end{itemize}
+\section{Ideas for Problem 1}
+HypoEvolve produced 24 candidate ideas for this problem (6 HypER seeds and 18 offspring over three generations, 168 pairwise judgments). The table ranks the twelve highest-fitness candidates on the five criteria (1–5); Mean is the review mean, Fit. the Bradley–Terry fitness, Final = 0.7 $\times$ normalised review mean + 0.3 $\times$ normalised fitness. Stars mark the five selected ideas.
+{\small\setlength{\tabcolsep}{4pt}\begin{longtable}{@{}r >{\raggedright\arraybackslash}p{8.4cm} ccccc c r r@{}}
+\toprule
+\# & Idea & Nov & Fea & Cla & Imp & Val & Mean & Fit. & Final\\\midrule\endhead
+1 & $\bigstar$ Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels {\footnotesize\color{muted}[B1-g2-o6]} & 3 & 5 & 4 & 4 & 4 & 4.0 & 120.1 & 0.825\\
+2 & $\bigstar$ Brown-corrected Fisher fusion: dependence-adjusted p-value combination estimated from support normals, with region-mass pooling {\footnotesize\color{muted}[B1-g3-o5]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 111.0 & 0.741\\
+3 & Empirical p-value fusion across levels and branches (Fisher-MVFA) {\footnotesize\color{muted}(not selected: family limit)} {\footnotesize\color{muted}[B1-g0-C2]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 103.9 & 0.704\\
+4 & $\bigstar$ LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point {\footnotesize\color{muted}[B1-g1-o2]} & 2 & 5 & 5 & 4 & 4 & 4.0 & 92.0 & 0.675\\
+5 & $\bigstar$ FDR-controlled anomaly maps: Benjamini-Yekutieli discoveries per image from support-anchored pixel p-values {\footnotesize\color{muted}[B1-g3-o1]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 97.7 & 0.671\\
+6 & $\bigstar$ Episode-calibrated weighted Fisher fusion: learning per-level weights of support p-values on source-modality episodes {\footnotesize\color{muted}[B1-g2-o1]} & 4 & 4 & 4 & 4 & 3 & 3.8 & 86.5 & 0.611\\
+7 & E-value fusion: dependence-robust, betting-based per-image anomaly evidence from support normals {\footnotesize\color{muted}[B1-g3-o3]} & 3 & 5 & 4 & 3 & 4 & 3.8 & 81.0 & 0.583\\
+8 & Neyman-Pearson likelihood-ratio scoring: a support-normal density against a cross-modality abnormal density learned on source data {\footnotesize\color{muted}[B1-g2-o2]} & 4 & 4 & 4 & 4 & 3 & 3.8 & 64.0 & 0.492\\
+9 & Bounded leave-one-out z-score fusion (LOO-Z) for per-image MVFA scoring {\footnotesize\color{muted}[B1-g0-C1]} & 2 & 5 & 4 & 3 & 4 & 3.6 & 69.5 & 0.486\\
+10 & Episode-trained fusion calibrator: learning how to fuse MVFA's branches from simulated few-shot episodes on source modalities {\footnotesize\color{muted}[B1-g1-o4]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 75.5 & 0.483\\
+11 & Support-bootstrap uncertainty: deciding on the lower confidence bound of a per-image MVFA score {\footnotesize\color{muted}[B1-g3-o2]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 69.8 & 0.453\\
+12 & Adaptive S-norm for MVFA: cohort score normalisation borrowed from speaker verification {\footnotesize\color{muted}[B1-g2-o5]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 63.6 & 0.420\\
+\bottomrule
+\end{longtable}}
+\begin{note}\small Diversity rule: B1-g0-C2 was not selected because its family 'Support-anchored p-value combination' already has 2 selected ideas.\end{note}
+\begin{ideabox}{Idea 1.1 — Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{4}/5 \quad Final score: \textbf{0.825} (rank 1 of 12) \quad Family: Support-anchored p-value combination}\par\smallskip
+\lbl{Summary}Replace Fisher's combination, which assumes independent evidence, with the harmonic mean p-value across MVFA's strongly correlated levels and branches, keeping region-mass pooling and support-derived thresholds.
+
+\lbl{Hypothesis}Harmonic-mean p-value fusion gives realised false-positive rates at the support threshold within 3 points of nominal, versus more than 8 points of excess false positives for Fisher fusion, on held-out BMAD modalities with K \textgreater{}= 4, with image AUROC within 0.5 points of Fisher fusion.
+
+\lbl{Rationale}The four MVFA levels are sequential stages of one ViT and the two branches share the backbone, so their per-patch p-values are strongly positively dependent; Fisher's statistic assumes independence and is anti-conservative under positive dependence, which inflates false positives exactly where calibration is the goal. The harmonic mean p-value is a combination rule that remains approximately valid under arbitrary dependence, so substituting it keeps the parent's framing (support-anchored per-pixel evidence, region pooling, support thresholds) while fixing a statistical flaw the parent inherits.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Per-pixel empirical p-values p\_\allowbreak{}bl as in Fisher-MVFA (support LOO nulls).
+\item HMP per pixel: H = 8 / sum\_\allowbreak{}\{b,l\} (1/p\_\allowbreak{}bl); statistic X = -log H.
+\item Region-mass pooling on X with t\_\allowbreak{}pix = 99th percentile of support LOO X; image score as before.
+\item Report the empirical correlation matrix of the 8 per-pixel p-values on support normals to document dependence.
+\item Code: scoring.py hmp\_\allowbreak{}map(); reuse region\_\allowbreak{}mass().
+\end{enumerate}
+
+\lbl{Experiment design}BMAD leave-one-modality-out (RESC and OCT17 held out together); MVFA checkpoints selected on source-modality validation splits and the MVFA baseline re-run the same way; K in \{2,4,8,16\}; 3 seeds x 3 support draws, mean and std. Baselines: Fisher + region mass (parent); Bonferroni-style min-p; LOO-Z + region mass. Metrics: realised FPR at nominal 5\% and 1\%, sensitivity, image/pixel AUROC, PRO, p-value correlation across levels. Falsification: no FPR improvement over Fisher fusion.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: Combining layer-wise p-values, including dependence-robust rules, has been used for DNN input anomaly detection (arXiv 2007.15147); using support-anchored p-values to replace MVFA's verified transductive fusion is the new element.
+\item \textbf{Feasibility (5)}: Inference-only changes to the scoring code; trivial compute.
+\item \textbf{Clarity (4)}: Clear statistic, pooling and thresholds; the correlation analysis is a good addition.
+\item \textbf{Impact (4)}: Delivers deployable per-image scores with a statistically grounded threshold, fixing two verified defects.
+\item \textbf{Validity (4)}: The harmonic mean p-value is approximately valid under dependence; empirical p-values are discrete at small K, which limits resolution at very low levels.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2007.15147}{A General Framework For Detecting Anomalous Inputs to DNN Classifiers (arXiv 2007.15147)} — combines layer-wise p-values (including dependence-robust combinations) for DNN input anomaly detection — same statistical idea in a different setting
+\item \href{https://www.danielwilson.me.uk/abstracts/wilson_2019.html}{The harmonic mean p-value for combining dependent tests (Wilson, PNAS 2019)} — the combination rule itself
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination + substitution of B1-g1-o2 (LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point); B1-g0-C2 (Empirical p-value fusion across levels and branches (Fisher-MVFA)). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP; PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 1.2 — Brown-corrected Fisher fusion: dependence-adjusted p-value combination estimated from support normals, with region-mass pooling}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{3}/5 \quad Final score: \textbf{0.741} (rank 2 of 12) \quad Family: Support-anchored p-value combination}\par\smallskip
+\lbl{Summary}Keep Fisher's powerful combination of per-level, per-branch support p-values but correct its null distribution for the dependence between MVFA's levels and branches using Brown's method with covariances estimated on the support normals, then pool by region mass.
+
+\lbl{Hypothesis}Brown-corrected Fisher fusion keeps realised false-positive rates within 3 points of nominal (like harmonic-mean fusion) while retaining Fisher's image AUROC within 0.3 points, giving at least 0.5 AUROC points more than harmonic-mean fusion on held-out BMAD modalities with K \textgreater{}= 4.
+
+\lbl{Rationale}The two parents trade power for validity: Fisher is powerful but anti-conservative for correlated evidence, the harmonic mean p-value is valid under dependence but can lose power. Brown's method keeps Fisher's statistic and rescales its chi-square null using the covariance of the -2 log p terms, which can be estimated from the support normals' leave-one-out p-values — no labels needed. This combines the strength of each parent and the shared region-mass pooling.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Per-pixel empirical p-values p\_\allowbreak{}bl (8 terms) from support LOO nulls.
+\item Estimate the covariance of -2 log p\_\allowbreak{}bl across pixels of support normals (LOO), giving Brown's scale c and degrees of freedom f: c = Var(X)/(2E[X]), f = 2E[X]\textasciicircum{}2/Var(X), with E[X] = 16 under independence.
+\item Pixel statistic: Brown p-value = 1 - F\_\allowbreak{}chi2(X/c; f); use -log of it as the pixel map.
+\item Region-mass pooling and support-derived thresholds as in the parents.
+\item Code: scoring.py brown\_\allowbreak{}fisher(); test\_\allowbreak{}few.py per image.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD leave-one-modality-out (RESC and OCT17 held out together); MVFA checkpoints selected on source-modality validation splits and the MVFA baseline re-run the same way; K in \{2,4,8,16\}; 3 seeds x 3 support draws, mean and std. Baselines: Fisher + region mass; harmonic-mean + region mass; LOO-Z + region mass. Metrics: realised FPR at 1\% and 5\%, sensitivity, image/pixel AUROC, PRO, estimated c and f per modality. Falsification: FPR not within 3 points or AUROC below harmonic-mean fusion.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: Empirical Brown's method and layer-wise p-value combination exist; the combination with support-anchored nulls for MVFA is new in application.
+\item \textbf{Feasibility (5)}: Inference-only; covariance estimation is cheap.
+\item \textbf{Clarity (4)}: Clear formulas for scale and degrees of freedom.
+\item \textbf{Impact (4)}: Could keep Fisher's power with corrected validity.
+\item \textbf{Validity (3)}: Moment matching from strongly spatially correlated pixels of very few supports may be unstable at K = 2, and Brown's approximation can be poor in the far tail.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2007.15147}{A General Framework For Detecting Anomalous Inputs to DNN Classifiers (arXiv 2007.15147)} — layer-wise p-value combination for anomaly detection
+\item \href{https://www.biorxiv.org/content/10.1101/029637.full.pdf}{Combining Dependent P-values with an Empirical Adaptation of Brown's Method} — empirical Brown's method
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination of B1-g2-o6 (Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels); B1-g0-C2 (Empirical p-value fusion across levels and branches (Fisher-MVFA)). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP; PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 1.3 — LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point}
+{\small Novelty: \textbf{2}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{5}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{4}/5 \quad Final score: \textbf{0.675} (rank 4 of 12) \quad Family: Support-standardised score normalisation}\par\smallskip
+\lbl{Summary}Combine bounded leave-one-out z-score fusion of MVFA's two branches with region-mass image aggregation, and derive both pixel and image thresholds from the K support normals only.
+
+\lbl{Hypothesis}Replacing MVFA's test-set min-max fusion and max-pixel image score with LOO-Z fusion plus region-mass pooling keeps image AUROC within 1 point on held-out BMAD modalities (K \textgreater{}= 4), reduces AUROC variability across 50\% test subsamples by at least 3x, and lowers false positives per image at the support-derived threshold by at least 25\%.
+
+\lbl{Rationale}The two parents address the two verified defects of MVFA's few-shot scoring: transductive normalisation (test\_\allowbreak{}few.py:220-241) and max-pixel image scores (test\_\allowbreak{}few.py:228). Reviews preferred LOO-Z for directly fixing fusion and region mass for a concrete robustness test; the combination keeps MVFA's branches unchanged, so any change in results is attributable to scoring alone. MadCLIP and ReCAP show per-image scoring with bounded references is viable; PSMP-CLIP shows region evidence is more stable than pixel thresholds.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Support statistics: per branch b and level l, mean/std of LOO patch scores of the K support normals (few-shot bank without the scored support); sigma floored at 1e-3; pooled over patches.
+\item Test: z\_\allowbreak{}bl = clip((s\_\allowbreak{}bl - mu\_\allowbreak{}bl)/sigma\_\allowbreak{}bl, -3, 6), Z\_\allowbreak{}b = sum\_\allowbreak{}l z\_\allowbreak{}bl, F = w\_\allowbreak{}zero Z\_\allowbreak{}zero + w\_\allowbreak{}few Z\_\allowbreak{}few with inverse-variance weights from support LOO image scores.
+\item Pixel threshold t\_\allowbreak{}pix = 99th percentile of support LOO fused pixels; image score = max over 8-connected components of F \textgreater{} t\_\allowbreak{}pix of mean(F\_\allowbreak{}c) * log(1 + |c|), 0 if none.
+\item Image threshold = 95th percentile of support LOO image scores.
+\item Code: new module scoring.py with fit\_\allowbreak{}support\_\allowbreak{}stats(), fuse(), region\_\allowbreak{}mass(); test\_\allowbreak{}few.py calls them per image.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD leave-one-modality-out (RESC and OCT17 held out together); MVFA checkpoints selected on source-modality validation splits and the MVFA baseline re-run the same way; K in \{2,4,8,16\}; 3 seeds x 3 support draws, mean and std. Baselines: transductive MVFA; LOO-Z + max; LOO-Z + top-2\%; raw sum + region mass. Ablations: clipping bounds, weight rule, t\_\allowbreak{}pix percentile. Metrics: image/pixel AUROC, PRO, sensitivity/specificity/F1 at the support threshold, FP per image, AUROC std over 20 subsamples and at 10\%/50\% prevalence. Falsification: AUROC loss \textgreater{} 2 points or no stability gain.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (2)}: Normalising anomaly scores with held-out normal statistics is standard practice in tooling such as Anomalib, and leave-one-out calibration of anomaly detectors exists; the contribution is applying it to MVFA, not a new technique.
+\item \textbf{Feasibility (5)}: Inference-only with a small new module.
+\item \textbf{Clarity (5)}: Exceptionally clear: statistics, clipping, weights, pooling, thresholds and stability analyses are fully specified.
+\item \textbf{Impact (4)}: Directly removes both verified scoring defects and quantifies how much published few-shot numbers depend on test-set composition.
+\item \textbf{Validity (4)}: Sound and assumption-light; Gaussian z-scores are a rough tail approximation but adequate for ranking.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://anomalib.readthedocs.io/en/latest/markdown/guides/how_to/models/post_processor.html}{Anomalib post-processing guide} — standard tooling normalises scores with validation-set statistics, not test-set statistics
+\item \href{https://arxiv.org/pdf/2606.29506}{Benchmark AUC Is Not Deployable Reliability (arXiv 2606.29506)} — audit showing benchmark AUC does not imply deployable reliability
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination of B1-g0-C5 (Region-mass aggregation: scoring images by their strongest coherent anomalous region); B1-g0-C1 (Bounded leave-one-out z-score fusion (LOO-Z) for per-image MVFA scoring). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP; PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 1.4 — FDR-controlled anomaly maps: Benjamini-Yekutieli discoveries per image from support-anchored pixel p-values}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{3}/5 \quad Final score: \textbf{0.671} (rank 5 of 12) \quad Family: Statistical decision guarantees and uncertainty}\par\smallskip
+\lbl{Summary}Treat every patch of a test image as a hypothesis test against the support normals, apply the Benjamini-Yekutieli procedure (valid under dependence) at a target false discovery rate, and score the image by the mass of discovered patches.
+
+\lbl{Hypothesis}At q = 0.1, the proportion of discovered patches that fall outside true lesions on held-out BrainMRI, LiverCT and RESC images stays at or below 0.15, and the image score 'discovered mass' achieves image AUROC within 1 point of harmonic-mean fusion with region pooling.
+
+\lbl{Rationale}The parent controls error at the image level, but its pixel threshold for regions (99th percentile of support maps) has no statistical meaning. By analogy with voxel-wise inference in neuroimaging, a per-image anomaly map is a multiple-testing problem: hundreds of correlated patch tests, of which a few may be true anomalies. FDR control gives the map itself a guarantee (expected fraction of false patches among flagged ones), which is the clinically relevant quantity for localisation, and the Benjamini-Yekutieli variant holds under arbitrary dependence between neighbouring patches.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Per patch, combined p-value across levels and branches with the harmonic mean (support LOO nulls).
+\item Per image, Benjamini-Yekutieli at q in \{0.05, 0.1, 0.2\} over the 289 patches.
+\item Image score = number of discoveries (or summed -log p over discoveries); image threshold from support LOO images.
+\item Pixel map for evaluation = discoveries upsampled, plus the continuous -log p map for AUROC.
+\item Code: scoring.py by\_\allowbreak{}fdr().
+\end{enumerate}
+
+\lbl{Experiment design}BMAD leave-one-modality-out (RESC and OCT17 held out together); MVFA checkpoints selected on source-modality validation splits and the MVFA baseline re-run the same way; K in \{2,4,8,16\}; 3 seeds x 3 support draws, mean and std. Baselines: harmonic-mean + region mass; Fisher + top-2\%; transductive MVFA. Metrics: realised false discovery proportion of flagged patches (masked datasets), sensitivity per lesion, image AUROC, pixel AUROC, PRO. Falsification: realised FDP above 2q on average.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: Conformal and FDR-controlled segmentation with guarantees exist (industrial defects 2504.17721; medical instance segmentation 2504.04482); the per-image BY procedure on support-anchored p-values for MVFA is an adaptation.
+\item \textbf{Feasibility (5)}: Inference-only; BY on 289 patches is trivial.
+\item \textbf{Clarity (4)}: Clear q levels, statistics and evaluation.
+\item \textbf{Impact (4)}: Gives the anomaly map a clinically meaningful guarantee on flagged regions.
+\item \textbf{Validity (3)}: Patch p-values come from a pooled support null across positions, so exchangeability between support and test patches at different anatomical positions is questionable; BY may be conservative for small lesions.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2504.17721}{Conformal Segmentation in Industrial Surface Defect Detection with Statistical Guarantees} — statistical guarantees for defect segmentation
+\item \href{https://arxiv.org/html/2504.04482v2}{Statistical Management of the False Discovery Rate in Medical Instance Segmentation Based on Conformal Risk Control} — FDR control in medical segmentation
+\end{itemize}
+\lbl{Lineage and provenance}{\small out\_\allowbreak{}of\_\allowbreak{}box of B1-g2-o6 (Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP; PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 1.5 — Episode-calibrated weighted Fisher fusion: learning per-level weights of support p-values on source-modality episodes}
+{\small Novelty: \textbf{4}/5 \quad Feasibility: \textbf{4}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{3}/5 \quad Final score: \textbf{0.611} (rank 6 of 12) \quad Family: Learned calibration from source episodes or synthetic data}\par\smallskip
+\lbl{Summary}Compute per-level, per-branch empirical p-values against the target's support normals (inductive, distribution-free) and combine them with weights and a logistic mapping learned on simulated K-shot episodes from the source modalities' labelled validation images.
+
+\lbl{Hypothesis}Weighted Fisher fusion with episode-learned level/branch weights improves image AUROC by at least 1 point and reduces expected calibration error by at least 25\% relative to unweighted Fisher fusion on held-out BMAD modalities for K \textgreater{}= 4, without any target labels.
+
+\lbl{Rationale}Parent 1 (Fisher) gives every level and branch equal weight although the reviews and MVFA's own ablations suggest levels differ in usefulness; parent 2 (episode calibrator) learns from real source abnormal images but on hand-chosen features. Using the eight -log p terms (4 levels x 2 branches) as the calibrator's features keeps Fisher's distribution-free, support-anchored inputs and lets real labelled source data decide how much each level and branch should count. Because the inputs are p-values relative to each episode's own supports, they are on the same scale across modalities, which addresses the reviewers' concern about cross-modality transfer of the calibrator.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Episodes: for each source modality, 200 episodes of K normal supports (valid/good) and 64 balanced validation images.
+\item For each image, features x = [mean of top-2\% of -log p\_\allowbreak{}bl over pixels] for b in \{zero, few\}, l in 1..4 (8 features), p from LOO support nulls as in Fisher-MVFA.
+\item Logistic regression with non-negative weights (projected gradient), L2 = 1.0, pooled over source episodes.
+\item Target: same features with the target supports; probability p = sigma(w\textasciicircum{}T x + b); threshold at p = 0.5 and at the 95\% support-specificity point.
+\item Code: train\_\allowbreak{}calibrator.py (episodes), scoring.py fisher\_\allowbreak{}features(); no adapter retraining.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD leave-one-modality-out (RESC and OCT17 held out together); MVFA checkpoints selected on source-modality validation splits and the MVFA baseline re-run the same way; K in \{2,4,8,16\}; 3 seeds x 3 support draws, mean and std. Baselines: unweighted Fisher; episode calibrator on raw score features; LOO-Z. Ablations: non-negativity constraint; per-level vs per-branch weights only. Metrics: AUROC, ECE, Brier, sensitivity/specificity at both thresholds; learned weights per held-out fold (interpretability). Falsification: no AUROC or ECE gain over unweighted Fisher.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (4)}: Episodic few-shot adaptation exists in other anomaly detection domains (audio), but learning p-value weights from simulated source-modality episodes for medical VLM detectors was not found.
+\item \textbf{Feasibility (4)}: Requires scoring many source episodes; moderate compute but feasible on one GPU.
+\item \textbf{Clarity (4)}: Clear features, constraints and thresholds.
+\item \textbf{Impact (4)}: Uses real labelled source data to calibrate, potentially improving both AUROC and calibration.
+\item \textbf{Validity (3)}: Assumes calibration relationships transfer from source to unseen modalities; non-negative weights over correlated -log p terms may be unstable.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2204.01905}{Learning to Adapt to Domain Shifts with Few-shot Samples in Anomalous Sound Detection} — episodic few-shot adaptation for anomaly detection (audio)
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination of B1-g1-o4 (Episode-trained fusion calibrator: learning how to fuse MVFA's branches from simulated few-shot episodes on source modalities); B1-g0-C2 (Empirical p-value fusion across levels and branches (Fisher-MVFA)). Builds on: Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection; Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection.}
+\end{ideabox}
+\section{Ideas for Problem 2}
+HypoEvolve produced 24 candidate ideas for this problem (6 HypER seeds and 18 offspring over three generations, 168 pairwise judgments). The table ranks the twelve highest-fitness candidates on the five criteria (1–5); Mean is the review mean, Fit. the Bradley–Terry fitness, Final = 0.7 $\times$ normalised review mean + 0.3 $\times$ normalised fitness. Stars mark the five selected ideas.
+{\small\setlength{\tabcolsep}{4pt}\begin{longtable}{@{}r >{\raggedright\arraybackslash}p{8.4cm} ccccc c r r@{}}
+\toprule
+\# & Idea & Nov & Fea & Cla & Imp & Val & Mean & Fit. & Final\\\midrule\endhead
+1 & $\bigstar$ Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled {\footnotesize\color{muted}[A1-g2-o6]} & 4 & 4 & 4 & 4 & 4 & 4.0 & 123.6 & 0.825\\
+2 & $\bigstar$ Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters {\footnotesize\color{muted}[A1-g0-C1]} & 3 & 5 & 5 & 4 & 4 & 4.2 & 104.9 & 0.755\\
+3 & $\bigstar$ Bank-informed positive-unlabelled learning: patch-specific class priors from position-aware normal-bank distances {\footnotesize\color{muted}[A1-g3-o3]} & 4 & 3 & 3 & 4 & 3 & 3.4 & 114.6 & 0.669\\
+4 & $\bigstar$ Bank-gated asymmetric MIL: positives must be both text-abnormal and unlike any normal patch of the dataset {\footnotesize\color{muted}[A1-g3-o5]} & 3 & 4 & 4 & 4 & 4 & 3.8 & 102.1 & 0.669\\
+5 & $\bigstar$ Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches {\footnotesize\color{muted}[A1-g1-o1]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 92.0 & 0.612\\
+6 & Cross-image MIL ranking for mask-free segmentation, borrowed from weakly supervised video anomaly detection {\footnotesize\color{muted}[A1-g1-o6]} & 3 & 5 & 4 & 4 & 4 & 4.0 & 84.5 & 0.605\\
+7 & Optimal-transport label assignment of abnormal mass to patches under a lesion-fraction budget {\footnotesize\color{muted}[A1-g3-o6]} & 4 & 4 & 4 & 3 & 3 & 3.6 & 87.0 & 0.549\\
+8 & Position-aware normal-bank pseudo-masks: matching each patch only to normal patches from the same anatomical neighbourhood {\footnotesize\color{muted}[A1-g2-o4]} & 2 & 4 & 4 & 3 & 3 & 3.2 & 96.9 & 0.535\\
+9 & Counterfactual patch replacement: learning where anomalies are from which patches, when replaced by normal tissue, flip the image decision {\footnotesize\color{muted}[A1-g1-o4]} & 4 & 4 & 4 & 3 & 3 & 3.6 & 75.8 & 0.486\\
+10 & Adversarial erasing for full lesion extent: iterative MIL that must still find the anomaly after its most obvious part is erased {\footnotesize\color{muted}[A1-g2-o5]} & 3 & 4 & 4 & 3 & 4 & 3.6 & 70.3 & 0.455\\
+11 & Noisy-label learning with small-loss selection: all abnormal-image patches as noisy positives {\footnotesize\color{muted}[A1-g3-o2]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 76.4 & 0.454\\
+12 & Attribution-proposed, counterfactual-verified pseudo-masks for mask-free segmentation adapters {\footnotesize\color{muted}[A1-g2-o3]} & 3 & 3 & 4 & 3 & 4 & 3.4 & 70.3 & 0.420\\
+\bottomrule
+\end{longtable}}
+\begin{ideabox}{Idea 2.1 — Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled}
+{\small Novelty: \textbf{4}/5 \quad Feasibility: \textbf{4}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{4}/5 \quad Final score: \textbf{0.825} (rank 1 of 12) \quad Family: Prior-based patch label estimation (PU, OT assignment, noisy labels)}\par\smallskip
+\lbl{Summary}Recast mask-free training of MVFA's segmentation adapters as positive-unlabelled (PU) learning at the patch level, using the non-negative PU risk estimator with a per-dataset class prior (expected lesion fraction) estimated from image-labelled data.
+
+\lbl{Hypothesis}Non-negative PU learning with an estimated patch-level class prior retains at least 85\% of mask-supervised MVFA's held-out pixel-AUROC margin over chance and outperforms asymmetric top-k MIL by at least 1.5 pixel-AUROC points, because it uses every patch of abnormal images rather than only the top-k.
+
+\lbl{Rationale}The parent's key insight — every patch of a normal image is normal — is exactly the labelled side of a PU problem: here the known class is 'normal' (labelled negatives) and abnormal images contribute an unlabelled mixture of normal and abnormal patches. PU learning theory gives an unbiased risk estimator for this setting once the mixture proportion (the fraction of anomalous patches in abnormal images) is known; MIL's top-k is a heuristic stand-in for that proportion. The proportion can be estimated without masks by mixture proportion estimation between normal-image and abnormal-image patch score distributions.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Patch classifier = MVFA's segmentation-branch patch-text logit z = t(cos(f, T\_\allowbreak{}abn) - cos(f, T\_\allowbreak{}nor)) + b.
+\item Class prior pi\_\allowbreak{}d for each source dataset d: mixture proportion estimation (best-bin estimator) on the zero-shot patch scores of normal vs abnormal images.
+\item nnPU loss: with N = normal-image patches (labelled 'normal') and U = abnormal-image patches with mixing weight pi, R = (1 - pi) E\_\allowbreak{}N[l(z, normal)]... implemented with the standard nnPU estimator (Kiryo et al.) where the negative class is labelled, max(0, ...) correction on the unlabelled term.
+\item Sigmoid loss, lr 1e-4, 50 epochs; balanced batches of 4 normal + 4 abnormal images from the same dataset.
+\item Code: loss.py nnpu\_\allowbreak{}loss(); estimate\_\allowbreak{}prior.py; train\_\allowbreak{}zero.py.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: asymmetric SigLIP-MIL; top-k MIL; mask-supervised MVFA. Ablations: prior misspecification (x0.5, x2); estimated vs oracle prior (from masks, analysis only). Metrics: held-out pixel AUROC, PRO, image AUROC; prior estimation error (analysis). Falsification: no gain over asymmetric MIL.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (4)}: PU learning is established theory, but the search found no application to patch-level supervision of CLIP-based medical anomaly segmentation; framing normal-image patches as labelled negatives and abnormal-image patches as unlabelled is a well-differentiated perspective relative to MIL heuristics.
+\item \textbf{Feasibility (4)}: Requires a mixture-proportion estimate per dataset and balanced batches (MVFA trains with batch size 1), both manageable on one GPU; nnPU is a short loss function.
+\item \textbf{Clarity (4)}: The overall procedure is clear, but the risk expression in step 3 is left half-written and deferred to 'the standard estimator'; the prior-estimation step and balanced batching are well specified.
+\item \textbf{Impact (4)}: If it works, localisation becomes trainable from image labels with a principled objective that also applies to other CLIP adapters.
+\item \textbf{Validity (4)}: Sound formulation that matches the data structure; the main validity risk is bias in the estimated class prior for small lesions, which the prior-misspecification ablation addresses.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2306.03407}{LESS: Label-efficient Multi-scale Learning for Cytological Whole Slide Image Screening} — weak (slide-level) supervision with MIL in pathology; not PU at patch level
+\item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11997483/}{A recent survey on instance-dependent positive and unlabeled learning} — PU theory; no application to CLIP-based medical anomaly segmentation found
+\end{itemize}
+\lbl{Lineage and provenance}{\small out\_\allowbreak{}of\_\allowbreak{}box of A1-g0-C1 (Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 2.2 — Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{5}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{4}/5 \quad Final score: \textbf{0.755} (rank 2 of 12) \quad Family: Patch-level MIL objectives}\par\smallskip
+\lbl{Summary}Train MVFA's segmentation adapters from image labels only: every patch of a normal image is pushed to the normal anchor and the top-2\% patches of an abnormal image to the abnormal anchor, with a sigmoid (SigLIP-style) patch-text loss at all four levels.
+
+\lbl{Hypothesis}Asymmetric SigLIP-MIL training on image labels from all five source datasets retains at least 80\% of mask-supervised MVFA's zero-shot pixel-level AUROC margin over chance ((AUROC - 0.5) ratio) on held-out BrainMRI, LiverCT and RESC, and outperforms symmetric top-k MIL (same k for both classes) by at least 2 pixel-AUROC points.
+
+\lbl{Rationale}A normal image carries a pixel-level label for free: every one of its patches is normal. Only abnormal images are ambiguous. MVFA's segmentation branch ignores this and needs masks for both. An asymmetric objective supervises all patches of normal images directly and only the most anomalous patches of abnormal images (multiple-instance), using the SigLIP many-to-one patch-text loss that MadCLIP brought to medical AD.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item train\_\allowbreak{}zero.py: replace the seg\_\allowbreak{}loss block (Focal + Dice, only if seg\_\allowbreak{}idx \textgreater{}
+\item with asym\_\allowbreak{}mil\_\allowbreak{}loss(seg\_\allowbreak{}patch\_\allowbreak{}tokens, text\_\allowbreak{}feature, image\_\allowbreak{}label) applied to every image regardless of seg\_\allowbreak{}idx.
+\item New function in loss.py: asym\_\allowbreak{}mil\_\allowbreak{}loss computes per-level cosines (tokens L2-normalised as in MVFA), logits with learnable t (init
+\item and b (init -5) (nn.Parameters added to the seg optimizer), normal images: all patches; abnormal images: top-k positive term + 0.1 x bottom-50\% negative term; sum over the four levels.
+\item The detection branch keeps its mean-pooled BCE.
+\item Hyper-parameters: k = 6 (ablations 3, 12, 29), Adam lr 1e-4 as in the released zero-shot script, 50 epochs, batch size 1 as in the code (ablation: 16 with gradient accumulation, the paper's value).
+\item Inference unchanged (test\_\allowbreak{}zero.py).
+\end{enumerate}
+
+\lbl{Experiment design}Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA (reference); symmetric top-k MIL; mean-pooled BCE on the seg branch (MVFA's detection loss applied to segmentation). Ablations: k; bottom-50\% term on/off; SigLIP vs. softmax-CE patch loss; which levels receive the loss. Metrics: pixel AUROC, PRO, image AUROC, (AUROC-0.5) retention ratio. Falsification: retention below 60\% or no gain over symmetric MIL.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: MIL-based weakly supervised lesion segmentation exists (e.g. FMaMIL), and treating normal-image patches as negatives is natural; the SigLIP patch loss and the cross-modality zero-shot setting give moderate novelty.
+\item \textbf{Feasibility (5)}: A single loss replacement in train\_\allowbreak{}zero.py with standard hyper-parameters; highly feasible.
+\item \textbf{Clarity (5)}: Exceptionally precise: logits, normal and abnormal terms, k, weights, levels, optimiser and ablations are all specified.
+\item \textbf{Impact (4)}: Directly removes MVFA's dependence on masks for localisation; a clear baseline for the whole direction.
+\item \textbf{Validity (4)}: Sound and directly aligned with the verified seg-loss limitation; top-k selection can pick salient normal anatomy, which is acknowledged through ablations.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2506.07652}{FMaMIL: Frequency-Driven Mamba Multi-Instance Learning for Weakly Supervised Lesion Segmentation in Medical Images} — MIL-based weakly supervised lesion segmentation (not CLIP, not cross-modality zero-shot)
+\item \href{https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/}{Anomaly guided weakly supervised lesion segmentation on retinal OCT} — weak supervision for OCT lesions within one modality
+\item \href{https://arxiv.org/pdf/2603.17325}{MedSAD-CLIP (arXiv 2603.17325)} — supervised CLIP adaptation with labelled abnormal data; opposite direction
+\end{itemize}
+\lbl{Lineage and provenance}{\small HypER seed (chain C1). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 2.3 — Bank-informed positive-unlabelled learning: patch-specific class priors from position-aware normal-bank distances}
+{\small Novelty: \textbf{4}/5 \quad Feasibility: \textbf{3}/5 \quad Clarity: \textbf{3}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{3}/5 \quad Final score: \textbf{0.669} (rank 3 of 12) \quad Family: Prior-based patch label estimation (PU, OT assignment, noisy labels)}\par\smallskip
+\lbl{Summary}Train MVFA's segmentation adapters with non-negative PU learning, but replace the single dataset-level class prior with patch-specific priors derived from position-aware normal-bank distances, so likely-lesion patches carry more of the unlabelled positive mass.
+
+\lbl{Hypothesis}Patch-specific priors improve held-out pixel AUROC by at least 1 point and PRO by at least 2 points over PU learning with a single dataset-level prior, and the combined method retains at least 85\% of mask-supervised MVFA's pixel-AUROC margin over chance.
+
+\lbl{Rationale}Parent 1 (PU learning) uses every patch of abnormal images but treats them as exchangeable, with one class prior per dataset, which reviewers flagged as fragile for small lesions; parent 2 (position-aware bank) provides a per-patch, anatomy-aware estimate of how unusual each patch is. Weighted PU risk estimators accept instance-dependent priors, so the bank's evidence can be injected in a principled way, keeping a single training objective.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Position-aware bank distances d\_\allowbreak{}j per abnormal-image patch (radius 2, 20\% coreset per position).
+\item Patch prior pi\_\allowbreak{}j = pi\_\allowbreak{}d * softmax\_\allowbreak{}j(d\_\allowbreak{}j / T) * N\_\allowbreak{}patches, clipped to [0, 0.9], where pi\_\allowbreak{}d is the dataset-level prior from mixture proportion estimation and T is chosen so the mean prior equals pi\_\allowbreak{}d.
+\item Weighted nnPU loss with instance priors (negatives labelled: normal-image patches).
+\item Balanced batches (4 normal + 4 abnormal, same dataset); lr 1e-4, 50 epochs.
+\item Code: estimate\_\allowbreak{}prior.py, make\_\allowbreak{}banks.py, loss.py weighted\_\allowbreak{}nnpu().
+\end{enumerate}
+
+\lbl{Experiment design}BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: PU with a single prior; position-aware bank pseudo-masks; asymmetric MIL; mask-supervised MVFA. Ablations: temperature T; radius. Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: no gain over single-prior PU.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (4)}: Instance-dependent priors exist in PU theory, and memory banks are common, but their combination for mask-free medical segmentation was not found.
+\item \textbf{Feasibility (3)}: Combines position-aware banks, prior estimation and weighted nnPU; feasible but heavier engineering and more hyper-parameters (temperature, clipping, radius).
+\item \textbf{Clarity (3)}: The prior construction (softmax over bank distances rescaled to the dataset prior, then clipped) is described but somewhat ad hoc and not fully justified.
+\item \textbf{Impact (4)}: Potentially sharper localisation than single-prior PU, especially for small lesions.
+\item \textbf{Validity (3)}: Bank-derived priors are themselves noisy estimates; using them as instance priors can bias the risk estimator, and unbiasedness of the weighted nnPU under estimated instance priors is not argued.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11997483/}{A recent survey on instance-dependent positive and unlabeled learning} — instance-dependent PU exists as theory
+\item \href{https://www.ijcai.org/proceedings/2020/279}{Positive Unlabeled Learning with Class-prior Approximation (IJCAI 2020)} — class-prior estimation for PU
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination of A1-g2-o6 (Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled); A1-g2-o4 (Position-aware normal-bank pseudo-masks: matching each patch only to normal patches from the same anatomical neighbourhood). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection; Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection.}
+\end{ideabox}
+\begin{ideabox}{Idea 2.4 — Bank-gated asymmetric MIL: positives must be both text-abnormal and unlike any normal patch of the dataset}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{4}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{4}/5 \quad Final score: \textbf{0.669} (rank 4 of 12) \quad Family: Patch-level MIL objectives}\par\smallskip
+\lbl{Summary}In asymmetric SigLIP-MIL, choose the positive patches of an abnormal image only among those that the dataset's normal-patch bank also flags as unusual, and use the bank distance as a soft target weight, combining text-based and memory-based evidence from image labels.
+
+\lbl{Hypothesis}Gating MIL positives with normal-bank distance increases held-out PRO by at least 2 points over asymmetric MIL alone and over normal-bank pseudo-masks alone, while retaining at least 85\% of mask-supervised MVFA's pixel-AUROC margin over chance.
+
+\lbl{Rationale}The reviews ranked these two parents highest but noted complementary failure modes: MIL can select salient normal structures that align with the abnormal text anchor, and bank distances can flag normal anatomical variability. A patch flagged by both is far more likely to be a lesion. The combination keeps a single loss and uses the bank only for selection and weighting, so its cost is close to that of either parent.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item Build per-dataset normal coreset banks (10\%) of frozen level-3 tokens from image-labelled normal training images; bank distance d\_\allowbreak{}j = 1 - max cosine.
+\item For each abnormal image, candidate set = patches with d\_\allowbreak{}j above the dataset's normal 95th percentile; MIL positives = top-k (k =
+\item by segmentation probability within the candidate set (fall back to global top-k if fewer than k candidates).
+\item Positive term weighted by w\_\allowbreak{}j = d\_\allowbreak{}j / max d.
+\item Normal images: all-patches-normal SigLIP term.
+\item Code: make\_\allowbreak{}banks.py; loss.py gated\_\allowbreak{}asym\_\allowbreak{}mil(); train\_\allowbreak{}zero.py; lr 1e-4, 50 epochs.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: asymmetric MIL; normal-bank pseudo-masks; mask-supervised MVFA. Ablations: gating percentile; with/without soft weights; bank level. Metrics: held-out pixel AUROC, PRO, image AUROC; precision of selected positives (analysis). Falsification: no PRO gain over both parents.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: Gating MIL positives with memory-bank evidence is a sensible combination of known components; related pixel-labelling-efficiency work exists in industrial AD.
+\item \textbf{Feasibility (4)}: Requires per-dataset banks and a gated loss; straightforward.
+\item \textbf{Clarity (4)}: Gating rule, fallback and weighting are clearly specified.
+\item \textbf{Impact (4)}: Likely to reduce MIL's selection of salient normal structures, improving PRO.
+\item \textbf{Validity (4)}: Agreement of two independent evidence sources is a well-founded way to raise positive precision.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2407.03130}{Towards Efficient Pixel Labeling for Industrial Anomaly Detection and Localization} — reducing pixel-labelling effort in industrial AD
+\item \href{https://arxiv.org/pdf/2504.11895}{Search is All You Need for Few-shot Anomaly Detection} — nearest-neighbour memory search for few-shot AD (inference, not training a segmenter)
+\end{itemize}
+\lbl{Lineage and provenance}{\small combination of A1-g0-C1 (Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters); A1-g1-o1 (Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches). Builds on: MadCLIP: Few-shot Medical Anomaly Detection with CLIP; Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP.}
+\end{ideabox}
+\begin{ideabox}{Idea 2.5 — Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches}
+{\small Novelty: \textbf{3}/5 \quad Feasibility: \textbf{5}/5 \quad Clarity: \textbf{4}/5 \quad Impact: \textbf{4}/5 \quad Validity: \textbf{3}/5 \quad Final score: \textbf{0.612} (rank 5 of 12) \quad Family: Normal-reference pseudo-masks}\par\smallskip
+\lbl{Summary}Use the image labels of each source dataset to build a memory bank of its normal patches, mark patches of its abnormal images that are far from every normal patch as pseudo-anomalous, and train MVFA's segmentation adapters with Dice and Focal on these pseudo-masks.
+
+\lbl{Hypothesis}Pseudo-masks from k-nearest-neighbour distance to a source dataset's own normal-patch bank reach at least 0.4 pixel-level IoU with true masks on BrainMRI, LiverCT and RESC training images, and segmentation adapters trained on them for all five source datasets retain at least 80\% of mask-supervised MVFA's zero-shot pixel-AUROC margin over chance on the held-out modality.
+
+\lbl{Rationale}Parent 1 creates pseudo-masks from the detection branch, which reviewers doubted localises well because it is mean-pooled; parent 2 sharpens the text reference. A different source of localisation is already implicit in image labels: within one dataset, the normal images define what normal tissue looks like, so an abnormal image's patches that have no close normal neighbour are anomalous. This is MVFA's own few-shot memory-bank principle (1 - max cosine to normal patches), applied offline to the source data at scale to manufacture dense supervision for the segmentation branch.
+
+\lbl{Method}\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item New script make\_\allowbreak{}bank\_\allowbreak{}masks.py: for each source dataset, extract frozen CLIP ViT-L/14 patch tokens at the four MVFA levels for all normal training images (coreset-subsample to 10\% with greedy k-center, as in PatchCore); for each abnormal training image compute per-patch score = mean over levels of (1 - max cosine to the bank); pseudo-mask = patches above the 99th percentile of the same score on held-out normal images of that dataset, restricted to the foreground (Otsu), upsampled to 240x240.
+\item train\_\allowbreak{}zero.py: segmentation loss = Focal + Dice on pseudo-masks for every source image (normal images: empty mask); true masks are never loaded.
+\item Hyper-parameters as MVFA (lr 1e-4, 50 epochs, batch size 1); coreset ratio and percentile as ablations.
+\end{enumerate}
+
+\lbl{Experiment design}BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; detection-to-segmentation pseudo-masks; asymmetric SigLIP-MIL. Ablations: bank features (frozen CLIP vs. adapted), percentile (97/99/99.5), coreset ratio. Metrics: pseudo-mask IoU and precision (analysis only, on datasets with masks), held-out pixel AUROC, PRO, image AUROC. Falsification: pseudo-mask IoU below 0.25 or retention below 60\%.
+
+\lbl{Reviewer assessment}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \textbf{Novelty (3)}: Memory-bank localisation is standard (PatchCore-style); using it offline to create pseudo-masks for training a CLIP segmentation branch from image labels is a moderately new use.
+\item \textbf{Feasibility (5)}: Offline feature extraction and coreset search on source datasets; very feasible.
+\item \textbf{Clarity (4)}: Clear procedure with thresholds defined on held-out normal images.
+\item \textbf{Impact (4)}: Simple, model-agnostic way to obtain dense supervision without masks.
+\item \textbf{Validity (3)}: Frozen-CLIP nearest-neighbour distances may not localise subtle medical lesions; the falsification threshold on pseudo-mask IoU is a good safeguard.
+\end{itemize}
+\lbl{Closest prior work found (novelty search)}\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item \href{https://arxiv.org/pdf/2407.03130}{Towards Efficient Pixel Labeling for Industrial Anomaly Detection and Localization} — pixel-label efficiency in industrial AD
+\item \href{https://arxiv.org/pdf/2412.20870}{SoftPatch+: Fully Unsupervised Anomaly Classification and Segmentation} — patch-level memory banks with noisy (unlabelled) training data
+\end{itemize}
+\lbl{Lineage and provenance}{\small inspiration of A1-g0-C2 (Detection-to-segmentation pseudo-mask self-distillation); A1-g0-C5 (Two-stage anomaly-aware anchors then patch MIL, all from image labels). Builds on: Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection; AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP; PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection.}
+\end{ideabox}
+\section{Limitations of this study}
+\begin{itemize}[leftmargin=1.2em]
+\item The same model generated and judged ideas (as in ResearchAgent and HypoEvolve). The judging steps can be repeated with an independent model (e.g. Llama-70B on Groq) by a provided script, and the explorer page collects human ratings to measure human–model agreement as ResearchAgent did.
+\item Pairwise comparisons show each pair once, as in HypoEvolve; position bias is not corrected. A both-orders variant is implemented behind a switch.
+\item HypER's distilled small model was not trained; its chain construction and relevance scoring were run with a large model, as the authors did to create their training data.
+\item Novelty was checked with a literature search per idea, not by experiments; ideas whose core statistical tools exist elsewhere received lower novelty scores accordingly.
+\item No idea has been run yet; every hypothesis states the result that would falsify it, to be tested in the next assignment.
+\end{itemize}
+\section*{References}
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt]
+\item C. Huang et al. Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical Images. CVPR 2024. \href{https://github.com/MediaBrain-SJTU/MVFA-AD}{Code}.
+\item J. Baek et al. ResearchAgent: Iterative Research Idea Generation over Scientific Literature with Large Language Models. \href{https://arxiv.org/pdf/2404.07738}{arXiv:2404.07738}.
+\item R. Vasu et al. HypER: Literature-grounded Hypothesis Generation and Distillation with Provenance. EMNLP 2025. \href{https://arxiv.org/pdf/2506.12937}{arXiv:2506.12937}.
+\item J. Liu et al. HypoEvolve: Genetic Algorithms Enable Multi-Agent LLMs to Discover Scientific Hypotheses. \href{https://arxiv.org/pdf/2609.15938}{arXiv:2609.15938}.
+\item Prior work cited in the idea boxes is linked inline.
+\end{enumerate}
+
+\end{document}

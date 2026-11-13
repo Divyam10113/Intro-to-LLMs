@@ -1,0 +1,272 @@
+{
+ "problems": [
+  "B1",
+  "A1"
+ ],
+ "seeds": [
+  {
+   "id": "B1-C1",
+   "problem": "B1",
+   "chain": "C1",
+   "chain_papers": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP": "Builds on the source paper's vision-encoder adapters for few-shot medical AD but removes the memory bank and fuses nothing transductively: normal and abnormal evidence come from dual adapter branches scored against learnable prompts with a SigLIP loss. Relevant because it shows that per-image scoring without test-set statistics is achievable for this family of models.",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection": "Builds on MadCLIP-style fixed references by re-centring normal/abnormal prototypes per image with a bounded gated modulation and adds a non-parametric normal-reference memory for few-shot. The key transferable insight is boundedness: per-image adaptation must be constrained to avoid drift."
+   },
+   "rationale": "The chain moves from MVFA's transductive fusion (test-set min-max, fixed 0.5) to methods that score each image against references only (MadCLIP) and that bound how far a per-image adjustment can move (ReCAP). The missing step for MVFA is to replace test-set statistics with reference statistics from the K normal supports and to bound each branch's contribution so neither dominates, which yields a deployable per-image score and a threshold that can be set before seeing target labels.",
+   "title": "Bounded leave-one-out z-score fusion (LOO-Z) for per-image MVFA scoring",
+   "summary": "Standardise MVFA's zero-shot and few-shot maps with leave-one-out statistics of the K support normals, clip them to a bounded range, fuse with inverse-variance weights and pool the top 2% pixels, so every image is scored on its own.",
+   "research_idea": "Independent variable: the fusion rule (transductive test-set min-max + 0.5 sum vs. LOO-Z). LOO-Z computes, for each branch b in {zero, few} and level l, the mean and standard deviation of patch scores of the K support normals, where the few-shot score of support i is computed against a memory bank built from the other K-1 supports (leave-one-out) and the zero-shot score uses the text anchors as usual. Each test patch score is converted to z = (s - mu_bl)/sigma_bl, clipped to [-3, 6] (bounded drift), summed over levels, and the two branches are combined with weights w_b proportional to 1/Var(LOO image scores of branch b). The image score is the mean of the top 2% fused pixels. Dependent variables: image-/pixel-level AUROC, sensitivity/specificity/F1 at the threshold tau = 95th percentile of support LOO image scores, ECE of the logistic-mapped score, and the stability of AUROC under test-set subsampling and prevalence shift.",
+   "hypothesis": "On held-out BMAD modalities with K >= 4, LOO-Z fusion achieves image- and pixel-level AUROC within 1 point of MVFA's transductive fusion while its AUROC varies at least 3x less across random 50% test subsamples and 10%/50% prevalence resamples, and its support-derived threshold yields realised specificity within 5 points of the nominal 95%.",
+   "method": "1) test_few.py: refactor scoring into score_image(x, supports) that never touches other test images. 2) Support statistics (new function support_stats in utils.py): for each support normal i, build memory banks from the other K-1 supports at each level l (det and seg tokens as in MVFA), compute few-shot patch scores 1 - max cos; compute zero-shot patch scores softmax(100 * f_l @ T)[abnormal]; store mu_bl, sigma_bl (sigma floored at 1e-3) and the LOO image scores. For K=2 the LOO bank contains a single image; statistics are pooled over all 289 patches x 4 levels so they remain defined. 3) For a test image: z_bl = clip((s_bl - mu_bl)/sigma_bl, -3, 6); Z_b = sum_l z_bl upsampled to 240x240; F = w_zero Z_zero + w_few Z_few with w_b = (1/v_b)/(1/v_zero + 1/v_few), v_b the variance of branch b's LOO image scores. 4) Image score = mean of top 2% of F (about 1,150 of 57,600 pixels; ablations: max, mean, top 1%, top 5%). 5) Threshold tau = 95th percentile of support LOO image scores; probability via Platt mapping fitted on support LOO scores with pseudo-negatives only is not identifiable, so ECE is computed after mapping p = sigmoid((score - tau)/s) with s = support score IQR. 6) No training changes; reuse MVFA checkpoints trained under the shared protocol.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: MVFA transductive fusion (released code); MVFA with per-image fusion but no normalisation (raw sum); LOO-Z without clipping; LOO-Z with equal weights. Ablations: aggregation operator; K. Metrics: image AUROC, pixel AUROC, PRO; sensitivity, specificity, F1 at tau; ECE; AUROC standard deviation over 20 random 50% test subsamples and under prevalence resampling to 10% and 50% abnormal. Falsification: if LOO-Z loses more than 2 AUROC points on average, or its AUROC is not more stable than the transductive fusion, the hypothesis is rejected.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C2",
+   "problem": "B1",
+   "chain": "C2",
+   "chain_papers": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection": "Directly extends the source paper's multi-level residual adapters (plus a ConvTokenizer) and inherits its scoring, including the per-level summation of maps; it shows that the four levels carry complementary evidence of different scale, which is what a principled cross-level combination must preserve."
+   },
+   "rationale": "MVFA and MLCA add the four levels' raw maps and then min-max them over the test set; levels have different score scales, so the sum is dominated by whichever level has the largest spread. Converting every level and branch score into an empirical tail probability against the support normals puts all evidence on a common, calibrated scale and makes the combination inductive.",
+   "title": "Empirical p-value fusion across levels and branches (Fisher-MVFA)",
+   "summary": "Turn each level/branch patch score into an empirical p-value against support-normal LOO scores and combine them with Fisher's method, giving a per-image, distribution-free anomaly statistic and a principled threshold.",
+   "research_idea": "Independent variable: combination rule (raw sum + test-set min-max vs. empirical p-value fusion). For each branch b and level l, the null distribution is the set of LOO patch scores of the K support normals. A test patch score s gets p_bl = (1 + #{null >= s}) / (1 + N_null). The fused pixel statistic is X = -2 * sum_{b,l} log p_bl (Fisher), and the image statistic is the mean of the top 2% pixels of X. Because X is built from tail probabilities, a threshold can be read from the support LOO image statistics. Dependent variables: AUROC (image, pixel), PRO, thresholded sensitivity/specificity/F1, ECE, and per-level contribution analysis.",
+   "hypothesis": "On held-out BMAD modalities, Fisher p-value fusion matches MVFA's transductive fusion within 1 AUROC point for K >= 4, and its support-derived threshold achieves a realised false-positive rate within 5 points of nominal, whereas a raw-sum per-image fusion without test-set normalisation loses at least 3 AUROC points.",
+   "method": "1) utils.py: add null_scores(supports) returning, per branch and level, the sorted 1-D array of LOO patch scores (K x 289 values) and empirical_p(s, null) via np.searchsorted. 2) test_few.py: for each test image compute p_bl for all 289 patches at each of 4 levels and 2 branches, X_patch = -2 sum log p (16 x 16-bit floats per patch), bilinearly upsample X to 240x240; image score = mean of top 2%. 3) Ties and extreme scores: p is floored at 1/(1+N_null), so X is bounded. 4) Threshold: 95th percentile of the support LOO image statistics. 5) Variant: weighted Fisher with level weights estimated from the separability of LOO normals vs. the other branch (no target labels). 6) No retraining.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: transductive MVFA fusion; per-image raw sum; LOO-Z (z-score fusion) as a parametric alternative. Ablations: Fisher vs. Stouffer vs. min-p combination; per-level vs. all-level null pools; aggregation operator. Metrics as in the problem. Falsification: AUROC loss above 2 points or realised FPR deviating by more than 10 points from nominal.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C3",
+   "problem": "B1",
+   "chain": "C3",
+   "chain_papers": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection": "Uses MVFA-AD as the downstream detector and improves it by synthesising abnormal exemplars that match each institution's style; the transferable finding is that site-specific synthetic abnormal data can stand in for missing real abnormal data at a new site."
+   },
+   "rationale": "A per-image score needs not only a normal reference (support normals) but also an estimate of what abnormal scores look like at the target site to set a meaningful threshold and to calibrate probabilities. Fed-LoRA shows synthetic abnormal exemplars tailored to a site are useful for MVFA; cheap synthetic anomalies created on the K support normals can provide the abnormal side of a calibration set without any target labels.",
+   "title": "Support-synthesised Platt calibration for inductive MVFA fusion",
+   "summary": "Create synthetic anomalies on the K support normals, fit a two-feature logistic calibrator (zero-shot and few-shot image scores) on support normals versus their synthetic versions, and use it to score each test image without test-set statistics.",
+   "research_idea": "Independent variables: fusion rule (transductive 0.5 sum vs. learned logistic fusion) and synthetic anomaly family (CutPaste-style patches from other supports, Perlin-noise intensity perturbations, local Gaussian blur/contrast changes). For each support normal, generate M = 8 synthetic abnormal versions with known masks; compute per-image features [top-2% zero-shot score, top-2% few-shot LOO score]; fit logistic regression (Platt) on 8K positives vs. K negatives with class re-weighting. Test images get p = sigma(w^T f + b). Dependent variables: AUROC, ECE, sensitivity at p = 0.5 and at the 95% support specificity point, and how well synthetic-based calibration transfers per modality.",
+   "hypothesis": "Logistic fusion fitted on support normals and their synthetic anomalies reduces expected calibration error by at least 30% relative to MVFA's min-max scores mapped to [0,1], with image AUROC within 1 point, on held-out BMAD modalities for K >= 4.",
+   "method": "1) New file synth.py: cutpaste(x, donor), perlin_intensity(x, scale in {4,8}, alpha in [0.1,0.4]), local_blur(x, sigma in [2,5]); each returns image and mask; anomaly area 1-10% of the image, placed inside the foreground (Otsu mask). 2) In test_few.py before scoring: build the memory bank from supports; for each support i compute LOO few-shot score (bank without i) and zero-shot score for the original and its synthetic versions. 3) Features f = [top2%(zero map), top2%(few map)], standardised with support-normal statistics. 4) sklearn LogisticRegression(C=1.0, class_weight='balanced'). 5) Test: p(x) = model.predict_proba(f(x)); pixel maps fused with the same weights. 6) No retraining of adapters.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: transductive MVFA; LOO-Z fusion; logistic fusion fitted on source-modality validation data instead of synthetic target data. Ablations: synthetic family; M; features (add max and mean). Metrics: ECE (15 bins), Brier score, AUROC, sensitivity/specificity at p=0.5. Falsification: ECE not reduced by 30% or AUROC loss above 2 points.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C4",
+   "problem": "B1",
+   "chain": "C4",
+   "chain_papers": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "analysis": {
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images": "Adopts the source paper's CLIP ViT-L/14 + residual adapter setting and replaces the raw support memory with compact normal/abnormal prototypes whose patch-to-prototype similarity is fused with image-text similarity; this shows that a compact statistical summary of the supports can replace per-patch nearest-neighbour search without loss."
+   },
+   "rationale": "Nearest-neighbour distances to a handful of support patches are noisy and have no natural scale, which is why MVFA must normalise them with test-set extremes. A per-level Gaussian model of support normal features (as compact as Spatial-FAD's prototypes) yields Mahalanobis distances whose distribution under normality is approximately known, so scores become comparable across images and modalities without test-set statistics.",
+   "title": "Shrinkage-Gaussian Mahalanobis scoring of support normals for inductive few-shot fusion",
+   "summary": "Replace the few-shot branch's max-cosine memory search with per-level Mahalanobis distances under a Ledoit-Wolf Gaussian fitted to support patch features, standardise by its chi-square reference, and fuse per image with the zero-shot branch.",
+   "research_idea": "Independent variable: few-shot scoring (memory-bank 1 - max cosine with test-set min-max vs. per-level Gaussian Mahalanobis with analytic standardisation). For each level l, fit mu_l and Sigma_l (Ledoit-Wolf shrinkage, features projected to the top-d PCA components of support patches, d = min(64, K*289-1)) on all support normal patches. Patch score m = (f - mu)^T Sigma^-1 (f - mu), standardised as (m - d)/sqrt(2d). The zero-shot branch is standardised with support LOO statistics as in LOO-Z, and the image score is the top-2% mean of the fused map. Dependent variables: AUROC, PRO, thresholded metrics, stability under subsampling, memory and time per image.",
+   "hypothesis": "Per-level shrinkage-Gaussian scoring yields few-shot pixel AUROC within 1 point of MVFA's memory-bank branch and, combined inductively, an image-level threshold whose realised specificity is within 5 points of nominal, while reducing few-shot branch memory by more than 90% for K = 16.",
+   "method": "1) utils.py: fit_gaussian(level_feats): PCA (sklearn) to d dims, LedoitWolf().fit; store mu, precision. 2) test_few.py: replace anomaly_map_few_shot = min(1-cos) with mahalanobis per patch at each level; standardise (m - d)/sqrt(2d); clip to [-3, 10]. 3) Fusion: F = Z_zero + Z_few (both per-image standardised), top-2% image pooling, threshold from support LOO. 4) Memory: store only mu (d), precision (d x d), PCA basis per level. 5) No retraining.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: MVFA memory bank (transductive); memory bank with LOO-Z normalisation; Gaussian without PCA. Ablations: d; shrinkage vs. empirical covariance; per-level vs. pooled Gaussian. Metrics: AUROC, PRO, thresholded metrics, memory (MB), ms/image. Falsification: pixel AUROC loss above 2 points.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ]
+  },
+  {
+   "id": "B1-C5",
+   "problem": "B1",
+   "chain": "C5",
+   "chain_papers": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ],
+   "analysis": {
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP": "Builds on residual adapters in the line of the source paper and adds anomaly-aware text anchors aligned with patch features; it improves the separation of normal and abnormal patch scores but keeps max/mean-style image aggregation.",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection": "Uses AA-CLIP as its alignment baseline and turns intermediate patch evidence into SAM2 point prompts, explicitly 'avoiding threshold drift' by sampling prompts from patch features rather than thresholding maps; it shows that region-level evidence is more stable than single-pixel extremes."
+   },
+   "rationale": "MVFA's image score for masked datasets is the single maximum of the fused map, so one spurious pixel decides the label; PSMP-CLIP's move from pixel thresholds to region prompts suggests that anomalies should be scored as coherent regions. A region-level aggregation that requires spatial support for a high score is robust to isolated outliers and works per image.",
+   "title": "Region-mass aggregation: scoring images by their strongest coherent anomalous region",
+   "summary": "Threshold each image's per-image-normalised fused map at a support-derived pixel level, extract connected regions, and score the image by the best region's mean score weighted by log area, replacing the max-pixel rule.",
+   "research_idea": "Independent variable: image aggregation (max pixel, mean, top-2% mean, region mass). Region mass: given the per-image fused map F (LOO-Z standardised), threshold at t_pix = 99th percentile of support LOO pixel scores, find 8-connected components, and score each component c as mean(F_c) * log(1 + |c|); image score = max over components (0 if none). Dependent variables: image AUROC, false positives per image at the support threshold, sensitivity for small lesions (lesion area below 1% of the image), and robustness to injected single-pixel noise.",
+   "hypothesis": "Region-mass aggregation reduces false positives at the support-derived threshold by at least 25% relative to max-pixel aggregation on held-out BMAD modalities with masks (BrainMRI, LiverCT, RESC), with image AUROC within 1 point, and its AUROC degrades less than max pooling when 0.1% of pixels are corrupted with random spikes.",
+   "method": "1) test_few.py: after computing the per-image fused map F (LOO-Z as base normalisation), compute t_pix from support LOO maps; mask = F > t_pix; scipy.ndimage.label(mask, structure=ones(3,3)); for each label compute mean(F[label]) and area; score = max(mean * log(1+area)). 2) Robustness test: add spikes to 0.1% of pixels of F with value max(F)+1 before aggregation. 3) Small-lesion subset: test abnormal images with mask area < 1%. 4) Datasets without masks (OCT17, ChestXray, HIS): apply the same rule to the fused det/seg map. 5) No retraining.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: max (MVFA), mean, top-k mean (k in {1%, 2%, 5%}), region mass. Metrics: image AUROC, FP per image and sensitivity at the support threshold, small-lesion sensitivity, AUROC under spike corruption. Falsification: no FP reduction or AUROC loss above 2 points.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C6",
+   "problem": "B1",
+   "chain": "C6",
+   "chain_papers": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ],
+   "analysis": {
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection": "Industrial VLM AD inspired by the source paper's multi-level adapters; its emphasis is robustness of a model learned on a source domain when deployed in real-world target domains without fine-tuning. It does not address scoring or thresholds and is only loosely connected to the research problem; its contribution here is the deployment perspective."
+   },
+   "rationale": "A deployed MVFA sees images one at a time. Between the purely support-based statistics of LOO-Z (few images, high variance) and test-set min-max (non-causal), a causal alternative updates normalisation statistics online from incoming images that the model itself scores as confidently normal. This keeps scoring per-image and causal while reducing the variance of support-only statistics.",
+   "title": "Causal streaming normalisation of MVFA branch scores from confidently normal arrivals",
+   "summary": "Initialise branch normalisation from the support normals and update robust statistics (median/MAD) online using only incoming images scored below the current threshold, compared against support-only and test-set normalisation.",
+   "research_idea": "Independent variable: normalisation source (test-set min-max; support-only LOO-Z; streaming update). Streaming: maintain per-branch, per-level median and MAD of patch scores; start from the support LOO values; after scoring each incoming image, if its image score is below the 80th percentile of the current normal score distribution, update the statistics with an exponential moving estimate (rate 0.05). Order effects are tested with 10 random arrival orders. Dependent variables: AUROC over the stream, realised FPR at the running threshold, drift of the threshold, and sensitivity to prevalence of abnormal arrivals.",
+   "hypothesis": "Causal streaming normalisation achieves image AUROC within 1 point of transductive MVFA fusion and reduces the across-draw standard deviation of AUROC by at least 30% compared with support-only normalisation at K = 2 and K = 4.",
+   "method": "1) test_few.py: wrap scoring in a StreamScorer class with state (median, MAD per branch/level, support-initialised) and update(); stream the test set in a random order (seeded). 2) Scores: z = (s - median)/(1.4826*MAD), clipped as in LOO-Z; image score = top-2% mean. 3) Update rule only on images with score below the 80th percentile of current normal scores (confidently normal). 4) Report results per arrival order and averaged. 5) No retraining.",
+   "experiment": "Protocol: BMAD, leave-one-modality-out (RESC and OCT17 held out together), checkpoints of the underlying MVFA model selected on a validation split of the source modalities (never the target test set); MVFA baseline re-run under the same rule; K in {2,4,8,16}; 3 seeds x 3 support draws (new seed files generated from BMAD valid/ with a fixed RNG); mean and standard deviation reported. Baselines: transductive MVFA; LOO-Z (support-only); streaming without the confidence gate. Ablations: update rate; gate percentile; prevalence (10%, 30%, 50% abnormal streams). Metrics: AUROC, realised FPR, threshold drift, variance across support draws and arrival orders. Falsification: no variance reduction relative to support-only normalisation.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C1",
+   "problem": "A1",
+   "chain": "C1",
+   "chain_papers": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP": "Builds on the source paper's vision-encoder adapters and separates normal and abnormal evidence into two branches trained with a SigLIP (sigmoid, many-to-one) loss against learnable prompts; the SigLIP formulation is a natural fit for patch-level supervision where many patches map to one text anchor.",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection": "Replaces static anchors with bounded, image-conditioned prototypes; its separation of normal and abnormal references and the observation that normal references are reliable while abnormal ones vary motivates treating normal and abnormal images asymmetrically."
+   },
+   "rationale": "A normal image carries a pixel-level label for free: every one of its patches is normal. Only abnormal images are ambiguous. MVFA's segmentation branch ignores this and needs masks for both. An asymmetric objective supervises all patches of normal images directly and only the most anomalous patches of abnormal images (multiple-instance), using the SigLIP many-to-one patch-text loss that MadCLIP brought to medical AD.",
+   "title": "Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters",
+   "summary": "Train MVFA's segmentation adapters from image labels only: every patch of a normal image is pushed to the normal anchor and the top-2% patches of an abnormal image to the abnormal anchor, with a sigmoid (SigLIP-style) patch-text loss at all four levels.",
+   "research_idea": "Independent variable: segmentation supervision (Dice+Focal on masks vs. asymmetric MIL on image labels). For level l and patch j with cosine similarities to the normal and abnormal anchors, logits z_j = t * (cos(f_j, T_abn) - cos(f_j, T_nor)) + b with learnable temperature t and bias b. Loss for a normal image: mean_j log(1 + exp(z_j)) over all 289 patches. Loss for an abnormal image: mean over the top-k patches (k = 6, 2%) of log(1 + exp(-z_j)), plus a weak term pushing the bottom 50% patches towards normal (weight 0.1, reflecting that most of an abnormal image is normal tissue). Dependent variables: pixel AUROC, PRO and image AUROC on the held-out modality; per-level localisation quality.",
+   "hypothesis": "Asymmetric SigLIP-MIL training on image labels from all five source datasets retains at least 80% of mask-supervised MVFA's zero-shot pixel-level AUROC margin over chance ((AUROC - 0.5) ratio) on held-out BrainMRI, LiverCT and RESC, and outperforms symmetric top-k MIL (same k for both classes) by at least 2 pixel-AUROC points.",
+   "method": "1) train_zero.py: replace the seg_loss block (Focal + Dice, only if seg_idx > 0) with asym_mil_loss(seg_patch_tokens, text_feature, image_label) applied to every image regardless of seg_idx. 2) New function in loss.py: asym_mil_loss computes per-level cosines (tokens L2-normalised as in MVFA), logits with learnable t (init 10) and b (init -5) (nn.Parameters added to the seg optimizer), normal images: all patches; abnormal images: top-k positive term + 0.1 x bottom-50% negative term; sum over the four levels. 3) The detection branch keeps its mean-pooled BCE. 4) Hyper-parameters: k = 6 (ablations 3, 12, 29), Adam lr 1e-4 as in the released zero-shot script, 50 epochs, batch size 1 as in the code (ablation: 16 with gradient accumulation, the paper's value). 5) Inference unchanged (test_zero.py).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA (reference); symmetric top-k MIL; mean-pooled BCE on the seg branch (MVFA's detection loss applied to segmentation). Ablations: k; bottom-50% term on/off; SigLIP vs. softmax-CE patch loss; which levels receive the loss. Metrics: pixel AUROC, PRO, image AUROC, (AUROC-0.5) retention ratio. Falsification: retention below 60% or no gain over symmetric MIL.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C2",
+   "problem": "A1",
+   "chain": "C2",
+   "chain_papers": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection": "Directly extends MVFA's multi-level residual adapters with a ConvTokenizer and keeps the pixel-level alignment loss; it confirms that the same architecture supports better localisation when the adapters see more fine-grained input, but it still requires masks."
+   },
+   "rationale": "MVFA already trains a detection branch on image labels for every source image, and its multi-level patch maps contain coarse localisation. These maps can be turned into pseudo-masks that supervise the segmentation branch with MVFA's own Dice and Focal losses, so the segmentation adapters learn from image labels indirectly, through a teacher that never saw a mask.",
+   "title": "Detection-to-segmentation pseudo-mask self-distillation",
+   "summary": "Use the image-label-trained detection branch's multi-level patch maps, filtered by cross-level agreement, as pseudo-masks to train the segmentation branch with MVFA's existing Dice and Focal losses, iterating twice.",
+   "research_idea": "Independent variable: source of segmentation supervision (true masks vs. pseudo-masks from the detection branch vs. none). Round 0: train MVFA with the detection loss only (all source images). Pseudo-mask for an abnormal training image: patches whose det-branch anomaly probability is in the top 5% of the image at at least 3 of 4 levels, upsampled and restricted to the foreground; for normal images the pseudo-mask is empty (all-normal). Round 1-2: train segmentation adapters with Focal + Dice on pseudo-masks (pixels outside confident regions in abnormal images are ignored in the Focal term). Dependent variables: pseudo-mask precision/recall against true masks (where available, measurement only), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "Two rounds of detection-to-segmentation self-distillation retain at least 75% of mask-supervised MVFA's pixel-AUROC margin over chance on held-out modalities, and the cross-level agreement filter yields pseudo-masks with at least 1.5x the precision of single-level (deepest layer) pseudo-masks.",
+   "method": "1) train_zero.py: stage A trains det_adapters only (existing else-branch for all images). 2) New script make_pseudo_masks.py: run the det branch on all source training images, compute per-level probability maps (17x17), mark patches in the image-wise top 5% at >= 3 levels, upsample to 240x240 with nearest neighbour, AND with a foreground mask (Otsu); save as PNG next to images. 3) Stage B: train seg_adapters with the existing Focal + Dice on pseudo-masks for every image (normal: empty mask), Focal ignoring unlabelled pixels via a weight map. 4) Repeat pseudo-mask generation once from the stage-B seg branch (round 2). 5) Hyper-parameters as MVFA (lr 1e-4, 50 epochs per stage, batch size 1).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; det-branch maps used directly as segmentation output (no distillation); single-level pseudo-masks. Ablations: agreement threshold (2, 3, 4 levels); top-percentage (2%, 5%, 10%); number of rounds. Metrics: pixel AUROC, PRO, image AUROC; pseudo-mask precision/recall on BrainMRI/LiverCT/RESC training images (analysis only). Falsification: retention below 60% or no improvement over using det-branch maps directly.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C3",
+   "problem": "A1",
+   "chain": "C3",
+   "chain_papers": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection": "Fine-tunes MVFA-AD on synthetic abnormal exemplars tailored to each institution and shows that synthetic anomalies improve the downstream MVFA detector; for localisation this implies that synthetic anomalies with known masks can substitute for expert masks."
+   },
+   "rationale": "Synthetic anomalies come with exact masks at zero annotation cost, but alone they teach a model to find artefacts that look synthetic. Real abnormal images with image labels carry realistic lesion appearance but no location. Combining both signals \u2014 mask losses on synthetic anomalies and MIL on real abnormal images \u2014 may give localisation that is both precise and realistic.",
+   "title": "Hybrid supervision: synthetic-mask segmentation loss plus real-image MIL",
+   "summary": "Train MVFA's segmentation adapters with Dice + Focal on synthetic anomalies pasted into normal source images and a top-k MIL loss on real image-labelled abnormal images, removing all expert masks.",
+   "research_idea": "Independent variables: synthetic only, MIL only, and hybrid supervision, plus the synthetic family (CutPaste from other images of the same dataset, Perlin-noise intensity anomalies, local deformation). For each normal source image, with probability 0.5 a synthetic anomaly (1-10% of the foreground area) is inserted and its mask used with Dice + Focal; for each real abnormal image, top-k MIL on the seg-branch patch map (k = 6); real normal images supervise all patches as normal. Dependent variables: pixel AUROC, PRO, image AUROC on held-out modalities; gap between synthetic-only and hybrid.",
+   "hypothesis": "Hybrid supervision achieves higher held-out pixel AUROC than either synthetic-only or MIL-only training by at least 1.5 points, and retains at least 85% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "method": "1) New dataset wrapper dataset/synthetic.py around MedTrainDataset: on normal images, apply synth(x) with p = 0.5 returning (x', mask'). Synthetic families: cutpaste (patch from another normal image of the same dataset, random rotation), perlin (2-D Perlin noise thresholded at 0.6, intensity shift alpha in [0.1, 0.4]), deform (local elastic warp). 2) train_zero.py: seg loss = Focal + Dice on synthetic masks (normal unmodified images: empty mask) + lambda_MIL x topk_mil on real abnormal images (lambda_MIL = 1). 3) Real dataset masks are never loaded. 4) Hyper-parameters as MVFA; 50 epochs.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; synthetic-only; MIL-only. Ablations: synthetic family; insertion probability; lambda_MIL in {0.5, 1, 2}. Metrics: pixel AUROC, PRO, image AUROC. Falsification: hybrid not better than both single-signal variants.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C4",
+   "problem": "A1",
+   "chain": "C4",
+   "chain_papers": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "analysis": {
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images": "Extends the source paper's adapters with a structural affinity prior from DINO that makes CLIP patch embeddings adhere to lesion boundaries; its key finding is that self-supervised vision foundation models provide spatial coherence that CLIP lacks."
+   },
+   "rationale": "Image-level MIL localises only the few most anomalous patches and produces fragmented maps. DINO features are spatially coherent and cluster anatomically consistent regions, so affinity propagation over DINO patch similarities can grow MIL seeds into region-shaped pseudo-masks, giving the segmentation branch dense, shape-aware supervision without any expert mask.",
+   "title": "DINO-affinity propagation of MIL evidence into pseudo-masks",
+   "summary": "Train with image-level MIL first, then refine the resulting patch maps of abnormal source images by random-walk propagation over a frozen DINOv2 patch-affinity graph into pseudo-masks that supervise MVFA's segmentation adapters.",
+   "research_idea": "Independent variable: pseudo-mask refinement (none vs. DINO affinity propagation vs. CLIP-feature affinity). Stage 1: top-k MIL on the seg branch (image labels only). Stage 2: for each abnormal training image, compute DINOv2 ViT-S/14 patch features at 238x238 (17x17 patches, matching MVFA's grid), affinity A_ij = max(0, cos)^beta (beta = 8), row-normalise, propagate the stage-1 map m: m' = (alpha A + (1 - alpha) I)^t m with alpha = 0.7, t = 3; pseudo-mask = m' > 0.5 x max(m'). Stage 3: train seg adapters with Focal + Dice on pseudo-masks. Dependent variables: pseudo-mask IoU against true masks (analysis only), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "DINO-affinity-refined pseudo-masks improve held-out PRO by at least 3 points over unrefined MIL maps, and the resulting segmentation branch retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "method": "1) Stage 1 as top-k MIL on seg tokens (loss.py: topk_mil). 2) New script refine_masks.py: torch.hub DINOv2 ViT-S/14 (frozen, about 22M parameters), resize to 238, patch features 17x17x384, affinity and propagation in numpy; save pseudo-masks. 3) Stage 3: existing Focal + Dice on pseudo-masks for all source images (normal: empty). 4) DINO is used only offline on source training images, not at test time, so inference cost is unchanged. 5) Hyper-parameters: alpha, beta, t as above (ablations alpha in {0.5, 0.7, 0.9}, t in {1, 3, 5}).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL only; CLIP-affinity propagation (same procedure with CLIP layer-24 features). Ablations: propagation parameters; DINOv2 ViT-S vs. ViT-B. Metrics: pixel AUROC, PRO, image AUROC; pseudo-mask IoU (analysis). Falsification: no PRO gain over MIL-only.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ]
+  },
+  {
+   "id": "A1-C5",
+   "problem": "A1",
+   "chain": "C5",
+   "chain_papers": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ],
+   "analysis": {
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP": "Shows that CLIP's text anchors are anomaly-unaware and proposes a two-stage procedure: first train anomaly-aware text anchors that separate normal from abnormal semantics, then align patch features to them through residual adapters.",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection": "Builds on AA-CLIP's alignment with multiple learnable prompts constrained by semantic anchors and SAM2 prompts sampled from patch evidence; it shows that well-separated anchors make patch-level evidence reliable enough to prompt precise masks."
+   },
+   "rationale": "Under image-level supervision, MIL localisation depends entirely on how well the text anchors separate normal and abnormal patches; MVFA's anchors are frozen template averages. Following AA-CLIP, the anchors can first be made anomaly-aware using image labels only, and patch alignment by MIL then operates against a better-separated reference.",
+   "title": "Two-stage anomaly-aware anchors then patch MIL, all from image labels",
+   "summary": "Stage 1 learns residual text adapters that separate normal and abnormal anchors using image-level labels and an orthogonality term; stage 2 trains MVFA's segmentation adapters with top-k patch MIL against the frozen stage-1 anchors.",
+   "research_idea": "Independent variable: anchor type during MIL (frozen template-average anchors vs. stage-1 anomaly-aware anchors). Stage 1: a residual MLP adapter on the text encoder output (ratio 0.1) trained for 10 epochs with image-level BCE on the CLS token similarity and an orthogonality penalty |cos(T_nor, T_abn)| (weight 0.1). Stage 2: seg adapters trained with top-k MIL (k = 6) and the all-patches-normal term for normal images, anchors frozen. Dependent variables: anchor separation (cosine), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "Anomaly-aware anchors learned from image labels increase held-out pixel AUROC of MIL-trained segmentation adapters by at least 2 points over frozen template anchors, and the combined method retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "method": "1) New module text_adapter.py: TextAdapter(d=768, bottleneck=192) applied residually to the two anchor embeddings. 2) train_anchor.py (stage 1): freeze CLIP and visual adapters; optimise TextAdapter with BCE(sigmoid(t * (cos(cls, T_abn) - cos(cls, T_nor))), y) + 0.1 |cos(T_nor, T_abn)| on all source images; lr 1e-4, 10 epochs. 3) train_zero.py (stage 2): replace seg_loss with topk_mil + normal-all-patches term against stage-1 anchors; det branch unchanged. 4) Test: test_zero.py with stage-1 anchors.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL with frozen anchors; MIL with jointly (single-stage) learned anchors. Ablations: orthogonality weight; adapter bottleneck; stage-1 epochs. Metrics: anchor cosine, pixel AUROC, PRO, image AUROC. Falsification: no gain over frozen anchors.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C6",
+   "problem": "A1",
+   "chain": "C6",
+   "chain_papers": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ],
+   "analysis": {
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection": "Inspired by the source paper's multi-level adapters; it preserves topological relations between image regions with a graph transformer and argues that structural relationships keep anomalous nodes distinguishable. It is an industrial work, so only its structural idea transfers."
+   },
+   "rationale": "Image-level MIL supervises a handful of patches and leaves the rest of an abnormal image unconstrained, producing speckled maps (UltraAD reports that MVFA's maps already struggle to form continuous regions). A graph prior over the 17x17 patch grid that penalises disagreement between neighbouring, similar-looking patches would spread MIL evidence across coherent regions without masks.",
+   "title": "Graph-Laplacian smoothness regularisation for MIL-trained segmentation adapters",
+   "summary": "Add to the image-level MIL loss a feature-weighted graph-Laplacian smoothness term on each level's patch anomaly map, so localisation learned from image labels forms coherent regions.",
+   "research_idea": "Independent variable: regulariser (none vs. uniform 4-neighbour Laplacian vs. feature-weighted Laplacian). For level l, patch anomaly probabilities p (289), graph weights w_ij = exp(-||f_i - f_j||^2 / (2 sigma^2)) for 8-neighbours using frozen CLIP features, loss_smooth = sum_ij w_ij (p_i - p_j)^2 / sum_ij w_ij, added with weight lambda = 0.5 to top-k MIL (abnormal) and all-patches-normal (normal) losses. Dependent variables: pixel AUROC, PRO, a region-coherence measure (number of connected components above threshold per image), and image AUROC on held-out modalities.",
+   "hypothesis": "Feature-weighted Laplacian regularisation increases held-out PRO of MIL-trained segmentation adapters by at least 3 points and halves the number of spurious connected components per abnormal image, without reducing image AUROC by more than 1 point.",
+   "method": "1) loss.py: graph_smooth(p, feats) with precomputed 8-neighbour index pairs for the 17x17 grid; weights from L2-normalised frozen CLIP patch tokens of the same level (no gradient), sigma = median pairwise distance. 2) train_zero.py: seg loss = topk_mil + normal_all + lambda * graph_smooth at each level. 3) Hyper-parameters: k = 6, lambda in {0.1, 0.5, 1.0}, lr 1e-4, 50 epochs. 4) Inference unchanged.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL only; MIL + uniform Laplacian. Ablations: lambda; neighbourhood (4 vs. 8); weights from CLIP vs. adapted features. Metrics: pixel AUROC, PRO, connected components per image, image AUROC. Falsification: no PRO gain over MIL only.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ]
+  }
+ ]
+}

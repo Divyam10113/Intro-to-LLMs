@@ -1,0 +1,2283 @@
+{
+ "problem": "A1",
+ "settings": {
+  "mu": 6,
+  "lam": 6,
+  "G": 3,
+  "pc": 0.6,
+  "pm": 0.15,
+  "both_orders": false,
+  "prior": 0.1,
+  "seed": 2026,
+  "scale_a": 8.267996028056247
+ },
+ "best": "A1-g2-o6",
+ "final_population": [
+  "A1-g2-o6",
+  "A1-g3-o3",
+  "A1-g0-C1",
+  "A1-g3-o5",
+  "A1-g2-o4",
+  "A1-g1-o1"
+ ],
+ "history": [
+  {
+   "generation": 0,
+   "population": [
+    "A1-g0-C1",
+    "A1-g0-C2",
+    "A1-g0-C3",
+    "A1-g0-C4",
+    "A1-g0-C5",
+    "A1-g0-C6"
+   ],
+   "fitness": {
+    "A1-g0-C1": 80.0,
+    "A1-g0-C2": 66.37,
+    "A1-g0-C3": 33.63,
+    "A1-g0-C4": 44.73,
+    "A1-g0-C5": 55.27,
+    "A1-g0-C6": 20.0
+   }
+  },
+  {
+   "generation": 1,
+   "offspring": [
+    "A1-g1-o1",
+    "A1-g1-o2",
+    "A1-g1-o3",
+    "A1-g1-o4",
+    "A1-g1-o5",
+    "A1-g1-o6"
+   ],
+   "pool_fitness": {
+    "A1-g0-C1": 88.87,
+    "A1-g0-C2": 61.68,
+    "A1-g0-C3": 31.76,
+    "A1-g0-C4": 38.84,
+    "A1-g0-C5": 56.26,
+    "A1-g0-C6": 22.6,
+    "A1-g1-o1": 85.16,
+    "A1-g1-o2": 67.15,
+    "A1-g1-o3": 50.76,
+    "A1-g1-o4": 72.79,
+    "A1-g1-o5": 45.03,
+    "A1-g1-o6": 81.82
+   },
+   "population": [
+    "A1-g0-C1",
+    "A1-g1-o1",
+    "A1-g1-o6",
+    "A1-g1-o4",
+    "A1-g1-o2",
+    "A1-g0-C2"
+   ],
+   "fitness": {
+    "A1-g0-C1": 88.87,
+    "A1-g1-o1": 85.16,
+    "A1-g1-o6": 81.82,
+    "A1-g1-o4": 72.79,
+    "A1-g1-o2": 67.15,
+    "A1-g0-C2": 61.68
+   }
+  },
+  {
+   "generation": 2,
+   "offspring": [
+    "A1-g2-o1",
+    "A1-g2-o2",
+    "A1-g2-o3",
+    "A1-g2-o4",
+    "A1-g2-o5",
+    "A1-g2-o6"
+   ],
+   "pool_fitness": {
+    "A1-g0-C1": 100.43,
+    "A1-g0-C2": 42.15,
+    "A1-g1-o1": 91.72,
+    "A1-g1-o2": 58.38,
+    "A1-g1-o4": 75.76,
+    "A1-g1-o6": 89.03,
+    "A1-g2-o1": 51.3,
+    "A1-g2-o2": 64.57,
+    "A1-g2-o3": 70.29,
+    "A1-g2-o4": 97.35,
+    "A1-g2-o5": 81.1,
+    "A1-g2-o6": 112.53
+   },
+   "population": [
+    "A1-g2-o6",
+    "A1-g0-C1",
+    "A1-g2-o4",
+    "A1-g1-o1",
+    "A1-g1-o6",
+    "A1-g2-o5"
+   ],
+   "fitness": {
+    "A1-g2-o6": 112.53,
+    "A1-g0-C1": 100.43,
+    "A1-g2-o4": 97.35,
+    "A1-g1-o1": 91.72,
+    "A1-g1-o6": 89.03,
+    "A1-g2-o5": 81.1
+   }
+  },
+  {
+   "generation": 3,
+   "offspring": [
+    "A1-g3-o1",
+    "A1-g3-o2",
+    "A1-g3-o3",
+    "A1-g3-o4",
+    "A1-g3-o5",
+    "A1-g3-o6"
+   ],
+   "pool_fitness": {
+    "A1-g0-C1": 104.88,
+    "A1-g1-o1": 91.97,
+    "A1-g1-o6": 84.48,
+    "A1-g2-o4": 96.93,
+    "A1-g2-o5": 70.28,
+    "A1-g2-o6": 123.62,
+    "A1-g3-o1": 54.08,
+    "A1-g3-o2": 76.37,
+    "A1-g3-o3": 114.6,
+    "A1-g3-o4": 63.23,
+    "A1-g3-o5": 102.12,
+    "A1-g3-o6": 87.01
+   },
+   "population": [
+    "A1-g2-o6",
+    "A1-g3-o3",
+    "A1-g0-C1",
+    "A1-g3-o5",
+    "A1-g2-o4",
+    "A1-g1-o1"
+   ],
+   "fitness": {
+    "A1-g2-o6": 123.62,
+    "A1-g3-o3": 114.6,
+    "A1-g0-C1": 104.88,
+    "A1-g3-o5": 102.12,
+    "A1-g2-o4": 96.93,
+    "A1-g1-o1": 91.97
+   }
+  }
+ ],
+ "candidates": {
+  "A1-g0-C1": {
+   "id": "A1-g0-C1",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C1",
+   "title": "Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters",
+   "summary": "Train MVFA's segmentation adapters from image labels only: every patch of a normal image is pushed to the normal anchor and the top-2% patches of an abnormal image to the abnormal anchor, with a sigmoid (SigLIP-style) patch-text loss at all four levels.",
+   "research_idea": "Independent variable: segmentation supervision (Dice+Focal on masks vs. asymmetric MIL on image labels). For level l and patch j with cosine similarities to the normal and abnormal anchors, logits z_j = t * (cos(f_j, T_abn) - cos(f_j, T_nor)) + b with learnable temperature t and bias b. Loss for a normal image: mean_j log(1 + exp(z_j)) over all 289 patches. Loss for an abnormal image: mean over the top-k patches (k = 6, 2%) of log(1 + exp(-z_j)), plus a weak term pushing the bottom 50% patches towards normal (weight 0.1, reflecting that most of an abnormal image is normal tissue). Dependent variables: pixel AUROC, PRO and image AUROC on the held-out modality; per-level localisation quality.",
+   "hypothesis": "Asymmetric SigLIP-MIL training on image labels from all five source datasets retains at least 80% of mask-supervised MVFA's zero-shot pixel-level AUROC margin over chance ((AUROC - 0.5) ratio) on held-out BrainMRI, LiverCT and RESC, and outperforms symmetric top-k MIL (same k for both classes) by at least 2 pixel-AUROC points.",
+   "rationale": "A normal image carries a pixel-level label for free: every one of its patches is normal. Only abnormal images are ambiguous. MVFA's segmentation branch ignores this and needs masks for both. An asymmetric objective supervises all patches of normal images directly and only the most anomalous patches of abnormal images (multiple-instance), using the SigLIP many-to-one patch-text loss that MadCLIP brought to medical AD.",
+   "method": "1) train_zero.py: replace the seg_loss block (Focal + Dice, only if seg_idx > 0) with asym_mil_loss(seg_patch_tokens, text_feature, image_label) applied to every image regardless of seg_idx. 2) New function in loss.py: asym_mil_loss computes per-level cosines (tokens L2-normalised as in MVFA), logits with learnable t (init 10) and b (init -5) (nn.Parameters added to the seg optimizer), normal images: all patches; abnormal images: top-k positive term + 0.1 x bottom-50% negative term; sum over the four levels. 3) The detection branch keeps its mean-pooled BCE. 4) Hyper-parameters: k = 6 (ablations 3, 12, 29), Adam lr 1e-4 as in the released zero-shot script, 50 epochs, batch size 1 as in the code (ablation: 16 with gradient accumulation, the paper's value). 5) Inference unchanged (test_zero.py).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA (reference); symmetric top-k MIL; mean-pooled BCE on the seg branch (MVFA's detection loss applied to segmentation). Ablations: k; bottom-50% term on/off; SigLIP vs. softmax-CE patch loss; which levels receive the loss. Metrics: pixel AUROC, PRO, image AUROC, (AUROC-0.5) retention ratio. Falsification: retention below 60% or no gain over symmetric MIL.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 80.0,
+    "1": 88.87,
+    "2": 100.43,
+    "3": 104.88
+   }
+  },
+  "A1-g0-C2": {
+   "id": "A1-g0-C2",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C2",
+   "title": "Detection-to-segmentation pseudo-mask self-distillation",
+   "summary": "Use the image-label-trained detection branch's multi-level patch maps, filtered by cross-level agreement, as pseudo-masks to train the segmentation branch with MVFA's existing Dice and Focal losses, iterating twice.",
+   "research_idea": "Independent variable: source of segmentation supervision (true masks vs. pseudo-masks from the detection branch vs. none). Round 0: train MVFA with the detection loss only (all source images). Pseudo-mask for an abnormal training image: patches whose det-branch anomaly probability is in the top 5% of the image at at least 3 of 4 levels, upsampled and restricted to the foreground; for normal images the pseudo-mask is empty (all-normal). Round 1-2: train segmentation adapters with Focal + Dice on pseudo-masks (pixels outside confident regions in abnormal images are ignored in the Focal term). Dependent variables: pseudo-mask precision/recall against true masks (where available, measurement only), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "Two rounds of detection-to-segmentation self-distillation retain at least 75% of mask-supervised MVFA's pixel-AUROC margin over chance on held-out modalities, and the cross-level agreement filter yields pseudo-masks with at least 1.5x the precision of single-level (deepest layer) pseudo-masks.",
+   "rationale": "MVFA already trains a detection branch on image labels for every source image, and its multi-level patch maps contain coarse localisation. These maps can be turned into pseudo-masks that supervise the segmentation branch with MVFA's own Dice and Focal losses, so the segmentation adapters learn from image labels indirectly, through a teacher that never saw a mask.",
+   "method": "1) train_zero.py: stage A trains det_adapters only (existing else-branch for all images). 2) New script make_pseudo_masks.py: run the det branch on all source training images, compute per-level probability maps (17x17), mark patches in the image-wise top 5% at >= 3 levels, upsample to 240x240 with nearest neighbour, AND with a foreground mask (Otsu); save as PNG next to images. 3) Stage B: train seg_adapters with the existing Focal + Dice on pseudo-masks for every image (normal: empty mask), Focal ignoring unlabelled pixels via a weight map. 4) Repeat pseudo-mask generation once from the stage-B seg branch (round 2). 5) Hyper-parameters as MVFA (lr 1e-4, 50 epochs per stage, batch size 1).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; det-branch maps used directly as segmentation output (no distillation); single-level pseudo-masks. Ablations: agreement threshold (2, 3, 4 levels); top-percentage (2%, 5%, 10%); number of rounds. Metrics: pixel AUROC, PRO, image AUROC; pseudo-mask precision/recall on BrainMRI/LiverCT/RESC training images (analysis only). Falsification: retention below 60% or no improvement over using det-branch maps directly.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 66.37,
+    "1": 61.68,
+    "2": 42.15
+   }
+  },
+  "A1-g0-C3": {
+   "id": "A1-g0-C3",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C3",
+   "title": "Hybrid supervision: synthetic-mask segmentation loss plus real-image MIL",
+   "summary": "Train MVFA's segmentation adapters with Dice + Focal on synthetic anomalies pasted into normal source images and a top-k MIL loss on real image-labelled abnormal images, removing all expert masks.",
+   "research_idea": "Independent variables: synthetic only, MIL only, and hybrid supervision, plus the synthetic family (CutPaste from other images of the same dataset, Perlin-noise intensity anomalies, local deformation). For each normal source image, with probability 0.5 a synthetic anomaly (1-10% of the foreground area) is inserted and its mask used with Dice + Focal; for each real abnormal image, top-k MIL on the seg-branch patch map (k = 6); real normal images supervise all patches as normal. Dependent variables: pixel AUROC, PRO, image AUROC on held-out modalities; gap between synthetic-only and hybrid.",
+   "hypothesis": "Hybrid supervision achieves higher held-out pixel AUROC than either synthetic-only or MIL-only training by at least 1.5 points, and retains at least 85% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Synthetic anomalies come with exact masks at zero annotation cost, but alone they teach a model to find artefacts that look synthetic. Real abnormal images with image labels carry realistic lesion appearance but no location. Combining both signals \u2014 mask losses on synthetic anomalies and MIL on real abnormal images \u2014 may give localisation that is both precise and realistic.",
+   "method": "1) New dataset wrapper dataset/synthetic.py around MedTrainDataset: on normal images, apply synth(x) with p = 0.5 returning (x', mask'). Synthetic families: cutpaste (patch from another normal image of the same dataset, random rotation), perlin (2-D Perlin noise thresholded at 0.6, intensity shift alpha in [0.1, 0.4]), deform (local elastic warp). 2) train_zero.py: seg loss = Focal + Dice on synthetic masks (normal unmodified images: empty mask) + lambda_MIL x topk_mil on real abnormal images (lambda_MIL = 1). 3) Real dataset masks are never loaded. 4) Hyper-parameters as MVFA; 50 epochs.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; synthetic-only; MIL-only. Ablations: synthetic family; insertion probability; lambda_MIL in {0.5, 1, 2}. Metrics: pixel AUROC, PRO, image AUROC. Falsification: hybrid not better than both single-signal variants.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 33.63,
+    "1": 31.76
+   }
+  },
+  "A1-g0-C4": {
+   "id": "A1-g0-C4",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C4",
+   "title": "DINO-affinity propagation of MIL evidence into pseudo-masks",
+   "summary": "Train with image-level MIL first, then refine the resulting patch maps of abnormal source images by random-walk propagation over a frozen DINOv2 patch-affinity graph into pseudo-masks that supervise MVFA's segmentation adapters.",
+   "research_idea": "Independent variable: pseudo-mask refinement (none vs. DINO affinity propagation vs. CLIP-feature affinity). Stage 1: top-k MIL on the seg branch (image labels only). Stage 2: for each abnormal training image, compute DINOv2 ViT-S/14 patch features at 238x238 (17x17 patches, matching MVFA's grid), affinity A_ij = max(0, cos)^beta (beta = 8), row-normalise, propagate the stage-1 map m: m' = (alpha A + (1 - alpha) I)^t m with alpha = 0.7, t = 3; pseudo-mask = m' > 0.5 x max(m'). Stage 3: train seg adapters with Focal + Dice on pseudo-masks. Dependent variables: pseudo-mask IoU against true masks (analysis only), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "DINO-affinity-refined pseudo-masks improve held-out PRO by at least 3 points over unrefined MIL maps, and the resulting segmentation branch retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Image-level MIL localises only the few most anomalous patches and produces fragmented maps. DINO features are spatially coherent and cluster anatomically consistent regions, so affinity propagation over DINO patch similarities can grow MIL seeds into region-shaped pseudo-masks, giving the segmentation branch dense, shape-aware supervision without any expert mask.",
+   "method": "1) Stage 1 as top-k MIL on seg tokens (loss.py: topk_mil). 2) New script refine_masks.py: torch.hub DINOv2 ViT-S/14 (frozen, about 22M parameters), resize to 238, patch features 17x17x384, affinity and propagation in numpy; save pseudo-masks. 3) Stage 3: existing Focal + Dice on pseudo-masks for all source images (normal: empty). 4) DINO is used only offline on source training images, not at test time, so inference cost is unchanged. 5) Hyper-parameters: alpha, beta, t as above (ablations alpha in {0.5, 0.7, 0.9}, t in {1, 3, 5}).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL only; CLIP-affinity propagation (same procedure with CLIP layer-24 features). Ablations: propagation parameters; DINOv2 ViT-S vs. ViT-B. Metrics: pixel AUROC, PRO, image AUROC; pseudo-mask IoU (analysis). Falsification: no PRO gain over MIL-only.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "fitness": {
+    "0": 44.73,
+    "1": 38.84
+   }
+  },
+  "A1-g0-C5": {
+   "id": "A1-g0-C5",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C5",
+   "title": "Two-stage anomaly-aware anchors then patch MIL, all from image labels",
+   "summary": "Stage 1 learns residual text adapters that separate normal and abnormal anchors using image-level labels and an orthogonality term; stage 2 trains MVFA's segmentation adapters with top-k patch MIL against the frozen stage-1 anchors.",
+   "research_idea": "Independent variable: anchor type during MIL (frozen template-average anchors vs. stage-1 anomaly-aware anchors). Stage 1: a residual MLP adapter on the text encoder output (ratio 0.1) trained for 10 epochs with image-level BCE on the CLS token similarity and an orthogonality penalty |cos(T_nor, T_abn)| (weight 0.1). Stage 2: seg adapters trained with top-k MIL (k = 6) and the all-patches-normal term for normal images, anchors frozen. Dependent variables: anchor separation (cosine), pixel AUROC, PRO, image AUROC on held-out modalities.",
+   "hypothesis": "Anomaly-aware anchors learned from image labels increase held-out pixel AUROC of MIL-trained segmentation adapters by at least 2 points over frozen template anchors, and the combined method retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Under image-level supervision, MIL localisation depends entirely on how well the text anchors separate normal and abnormal patches; MVFA's anchors are frozen template averages. Following AA-CLIP, the anchors can first be made anomaly-aware using image labels only, and patch alignment by MIL then operates against a better-separated reference.",
+   "method": "1) New module text_adapter.py: TextAdapter(d=768, bottleneck=192) applied residually to the two anchor embeddings. 2) train_anchor.py (stage 1): freeze CLIP and visual adapters; optimise TextAdapter with BCE(sigmoid(t * (cos(cls, T_abn) - cos(cls, T_nor))), y) + 0.1 |cos(T_nor, T_abn)| on all source images; lr 1e-4, 10 epochs. 3) train_zero.py (stage 2): replace seg_loss with topk_mil + normal-all-patches term against stage-1 anchors; det branch unchanged. 4) Test: test_zero.py with stage-1 anchors.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL with frozen anchors; MIL with jointly (single-stage) learned anchors. Ablations: orthogonality weight; adapter bottleneck; stage-1 epochs. Metrics: anchor cosine, pixel AUROC, PRO, image AUROC. Falsification: no gain over frozen anchors.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 55.27,
+    "1": 56.26
+   }
+  },
+  "A1-g0-C6": {
+   "id": "A1-g0-C6",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C6",
+   "title": "Graph-Laplacian smoothness regularisation for MIL-trained segmentation adapters",
+   "summary": "Add to the image-level MIL loss a feature-weighted graph-Laplacian smoothness term on each level's patch anomaly map, so localisation learned from image labels forms coherent regions.",
+   "research_idea": "Independent variable: regulariser (none vs. uniform 4-neighbour Laplacian vs. feature-weighted Laplacian). For level l, patch anomaly probabilities p (289), graph weights w_ij = exp(-||f_i - f_j||^2 / (2 sigma^2)) for 8-neighbours using frozen CLIP features, loss_smooth = sum_ij w_ij (p_i - p_j)^2 / sum_ij w_ij, added with weight lambda = 0.5 to top-k MIL (abnormal) and all-patches-normal (normal) losses. Dependent variables: pixel AUROC, PRO, a region-coherence measure (number of connected components above threshold per image), and image AUROC on held-out modalities.",
+   "hypothesis": "Feature-weighted Laplacian regularisation increases held-out PRO of MIL-trained segmentation adapters by at least 3 points and halves the number of spurious connected components per abnormal image, without reducing image AUROC by more than 1 point.",
+   "rationale": "Image-level MIL supervises a handful of patches and leaves the rest of an abnormal image unconstrained, producing speckled maps (UltraAD reports that MVFA's maps already struggle to form continuous regions). A graph prior over the 17x17 patch grid that penalises disagreement between neighbouring, similar-looking patches would spread MIL evidence across coherent regions without masks.",
+   "method": "1) loss.py: graph_smooth(p, feats) with precomputed 8-neighbour index pairs for the 17x17 grid; weights from L2-normalised frozen CLIP patch tokens of the same level (no gradient), sigma = median pairwise distance. 2) train_zero.py: seg loss = topk_mil + normal_all + lambda * graph_smooth at each level. 3) Hyper-parameters: k = 6, lambda in {0.1, 0.5, 1.0}, lr 1e-4, 50 epochs. 4) Inference unchanged.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); masks of the source datasets are discarded for all image-label-supervised variants; checkpoints selected on a validation split of the source modalities using image AUROC only (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds; evaluation on the held-out modalities that have masks (BrainMRI, LiverCT, RESC) for pixel metrics and on all six for image AUROC. Baselines: mask-supervised MVFA; MIL only; MIL + uniform Laplacian. Ablations: lambda; neighbourhood (4 vs. 8); weights from CLIP vs. adapted features. Metrics: pixel AUROC, PRO, connected components per image, image AUROC. Falsification: no PRO gain over MIL only.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 20.0,
+    "1": 22.6
+   }
+  },
+  "A1-g1-o1": {
+   "id": "A1-g1-o1",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C2",
+    "A1-g0-C5"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 85.16,
+    "2": 91.72,
+    "3": 91.97
+   },
+   "title": "Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches",
+   "summary": "Use the image labels of each source dataset to build a memory bank of its normal patches, mark patches of its abnormal images that are far from every normal patch as pseudo-anomalous, and train MVFA's segmentation adapters with Dice and Focal on these pseudo-masks.",
+   "hypothesis": "Pseudo-masks from k-nearest-neighbour distance to a source dataset's own normal-patch bank reach at least 0.4 pixel-level IoU with true masks on BrainMRI, LiverCT and RESC training images, and segmentation adapters trained on them for all five source datasets retain at least 80% of mask-supervised MVFA's zero-shot pixel-AUROC margin over chance on the held-out modality.",
+   "rationale": "Parent 1 creates pseudo-masks from the detection branch, which reviewers doubted localises well because it is mean-pooled; parent 2 sharpens the text reference. A different source of localisation is already implicit in image labels: within one dataset, the normal images define what normal tissue looks like, so an abnormal image's patches that have no close normal neighbour are anomalous. This is MVFA's own few-shot memory-bank principle (1 - max cosine to normal patches), applied offline to the source data at scale to manufacture dense supervision for the segmentation branch.",
+   "method": "1) New script make_bank_masks.py: for each source dataset, extract frozen CLIP ViT-L/14 patch tokens at the four MVFA levels for all normal training images (coreset-subsample to 10% with greedy k-center, as in PatchCore); for each abnormal training image compute per-patch score = mean over levels of (1 - max cosine to the bank); pseudo-mask = patches above the 99th percentile of the same score on held-out normal images of that dataset, restricted to the foreground (Otsu), upsampled to 240x240. 2) train_zero.py: segmentation loss = Focal + Dice on pseudo-masks for every source image (normal images: empty mask); true masks are never loaded. 3) Hyper-parameters as MVFA (lr 1e-4, 50 epochs, batch size 1); coreset ratio and percentile as ablations.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; detection-to-segmentation pseudo-masks; asymmetric SigLIP-MIL. Ablations: bank features (frozen CLIP vs. adapted), percentile (97/99/99.5), coreset ratio. Metrics: pseudo-mask IoU and precision (analysis only, on datasets with masks), held-out pixel AUROC, PRO, image AUROC. Falsification: pseudo-mask IoU below 0.25 or retention below 60%.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "A1-g1-o2": {
+   "id": "A1-g1-o2",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C2"
+   ],
+   "operators": [
+    "substitution"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 67.15,
+    "2": 58.38
+   },
+   "title": "Attribution-based pseudo-masks: gradient attribution of the detection branch's image score supervises the segmentation adapters",
+   "summary": "Keep the detection-to-segmentation teacher idea but replace the detection branch's mean-pooled patch maps with Grad-CAM-style attributions of its image-level score to the patch tokens, filtered across levels, as pseudo-masks.",
+   "hypothesis": "Attribution-derived pseudo-masks have at least 1.5x the pixel precision of raw detection-map pseudo-masks on BrainMRI, LiverCT and RESC training images, and segmentation adapters trained on them retain at least 75% of mask-supervised MVFA's held-out pixel-AUROC margin over chance.",
+   "rationale": "The reviewed weakness of the parent is that MVFA's detection branch is trained with a MEAN-pooled image loss (train_zero.py:130), so its raw patch map spreads evidence over many patches. What the image decision actually depends on is better measured by attribution: the gradient of the image score with respect to each patch token, weighted by the token, highlights patches that drive the decision. Substituting attribution for raw maps keeps the parent's framing (an image-label-trained teacher inside MVFA supervises the segmentation branch) and its evaluation.",
+   "method": "1) Train detection adapters with their image-level BCE (unchanged). 2) For each abnormal source image, compute the image score s = sum_l mean_j p_lj (as in train_zero.py), backpropagate to the adapted patch tokens of each level, attribution a_lj = ReLU(<grad_lj, token_lj>), normalise per level; pseudo-mask patches = top 5% of attribution at >= 3 of 4 levels, foreground-restricted, upsampled to 240x240. 3) Train segmentation adapters with Focal + Dice on pseudo-masks (normal images: empty). 4) One refinement round. 5) Code: make_attr_masks.py (torch autograd on the frozen detection model), train_zero.py loss swap.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; raw detection-map pseudo-masks (parent); asymmetric SigLIP-MIL. Ablations: attribution type (gradient x input vs. integrated gradients with 16 steps); top-percentage; agreement threshold. Metrics: pseudo-mask precision/IoU (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: precision not improved over raw maps.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  "A1-g1-o3": {
+   "id": "A1-g1-o3",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C2",
+    "A1-g0-C4"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 50.76
+   },
+   "title": "Cross-branch co-training of MVFA's detection and segmentation adapters from image labels",
+   "summary": "Let MVFA's two adapter branches supervise each other: confident patches of each branch's map become pseudo-labels for the other, while image labels anchor both, so neither branch alone determines the pseudo-masks.",
+   "hypothesis": "Co-training with cross-branch pseudo-labels yields segmentation maps with at least 3 points higher held-out PRO than one-way detection-to-segmentation distillation, and retains at least 75% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Both parents rely on a single teacher (the detection branch, or an external DINO model) whose errors are copied into the pseudo-masks; reviewers flagged exactly this risk. Co-training replaces a single teacher with two views of the same image produced by MVFA's existing dual-adapter design: a patch is pseudo-labelled for one branch only when the other branch is confident, which is the classic remedy for confirmation bias, and image labels keep both branches honest (normal images: all patches normal).",
+   "method": "1) Warm-up (10 epochs): detection branch with its mean-pooled BCE; segmentation branch with top-k MIL (k = 6) \u2014 both from image labels. 2) Co-training (40 epochs): for each abnormal image, P_det = patches in the top 5% of the detection map at >= 3 of 4 levels, P_seg likewise for the segmentation map; segmentation adapters receive Focal + Dice on P_det (other pixels ignored except normal-image pixels); detection adapters receive a patch-level BCE on P_seg in addition to their image loss. 3) Normal images: all patches labelled normal for both branches. 4) Code: train_zero.py with a co-training loop and loss.py masked_focal_dice(); hyper-parameters as MVFA.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; detection-to-segmentation distillation; asymmetric MIL. Ablations: agreement threshold; warm-up length; one-way vs two-way. Metrics: held-out pixel AUROC, PRO, image AUROC; pseudo-label precision over training (analysis). Falsification: no PRO gain over one-way distillation.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ]
+  },
+  "A1-g1-o4": {
+   "id": "A1-g1-o4",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 72.79,
+    "2": 75.76
+   },
+   "title": "Counterfactual patch replacement: learning where anomalies are from which patches, when replaced by normal tissue, flip the image decision",
+   "summary": "For each abnormal source image, replace each patch's adapted feature by its nearest neighbour from that dataset's normal-patch bank and measure the drop in the image-level anomaly score; patches with the largest counterfactual drop become pseudo-masks for the segmentation adapters.",
+   "hypothesis": "Counterfactual-drop pseudo-masks achieve higher pixel IoU with true masks than top-k MIL maps on BrainMRI, LiverCT and RESC training images (by at least 0.1), and segmentation adapters trained on them retain at least 80% of mask-supervised MVFA's held-out pixel-AUROC margin over chance.",
+   "rationale": "By analogy with counterfactual explanations and inpainting-based anomaly localisation, an anomalous region is the part of an image whose replacement by normal content makes the image normal. Image labels suffice to define both sides: the image-level detector (trained on labels) and the normal content (patches of labelled normal images of the same dataset). Unlike MIL, which only selects the top-scoring patches, the counterfactual test measures causal contribution to the decision, which should be less sensitive to spurious high scores.",
+   "method": "1) Train MVFA's detection branch with image labels (unchanged). 2) For each source dataset, build a coreset bank (10%) of adapted normal patch tokens per level. 3) For each abnormal image and each patch j, replace token j at all levels by its nearest bank token, recompute the image score (mean-pooled softmax as in train_zero.py), drop_j = s - s_(j). Batch all 289 replacements in one forward pass of the scoring head (no backbone re-run needed because only post-adapter tokens are replaced). 4) Pseudo-mask: patches with drop above the 95th percentile, foreground-restricted. 5) Train segmentation adapters with Focal + Dice on pseudo-masks. 6) Code: make_counterfactual_masks.py, train_zero.py loss swap.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; top-k MIL; normal-bank kNN pseudo-masks. Ablations: replacement at one level vs all levels; percentile; group replacement of 2x2 patch windows. Metrics: pseudo-mask IoU (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: IoU gain below 0.05 over MIL maps.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g1-o5": {
+   "id": "A1-g1-o5",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C4",
+    "A1-g0-C5"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 45.03
+   },
+   "title": "Anomaly-aware anchors with patch MIL and DINO-affinity-refined pseudo-masks for mask-free segmentation adapters",
+   "summary": "Learn anomaly-aware text anchors from image labels, train the segmentation adapters with top-k MIL against them, then grow the resulting MIL maps into pseudo-masks over a DINOv2 affinity graph for a final Dice/Focal stage.",
+   "hypothesis": "Combining image-label-learned anchors (stage 1), MIL (stage 2) and DINO-affinity pseudo-masks (stage 3) improves held-out PRO by at least 3 points over either parent alone and retains at least 85% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Parent 1 (DINO propagation) improves the shape of weak maps but inherits whatever the MIL seeds get wrong; parent 2 (anomaly-aware anchors) improves the seeds by separating normal and abnormal text references, but leaves maps fragmented. The reviews rated parent 2 higher for specificity and parent 1 for spatial grounding; the stages are complementary and each is small. To address the reviewers' concern that learned anchors may overfit source modalities, the anchor adapter is regularised towards the frozen template anchors.",
+   "method": "1) Stage 1 (10 epochs): residual text adapter (ratio 0.1, bottleneck 192) trained with image-level BCE on CLS-anchor similarity plus 0.1 |cos(T_nor, T_abn)| and an L2 penalty (0.1) to the frozen template anchors. 2) Stage 2 (25 epochs): segmentation adapters with top-k MIL (k = 6) and the all-patches-normal term for normal images, anchors frozen. 3) Stage 3: DINOv2 ViT-S/14 affinity propagation (alpha 0.7, beta 8, t 3) of stage-2 maps on abnormal source images into pseudo-masks; 25 epochs of Focal + Dice on them. 4) Code: text_adapter.py, train_anchor.py, refine_masks.py, train_zero.py modifications.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; each parent; MIL with frozen anchors. Ablations: drop each stage; anchor L2 weight. Metrics: anchor cosine, held-out pixel AUROC, PRO, image AUROC. Falsification: no gain over the better parent.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "A1-g1-o6": {
+   "id": "A1-g1-o6",
+   "gen": 1,
+   "parents": [
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 81.82,
+    "2": 89.03,
+    "3": 84.48
+   },
+   "title": "Cross-image MIL ranking for mask-free segmentation, borrowed from weakly supervised video anomaly detection",
+   "summary": "Train MVFA's segmentation adapters with a ranking loss that requires the top patch scores of every abnormal image to exceed the top patch scores of normal images from the same dataset in the same mini-batch, plus sparsity and smoothness terms, using only image labels.",
+   "hypothesis": "A cross-image MIL ranking loss with sparsity and smoothness yields held-out pixel AUROC at least 2 points higher than per-image top-k MIL (which only sees one image at a time, as MVFA's batch size of 1 enforces), and retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Weakly supervised video anomaly detection learns to localise anomalous segments from video-level labels with a MIL ranking loss (the highest-scoring segment of an anomalous video must outrank the highest-scoring segment of a normal video), plus sparsity and temporal smoothness. Patches of an image are the spatial analogue of segments of a video. Per-image MIL, as in the parent, calibrates each image in isolation; ranking across images of the same dataset makes the scores comparable between images, which is exactly what localisation and image scoring need. MVFA's training uses batch size 1 (train_zero.py), so this requires building balanced batches.",
+   "method": "1) Data loader: batches of 4 normal + 4 abnormal images from the same source dataset. 2) For level l: s_max(x) = mean of top-k patch probabilities (k = 6). Loss_rank = mean over (a, n) pairs of max(0, 1 - s_max(a) + s_max(n)). 3) Sparsity: lambda_1 * mean patch probability of abnormal images (lambda_1 = 1e-3); smoothness: lambda_2 * mean squared difference of 4-neighbour patch probabilities (lambda_2 = 1e-3). 4) Normal images: additionally all-patches-normal BCE (weight 0.5). 5) Segmentation adapters only; detection branch unchanged. 6) Code: dataset/medical_zero.py balanced sampler, loss.py mil_rank(), train_zero.py; lr 1e-4, 50 epochs.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; per-image top-k MIL; asymmetric SigLIP-MIL. Ablations: k; lambda_1, lambda_2; batch composition (same dataset vs mixed). Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: no gain over per-image MIL.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g2-o1": {
+   "id": "A1-g2-o1",
+   "gen": 2,
+   "parents": [
+    "A1-g1-o1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 51.3
+   },
+   "title": "Context-surprisal pseudo-masks: a masked feature predictor trained on normal images flags patches it cannot predict",
+   "summary": "Train a small transformer to predict masked patch tokens from their context on normal source images only; on abnormal images, patches whose tokens are poorly predicted from surrounding tissue form pseudo-masks for MVFA's segmentation adapters.",
+   "hypothesis": "Context-surprisal pseudo-masks reach at least the IoU of global normal-bank kNN masks on BrainMRI, LiverCT and RESC training images while producing at least 30% fewer pseudo-positive patches on normal images, and segmentation adapters trained on them retain at least 80% of mask-supervised MVFA's held-out pixel-AUROC margin over chance.",
+   "rationale": "By analogy with surprisal in masked language models, a token is anomalous when its context makes it unlikely. Normal-bank kNN asks whether a patch resembles any normal patch anywhere, which ignores context (a patch can be normal tissue in the wrong place); a masked predictor trained on normal images learns which content is expected at a location given its surroundings, so lesions in otherwise normal anatomy are surprising even when their appearance exists elsewhere. Image labels are again enough: only normal images are used for training the predictor.",
+   "method": "1) Masked feature predictor: 4-layer transformer (width 256) on frozen CLIP level-3 patch tokens (17x17) of normal source images; mask 30% of patches in random blocks; predict masked tokens with a cosine loss; 30 epochs. 2) Surprisal of patch j in an abnormal image = mean over 8 random masks covering j of (1 - cos(pred_j, token_j)). 3) Pseudo-mask = patches above the 99th percentile of surprisal on held-out normal images of the same dataset. 4) Train segmentation adapters with Focal + Dice on pseudo-masks. 5) Code: train_mfp.py (about 2M parameters, fits easily on one GPU), make_surprisal_masks.py, train_zero.py.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: normal-bank kNN pseudo-masks; mask-supervised MVFA; asymmetric MIL. Ablations: predictor depth; level of tokens; mask ratio. Metrics: pseudo-mask IoU and normal-image false-positive rate (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: IoU below kNN masks and no FP reduction.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "A1-g2-o2": {
+   "id": "A1-g2-o2",
+   "gen": 2,
+   "parents": [
+    "A1-g1-o4"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 64.57
+   },
+   "title": "Change detection against a retrieved normal twin: optimal-transport pseudo-masks from image labels",
+   "summary": "For each abnormal source image, retrieve its most similar normal image from the same dataset, align their patch tokens with entropic optimal transport, and treat the patch mass of the abnormal image that cannot be transported cheaply as the pseudo-mask for MVFA's segmentation adapters.",
+   "hypothesis": "Unbalanced-OT residual mass against a retrieved normal twin yields pseudo-masks with at least 0.05 higher IoU than counterfactual-replacement masks on BrainMRI, LiverCT and RESC training images, and segmentation adapters trained on them retain at least 80% of mask-supervised MVFA's held-out pixel-AUROC margin over chance.",
+   "rationale": "By analogy with change detection in remote sensing, where a before/after pair reveals what changed, an abnormal image paired with an anatomically similar normal image reveals the lesion as the part that has no counterpart. Image labels provide the normal pool; global CLIP features retrieve the twin; unbalanced optimal transport handles small misalignments and lets lesion patches remain unmatched instead of being forced onto normal tissue. Unlike counterfactual replacement, this does not depend on the detection branch's mean-pooled score being sensitive to single patches.",
+   "method": "1) Twin retrieval: frozen CLIP CLS cosine within the same source dataset's normal training images (top-1, or average over top-3). 2) Patch tokens at levels 2-3 (mid-level, more spatial); cost C_ij = 1 - cos; unbalanced Sinkhorn (POT library, epsilon 0.05, marginal relaxation 0.5). 3) Residual mass per abnormal patch = 1 - transported mass; pseudo-mask = patches above the 95th percentile of residual on normal-normal pairs from the same dataset. 4) Train segmentation adapters with Focal + Dice on pseudo-masks. 5) Code: make_ot_masks.py; train_zero.py.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: counterfactual replacement; normal-bank kNN; mask-supervised MVFA. Ablations: number of twins; epsilon and relaxation; levels used. Metrics: pseudo-mask IoU (analysis), held-out pixel AUROC, PRO, image AUROC, preprocessing time. Falsification: IoU not above counterfactual masks.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g2-o3": {
+   "id": "A1-g2-o3",
+   "gen": 2,
+   "parents": [
+    "A1-g1-o4",
+    "A1-g1-o2"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 70.29
+   },
+   "title": "Attribution-proposed, counterfactual-verified pseudo-masks for mask-free segmentation adapters",
+   "summary": "Use gradient attribution of the detection branch's image score to propose candidate anomalous patches cheaply, keep only those whose counterfactual replacement by the nearest normal-bank patch lowers the image score, and train the segmentation adapters on the verified pseudo-masks.",
+   "hypothesis": "Counterfactual verification of attribution proposals raises pseudo-mask precision by at least 0.15 over attribution alone on BrainMRI, LiverCT and RESC training images, and segmentation adapters trained on verified pseudo-masks retain at least 80% of mask-supervised MVFA's held-out pixel-AUROC margin over chance.",
+   "rationale": "Parent 2 (attribution) is cheap but noisy, the weakness the reviews noted; parent 1 (counterfactual replacement) measures causal contribution but tests every patch and may miss small lesions whose single-patch replacement barely moves a mean-pooled score. Proposing with attribution and verifying with counterfactuals keeps the causal test where it matters and allows replacing groups of proposed patches together, which makes small multi-patch lesions detectable.",
+   "method": "1) Detection branch trained with image labels (unchanged). 2) Proposals: top 10% patches by gradient x input attribution at >= 2 of 4 levels. 3) Verification: replace each connected group of proposed patches by nearest normal-bank tokens (10% coreset of the same dataset's normal images) and compute the drop in image score; keep groups with drop above the 90th percentile of drops for random groups of equal size. 4) Pseudo-mask = verified groups (foreground-restricted, upsampled). 5) Train segmentation adapters with Focal + Dice on pseudo-masks; normal images empty. 6) Code: make_verified_masks.py, train_zero.py.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mask-supervised MVFA; attribution only; counterfactual only; asymmetric MIL. Ablations: proposal fraction; group vs single-patch replacement; verification percentile. Metrics: pseudo-mask precision/recall/IoU (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: precision gain below 0.05.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g2-o4": {
+   "id": "A1-g2-o4",
+   "gen": 2,
+   "parents": [
+    "A1-g1-o1"
+   ],
+   "operators": [
+    "substitution"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 97.35,
+    "3": 96.93
+   },
+   "title": "Position-aware normal-bank pseudo-masks: matching each patch only to normal patches from the same anatomical neighbourhood",
+   "summary": "Keep normal-bank pseudo-masks from image labels but substitute global nearest-neighbour search with a neighbourhood-restricted search over normal patches at the same grid position (+/- 2 patches), so anatomy that is normal elsewhere cannot hide an anomaly.",
+   "hypothesis": "Position-aware matching raises pseudo-mask IoU by at least 0.08 over global kNN on BrainMRI and LiverCT training images (roughly spatially aligned) without reducing it on RESC, and the resulting segmentation adapters gain at least 2 held-out PRO points over global-kNN pseudo-masks.",
+   "rationale": "The parent's reviewed weakness is that global nearest-neighbour distances may fail for subtle medical anomalies: a lesion patch can resemble normal tissue from a different location (e.g. a hyperintense lesion resembling normal ventricles or skull), giving a small distance and a missed pseudo-mask. Brain MRI slices in BMAD come from co-registered volumes and liver CT slices are roughly centred, so restricting matches to the same spatial neighbourhood is a better normality model. The substitution keeps the parent's framing (image labels define normality, pseudo-masks supervise the segmentation branch) and its evaluation.",
+   "method": "1) For each source dataset, store normal patch tokens per grid position (17x17) and level, coreset 20% per position. 2) For a patch at (u, v) of an abnormal image, distance = 1 - max cosine over bank tokens at positions within +/-2 in u and v. 3) Pseudo-mask = patches above the 99th percentile of the same score on held-out normal images of that dataset, foreground-restricted. 4) Datasets without spatial alignment (OCT17, ChestXray, HIS): a neighbourhood radius selected per dataset on its normal images (largest radius at which normal-vs-normal false positives stay below 1%). 5) Train segmentation adapters with Focal + Dice; code: make_bank_masks.py with position index.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: global kNN pseudo-masks (parent); mask-supervised MVFA; asymmetric MIL. Ablations: radius 0/1/2/4; coreset ratio. Metrics: pseudo-mask IoU per dataset (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: no IoU gain on BrainMRI and LiverCT.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "A1-g2-o5": {
+   "id": "A1-g2-o5",
+   "gen": 2,
+   "parents": [
+    "A1-g1-o4"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 81.1,
+    "3": 70.28
+   },
+   "title": "Adversarial erasing for full lesion extent: iterative MIL that must still find the anomaly after its most obvious part is erased",
+   "summary": "Train MVFA's segmentation adapters with image-level MIL in rounds; after each round, erase (replace by normal-bank tokens) the top-scoring region of each abnormal training image and require the remaining patches to still carry anomaly evidence, so localisation grows from the most discriminative patches to the whole lesion.",
+   "hypothesis": "Two erasing rounds increase held-out PRO by at least 3 points and pixel AUROC by at least 1 point over single-round top-k MIL, while image AUROC changes by less than 1 point.",
+   "rationale": "Counterfactual replacement and MIL both find the patches that matter most for the decision, which is a known failure mode of weakly supervised localisation: only the most discriminative part of an object is found. Adversarial erasing in weakly supervised semantic segmentation solves this by erasing the discovered region and forcing the model to find additional evidence. Medical lesions (tumours, retinal fluid) are spatially extended, so recovering full extent matters directly for PRO and pixel AUROC.",
+   "method": "1) Round 1: top-k MIL (k = 6) with the all-patches-normal term for normal images. 2) Erase: for each abnormal training image, replace adapted tokens of its top-k patches by nearest normal-bank tokens (10% coreset of the dataset's normal images) at all levels. 3) Round 2: continue training with MIL on erased abnormal images labelled abnormal only if their erased image score from round 1 remains above the dataset's normal 95th percentile (otherwise the image is excluded from the positive set, preventing forced false evidence). 4) Union of discovered regions across rounds forms soft pseudo-masks for a final Focal + Dice stage (optional ablation). 5) Code: train_zero.py erasing loop; loss.py topk_mil.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: single-round MIL; asymmetric SigLIP-MIL; mask-supervised MVFA. Ablations: number of rounds (1-3); erasing by zeroing vs normal-bank replacement; final pseudo-mask stage on/off. Metrics: held-out pixel AUROC, PRO, image AUROC; recovered lesion area ratio (analysis). Falsification: PRO gain below 1 point.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g2-o6": {
+   "id": "A1-g2-o6",
+   "gen": 2,
+   "parents": [
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 112.53,
+    "3": 123.62
+   },
+   "title": "Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled",
+   "summary": "Recast mask-free training of MVFA's segmentation adapters as positive-unlabelled (PU) learning at the patch level, using the non-negative PU risk estimator with a per-dataset class prior (expected lesion fraction) estimated from image-labelled data.",
+   "hypothesis": "Non-negative PU learning with an estimated patch-level class prior retains at least 85% of mask-supervised MVFA's held-out pixel-AUROC margin over chance and outperforms asymmetric top-k MIL by at least 1.5 pixel-AUROC points, because it uses every patch of abnormal images rather than only the top-k.",
+   "rationale": "The parent's key insight \u2014 every patch of a normal image is normal \u2014 is exactly the labelled side of a PU problem: here the known class is 'normal' (labelled negatives) and abnormal images contribute an unlabelled mixture of normal and abnormal patches. PU learning theory gives an unbiased risk estimator for this setting once the mixture proportion (the fraction of anomalous patches in abnormal images) is known; MIL's top-k is a heuristic stand-in for that proportion. The proportion can be estimated without masks by mixture proportion estimation between normal-image and abnormal-image patch score distributions.",
+   "method": "1) Patch classifier = MVFA's segmentation-branch patch-text logit z = t(cos(f, T_abn) - cos(f, T_nor)) + b. 2) Class prior pi_d for each source dataset d: mixture proportion estimation (best-bin estimator) on the zero-shot patch scores of normal vs abnormal images. 3) nnPU loss: with N = normal-image patches (labelled 'normal') and U = abnormal-image patches with mixing weight pi, R = (1 - pi) E_N[l(z, normal)]... implemented with the standard nnPU estimator (Kiryo et al.) where the negative class is labelled, max(0, ...) correction on the unlabelled term. 4) Sigmoid loss, lr 1e-4, 50 epochs; balanced batches of 4 normal + 4 abnormal images from the same dataset. 5) Code: loss.py nnpu_loss(); estimate_prior.py; train_zero.py.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: asymmetric SigLIP-MIL; top-k MIL; mask-supervised MVFA. Ablations: prior misspecification (x0.5, x2); estimated vs oracle prior (from masks, analysis only). Metrics: held-out pixel AUROC, PRO, image AUROC; prior estimation error (analysis). Falsification: no gain over asymmetric MIL.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g3-o1": {
+   "id": "A1-g3-o1",
+   "gen": 3,
+   "parents": [
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 54.08
+   },
+   "title": "Equivariance-regularised MIL: geometric consistency as free supervision for mask-free segmentation adapters",
+   "summary": "Add to asymmetric MIL a self-supervised constraint that the segmentation map of a geometrically transformed image equals the transformed map of the original, which pushes MIL's sparse, most-discriminative activations to cover whole lesions.",
+   "hypothesis": "Adding an equivariance consistency loss to asymmetric SigLIP-MIL increases held-out PRO by at least 2 points and pixel AUROC by at least 1 point, with image AUROC unchanged within 1 point.",
+   "rationale": "By analogy with self-supervised equivariant attention in weakly supervised semantic segmentation (SEAM), image-level supervision yields maps that depend on arbitrary details of a single view and cover only the most discriminative parts; demanding equivariance under rescaling and flips is a free, label-independent signal that regularises maps towards object extent. Here it acts on MVFA's segmentation-branch maps at all four levels and uses only the images already in training.",
+   "method": "1) For each training image x, sample a transform A (rescale 0.75-1.0 then pad, horizontal flip with p 0.5). 2) Maps M(x), M(A x) per level; consistency loss L_eq = || A(M(x)) - M(A x) ||_1 averaged over pixels and levels, weight 0.5. 3) Total loss = asymmetric SigLIP-MIL + L_eq. 4) Doubles the forward passes per step (feasible: adapters are small, backbone frozen). 5) Code: train_zero.py augmentation pair; loss.py equivariance_loss().",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: asymmetric MIL; graph-Laplacian MIL; mask-supervised MVFA. Ablations: transforms; weight; levels. Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: PRO gain below 1 point.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g3-o2": {
+   "id": "A1-g3-o2",
+   "gen": 3,
+   "parents": [
+    "A1-g2-o6",
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 76.37
+   },
+   "title": "Noisy-label learning with small-loss selection: all abnormal-image patches as noisy positives",
+   "summary": "Label every patch of an abnormal image as abnormal and every patch of a normal image as normal, then learn MVFA's segmentation adapters with small-loss selection (co-teaching between two adapter copies) so the many mislabelled normal patches inside abnormal images are progressively ignored.",
+   "hypothesis": "Co-teaching with small-loss selection on image-label-derived noisy patch labels retains at least 80% of mask-supervised MVFA's held-out pixel-AUROC margin over chance and matches or exceeds PU learning within 1 point, without requiring a class-prior estimate.",
+   "rationale": "PU learning and asymmetric MIL both need a quantity that is hard to know (the class prior, or k). A different explanation of the same data is label noise: assigning the image label to every patch yields patch labels whose noise is one-sided (only positives are noisy). Noisy-label learning exploits the memorisation effect \u2014 networks fit clean labels before noisy ones \u2014 so patches with large loss early in training are likely mislabelled normal tissue. Co-teaching between two copies of the segmentation adapters limits confirmation bias, and the forget rate can be scheduled without masks.",
+   "method": "1) Two copies of the segmentation adapters (A, B) with different initialisation seeds. 2) Patch labels: abnormal images -> all patches 1; normal images -> all patches 0 (clean). 3) Each step, for abnormal-image patches, A selects its R(t) fraction of smallest-loss patches to update B and vice versa; normal-image patches always used. R(t) decreases linearly from 1.0 to 0.15 over 10 epochs (forget rate tied to a conservative expected lesion fraction; ablation 0.05-0.3). 4) Inference with copy A (or average). 5) Code: train_zero.py co-teaching loop; loss.py per-patch BCE; lr 1e-4, 50 epochs.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: PU learning; asymmetric MIL; mask-supervised MVFA. Ablations: final keep fraction; single network small-loss vs co-teaching. Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: retention below 65%.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "A1-g3-o3": {
+   "id": "A1-g3-o3",
+   "gen": 3,
+   "parents": [
+    "A1-g2-o6",
+    "A1-g2-o4"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 114.6
+   },
+   "title": "Bank-informed positive-unlabelled learning: patch-specific class priors from position-aware normal-bank distances",
+   "summary": "Train MVFA's segmentation adapters with non-negative PU learning, but replace the single dataset-level class prior with patch-specific priors derived from position-aware normal-bank distances, so likely-lesion patches carry more of the unlabelled positive mass.",
+   "hypothesis": "Patch-specific priors improve held-out pixel AUROC by at least 1 point and PRO by at least 2 points over PU learning with a single dataset-level prior, and the combined method retains at least 85% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "Parent 1 (PU learning) uses every patch of abnormal images but treats them as exchangeable, with one class prior per dataset, which reviewers flagged as fragile for small lesions; parent 2 (position-aware bank) provides a per-patch, anatomy-aware estimate of how unusual each patch is. Weighted PU risk estimators accept instance-dependent priors, so the bank's evidence can be injected in a principled way, keeping a single training objective.",
+   "method": "1) Position-aware bank distances d_j per abnormal-image patch (radius 2, 20% coreset per position). 2) Patch prior pi_j = pi_d * softmax_j(d_j / T) * N_patches, clipped to [0, 0.9], where pi_d is the dataset-level prior from mixture proportion estimation and T is chosen so the mean prior equals pi_d. 3) Weighted nnPU loss with instance priors (negatives labelled: normal-image patches). 4) Balanced batches (4 normal + 4 abnormal, same dataset); lr 1e-4, 50 epochs. 5) Code: estimate_prior.py, make_banks.py, loss.py weighted_nnpu().",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: PU with a single prior; position-aware bank pseudo-masks; asymmetric MIL; mask-supervised MVFA. Ablations: temperature T; radius. Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: no gain over single-prior PU.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  "A1-g3-o4": {
+   "id": "A1-g3-o4",
+   "gen": 3,
+   "parents": [
+    "A1-g2-o4",
+    "A1-g0-C1"
+   ],
+   "operators": [
+    "inspiration",
+    "substitution"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 63.23
+   },
+   "title": "Rank-atlas MIL: selecting MIL positives by per-position empirical-CDF normalisation of normal scores",
+   "summary": "Replace the positional mean/std atlas with a per-position empirical CDF of normal-image scores, so MIL positives are the patches whose score is most extreme relative to normal images at the same location, robust to skewed and heavy-tailed score distributions.",
+   "hypothesis": "Rank-atlas selection reduces off-lesion MIL selections by at least 10% more than mean/std atlas selection on BrainMRI and LiverCT training images and improves held-out pixel AUROC by at least 0.5 points over it.",
+   "rationale": "The parent's atlas standardises with means and standard deviations, but patch anomaly probabilities are bounded and heavily skewed (most near zero), so z-scores at positions with near-zero variance explode and select noise. An empirical CDF per position gives a rank-based, scale-free comparison with normal tissue at that location; the framing (positional normal reference for MIL selection) and evaluation are unchanged.",
+   "method": "1) Per dataset, level and position, store the sorted segmentation-branch probabilities of 200 normal training images (refreshed every epoch). 2) Selection score = empirical CDF value via searchsorted, ties broken by raw probability. 3) Asymmetric SigLIP-MIL with top-k selection by this score. 4) Unaligned datasets: global CDF. 5) Code: atlas.py (positional CDFs), loss.py selection hook.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: mean/std atlas MIL (parent); asymmetric MIL; mask-supervised MVFA. Metrics: off-lesion selection fraction (analysis), held-out pixel AUROC, PRO, image AUROC. Falsification: no reduction in off-lesion selections relative to the parent.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  "A1-g3-o5": {
+   "id": "A1-g3-o5",
+   "gen": 3,
+   "parents": [
+    "A1-g0-C1",
+    "A1-g1-o1"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 102.12
+   },
+   "title": "Bank-gated asymmetric MIL: positives must be both text-abnormal and unlike any normal patch of the dataset",
+   "summary": "In asymmetric SigLIP-MIL, choose the positive patches of an abnormal image only among those that the dataset's normal-patch bank also flags as unusual, and use the bank distance as a soft target weight, combining text-based and memory-based evidence from image labels.",
+   "hypothesis": "Gating MIL positives with normal-bank distance increases held-out PRO by at least 2 points over asymmetric MIL alone and over normal-bank pseudo-masks alone, while retaining at least 85% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "rationale": "The reviews ranked these two parents highest but noted complementary failure modes: MIL can select salient normal structures that align with the abnormal text anchor, and bank distances can flag normal anatomical variability. A patch flagged by both is far more likely to be a lesion. The combination keeps a single loss and uses the bank only for selection and weighting, so its cost is close to that of either parent.",
+   "method": "1) Build per-dataset normal coreset banks (10%) of frozen level-3 tokens from image-labelled normal training images; bank distance d_j = 1 - max cosine. 2) For each abnormal image, candidate set = patches with d_j above the dataset's normal 95th percentile; MIL positives = top-k (k = 6) by segmentation probability within the candidate set (fall back to global top-k if fewer than k candidates). 3) Positive term weighted by w_j = d_j / max d. 4) Normal images: all-patches-normal SigLIP term. 5) Code: make_banks.py; loss.py gated_asym_mil(); train_zero.py; lr 1e-4, 50 epochs.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: asymmetric MIL; normal-bank pseudo-masks; mask-supervised MVFA. Ablations: gating percentile; with/without soft weights; bank level. Metrics: held-out pixel AUROC, PRO, image AUROC; precision of selected positives (analysis). Falsification: no PRO gain over both parents.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "A1-g3-o6": {
+   "id": "A1-g3-o6",
+   "gen": 3,
+   "parents": [
+    "A1-g2-o6"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 87.01
+   },
+   "title": "Optimal-transport label assignment of abnormal mass to patches under a lesion-fraction budget",
+   "summary": "Assign the 'abnormal' label of each abnormal training image to its patches by entropic optimal transport, with a mass budget equal to the dataset's estimated lesion fraction and costs from the current segmentation scores, as modern object detectors assign labels to anchors.",
+   "hypothesis": "OT-based dynamic label assignment retains at least 85% of mask-supervised MVFA's held-out pixel-AUROC margin over chance and improves PRO by at least 1.5 points over PU learning with the same lesion-fraction estimate.",
+   "rationale": "By analogy with optimal-transport label assignment in object detection (OTA), where ground-truth objects distribute their labels over many candidate anchors by solving a transport problem rather than by fixed rules, an abnormal image's label can be distributed over its patches: a fixed amount of 'abnormal mass' (the expected lesion fraction) flows preferentially to patches that the model currently scores as abnormal and that are spatially contiguous. Unlike PU's exchangeable treatment, this produces sharp, per-image soft labels that adapt during training.",
+   "method": "1) Lesion fraction pi_d per dataset by mixture proportion estimation (as for PU). 2) Per abnormal image, OT between supplies {abnormal: pi_d * N, normal: (1 - pi_d) * N} and the N patches with cost c_j(abnormal) = -log p_j + lambda_s * (1 - neighbourhood mean of p), c_j(normal) = -log(1 - p_j); Sinkhorn with epsilon 0.1, 50 iterations, no gradient. 3) Soft labels = transport plan rows; BCE on patches with these labels; normal images all-normal. 4) Warm-up 5 epochs with asymmetric MIL. 5) Code: loss.py ota_assign(); train_zero.py.",
+   "experiment": "BMAD zero-shot leave-one-modality-out (RESC and OCT17 held out together); no source masks used by the proposed variants; checkpoints selected on source-modality validation splits by image AUROC; mask-supervised MVFA re-run under the same rule as reference; 3 seeds; pixel metrics on held-out BrainMRI, LiverCT, RESC. Baselines: PU learning; asymmetric MIL; mask-supervised MVFA. Ablations: lambda_s; epsilon; budget misspecification. Metrics: held-out pixel AUROC, PRO, image AUROC. Falsification: no PRO gain over PU.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  }
+ },
+ "comparisons": [
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g0-C2",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C1",
+   "reasoning": "Both are specific to MVFA, but B's asymmetric objective rests on a clear, verifiable fact (all patches of normal images are normal), while A depends on the detection branch's mean-pooled maps localising lesions, which the code gives no evidence for.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g0-C3",
+   "shown_first": "A1-g0-C3",
+   "winner": "A1-g0-C1",
+   "reasoning": "B is a single, targeted loss change with a crisp falsification criterion; A combines synthetic masks and MIL, so a gain could come from the synthetic data alone and the comparison to the mask-free goal is less clean.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g0-C4",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "A acts directly on the segmentation loss with the observation that normal images give pixel labels for free, a mechanism specific to MVFA's mask-only seg branch; B adds an external DINO model and an offline propagation stage for a gain that is less directly tied to the missing masks.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g0-C5",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "A changes only the supervision of the segmentation branch and is testable with one loss swap; B's stage-1 text adapter learned on five source datasets risks overfitting the anchors to source modalities, which works against zero-shot transfer.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g0-C6",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "A supplies the missing supervision signal itself, whereas B is a generic smoothness regulariser that presupposes a working weak signal and would apply to any segmentation model.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g0-C3",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C2",
+   "reasoning": "A exploits MVFA's own image-label-trained detection branch as a teacher, a mechanism specific to this architecture; B's synthetic anomalies are a generic recipe whose transfer to real lesions is the known weak point.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g0-C4",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C2",
+   "reasoning": "A uses components already in MVFA and a cross-level agreement filter specific to its four-level design; B adds an external foundation model, making the gain harder to attribute to solving the mask dependence.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g0-C5",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C2",
+   "reasoning": "A turns the existing detection branch into a mask-free teacher and is directly testable via pseudo-mask precision; B's learned anchors are plausible but add a stage whose generalisation to unseen modalities is uncertain.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g0-C6",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g0-C2",
+   "reasoning": "B produces dense pseudo-masks from MVFA's own detection branch; A only regularises maps and does not create supervision where MIL gives none.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g0-C4",
+   "shown_first": "A1-g0-C3",
+   "winner": "A1-g0-C4",
+   "reasoning": "B grows MIL evidence along anatomically coherent DINO affinities, supported by Spatial-FAD's findings; A's synthetic anomalies are generic and their realism for medical lesions is unverified.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g0-C5",
+   "shown_first": "A1-g0-C5",
+   "winner": "A1-g0-C5",
+   "reasoning": "A targets the text-anchor separation that MIL localisation depends on in MVFA, grounded in AA-CLIP; B relies on synthetic anomalies, a generic signal not specific to the mask problem.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g0-C6",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g0-C3",
+   "reasoning": "B at least supplies precise mask supervision (synthetic) plus real-image MIL; A's Laplacian prior is generic and its evidence comes from industrial graph models.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g0-C5",
+   "shown_first": "A1-g0-C5",
+   "winner": "A1-g0-C5",
+   "reasoning": "A addresses the anchor quality that governs every patch score in MVFA with a small trainable component; B introduces an external model and an offline pipeline, which is heavier and less specific.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g0-C6",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g0-C4",
+   "reasoning": "B's affinity propagation uses a strong spatial prior from DINO with evidence from Spatial-FAD; A's hand-set graph regulariser is weaker and generic.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g0-C6",
+   "shown_first": "A1-g0-C5",
+   "winner": "A1-g0-C5",
+   "reasoning": "A provides a better reference for the weak signal grounded in AA-CLIP; B is a generic smoothness prior with weak evidence from an industrial paper.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g0-C1",
+   "winner": "TIE",
+   "reasoning": "Both are comparably specific and testable: replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP versus transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison; neither has a decisive advantage.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C2",
+   "reasoning": "The winner turns MVFA's existing image-label-trained detection branch into a teacher with a cross-level agreement filter, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g0-C2",
+   "reasoning": "The winner turns MVFA's existing image-label-trained detection branch into a teacher with a cross-level agreement filter, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g0-C3",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g0-C3",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g1-o3",
+   "winner": "A1-g1-o3",
+   "reasoning": "The winner reduces single-teacher confirmation bias by letting MVFA's two branches supervise each other, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g1-o5",
+   "reasoning": "The winner combines better anchors, MIL and DINO refinement into one pipeline, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C3",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other relies on synthetic anomalies whose realism for medical lesions is unverified, so gains may not reflect the mask-free goal.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g1-o3",
+   "winner": "A1-g1-o3",
+   "reasoning": "The winner reduces single-teacher confirmation bias by letting MVFA's two branches supervise each other, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g0-C4",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g1-o5",
+   "reasoning": "The winner combines better anchors, MIL and DINO refinement into one pipeline, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C4",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other brings in an external foundation model and an offline pipeline for a gain that is not specific to the missing masks.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g0-C5",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other adds a learned anchor stage that may overfit source modalities and only indirectly addresses missing masks.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other adds a learned anchor stage that may overfit source modalities and only indirectly addresses missing masks.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g1-o3",
+   "winner": "A1-g0-C5",
+   "reasoning": "The winner improves the text anchors that every patch score depends on, grounded in AA-CLIP, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other adds a learned anchor stage that may overfit source modalities and only indirectly addresses missing masks.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g0-C5",
+   "reasoning": "The winner improves the text anchors that every patch score depends on, grounded in AA-CLIP, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C5",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g0-C5",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other adds a learned anchor stage that may overfit source modalities and only indirectly addresses missing masks.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o1",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g1-o3",
+   "reasoning": "The winner reduces single-teacher confirmation bias by letting MVFA's two branches supervise each other, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g1-o5",
+   "reasoning": "The winner combines better anchors, MIL and DINO refinement into one pipeline, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C6",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g0-C6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other is a generic regulariser with weak evidence that does not itself supply supervision.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g1-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g1-o3",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o3",
+   "b": "A1-g1-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o3",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g1-o3",
+   "reasoning": "The winner reduces single-teacher confirmation bias by letting MVFA's two branches supervise each other, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o3",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other couples two weak teachers in a more complex training schedule whose gains are hard to attribute.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g1-o5",
+   "shown_first": "A1-g1-o5",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o5",
+   "b": "A1-g1-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other stacks three stages, which makes the contribution of each hard to isolate and is exactly the kind of module stacking that should not be rewarded.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g2-o2",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other helps only where images are spatially aligned and needs a per-dataset radius.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other relies on the top-k patches of abnormal images being correct, with no mechanism to recover from wrong seeds.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g2-o1",
+   "reasoning": "The winner captures context-dependent abnormality with a masked feature predictor trained on normal images, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g2-o2",
+   "reasoning": "The winner localises lesions as unmatched mass against a retrieved normal twin with unbalanced optimal transport, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g2-o3",
+   "reasoning": "The winner pairs cheap attribution proposals with counterfactual verification so that each component covers the other's weakness, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g0-C2",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g0-C2",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other takes pseudo-masks from a mean-pooled detection map that has no demonstrated localisation ability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g1-o2",
+   "reasoning": "The winner repairs the reviewed weakness of detection-map teachers by using gradient attribution of the image score, staying inside MVFA, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g2-o2",
+   "reasoning": "The winner localises lesions as unmatched mass against a retrieved normal twin with unbalanced optimal transport, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g2-o3",
+   "reasoning": "The winner pairs cheap attribution proposals with counterfactual verification so that each component covers the other's weakness, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g1-o2",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o2",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other inherits the known noisiness of gradient attributions as localisation signals.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g2-o2",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g1-o4",
+   "reasoning": "The winner measures each patch's causal contribution to the image decision by counterfactual replacement with normal patches, which is specific and testable via pseudo-mask IoU, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o4",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g1-o4",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other depends on the detection branch's mean-pooled score being sensitive to single-patch replacement, which may be weak for small lesions.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o1",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o1",
+   "b": "A1-g2-o2",
+   "shown_first": "A1-g2-o2",
+   "winner": "A1-g2-o2",
+   "reasoning": "The winner localises lesions as unmatched mass against a retrieved normal twin with unbalanced optimal transport, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o1",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g2-o3",
+   "reasoning": "The winner pairs cheap attribution proposals with counterfactual verification so that each component covers the other's weakness, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o1",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o1",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g2-o1",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o1",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other requires training and tuning an additional predictor whose surprisal may be dominated by normal anatomical variability.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o2",
+   "b": "A1-g2-o3",
+   "shown_first": "A1-g2-o2",
+   "winner": "A1-g2-o3",
+   "reasoning": "The winner pairs cheap attribution proposals with counterfactual verification so that each component covers the other's weakness, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o2",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o2",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g2-o2",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o2",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other assumes a sufficiently similar normal twin exists for every abnormal image and adds an OT pipeline.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o3",
+   "b": "A1-g2-o4",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o3",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o3",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o3",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other stacks two pseudo-mask stages, making the gain harder to attribute.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g2-o5",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other helps only where images are spatially aligned and needs a per-dataset radius.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g2-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g3-o2",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g3-o3",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other relies on the top-k patches of abnormal images being correct, with no mechanism to recover from wrong seeds.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g0-C1",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other can fall back to plain top-k when the bank flags too few patches, leaving its benefit dataset-dependent.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g0-C1",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g0-C1",
+   "reasoning": "The winner replaces the mask-based seg loss with one targeted change built on a verifiable fact \u2014 every patch of a normal image is normal \u2014 and a SigLIP patch loss grounded in MadCLIP, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g3-o3",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g1-o1",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o5",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other depends on frozen-feature nearest-neighbour distances localising lesions, which is uncertain for subtle medical anomalies.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o1",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g1-o1",
+   "reasoning": "The winner manufactures dense pseudo-masks from image labels with MVFA's own memory-bank principle applied to each source dataset's normal images, and makes pseudo-mask quality directly measurable, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g3-o2",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g3-o4",
+   "winner": "A1-g1-o6",
+   "reasoning": "The winner transfers a proven weakly supervised ranking loss from video anomaly detection and fixes MVFA's batch-size-1 limitation that prevents cross-image comparison, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o5",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g1-o6",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g1-o6",
+   "winner": "A1-g3-o6",
+   "reasoning": "The winner distributes each image's abnormal label over patches by optimal transport with a lesion-mass budget, an established label-assignment idea from object detection, whereas the other needs balanced multi-image batches and adds two regularisation weights to tune.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g3-o2",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other helps only where images are spatially aligned and needs a per-dataset radius.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other helps only where images are spatially aligned and needs a per-dataset radius.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o4",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g2-o4",
+   "winner": "A1-g2-o4",
+   "reasoning": "The winner fixes the normal-bank weakness of matching lesions to normal tissue elsewhere by restricting matches to the same anatomical neighbourhood, exploiting BMAD's registered brain slices, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g3-o2",
+   "reasoning": "The winner needs neither a class prior nor k by treating patch labels as one-sided label noise and using co-teaching small-loss selection, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g2-o5",
+   "reasoning": "The winner recovers full lesion extent with adversarial erasing, a proven remedy for partial weakly supervised localisation that matters for PRO, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g2-o5",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o5",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o6",
+   "reasoning": "The winner distributes each image's abnormal label over patches by optimal transport with a lesion-mass budget, an established label-assignment idea from object detection, whereas the other adds training rounds and a heuristic for when erased images remain positive.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o1",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g3-o2",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g3-o3",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other adds the position-aware bank machinery on top of PU, so part of any gain may come from the bank rather than the PU formulation.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other can fall back to plain top-k when the bank flags too few patches, leaving its benefit dataset-dependent.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g2-o6",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g2-o6",
+   "winner": "A1-g2-o6",
+   "reasoning": "The winner casts mask-free training as patch-level positive-unlabelled learning with an unbiased non-negative risk estimator, using every patch rather than a top-k heuristic and estimating the needed class prior without masks, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o1",
+   "b": "A1-g3-o2",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g3-o2",
+   "reasoning": "The winner needs neither a class prior nor k by treating patch labels as one-sided label noise and using co-teaching small-loss selection, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o1",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o1",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g3-o1",
+   "winner": "A1-g3-o4",
+   "reasoning": "The winner makes atlas-based MIL selection robust to skewed scores with rank statistics, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o1",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o5",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o1",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o6",
+   "reasoning": "The winner distributes each image's abnormal label over patches by optimal transport with a lesion-mass budget, an established label-assignment idea from object detection, whereas the other is a generic regulariser that does not change the supervision signal itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o2",
+   "b": "A1-g3-o3",
+   "shown_first": "A1-g3-o3",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o2",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g3-o4",
+   "winner": "A1-g3-o2",
+   "reasoning": "The winner needs neither a class prior nor k by treating patch labels as one-sided label noise and using co-teaching small-loss selection, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o2",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o5",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o2",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o6",
+   "reasoning": "The winner distributes each image's abnormal label over patches by optimal transport with a lesion-mass budget, an established label-assignment idea from object detection, whereas the other relies on a forget-rate schedule that implicitly encodes the lesion fraction anyway.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o3",
+   "b": "A1-g3-o4",
+   "shown_first": "A1-g3-o3",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o3",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o5",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other can fall back to plain top-k when the bank flags too few patches, leaving its benefit dataset-dependent.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o3",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o3",
+   "reasoning": "The winner injects anatomy-aware per-patch evidence into PU learning through instance-dependent class priors, addressing PU's single-prior weakness within one objective, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o4",
+   "b": "A1-g3-o5",
+   "shown_first": "A1-g3-o4",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o4",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o6",
+   "reasoning": "The winner distributes each image's abnormal label over patches by optimal transport with a lesion-mass budget, an established label-assignment idea from object detection, whereas the other is an incremental refinement of a selection heuristic with limited expected gain.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "A1-g3-o5",
+   "b": "A1-g3-o6",
+   "shown_first": "A1-g3-o6",
+   "winner": "A1-g3-o5",
+   "reasoning": "The winner selects MIL positives only where text-based and memory-based evidence agree, a cheap way to remove salient normal structures from the positive set, whereas the other depends on the lesion-fraction budget and adds Sinkhorn hyper-parameters.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  }
+ ]
+}

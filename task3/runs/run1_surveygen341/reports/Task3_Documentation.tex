@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\usepackage{microtype}
+\usepackage{xcolor}
+\definecolor{ink}{HTML}{172230}\definecolor{accent}{HTML}{2C55C7}\definecolor{heat}{HTML}{C86A12}\definecolor{muted}{HTML}{5A6878}\definecolor{soft}{HTML}{EEF2FB}
+\usepackage[colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent]{hyperref}
+\usepackage{amssymb}
+\usepackage{booktabs,longtable,tabularx,array,enumitem,parskip}
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries\color{ink}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{ink}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{ink}}{\thesubsubsection}{0.6em}{}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{muted}\sffamily Task 3 · Full documentation · MVFA}\fancyfoot[R]{\footnotesize\color{muted}\sffamily\thepage}
+\usepackage[most]{tcolorbox}
+\newtcolorbox{ideabox}[1]{colback=soft,colframe=accent,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,breakable,title={\sffamily\bfseries #1},fonttitle=\small,coltitle=white}
+\newtcolorbox{note}{colback=white,colframe=heat,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=4pt,bottom=4pt,breakable}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\lbl}[1]{{\sffamily\footnotesize\bfseries\color{muted}\MakeUppercase{#1}}\par}
+\emergencystretch=3em\setlength{\LTpre}{4pt}\setlength{\LTpost}{6pt}
+\begin{document}
+
+\begin{center}
+{\sffamily\bfseries\huge Task 3 Pipeline: Full Documentation}\\[4pt]
+{\sffamily\large How every result was produced, every decision taken, and what can be changed}\\[6pt]
+{\color{muted}Base paper: MVFA (CVPR 2024) \quad·\quad Methods: ResearchAgent, HypER, HypoEvolve \quad·\quad Run of 19--20 October 2026}
+\end{center}
+\tableofcontents
+\newpage
+\section{What this document covers}
+The submission document presents the two research problems and the top-5 ideas for each. This document explains how they were produced: the inputs, the architecture of the code, each stage with what the source paper prescribes and what we implemented (including every adaptation and why), the full decision log, the evidence found in MVFA's code, the limitations of the study, and a prioritised list of changes that can be made later. Every number here is read from the pipeline's output files.
+\section{Inputs}
+\begin{itemize}[leftmargin=1.2em]
+\item Task 2 research gaps (Task\_\allowbreak{}3\_\allowbreak{}Research\_\allowbreak{}Gap\_\allowbreak{}Identification.pdf): 15 limitations of MVFA and one broad problem statement.
+\item Task 1 SurveyGen corpus: final\_\allowbreak{}ref\_\allowbreak{}set.json (341 OpenAlex records with abstracts, keywords, topics) and paper\_\allowbreak{}after\_\allowbreak{}reranking.csv (LLM relevance and composite scores). The 16 selected papers plus MVFA form the submitted review set.
+\item Forward citations (data/s2\_\allowbreak{}citations.json, fetched by fetch\_\allowbreak{}citations.py on the user's machine from the Semantic Scholar API): 147 papers citing MVFA (121 with abstracts, 113 with citation contexts), 1,391 second-hop papers for the 40 most-cited first-hop papers, MVFA's 65 references, and publication years for 315 of the 341 corpus papers.
+\item MVFA's public code, snapshot of commit a30bf7b (2024-04-06), for code verification.
+\item HypER's released code and data (\url{github.com/rosnikv/HypER}): the relevance prompt (v002) and the two few-shot examples.
+\item The three method papers: ResearchAgent (arXiv:2404.07738), HypER (arXiv:2506.12937), HypoEvolve (arXiv:2609.15938).
+\end{itemize}
+\section{Architecture}
+All LLM calls go through llm\_\allowbreak{}client.py. Each call has a role: generator (problems, seeds, offspring) or judge (reviews, relevance scores, pairwise comparisons). The backend is set by environment variables: 'openai' sends the call to any OpenAI-compatible endpoint (Groq, AgentRouter, OpenAI), 'file' writes the prompt to logs/pending and stops the stage. In this run every call used the file backend and was answered by the configured model (claude-opus-5-5) acting as generator and judge; answers were written to logs/pending/\textless{}key\textgreater{}.response.txt and ingested into logs/cache. Each cached record holds the role, model, tag, temperature, sample index, system prompt, user prompt and response. Because calls are cached by a hash of (model, system, user, sample) and all randomness is seeded, re-running any stage replays it exactly and continues where it stopped. Judge calls can be pointed at a different model with JUDGE\_\allowbreak{}* variables. Because later generator prompts depend on earlier judgments, an independent re-judge is done by rejudge.py, which re-asks a new judge exactly the judge prompts of this run and measures agreement; a full re-run with an API model sets LLM\_\allowbreak{}* for both roles.
+
+\begin{tabularx}{\linewidth}{@{}l Y@{}}\toprule File & Purpose\\\midrule
+\texttt{llm\_\allowbreak{}client.py} & Backends, roles, cache, pending/ingest mechanism\\
+\texttt{answer.py} & Helper to answer pending prompts by tag (file backend)\\
+\texttt{corpus.py} & SurveyGen corpus loader, review set, entity store (ResearchAgent Eq. 2)\\
+\texttt{stage0\_\allowbreak{}gaps.py} & Gap parsing, TF-IDF cross-check, grouping\\
+\texttt{stage0b\_\allowbreak{}verify.py} & Model-free code verification with file/line evidence\\
+\texttt{stage1\_\allowbreak{}problems.py} & ResearchAgent problem discovery, review and refinement\\
+\texttt{stage2\_\allowbreak{}hyper.py} & HypER chain construction and seed generation\\
+\texttt{stage3\_\allowbreak{}evolve.py} & HypoEvolve genetic algorithm\\
+\texttt{stage4\_\allowbreak{}rank.py} & Shortlist, reviews, families, final score, diversity selection\\
+\texttt{prompts/} & All prompt templates and the ResearchAgent rubrics (verbatim)\\
+\texttt{fetch\_\allowbreak{}citations.py, novelty\_\allowbreak{}search.py} & Semantic Scholar scripts to run locally\\
+\texttt{agreement.py} & Human-model agreement from exported ratings\\
+\texttt{rejudge.py} & Independent re-judging of this run's judge prompts with another model\\
+\texttt{export\_\allowbreak{}explorer\_\allowbreak{}data.py, make\_\allowbreak{}reports.py} & Explorer data and the two PDFs\\
+\texttt{run\_\allowbreak{}all.py} & Runs every stage in order\\
+\bottomrule\end{tabularx}
+\section{Stage by stage}
+\subsection{Stage 0: grouping the limitations}
+The 15 limitations were parsed from the Task 2 text (no LLM). A TF-IDF cosine clustering gave a model-free view of similar gaps, passed to one judge call as a weak hint. The call tagged each gap (component, kind, codability on BMAD with one GPU) and grouped them so that one fine-grained problem could address a whole group. Reason for grouping: ResearchAgent writes a problem from whatever it is given; all 15 at once reproduces the everything-at-once problem of Task 2.
+
+\begin{tabularx}{\linewidth}{@{}l Y l@{}}\toprule Group & Members & Use\\\midrule
+Label-efficient adaptation & G3, G4 & source of Problem 2 (A1)\\
+Score calibration and robust aggregation & G8, G9, G11, G17 & source of Problem 1 (B1)\\
+Leakage-free generalisation protocol & G2, G10, G12, G16 & shared evaluation protocol\\
+Compact normality modelling & G5, G7, G13 & candidate source (D1, D2)\\
+Clinical granularity and scope & G6, G14, G15 & not used\\
+\bottomrule\end{tabularx}
+\subsection{Stage 0b: verifying the limitations against MVFA's code}
+While reviewing a Stage 1 candidate, we opened MVFA's public code and found several differences from the paper. Since the next assignment will modify this code, problems must rest on what the code does. Stage 0b locates every claim by a regular expression (the script fails if the code does not contain it) and writes corrected gap records; groups B and C received the new gaps. The first Stage 1 run, built on the uncorrected gaps, was archived (42 calls) and Stage 1 was re-run.
+{\small\begin{longtable}{@{}l P{3.6cm} P{10.8cm}@{}}\toprule ID & File:line & Finding\\\midrule\endhead
+E1 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L104}{\texttt{train\_\allowbreak{}zero.py:104}} & Zero-shot training evaluates the model on the TARGET dataset's test loader five times per epoch and saves the checkpoint with the best test score (model selection on the test set).\\
+E2 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L105}{\texttt{train\_\allowbreak{}zero.py:105}} & The saved zero-shot checkpoint is the one maximising test AUC (image AUC + pixel AUC).\\
+E3 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L182}{\texttt{train\_\allowbreak{}few.py:182}} & Few-shot training likewise evaluates on the target test set every epoch ...\\
+E4 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L183}{\texttt{train\_\allowbreak{}few.py:183}} & ... and keeps the best-on-test checkpoint.\\
+E5 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L130}{\texttt{train\_\allowbreak{}zero.py:130}} & The image-level training loss pools the patch anomaly map with a MEAN, whereas Eq. (3) of the paper states a MAX over h x w.\\
+E6 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L131}{\texttt{train\_\allowbreak{}zero.py:131}} & Image-level BCE on the detection (classification) branch is applied to every training image.\\
+E7 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L134}{\texttt{train\_\allowbreak{}zero.py:134}} & Dice + Focal pixel losses on the segmentation branch are applied only to datasets with masks (seg\_\allowbreak{}idx \textgreater{} 0: Brain, Liver, RESC).\\
+E8 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L160}{\texttt{train\_\allowbreak{}zero.py:160}} & Datasets without masks (OCT17, Chest, Histopathology; seg\_\allowbreak{}idx \textless{} 0) train only the detection adapters with the image-level loss — they are used, but never supervise localisation.\\
+E9 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L220}{\texttt{test\_\allowbreak{}few.py:220}} & Before fusion, each branch's maps are min-max normalised using the minimum and maximum over the ENTIRE TEST SET (transductive normalisation; not computable for a single incoming image).\\
+E10 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L223}{\texttt{test\_\allowbreak{}few.py:223}} & The normalised zero-shot and few-shot pixel maps are fused with a fixed weight of 0.5.\\
+E11 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L228}{\texttt{test\_\allowbreak{}few.py:228}} & For datasets with masks, the image-level score is the MAX over the fused pixel map (the detection branch is not used for image scores on these datasets).\\
+E12 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L238}{\texttt{test\_\allowbreak{}few.py:238}} & For datasets without masks, image scores are the test-set min-max normalised detection-branch scores (mean-pooled), fused with weight 0.5.\\
+E13 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L108}{\texttt{dataset/\allowbreak{}medical\_\allowbreak{}few.py:108,143}} & Few-shot support images are read from one fixed file per dataset and shot number (a single draw).\\
+E14 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L53}{\texttt{train\_\allowbreak{}few.py:53}} & A single default random seed (111).\\
+E15 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L100}{\texttt{dataset/\allowbreak{}medical\_\allowbreak{}few.py:100}} & Few-shot NORMAL support images are drawn from BMAD's valid/ split ...\\
+E16 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L133}{\texttt{dataset/\allowbreak{}medical\_\allowbreak{}few.py:133}} & ... and K ABNORMAL support images WITH masks are drawn from the same valid/ split, so 'K-shot' means K normal + K abnormal annotated images (2K images). A validation split therefore exists but is not used for model selection.\\
+E17 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/fewshot_seed/Brain/4-shot.txt#L1}{\texttt{dataset/\allowbreak{}fewshot\_\allowbreak{}seed/\allowbreak{}Brain/\allowbreak{}4-shot.txt:1}} & Each seed file contains a single draw (a-0 / n-0) per dataset and shot number.\\
+E18 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L50}{\texttt{train\_\allowbreak{}zero.py:50}} & Zero-shot training defaults to a learning rate of 1e-4, while the paper reports 1e-3 (train\_\allowbreak{}few.py uses 1e-3).\\
+E19 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L76}{\texttt{train\_\allowbreak{}zero.py:76,169}} & Training uses a batch size of 1 (hard-coded), while the paper reports a batch size of 16.\\
+E20 & \href{https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L91}{\texttt{train\_\allowbreak{}few.py:91}} & Few-shot training also uses a hard-coded batch size of 1.\\
+\bottomrule\end{longtable}}
+Resulting changes: G3, G4, G8 and G9 corrected; G10 received evidence; G16 (checkpoint selection on the target test set) and G17 (paper says max pooling, code uses mean) added. E18-E20 (learning rate 1e-4 instead of 1e-3 for zero-shot training; batch size 1 instead of 16) were found during Stage 2 and are recorded without changing the gap texts that Stage 1 had already used. These discrepancies are also ready-made test cases for the group's reproducibility-gap auditor.
+\subsection{Stage 1: problem discovery with ResearchAgent}
+Faithful elements: the problem-identification prompt (Table 6), the ReviewingAgent prompt (Table 9) with one call per criterion, the human-induced rubrics of Table 13 copied verbatim, entity retrieval by Eq. 2 over an entity co-occurrence store, citing papers narrowed by abstract similarity, and iterative refinement (initial version plus two refinements; the paper reports saturation after about three). Inputs: MVFA's title and abstract, 26 related papers (the 16 other papers of the submitted review and the 10 MVFA-citing papers most similar to MVFA's abstract), and 20 entities retrieved from a store of 743 entities over the 341 corpus papers. Adaptations: the gap group is an additional input; a feasibility statement describes the resources (public MVFA code, BMAD, one Colab GPU); protocol C is attached; the refinement prompt was written in the paper's style because it is not printed. Two candidates per group; the second was asked to differ from the first.
+
+\begin{tabularx}{\linewidth}{@{}l Y ccccc c c@{}}\toprule
+ID & Source group & Clar. & Rele. & Orig. & Feas. & Sign. & Rounds (mean) & Selected\\\midrule
+B1 & Score calibration and robust aggregation & 5 & 5 & 4 & 5 & 4 & 4.4 / 4.6 / 4.6 & yes\\
+A1 & Label-efficient adaptation & 4 & 5 & 4 & 5 & 4 & 4.2 / 4.2 / 4.4 & yes\\
+B2 & Score calibration and robust aggregation & 4 & 4 & 4 & 5 & 4 & 4.2 / 4.2 / 4.2 & \\
+D1 & Compact normality modelling & 4 & 4 & 3 & 5 & 3 & 3.6 / 3.8 / 3.8 & \\
+D2 & Compact normality modelling & 4 & 4 & 3 & 5 & 3 & 3.8 / 3.8 / 3.8 & \\
+A2 & Label-efficient adaptation & 4 & 4 & 3 & 4 & 3 & 3.6 / 3.6 / 3.6 & \\
+\bottomrule\end{tabularx}
+
+Run 1 (before code verification) put B1 at 3.8 after the first round because it assumed unnormalised scores; on the verified defect (test-set normalisation) B1 rose to 4.6 and became the best problem. This before/after difference is the clearest evidence of why grounding problems in the code matters.
+\subsection{Stage 2: literature chains and seed ideas with HypER}
+Implemented from the paper and its released code: citing papers of the current paper are taken from the two following years, grouped by year, scored in chunks of 10 with the authors' relevance prompt (0 unrelated, 1 inspired, 2 dependent) and two few-shot examples; the model also returns each chunk's top-3; candidates are ranked by 0.7 x relevance + 0.3 x normalised citations; the best becomes the next source. Of the 110 MVFA-citing papers from 2025-2026 with abstracts, 4 were scored 2, 15 scored 1 and 91 scored 0. Adaptations: with a single source paper, the six best first-hop papers each start a chain (HypER obtains many chains from many sources); second-hop candidates were pre-filtered to the 20 most similar abstracts; citation contexts were added to the relevance prompt. Seed ideas use HypER's generation prompt (Listing 4) with the research problem, a code-verified map of MVFA's code, the protocol, and output fields for method, experiment and provenance.
+
+\begin{tabularx}{\linewidth}{@{}l Y@{}}\toprule Chain & Papers (year, relevance) and status\\\midrule
+C1 & MVFA $\rightarrow$ MadCLIP: Few-shot Medical Anomaly Detection with CLIP (2025, 2) $\rightarrow$ Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection (2026, 1). {\color{muted}extended}\\
+C2 & MVFA $\rightarrow$ Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection (2025, 2). {\color{muted}stopped: second-hop citations not fetched (not among the 40 most-cited first-hop papers)}\\
+C3 & MVFA $\rightarrow$ Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection (2026, 2). {\color{muted}stopped: second-hop citations not fetched (not among the 40 most-cited first-hop papers)}\\
+C4 & MVFA $\rightarrow$ Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images (2026, 2). {\color{muted}stopped: second-hop citations not fetched (not among the 40 most-cited first-hop papers)}\\
+C5 & MVFA $\rightarrow$ AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP (2025, 1) $\rightarrow$ PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection (2026, 2). {\color{muted}extended}\\
+C6 & MVFA $\rightarrow$ G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection (2026, 1). {\color{muted}stopped: no citing papers with abstracts in the two following years}\\
+\bottomrule\end{tabularx}
+\subsection{Stage 3: evolution with HypoEvolve}
+Implemented as Algorithm 1 with the paper's settings: population 6, 6 offspring per generation, 3 generations, crossover probability 0.6, mutation probability 0.15 (forced when crossover is skipped), size-2 tournaments, all unordered pairs of the pool compared by the judge, Bradley-Terry fitness (initial scale mean 50, spread 60; later fits keep the multiplier and anchor survivors), and (mu+lambda) replacement with lineage records. The pairwise prompt keeps the structure of Appendix D.2 (specificity, evidence, testability; explicit list of what not to reward; REASONING/CONFIDENCE/WINNER). Pairs already judged in an earlier generation are answered from the cache, equivalent to a deterministic judge. Each pair is shown in one order chosen by a hash of the two ids.
+
+\begin{tabularx}{\linewidth}{@{}l Y Y@{}}\toprule & Problem 1 (B1) & Problem 2 (A1)\\\midrule
+Population mean fitness, gen 0-3 & 50.0 / 74.1 / 90.3 / 101.8 & 50.0 / 76.2 / 95.4 / 105.7\\
+Pairwise judgments & 168 & 168\\
+Best idea (highest fitness) & Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels & Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled\\
+\bottomrule\end{tabularx}
+Fitness rises partly by construction, because survivors are re-ranked against new offspring by the same judge; it is not an independent quality measure. HypoEvolve uses external biological data for that purpose; here the Stage 4 reviews and novelty search play that role. The file-backend judge was fully transitive (one tie in 336 judgments), unlike a sampled LLM judge.
+\subsection{Stage 4: multi-criteria ranking}
+Pool: all 24 candidates per problem (user's choice). Shortlist: the 12 with the highest most-recent fitness. For each shortlisted idea a literature search looked for the closest prior work (one query per idea, 24 in total, saved with the hits in data/novelty\_\allowbreak{}search.json), and one ResearchAgent-style review scored Novelty (method innovativeness rubric), Feasibility (experiment feasibility rubric), Clarity (method clarity), Impact (problem significance) and Validity (method validity). One call per problem grouped all candidates into method families. Final score = 0.7 x (review mean - 1)/4 + 0.3 x normalised fitness; ideas were selected greedily with at most two per family.
+\subsubsection*{Problem 1 (B1)}
+{\small\setlength{\tabcolsep}{4pt}\begin{longtable}{@{}r >{\raggedright\arraybackslash}p{8.4cm} ccccc c r r@{}}
+\toprule
+\# & Idea & Nov & Fea & Cla & Imp & Val & Mean & Fit. & Final\\\midrule\endhead
+1 & $\bigstar$ Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels {\footnotesize\color{muted}[B1-g2-o6]} & 3 & 5 & 4 & 4 & 4 & 4.0 & 120.1 & 0.825\\
+2 & $\bigstar$ Brown-corrected Fisher fusion: dependence-adjusted p-value combination estimated from support normals, with region-mass pooling {\footnotesize\color{muted}[B1-g3-o5]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 111.0 & 0.741\\
+3 & Empirical p-value fusion across levels and branches (Fisher-MVFA) {\footnotesize\color{muted}(not selected: family limit)} {\footnotesize\color{muted}[B1-g0-C2]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 103.9 & 0.704\\
+4 & $\bigstar$ LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point {\footnotesize\color{muted}[B1-g1-o2]} & 2 & 5 & 5 & 4 & 4 & 4.0 & 92.0 & 0.675\\
+5 & $\bigstar$ FDR-controlled anomaly maps: Benjamini-Yekutieli discoveries per image from support-anchored pixel p-values {\footnotesize\color{muted}[B1-g3-o1]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 97.7 & 0.671\\
+6 & $\bigstar$ Episode-calibrated weighted Fisher fusion: learning per-level weights of support p-values on source-modality episodes {\footnotesize\color{muted}[B1-g2-o1]} & 4 & 4 & 4 & 4 & 3 & 3.8 & 86.5 & 0.611\\
+7 & E-value fusion: dependence-robust, betting-based per-image anomaly evidence from support normals {\footnotesize\color{muted}[B1-g3-o3]} & 3 & 5 & 4 & 3 & 4 & 3.8 & 81.0 & 0.583\\
+8 & Neyman-Pearson likelihood-ratio scoring: a support-normal density against a cross-modality abnormal density learned on source data {\footnotesize\color{muted}[B1-g2-o2]} & 4 & 4 & 4 & 4 & 3 & 3.8 & 64.0 & 0.492\\
+9 & Bounded leave-one-out z-score fusion (LOO-Z) for per-image MVFA scoring {\footnotesize\color{muted}[B1-g0-C1]} & 2 & 5 & 4 & 3 & 4 & 3.6 & 69.5 & 0.486\\
+10 & Episode-trained fusion calibrator: learning how to fuse MVFA's branches from simulated few-shot episodes on source modalities {\footnotesize\color{muted}[B1-g1-o4]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 75.5 & 0.483\\
+11 & Support-bootstrap uncertainty: deciding on the lower confidence bound of a per-image MVFA score {\footnotesize\color{muted}[B1-g3-o2]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 69.8 & 0.453\\
+12 & Adaptive S-norm for MVFA: cohort score normalisation borrowed from speaker verification {\footnotesize\color{muted}[B1-g2-o5]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 63.6 & 0.420\\
+\bottomrule
+\end{longtable}}
+{\small Families: Support-anchored p-value combination (5); Support-standardised score normalisation (7); Learned calibration from source episodes or synthetic data (4); Statistical decision guarantees and uncertainty (3); Distribution tests and density ratios (2); Aggregation and robustness add-ons (3).}
+\subsubsection*{Problem 2 (A1)}
+{\small\setlength{\tabcolsep}{4pt}\begin{longtable}{@{}r >{\raggedright\arraybackslash}p{8.4cm} ccccc c r r@{}}
+\toprule
+\# & Idea & Nov & Fea & Cla & Imp & Val & Mean & Fit. & Final\\\midrule\endhead
+1 & $\bigstar$ Patch-level positive-unlabelled learning: normal-image patches as labelled negatives, abnormal-image patches as unlabelled {\footnotesize\color{muted}[A1-g2-o6]} & 4 & 4 & 4 & 4 & 4 & 4.0 & 123.6 & 0.825\\
+2 & $\bigstar$ Asymmetric patch-level MIL with a SigLIP loss for mask-free segmentation adapters {\footnotesize\color{muted}[A1-g0-C1]} & 3 & 5 & 5 & 4 & 4 & 4.2 & 104.9 & 0.755\\
+3 & $\bigstar$ Bank-informed positive-unlabelled learning: patch-specific class priors from position-aware normal-bank distances {\footnotesize\color{muted}[A1-g3-o3]} & 4 & 3 & 3 & 4 & 3 & 3.4 & 114.6 & 0.669\\
+4 & $\bigstar$ Bank-gated asymmetric MIL: positives must be both text-abnormal and unlike any normal patch of the dataset {\footnotesize\color{muted}[A1-g3-o5]} & 3 & 4 & 4 & 4 & 4 & 3.8 & 102.1 & 0.669\\
+5 & $\bigstar$ Normal-bank pseudo-masks: localising anomalies in image-labelled source data by distance to that dataset's normal patches {\footnotesize\color{muted}[A1-g1-o1]} & 3 & 5 & 4 & 4 & 3 & 3.8 & 92.0 & 0.612\\
+6 & Cross-image MIL ranking for mask-free segmentation, borrowed from weakly supervised video anomaly detection {\footnotesize\color{muted}[A1-g1-o6]} & 3 & 5 & 4 & 4 & 4 & 4.0 & 84.5 & 0.605\\
+7 & Optimal-transport label assignment of abnormal mass to patches under a lesion-fraction budget {\footnotesize\color{muted}[A1-g3-o6]} & 4 & 4 & 4 & 3 & 3 & 3.6 & 87.0 & 0.549\\
+8 & Position-aware normal-bank pseudo-masks: matching each patch only to normal patches from the same anatomical neighbourhood {\footnotesize\color{muted}[A1-g2-o4]} & 2 & 4 & 4 & 3 & 3 & 3.2 & 96.9 & 0.535\\
+9 & Counterfactual patch replacement: learning where anomalies are from which patches, when replaced by normal tissue, flip the image decision {\footnotesize\color{muted}[A1-g1-o4]} & 4 & 4 & 4 & 3 & 3 & 3.6 & 75.8 & 0.486\\
+10 & Adversarial erasing for full lesion extent: iterative MIL that must still find the anomaly after its most obvious part is erased {\footnotesize\color{muted}[A1-g2-o5]} & 3 & 4 & 4 & 3 & 4 & 3.6 & 70.3 & 0.455\\
+11 & Noisy-label learning with small-loss selection: all abnormal-image patches as noisy positives {\footnotesize\color{muted}[A1-g3-o2]} & 3 & 4 & 4 & 3 & 3 & 3.4 & 76.4 & 0.454\\
+12 & Attribution-proposed, counterfactual-verified pseudo-masks for mask-free segmentation adapters {\footnotesize\color{muted}[A1-g2-o3]} & 3 & 3 & 4 & 3 & 4 & 3.4 & 70.3 & 0.420\\
+\bottomrule
+\end{longtable}}
+{\small Families: Patch-level MIL objectives (7); Prior-based patch label estimation (PU, OT assignment, noisy labels) (4); Normal-reference pseudo-masks (4); Decision-attribution pseudo-masks (5); Auxiliary priors (learned anchors, DINO, synthetic anomalies) (4).}
+Novelty evidence lowered several scores: layer-wise p-value combination for DNN anomaly detection (arXiv 2007.15147) lowers the conceptual novelty of the p-value fusion family; conformal FDR control for segmentation exists (arXiv 2504.17721, 2504.04482); Patch2Loc (AISTATS 2026) uses position as a normality cue for brain lesions; standard tooling (Anomalib) already normalises scores with validation statistics, which makes the LOO-Z fix low in novelty but high in clarity and impact.
+\section{Decision log}
+Decisions taken by the user (K) during the run, in order:
+\begin{longtable}{@{}r P{3.3cm} P{3.9cm} P{3.6cm} P{3.4cm}@{}}\toprule \# & Decision & Options & Choice & Why\\\midrule\endhead
+1 & Which Task 1 literature review to build on & GitHub version (arXiv, 14 papers) or submitted PDF (SurveyGen/OpenAlex, 16 papers) & Submitted PDF version {\color{muted}\footnotesize(K)} & Task 3 must continue the submitted work.\\\addlinespace[3pt]
+2 & How LLM calls are answered & (A) file backend answered by Claude now, (B) user runs everything with an API key & Hybrid: (A) now, re-judge later with Groq (Llama-70B) {\color{muted}\footnotesize(K)} & Results today; an independent judge later addresses self-preference.\\\addlinespace[3pt]
+3 & Literature corpus & SurveyGen output files or web-collected corpus & SurveyGen files (final\_\allowbreak{}ref\_\allowbreak{}set.json, paper\_\allowbreak{}after\_\allowbreak{}reranking.csv) {\color{muted}\footnotesize(K)} & Reproducible and identical to Task 1.\\\addlinespace[3pt]
+4 & HypER small-model distillation (Phi-3 on Colab) & Include now, skip, decide later & Deferred; documented as future work {\color{muted}\footnotesize(K)} & To be added when the pipeline is improved.\\\addlinespace[3pt]
+5 & Deliverables & PDF only or PDF + explorer & PDF + interactive explorer; later two documents (submission + documentation) {\color{muted}\footnotesize(K)} & \\\addlinespace[3pt]
+6 & Limitation groups used for problems & A, B, D (C as protocol) or A, B, D, E & A, B, D with C as shared protocol {\color{muted}\footnotesize(K)} & E is not codable on BMAD (no subtype labels).\\\addlinespace[3pt]
+7 & Forward citations for HypER & Run fetch\_\allowbreak{}citations.py locally or collect by web search & Run locally (Semantic Scholar API) {\color{muted}\footnotesize(K)} & Faithful to HypER's Step 2 and reproducible.\\\addlinespace[3pt]
+8 & Use AutoSurvey material & Upload or not & Not used {\color{muted}\footnotesize(Claude (recommended), K agreed)} & Task 3 continues the submitted SurveyGen review; years come from the citation script.\\\addlinespace[3pt]
+9 & Paper/code discrepancies in MVFA & Continue Stage 1 or verify code and re-run & Add Stage 0b, update protocol C, re-run Stage 1; archive run 1 {\color{muted}\footnotesize(K)} & Problems must hold in the code the next assignment modifies.\\\addlinespace[3pt]
+10 & Research problems & B1 and A1, or B1 and B2 & B1 and A1 {\color{muted}\footnotesize(K)} & Different gap groups: evaluation validity and supervision cost.\\\addlinespace[3pt]
+11 & Human validation of the judge & Groq re-judge only or also human ratings & Both; rating form on the explorer page {\color{muted}\footnotesize(K)} & ResearchAgent validates its judge with human agreement.\\\addlinespace[3pt]
+12 & Pairwise comparison order & (a) one order as in the paper, (b) both orders with ties & (a) now; (b) implemented behind BOTH\_\allowbreak{}ORDERS, to be run later {\color{muted}\footnotesize(K)} & \\\addlinespace[3pt]
+13 & Stage 4 pool & (a) final population of 6, (b) all 24 candidates with a diversity rule & (b) {\color{muted}\footnotesize(K)} & Broader menu for the next assignment.\\\addlinespace[3pt]
+\bottomrule\end{longtable}
+Implementation choices made by Claude, with the reason for each:
+\begin{longtable}{@{}P{3.2cm} P{6.6cm} P{5.8cm}@{}}\toprule Topic & Choice & Reason\\\midrule\endhead
+Embeddings & TF-IDF instead of sentence-transformers for similarity & Hugging Face downloads were blocked in the run environment.\\\addlinespace[3pt]
+Entity store & OpenAlex keywords and topics as entities; wrong-sense concepts (non-CS parenthetical qualifiers, a short stop list) and one-off entities removed & ResearchAgent used the BLINK linker; OpenAlex already provides linked concepts but mis-links some.\\\addlinespace[3pt]
+Related papers for ResearchAgent & 16 papers of the submitted review + 10 citing papers most similar to MVFA's abstract & ResearchAgent narrows citing papers by abstract similarity.\\\addlinespace[3pt]
+ResearchAgent refinement prompt & Written in the style of Tables 6-8 & The paper describes refinement but does not print the prompt.\\\addlinespace[3pt]
+HypER chains & Branch the six best first-hop papers, then extend greedily; second hop pre-filtered to 20 most similar citing papers & HypER builds one greedy chain per source paper; we have one source.\\\addlinespace[3pt]
+HypER few-shot examples & The authors' two clinical-trial examples, verbatim & Faithful to the released code; domain mismatch noted.\\\addlinespace[3pt]
+HypER seed prompt & Listing 4 plus research problem, code map, protocol and Method/Experiment/Provenance fields & Seeds become HypoEvolve's initial population and must be codable.\\\addlinespace[3pt]
+HypoEvolve operators & Inspiration and component substitution written in the style of Appendix D; combination and out-of-box verbatim & Only two of four operator prompts are printed.\\\addlinespace[3pt]
+Offspring sampling & Each offspring's operator call has its own sample index & Identical prompts must not share one cached answer.\\\addlinespace[3pt]
+Bradley-Terry & MM algorithm with a 0.1 pseudo-tie per compared pair; initial scale mean 50, spread 60; offset anchored on survivors & Finite strengths for undefeated candidates; paper's scaling.\\\addlinespace[3pt]
+Stage 4 reviews & One call per idea scores all five criteria, each against its own ResearchAgent rubric & Five times fewer calls; ResearchAgent uses one call per criterion.\\\addlinespace[3pt]
+Stage 4 weights & Final = 0.7 x normalised review mean + 0.3 x normalised fitness; shortlist 12; at most 2 per family & Reviews are the assignment's criteria; fitness keeps the evolutionary signal.\\\addlinespace[3pt]
+Novelty evidence & Web search per idea (queries saved); novelty\_\allowbreak{}search.py re-runs them on Semantic Scholar & Semantic Scholar was not reachable from the run environment.\\\addlinespace[3pt]
+Later code findings & E18-E20 recorded but not merged into gap texts & Merging would have changed Stage 1 prompts after they ran.\\\addlinespace[3pt]
+\bottomrule\end{longtable}
+\section{Limitations and threats to validity}
+\begin{itemize}[leftmargin=1.2em]
+\item Single model as generator and judge. ResearchAgent and HypoEvolve do the same; HypER reports that LLM judges agree with experts least on originality and feasibility (Spearman -0.08 for feasibility), the two criteria that matter most here. Mitigations: code verification and novelty search as non-LLM evidence; planned Groq re-judging; human ratings on the explorer page.
+\item Carry-over between runs. Unlike a stateless API call, the file-backend model saw run 1's reviews before run 2, so run 2 is not independent of run 1.
+\item Deterministic, transitive judge. A sampled judge produces intransitive and noisy verdicts; Bradley-Terry results here are cleaner than they would be with an API model.
+\item Position bias not corrected (option (a)); implemented as option (b) for a later run.
+\item Retrieval quality. TF-IDF similarity and OpenAlex concepts are weaker than sentence embeddings and a dedicated entity linker; the entity filter removes clear wrong-sense links but not all noise.
+\item Short chains. MVFA is from 2024, so its citation lineage has at most two further hops; four of six chains stop after one paper.
+\item Domain mismatch of HypER's few-shot examples (clinical trials).
+\item Fitness comparability across generations relies on the anchored offset; a final tournament would make it exact.
+\item Novelty search breadth. One query per idea with a general web search; absence of a hit is not proof of novelty.
+\end{itemize}
+\section{Changes that can be made}
+Ordered roughly by value for effort.
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Independent re-judging (planned).} Set JUDGE\_\allowbreak{}BACKEND=openai, JUDGE\_\allowbreak{}BASE\_\allowbreak{}URL=\url{https://api.groq.com/openai/v1}, JUDGE\_\allowbreak{}API\_\allowbreak{}KEY and JUDGE\_\allowbreak{}MODEL (e.g. llama-3.3-70b-versatile) and run python3 rejudge.py (494 calls; python3 rejudge.py stage1 stage4 for a 144-call subset). It re-asks the new judge exactly this run's judge prompts and reports Spearman and exact agreement for problem reviews, kappa for HypER relevance, winner agreement and a Bradley-Terry refit for the comparisons, and the top-5 recomputed from the new reviews. Simply re-running the stages with only JUDGE\_\allowbreak{}* changed does not work, because refinements and parent selection depend on the judgments and create new generator prompts.
+\item \textbf{Position-bias correction (planned).} Set BOTH\_\allowbreak{}ORDERS = True in stage3\_\allowbreak{}evolve.py. Each pair is judged in both orders and disagreement counts as a tie; about 1.8x the comparison calls.
+\item \textbf{HypER checker on Colab (deferred).} Fine-tune Phi-3-mini-128k-instruct with LoRA (rank 8, lr 2e-5, attention layers) on the released HypER chains (\url{github.com/rosnikv/HypER}, dataset/training\_\allowbreak{}data) and use it as a second, independent validator of our chains (valid/invalid, breakpoints). Report the domain mismatch: HypER's chains are clinical-trial literature.
+\item \textbf{Human agreement.} Collect ratings on the explorer page (you and teammates), export them and run agreement.py ratings.json for Spearman and quadratic-weighted kappa per criterion, as in ResearchAgent Table 1.
+\item \textbf{Per-criterion reviews.} Split the Stage 4 review into one call per criterion (as ResearchAgent does) to remove interaction between criteria in one answer.
+\item \textbf{Larger search.} HypoEvolve's sensitivity analysis also tests a population of ten and five generations; increase MU and G in stage3\_\allowbreak{}evolve.py. Cost grows quadratically with the pool.
+\item \textbf{Final tournament.} Re-score all 24 candidates of a problem in one Bradley-Terry fit so that fitness is fully comparable across generations (currently each candidate keeps its most recent fitness).
+\item \textbf{Better retrieval.} Replace TF-IDF with a sentence encoder (all-MiniLM-L6-v2, as in the Task 1 repo) and re-run stages 1-2; expand hop-2 citations beyond the 40 most-cited first-hop papers (fetch\_\allowbreak{}citations.py -{}-hop2-top).
+\item \textbf{Novelty re-check.} Run novelty\_\allowbreak{}search.py on your machine and compare the Semantic Scholar hits with the saved web-search evidence.
+\item \textbf{Implementation order for the next assignment.} Problem 1 ideas are inference-only on retrained MVFA checkpoints and are the fastest to test; start with harmonic-mean p-value fusion and the LOO-Z baseline, which share the support statistics. For Problem 2, start with patch-level PU learning; asymmetric MIL is its natural baseline.
+\end{enumerate}
+\section{How to reproduce}
+\begin{enumerate}[leftmargin=1.6em]
+\item Replay this run from the cache (no API key): \texttt{python3 run\_all.py}. Every stage reads its answers from \texttt{logs/cache}.
+\item Re-run with a model of your choice: \texttt{export LLM\_BACKEND=openai LLM\_BASE\_URL=... LLM\_API\_KEY=... LLM\_MODEL=...}, then \texttt{python3 run\_all.py}. New prompts are sent to the API; cached ones are reused only for the same model name.
+\item Independent judge on this run's outputs: set the \texttt{JUDGE\_*} variables and run \texttt{python3 rejudge.py}; results go to \texttt{outputs/rejudge\_<model>.json}.
+\item Refresh literature: \texttt{python3 fetch\_citations.py} and \texttt{python3 novelty\_search.py} (Semantic Scholar, standard library only).
+\item Rebuild documents: \texttt{python3 export\_explorer\_data.py \&\& python3 make\_reports.py}.
+\end{enumerate}
+\subsection*{LLM calls in this run}
+\begin{tabular}{@{}l r@{}}\toprule Stage & Calls\\\midrule
+Stage 0 (grouping) & 1\\
+Stage 1 (incl. 42 archived run-1 calls) & 150\\
+Stage 2 (HypER) & 26\\
+Stage 3 (HypoEvolve) & 376\\
+Stage 4 (ranking) & 26\\
+\midrule Total & 579\\\bottomrule\end{tabular}
+
+\end{document}
