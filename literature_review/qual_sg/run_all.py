@@ -1,4 +1,8 @@
-"""Run the whole QUAL-SG pipeline (steps 1-6) in order.
+"""Run the six paper steps of QUAL-SG (1-6) in order.
+
+For a documented run use ``python3 -m qual_sg.run_pipeline`` instead: it also runs the
+stages added for Task 3 (who cites the anchor, abstract filling, metadata and DOI
+check) and writes the single output ``final_ref_set.json``.  This runner does not.
 
     cd "Paper implementation"
     python3 -m qual_sg.run_all                # all steps, resumable
@@ -67,6 +71,7 @@ def main() -> None:
         totals[step] = round(time.time() - t0, 1)
         logger.info("step %d done in %.1fs", step, totals[step])
     logger.info("All done. Per-step seconds: %s", totals)
+    logger.info("Note: final_ref_set.json (the Task 3 output) is written only by qual_sg.run_pipeline.")
 
 
 if __name__ == "__main__":

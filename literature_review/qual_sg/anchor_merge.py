@@ -1,7 +1,7 @@
 """Merge a user-supplied paper's bibliography into the candidate pool.
 
 Runs without OpenAlex: each bibliography entry is resolved through **Crossref**
-(free, rate-friendly) and appended to ``final_ref_set.json`` as an
+(free, rate-friendly) and appended to the candidate pool (``config.CANONICAL_REF_SET``) as an
 ``origin="anchor_ref"`` record.  Entries Crossref returns without an abstract are
 kept anyway — step 3 judges them on title alone (flagged ``title_only``), which is
 enough for dataset/benchmark papers that a survey must cite.

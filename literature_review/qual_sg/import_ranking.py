@@ -5,7 +5,7 @@ produce prose, Markdown tables or loose JSON — not the pipeline's
 ``paper_after_reranking.csv``.  This module converts whatever they returned into
 that exact 28-column schema:
 
-* rows are joined back to the candidate pool (``final_ref_set.json``) by DOI and
+* rows are joined back to the candidate pool (``config.CANONICAL_REF_SET``) by DOI and
   by normalised title, so citation counts, author/venue h-index and provenance
   come from the pipeline rather than from the agent;
 * relevance scores are taken from the cached judge output

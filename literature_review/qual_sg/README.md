@@ -18,14 +18,15 @@ flowchart LR
   S3 --> S4[step4 outline]
   S4 --> S5[step5 survey generation]
   S5 --> S6[step6 evaluation]
-  S2 -. final_ref_set.json .-> S3
+  S2 -. candidate_pool.json .-> S3
+  S3 -. final_ref_set.json .-> T3[Task 3]
   S3 -. paper_after_reranking.csv .-> S4
 ```
 
 | Step | Module | Paper | Output (canonical) |
 |---|---|---|---|
 | 1 | `step1_retrieve` | §2.4 retrieval, Eq. 1 | `qual_sg/intermediates/step1_candidates.json` |
-| 2 | `step2_quality` | §2.3 + §2.4 co-citation / Eq. 3 inputs | `final_ref_set.json` |
+| 2 | `step2_quality` | §2.3 + §2.4 co-citation / Eq. 3 inputs | `candidate_pool.json` (`final_ref_set.json` up to v5) |
 | 3 | `step3_rerank` | §2.4 Eqs. 2-4 | `paper_after_reranking.csv`, `intermediates/step3_*` |
 | 4 | `step4_outline` | §2.1 Task 2 | `survey_outline.json` |
 | 5 | `step5_generate` | §2.1 Task 2 | `survey_content.json`, `sections/`, `literature_review.tex` |
@@ -33,10 +34,31 @@ flowchart LR
 | + | `short_review` | 2-page deliverable | `literature_review_2page.{md,tex,json}` |
 | + | `anchor` / `anchor_merge` | generic anchor paper (any PDF/DOI): scope text + bibliography ingestion + `cited_by_anchor` provenance | `qual_sg/intermediates/anchor.json` |
 | + | `crossref` / `datacite` | extra key-less sources (keep running when OpenAlex throttles) | — |
-| + | `export_refs` | exports **the pipeline's selected references** (the consumable artefact) | `pipeline_ref.json` |
+| + | `cites_anchor` | (v6) **who cites the anchor**: forward citations from OpenAlex (`cites:` filter) and Semantic Scholar; new papers join the pool as `origin="cites_anchor"`, papers already in it get `cites_anchor: true` | candidate pool, `intermediates/cites_anchor_stats.json` |
+| + | `enrich_metadata` | (v6) OpenAlex keywords/topics, year, venue and current citation count for every record; **DOI check** (the DOI must resolve to a work with the same title, else it is corrected by title search or flagged) | candidate pool, `intermediates/enrich_metadata_stats.json` |
+| + | `export_refs` | exports **the pipeline's selected references** (the review's reference list; read by Task 2) | `pipeline_ref.json` |
+| + | `export_final_set` | (v6) **the single output**: every candidate paper with a fixed field set (`doi, title, abstract, year, venue, citation_count, keywords, topics, relevance_score, composite_score, origin, selected`); papers that cannot fill every field are listed in `intermediates/final_ref_set_excluded.json` | `final_ref_set.json` |
 | + | `import_ranking` | converts an external agent's Markdown/CSV/JSON selection into the pipeline's 28-column ranked CSV (joins the pool, recomputes scores) | `paper_after_reranking_imported.csv` |
 | + | `bib_eval` | bibliography-overlap metric (recall/precision/F1 vs any paper) | `intermediates/bib_overlap_*.json` |
 | + | `baselines` / `compare` | Fully-LLMGen + Naive-RAG, and their comparison | `baselines/`, `comparison_report.json` |
+
+### Output for Task 3 (from run v6)
+
+`final_ref_set.json` is the one file Task 3 consumes: every candidate paper with the fields
+`doi, title, abstract, year, venue, citation_count, keywords, topics, relevance_score, composite_score, origin, selected`,
+none empty.  `origin` is a list (`search`, `<label>_reference`, `co_citation`, `snowball`, `cites_<label>`, `anchor`;
+`<label>` is `QUAL_SG_ANCHOR_LABEL`, `mvfa` for our runs).  Papers that cannot fill every field (no open abstract,
+DOI that does not resolve to the paper) and duplicates are listed with the reason in
+`intermediates/final_ref_set_excluded.json`.  Only `run_pipeline` writes it.
+
+Settings used by these stages:
+
+| Variable | Meaning |
+|---|---|
+| `QUAL_SG_POOL_JSON` | Candidate pool path (default `<run>/candidate_pool.json`; up to v5 the pool was `final_ref_set.json`, which `export_final_set` refuses to overwrite) |
+| `QUAL_SG_ANCHOR_WORKS` | Anchor paper ids for "who cites the anchor" (DOIs, arXiv ids, OpenAlex ids); default `QUAL_SG_ANCHOR_DOI`; none set = stage skipped |
+| `QUAL_SG_ANCHOR_LABEL` | Name used in `origin` tags (`mvfa` gives `cites_mvfa`, `mvfa_reference`) |
+| `QUAL_SG_FIXED_SELECTION` | A `pipeline_ref.json` whose references step 3 keeps as the selected set (scores are recomputed over a larger pool without invalidating a written review) |
 
 ## Install
 
@@ -63,9 +85,9 @@ thresholds) is documented in `qual_sg/config.py`.
 
 ```bash
 cd "Paper implementation"
-python3 -m qual_sg.run_all                 # steps 1-6, resumable
-python3 -m qual_sg.run_all --steps 1,2     # retrieval + quality signals only
-python3 -m qual_sg.step3_rerank            # a single step
+bash runs/v6_2026-11-16/run_env.sh         # documented run: all stages incl. final_ref_set.json, resumable
+bash runs/v6_2026-11-16/run_env.sh export_final_set   # one module with that run's settings
+python3 -m qual_sg.run_all                 # the six paper steps only (no Task 3 output)
 ```
 
 All stages are **idempotent and resumable**: LLM responses are cached by payload

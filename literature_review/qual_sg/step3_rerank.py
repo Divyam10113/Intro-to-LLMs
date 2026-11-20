@@ -43,6 +43,7 @@ from __future__ import annotations
 
 import itertools
 import numbers
+import re
 import threading
 import time
 from pathlib import Path
@@ -77,6 +78,7 @@ CSV_COLUMNS: Tuple[str, ...] = (
     "abstract",
     "origin",
     "cited_by_anchor",
+    "cites_anchor",
     "co_cited_count",
     "cited_by_count",
     "pub_year",
@@ -573,6 +575,35 @@ def select_references(
     return [pool_idx[j] for j in chosen]
 
 
+def pinned_selection(work: pd.DataFrame, ref_json: Path, logger: Any) -> List[Any]:
+    """Selected set taken from an existing ``pipeline_ref.json`` (QUAL_SG_FIXED_SELECTION).
+
+    Used when the candidate pool grows after a review was written: scores are
+    recomputed over the larger pool, but the selection - and therefore the review
+    and its numbering - stays the one the review was built on.
+    """
+    def tkey(text: Any) -> str:
+        return re.sub(r"[^a-z0-9]+", " ", str(text or "").lower()).strip()
+
+    refs = common.read_json(ref_json)["references"]
+    by_doi = {common.norm_doi(d): i for i, d in work["doi"].items() if common.norm_doi(d)}
+    by_title = {tkey(t): i for i, t in work["title"].items() if tkey(t)}
+    chosen: List[Any] = []
+    missing: List[str] = []
+    for ref in sorted(refs, key=lambda r: r.get("refNoInReview") or r["refNo"]):
+        idx = by_doi.get(common.norm_doi(ref.get("doi")))
+        if idx is None:
+            idx = by_title.get(tkey(ref.get("title")))
+        if idx is None or idx in chosen:
+            missing.append(str(ref.get("title"))[:80])
+            continue
+        chosen.append(idx)
+    logger.info("pinned selection from %s: %d/%d references matched", ref_json, len(chosen), len(refs))
+    if missing:
+        raise SystemExit(f"pinned selection: {len(missing)} reference(s) not found in the pool: {missing}")
+    return chosen
+
+
 def add_ranks_and_composite(work: pd.DataFrame) -> pd.DataFrame:
     """Add §2.4 rank aggregation columns and the legacy weighted composite score."""
     work = work.copy()
@@ -726,7 +757,10 @@ def main() -> None:
     work = add_ranks_and_composite(work)
 
     # --- 6) selection: relevance gate + maximal marginal relevance ------------- #
-    selected_idx = select_references(work, topic.max_refs, embeddings, logger)
+    if config.FIXED_SELECTION is not None:
+        selected_idx = pinned_selection(work, config.FIXED_SELECTION, logger)
+    else:
+        selected_idx = select_references(work, topic.max_refs, embeddings, logger)
 
     # --- 7) write artefacts ---------------------------------------------------- #
     write_outputs(

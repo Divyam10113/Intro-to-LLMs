@@ -13,7 +13,7 @@ Sources are tried in order, cheapest/most complete first:
 4. **Crossref** by title (JATS abstract when the publisher deposits one).
 5. **DataCite** by title (preprint/dataset descriptions).
 
-    python3 -m qual_sg.fill_abstracts            # update final_ref_set.json in place
+    python3 -m qual_sg.fill_abstracts            # update the candidate pool in place
     python3 -m qual_sg.fill_abstracts --check    # report only
 """
 from __future__ import annotations

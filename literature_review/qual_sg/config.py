@@ -31,7 +31,54 @@ TOPIC_CSV = Path(os.environ.get("QUAL_SG_TOPIC_CSV", BASE_DIR / "example" / "top
 
 # Canonical outputs (kept at the same paths the original pipeline used, so that
 # downstream tooling keeps working).
-CANONICAL_REF_SET = OUT_DIR / "final_ref_set.json"        # step2 output
+#: Candidate pool written by step 2 and updated in place by the later pool stages.
+#: Runs up to v5 called it ``final_ref_set.json``; from v6 that name is the single
+#: consumable export (``export_final_set``) and the pool is ``candidate_pool.json``
+#: (QUAL_SG_POOL_JSON overrides it; relative paths resolve against ``Paper implementation/``).
+#: Default: ``<out>/candidate_pool.json``; an old (v1-v5) output folder that only has a
+#: pool named ``final_ref_set.json`` keeps reading it (export_final_set then refuses
+#: to overwrite it).
+FINAL_REF_SET = OUT_DIR / "final_ref_set.json"
+#: Fields of the export (export_final_set.FIELDS); used to tell an export from a legacy pool.
+FINAL_REF_SET_FIELDS = ("doi", "title", "abstract", "year", "venue", "citation_count", "keywords",
+                        "topics", "relevance_score", "composite_score", "origin", "selected")
+
+
+def is_final_ref_set_export(path: Path) -> bool:
+    """True if ``path`` holds the fixed-format export rather than a candidate pool."""
+    import json
+    try:
+        with open(path, encoding="utf-8") as fh:
+            head = fh.read(262144)
+        start = head.find("{")
+        if start < 0:
+            return False
+        try:
+            first, _ = json.JSONDecoder().raw_decode(head, start)
+        except ValueError:  # first record longer than the peek: parse the whole file
+            data = json.loads(Path(path).read_text(encoding="utf-8"))
+            first = data[0] if isinstance(data, list) and data else {}
+        return isinstance(first, dict) and tuple(first) == FINAL_REF_SET_FIELDS
+    except (OSError, ValueError):
+        return False
+
+
+_POOL_ENV = os.environ.get("QUAL_SG_POOL_JSON", "").strip()
+if _POOL_ENV:
+    CANONICAL_REF_SET = Path(_POOL_ENV) if Path(_POOL_ENV).is_absolute() else BASE_DIR / _POOL_ENV
+elif (not (OUT_DIR / "candidate_pool.json").exists() and FINAL_REF_SET.exists()
+      and not is_final_ref_set_export(FINAL_REF_SET)):
+    CANONICAL_REF_SET = FINAL_REF_SET  # legacy (v1-v5) layout: the pool is final_ref_set.json
+else:
+    CANONICAL_REF_SET = OUT_DIR / "candidate_pool.json"  # step2 output
+#: Optional pinned selection: path to a ``pipeline_ref.json`` whose references are
+#: used as the selected set instead of re-running MMR (keeps an existing review
+#: valid while the candidate pool grows).  Relative paths resolve like the pool.
+_FIXED_SEL_ENV = os.environ.get("QUAL_SG_FIXED_SELECTION", "").strip()
+FIXED_SELECTION = (
+    (Path(_FIXED_SEL_ENV) if Path(_FIXED_SEL_ENV).is_absolute() else BASE_DIR / _FIXED_SEL_ENV)
+    if _FIXED_SEL_ENV else None
+)
 CANONICAL_RANKED_CSV = Path(
     os.environ.get("QUAL_SG_RANKED_CSV", OUT_DIR / "paper_after_reranking.csv")
 )  # step3 output

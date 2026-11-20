@@ -1,7 +1,7 @@
 """Export the pipeline's own reference set.
 
-``final_ref_set.json`` is the *candidate pool* (all the papers the pipeline
-retrieved, enriched and considered).  This module exports the much smaller
+The candidate pool (``candidate_pool.json``; ``final_ref_set.json`` up to v5) holds all the papers the pipeline
+retrieved, enriched and considered.  This module exports the much smaller
 artefact that users actually want to consume: the **K references the pipeline
 selected**, in citation order, with the provenance and scores behind each choice.
 

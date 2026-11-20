@@ -26,7 +26,7 @@ the co-citation counter, the id-based filters and the h-index join consistent.
 
 Outputs
 -------
-``config.CANONICAL_REF_SET`` (``final_ref_set.json``) : ``D_ex``, the combined,
+``config.CANONICAL_REF_SET`` (``candidate_pool.json``; ``final_ref_set.json`` up to v5) : ``D_ex``, the combined,
 enriched list consumed by step 3.
 ``config.STEP2_COCITATION``  : stats (input/enriched counts, co-cited ids with
 counts, h-index lookups, elapsed seconds).

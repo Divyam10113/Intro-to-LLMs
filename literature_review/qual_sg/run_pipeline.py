@@ -31,10 +31,13 @@ STAGES: List[Tuple[str, List[str]]] = [
     ("preflight", ["preflight"]),
     ("step1_retrieve", ["step1_retrieve"]),
     ("step2_quality", ["step2_quality"]),
+    ("cites_anchor", ["cites_anchor"]),          # v6: who cites the anchor (forward citations)
     ("fill_abstracts", ["fill_abstracts"]),
     ("anchor_flags", ["anchor_merge", "--flag-only"]),
+    ("enrich_metadata", ["enrich_metadata"]),    # v6: keywords/topics/year/venue + DOI check
     ("step3_rerank", ["step3_rerank"]),
     ("export_refs", ["export_refs"]),
+    ("final_ref_set", ["export_final_set"]),     # v6: the single fixed-format output
     ("bib_overlap", ["bib_eval", "--pdf", "../2403.12570v1.pdf", "--selected", "--pool",
                      "--out", str(config.INTERMEDIATES_DIR / "bib_overlap_v5.json")]),
     ("bibliography", ["bibliography"]),
