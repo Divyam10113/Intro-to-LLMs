@@ -1,0 +1,13 @@
+# Third-party checkout (pinned at a30bf7b, see task4/README.md) and the environment
+MVFA-AD/
+.venv-task4/
+.dl_tmp/
+# Python / test caches
+__pycache__/
+.pytest_cache/
+# Run logs and large artefacts (checkpoints and maps live on the HDD in runs/)
+task4/logs/
+*.pth
+*.npz
+*.tar.gz
+*.zip

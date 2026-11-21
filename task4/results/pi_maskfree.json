@@ -1,0 +1,68 @@
+{
+  "Liver": {
+    "Brain": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Retina_RESC": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Chest": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    }
+  },
+  "Brain": {
+    "Liver": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Retina_RESC": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Chest": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    }
+  },
+  "Retina_RESC": {
+    "Brain": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Liver": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Chest": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "method": "D2: fixed, = plan estimator's clip value"
+    }
+  }
+}

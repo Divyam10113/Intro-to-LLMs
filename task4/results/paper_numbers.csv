@@ -1,0 +1,4 @@
+target,img_auroc,pix_auroc,source
+Liver,76.24,97.85,"arXiv 2403.12570 (CVPR 2024), Table 2 zero-shot, MVFA row (AC / AS AUC %); identical to the README 'Paper' column"
+Brain,78.63,90.27,"arXiv 2403.12570 (CVPR 2024), Table 2 zero-shot, MVFA row (AC / AS AUC %); identical to the README 'Paper' column"
+Retina_RESC,83.31,92.05,"arXiv 2403.12570 (CVPR 2024), Table 2 zero-shot, MVFA row (AC / AS AUC %); identical to the README 'Paper' column"
