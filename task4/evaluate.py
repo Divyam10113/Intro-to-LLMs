@@ -17,7 +17,9 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset
 
-from common import (RESULTS_DIR, autocast, build_model, level_scores, list_test_set, load_image,
+import os
+
+from common import (RESULTS_DIR, autocast, build_model, file_lock, level_scores, list_test_set, load_image,
                     load_mask, scores_to_image_score, scores_to_maps, text_features)
 from metrics import aupro, image_auroc, pixel_auroc
 
@@ -42,7 +44,8 @@ class _TestSet(Dataset):
 
 
 @torch.no_grad()
-def predict(model, tfeat, target, device, batch_size=16, limit=None, workers=6):
+def predict(model, tfeat, target, device, batch_size=32, limit=None,
+            workers=int(os.environ.get("TASK4_WORKERS", 4))):
     ds = _TestSet(target, limit)
     dl = DataLoader(ds, batch_size=batch_size, shuffle=False, num_workers=workers,
                     pin_memory=torch.device(device).type == "cuda")
@@ -81,12 +84,13 @@ def evaluate(model, tfeat, target, device, save_maps=None, limit=None):
 def append_result(row, path=None):
     path = Path(path or RESULTS_DIR / "results.csv")
     path.parent.mkdir(parents=True, exist_ok=True)
-    new = not path.exists()
-    with open(path, "a", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=RESULT_FIELDS, extrasaction="ignore")
-        if new:
-            w.writeheader()
-        w.writerow(row)
+    with file_lock(path):              # many concurrent jobs append here
+        new = not path.exists()
+        with open(path, "a", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=RESULT_FIELDS, extrasaction="ignore")
+            if new:
+                w.writeheader()
+            w.writerow(row)
 
 
 def main():

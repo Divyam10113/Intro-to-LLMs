@@ -198,6 +198,27 @@ def autocast(device):
     return torch.autocast(device_type=dev.type, dtype=torch.float16, enabled=dev.type == "cuda")
 
 
+class file_lock:
+    """Exclusive inter-process lock (fcntl) on <path>.lock; results live on the
+    SSD, where flock works. Used for read-modify-write of shared result files
+    when many jobs run at once."""
+
+    def __init__(self, path):
+        self.path = Path(str(path) + ".lock")
+
+    def __enter__(self):
+        import fcntl
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.f = open(self.path, "w")
+        fcntl.flock(self.f, fcntl.LOCK_EX)
+        return self
+
+    def __exit__(self, *exc):
+        import fcntl
+        fcntl.flock(self.f, fcntl.LOCK_UN)
+        self.f.close()
+
+
 def write_json(path, obj):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)

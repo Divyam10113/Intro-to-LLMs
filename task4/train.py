@@ -22,6 +22,7 @@ selection).
 import argparse
 import csv
 import json
+import os
 import random
 import time
 
@@ -215,6 +216,9 @@ def run(a):
             notes.append(f"det_init={a.det_init}" + ("" if train_det else " (R0 det adapters: not strictly mask-free)"))
         if a.pi_override is not None:
             notes.append(f"pi_override={a.pi_override} (sensitivity)")
+        slots = int(os.environ.get("TASK4_SLOTS", 1))
+        if slots > 1:
+            notes.append(f"GPU shared by up to {slots} jobs: gpu_minutes is wall time on a shared card")
         if a.eval_limit:
             notes.append(f"SMOKE: eval on {a.eval_limit} images only")
         row = {"run_id": run_id, "config": a.config, "target": a.target, "seed": a.seed, "steps": a.steps,
@@ -223,7 +227,7 @@ def run(a):
         if not a.eval_limit:
             append_result(row)
         res.update(eval_seconds=eval_s)
-    meta = {**vars(a), "run_id": run_id, "pi": pi, "train_seconds": train_s, "n_updates": len(sched),
+    meta = {**vars(a), "run_id": run_id, "jobs_per_gpu": int(os.environ.get("TASK4_SLOTS", 1)), "pi": pi, "train_seconds": train_s, "n_updates": len(sched),
             "seconds_per_update": train_s / max(1, len(sched)), "loss_still_falling": bool(falling),
             "total_seconds": time.time() - t_start, **res, "notes": notes}
     write_json(out / "run.json", meta)
@@ -241,7 +245,7 @@ def parse(argv=None):
     ap.add_argument("--lam", type=float, default=1.0)
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--device", default="cuda:0" if torch.cuda.is_available() else "cpu")
-    ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--workers", type=int, default=int(os.environ.get("TASK4_WORKERS", 4)))
     ap.add_argument("--tag", default="")
     ap.add_argument("--det_init", choices=["fresh", "r0"], default="fresh",
                     help="m/b0 only: fresh = detection adapters re-initialised and trained with image labels")

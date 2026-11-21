@@ -33,17 +33,29 @@ python -m pytest -q -p no:anyio tests/ # 27 pre-run checks (~2 min)
 
 ## GPU runs (in the plan's order)
 ```bash
-./run_all.sh phase0      # set_pi, dry-run timing, R0 evals (+AUPRO), estimator report   ~20 min
-./run_all.sh liver       # M-h + M-h-ctrl, seeds 0-2, Liver
+./run_all.sh bench       # optional, ~5-8 min: chooses jobs per GPU (see below)
+./run_all.sh phase0      # set_pi, dry-run timing (alone), R0 evals (+AUPRO), estimator report
+./run_all.sh main        # liver + maskfree + secondary in one queue (Liver runs first)
 python analyze.py        # early-stop check -> tells you which next command to run
 ./run_all.sh rest        # or: ./run_all.sh rest_early_stop
-./run_all.sh maskfree    # M and B0, fully mask-free (DECISIONS D3)
-./run_all.sh secondary   # sensitivity runs + plan's M with R0 detection adapters
 python analyze.py        # Step 5 verdicts -> results/analysis.md
 ```
-`GPUS="1" ./run_all.sh ...` restricts to one card. Logs go to `logs/`; each run
-writes `runs/<run_id>/{seg_adapters.pth, loss.csv, run.json}` and one row in
-`results/results.csv`.
+Both GPUs serve one shared queue: whenever a run finishes, its slot takes the
+next one, so neither card idles while work is left. `GPUS="1" ./run_all.sh ...`
+restricts to one card. Logs go to `logs/`; each run writes
+`runs/<run_id>/{seg_adapters.pth, loss.csv, run.json}` and one row in
+`results/results.csv` (appends are file-locked, so concurrent runs are safe).
+
+**Jobs per GPU.** Running k jobs on one card makes each job slower; it only
+helps if a single job leaves the GPU partly idle (training is batch-1, as in
+MVFA, so it may not reach 100% util). `bench` runs k = 1, 2, 4, 6, 8 concurrent
+400-update jobs on one GPU, records total updates/s, per-job s/update, median
+util and peak VRAM to `logs/bench.tsv`, and saves the smallest k within 5% of
+the best total throughput to `logs/jobs_per_gpu` (k = 1 if one job already
+saturates the card). Later phases read it; `JOBS_PER_GPU=k` overrides it; with
+no bench result the default is 1. With k > 1, `gpu_minutes` is wall time on a
+shared card (noted per run). Results do not depend on k (each run's data order is
+fixed by its seed).
 
 ## Files
 | file | what |

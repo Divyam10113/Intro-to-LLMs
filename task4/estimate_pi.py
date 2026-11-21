@@ -17,7 +17,7 @@ import numpy as np
 import torch
 
 from common import (DEEPEST, MASKLESS, RESULTS_DIR, autocast, build_model, level_scores, load_image,
-                    load_splits, sources_for, text_features, write_json)
+                    load_splits, sources_for, text_features, write_json, file_lock)
 from pu import estimate_pi, two_class_to_logit
 
 
@@ -39,19 +39,21 @@ def run(target, branch, device, out_path=None, model=None, clip_model=None):
     tf = text_features(clip_model, device)
     datasets = [d for d in sources_for(target) if (branch == "det" or d in MASKLESS)]
     out_path = out_path or RESULTS_DIR / f"pi_estimated_{branch}.json"
-    allpi = json.loads(out_path.read_text()) if out_path.exists() else {}
-    allpi[target] = {}
+    mine = {}
     for d in datasets:
         s = load_splits(d)
         pn = patch_probs(model, tf[d], s["pi_normal"], branch, device)
         pa = patch_probs(model, tf[d], s["pi_abnormal"], branch, device)
         pi, raw = estimate_pi(pn, pa)
-        allpi[target][d] = {"pi": pi, "pi_raw": raw, "branch": branch, "level": "deepest (24)",
+        mine[d] = {"pi": pi, "pi_raw": raw, "branch": branch, "level": "deepest (24)",
                             "n_normal_imgs": len(s["pi_normal"]), "n_abnormal_imgs": len(s["pi_abnormal"]),
                             "n_normal_patches": int(pn.size), "n_abnormal_patches": int(pa.size)}
         print(f"{target} {branch} {d}: pi={pi:.4f} (raw {raw:.4f})")
-    write_json(out_path, allpi)
-    return allpi[target]
+    with file_lock(out_path):          # other targets may be writing the same file
+        allpi = json.loads(out_path.read_text()) if out_path.exists() else {}
+        allpi[target] = mine
+        write_json(out_path, allpi)
+    return mine
 
 
 def main():
