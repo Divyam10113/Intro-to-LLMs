@@ -1,18 +1,21 @@
 """
-Stage 0b — Code verification of the Task 2 gaps (model-free).
+Stage 0b — Code verification of the Task 2 limitations (model-free).
 
-Why: our Task 2 limitations were inferred from the MVFA paper only. ResearchAgent builds problems
-from whatever gap descriptions it is given, so a gap that misdescribes the released code produces a
-problem that collapses when it is implemented in that code (the next assignment). This stage checks
-each implementation-level claim against the public MVFA repository and writes corrected gap records.
+Why: Task 2's limitations were extracted from the MVFA paper and later literature, not from the released code.
+Several say that the paper leaves something unspecified; the code answers them, and in some cases the answer is
+a more serious problem than the limitation states. ResearchAgent builds problems from whatever descriptions it is
+given, and the next assignment modifies this code, so every implementation-level claim is checked here.
 
 Input : data/mvfa_code/  (snapshot of github.com/MediaBrain-SJTU/MVFA-AD, commit a30bf7b, 2024-04-06)
-        outputs/stage0_gaps.json
-Output: outputs/stage0b_code_verification.json   (evidence: file, line, code, finding)
-        outputs/gaps_verified.json                (gap records + groups used by Stage 1 onwards)
+        outputs/stage0_gaps.json (Task 2's limitations L1..L39 and their groups)
+Output: outputs/stage0b_code_verification.json   (evidence E1..E20: file, line, code, finding)
+        outputs/gaps_verified.json                (limitations with a code-check note where one applies, plus
+                                                   code-only limitations C1..C4, and the groups)
 
 Every piece of evidence is located by a regular expression, so the script fails loudly if the code
-does not contain what we claim.
+does not contain what we claim. Verdicts: confirmed (the code shows the limitation holds), resolved (the code
+answers what the paper leaves unspecified), worse (the code answers it and reveals a more serious problem),
+corrected (the code differs from what the paper or the limitation states).
 """
 import json
 import re
@@ -68,72 +71,6 @@ CHECKS = [
                  "but is not used for model selection."),
     dict(id="E17", file="dataset/fewshot_seed/Brain/4-shot.txt", pattern=r"^a-0:",
          finding="Each seed file contains a single draw (a-0 / n-0) per dataset and shot number."),
-]
-
-CORRECTIONS = {
-    "G3": dict(
-        title="Localisation supervision requires dense masks",
-        text="MVFA trains two branches. The detection (classification) adapters receive an image-level BCE loss on "
-             "every source image, including the three BMAD datasets that have no masks (OCT17, ChestXray, HIS) "
-             "[E6, E8]. The segmentation adapters, which produce the anomaly maps, are trained only with Dice and "
-             "Focal losses on pixel-level masks, i.e. only on BrainMRI, LiverCT and RESC [E7]. Localisation therefore "
-             "depends entirely on dense expert masks from three datasets; no image-level, sparse or normal-only "
-             "supervision of the segmentation branch is formulated.",
-        evidence=["E6", "E7", "E8"], change="corrected"),
-    "G4": dict(
-        title="The few-shot setting needs labelled abnormal images with masks and is evaluated on one draw",
-        text="In the released code, 'K-shot' means K normal AND K abnormal images, the abnormal ones with pixel masks, "
-             "both drawn from BMAD's valid/ split [E15, E16]; the adapters are fine-tuned on them per target task. "
-             "Clinical few-shot supervision may instead contain only normal or unlabelled images, which the method "
-             "does not support. Only one fixed draw per dataset is provided [E17]. Training time and compute for the "
-             "per-task fine-tuning are not reported.",
-        evidence=["E15", "E16", "E17"], change="corrected"),
-    "G8": dict(
-        title="Score fusion relies on test-set statistics and fixed weights; hyper-parameters are under-ablated",
-        text="Numerous design choices (gamma = 0.1, lambda = 1.0, four feature levels, input resolution 240, learning "
-             "rate 1e-3, 50 epochs, fixed prompt templates) are presented without sensitivity analysis. In the few-shot "
-             "branch fusion, the paper describes adding scores on different scales; the released code instead min-max "
-             "normalises each branch using the minimum and maximum over the ENTIRE TEST SET before fusing them with a "
-             "fixed weight of 0.5 [E9, E10, E12]. This normalisation is transductive: it cannot score a single "
-             "incoming image, and the fused score of an image changes with the composition (e.g. prevalence, "
-             "outliers) of the rest of the test set.",
-        evidence=["E9", "E10", "E12"], change="corrected"),
-    "G9": dict(
-        title="Image-level aggregation is inconsistent and outlier-sensitive",
-        text="The image-level score is computed differently in training and testing and across datasets: training "
-             "mean-pools the detection map [E5]; for datasets with masks, the reported image AUC uses the MAX over the "
-             "fused segmentation map, so a single spurious high-scoring pixel decides the image label [E11]; for "
-             "datasets without masks, mean-pooled detection scores are used [E12]. No robust aggregation, "
-             "calibration or uncertainty estimate is used.",
-        evidence=["E5", "E11", "E12"], change="corrected"),
-    "G10": dict(
-        title="Evaluation lacks patient-level leakage controls and variance estimates",
-        text="Patient-level splits are not reported. Few-shot support images come from a single fixed file per "
-             "dataset and shot number [E13, E17] with one default seed [E14]; no standard deviations or confidence "
-             "intervals are reported, although few-shot selection is known to be variance-sensitive.",
-        evidence=["E13", "E14", "E17"], change="evidence added"),
-}
-
-NEW_GAPS = [
-    dict(id="G16", title="Model selection on the target test set",
-         text="Both the zero-shot and few-shot training scripts evaluate on the target dataset's test set during "
-              "training and keep the checkpoint with the best test AUC [E1-E4]. BMAD's valid/ split exists and is "
-              "used to draw few-shot supports [E15, E16], but not for model selection. In the "
-              "zero-shot setting this means the target modality, which is supposed to be unseen, is used to choose "
-              "the model, so the reported zero-shot and few-shot results are optimistically biased and are not "
-              "comparable with methods that select models without test data.",
-         evidence=["E1", "E2", "E3", "E4", "E15", "E16"], component="evaluation protocol", kind="evaluation", codable="high",
-         change="new"),
-    dict(id="G17", title="Paper and code disagree on image-level pooling",
-         text="Eq. (3) of the paper defines the image-level loss with a max over the h x w anomaly map, while the "
-              "released code mean-pools [E5]. Results in the paper therefore cannot be attributed to the method as "
-              "described, and the effect of the pooling choice on detection is unknown.",
-         evidence=["E5"], component="score fusion/aggregation", kind="reporting", codable="high", change="new"),
-]
-
-# Found while preparing Stage 2 (after Stage 1 had run). Recorded as evidence, but deliberately NOT merged into
-# the gap texts, so that the Stage 1 prompts (and their cached responses) remain exactly what was run.
-LATER_CHECKS = [
     dict(id="E18", file="train_zero.py", pattern=r'"--learning_rate", type=float, default=0\.0001',
          finding="Zero-shot training defaults to a learning rate of 1e-4, while the paper reports 1e-3 "
                  "(train_few.py uses 1e-3)."),
@@ -143,19 +80,63 @@ LATER_CHECKS = [
          finding="Few-shot training also uses a hard-coded batch size of 1."),
 ]
 
-GROUP_UPDATES = {  # new gaps join the groups whose root cause they share
-    "Score calibration and robust aggregation": ["G17"],
-    "Leakage-free generalisation protocol": ["G16"],
+CODE_NOTES = {  # limitation id -> (verdict, note appended to the limitation for Stage 1, evidence ids)
+    "L1": ("confirmed", "The released code has one fixed support file per dataset and shot number containing a single "
+           "draw, and a single default seed (111) [E13, E14, E17].", ["E13", "E14", "E17"]),
+    "L3": ("confirmed", "In the released code every source image trains the detection adapters with an image-level BCE "
+           "loss [E6], while the segmentation adapters, which produce the anomaly maps, are trained with Dice and Focal "
+           "losses only on the datasets that have masks [E7, E8].", ["E6", "E7", "E8"]),
+    "L4": ("resolved", "The released code answers this: 'K-shot' means K normal AND K abnormal images, the abnormal ones "
+           "with pixel masks, both drawn from BMAD's valid/ split [E15, E16], from one fixed file per dataset and shot "
+           "number [E13, E17].", ["E13", "E15", "E16", "E17"]),
+    "L5": ("resolved", "In the released code the Dice and Focal losses are applied only to datasets with masks "
+           "(BrainMRI, LiverCT, RESC) [E7]; OCT17, ChestXray and HIS train only the detection adapters [E8]; no "
+           "pseudo-masks are used.", ["E7", "E8"]),
+    "L18": ("confirmed", "Confirmed in the released code: the K abnormal support images are loaded together with their "
+            "masks [E16].", ["E16"]),
+    "L10": ("worse", "The released code shows what the paper leaves open: each branch's maps are min-max normalised with "
+            "the minimum and maximum over the ENTIRE TEST SET and then fused with a fixed weight of 0.5 [E9, E10, E12] "
+            "(see C1).", ["E9", "E10", "E12"]),
+    "L30": ("resolved", "In the released code the image score on datasets with masks is the MAX of the fused pixel map "
+            "[E11]; on datasets without masks it is the test-set-normalised, mean-pooled detection score [E12]; "
+            "training mean-pools the detection map [E5].", ["E5", "E11", "E12"]),
+    "L38": ("confirmed", "Confirmed in the released code for datasets with masks: the image score is the max over the "
+            "fused pixel map [E11], so a single spurious pixel can decide the label.", ["E11"]),
+    "L20": ("worse", "The released code does select a checkpoint, but on the TARGET TEST SET: training evaluates on the "
+            "target test loader and keeps the best-on-test checkpoint [E1-E4], although BMAD's valid/ split exists and "
+            "is used only to draw few-shot supports [E15, E16] (see C2).", ["E1", "E2", "E3", "E4", "E15", "E16"]),
+    "L19": ("corrected", "The released code differs from the reported recipe: zero-shot training defaults to a learning "
+            "rate of 1e-4 rather than 1e-3 [E18], and both training scripts hard-code a batch size of 1 rather than 16 "
+            "[E19, E20] (see C4).", ["E18", "E19", "E20"]),
 }
-GROUP_ROOT_CAUSE = {
-    "Score calibration and robust aggregation":
-        "Anomaly evidence is turned into image scores and fused with rules that depend on the whole test set "
-        "(min-max normalisation), a fixed weight and a max over pixels, and is evaluated only by threshold-free AUC, "
-        "so per-image deployability, calibration and outlier sensitivity are never measured.",
-    "Leakage-free generalisation protocol":
-        "Model selection on the target test set, same-modality data (RESC/OCT17), possible patient overlap and "
-        "single few-shot draws all leak target information into 'zero-shot' evaluation.",
-}
+
+NEW_GAPS = [  # problems visible only in the code; each joins the group of the limitation it extends
+    dict(id="C1", linked="L10", title="Scores are normalised with statistics of the whole test set",
+         text="Before the two branches are fused, each branch's maps are min-max normalised using the minimum and "
+              "maximum over the ENTIRE TEST SET, then combined with a fixed weight of 0.5 [E9, E10, E12]. This "
+              "normalisation is transductive: it cannot score a single incoming image, and the fused score of an "
+              "image changes with the composition (prevalence, outliers) of the rest of the test set.",
+         evidence=["E9", "E10", "E12"], component="score fusion/aggregation", kind="method", codable="high"),
+    dict(id="C2", linked="L20", title="Model selection on the target test set",
+         text="Both the zero-shot and few-shot training scripts evaluate on the target dataset's test set during "
+              "training and keep the checkpoint with the best test AUC [E1-E4]. BMAD's valid/ split exists and is "
+              "used to draw few-shot supports [E15, E16], but not for model selection. In the zero-shot setting the "
+              "target modality, which is supposed to be unseen, is used to choose the model, so the reported results "
+              "are optimistically biased.",
+         evidence=["E1", "E2", "E3", "E4", "E15", "E16"], component="evaluation protocol", kind="evaluation",
+         codable="high"),
+    dict(id="C3", linked="L38", title="Paper and code disagree on image-level pooling",
+         text="Eq. (3) of the paper defines the image-level loss with a max over the h x w anomaly map, while the "
+              "released code mean-pools [E5]. Results in the paper therefore cannot be attributed to the method as "
+              "described, and the effect of the pooling choice on detection is unknown.",
+         evidence=["E5"], component="score fusion/aggregation", kind="reporting", codable="high"),
+    dict(id="C4", linked="L19", title="Training hyper-parameters in the code differ from the paper",
+         text="Zero-shot training defaults to a learning rate of 1e-4 while the paper reports 1e-3 [E18], and both "
+              "training scripts hard-code a batch size of 1 while the paper reports 16 [E19, E20].",
+         evidence=["E18", "E19", "E20"], component="metrics/reporting", kind="reporting", codable="high"),
+]
+
+LATER_CHECKS = []  # run 3: all checks, including E18-E20 found during run 1, are regular checks
 
 
 def locate(check):
@@ -176,38 +157,34 @@ def main():
     s0 = json.loads((ROOT / "outputs" / "stage0_gaps.json").read_text())
     gaps = []
     for g in s0["gaps"]:
-        g = dict(g, change="unchanged", evidence=[])
-        if g["id"] in CORRECTIONS:
-            g.update(CORRECTIONS[g["id"]])
+        g = dict(g, code_check=None, evidence=[])
+        if g["id"] in CODE_NOTES:
+            verdict, note, ev = CODE_NOTES[g["id"]]
+            g.update(code_check=dict(verdict=verdict, note=note), evidence=ev,
+                     text=g["text"] + " Code check (released MVFA code): " + note)
         gaps.append(g)
-    gaps += NEW_GAPS
-    groups = []
-    for grp in s0["groups"]:
-        grp = dict(grp)
-        grp["members"] = grp["members"] + GROUP_UPDATES.get(grp["name"], [])
-        if grp["name"] in GROUP_ROOT_CAUSE:
-            grp["root_cause"] = GROUP_ROOT_CAUSE[grp["name"]]
-        groups.append(grp)
-    later = []
-    for c in LATER_CHECKS:
-        locs = locate(c)
-        later.append(dict(id=c["id"], file=c["file"], lines=[l["line"] for l in locs], code=locs[0]["code"],
-                          finding=c["finding"], related_gaps=["G8", "G17"],
-                          url=f"https://github.com/MediaBrain-SJTU/MVFA-AD/blob/{COMMIT}/{c['file']}#L{locs[0]['line']}"))
+    member_of = {m: grp["name"] for grp in s0["groups"] for m in grp["members"]}
+    groups = [dict(grp, members=list(grp["members"])) for grp in s0["groups"]]
+    ungrouped = list(s0["ungrouped"])
+    for ng in NEW_GAPS:
+        gaps.append(dict(ng, source="stage0b code verification", code_check=dict(verdict="code-only", note=ng["text"])))
+        home = member_of.get(ng["linked"])
+        if home:
+            next(grp for grp in groups if grp["name"] == home)["members"].append(ng["id"])
+        else:
+            ungrouped.append(ng["id"])
     (ROOT / "outputs" / "stage0b_code_verification.json").write_text(json.dumps(
         dict(repository="https://github.com/MediaBrain-SJTU/MVFA-AD", commit=COMMIT, evidence=evidence,
-             later_findings=later,
-             later_findings_note="Found after Stage 1 ran; recorded here and in the report, not merged into gap texts."),
-        indent=1))
-    for e in later:
-        print(f"{e['id']:4} {e['file']}:{e['lines']}  {e['code'][:80]}  (later finding)")
+             later_findings=[], verdicts={k: v[0] for k, v in CODE_NOTES.items()}), indent=1))
     (ROOT / "outputs" / "gaps_verified.json").write_text(json.dumps(
-        dict(gaps=gaps, groups=groups, ungrouped=s0["ungrouped"], source="stage0 + stage0b code verification"), indent=1))
+        dict(gaps=gaps, groups=groups, ungrouped=ungrouped, source="stage0 (Task 2 limitations) + stage0b code verification"),
+        indent=1))
     for e in evidence:
         print(f"{e['id']:4} {e['file']}:{e['lines']}  {e['code'][:80]}")
-    print("changed gaps:", [g["id"] + ":" + g["change"] for g in gaps if g["change"] != "unchanged"])
+    print("code checks:", {k: v[0] for k, v in CODE_NOTES.items()})
     for grp in groups:
         print(f"- {grp['name']}: {grp['members']}")
+    print("ungrouped:", ungrouped)
 
 
 if __name__ == "__main__":

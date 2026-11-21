@@ -50,18 +50,39 @@ def main():
     rel = Counter(p["relevance"] for p in s2c["hop1_scored"])
     calls = Counter()
     for line in (ROOT / "logs" / "calls.jsonl").read_text().splitlines():
-        calls[json.loads(line)["tag"].split("/")[0]] += 1
-    # calls answered from the cache of run 1 because their prompts did not change (Stage 0 grouping, Stage 2 relevance)
+        tag = json.loads(line)["tag"]
+        if not tag.startswith(("rejudge/", "hypercheck/")):   # independent checks are not part of the run
+            calls[tag.split("/")[0]] += 1
+    # calls answered from the cache of an earlier run because their prompts did not change: in run 3 only the
+    # second-hop relevance chunks of the chain that was extended (MadCLIP), whose prompt depends only on that paper
     reused = Counter()
+    hop2_prefixes = tuple(f"stage2/relevance/hop2/{k[:8]}/" for k in s2c.get("hop2_scored", {}))
+    logged = {json.loads(l)["key"] for l in (ROOT / "logs" / "calls.jsonl").read_text().splitlines() if l.strip()}
+    seen = set()
     for f in (ROOT / "logs" / "cache").glob("*.json"):
         r = json.loads(f.read_text())
-        if r["tag"].startswith(("stage0/", "stage2/relevance")):
+        if hop2_prefixes and r["tag"].startswith(hop2_prefixes) and r["key"] not in logged and r["tag"] not in seen:
+            seen.add(r["tag"])
             reused[r["tag"].split("/")[0]] += 1
-    data = dict(gaps=s0["gaps"], groups=s0["groups"], evidence=ev["evidence"], later_evidence=ev.get("later_findings", []),
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from corpus import load_surveygen, mvfa_citers, review_set
+    P = load_surveygen()
+    cit = mvfa_citers(P)
+    src = Counter("+".join(x["sources"]) for x in cit)
+    inputs = dict(manifest=json.loads((ROOT / "data" / "inputs_manifest.json").read_text()),
+                  task1_papers=len(P), task1_review=len(review_set(P)),
+                  task1_origins=dict(Counter(o for p in P for o in (p["origin"] if isinstance(p["origin"], list) else [p["origin"]]))),
+                  citers=len(cit), citers_both=src.get("s2+task1", 0), citers_task1_only=src.get("task1", 0),
+                  citers_s2_only=src.get("s2", 0), citers_eligible=len(s2c["hop1_scored"]),
+                  task2_limitations=sum(1 for g in s0["gaps"] if g.get("source") == "task2"),
+                  code_gaps=sum(1 for g in s0["gaps"] if g["id"].startswith("C")))
+    data = dict(gaps=s0["gaps"], groups=s0["groups"], ungrouped=s0.get("ungrouped", []), evidence=ev["evidence"],
+                later_evidence=ev.get("later_findings", []), verdicts=ev.get("verdicts", {}),
                 problems=problems, selected_problems=s1["proposed"], entities=s1["entities"], related=s1["related"],
                 chains=chains, hop1_relevance=dict(rel), evolution=evo, ranking=rank, calls=dict(calls),
-                total_calls=sum(calls.values()), reused_calls=dict(reused), run="run 2 (QUAL-SG corpus)",
-                corpus=dict(papers=len(s1.get("related", [])), entities=s1["entities"]))
+                total_calls=sum(calls.values()), reused_calls=dict(reused), run="run 3 (Task 1 v6 corpus, Task 2 39 limitations)",
+                inputs=inputs, corpus=dict(papers=len(s1.get("related", [])), entities=s1["entities"]))
     (O / "explorer_data.json").write_text(json.dumps(data, indent=1))
     print("wrote", O / "explorer_data.json", f"({len(json.dumps(data)) // 1024} KB)")
     tpl = (ROOT / "explorer" / "template.html").read_text()

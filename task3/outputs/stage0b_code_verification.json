@@ -172,9 +172,7 @@
    "code": "a-0: 01388_60.png 01471_60.png 00154_60.png 01646_90.png",
    "finding": "Each seed file contains a single draw (a-0 / n-0) per dataset and shot number.",
    "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/fewshot_seed/Brain/4-shot.txt#L1"
-  }
- ],
- "later_findings": [
+  },
   {
    "id": "E18",
    "file": "train_zero.py",
@@ -183,10 +181,6 @@
    ],
    "code": "parser.add_argument(\"--learning_rate\", type=float, default=0.0001, help=\"learning rate\")",
    "finding": "Zero-shot training defaults to a learning rate of 1e-4, while the paper reports 1e-3 (train_few.py uses 1e-3).",
-   "related_gaps": [
-    "G8",
-    "G17"
-   ],
    "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L50"
   },
   {
@@ -198,10 +192,6 @@
    ],
    "code": "train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, **kwargs)",
    "finding": "Training uses a batch size of 1 (hard-coded), while the paper reports a batch size of 16.",
-   "related_gaps": [
-    "G8",
-    "G17"
-   ],
    "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L76"
   },
   {
@@ -212,12 +202,20 @@
    ],
    "code": "train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, **kwargs)",
    "finding": "Few-shot training also uses a hard-coded batch size of 1.",
-   "related_gaps": [
-    "G8",
-    "G17"
-   ],
    "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L91"
   }
  ],
- "later_findings_note": "Found after Stage 1 ran; recorded here and in the report, not merged into gap texts."
+ "later_findings": [],
+ "verdicts": {
+  "L1": "confirmed",
+  "L3": "confirmed",
+  "L4": "resolved",
+  "L5": "resolved",
+  "L18": "confirmed",
+  "L10": "worse",
+  "L30": "resolved",
+  "L38": "confirmed",
+  "L20": "worse",
+  "L19": "corrected"
+ }
 }

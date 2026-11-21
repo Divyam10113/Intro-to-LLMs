@@ -2,8 +2,8 @@
 Stage 1 — Research problem discovery (ResearchAgent, Baek et al. 2025).
 
 Input gaps: outputs/gaps_verified.json (Stage 0 groups with the code-verified corrections of Stage 0b).
-For each selected limitation group (A, B, D from Stage 0; group C is attached to every problem as
-the shared evaluation protocol):
+For each selected limitation group (run 3: A and B, see GROUPS; the leakage-free protocol group is attached to
+every problem as the shared evaluation protocol):
   1. Problem identification  p = LLM(T_p(target paper, related papers, entities, limitations))
      — two candidates per group, the second asked to differ from the first.
   2. ReviewingAgents score every candidate separately on Clarity, Relevance, Originality,
@@ -11,14 +11,15 @@ the shared evaluation protocol):
   3. Iterative refinement from the reviews; ResearchAgent reports saturation after ~3 iterations,
      so we run the initial round + up to 2 refinements (3 reviewed versions per candidate), keeping the
      best-scoring version of each candidate.
-  4. The top-2 candidates by mean score, from different limitation groups, are proposed as the
-     research problems.
+  4. The best candidate of each group (the top-2 by mean score from different groups) is proposed as a
+     research problem.
 
 Literature
   * target paper: MVFA (base paper)
-  * related papers: the other papers of the submitted Task 1 review (run 2: 59 of the 60 QUAL-SG
-    references; run 1: 16 SurveyGen papers), plus (if data/s2_citations.json exists) the 10 papers
-    citing MVFA whose abstracts are most similar to MVFA's and that are not already in the review
+  * related papers: the other papers of the Task 1 literature review (run 3: the 58 other selected papers of
+    Task 1's final_ref_set.json; run 2: 59 QUAL-SG v4 references; run 1: 16 SurveyGen papers), plus the 10
+    papers citing MVFA (Task 1 + Semantic Scholar) whose abstracts are most similar to MVFA's and that are not
+    already in the review
   * entities: top-k from the entity-centric knowledge store over the whole corpus (Eq. 2)
 """
 import json
@@ -26,14 +27,17 @@ import re
 from pathlib import Path
 from statistics import mean
 
-from corpus import EntityStore, base_paper, load_surveygen, review_set
+from corpus import EntityStore, base_paper, load_surveygen, mvfa_citers, review_set
 from llm_client import LLM
 from prompts import researchagent as RA
 from utils import parse_fields
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / "stage1_problems.json"
-GROUPS = ["Label-efficient adaptation", "Score calibration and robust aggregation", "Compact normality modelling"]
+# Run 3 (option a, decided with the user): only the two directions that Task 4 builds on. Group A covers Task 2's
+# L3, L4, L5, L18 (mask and label dependence); group B covers L8, L10, L30, L38 plus the code-only C1 and C3 (scoring).
+# Runs 1-2 also generated problems for "Compact normality modelling", which scored lowest both times.
+GROUPS = ["Label-efficient adaptation", "Score calibration and robust aggregation"]
 GROUP_LETTER = {"Label-efficient adaptation": "A", "Score calibration and robust aggregation": "B",
                 "Compact normality modelling": "D"}
 N_CANDIDATES = 2
@@ -43,22 +47,21 @@ N_CITING = 10
 CRITERIA = ["Clarity", "Relevance", "Originality", "Feasibility", "Significance"]
 
 
-def citing_papers(n, base_abstract):
+def citing_papers(n, base_abstract, papers):
     """ResearchAgent Sec. 3.2: the core paper's citing papers 'are further narrowed down based on their
-    similarities of abstracts with the core paper'. We use TF-IDF cosine similarity (no embedding model
-    can be downloaded in this environment; swap in a sentence encoder if available)."""
-    p = ROOT / "data" / "s2_citations.json"
-    if not p.exists():
-        return []
+    similarities of abstracts with the core paper'. Citing papers come from Task 1 (origin 'cites_mvfa') and the
+    Semantic Scholar supplement (corpus.mvfa_citers). TF-IDF cosine similarity is used (swap in a sentence encoder
+    if one is available)."""
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import cosine_similarity
-    s2 = json.loads(p.read_text())
-    hop1 = [x for x in s2["hop1"] if x.get("abstract")]
-    X = TfidfVectorizer(stop_words="english", sublinear_tf=True).fit_transform([base_abstract] + [x["abstract"] for x in hop1])
+    cit = [x for x in mvfa_citers(papers) if x.get("abstract")]
+    if not cit:
+        return []
+    X = TfidfVectorizer(stop_words="english", sublinear_tf=True).fit_transform([base_abstract] + [x["abstract"] for x in cit])
     sims = cosine_similarity(X[0], X[1:])[0]
     order = sims.argsort()[::-1][:n]
-    return [dict(title=hop1[i]["title"], abstract=hop1[i]["abstract"], year=hop1[i].get("year"),
-                 source="s2-citing", similarity=round(float(sims[i]), 3)) for i in order]
+    return [dict(title=cit[i]["title"], abstract=cit[i]["abstract"], year=cit[i].get("year"),
+                 source="citing:" + "+".join(cit[i]["sources"]), similarity=round(float(sims[i]), 3)) for i in order]
 
 
 def fmt_related(papers):
@@ -84,7 +87,7 @@ def main():
     from corpus import norm_title
     rev = [p for p in review_set(papers) if p is not base]
     seen = {norm_title(p["title"]) for p in rev}
-    related = rev + [c for c in citing_papers(N_CITING + len(rev), base["abstract"])
+    related = rev + [c for c in citing_papers(N_CITING + len(rev), base["abstract"], papers)
                      if norm_title(c["title"]) not in seen][:N_CITING]
     store = EntityStore(papers)
     entities, _ = store.retrieve([base] + related, k=N_ENTITIES)
@@ -98,8 +101,10 @@ def main():
 
     def lims(group):
         # evidence tags such as [E9, E10] refer to stage0b_code_verification.json and are removed from prompts
-        return "\n".join(f"- {gid}. {gaps[gid]['title']}: {re.sub(r' ?\[E[0-9E, -]+\]', '', gaps[gid]['text'])}"
-                         for gid in group["members"])
+        def head(t):  # Task 2 titles are full sentences; C-items have short titles
+            return t + " " if t.rstrip().endswith((".", "?", "!")) else t + ": "
+        return "\n".join(f"- {gid}. {head(gaps[gid]['title'])}{re.sub(r' ?\[E[0-9E, -]+\]', '', gaps[gid]['text'])}"
+                          for gid in group["members"])
 
     # ---------------------------------------------------------------- 1. problem identification
     cands = {}

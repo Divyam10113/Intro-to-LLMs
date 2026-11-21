@@ -1,114 +1,121 @@
 {
  "problem": "A1",
- "problem_text": "How much of the zero-shot localisation quality of MVFA (pixel AUROC and Dice on a held-out modality) is retained when its segmentation adapters are trained without pixel masks, using pseudo-masks drawn only from labelled abnormal source images (a patch is anomalous when its frozen CLIP level-4 feature is farther from every normal patch of the same dataset than the 99th percentile of normal-to-normal nearest-neighbour distances on source validation data), as masks are removed from zero, one, or all three masked source datasets?",
+ "problem_text": "In MVFA's zero-shot (leave-one-modality-out) training, the segmentation adapters \u2014 the only part that produces anomaly maps \u2014 are trained with Dice and Focal losses exclusively on the three source datasets that have pixel masks (BrainMRI, LiverCT, RESC), while OCT17, ChestXray and HIS only train the detection adapters. Primary question: can the segmentation adapters be trained from image-level labels alone, and how much mask-supervised localisation does that retain on the unseen modality? At each of the four adapter levels, with the original level weights, the Dice and Focal terms are replaced by an image-level BCE on the top-k mean of the level's patch-to-text anomaly probabilities (k = 1% of patches), applied to all five source datasets with every mask discarded; the detection adapters and their loss are unchanged. Hypothesis: because patch scores are similarities to text anchors shared by all modalities, this weak supervision yields localisation that transfers to the unseen modality. Primary outcomes: pixel-level AUROC and AUPRO on the held-out folds with masks (BrainMRI, LiverCT, RESC) and image-level AUROC on all folds, mask-supervised versus image-label-supervised MVFA under the shared protocol. Secondary analyses: (i) a control in which the text anchors of the segmentation branch are replaced by a learned linear patch classifier trained with the same MIL loss, isolating the role of the text anchors; (ii) a per-level breakdown; (iii) two label-budget points with masks for 10% and 25% of the abnormal source images (one seed, two folds).",
  "pool_size": 24,
  "shortlist": [
-  "A1-g1-o6",
+  "A1-g1-o2",
   "A1-g3-o3",
-  "A1-g2-o6",
-  "A1-g3-o1",
+  "A1-g1-o6",
+  "A1-g3-o2",
+  "A1-g2-o2",
+  "A1-g3-o4",
   "A1-g2-o4",
   "A1-g3-o6",
-  "A1-g1-o3",
-  "A1-g3-o5",
-  "A1-g2-o2",
   "A1-g2-o1",
-  "A1-g3-o2",
-  "A1-g1-o2"
+  "A1-g2-o5",
+  "A1-g3-o5",
+  "A1-g1-o1"
  ],
  "families": {
-  "Detection-branch-guided targets": [
-   "A1-g1-o6",
-   "A1-g2-o6",
-   "A1-g3-o4",
-   "A1-g3-o5"
-  ],
-  "Self-training and teacher refinement": [
-   "A1-g1-o3",
-   "A1-g2-o4",
-   "A1-g3-o3"
-  ],
-  "Edge- and resolution-aware mask refinement": [
-   "A1-g0-C2",
-   "A1-g1-o1",
-   "A1-g1-o2",
-   "A1-g2-o2",
-   "A1-g2-o3",
-   "A1-g2-o5"
-  ],
-  "Alternative pseudo-mask sources": [
-   "A1-g0-C1",
-   "A1-g0-C4",
+  "MIL instance selection": [
    "A1-g0-C5",
-   "A1-g0-C6",
+   "A1-g1-o2",
+   "A1-g1-o1",
+   "A1-g2-o5",
+   "A1-g3-o2"
+  ],
+  "Witness rate and soft instance weighting": [
+   "A1-g1-o6",
+   "A1-g2-o4",
+   "A1-g3-o5",
+   "A1-g3-o1"
+  ],
+  "MIL loss form": [
+   "A1-g0-C1",
+   "A1-g2-o1"
+  ],
+  "Mosaic spatial-contrast supervision": [
+   "A1-g2-o2",
+   "A1-g3-o3",
+   "A1-g3-o4"
+  ],
+  "Dense auxiliary targets and pseudo-masks": [
+   "A1-g0-C2",
+   "A1-g0-C3",
+   "A1-g0-C4",
+   "A1-g1-o3",
    "A1-g1-o4",
-   "A1-g3-o1",
-   "A1-g3-o2",
+   "A1-g2-o6",
    "A1-g3-o6"
   ],
-  "Synthetic supervision and weak constraints": [
-   "A1-g0-C3",
+  "Anchor-frame controls": [
+   "A1-g0-C6",
    "A1-g1-o5",
-   "A1-g2-o1"
+   "A1-g2-o3"
   ]
  },
  "ranking": [
   {
-   "id": "A1-g1-o6",
-   "title": "Detection-branch veto: MVFA's image-label-trained detection maps filter pseudo-masks for the segmentation branch",
-   "family": "Detection-branch-guided targets",
+   "id": "A1-g1-o2",
+   "title": "Normal-bank-gated MIL: selecting abnormal instances by distance to normal source patches",
+   "family": "MIL instance selection",
    "scores": {
     "Novelty": 3,
-    "Feasibility": 5,
+    "Feasibility": 4,
     "Clarity": 4,
     "Impact": 4,
     "Validity": 4
    },
-   "review_mean": 4,
-   "fitness": 136.4,
-   "final": 0.825,
+   "review_mean": 3.8,
+   "fitness": 129.42,
+   "final": 0.79,
    "survived": true,
    "reviews": {
     "Novelty": {
-     "review": "Using a weakly supervised branch to filter pseudo-labels is known (co-training, anomaly-guided weakly supervised OCT segmentation); using MVFA's own image-label-trained detection branch as the second view is a new, method-specific combination.",
+     "review": "Weakly supervised lesion segmentation by MIL (FMaMIL) and medical anomaly segmentation against a normal feature memory (MIAS-SAM) both exist; using a normal-patch bank only to choose which patches MIL supervises in MVFA's segmentation adapters is a new combination rather than a new principle.",
      "score": 3
     },
     "Feasibility": {
-     "review": "Needs only a det-only pre-training stage and a target filter; same cost as MVFA training on one GPU.",
-     "score": 5
+     "review": "A coreset bank per source dataset and a detached gating term; training cost close to MVFA's. Bank construction adds a preprocessing step.",
+     "score": 4
     },
     "Clarity": {
-     "review": "Targets, agreement quantiles, ignore rule and stages are specified; how the detection map is read per level could be stated more precisely.",
+     "review": "Bank, gate, selection rule, hard negatives and baselines are specified; the bank level (level 4) for gating all four levels could be justified.",
      "score": 4
     },
     "Impact": {
-     "review": "Directly answers whether image-level labels can replace masks for MVFA's segmentation branch, with the three image-only datasets usable as sources.",
+     "review": "Directly answers the research problem and applies to all six BMAD modalities, including the unaligned ones.",
      "score": 4
     },
     "Validity": {
-     "review": "Sound: the detection branch is trained with reliable labels on all six datasets; its maps may be diffuse, which the ignore rule partly handles.",
+     "review": "Sound: normal anatomy has close neighbours in a normal bank while lesions do not; risk that rare normal variants are gated as lesion.",
      "score": 4
     }
    },
    "novelty": {
-    "query": "weakly supervised anomaly segmentation detection branch filter pseudo-masks co-training image-level labels medical",
+    "query": "weakly supervised anomaly segmentation image-level labels multiple instance learning normal memory bank patch selection medical",
     "closest": [
      {
-      "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
-      "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
-      "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+      "title": "FMaMIL: Frequency-Driven Mamba Multi-Instance Learning for Weakly Supervised Lesion Segmentation in Medical Images (arXiv 2506.07652)",
+      "url": "https://arxiv.org/pdf/2506.07652",
+      "relation": "weakly supervised lesion segmentation from image-level labels by multiple-instance learning, with its own backbone rather than CLIP adapters and without a normal-patch bank"
      },
      {
-      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
-      "url": "https://arxiv.org/pdf/2507.21587",
-      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+      "title": "MIAS-SAM: Medical Image Anomaly Segmentation without thresholding (arXiv 2505.22762)",
+      "url": "https://arxiv.org/html/2505.22762v1",
+      "relation": "medical anomaly segmentation that compares patches against a memory of normal features; it is training-free and does not supervise adapters from image labels"
+     },
+     {
+      "title": "Weakly supervised multiple instance learning histopathological tumor segmentation (arXiv 2004.05024)",
+      "url": "https://arxiv.org/pdf/2004.05024",
+      "relation": "MIL segmentation from slide-level labels with top-k style instance selection, in a single modality and without cross-modality transfer"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 1,
-    "Feasibility": 1,
-    "Clarity": 4,
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 1,
     "Impact": 1,
     "Validity": 1
    },
@@ -116,175 +123,180 @@
   },
   {
    "id": "A1-g3-o3",
-   "title": "Detection-gated mean teacher: online pseudo-mask refinement accepted only where MVFA's detection branch agrees",
-   "family": "Self-training and teacher refinement",
+   "title": "Mosaic MIL with normal-bank-gated instance selection",
+   "family": "Mosaic spatial-contrast supervision",
    "scores": {
-    "Novelty": 3,
+    "Novelty": 4,
     "Feasibility": 4,
     "Clarity": 4,
     "Impact": 4,
-    "Validity": 4
+    "Validity": 3
    },
    "review_mean": 3.8,
-   "fitness": 127.24,
+   "fitness": 120.26,
    "final": 0.7436,
    "survived": true,
    "reviews": {
     "Novelty": {
-     "review": "Combines a mean teacher with detection-branch gating; both ingredients exist in weakly supervised segmentation, the gating by MVFA's sibling branch is new.",
-     "score": 3
+     "review": "No prior use of four-image mosaics to obtain free quadrant labels for weakly supervised anomaly localisation was found (mosaics are a detection augmentation); combined with gated MIL it is a new training signal.",
+     "score": 4
     },
     "Feasibility": {
-     "review": "One training run, but the teacher schedule and gate thresholds need joint tuning on source validation.",
+     "review": "Mosaic construction and gating are cheap; two mechanisms need joint tuning on source validation.",
      "score": 4
     },
     "Clarity": {
-     "review": "Schedules, gating rule and losses are specified; the interaction of epochs and ramp is left to tuning.",
+     "review": "Mosaic layout, quadrant labels, gating and losses are specified.",
      "score": 4
     },
     "Impact": {
-     "review": "Same practical question as the veto idea, with potentially cleaner targets.",
+     "review": "Spatially contrastive supervision without masks could substantially improve localisation from image labels.",
      "score": 4
     },
     "Validity": {
-     "review": "Gating limits teacher drift; validity rests on the detection branch being better than the teacher where they disagree.",
-     "score": 4
+     "review": "Two mechanisms are combined, so attribution needs ablations, and quadrants at 120 px halve the resolution of small lesions.",
+     "score": 3
     }
    },
    "novelty": {
-    "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels gating",
+    "query": "mosaic augmentation weakly supervised localization image-level labels quadrant mosaic multiple instance learning",
     "closest": [
      {
-      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
-      "url": "https://arxiv.org/pdf/2507.21587",
-      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+      "title": "Mosaic data augmentation (keras_aug implementation; YOLOv4-style)",
+      "url": "https://kerasaug.readthedocs.io/en/v0.5.3/_modules/keras_aug/layers/augmentation/mix/mosaic.html",
+      "relation": "four-image mosaics are a standard detection augmentation with box labels; their use to create free quadrant labels for weakly supervised anomaly localisation was not found"
      },
      {
-      "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
-      "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
-      "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
+      "title": "Weakly Supervised Object Localization with Multi-fold Multiple Instance Learning (arXiv 1503.00949)",
+      "url": "https://arxiv.org/pdf/1503.00949",
+      "relation": "classic weakly supervised localisation by MIL; it does not construct mosaics with known per-quadrant labels"
      },
      {
-      "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
-      "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
-      "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+      "title": "FMaMIL: Frequency-Driven Mamba Multi-Instance Learning for Weakly Supervised Lesion Segmentation in Medical Images (arXiv 2506.07652)",
+      "url": "https://arxiv.org/pdf/2506.07652",
+      "relation": "weakly supervised lesion segmentation from image-level labels by multiple-instance learning, with its own backbone rather than CLIP adapters and without a normal-patch bank"
      }
     ]
    },
    "criterion_rank": {
     "Novelty": 1,
-    "Feasibility": 6,
-    "Clarity": 4,
+    "Feasibility": 4,
+    "Clarity": 1,
     "Impact": 1,
-    "Validity": 1
+    "Validity": 5
    },
    "overall_rank": 2
   },
   {
-   "id": "A1-g2-o6",
-   "title": "Occlusion attribution of MVFA's detection branch as pseudo-masks for its segmentation branch",
-   "family": "Detection-branch-guided targets",
+   "id": "A1-g1-o6",
+   "title": "Witness-rate-adaptive MIL: estimating each dataset's lesion fraction by positive-unlabelled mixture-proportion estimation",
+   "family": "Witness rate and soft instance weighting",
    "scores": {
-    "Novelty": 3,
+    "Novelty": 4,
     "Feasibility": 4,
     "Clarity": 4,
-    "Impact": 4,
+    "Impact": 3,
     "Validity": 4
    },
    "review_mean": 3.8,
-   "fitness": 120.16,
-   "final": 0.7077,
+   "fitness": 113.19,
+   "final": 0.7078,
    "survived": true,
    "reviews": {
     "Novelty": {
-     "review": "Counterfactual attribution for weakly supervised medical segmentation exists (COIN uses counterfactual inpainting); replacing patches by nearest normal-bank features of MVFA's own detection branch is a new, cheap variant.",
-     "score": 3
+     "review": "Witness rate is a known MIL characteristic and class-prior estimation is standard in PU learning, but estimating it per dataset during training to set MVFA's MIL instance count is new for medical anomaly maps.",
+     "score": 4
     },
     "Feasibility": {
-     "review": "289 adapter-only forward passes per abnormal image with cached CLIP features: affordable but slower than other options.",
+     "review": "The estimator is cheap and runs every two epochs; no extra model.",
      "score": 4
     },
     "Clarity": {
-     "review": "Attribution definition, threshold and training stages are clear.",
+     "review": "Estimator, update schedule, clipping and diagnostics are given.",
      "score": 4
     },
     "Impact": {
-     "review": "Turns image labels into causal localisation evidence for MVFA.",
-     "score": 4
+     "review": "Addresses a real flaw (fixed k across very different lesion sizes); the expected AUROC gain is moderate.",
+     "score": 3
     },
     "Validity": {
-     "review": "Occlusion with nearest normal features is a principled counterfactual; diffuse detection maps could weaken attributions on OCT and chest X-ray.",
+     "review": "The best-bin estimator is principled when normal scores are a clean sample of the normal component; early-training scores may be uninformative, which the warm-up handles.",
      "score": 4
     }
    },
    "novelty": {
-    "query": "occlusion counterfactual attribution pseudo masks weakly supervised segmentation anomaly detection classifier",
+    "query": "multiple instance learning witness rate estimation mixture proportion estimation positive unlabeled top-k pooling segmentation",
     "closest": [
      {
-      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
-      "url": "https://arxiv.org/html/2404.12832v2",
-      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+      "title": "Multiple Instance Learning: A Survey of Problem Characteristics and Applications (arXiv 1612.03365)",
+      "url": "https://arxiv.org/pdf/1612.03365",
+      "relation": "discusses witness rate as a key characteristic of MIL problems, the quantity the idea estimates and uses per dataset"
      },
      {
-      "title": "Causal Intervention for Weakly-Supervised Semantic Segmentation (NeurIPS 2020)",
-      "url": "https://neurips.cc/virtual/2020/protected/poster_07211688a0869d995947a8fb11b215d6.html",
-      "relation": "uses causal intervention to refine classifier-derived pseudo-masks"
+      "title": "Rethinking Class-Prior Estimation for Positive-Unlabeled Learning (arXiv 2002.03673)",
+      "url": "https://arxiv.org/pdf/2002.03673",
+      "relation": "class-prior (mixture-proportion) estimation for positive-unlabelled learning, the estimator family the idea borrows; not applied to patch-level MIL for anomaly maps"
      }
     ]
    },
    "criterion_rank": {
     "Novelty": 1,
-    "Feasibility": 6,
-    "Clarity": 4,
-    "Impact": 1,
+    "Feasibility": 4,
+    "Clarity": 1,
+    "Impact": 4,
     "Validity": 1
    },
    "overall_rank": 3
   },
   {
-   "id": "A1-g3-o1",
-   "title": "Cross-level persistence pseudo-masks: anomalies that persist across MVFA's four feature levels",
-   "family": "Alternative pseudo-mask sources",
+   "id": "A1-g2-o2",
+   "title": "Mosaic MIL: free quadrant labels from four-image mosaics",
+   "family": "Mosaic spatial-contrast supervision",
    "scores": {
-    "Novelty": 3,
+    "Novelty": 4,
     "Feasibility": 5,
-    "Clarity": 5,
-    "Impact": 3,
+    "Clarity": 4,
+    "Impact": 4,
     "Validity": 3
    },
-   "review_mean": 3.8,
-   "fitness": 113.97,
-   "final": 0.6764,
+   "review_mean": 4,
+   "fitness": 101.26,
+   "final": 0.6823,
    "survived": true,
    "reviews": {
     "Novelty": {
-     "review": "Multi-layer anomaly evidence is common in anomaly detection; requiring persistence across exactly MVFA's four adapted levels as a pseudo-mask filter was not found in prior work.",
-     "score": 3
+     "review": "Free quadrant labels from mosaics of labelled images were not found in the weakly supervised anomaly-localisation literature; it creates spatial contrast that image-level MIL lacks.",
+     "score": 4
     },
     "Feasibility": {
-     "review": "Training-free, four nearest-neighbour searches per image.",
+     "review": "Only a data wrapper and a loss term; no extra model or stage.",
      "score": 5
     },
     "Clarity": {
-     "review": "Fully specified rule with clear ablations (persistence 2, 3, 4).",
-     "score": 5
+     "review": "Mosaic construction, labels, losses and the no-contrast ablation are clear.",
+     "score": 4
     },
     "Impact": {
-     "review": "A useful filter, but its benefit is limited to pseudo-mask precision.",
-     "score": 3
+     "review": "If it works it is a general, cheap way to train localisation from image labels in medical imaging.",
+     "score": 4
     },
     "Validity": {
-     "review": "The assumption that lesions are anomalous at all levels is argued by analogy; subtle texture-only lesions may be lost.",
+     "review": "Down-scaling to 120 px quadrants weakens small-lesion evidence, and mosaic boundaries are artificial contexts the model may exploit.",
      "score": 3
     }
    },
    "novelty": {
-    "query": "multi-layer feature persistence anomaly localization pseudo labels across layers vision transformer nearest neighbor",
+    "query": "mosaic augmentation weakly supervised localization image-level labels quadrant mosaic multiple instance learning",
     "closest": [
      {
-      "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
-      "url": "https://arxiv.org/pdf/2403.10803",
-      "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+      "title": "Mosaic data augmentation (keras_aug implementation; YOLOv4-style)",
+      "url": "https://kerasaug.readthedocs.io/en/v0.5.3/_modules/keras_aug/layers/augmentation/mix/mosaic.html",
+      "relation": "four-image mosaics are a standard detection augmentation with box labels; their use to create free quadrant labels for weakly supervised anomaly localisation was not found"
+     },
+     {
+      "title": "Weakly Supervised Object Localization with Multi-fold Multiple Instance Learning (arXiv 1503.00949)",
+      "url": "https://arxiv.org/pdf/1503.00949",
+      "relation": "classic weakly supervised localisation by MIL; it does not construct mosaics with known per-quadrant labels"
      }
     ]
    },
@@ -292,76 +304,15 @@
     "Novelty": 1,
     "Feasibility": 1,
     "Clarity": 1,
-    "Impact": 4,
-    "Validity": 8
+    "Impact": 1,
+    "Validity": 5
    },
    "overall_rank": 4
   },
   {
-   "id": "A1-g2-o4",
-   "title": "Mean-teacher online refinement of pseudo-masks during MVFA training",
-   "family": "Self-training and teacher refinement",
-   "scores": {
-    "Novelty": 2,
-    "Feasibility": 4,
-    "Clarity": 4,
-    "Impact": 3,
-    "Validity": 4
-   },
-   "review_mean": 3.4,
-   "fitness": 108.24,
-   "final": 0.5773,
-   "survived": true,
-   "reviews": {
-    "Novelty": {
-     "review": "Mean-teacher pseudo-label refinement is a standard semi- and weakly supervised technique; applied to MVFA without method-specific change.",
-     "score": 2
-    },
-    "Feasibility": {
-     "review": "Single run, extra EMA model; schedule tuning needed.",
-     "score": 4
-    },
-    "Clarity": {
-     "review": "Schedule, blending and ignore band specified.",
-     "score": 4
-    },
-    "Impact": {
-     "review": "Halves the cost of self-training, a practical but incremental gain.",
-     "score": 3
-    },
-    "Validity": {
-     "review": "Anchoring to initial masks and image labels limits drift.",
-     "score": 4
-    }
-   },
-   "novelty": {
-    "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels",
-    "closest": [
-     {
-      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
-      "url": "https://arxiv.org/pdf/2507.21587",
-      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
-     },
-     {
-      "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
-      "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
-      "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
-     }
-    ]
-   },
-   "criterion_rank": {
-    "Novelty": 7,
-    "Feasibility": 6,
-    "Clarity": 4,
-    "Impact": 4,
-    "Validity": 1
-   },
-   "overall_rank": 5
-  },
-  {
-   "id": "A1-g3-o6",
-   "title": "Dawid-Skene fusion of MVFA-internal pseudo-label sources with per-dataset reliabilities",
-   "family": "Alternative pseudo-mask sources",
+   "id": "A1-g3-o2",
+   "title": "Per-image adaptive k from normal-bank exceedances",
+   "family": "MIL instance selection",
    "scores": {
     "Novelty": 3,
     "Feasibility": 4,
@@ -370,110 +321,176 @@
     "Validity": 3
    },
    "review_mean": 3.4,
-   "fitness": 102.74,
-   "final": 0.5495,
+   "fitness": 106.99,
+   "final": 0.6063,
    "survived": true,
    "reviews": {
     "Novelty": {
-     "review": "Dawid-Skene and dependent weak-source aggregation exist; applying them to three MVFA-internal sources with normal images as known negatives is a new combination.",
+     "review": "Per-image adaptive k from normal-bank exceedances is a sensible variant of witness-rate MIL; related ideas exist in memory-bank anomaly segmentation.",
      "score": 3
     },
     "Feasibility": {
-     "review": "EM on patch labels is cheap; requires a det-only stage.",
+     "review": "Requires a bank and a threshold per dataset; cheap during training.",
      "score": 4
     },
     "Clarity": {
-     "review": "Sources, EM and targets specified.",
+     "review": "Threshold, clipping and selection are specified.",
      "score": 4
     },
     "Impact": {
-     "review": "Gives per-dataset reliabilities that are informative beyond the masks themselves.",
+     "review": "Improves instance count per image; moderate expected impact.",
      "score": 3
     },
     "Validity": {
-     "review": "Conditional independence between sources sharing one CLIP backbone is violated, so posteriors may be overconfident.",
+     "review": "The 99th-percentile novelty threshold counts unusual normal anatomy as lesion, which could inflate k on exactly the images where anatomy misleads MIL.",
      "score": 3
     }
    },
    "novelty": {
-    "query": "Dawid-Skene aggregation of multiple weak pseudo-label sources segmentation weak supervision pixel level",
+    "query": "weakly supervised anomaly segmentation image-level labels multiple instance learning normal memory bank patch selection medical",
     "closest": [
      {
-      "title": "Semi-Supervised Aggregation of Dependent Weak Supervision Sources with Performance Guarantees (AISTATS 2021)",
-      "url": "https://proceedings.mlr.press/v130/mazzetto21a.html",
-      "relation": "aggregates dependent weak labelling sources with estimated reliabilities, a generalisation of Dawid-Skene"
+      "title": "MIAS-SAM: Medical Image Anomaly Segmentation without thresholding (arXiv 2505.22762)",
+      "url": "https://arxiv.org/html/2505.22762v1",
+      "relation": "medical anomaly segmentation that compares patches against a memory of normal features; it is training-free and does not supervise adapters from image labels"
      },
      {
-      "title": "Learning to Segment Under Various Forms of Weak Supervision (CVPR 2015)",
-      "url": "https://openaccess.thecvf.com/content_cvpr_2015/html/Xu_Learning_to_Segment_2015_CVPR_paper.html",
-      "relation": "combines several weak supervision types for segmentation"
+      "title": "FMaMIL: Frequency-Driven Mamba Multi-Instance Learning for Weakly Supervised Lesion Segmentation in Medical Images (arXiv 2506.07652)",
+      "url": "https://arxiv.org/pdf/2506.07652",
+      "relation": "weakly supervised lesion segmentation from image-level labels by multiple-instance learning, with its own backbone rather than CLIP adapters and without a normal-patch bank"
+     },
+     {
+      "title": "Multiple Instance Learning: A Survey of Problem Characteristics and Applications (arXiv 1612.03365)",
+      "url": "https://arxiv.org/pdf/1612.03365",
+      "relation": "discusses witness rate as a key characteristic of MIL problems, the quantity the idea estimates and uses per dataset"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 1,
-    "Feasibility": 6,
-    "Clarity": 4,
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 1,
     "Impact": 4,
-    "Validity": 8
+    "Validity": 5
+   },
+   "overall_rank": 5
+  },
+  {
+   "id": "A1-g3-o4",
+   "title": "Mosaic-to-single-image map consistency",
+   "family": "Mosaic spatial-contrast supervision",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.6,
+   "fitness": 95.77,
+   "final": 0.5845,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Consistency between a mosaic and its source images is a form of context-invariance regularisation known in self-supervised learning; its use to control lesion area is new.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Extra forward passes of four images per mosaic; manageable.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear objective and baselines.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Mainly improves area calibration of maps; moderate impact.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Consistent maps across contexts are a reasonable requirement for anomaly maps; stop-gradient on single images avoids collapse.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "mosaic augmentation weakly supervised localization image-level labels quadrant mosaic multiple instance learning",
+    "closest": [
+     {
+      "title": "Mosaic data augmentation (keras_aug implementation; YOLOv4-style)",
+      "url": "https://kerasaug.readthedocs.io/en/v0.5.3/_modules/keras_aug/layers/augmentation/mix/mosaic.html",
+      "relation": "four-image mosaics are a standard detection augmentation with box labels; their use to create free quadrant labels for weakly supervised anomaly localisation was not found"
+     },
+     {
+      "title": "Weakly Supervised Object Localization with Multi-fold Multiple Instance Learning (arXiv 1503.00949)",
+      "url": "https://arxiv.org/pdf/1503.00949",
+      "relation": "classic weakly supervised localisation by MIL; it does not construct mosaics with known per-quadrant labels"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 1
    },
    "overall_rank": 6
   },
   {
-   "id": "A1-g2-o2",
-   "title": "Shift-ensemble pseudo-masks: sub-patch grid jitter doubles the effective resolution of MVFA's pseudo-masks",
-   "family": "Edge- and resolution-aware mask refinement",
+   "id": "A1-g2-o1",
+   "title": "Matched-pair MIL ranking: borrowing the ranking objective of weakly supervised video anomaly detection",
+   "family": "MIL loss form",
    "scores": {
-    "Novelty": 2,
-    "Feasibility": 5,
-    "Clarity": 5,
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
     "Impact": 3,
     "Validity": 4
    },
-   "review_mean": 3.8,
-   "fitness": 86.09,
-   "final": 0.5351,
+   "review_mean": 3.6,
+   "fitness": 79.11,
+   "final": 0.5001,
    "survived": false,
    "reviews": {
     "Novelty": {
-     "review": "Averaging ViT outputs over patch-grid phase shifts is described in recent work (phase marginalisation for patch-grid instability) and tiled ensembles.",
-     "score": 2
+     "review": "The MIL ranking loss is standard in weakly supervised video anomaly detection and MIL localisation exists in medical imaging; matched normal pairs by CLS similarity are a new twist.",
+     "score": 3
     },
     "Feasibility": {
-     "review": "Four feature extractions per image for mask generation only.",
-     "score": 5
+     "review": "Paired batches and precomputed neighbours; small changes.",
+     "score": 4
     },
     "Clarity": {
-     "review": "Exact shifts, realignment and thresholds given.",
-     "score": 5
+     "review": "Loss, margin, pairing and the unmatched control are clear.",
+     "score": 4
     },
     "Impact": {
-     "review": "Improves resolution of targets, most relevant for small brain lesions.",
+     "review": "A relative objective could reduce anatomy-driven selections; moderate impact.",
      "score": 3
     },
     "Validity": {
-     "review": "Directly addresses the verified 14-pixel grid limit.",
+     "review": "Matching on global similarity plausibly cancels shared anatomy; the unmatched control tests the mechanism.",
      "score": 4
     }
    },
    "novelty": {
-    "query": "sub-patch shift ensemble vision transformer patch grid resolution anomaly map dense features shifted crops",
+    "query": "MIL ranking loss weakly supervised lesion localization medical images matched normal pairs",
     "closest": [
      {
-      "title": "Phase Marginalization for Patch-Grid Instability in Vision Transformers (arXiv 2606.08132)",
-      "url": "https://arxiv.org/pdf/2606.08132",
-      "relation": "averages ViT outputs over patch-grid phase shifts, the same mechanism as sub-patch shift ensembles"
+      "title": "Weakly Supervised Medical Diagnosis and Localization from Multiple Resolutions (arXiv 1803.07703)",
+      "url": "https://arxiv.org/pdf/1803.07703",
+      "relation": "MIL-based weakly supervised localisation in medical images; it uses image-level losses, not a ranking loss against matched normal images"
      },
      {
-      "title": "Divide and Conquer: High-Resolution Industrial Anomaly Detection via Memory Efficient Tiled Ensemble (arXiv 2403.04932)",
-      "url": "https://arxiv.org/html/2403.04932v1",
-      "relation": "ensembles over tiles to raise anomaly-map resolution"
+      "title": "Weakly supervised multiple instance learning histopathological tumor segmentation (arXiv 2004.05024)",
+      "url": "https://arxiv.org/pdf/2004.05024",
+      "relation": "MIL segmentation from slide-level labels with top-k style instance selection, in a single modality and without cross-modality transfer"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 7,
-    "Feasibility": 1,
+    "Novelty": 4,
+    "Feasibility": 4,
     "Clarity": 1,
     "Impact": 4,
     "Validity": 1
@@ -481,312 +498,317 @@
    "overall_rank": 7
   },
   {
-   "id": "A1-g3-o5",
-   "title": "Two-round self-training with counterfactual occlusion masks from the jointly trained model",
-   "family": "Detection-branch-guided targets",
+   "id": "A1-g2-o4",
+   "title": "Posterior-weighted MIL: a two-component mixture of patch scores replaces hard top-k selection",
+   "family": "Witness rate and soft instance weighting",
    "scores": {
     "Novelty": 3,
     "Feasibility": 3,
     "Clarity": 4,
     "Impact": 3,
-    "Validity": 4
-   },
-   "review_mean": 3.4,
-   "fitness": 91.82,
-   "final": 0.4941,
-   "survived": false,
-   "reviews": {
-    "Novelty": {
-     "review": "Regenerating masks by occlusion of a jointly trained detection branch combines two ideas in a new way.",
-     "score": 3
-    },
-    "Feasibility": {
-     "review": "Two trainings plus attribution make it the most expensive option.",
-     "score": 3
-    },
-    "Clarity": {
-     "review": "Procedure and comparisons specified.",
-     "score": 4
-    },
-    "Impact": {
-     "review": "Incremental over its parents.",
-     "score": 3
-    },
-    "Validity": {
-     "review": "Avoids self-confirmation by using a different branch for regeneration.",
-     "score": 4
-    }
-   },
-   "novelty": {
-    "query": "self-training counterfactual occlusion pseudo-masks weakly supervised medical segmentation",
-    "closest": [
-     {
-      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
-      "url": "https://arxiv.org/html/2404.12832v2",
-      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
-     },
-     {
-      "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
-      "url": "https://arxiv.org/pdf/2104.11692",
-      "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
-     }
-    ]
-   },
-   "criterion_rank": {
-    "Novelty": 1,
-    "Feasibility": 12,
-    "Clarity": 4,
-    "Impact": 4,
-    "Validity": 1
-   },
-   "overall_rank": 8
-  },
-  {
-   "id": "A1-g1-o3",
-   "title": "Two-round self-training: regenerating pseudo-masks from MVFA's own adapted features",
-   "family": "Self-training and teacher refinement",
-   "scores": {
-    "Novelty": 2,
-    "Feasibility": 4,
-    "Clarity": 4,
-    "Impact": 3,
     "Validity": 3
    },
    "review_mean": 3.2,
-   "fitness": 97.32,
+   "fitness": 90.34,
    "final": 0.487,
    "survived": false,
    "reviews": {
     "Novelty": {
-     "review": "Two-round self-training with regenerated pseudo-labels is a standard technique (e.g. self-training for zero-label segmentation).",
-     "score": 2
+     "review": "Mixture-model posteriors as soft MIL targets are known in weak supervision; the per-dataset fit with a fixed normal component is a reasonable specialisation.",
+     "score": 3
     },
     "Feasibility": {
-     "review": "Doubles training cost; still feasible on one GPU.",
-     "score": 4
+     "review": "EM refits during training and kernel density estimates per dataset and level add engineering and tuning effort.",
+     "score": 3
     },
     "Clarity": {
-     "review": "Rounds and regeneration procedure specified.",
+     "review": "Mixture, posterior, schedule and diagnostics are specified.",
      "score": 4
     },
     "Impact": {
-     "review": "Tests whether MVFA's adaptation improves localisation features, a useful diagnostic.",
+     "review": "Soft targets could improve AUPRO moderately.",
      "score": 3
     },
     "Validity": {
-     "review": "Risk of confirmation bias is acknowledged but only partly controlled by label restriction.",
+     "review": "Gaussian lesion component and overlapping distributions early in training make posteriors unstable, as the follow-up idea acknowledges.",
      "score": 3
     }
    },
    "novelty": {
-    "query": "self-training pseudo-mask regeneration CLIP anomaly segmentation zero-shot pseudo labels iterative",
+    "query": "multiple instance learning witness rate estimation mixture proportion estimation positive unlabeled top-k pooling segmentation",
     "closest": [
      {
-      "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
-      "url": "https://arxiv.org/pdf/2104.11692",
-      "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
+      "title": "Rethinking Class-Prior Estimation for Positive-Unlabeled Learning (arXiv 2002.03673)",
+      "url": "https://arxiv.org/pdf/2002.03673",
+      "relation": "class-prior (mixture-proportion) estimation for positive-unlabelled learning, the estimator family the idea borrows; not applied to patch-level MIL for anomaly maps"
      },
      {
-      "title": "CLIP Is Also a Good Teacher: inductive zero-shot semantic segmentation (arXiv 2310.02296)",
-      "url": "https://arxiv.org/pdf/2310.02296",
-      "relation": "uses CLIP as a teacher for segmentation pseudo-labels"
+      "title": "Multiple Instance Learning: A Survey of Problem Characteristics and Applications (arXiv 1612.03365)",
+      "url": "https://arxiv.org/pdf/1612.03365",
+      "relation": "discusses witness rate as a key characteristic of MIL problems, the quantity the idea estimates and uses per dataset"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 7,
-    "Feasibility": 6,
-    "Clarity": 4,
+    "Novelty": 4,
+    "Feasibility": 11,
+    "Clarity": 1,
     "Impact": 4,
-    "Validity": 8
+    "Validity": 5
    },
-   "overall_rank": 9
+   "overall_rank": 8
   },
   {
-   "id": "A1-g2-o1",
-   "title": "Size-constrained training of MVFA's segmentation branch from image-level labels",
-   "family": "Synthetic supervision and weak constraints",
+   "id": "A1-g2-o5",
+   "title": "Co-teaching MIL between MVFA's detection and segmentation adapters",
+   "family": "MIL instance selection",
    "scores": {
-    "Novelty": 2,
+    "Novelty": 3,
     "Feasibility": 5,
     "Clarity": 4,
     "Impact": 3,
-    "Validity": 4
+    "Validity": 3
    },
    "review_mean": 3.6,
-   "fitness": 82.69,
+   "fitness": 75.72,
    "final": 0.4829,
    "survived": false,
    "reviews": {
     "Novelty": {
-     "review": "Size-constraint losses for weakly supervised segmentation are established (Kervadec et al.); the application to MVFA is direct.",
-     "score": 2
+     "review": "Mutual distillation between two MIL learners exists (bi-directional MIL); using MVFA's detection and segmentation adapters as co-teaching partners is a method-specific application.",
+     "score": 3
     },
     "Feasibility": {
-     "review": "Loss change only.",
+     "review": "Uses existing branches; a few lines in the loss.",
      "score": 5
     },
     "Clarity": {
-     "review": "Bounds, loss terms and sensitivity test specified.",
+     "review": "Selection exchange, warm-up and weights are specified.",
      "score": 4
     },
     "Impact": {
-     "review": "Answers what image labels alone can teach the segmentation branch.",
+     "review": "Moderate expected gain.",
      "score": 3
     },
     "Validity": {
-     "review": "Robust to bound errors by design; bounds derive from noisy pseudo-masks.",
-     "score": 4
+     "review": "The two branches share backbone and data, so their errors may be correlated, which weakens the co-teaching rationale.",
+     "score": 3
     }
    },
    "novelty": {
-    "query": "size constrained loss weakly supervised segmentation image-level labels Kervadec constrained CNN losses",
+    "query": "co-teaching two branches select instances multiple instance learning weakly supervised segmentation noisy pseudo labels",
     "closest": [
      {
-      "title": "Constrained-CNN losses for weakly supervised segmentation (Kervadec et al., arXiv 1805.04628)",
-      "url": "https://www.arxiv.org/pdf/1805.04628",
-      "relation": "introduces size-constraint losses for segmentation from weak labels; the proposed idea applies this technique to MVFA's segmentation branch"
+      "title": "Denoising Mutual Knowledge Distillation in Bi-Directional Multiple Instance Learning (arXiv 2505.12074)",
+      "url": "https://arxiv.org/html/2505.12074v1",
+      "relation": "mutual distillation between bag-level and instance-level MIL learners to denoise pseudo-labels, close to co-teaching between two branches"
+     },
+     {
+      "title": "PA-Seg: Learning from Point Annotations for 3D Medical Image Segmentation using Contextual Regularization and Cross Knowledge Distillation (arXiv 2208.05669)",
+      "url": "https://arxiv.org/pdf/2208.05669",
+      "relation": "cross knowledge distillation between two networks for weakly supervised medical segmentation, with point labels rather than image labels"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 7,
+    "Novelty": 4,
     "Feasibility": 1,
-    "Clarity": 4,
+    "Clarity": 1,
     "Impact": 4,
-    "Validity": 1
+    "Validity": 5
+   },
+   "overall_rank": 9
+  },
+  {
+   "id": "A1-g3-o6",
+   "title": "Feature-space anomaly mixing: graded synthetic positives from normal-bank patches",
+   "family": "Dense auxiliary targets and pseudo-masks",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 2
+   },
+   "review_mean": 3.2,
+   "fitness": 84.84,
+   "final": 0.4591,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Feature-level mixup is known; using it to create graded positives for anomaly-map adapters from normal-bank and likely-lesion features is a new use.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Cheap: mixing at adapter inputs within a batch.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Mixing rule, soft targets and baselines are specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Could densify supervision; uncertain transfer to real lesions.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "The assumption that a convex combination of features is abnormal in proportion lambda is weak for CLIP features, and the 'lesion' features come from MIL selections that may be anatomy.",
+     "score": 2
+    }
+   },
+   "novelty": {
+    "query": "feature-space mixup synthetic anomalies patch features anomaly detection soft labels",
+    "closest": [
+     {
+      "title": "SoftPatch: Unsupervised Anomaly Detection with Noisy Data (arXiv 2403.14233)",
+      "url": "https://arxiv.org/pdf/2403.14233",
+      "relation": "patch-level soft weighting of a normal memory bank against noise; it concerns noisy normal data, not feature-space mixing to create graded positives"
+     },
+     {
+      "title": "FUN-AD: Fully Unsupervised Learning for Anomaly Detection with Noisy Training Data (arXiv 2411.16110)",
+      "url": "https://arxiv.org/html/2411.16110v1",
+      "relation": "unsupervised anomaly detection with noisy training data using feature-space neighbourhood reasoning, related to feature-level pseudo-labelling"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 12
    },
    "overall_rank": 10
   },
   {
-   "id": "A1-g1-o2",
-   "title": "Joint-bilateral upsampling of patch pseudo-masks guided by the raw image",
-   "family": "Edge- and resolution-aware mask refinement",
+   "id": "A1-g1-o1",
+   "title": "Cross-level consensus MIL: choosing instances by agreement of the four adapter levels",
+   "family": "MIL instance selection",
    "scores": {
-    "Novelty": 2,
+    "Novelty": 3,
     "Feasibility": 5,
-    "Clarity": 5,
+    "Clarity": 4,
     "Impact": 3,
     "Validity": 3
    },
    "review_mean": 3.6,
-   "fitness": 77.19,
+   "fitness": 70.22,
    "final": 0.455,
    "survived": false,
    "reviews": {
     "Novelty": {
-     "review": "Guided-filter and image-guided refinement of coarse pseudo-labels are established in weakly supervised segmentation.",
-     "score": 2
+     "review": "Multi-layer fusion of CLIP maps is common (LaRP-CLIP and others); using cross-level agreement as the MIL instance selector is a small, new twist.",
+     "score": 3
     },
     "Feasibility": {
-     "review": "Training-free, seconds per image.",
+     "review": "A one-function change.",
      "score": 5
     },
     "Clarity": {
-     "review": "Parameters and procedure fully specified.",
-     "score": 5
+     "review": "Selector and ablations are clear.",
+     "score": 4
     },
     "Impact": {
-     "review": "Boundary refinement only.",
+     "review": "Moderate expected gain.",
      "score": 3
     },
     "Validity": {
-     "review": "Depends on raw-image edges that are weak in CT and chest X-ray.",
+     "review": "Levels trained jointly may share errors, so agreement may not filter anatomy.",
      "score": 3
     }
    },
    "novelty": {
-    "query": "guided filter joint bilateral upsampling CAM pseudo label refinement weakly supervised segmentation",
+    "query": "cross-layer consensus CLIP multi-level anomaly map agreement weakly supervised anomaly localization",
     "closest": [
      {
-      "title": "Learning Pixel-level Semantic Affinity with Image-level Supervision (AffinityNet, arXiv 1803.10464)",
-      "url": "https://arxiv.org/pdf/1803.10464",
-      "relation": "refines class-activation pseudo-labels with learned pixel affinities; edge-aware refinement of coarse maps is established"
+      "title": "LaRP-CLIP: Layer-Aware Refinement with Prototype Guidance for Zero-Shot Anomaly Detection",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/28630/",
+      "relation": "layer-aware prompts and adaptive fusion of CLIP layer maps for zero-shot anomaly detection; it fuses levels at inference rather than using cross-level agreement to select MIL instances"
      },
      {
-      "title": "High-fidelity Pseudo-labels for Boosting Weakly-Supervised Segmentation (arXiv 2304.02621)",
-      "url": "https://ar5iv.labs.arxiv.org/html/2304.02621",
-      "relation": "refines coarse pseudo-labels with image-guided upsampling"
+      "title": "ViP2-CLIP: Visual-Perception Prompting with Unified Alignment for Zero-Shot Anomaly Detection (arXiv 2505.17692)",
+      "url": "https://arxiv.org/html/2505.17692v2",
+      "relation": "multi-level CLIP alignment for zero-shot anomaly detection trained with dense auxiliary supervision"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 7,
+    "Novelty": 4,
     "Feasibility": 1,
     "Clarity": 1,
     "Impact": 4,
-    "Validity": 8
+    "Validity": 5
    },
    "overall_rank": 11
   },
   {
-   "id": "A1-g3-o2",
-   "title": "Counterfactual normal-twin differencing: pseudo-masks from each abnormal image's most similar normal image",
-   "family": "Alternative pseudo-mask sources",
+   "id": "A1-g3-o5",
+   "title": "MPE-anchored posterior MIL",
+   "family": "Witness rate and soft instance weighting",
    "scores": {
     "Novelty": 2,
-    "Feasibility": 4,
+    "Feasibility": 3,
     "Clarity": 4,
-    "Impact": 3,
+    "Impact": 2,
     "Validity": 3
    },
-   "review_mean": 3.2,
-   "fitness": 79.9,
-   "final": 0.3987,
+   "review_mean": 2.8,
+   "fitness": 72.92,
+   "final": 0.3287,
    "survived": false,
    "reviews": {
     "Novelty": {
-     "review": "Comparing registered query and normal images is the core of registration-based few-shot anomaly detection (RegAD) and counterfactual approaches.",
+     "review": "An incremental refinement of posterior-weighted MIL.",
      "score": 2
     },
     "Feasibility": {
-     "review": "Retrieval and ECC alignment are cheap; alignment may fail on OCT/CT.",
-     "score": 4
+     "review": "Same refitting machinery as posterior MIL plus the MPE estimator.",
+     "score": 3
     },
     "Clarity": {
-     "review": "Clear procedure.",
+     "review": "Clear.",
      "score": 4
     },
     "Impact": {
-     "review": "Mainly benefits registered anatomy such as brain MRI.",
-     "score": 3
+     "review": "Small expected gain.",
+     "score": 2
     },
     "Validity": {
-     "review": "Affine alignment is unreliable outside brain slices, limiting validity across BMAD.",
+     "review": "Fixing the proportion stabilises EM but inherits the MPE estimator's bias.",
      "score": 3
     }
    },
    "novelty": {
-    "query": "registration based few-shot anomaly detection normal twin image comparison brain MRI pseudo-healthy retrieval",
+    "query": "multiple instance learning witness rate estimation mixture proportion estimation positive unlabeled top-k pooling segmentation",
     "closest": [
      {
-      "title": "Registration Based Few-Shot Anomaly Detection (ECCV 2022)",
-      "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/1729_ECCV_2022_paper.php",
-      "relation": "compares registered query and support features for few-shot anomaly detection, close to normal-twin differencing"
+      "title": "Rethinking Class-Prior Estimation for Positive-Unlabeled Learning (arXiv 2002.03673)",
+      "url": "https://arxiv.org/pdf/2002.03673",
+      "relation": "class-prior (mixture-proportion) estimation for positive-unlabelled learning, the estimator family the idea borrows; not applied to patch-level MIL for anomaly maps"
      },
      {
-      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
-      "url": "https://arxiv.org/html/2404.12832v2",
-      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+      "title": "Multiple Instance Learning: A Survey of Problem Characteristics and Applications (arXiv 1612.03365)",
+      "url": "https://arxiv.org/pdf/1612.03365",
+      "relation": "discusses witness rate as a key characteristic of MIL problems, the quantity the idea estimates and uses per dataset"
      }
     ]
    },
    "criterion_rank": {
-    "Novelty": 7,
-    "Feasibility": 6,
-    "Clarity": 4,
-    "Impact": 4,
-    "Validity": 8
+    "Novelty": 12,
+    "Feasibility": 11,
+    "Clarity": 1,
+    "Impact": 12,
+    "Validity": 5
    },
    "overall_rank": 12
   }
  ],
  "top5": [
-  "A1-g1-o6",
+  "A1-g1-o2",
   "A1-g3-o3",
-  "A1-g2-o6",
-  "A1-g3-o1",
-  "A1-g2-o4"
+  "A1-g1-o6",
+  "A1-g2-o2",
+  "A1-g3-o2"
  ],
  "skipped_for_diversity": [],
  "weights": {

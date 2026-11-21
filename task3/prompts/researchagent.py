@@ -34,13 +34,15 @@ RESOURCES = (   # ADAPTED (2)
     "GPU (A100 40GB or L4 24GB). No new clinical data can be collected and no new expert annotations can be made."
 )
 
-PROTOCOL_C = (  # ADAPTED (1): gap group C (G2, G10, G12, G16), attached to every problem
-    "Shared evaluation protocol (from limitation group C: G2, G10, G12, G16): checkpoints and hyper-parameters are "
-    "selected on a held-out validation split of the SOURCE modalities and never on the target test set, and the MVFA "
-    "baseline is re-run under the same rule; results are reported under a modality-disjoint leave-one-modality-out split "
-    "(RESC and OCT17 are held out together, never one with the other in training), with patient-level separation where "
-    "identifiers exist, over at least 3 random seeds and 3 few-shot support draws with mean and standard deviation, and "
-    "against the missing baselines named in G12 where relevant."
+PROTOCOL_C = (  # ADAPTED (1): the leakage-free protocol group, attached to every problem.
+    # Run 3 ids (Task 2 limitations + code-only C2); runs 1-2 cited G2, G10, G12, G16 of the earlier Task 2 report.
+    "Shared evaluation protocol (from the limitation group 'Leakage-free generalisation protocol': L1, L2, L11, L20, "
+    "L22, L27, L37, C2): checkpoints and hyper-parameters are selected on a held-out validation split of the SOURCE "
+    "modalities and never on the target test set, and the MVFA baseline is re-run under the same rule; results are "
+    "reported under a modality-disjoint leave-one-modality-out split (RESC and OCT17 are held out together, never one "
+    "with the other in training), with patient-level separation where identifiers exist, over at least 3 random seeds "
+    "and 3 few-shot support draws with mean and standard deviation, and with a simple supervised baseline trained on "
+    "the same labelled images (L31) where relevant."
 )
 
 # --------------------------------------------------------------------------------- Table 6

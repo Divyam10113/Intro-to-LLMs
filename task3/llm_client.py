@@ -25,13 +25,21 @@ Calls are made with a role: "generator" (writes problems / ideas / offspring) or
 (reviews, pairwise comparisons, link scoring). The judge can be pointed at a *different*
 model with JUDGE_BACKEND / JUDGE_MODEL / JUDGE_BASE_URL / JUDGE_API_KEY. This is how the
 "hybrid" plan works: re-running only the judging steps with e.g. a Groq-hosted Llama-70B
-gives an independent check on the rankings (see README, "Re-judging with Groq").
+gives an independent check on the rankings (see README, "Independent re-judging").
 
-Example (Groq):
+Example (Groq; llama-3.3-70b-versatile was retired on the free and developer tiers in August 2026):
     export LLM_BACKEND=openai
     export LLM_BASE_URL=https://api.groq.com/openai/v1
     export LLM_API_KEY=gsk_...
-    export LLM_MODEL=llama-3.3-70b-versatile
+    export LLM_MODEL=openai/gpt-oss-120b
+
+Example (open model served by vLLM on a Colab GPU, see colab/T3_independent_judge.ipynb):
+    export JUDGE_BACKEND=openai JUDGE_BASE_URL=http://localhost:8000/v1 JUDGE_API_KEY=none
+    export JUDGE_MODEL=Qwen/Qwen3-8B JUDGE_CONCURRENCY=16
+
+Optional settings (LLM_* or JUDGE_*): CONCURRENCY (parallel requests in API mode, default 1, use 1-2 for
+rate-limited APIs and 8-32 for a local vLLM server), MAX_TOKENS (answer length cap, default: server default) and
+EXTRA_BODY (JSON added to each request, e.g. '{"chat_template_kwargs": {"enable_thinking": false}}' for Qwen3 on vLLM).
 """
 from __future__ import annotations
 
@@ -52,6 +60,10 @@ CALL_LOG = ROOT / "logs" / "calls.jsonl"
 FILE_BACKEND_MODEL = os.environ.get("FILE_BACKEND_MODEL", "claude-opus-5-5 (file backend)")
 
 
+import threading
+_LOG_LOCK = threading.Lock()
+
+
 class PendingCalls(Exception):
     """Raised in file mode when some prompts have no cached answer yet."""
 
@@ -69,6 +81,9 @@ class Config:
     model: str
     base_url: str | None
     api_key: str | None
+    concurrency: int = 1
+    max_tokens: int | None = None
+    extra_body: dict | None = None
 
     @classmethod
     def from_env(cls, role: str) -> "Config":
@@ -78,8 +93,11 @@ class Config:
             return os.environ.get(f"LLM_{name}", default)
 
         backend = get("BACKEND", "file")
-        model = get("MODEL", FILE_BACKEND_MODEL if backend == "file" else "llama-3.3-70b-versatile")
-        return cls(backend=backend, model=model, base_url=get("BASE_URL"), api_key=get("API_KEY"))
+        model = get("MODEL", FILE_BACKEND_MODEL if backend == "file" else "openai/gpt-oss-120b")
+        mt = get("MAX_TOKENS")
+        return cls(backend=backend, model=model, base_url=get("BASE_URL"), api_key=get("API_KEY"),
+                   concurrency=max(1, int(get("CONCURRENCY", "1"))), max_tokens=int(mt) if mt else None,
+                   extra_body=json.loads(get("EXTRA_BODY")) if get("EXTRA_BODY") else None)
 
 
 def _key(model: str, system: str, user: str, sample: int) -> str:
@@ -102,21 +120,35 @@ class LLM:
     def batch(self, requests: list[dict]) -> list[str]:
         """Answer a list of independent requests. In file mode, all missing ones are
         written to the pending folder together (so they can be answered in one sitting)."""
-        out, missing = [], []
-        for r in requests:
-            k = _key(self.cfg.model, r["system"], r["user"], r.get("sample", 0))
+        out, missing, todo = [], [], []
+        for i, r in enumerate(requests):
+            mk = self.cfg.model + ("|" + json.dumps(self.cfg.extra_body, sort_keys=True) if self.cfg.extra_body else "")
+            k = _key(mk, r["system"], r["user"], r.get("sample", 0))   # request options that change answers change the key
             cached = self._read_cache(k)
             if cached is not None:
                 out.append(cached)
                 continue
+            out.append(None)
             if self.cfg.backend == "file":
                 self._write_pending(k, r)
                 missing.append(k)
-                out.append(None)
             else:
+                todo.append((i, k, r))
+        if todo:
+            def run(item):
+                i, k, r = item
                 text = self._call_api(r)
-                self._write_cache(k, r, text)
-                out.append(text)
+                self._write_cache(k, r, text)   # cached at once, so an interrupted run resumes
+                return i, text
+            if self.cfg.concurrency > 1:
+                from concurrent.futures import ThreadPoolExecutor
+                with ThreadPoolExecutor(self.cfg.concurrency) as ex:
+                    for i, text in ex.map(run, todo):
+                        out[i] = text
+            else:
+                for item in todo:
+                    i, text = run(item)
+                    out[i] = text
         if missing:
             raise PendingCalls(missing)
         return out
@@ -133,7 +165,7 @@ class LLM:
                    temperature=r.get("temperature"), sample=r.get("sample", 0),
                    system=r["system"], user=r["user"], response=text, time=time.strftime("%Y-%m-%d %H:%M:%S"))
         (CACHE_DIR / f"{k}.json").write_text(json.dumps(rec, indent=1))
-        with open(CALL_LOG, "a") as f:
+        with _LOG_LOCK, open(CALL_LOG, "a") as f:
             f.write(json.dumps({k2: rec[k2] for k2 in ("key", "role", "model", "tag", "time")}) + "\n")
 
     def _write_pending(self, k, r):
@@ -148,12 +180,19 @@ class LLM:
         delay = 5
         for attempt in range(retries):
             try:
+                kw = dict(max_tokens=self.cfg.max_tokens) if self.cfg.max_tokens else {}
+                if self.cfg.extra_body:
+                    kw["extra_body"] = self.cfg.extra_body
                 resp = self._client.chat.completions.create(
                     model=self.cfg.model,
                     temperature=r.get("temperature", 0.7),
                     messages=[{"role": "system", "content": r["system"]}, {"role": "user", "content": r["user"]}],
+                    **kw,
                 )
-                return resp.choices[0].message.content
+                text = resp.choices[0].message.content
+                if not text:   # e.g. a reasoning model that used its whole budget on thinking
+                    raise RuntimeError("empty answer")
+                return text
             except Exception as e:  # rate limits etc. -> exponential backoff
                 if attempt == retries - 1:
                     raise

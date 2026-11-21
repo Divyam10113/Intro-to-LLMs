@@ -1,0 +1,101 @@
+"""Run 3 novelty evidence for the Stage 4 shortlist (12 ideas per problem). Queries were run with the web search
+tool on 2026-11-19 (Semantic Scholar is not reachable from the run environment; novelty_search.py re-runs the queries
+there). Relations are stated only as far as the search result (title, and for three papers the abstract) shows."""
+import json
+P = dict(
+ FMAMIL=("FMaMIL: Frequency-Driven Mamba Multi-Instance Learning for Weakly Supervised Lesion Segmentation in Medical Images (arXiv 2506.07652)", "https://arxiv.org/pdf/2506.07652",
+         "weakly supervised lesion segmentation from image-level labels by multiple-instance learning, with its own backbone rather than CLIP adapters and without a normal-patch bank"),
+ MILHIST=("Weakly supervised multiple instance learning histopathological tumor segmentation (arXiv 2004.05024)", "https://arxiv.org/pdf/2004.05024",
+          "MIL segmentation from slide-level labels with top-k style instance selection, in a single modality and without cross-modality transfer"),
+ MIAS=("MIAS-SAM: Medical Image Anomaly Segmentation without thresholding (arXiv 2505.22762)", "https://arxiv.org/html/2505.22762v1",
+       "medical anomaly segmentation that compares patches against a memory of normal features; it is training-free and does not supervise adapters from image labels"),
+ MULTIFOLD=("Weakly Supervised Object Localization with Multi-fold Multiple Instance Learning (arXiv 1503.00949)", "https://arxiv.org/pdf/1503.00949",
+            "classic weakly supervised localisation by MIL; it does not construct mosaics with known per-quadrant labels"),
+ MOSAICAUG=("Mosaic data augmentation (keras_aug implementation; YOLOv4-style)", "https://kerasaug.readthedocs.io/en/v0.5.3/_modules/keras_aug/layers/augmentation/mix/mosaic.html",
+            "four-image mosaics are a standard detection augmentation with box labels; their use to create free quadrant labels for weakly supervised anomaly localisation was not found"),
+ MILSURVEY=("Multiple Instance Learning: A Survey of Problem Characteristics and Applications (arXiv 1612.03365)", "https://arxiv.org/pdf/1612.03365",
+            "discusses witness rate as a key characteristic of MIL problems, the quantity the idea estimates and uses per dataset"),
+ PUPRIOR=("Rethinking Class-Prior Estimation for Positive-Unlabeled Learning (arXiv 2002.03673)", "https://arxiv.org/pdf/2002.03673",
+          "class-prior (mixture-proportion) estimation for positive-unlabelled learning, the estimator family the idea borrows; not applied to patch-level MIL for anomaly maps"),
+ SOFTPATCH=("SoftPatch: Unsupervised Anomaly Detection with Noisy Data (arXiv 2403.14233)", "https://arxiv.org/pdf/2403.14233",
+            "patch-level soft weighting of a normal memory bank against noise; it concerns noisy normal data, not feature-space mixing to create graded positives"),
+ FUNAD=("FUN-AD: Fully Unsupervised Learning for Anomaly Detection with Noisy Training Data (arXiv 2411.16110)", "https://arxiv.org/html/2411.16110v1",
+        "unsupervised anomaly detection with noisy training data using feature-space neighbourhood reasoning, related to feature-level pseudo-labelling"),
+ MULTIRES=("Weakly Supervised Medical Diagnosis and Localization from Multiple Resolutions (arXiv 1803.07703)", "https://arxiv.org/pdf/1803.07703",
+           "MIL-based weakly supervised localisation in medical images; it uses image-level losses, not a ranking loss against matched normal images"),
+ DMKD=("Denoising Mutual Knowledge Distillation in Bi-Directional Multiple Instance Learning (arXiv 2505.12074)", "https://arxiv.org/html/2505.12074v1",
+       "mutual distillation between bag-level and instance-level MIL learners to denoise pseudo-labels, close to co-teaching between two branches"),
+ PASEG=("PA-Seg: Learning from Point Annotations for 3D Medical Image Segmentation using Contextual Regularization and Cross Knowledge Distillation (arXiv 2208.05669)", "https://arxiv.org/pdf/2208.05669",
+        "cross knowledge distillation between two networks for weakly supervised medical segmentation, with point labels rather than image labels"),
+ LARP=("LaRP-CLIP: Layer-Aware Refinement with Prototype Guidance for Zero-Shot Anomaly Detection", "https://researchonline.ljmu.ac.uk/id/eprint/28630/",
+       "layer-aware prompts and adaptive fusion of CLIP layer maps for zero-shot anomaly detection; it fuses levels at inference rather than using cross-level agreement to select MIL instances"),
+ VIP2=("ViP2-CLIP: Visual-Perception Prompting with Unified Alignment for Zero-Shot Anomaly Detection (arXiv 2505.17692)", "https://arxiv.org/html/2505.17692v2",
+       "multi-level CLIP alignment for zero-shot anomaly detection trained with dense auxiliary supervision"),
+ CERT=("How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)", "https://arxiv.org/pdf/2610.00236",
+       "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"),
+ ANOMALIB=("anomalib CDF normalisation callback", "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+           "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"),
+ SUBSPACE=("SubspaceAD: Training-Free Few-Shot Anomaly Detection via Subspace Modeling (arXiv 2602.23013)", "https://arxiv.org/pdf/2602.23013",
+           "training-free few-shot anomaly detection that models normal support features; it scores against a normal model but does not address branch normalisation"),
+ BRAINNORM=("BrainNorm: A Foundation Model that knows Normal via Semantic Atlas Pretraining (arXiv 2608.17521)", "https://arxiv.org/pdf/2608.17521",
+            "encodes position-dependent normality through atlas pretraining for brain images; related to positional normal references but requires registration to an atlas"),
+ MSMA=("Localizing Anomalies via Multiscale Score Matching Analysis (arXiv 2407.00148)", "https://arxiv.org/abs/2407.00148",
+       "multiscale analysis of anomaly evidence in medical images; related to multi-resolution treatment of scores"),
+ EVTPAT=("Anomaly score normalisation based on extreme value theory (US patent 12614096)", "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12614096",
+         "normalises anomaly scores with extreme value theory, the principle behind the GPD tail extension; not for few-shot medical image maps"),
+ EVTRAIL=("Sequential Score Adaptation with Extreme Value Theory for Robust Railway Track Inspection (arXiv 1510.05822)", "https://arxiv.org/pdf/1510.05822",
+          "adapts image anomaly scores with EVT tail models in an inspection setting"),
+ WCAD=("Between Resolution Collapse and Variance Inflation: Weighted Conformal Anomaly Detection in Low-Data Regimes (arXiv 2603.23205)", "https://arxiv.org/abs/2603.23205",
+       "weighted conformal anomaly detection under distribution shift with few calibration points, relaxed by weighted KDE; addresses exactly the low-effective-sample problem of similarity-weighted conformal thresholds, not on medical images"),
+ STRUCT=("StructCore: Structure-Aware Image-Level Scoring for Training-Free Unsupervised Anomaly Detection (arXiv 2602.17048)", "https://arxiv.org/pdf/2602.17048",
+         "keeps max pooling and adds a calibrated term from the anomaly map's dispersion, top-1% mean and roughness relative to normal images; it does not model the dependence of the maximum on foreground size"),
+ APRIL=("APRIL-GAN: A Zero-/Few-Shot Anomaly Classification and Segmentation Method for CVPR 2023 VAND Workshop (arXiv 2305.17382)", "https://arxiv.org/pdf/2305.17382",
+        "builds the few-shot memory bank from the support images, the design MVFA follows; it does not augment the supports to enlarge a reference distribution"),
+ REGAD=("Few-Shot Anomaly Detection via Category-Agnostic Registration Learning (arXiv 2406.08810)", "https://arxiv.org/pdf/2406.08810",
+        "augments and registers few-shot support images to estimate the normal feature distribution; closest prior use of support augmentation, in industrial data"),
+ PATCH2LOC=("Patch2Loc: Learning to Localize Patches for Unsupervised Brain Lesion Detection (arXiv 2506.22504)", "https://www.alphaxiv.org/abs/2506.22504",
+            "learns from normal brain MRI to predict where a patch belongs and uses the prediction error as anomaly score, i.e. content-conditioned expectations of normal anatomy"),
+)
+def c(*keys): return [dict(title=P[k][0], url=P[k][1], relation=P[k][2]) for k in keys]
+Q1 = "weakly supervised anomaly segmentation image-level labels multiple instance learning normal memory bank patch selection medical"
+Q2 = "mosaic augmentation weakly supervised localization image-level labels quadrant mosaic multiple instance learning"
+Q3 = "multiple instance learning witness rate estimation mixture proportion estimation positive unlabeled top-k pooling segmentation"
+Q4 = "feature-space mixup synthetic anomalies patch features anomaly detection soft labels"
+Q5 = "MIL ranking loss weakly supervised lesion localization medical images matched normal pairs"
+Q6 = "co-teaching two branches select instances multiple instance learning weakly supervised segmentation noisy pseudo labels"
+Q7 = "cross-layer consensus CLIP multi-level anomaly map agreement weakly supervised anomaly localization"
+Q8 = "few-shot anomaly detection score normalization support set empirical CDF inductive per-image anomaly score test-set normalization"
+Q9 = "position-wise normal score atlas normalization anomaly map medical images spatially aligned residual normalization"
+Q10 = "extreme value theory generalized Pareto anomaly score calibration image anomaly detection"
+Q11 = "conformal anomaly detection medical images false positive rate guarantee few normal calibration images weighted conformal covariate shift"
+Q12 = "augmentation of few-shot normal support images memory bank anomaly detection reference distribution"
+Q13 = "anomaly score depends on image content normal variation regression expected normal score patch anomaly false positives anatomy"
+Q14 = "image max pooling anomaly score bias foreground size Gumbel block maxima calibration anomaly detection"
+N = {"_note": "Novelty evidence for the Stage 4 shortlist of run 3 (Task 1 v6 corpus). Queries were written by the file-backend model and run with a web search tool on 2026-11-19; novelty_search.py re-runs the same queries against the Semantic Scholar API. 'closest' lists the most relevant hits judged by the model; relation states what they cover (from the title, and for three hits from the abstract)."}
+def put(cid, q, keys): N[cid] = dict(query=q, closest=c(*keys))
+put("A1-g1-o2", Q1, ["FMAMIL", "MIAS", "MILHIST"])
+put("A1-g3-o3", Q2, ["MOSAICAUG", "MULTIFOLD", "FMAMIL"])
+put("A1-g1-o6", Q3, ["MILSURVEY", "PUPRIOR"])
+put("A1-g3-o2", Q1, ["MIAS", "FMAMIL", "MILSURVEY"])
+put("A1-g2-o2", Q2, ["MOSAICAUG", "MULTIFOLD"])
+put("A1-g3-o4", Q2, ["MOSAICAUG", "MULTIFOLD"])
+put("A1-g2-o4", Q3, ["PUPRIOR", "MILSURVEY"])
+put("A1-g3-o6", Q4, ["SOFTPATCH", "FUNAD"])
+put("A1-g2-o1", Q5, ["MULTIRES", "MILHIST"])
+put("A1-g2-o5", Q6, ["DMKD", "PASEG"])
+put("A1-g3-o5", Q3, ["PUPRIOR", "MILSURVEY"])
+put("A1-g1-o1", Q7, ["LARP", "VIP2"])
+put("B1-g2-o1", Q9, ["ANOMALIB", "BRAINNORM", "CERT"])
+put("B1-g3-o4", Q13, ["PATCH2LOC", "SUBSPACE"])
+put("B1-g1-o3", Q9, ["ANOMALIB", "BRAINNORM"])
+put("B1-g3-o5", Q8, ["CERT", "ANOMALIB"])
+put("B1-g2-o4", Q10, ["EVTPAT", "EVTRAIL", "ANOMALIB"])
+put("B1-g1-o5", Q11, ["CERT", "WCAD"])
+put("B1-g3-o2", Q14, ["STRUCT", "EVTPAT"])
+put("B1-g2-o3", Q12, ["REGAD", "APRIL"])
+put("B1-g2-o6", Q11, ["WCAD", "CERT"])
+put("B1-g0-C1", Q8, ["ANOMALIB", "CERT", "SUBSPACE"])
+put("B1-g1-o4", Q12, ["REGAD", "SUBSPACE"])
+put("B1-g3-o6", Q9, ["MSMA", "BRAINNORM", "ANOMALIB"])
+json.dump(N, open("/home/claude/task3/data/novelty_search.json", "w"), indent=1, ensure_ascii=False)
+print(len(N) - 1)

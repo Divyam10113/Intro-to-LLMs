@@ -1,17 +1,20 @@
 """
 corpus.py — loads the literature used by all stages.
 
-Sources
-* data/paper_after_reranking.csv — the final Task 1 corpus from the QUAL-SG pipeline (259 papers with
-  abstracts, years, LLM relevance and composite scores; 60 tagged 'selected'), and
-  data/pipeline_ref.json — the 60 references of the submitted review (run 2).
-  Run 1 used data/final_ref_set.json (SurveyGen/OpenAlex, 341 papers); see runs/run1_surveygen341/.
-* data/s2_citations.json (optional)  — forward-citation supplement fetched with
-  fetch_citations.py from the Semantic Scholar API (papers citing MVFA, hop 1 and hop 2,
-  with years, abstracts and citation contexts) plus publication years for the SurveyGen corpus.
+Sources (run 3, current)
+* data/task1/final_ref_set.json — Task 1's output for Task 3 (QUAL-SG pipeline run v6): 594 candidate
+  papers, each with doi, title, abstract, year, venue, citation_count, OpenAlex keywords and topics,
+  relevance_score, composite_score, origin (search / mvfa_reference / co_citation / snowball /
+  cites_mvfa / anchor) and selected (true for the 59 papers of the literature review).
+* data/s2_citations.json — forward-citation supplement from the Semantic Scholar API (fetch_citations.py):
+  papers citing MVFA (hop 1) with the sentences in which they cite it, and papers citing those (hop 2).
+  HypER needs both; Task 1's file provides the citing papers but not the citation sentences or hop 2.
 
-The papers of the submitted literature review are the "related papers" of ResearchAgent; the entity
-store is built over the whole corpus.
+Earlier runs (archived in runs/): run 1 used SurveyGen/OpenAlex records (341 papers); run 2 used the
+QUAL-SG v4 CSV (259 papers) with a 60-paper pipeline_ref.json. Their loaders are kept below as fallbacks.
+
+The selected papers of the literature review are ResearchAgent's "related papers"; the entity store
+is built over the whole corpus from the OpenAlex keywords and topics.
 """
 from __future__ import annotations
 
@@ -73,11 +76,28 @@ def norm_title(t: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", (t or "").lower()).strip()
 
 
+TASK1 = DATA / "task1" / "final_ref_set.json"
+
+
+def load_task1() -> list[dict]:
+    """Run 3: Task 1's final_ref_set.json, read as is (fields documented in data/task1/README_task1_output.md)."""
+    papers = []
+    for r in json.loads(TASK1.read_text()):
+        papers.append(dict(
+            id=r["doi"].lower(), title=r["title"], abstract=r["abstract"], year=r["year"], venue=r["venue"],
+            keywords=list(r["keywords"]), topics=list(r["topics"]), relevance=float(r["relevance_score"]),
+            composite=float(r["composite_score"]), cited_by=int(r["citation_count"]), origin=list(r["origin"]),
+            selected=bool(r["selected"]), source="task1-v6"))
+    return papers
+
+
 def load_surveygen() -> list[dict]:
-    """Corpus records.
+    """Corpus records. Run 3: Task 1's final_ref_set.json (load_task1).
     Run 2 (default): data/paper_after_reranking.csv from the QUAL-SG pipeline (final version, 259 papers
     with abstracts and publication years). Entities are extracted from the abstracts (keyphrases()).
     Run 1: data/final_ref_set.json (OpenAlex records with keywords/topics) + the reranking CSV."""
+    if TASK1.exists():
+        return load_task1()
     rank = pd.read_csv(DATA / "paper_after_reranking.csv")
     rank = rank[rank["title"].notna()]
     rank_by_title = {norm_title(r.title): r for r in rank.itertuples()}
@@ -186,9 +206,12 @@ def keyphrases(text: str, max_len: int = 4) -> list[str]:
 
 def review_set(papers: list[dict]) -> list[dict]:
     """The papers of the submitted Task 1 literature review.
+    Run 3: the papers flagged selected=true in Task 1's final_ref_set.json, in the file's order (the review's numbering).
     Run 2: the 30 references selected by the QUAL-SG pipeline (data/pipeline_ref.json), in its order,
     matched to corpus records by DOI or title (abstracts come from the corpus when the list has none).
     Run 1 (no pipeline_ref.json): the 16 SurveyGen papers with relevance >= 3, by composite score."""
+    if any("selected" in p and p.get("source") == "task1-v6" for p in papers):
+        return [p for p in papers if p["selected"]]
     ref = DATA / "pipeline_ref.json"
     if ref.exists():
         by_doi = {p["id"].lower(): p for p in papers}
@@ -209,7 +232,35 @@ def review_set(papers: list[dict]) -> list[dict]:
 
 
 def base_paper(papers: list[dict]) -> dict:
+    anchor = [p for p in papers if "anchor" in (p.get("origin") or [])]
+    if anchor:
+        return anchor[0]
     return next(p for p in papers if p["title"].startswith("Adapting Visual-Language Models for Generalizable"))
+
+
+def mvfa_citers(papers: list[dict]) -> list[dict]:
+    """Papers citing MVFA, in Semantic Scholar's record format (what HypER's stage reads).
+    Semantic Scholar hop-1 records (data/s2_citations.json) come first, in their original order, because they carry
+    the sentences in which each paper cites MVFA; papers that only Task 1 found (origin 'cites_mvfa') are appended
+    after them, with Task 1's abstract, year and citation count and no citation sentences. Duplicates are merged by
+    normalised title. 'sources' records where each paper came from."""
+    task1 = {norm_title(p["title"]): p for p in papers if "cites_mvfa" in (p.get("origin") or [])}
+    out, seen = [], set()
+    s2p = DATA / "s2_citations.json"
+    if s2p.exists():
+        for x in json.loads(s2p.read_text()).get("hop1", []):
+            k = norm_title(x.get("title"))
+            rec = dict(x, sources=["s2"] + (["task1"] if k in task1 else []))
+            if not rec.get("abstract") and k in task1:
+                rec["abstract"] = task1[k]["abstract"]
+            out.append(rec)
+            seen.add(k)
+    for k, p in task1.items():
+        if k not in seen:
+            out.append(dict(paperId="doi:" + p["id"], title=p["title"], abstract=p["abstract"], year=p["year"],
+                            citationCount=p["cited_by"], citation_contexts=[], url="https://doi.org/" + p["id"],
+                            sources=["task1"]))
+    return out
 
 
 # --------------------------------------------------------------------------- entity store

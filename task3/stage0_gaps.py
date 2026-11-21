@@ -1,12 +1,13 @@
 """
 Stage 0 — Gap ingestion and grouping.
 
-Input : data/task2_research_gaps.txt  (text of our Task 2 submission, "Research Gaps and
-        Limitations Identified in the Base Paper")
-Output: outputs/stage0_gaps.json        (15 structured gap records + groups)
+Input : data/task2/final_limitations.json  (Task 2's structured output: limitations L1..L39 with explanation,
+        aspect, provenance, importance, suggested fix, verified quotes and status in later work; branch task2,
+        limitations/outputs/full_nim). Run 1 and run 2 parsed the text of an earlier Task 2 report (G1..G15).
+Output: outputs/stage0_gaps.json        (structured gap records + groups)
 
 Steps
-1. Parse the bullet list of limitations into records G1..G15 (deterministic, no LLM).
+1. Read Task 2's limitation records as they are (no parsing, no LLM).
 2. Lexical cross-check: TF-IDF vectors of the gap texts + agglomerative clustering. This is a
    cheap, model-free view of which gaps talk about the same things.
 3. LLM grouping (1 call, role=judge): tag every gap (which MVFA component it concerns, what
@@ -50,6 +51,14 @@ def parse_gaps(text: str) -> list[dict]:
     return gaps
 
 
+def load_task2() -> list[dict]:
+    recs = json.loads((ROOT / "data" / "task2" / "final_limitations.json").read_text())
+    return [dict(id=r["lid"], title=r["limitation"], text=r["explanation"], aspect=r["aspect"],
+                 provenance=r["provenance"], importance=r["importance"], suggested_fix=r["suggested_fix"],
+                 status=r.get("status"), task2_evidence=len(r.get("evidence", [])), source="task2")
+            for r in recs]
+
+
 def lexical_clusters(gaps, n_clusters=6):
     docs = [g["title"] + ". " + g["text"] for g in gaps]
     X = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), sublinear_tf=True).fit_transform(docs)
@@ -68,7 +77,9 @@ USER = """The base paper is:
 Title: {title}
 Abstract: {abstract}
 
-A previous critical-appraisal step produced the following {n} limitations of the base paper:
+A previous critical-appraisal step (a multi-agent limitation-extraction pipeline) produced the following {n}
+limitations of the base paper. Each line gives the id, the importance assigned by that step (1-5), the aspect, and
+the limitation with its explanation:
 
 {gap_list}
 
@@ -84,24 +95,22 @@ Your tasks:
      (only missing information),
    - "codable": "high" / "medium" / "low" — can it be addressed by modifying the public base-paper code on the
      public BMAD benchmark with a single Colab GPU (A100/L4) within a few weeks?
-2. Group the limitations into 4–6 groups such that ONE fine-grained research problem could address all members
+2. Group the limitations into 5–8 groups such that ONE fine-grained research problem could address all members
    of a group together. A limitation may appear in at most one group; "reporting"-only limitations may be left
    ungrouped. For each group give a short name, its member ids, and one sentence on the shared root cause.
 3. Say which 2–3 groups are the most promising starting points for fine-grained, codable research problems
    and why (one sentence each).
 
 Return ONLY valid JSON of the form
-{{"tags": {{"G1": {{"component": "...", "kind": "...", "codable": "..."}}, ...}},
-  "groups": [{{"name": "...", "members": ["G..", ...], "root_cause": "..."}}, ...],
-  "ungrouped": ["G..", ...],
+{{"tags": {{"L1": {{"component": "...", "kind": "...", "codable": "..."}}, ...}},
+  "groups": [{{"name": "...", "members": ["L..", ...], "root_cause": "..."}}, ...],
+  "ungrouped": ["L..", ...],
   "promising": [{{"group": "...", "why": "..."}}, ...]}}"""
 
 
 def main():
-    text = (ROOT / "data" / "task2_research_gaps.txt").read_text()
-    gaps = parse_gaps(text)
-    assert len(gaps) == 15, len(gaps)
-    S, labels = lexical_clusters(gaps)
+    gaps = load_task2()
+    S, labels = lexical_clusters(gaps, n_clusters=8)
 
     lex = {}
     for g, l in zip(gaps, labels):
@@ -109,10 +118,10 @@ def main():
     lexical = "; ".join(f"cluster {c}: {', '.join(v)}" for c, v in sorted(lex.items()))
 
     base = json.loads((ROOT / "data" / "base_paper.json").read_text())
-    gap_list = "\n".join(f"{g['id']}. {g['title']}: {g['text']}" for g in gaps)
+    gap_list = "\n".join(f"{g['id']} [importance {g['importance']}, {g['aspect']}]. {g['title']} {g['text']}" for g in gaps)
     user = USER.format(title=base["title"], abstract=base["abstract"], n=len(gaps), gap_list=gap_list, lexical=lexical)
 
-    resp = LLM("judge").call(SYSTEM, user, tag="stage0/group_gaps", temperature=0.2)
+    resp = LLM("judge").call(SYSTEM, user, tag="stage0/group_gaps_task2", temperature=0.2)
     res = parse_json(resp)
 
     for g in gaps:

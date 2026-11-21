@@ -1,0 +1,797 @@
+{
+ "problem": "A1",
+ "problem_text": "How much of the zero-shot localisation quality of MVFA (pixel AUROC and Dice on a held-out modality) is retained when its segmentation adapters are trained without pixel masks, using pseudo-masks drawn only from labelled abnormal source images (a patch is anomalous when its frozen CLIP level-4 feature is farther from every normal patch of the same dataset than the 99th percentile of normal-to-normal nearest-neighbour distances on source validation data), as masks are removed from zero, one, or all three masked source datasets?",
+ "pool_size": 24,
+ "shortlist": [
+  "A1-g1-o6",
+  "A1-g3-o3",
+  "A1-g2-o6",
+  "A1-g3-o1",
+  "A1-g2-o4",
+  "A1-g3-o6",
+  "A1-g1-o3",
+  "A1-g3-o5",
+  "A1-g2-o2",
+  "A1-g2-o1",
+  "A1-g3-o2",
+  "A1-g1-o2"
+ ],
+ "families": {
+  "Detection-branch-guided targets": [
+   "A1-g1-o6",
+   "A1-g2-o6",
+   "A1-g3-o4",
+   "A1-g3-o5"
+  ],
+  "Self-training and teacher refinement": [
+   "A1-g1-o3",
+   "A1-g2-o4",
+   "A1-g3-o3"
+  ],
+  "Edge- and resolution-aware mask refinement": [
+   "A1-g0-C2",
+   "A1-g1-o1",
+   "A1-g1-o2",
+   "A1-g2-o2",
+   "A1-g2-o3",
+   "A1-g2-o5"
+  ],
+  "Alternative pseudo-mask sources": [
+   "A1-g0-C1",
+   "A1-g0-C4",
+   "A1-g0-C5",
+   "A1-g0-C6",
+   "A1-g1-o4",
+   "A1-g3-o1",
+   "A1-g3-o2",
+   "A1-g3-o6"
+  ],
+  "Synthetic supervision and weak constraints": [
+   "A1-g0-C3",
+   "A1-g1-o5",
+   "A1-g2-o1"
+  ]
+ },
+ "ranking": [
+  {
+   "id": "A1-g1-o6",
+   "title": "Detection-branch veto: MVFA's image-label-trained detection maps filter pseudo-masks for the segmentation branch",
+   "family": "Detection-branch-guided targets",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 136.4,
+   "final": 0.825,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Using a weakly supervised branch to filter pseudo-labels is known (co-training, anomaly-guided weakly supervised OCT segmentation); using MVFA's own image-label-trained detection branch as the second view is a new, method-specific combination.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Needs only a det-only pre-training stage and a target filter; same cost as MVFA training on one GPU.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Targets, agreement quantiles, ignore rule and stages are specified; how the detection map is read per level could be stated more precisely.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Directly answers whether image-level labels can replace masks for MVFA's segmentation branch, with the three image-only datasets usable as sources.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Sound: the detection branch is trained with reliable labels on all six datasets; its maps may be diffuse, which the ignore rule partly handles.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "weakly supervised anomaly segmentation detection branch filter pseudo-masks co-training image-level labels medical",
+    "closest": [
+     {
+      "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
+      "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
+      "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+     },
+     {
+      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+      "url": "https://arxiv.org/pdf/2507.21587",
+      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 1
+  },
+  {
+   "id": "A1-g3-o3",
+   "title": "Detection-gated mean teacher: online pseudo-mask refinement accepted only where MVFA's detection branch agrees",
+   "family": "Self-training and teacher refinement",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 127.24,
+   "final": 0.7436,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Combines a mean teacher with detection-branch gating; both ingredients exist in weakly supervised segmentation, the gating by MVFA's sibling branch is new.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "One training run, but the teacher schedule and gate thresholds need joint tuning on source validation.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Schedules, gating rule and losses are specified; the interaction of epochs and ramp is left to tuning.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Same practical question as the veto idea, with potentially cleaner targets.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Gating limits teacher drift; validity rests on the detection branch being better than the teacher where they disagree.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels gating",
+    "closest": [
+     {
+      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+      "url": "https://arxiv.org/pdf/2507.21587",
+      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+     },
+     {
+      "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
+      "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
+      "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
+     },
+     {
+      "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
+      "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
+      "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 2
+  },
+  {
+   "id": "A1-g2-o6",
+   "title": "Occlusion attribution of MVFA's detection branch as pseudo-masks for its segmentation branch",
+   "family": "Detection-branch-guided targets",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 120.16,
+   "final": 0.7077,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Counterfactual attribution for weakly supervised medical segmentation exists (COIN uses counterfactual inpainting); replacing patches by nearest normal-bank features of MVFA's own detection branch is a new, cheap variant.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "289 adapter-only forward passes per abnormal image with cached CLIP features: affordable but slower than other options.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Attribution definition, threshold and training stages are clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Turns image labels into causal localisation evidence for MVFA.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Occlusion with nearest normal features is a principled counterfactual; diffuse detection maps could weaken attributions on OCT and chest X-ray.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "occlusion counterfactual attribution pseudo masks weakly supervised segmentation anomaly detection classifier",
+    "closest": [
+     {
+      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+      "url": "https://arxiv.org/html/2404.12832v2",
+      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+     },
+     {
+      "title": "Causal Intervention for Weakly-Supervised Semantic Segmentation (NeurIPS 2020)",
+      "url": "https://neurips.cc/virtual/2020/protected/poster_07211688a0869d995947a8fb11b215d6.html",
+      "relation": "uses causal intervention to refine classifier-derived pseudo-masks"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 3
+  },
+  {
+   "id": "A1-g3-o1",
+   "title": "Cross-level persistence pseudo-masks: anomalies that persist across MVFA's four feature levels",
+   "family": "Alternative pseudo-mask sources",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 113.97,
+   "final": 0.6764,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Multi-layer anomaly evidence is common in anomaly detection; requiring persistence across exactly MVFA's four adapted levels as a pseudo-mask filter was not found in prior work.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Training-free, four nearest-neighbour searches per image.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified rule with clear ablations (persistence 2, 3, 4).",
+     "score": 5
+    },
+    "Impact": {
+     "review": "A useful filter, but its benefit is limited to pseudo-mask precision.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "The assumption that lesions are anomalous at all levels is argued by analogy; subtle texture-only lesions may be lost.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "multi-layer feature persistence anomaly localization pseudo labels across layers vision transformer nearest neighbor",
+    "closest": [
+     {
+      "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+      "url": "https://arxiv.org/pdf/2403.10803",
+      "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 8
+   },
+   "overall_rank": 4
+  },
+  {
+   "id": "A1-g2-o4",
+   "title": "Mean-teacher online refinement of pseudo-masks during MVFA training",
+   "family": "Self-training and teacher refinement",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.4,
+   "fitness": 108.24,
+   "final": 0.5773,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Mean-teacher pseudo-label refinement is a standard semi- and weakly supervised technique; applied to MVFA without method-specific change.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Single run, extra EMA model; schedule tuning needed.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Schedule, blending and ignore band specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Halves the cost of self-training, a practical but incremental gain.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Anchoring to initial masks and image labels limits drift.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels",
+    "closest": [
+     {
+      "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+      "url": "https://arxiv.org/pdf/2507.21587",
+      "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+     },
+     {
+      "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
+      "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
+      "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 1
+   },
+   "overall_rank": 5
+  },
+  {
+   "id": "A1-g3-o6",
+   "title": "Dawid-Skene fusion of MVFA-internal pseudo-label sources with per-dataset reliabilities",
+   "family": "Alternative pseudo-mask sources",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.4,
+   "fitness": 102.74,
+   "final": 0.5495,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Dawid-Skene and dependent weak-source aggregation exist; applying them to three MVFA-internal sources with normal images as known negatives is a new combination.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "EM on patch labels is cheap; requires a det-only stage.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Sources, EM and targets specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Gives per-dataset reliabilities that are informative beyond the masks themselves.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Conditional independence between sources sharing one CLIP backbone is violated, so posteriors may be overconfident.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "Dawid-Skene aggregation of multiple weak pseudo-label sources segmentation weak supervision pixel level",
+    "closest": [
+     {
+      "title": "Semi-Supervised Aggregation of Dependent Weak Supervision Sources with Performance Guarantees (AISTATS 2021)",
+      "url": "https://proceedings.mlr.press/v130/mazzetto21a.html",
+      "relation": "aggregates dependent weak labelling sources with estimated reliabilities, a generalisation of Dawid-Skene"
+     },
+     {
+      "title": "Learning to Segment Under Various Forms of Weak Supervision (CVPR 2015)",
+      "url": "https://openaccess.thecvf.com/content_cvpr_2015/html/Xu_Learning_to_Segment_2015_CVPR_paper.html",
+      "relation": "combines several weak supervision types for segmentation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 8
+   },
+   "overall_rank": 6
+  },
+  {
+   "id": "A1-g2-o2",
+   "title": "Shift-ensemble pseudo-masks: sub-patch grid jitter doubles the effective resolution of MVFA's pseudo-masks",
+   "family": "Edge- and resolution-aware mask refinement",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 86.09,
+   "final": 0.5351,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Averaging ViT outputs over patch-grid phase shifts is described in recent work (phase marginalisation for patch-grid instability) and tiled ensembles.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Four feature extractions per image for mask generation only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Exact shifts, realignment and thresholds given.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Improves resolution of targets, most relevant for small brain lesions.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Directly addresses the verified 14-pixel grid limit.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "sub-patch shift ensemble vision transformer patch grid resolution anomaly map dense features shifted crops",
+    "closest": [
+     {
+      "title": "Phase Marginalization for Patch-Grid Instability in Vision Transformers (arXiv 2606.08132)",
+      "url": "https://arxiv.org/pdf/2606.08132",
+      "relation": "averages ViT outputs over patch-grid phase shifts, the same mechanism as sub-patch shift ensembles"
+     },
+     {
+      "title": "Divide and Conquer: High-Resolution Industrial Anomaly Detection via Memory Efficient Tiled Ensemble (arXiv 2403.04932)",
+      "url": "https://arxiv.org/html/2403.04932v1",
+      "relation": "ensembles over tiles to raise anomaly-map resolution"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 1
+   },
+   "overall_rank": 7
+  },
+  {
+   "id": "A1-g3-o5",
+   "title": "Two-round self-training with counterfactual occlusion masks from the jointly trained model",
+   "family": "Detection-branch-guided targets",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 3,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.4,
+   "fitness": 91.82,
+   "final": 0.4941,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Regenerating masks by occlusion of a jointly trained detection branch combines two ideas in a new way.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Two trainings plus attribution make it the most expensive option.",
+     "score": 3
+    },
+    "Clarity": {
+     "review": "Procedure and comparisons specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Incremental over its parents.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Avoids self-confirmation by using a different branch for regeneration.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "self-training counterfactual occlusion pseudo-masks weakly supervised medical segmentation",
+    "closest": [
+     {
+      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+      "url": "https://arxiv.org/html/2404.12832v2",
+      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+     },
+     {
+      "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
+      "url": "https://arxiv.org/pdf/2104.11692",
+      "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 12,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 1
+   },
+   "overall_rank": 8
+  },
+  {
+   "id": "A1-g1-o3",
+   "title": "Two-round self-training: regenerating pseudo-masks from MVFA's own adapted features",
+   "family": "Self-training and teacher refinement",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.2,
+   "fitness": 97.32,
+   "final": 0.487,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Two-round self-training with regenerated pseudo-labels is a standard technique (e.g. self-training for zero-label segmentation).",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Doubles training cost; still feasible on one GPU.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Rounds and regeneration procedure specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Tests whether MVFA's adaptation improves localisation features, a useful diagnostic.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Risk of confirmation bias is acknowledged but only partly controlled by label restriction.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "self-training pseudo-mask regeneration CLIP anomaly segmentation zero-shot pseudo labels iterative",
+    "closest": [
+     {
+      "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
+      "url": "https://arxiv.org/pdf/2104.11692",
+      "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
+     },
+     {
+      "title": "CLIP Is Also a Good Teacher: inductive zero-shot semantic segmentation (arXiv 2310.02296)",
+      "url": "https://arxiv.org/pdf/2310.02296",
+      "relation": "uses CLIP as a teacher for segmentation pseudo-labels"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 8
+   },
+   "overall_rank": 9
+  },
+  {
+   "id": "A1-g2-o1",
+   "title": "Size-constrained training of MVFA's segmentation branch from image-level labels",
+   "family": "Synthetic supervision and weak constraints",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.6,
+   "fitness": 82.69,
+   "final": 0.4829,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Size-constraint losses for weakly supervised segmentation are established (Kervadec et al.); the application to MVFA is direct.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Loss change only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Bounds, loss terms and sensitivity test specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Answers what image labels alone can teach the segmentation branch.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Robust to bound errors by design; bounds derive from noisy pseudo-masks.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "size constrained loss weakly supervised segmentation image-level labels Kervadec constrained CNN losses",
+    "closest": [
+     {
+      "title": "Constrained-CNN losses for weakly supervised segmentation (Kervadec et al., arXiv 1805.04628)",
+      "url": "https://www.arxiv.org/pdf/1805.04628",
+      "relation": "introduces size-constraint losses for segmentation from weak labels; the proposed idea applies this technique to MVFA's segmentation branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 1
+   },
+   "overall_rank": 10
+  },
+  {
+   "id": "A1-g1-o2",
+   "title": "Joint-bilateral upsampling of patch pseudo-masks guided by the raw image",
+   "family": "Edge- and resolution-aware mask refinement",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.6,
+   "fitness": 77.19,
+   "final": 0.455,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Guided-filter and image-guided refinement of coarse pseudo-labels are established in weakly supervised segmentation.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Training-free, seconds per image.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Parameters and procedure fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Boundary refinement only.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Depends on raw-image edges that are weak in CT and chest X-ray.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "guided filter joint bilateral upsampling CAM pseudo label refinement weakly supervised segmentation",
+    "closest": [
+     {
+      "title": "Learning Pixel-level Semantic Affinity with Image-level Supervision (AffinityNet, arXiv 1803.10464)",
+      "url": "https://arxiv.org/pdf/1803.10464",
+      "relation": "refines class-activation pseudo-labels with learned pixel affinities; edge-aware refinement of coarse maps is established"
+     },
+     {
+      "title": "High-fidelity Pseudo-labels for Boosting Weakly-Supervised Segmentation (arXiv 2304.02621)",
+      "url": "https://ar5iv.labs.arxiv.org/html/2304.02621",
+      "relation": "refines coarse pseudo-labels with image-guided upsampling"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 8
+   },
+   "overall_rank": 11
+  },
+  {
+   "id": "A1-g3-o2",
+   "title": "Counterfactual normal-twin differencing: pseudo-masks from each abnormal image's most similar normal image",
+   "family": "Alternative pseudo-mask sources",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.2,
+   "fitness": 79.9,
+   "final": 0.3987,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Comparing registered query and normal images is the core of registration-based few-shot anomaly detection (RegAD) and counterfactual approaches.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Retrieval and ECC alignment are cheap; alignment may fail on OCT/CT.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear procedure.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Mainly benefits registered anatomy such as brain MRI.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Affine alignment is unreliable outside brain slices, limiting validity across BMAD.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "registration based few-shot anomaly detection normal twin image comparison brain MRI pseudo-healthy retrieval",
+    "closest": [
+     {
+      "title": "Registration Based Few-Shot Anomaly Detection (ECCV 2022)",
+      "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/1729_ECCV_2022_paper.php",
+      "relation": "compares registered query and support features for few-shot anomaly detection, close to normal-twin differencing"
+     },
+     {
+      "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+      "url": "https://arxiv.org/html/2404.12832v2",
+      "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 6,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 8
+   },
+   "overall_rank": 12
+  }
+ ],
+ "top5": [
+  "A1-g1-o6",
+  "A1-g3-o3",
+  "A1-g2-o6",
+  "A1-g3-o1",
+  "A1-g2-o4"
+ ],
+ "skipped_for_diversity": [],
+ "weights": {
+  "review": 0.7,
+  "fitness": 0.3,
+  "max_per_family": 2
+ }
+}

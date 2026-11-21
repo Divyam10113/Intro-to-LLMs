@@ -1,0 +1,92 @@
+import json
+exec(open("/home/claude/task3/logs/answers/run3/s3_g1_ops.py").read().split("O = {}")[0])
+O = {}
+def off(tag, t, s, h, r, m, e, p):
+    O[tag] = "```json\n" + json.dumps({"Title": t, "Summary": s, "Hypothesis": h, "Rationale": r, "Method": m, "Experiment": e,
+                                       "Provenance": p}, indent=1, ensure_ascii=False) + "\n```"
+
+# ---------------------------------------------------------------- A1
+off("stage3/A1/g2/o1/out_of_box",
+ "Matched-pair MIL ranking: borrowing the ranking objective of weakly supervised video anomaly detection",
+ "Train the segmentation adapters with a ranking loss that requires the most anomalous patches of an abnormal image to score above the most anomalous patches of its most similar normal image from the same dataset, instead of pushing absolute probabilities to 0 and 1.",
+ "A matched-pair hinge ranking loss between the top-k patches of an abnormal image and those of its nearest normal image (CLS similarity, same dataset) yields at least 2 points higher held-out pixel AUROC than top-k BCE MIL, because a relative constraint against matched anatomy does not reward salient normal structures that both images share.",
+ "Weakly supervised video anomaly detection learns frame-level localisation from video-level labels with a MIL ranking loss: the highest-scoring segment of an anomalous video must outrank the highest-scoring segment of a normal video. The analogous principle applies to MVFA's patch maps, with one improvement available in medical data: pairing each abnormal image with the most similar normal image of the same dataset. Anatomy that both images share then cancels in the ranking, so the loss only rewards patches that are anomalous relative to matched normal anatomy — the failure mode that per-image top-k BCE and witness-rate tuning cannot remove.",
+ "1) precompute_pairs.py: per source dataset, frozen CLIP CLS embeddings; for each abnormal training image its 5 nearest normal images. 2) loss.py: rank_mil(p_abn, p_nor, k_frac=0.01, margin=0.2) = max(0, margin - topk_mean(p_abn) + topk_mean(p_nor)) + 1e-3 x smoothness (sum of squared differences of neighbouring patches) + 1e-3 x sparsity (mean p_abn), per level as in Sultani et al. 3) train_zero.py: batches contain an abnormal image and one of its matched normals (random among the 5); normal images also receive top-k BCE towards 0. 4) Hyper-parameters: margin {0.1, 0.2, 0.5}; released learning rate and epochs.",
+ PA + "Baselines: top-k BCE MIL; ranking with random (unmatched) normal pairs. Falsified if matched ranking does not beat top-k BCE MIL, or if unmatched pairs work as well (pairing does not matter).",
+ [MAD, ADAN])
+
+off("stage3/A1/g2/o4/substitution",
+ "Posterior-weighted MIL: a two-component mixture of patch scores replaces hard top-k selection",
+ "Keep the witness-rate framing but replace hard top-k selection with soft per-patch weights: a two-component mixture fitted per dataset on patch scores, with the normal component fixed from normal images, gives every patch of an abnormal image a posterior probability of being lesion, used as its target weight.",
+ "Posterior-weighted MIL increases held-out AUPRO by at least 2 points over witness-rate-adaptive top-k MIL, and its fitted mixing proportions correlate (Spearman >= 0.8 over masked source datasets and epochs) with true lesion area fractions.",
+ "The parent's core component — a mixture-proportion estimate turned into a hard k — discards which patches are likely lesions beyond the top-k cut and is sensitive to the estimator's noise. A two-component mixture model of patch scores (normal component estimated from normal images, lesion component free) gives both the proportion and a per-patch posterior. Using the posterior as a soft target keeps the problem's framing (image labels only), the quantity targeted (localisation by the segmentation adapters) and the evaluation, and degrades gracefully when the components overlap.",
+ "1) Every 2 epochs, per source dataset and level: fit a kernel density f0 to logit patch scores of normal images; fit pi and a Gaussian f1 to abnormal-image patch scores by EM with f0 fixed. 2) Posterior w_j = pi f1(s_j) / (pi f1(s_j) + (1 - pi) f0(s_j)). 3) loss.py: post_mil: abnormal images: weighted BCE with targets w_j (detached) on all patches; normal images: BCE towards 0 on all patches. 4) First 2 epochs: plain top-k MIL to obtain informative scores. 5) Hyper-parameters: refit interval 2 epochs; pi clipped to [0.005, 0.3].",
+ PA + "Baselines: witness-rate-adaptive top-k MIL; fixed top-k MIL. Diagnostics: fitted pi vs. true lesion area fraction; posterior AUROC against masks on source images. Falsified if AUPRO does not improve over witness-rate top-k MIL.",
+ [MAD, RECAP])
+
+off("stage3/A1/g2/o2/out_of_box",
+ "Mosaic MIL: free quadrant labels from four-image mosaics",
+ "Create training mosaics of four down-scaled source images (normal and abnormal, same dataset) whose quadrant labels are known from the image labels, and train the segmentation adapters to localise abnormality at quadrant level together with consensus MIL inside abnormal quadrants.",
+ "Adding mosaic training (50% of batches) to consensus MIL raises held-out pixel AUROC by at least 2 points, because quadrant-level supervision forces the segmentation maps to discriminate where in an image the abnormality is, which image-level losses on single images never require.",
+ "Consensus MIL improves which patches are selected, but every loss on a single image is satisfied by raising one image-wide score, so maps need never be spatially discriminative. A mosaic changes the task without any annotation: the label of each quadrant is the label of the image placed there, so a mosaic carries coarse localisation labels for free. Patches of normal quadrants are pixel-level negatives in an image that also contains a lesion — exactly the hard negatives MIL lacks — and consensus MIL is applied inside each abnormal quadrant.",
+ "1) dataset/mosaic.py: with probability 0.5 build a 2x2 mosaic of four images from one source dataset (each resized to 120x120), with 1-3 abnormal quadrants; quadrant label map. 2) loss.py: mosaic_loss: BCE towards 0 on every patch of normal quadrants; consensus top-k MIL (k = 1% of quadrant patches) inside each abnormal quadrant. 3) train_zero.py: seg loss = consensus MIL on single images + mosaic_loss on mosaics. 4) Hyper-parameters: mosaic probability {0.25, 0.5}; quadrant size 120 px. Inference unchanged.",
+ PA + "Baselines: consensus MIL; per-level MIL. Ablation: mosaics with only normal or only abnormal quadrants (no spatial contrast). Falsified if mosaic training does not improve pixel AUROC.",
+ [MLCA, DWM])
+
+off("stage3/A1/g2/o5/out_of_box",
+ "Co-teaching MIL between MVFA's detection and segmentation adapters",
+ "Let MVFA's two adapter sets select instances for each other: the detection branch's patch map (trained on all images with image labels) chooses the top-k patches on which the segmentation branch's MIL loss is applied, and vice versa, so neither branch reinforces its own spurious maxima.",
+ "Cross-branch instance selection raises held-out pixel AUROC of the segmentation branch by at least 2 points over self-selected consensus MIL and reduces the fraction of selected patches on salient normal anatomy (measured on masked source images) by at least 10 points.",
+ "Consensus MIL relies on agreement between levels of the same branch, whose errors are correlated because they share training signal. Co-teaching, a principle from learning with noisy labels, uses two networks that select training instances for each other because their errors differ. MVFA already contains two networks of this kind: the detection adapters and the segmentation adapters, separate parameter sets on the same backbone, trained with different losses. Exchanging their top-k selections is a small change that exploits this existing architecture.",
+ "1) loss.py: cross_mil(p_seg, p_det, label, k_frac=0.01): idx_seg = topk(p_det) (detached) for the seg loss; idx_det = topk(p_seg) (detached) for an added det-branch top-k term; normal images: top-k BCE towards 0 in both branches. 2) train_zero.py: det branch keeps its mean-pooled BCE and adds the cross term with weight 0.5; seg branch uses cross_mil. 3) Warm-up: 2 epochs of self-selection. 4) Hyper-parameters: k_frac 1%; cross-term weight {0.25, 0.5, 1}.",
+ PA + "Baselines: consensus MIL; per-level MIL. Diagnostics: overlap of the two branches' selections over training; fraction of selected patches inside true masks. Falsified if cross-selection does not beat consensus MIL.",
+ [MLCA, MAD])
+
+off("stage3/A1/g2/o6/out_of_box",
+ "Distilling a normal-bank novelty map into the segmentation adapters alongside MIL",
+ "Give the segmentation adapters a dense, label-free auxiliary target on every source image — the distance of each patch to a bank of normal patches of the same dataset — and combine it with image-level MIL, so localisation is shaped everywhere rather than only at the top-k.",
+ "Adding a novelty-distillation regression term (weight 0.5) to MIL raises held-out AUPRO by at least 3 points over normal-bank-gated MIL, and the gain persists when the bank is restricted to 1,000 patches per dataset.",
+ "The gated-MIL parent uses the normal bank only to choose a handful of instances. The bank supports a stronger, dense signal: its patch-wise novelty map (as in PatchCore) is a reasonable unsupervised localisation of abnormal tissue for every patch of every image, including normal images. Distilling this map into the segmentation adapters gives dense supervision; the MIL term with image labels then corrects the novelty map where unusual but normal anatomy is novel. The bank is used only during training, so test-time behaviour and cost remain MVFA's.",
+ "1) build_normal_bank.py (as in the parent): per dataset coreset of normal level-4 patch features. 2) Target n_j = 1 - max cos(f_j, bank_d), excluding patches of the same image for normal images; standardised per dataset to [0, 1] by 1st/99th percentiles. 3) loss.py: L = gated top-k MIL + 0.5 x mean_j (p_j - n_j)^2 on all images (all levels). 4) Hyper-parameters: weight {0.25, 0.5, 1}; bank size {1k, 20k}. Inference unchanged.",
+ PA + "Baselines: normal-bank-gated MIL; novelty map alone used as the segmentation output (PatchCore-style). Falsified if AUPRO does not exceed gated MIL.",
+ [ADAN, MAD, RECAP])
+
+# ---------------------------------------------------------------- B1
+off("stage3/B1/g2/o5/out_of_box",
+ "Self-referenced residuals: removing each image's own score offset before support-CDF mapping",
+ "Subtract from every patch score the median of the same image's own patch scores (a per-image offset reflecting acquisition and intensity) and map the residual through the leave-one-out support CDF of residuals computed the same way, which stays strictly inductive because it uses only the image itself and the supports.",
+ "Self-referenced residual normalisation improves image AUROC by at least 1.5 points over the exact leave-one-out residual CDF on held-out datasets with strong acquisition variation (ChestXray, HIS, OCT17), and changes it by less than 0.5 points on the others.",
+ "The residual-CDF parents remove offsets that depend on position, but much of the variation in medical scores is per image: scanner, intensity window, stain, patient size. An image's own median patch score measures this offset without any other test image, because most of every image — even an abnormal one — is normal tissue. Subtracting it before mapping through a reference built the same way from supports removes per-image offsets inductively; diffuse lesions that shift the median are the risk, which the per-dataset evaluation measures.",
+ "1) test_few.py: for every image (supports and tests) and each branch and level: r_j = s_j - median(s); for supports use leave-one-out bank scores. 2) Reference R = pooled support residuals; F(r) by searchsorted. 3) 0.5 fusion and max pooling unchanged; test-set min-max removed. 4) Ablation: positional + self-referenced residual. No training.",
+ PB + "Additional baselines: exact LOO residual CDF; global CDF. Diagnostic: correlation of per-image median score with image AUROC loss. Falsified if no gain on ChestXray, HIS or OCT17.",
+ [MAD, RECAP, ADAN])
+
+off("stage3/B1/g2/o2/out_of_box",
+ "Feature-registered positional references",
+ "Before computing positional statistics, align each support's patch grid to the test image by a small rigid shift found by maximising CLIP patch-feature correlation, so the positional correction of the residual CDF works even where images are only roughly aligned.",
+ "Registering supports to the test image by integer patch shifts (up to +-3 patches) increases the pixel-AUROC gain of the residual CDF over the global CDF by at least 50% on BrainMRI, LiverCT and RESC, at less than 10% additional inference time.",
+ "The residual-CDF parent assumes that grid position j means the same anatomy in every image. In BMAD this holds only roughly: brains, livers and retinas are shifted between slices and scans. Instead of giving up positional information on such data, a cheap rigid registration in feature space — choose the integer shift that maximises correlation of frozen CLIP patch features between support and test — restores the correspondence. The method stays inductive, as it uses only the test image and the supports.",
+ "1) utils.py: register(F_test, F_supp, max_shift=3): for all shifts in [-3, 3]^2 compute mean cosine of overlapping patch features (level 2); return best shift. 2) Positional median per test image computed from shifted support maps (LOO for supports). 3) Residual CDF as in the parent; 0.5 fusion and max pooling unchanged; test-set min-max removed. No training.",
+ PB + "Additional baselines: residual CDF without registration; global CDF. Metrics: AUROC, inference time. Falsified if registration does not increase the residual-CDF gain on the three aligned datasets.",
+ [MAD, RECAP, ADAN, SFAD])
+
+off("stage3/B1/g2/o4/out_of_box",
+ "Extreme-value tail extension of the support CDF",
+ "Model the upper tail of each branch's leave-one-out support scores with a generalised Pareto distribution, so scores beyond the largest support value are still ordered instead of all mapping to 1, which matters because the image score is the maximum of the fused map.",
+ "Replacing the saturated top of the empirical CDF with a generalised-Pareto tail fitted above the 90th support percentile increases image AUROC by at least 1 point over the plain empirical CDF at K <= 4, where the fraction of test images whose max fused score is tied at the ceiling exceeds 20%.",
+ "An empirical CDF is flat at 1 above the largest reference value. With few supports, many test patches — in normal and abnormal images alike — exceed every support score, so after max pooling a large share of test images obtain the same ceiling score and AUROC loses resolution exactly where it matters. Extreme value theory gives a principled extrapolation: exceedances over a high threshold follow a generalised Pareto distribution, whose parameters can be fitted from the support scores above their 90th percentile (thousands of patches even at K = 2). The resulting CDF is strictly increasing in the tail and remains test-set invariant.",
+ "1) utils.py: fit_gpd(R, q=0.9) by maximum likelihood (scipy.stats.genpareto) per branch and level. 2) F(s) = ECDF(s) for s <= u; F(s) = 0.9 + 0.1 x GPD_cdf(s - u) above the threshold u. 3) test_few.py: apply per branch and level; 0.5 fusion and max pooling unchanged; test-set min-max removed. 4) Report the fraction of tied image scores. No training.",
+ PB + "Additional baseline: plain LOO empirical CDF. Metrics: AUROC, fraction of tied image scores. Falsified if no AUROC gain at K <= 4 where ties exceed 20%.",
+ [MAD, RECAP])
+
+off("stage3/B1/g2/o6/substitution",
+ "Similarity-weighted conformal thresholds on residual-CDF scores",
+ "Keep residual-CDF scoring but replace the plain split-conformal quantile with a weighted conformal quantile in which supports similar to the test image (CLIP CLS similarity) count more, so the threshold adapts to each image while keeping an approximate false-positive bound under covariate shift.",
+ "Similarity-weighted conformal thresholds reduce the spread of realised false-positive rates across held-out datasets by at least 5 points relative to unweighted conformal thresholds at K >= 8, while keeping the mean realised false-positive rate within 2 points of alpha.",
+ "The parent's split-conformal step assumes that test normals are exchangeable with the supports; across BMAD datasets this fails when a test image comes from a different part of the anatomy or another scanner than most supports. Weighted conformal prediction (Tibshirani et al., 2019) keeps an approximate guarantee under covariate shift by weighting calibration points with a likelihood ratio, which can be approximated by similarity of global features. The substitute targets the same quantity (a per-image threshold with controlled false positives) with the same evaluation.",
+ "1) Residual-CDF scoring as in the parent (exact LOO). 2) For test image x: weights w_i = exp(cos(cls_x, cls_i)/tau) over supports, plus w_{K+1} for the test point; tau from source validation. 3) Threshold = weighted (1 - alpha) quantile of support LOO image scores with the test point's mass at +infinity. 4) Report realised FPR and sensitivity at alpha in {0.1, 0.2}. No training.",
+ PB + "Additional baseline: unweighted conformal thresholds. Metrics: realised FPR per dataset and its spread, sensitivity. Falsified if the spread of realised FPR is not reduced.",
+ [DWM, MAD, RECAP, ADAN])
+
+json.dump(O, open("/home/claude/task3/logs/answers/run3/s3_g2_mut.json", "w"), indent=1, ensure_ascii=False)
+print(len(O))

@@ -88,10 +88,6 @@ svg text { fill: var(--muted); font-family: var(--f-mono); font-size: 10px; }
 .detail .field h4 { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 3px; font-weight: 600; }
 .detail .field p { white-space: pre-wrap; font-size: 14px; }
 .lineage { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
-.rate-card { display: grid; gap: 8px; }
-.rate-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
-.rate-row label { display: grid; gap: 2px; font-size: 11.5px; color: var(--muted); font-family: var(--f-mono); }
-.rate-row select { font: inherit; font-size: 14px; padding: 4px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: var(--ink); }
 .btn { font: inherit; font-weight: 700; font-size: 14px; border: 0; border-radius: 6px; padding: 8px 16px; background: var(--accent); color: #fff; cursor: pointer; }
 .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
 .btn:disabled { opacity: .5; cursor: default; }
@@ -99,7 +95,6 @@ svg text { fill: var(--muted); font-family: var(--f-mono); font-size: 10px; }
 .callout { border-left: 3px solid var(--heat); padding: 8px 12px; background: var(--heat-soft); border-radius: 0 var(--r) var(--r) 0; font-size: 14px; }
 code, .mono { font-family: var(--f-mono); font-size: 12.5px; }
 a { color: var(--accent); }
-@media (max-width: 560px) { .rate-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 </style>
 
@@ -107,32 +102,32 @@ a { color: var(--accent); }
   <div class="brand">MVFA Idea Explorer</div>
   <nav aria-label="Sections">
     <a href="#overview">Overview</a><a href="#gaps">Gaps &amp; code</a><a href="#problems">Problems</a><a href="#chains">HypER chains</a>
-    <a href="#evolution">Evolution</a><a href="#ranking">Ranking</a><a href="#rate">Rate ideas</a>
+    <a href="#evolution">Evolution</a><a href="#ranking">Ranking</a>
   </nav>
 </div></header>
 
 <main class="wrap">
 <section id="overview">
   <span class="eyebrow">Task 3 · Research problem discovery and ideation · base paper MVFA (CVPR 2024)</span>
-  <h1>From fifteen limitations of MVFA to ten ranked, codable research ideas</h1>
+  <h1>From thirty-nine limitations of MVFA to ten ranked, codable research ideas</h1>
   <p class="lede">This page follows every step of the pipeline that turned our Task 2 limitations into two research problems (ResearchAgent), grounded seed ideas in citation chains (HypER), evolved them with a genetic algorithm (HypoEvolve) and ranked the results on five criteria. Click any idea to read it in full with its reviews, novelty evidence and family tree.</p>
   <div class="stats" id="stats"></div>
   <div class="pipeline" id="pipeline"></div>
-  <p class="status">All LLM calls were answered through the pipeline's file backend by the configured model (claude-opus-5-5) acting as generator and judge; every prompt and answer is stored in <code>logs/cache</code>. This is run 2, built on the final Task 1 literature review (QUAL-SG pipeline: 259-paper corpus, 60-paper review set); run 1, on the earlier SurveyGen corpus, is archived with the code.</p>
+  <p class="status">All LLM calls were answered through the pipeline's file backend by the configured model (claude-opus-5-5) acting as generator and judge; every prompt and answer is stored in <code>logs/cache</code>. This is run 3, built on Task 1's run-v6 output (594-paper corpus with OpenAlex keywords and topics, 59-paper review set, 194 papers citing MVFA together with Semantic Scholar) and Task 2's 39 structured limitations. Following the team's plan, problems were generated only for the two directions Task 4 builds on: label supervision (group A) and scoring (group B). Runs 1 and 2, on earlier versions of the Task 1 review, are archived with the code.</p>
 </section>
 
 <section id="gaps">
   <span class="eyebrow">Stage 0 and 0b</span>
   <h2>Limitations, groups, and what the released code actually does</h2>
-  <p class="lede">The 15 Task 2 limitations were grouped into five families. Checking them against MVFA's public code (commit a30bf7b) corrected four gaps and added two new ones; groups A and B were chosen as problem sources and group C became the evaluation protocol of every idea.</p>
+  <p class="lede">Task 2's 39 limitations were grouped into seven groups; twelve fit no group. Checking them against MVFA's public code (commit a30bf7b) gave ten limitations a verdict (four confirmed, three open questions resolved, two worse than stated, one corrected) and added four code-only limitations (C1–C4). Groups A and B are the problem sources, and the leakage-free protocol group became the evaluation protocol of every idea.</p>
   <div class="panel scroll"><table id="gapTable"></table></div>
   <div class="panel scroll"><h3 style="margin-bottom:8px">Code evidence</h3><table id="evTable"></table></div>
 </section>
 
 <section id="problems">
   <span class="eyebrow">Stage 1 · ResearchAgent</span>
-  <h2>Six candidate problems, two selected</h2>
-  <p class="lede">Each candidate was reviewed on Clarity, Relevance, Originality, Feasibility and Significance with ResearchAgent's human-induced rubrics, then refined twice. The run-1 column shows the first-round mean before code verification.</p>
+  <h2>Four candidate problems, two selected</h2>
+  <p class="lede">Each candidate was reviewed on Clarity, Relevance, Originality, Feasibility and Significance with ResearchAgent's human-induced rubrics, then refined twice. Scores are those of each candidate's best version.</p>
   <div class="panel scroll"><table id="probTable"></table></div>
   <div class="grid2" id="probCards"></div>
 </section>
@@ -162,19 +157,6 @@ a { color: var(--accent); }
   <div class="panel detail" id="detail" aria-live="polite"><p class="status">Select an idea in the table or the evolution chart to read it here.</p></div>
 </section>
 
-<section id="rate">
-  <span class="eyebrow">Human check of the LLM judge</span>
-  <h2>Rate the ten selected ideas</h2>
-  <p class="lede">ResearchAgent validated its LLM reviewers by measuring agreement with human ratings. Score each selected idea on the same five criteria (1 = lowest, 5 = highest); your ratings are saved to this page and compared with the model's scores below. Teammates can add their own ratings from the same link.</p>
-  <div id="rateStatus" class="status">Connecting to the page's rating store…</div>
-  <div class="grid2" id="rateCards"></div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-    <button class="btn" id="saveBtn" disabled>Save my ratings</button>
-    <button class="btn ghost" id="exportBtn" hidden>Export all ratings (JSON)</button>
-    <span class="status" id="saveMsg"></span>
-  </div>
-  <div class="panel scroll"><h3 style="margin-bottom:8px">Human–model agreement</h3><table id="agreeTable"></table></div>
-</section>
 </main>
 
 <script id="data" type="application/json">__DATA__</script>
@@ -185,17 +167,17 @@ const OPCOL = {combination:"var(--op-combination)", inspiration:"var(--op-inspir
 const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) { if (k === "class") e.className = v; else if (k === "html") e.innerHTML = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } for (const k of kids) if (k != null) e.append(k.nodeType ? k : document.createTextNode(k)); return e; };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const sc = v => `<span class="score s${v}">${v}</span>`;
-const PNAME = {A1: "A1 · Mask-free localisation", B1: "B1 · Per-image scoring"};
+const PNAME = {A1: "A1 · Segmentation adapters from image labels", B1: "B1 · Inductive per-image scoring"};
 const short = id => id.replace(/^(A1|B1)-/, "");
 
 // ---------------------------------------------------------------- overview
 (function () {
   const ev = D.evolution, cand = Object.values(ev.A1.candidates).length + Object.values(ev.B1.candidates).length;
-  const stats = [[D.total_calls, "new LLM calls in this run, all logged"], [D.gaps.length, "limitations (15 + 2 found in code)"], [6, "candidate problems → 2 selected"],
+  const stats = [[D.total_calls, "new LLM calls in this run, all logged"], [D.gaps.length, `limitations (${D.inputs.task2_limitations} from Task 2 + ${D.inputs.code_gaps} found in code)`], [Object.keys(D.problems).length, "candidate problems → 2 selected"],
                  [cand, "ideas generated and evolved"], [ev.A1.comparisons + ev.B1.comparisons, "pairwise judgments"], [10, "ideas selected (top 5 × 2)"]];
   stats.forEach(([n, l]) => document.getElementById("stats").append(el("div", {class: "stat"}, el("b", {}, String(n)), el("span", {}, l))));
-  const st = [["Stage 0", "Gap grouping", `${D.groups.length} groups from 15 limitations`], ["Stage 0b", "Code verification", `${D.evidence.length + D.later_evidence.length} pieces of evidence in MVFA's code`],
-              ["Stage 1", "ResearchAgent", `${D.calls.stage1} calls · 6 problems reviewed and refined`], ["Stage 2", "HypER", `${D.calls.stage2} new calls · ${D.chains.length} chains, 12 seeds`],
+  const st = [["Stage 0", "Gap grouping", `${D.groups.length} groups from ${D.inputs.task2_limitations} limitations`], ["Stage 0b", "Code verification", `${D.evidence.length + D.later_evidence.length} pieces of evidence in MVFA's code`],
+              ["Stage 1", "ResearchAgent", `${D.calls.stage1} calls · ${Object.keys(D.problems).length} problems reviewed and refined`], ["Stage 2", "HypER", `${D.calls.stage2} new calls · ${D.chains.length} chains, 12 seeds`],
               ["Stage 3", "HypoEvolve", `${D.calls.stage3} calls · μ=6, λ=6, G=3`], ["Stage 4", "Ranking", `${D.calls.stage4} calls · 24 reviews + novelty search`]];
   st.forEach(([k, t, n]) => document.getElementById("pipeline").append(el("div", {class: "stage"}, el("span", {class: "k"}, k), el("h3", {}, t), el("span", {class: "n"}, n))));
 })();
@@ -203,13 +185,15 @@ const short = id => id.replace(/^(A1|B1)-/, "");
 // ---------------------------------------------------------------- gaps
 (function () {
   const grp = {}; D.groups.forEach((g, i) => g.members.forEach(m => grp[m] = g.name));
-  const sel = {"Label-efficient adaptation": "A → problem A1", "Score calibration and robust aggregation": "B → problem B1", "Leakage-free generalisation protocol": "C → shared protocol", "Compact normality modelling": "D (candidate source)", "Clinical granularity and scope": "E (not used)"};
+  const sel = {"Label-efficient adaptation": "A → problem A1", "Score calibration and robust aggregation": "B → problem B1", "Leakage-free generalisation protocol": "shared protocol"};
+  const verdictOf = g => { const c = g.code_check; if (!c || c === "None") return ""; if (typeof c === "object") return c.verdict || ""; const m = String(c).match(/verdict['"]?:\s*['"]([^'"]+)/); return m ? m[1] : ""; };
   const t = document.getElementById("gapTable");
   t.innerHTML = "<thead><tr><th>ID</th><th>Limitation</th><th>Group</th><th>Kind</th><th>Codable</th><th>Status</th></tr></thead>";
   const tb = el("tbody");
   D.gaps.forEach(g => {
-    const status = g.change === "new" ? '<span class="pill new">new (code)</span>' : g.change === "corrected" ? '<span class="pill corr">corrected</span>' : g.change === "evidence added" ? '<span class="pill">evidence added</span>' : "";
-    tb.append(el("tr", {html: `<td class="mono">${g.id}</td><td><b>${esc(g.title)}</b><br><span class="status">${esc(g.text.replace(/ ?\[E[0-9E, -]+\]/g, ""))}</span></td><td>${esc(sel[grp[g.id]] || "—")}</td><td>${esc(g.kind || "")}</td><td>${esc(g.codable || "")}</td><td>${status}</td>`}));
+    const v = verdictOf(g);
+    const status = v === "code-only" ? '<span class="pill new">new (code)</span>' : (v === "worse" || v === "corrected") ? `<span class="pill corr">code: ${v}</span>` : v ? `<span class="pill">code: ${v}</span>` : "";
+    tb.append(el("tr", {html: `<td class="mono">${g.id}</td><td><b>${esc(g.title)}</b><br><span class="status">${esc(g.text.replace(/ ?\[E[0-9E, -]+\]/g, ""))}</span></td><td>${esc(sel[grp[g.id]] || grp[g.id] || "ungrouped")}</td><td>${esc(g.kind || "")}</td><td>${esc(g.codable || "")}</td><td>${status}</td>`}));
   });
   t.append(tb);
   const e = document.getElementById("evTable");
@@ -224,7 +208,7 @@ const short = id => id.replace(/^(A1|B1)-/, "");
   const t = document.getElementById("probTable");
   t.innerHTML = `<thead><tr><th>ID</th><th>Group</th>${["Clarity","Relevance","Originality","Feasibility","Significance"].map(c => `<th class="num">${c}</th>`).join("")}<th class="num">Mean by round</th><th></th></tr></thead>`;
   const tb = el("tbody");
-  Object.values(D.problems).sort((a, b) => b.trajectory.at(-1) - a.trajectory.at(-1)).forEach(p => {
+  Object.values(D.problems).sort((a, b) => Math.max(...b.trajectory) - Math.max(...a.trajectory)).forEach(p => {
     tb.append(el("tr", {html: `<td class="mono">${p.id}</td><td>${esc(p.group)}</td>${["Clarity","Relevance","Originality","Feasibility","Significance"].map(c => `<td class="num">${sc(p.scores[c])}</td>`).join("")}<td class="num">${p.trajectory.join(" → ")}</td><td>${p.selected ? '<span class="pill sel">selected</span>' : ""}</td>`}));
   });
   t.append(tb);
@@ -309,7 +293,7 @@ function tabs(hostId, onPick) {
   const lg = document.getElementById("evoLegend");
   [["hyper-seed", "HypER seed"], ["combination", "combination"], ["inspiration", "inspiration"], ["substitution", "substitution"], ["out_of_box", "out-of-box"]].forEach(([k, l]) => lg.append(el("span", {html: `<i style="background:${OPCOL[k]}"></i>${l}`})));
   lg.append(el("span", {html: `<i style="background:transparent;border:2px solid var(--heat)"></i>selected top 5`}));
-  EVO = D.selected_problems.includes("A1") ? "A1" : D.selected_problems[0];
+  EVO = D.selected_problems[0];
   tabs("evoTabs", pid => { EVO = pid; drawEvo(); });
   drawEvo();
 })();
@@ -332,72 +316,6 @@ function drawRank() {
   t.append(tb);
   t.querySelectorAll(".sortb").forEach(b => b.addEventListener("click", () => { SORT = b.dataset.k; drawRank(); }));
 }
-(function () { RANK = D.selected_problems.includes("A1") ? "A1" : D.selected_problems[0]; tabs("rankTabs", pid => { RANK = pid; drawRank(); }); drawRank(); showIdea(RANK, D.ranking[RANK].top5[0], false); })();
+(function () { RANK = D.selected_problems[0]; tabs("rankTabs", pid => { RANK = pid; drawRank(); }); drawRank(); showIdea(RANK, D.ranking[RANK].top5[0], false); })();
 
-// ---------------------------------------------------------------- rating
-const IDEAS = D.selected_problems.flatMap(pid => D.ranking[pid].top5.map(id => [pid, id]));
-const MINE = {};
-function rateCards() {
-  const host = document.getElementById("rateCards"); host.innerHTML = "";
-  IDEAS.forEach(([pid, id]) => {
-    const c = D.evolution[pid].candidates[id];
-    const row = el("div", {class: "rate-row"});
-    CRIT.forEach(k => { const sid = `r-${id}-${k}`; const s = el("select", {id: sid, "aria-label": `${k} for ${c.title}`}, el("option", {value: ""}, "–"), ...[1,2,3,4,5].map(v => el("option", {value: String(v)}, String(v))));
-      if (MINE[id]?.[k]) s.value = String(MINE[id][k]);
-      s.addEventListener("change", () => { MINE[id] = MINE[id] || {}; MINE[id][k] = s.value ? +s.value : null; });
-      row.append(el("label", {for: sid}, k, s)); });
-    host.append(el("div", {class: "panel rate-card"}, el("span", {class: "eyebrow"}, `${PNAME[pid]} · ${short(id)}`), el("button", {style: "all:unset;cursor:pointer;font-family:var(--f-display);font-weight:600", onclick: () => showIdea(pid, id)}, c.title), el("p", {class: "status"}, c.summary), row));
-  });
-}
-function spearman(a, b) {
-  const rk = v => { const idx = v.map((x, i) => [x, i]).sort((p, q) => p[0] - q[0]); const r = Array(v.length); let i = 0; while (i < idx.length) { let j = i; while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++; for (let k = i; k <= j; k++) r[idx[k][1]] = (i + j) / 2 + 1; i = j + 1; } return r; };
-  const ra = rk(a), rb = rk(b), n = a.length, ma = ra.reduce((s, x) => s + x, 0) / n, mb = rb.reduce((s, x) => s + x, 0) / n;
-  let num = 0, da = 0, db = 0; for (let i = 0; i < n; i++) { num += (ra[i] - ma) * (rb[i] - mb); da += (ra[i] - ma) ** 2; db += (rb[i] - mb) ** 2; }
-  return da && db ? num / Math.sqrt(da * db) : null;
-}
-let ALL = [];
-function drawAgree() {
-  const t = document.getElementById("agreeTable");
-  const raters = new Set(ALL.map(r => r.rater));
-  t.innerHTML = `<thead><tr><th>Criterion</th><th class="num">Ratings</th><th class="num">Spearman ρ (human vs model)</th><th class="num">Mean human</th><th class="num">Mean model</th></tr></thead>`;
-  const tb = el("tbody");
-  CRIT.forEach(k => {
-    const h = [], m = [];
-    ALL.forEach(r => { const c = D.evolution[r.idea.slice(0, 2)].candidates[r.idea]; if (r.scores[k] && c?.scores) { h.push(r.scores[k]); m.push(c.scores[k]); } });
-    const rho = h.length >= 3 ? spearman(h, m) : null;
-    const mean = v => v.length ? (v.reduce((s, x) => s + x, 0) / v.length).toFixed(2) : "—";
-    tb.append(el("tr", {html: `<td>${k}</td><td class="num">${h.length}</td><td class="num">${rho == null ? "—" : rho.toFixed(2)}</td><td class="num">${mean(h)}</td><td class="num">${mean(m)}</td>`}));
-  });
-  t.append(tb);
-  t.append(el("caption", {style: "caption-side:bottom;text-align:left;padding-top:8px", class: "status"}, raters.size ? `${raters.size} rater(s). ρ needs at least three rated ideas and some variation in scores.` : "No ratings yet. Ratings you save appear here."));
-}
-rateCards(); drawAgree();
-(async () => {
-  const status = document.getElementById("rateStatus"), save = document.getElementById("saveBtn"), msg = document.getElementById("saveMsg");
-  let db = null, user = null, uid = null;
-  try { [db, user] = await Promise.all([window.claude?.use?.("db") ?? null, window.claude?.use?.("user") ?? null]); } catch (e) { db = null; }
-  if (!db) { status.textContent = "Ratings can be saved only when this page is opened while signed in to Claude. You can still read every idea."; return; }
-  try { uid = user ? await user.id() : null; } catch (e) { uid = null; }
-  if (!uid) { status.textContent = "Sign in to save ratings."; return; }
-  const load = async () => {
-    const snap = await db.collection("ratings").get();
-    ALL = [];
-    snap.docs.forEach(d => { const v = d.data() || {}; Object.entries(v.scores || {}).forEach(([idea, s]) => ALL.push({rater: d.id, idea, scores: s})); if (d.id === uid) Object.assign(MINE, v.scores || {}); });
-    drawAgree();
-  };
-  try { await load(); rateCards(); status.textContent = `Signed in. ${new Set(ALL.map(r => r.rater)).size} rater(s) so far.`; save.disabled = false; }
-  catch (e) { status.textContent = "The rating store is not available right now. Reload the page to try again."; return; }
-  let canWrite = null; try { canWrite = await user.can("data.write"); } catch (e) {}
-  if (canWrite === false) { status.textContent += " You have view access only, so you can read ratings but not save your own."; save.disabled = true; }
-  save.addEventListener("click", async () => {
-    save.disabled = true; msg.textContent = "Saving…";
-    const clean = {}; Object.entries(MINE).forEach(([id, s]) => { const t = {}; CRIT.forEach(k => { if (s?.[k]) t[k] = s[k]; }); if (Object.keys(t).length) clean[id] = t; });
-    try { await db.doc("ratings/" + uid).set({scores: clean, updated: new Date().toISOString()}); await load(); msg.textContent = `Saved ${Object.keys(clean).length} idea(s).`; }
-    catch (e) { msg.textContent = e?.code === "invalid_argument" ? "You don't have permission to save ratings on this page." : "Saving failed. Try again in a moment."; }
-    save.disabled = false;
-  });
-  const dl = await (window.claude?.use?.("downloads") ?? null);
-  if (dl) { const ex = document.getElementById("exportBtn"); ex.hidden = false; ex.addEventListener("click", async () => {
-    try { await dl.save({filename: "ratings.json", data: JSON.stringify(ALL, null, 1)}); msg.textContent = "Export offered. Run: python3 agreement.py ratings.json"; } catch (e) { msg.textContent = "Export was cancelled."; } }); }
-})();
 </script>

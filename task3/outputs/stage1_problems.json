@@ -1,747 +1,637 @@
 {
  "entities": [
-  "zero-shot industrial anomaly detection",
-  "defect type",
-  "reference image",
-  "few-shot industrial anomaly detection",
-  "dinov2",
-  "contrastive language-image pretraining",
-  "distribution shift",
-  "zero-shot anomaly segmentation",
-  "real-iad",
-  "zsas",
-  "text prompt design",
-  "vad",
-  "source domain",
+  "self-supervised learning",
+  "knowledge distillation",
+  "Segment Anything Model",
+  "transfer learning",
+  "image segmentation",
+  "foundation models",
+  "magnetic resonance imaging",
+  "vision transformer",
+  "DINOv2",
   "video anomaly detection",
-  "few-shot classification",
-  "feature matching",
-  "visa benchmark",
-  "normal reference image",
-  "binary anomaly detection",
-  "receiver operating characteristic curve"
+  "attention mechanism",
+  "multimodal large language models",
+  "false positive reduction",
+  "test-time adaptation",
+  "mixture of experts",
+  "multi-class anomaly detection",
+  "variational autoencoder",
+  "cross-modal interaction",
+  "distribution shift",
+  "manufacturing quality control"
  ],
  "related": [
   {
-   "title": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "MedicalCLIP: Anomaly-Detection Domain Generalization with Asymmetric Constraints.",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Graph Interaction Prompt Network for Few-Shot Medical Image Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Domain Adaptation of Attention Heads for Zero-shot Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Generalist Models in Specialized Domains: Evaluating Contrastive Language-image Pre-training for Zero-shot Anomaly Detection in Brain MRI",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "IQE-CLIP: Instance-aware Query Embedding for Zero-/Few-shot Anomaly Detection in Medical Domain",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "MedSAD-CLIP: Supervised CLIP with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AA-CLIP: Enhancing Zero-shot Anomaly Detection via Anomaly-Aware CLIP",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "MediCLIP: Adapting CLIP for Few-shot Medical Image Anomaly Detection",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection",
-   "year": 2023,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Adapting Domain-Aware Knowledge to Vision-Language Model for Zero-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Anomaly-Aware Vision-Language Adapters for Zero-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Parameter-efficient contrastive language-image pre-training (CLIP) adaptation for few-shot anomaly detection in ultra-widefield fundus images",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "LaRP-CLIP: Layer-Aware Refinement with Prototype Guidance for Zero-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Mitigating Source-Domain Dependency for Target-Free Zero-Shot Medical Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Enhancing Medical Anomaly Detection via Text-Adapted Few-Shot Learning with Visual-Language Models",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "SpatioPrompt: Learning Spatial Attention and Dynamic Prompts for Few-Shot Medical Image Anomaly Detection.",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Consistency Margin Adapter for Few-Shot Medical Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "VCF-CLIP: Visual Context-Driven Fine-Grained Prompt Learning for Zero-Shot Anomaly Detection.",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "TunCLIP: Adaptive Multi-Scale Zero-Shot Anomaly Detection via Vision-Language Feature Infiltration and Semantic Enhancement",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "CLIP-Adapter: Better Vision-Language Models with Feature Adapters",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation",
-   "year": 2023,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "SD-MAD: Sign-Driven Few-shot Multi-Anomaly Detection in Medical Images",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Exploring Zero-Shot Anomaly Detection with CLIP in Medical Imaging: Are We There Yet?",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "EntroAD: Structural Entropy-Guided Prompt Adaptation for Zero-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "On the Problem of Consistent Anomalies in Zero-Shot Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Multi-level Feature Adaptation and Embeddings Alignment for Zero-shot Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AdaCLIP: Adapting CLIP with Hybrid Learnable Prompts for Zero-Shot Anomaly Detection",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AFR-CLIP: Enhancing Zero-Shot Industrial Anomaly Detection with Stateless-to-Stateful Anomaly Feature Rectification",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "GenCLIP: Generalizing CLIP Prompts for Zero-shot Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "H2VLR: Heterogeneous Hypergraph Vision-Language Reasoning for Few-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Zero-Shot Anomaly Detection with Dual-Branch Prompt Selection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AdaptCLIP: Adapting CLIP for Universal Visual Anomaly Detection",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "AF-CLIP: Zero-Shot Anomaly Detection via Anomaly-Focused CLIP Adaptation",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Deco-CLIP: Dual-Branch Feature Decoupling CLIP for Fine-Grained Zero-Shot Medical Image Analysis",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "DA-CLIP: Mitigating Granularity Mismatch in Zero-Shot Anomaly Detection via Decoupled Text-Visual Alignment",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "CoPS: Conditional Prompt Synthesis for Zero-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
+   "title": "Deep Learning for Medical Anomaly Detection \u2013 A Survey",
+   "year": 2021,
+   "source": "task1-v6",
    "similarity": null
   },
   {
    "title": "DenseCLIP: Language-Guided Dense Prediction with Context-Aware Prompting",
    "year": 2022,
-   "source": "qualsg",
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Proxy-Bridged Image Reconstruction Network for Anomaly Detection in Medical Images",
+   "title": "MedCLIP: Contrastive Learning from Unpaired Medical Images and Text",
    "year": 2022,
-   "source": "qualsg",
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Core-Periphery Multi-Modality Feature Alignment for Zero-Shot Medical Image Analysis.",
-   "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Notice of Removal: Multiresolution Knowledge Distillation for Anomaly Detection",
-   "year": 2021,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "CPLIP: Zero-Shot Learning for Histopathology with Comprehensive Vision-Language Alignment",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Self-supervised Pseudo Multi-class Pre-training for Unsupervised Anomaly Detection and Segmentation in Medical Images",
-   "year": 2021,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Zero/few-shot anomaly localisation using language prompts",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "MedP-CLIP: Medical CLIP with Region-Aware Prompt Integration",
-   "year": 2026,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "How Does Diverse Interpretability of Textual Prompts Impact Medical Vision-Language Zero-Shot Tasks?",
-   "year": 2024,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "BMAD: Benchmarks for Medical Anomaly Detection",
+   "title": "Task Residual for Tuning Vision-Language Models",
    "year": 2023,
-   "source": "qualsg",
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Learning to Prompt for Vision-Language Models",
+   "year": 2022,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "CLIP-Adapter: Better Vision-Language Models with Feature Adapters",
+   "year": 2023,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Fine-Grained Abnormality Prompt Learning for Zero-Shot Anomaly Detection",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "CLIP in Medical Imaging: A Survey",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Diffusion Models for Medical Anomaly Detection",
+   "year": 2022,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "A Survey on Visual Anomaly Detection: Challenge, Approach, and Prospect",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation",
+   "year": 2023,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Few-Shot Domain-Adaptive Anomaly Detection for Cross-Site Brain Images",
+   "year": 2021,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "AFSC: Adaptive Fourier Space Compression for Anomaly Detection",
+   "year": 2022,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Towards Total Recall in Industrial Anomaly Detection",
+   "year": 2021,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "GraphAdapter: Tuning Vision-Language Models With Dual Knowledge Graph",
+   "year": 2023,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Domain Adaptation of Attention Heads for Zero-shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Training-Free Zero-Shot Anomaly Detection in 3D Brain MRI with 2D Foundation Models",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Enhancing Medical Anomaly Detection via Text-Adapted Few-Shot Learning with Visual-Language Models",
+   "year": 2026,
+   "source": "task1-v6",
    "similarity": null
   },
   {
    "title": "Unsupervised Anomaly Segmentation using Image-Semantic Cycle Translation",
    "year": 2021,
-   "source": "qualsg",
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Few-Shot and Zero-Shot Learning for MRI Brain Tumor Classification Using CLIP and Vision Transformers.",
+   "title": "MediCLIP: Adapting CLIP for Few-shot Medical Image Anomaly Detection",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "IQE-CLIP: Instance-Aware Query Embedding for Zero-/Few-Shot Anomaly Detection in Medical Domain",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "AnomalyGPT: Detecting Industrial Anomalies Using Large Vision-Language Models",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "BMAD: Benchmarks for Medical Anomaly Detection",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "MVTec AD \u2014 A Comprehensive Real-World Dataset for Unsupervised Anomaly Detection",
+   "year": 2019,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Proxy-Bridged Image Reconstruction Network for Anomaly Detection in Medical Images",
+   "year": 2021,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "FiLo++: Zero-/Few-Shot Anomaly Detection by Fused Fine-Grained Descriptions and Deformable Localization",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
    "year": 2025,
-   "source": "qualsg",
-   "similarity": null
-  },
-  {
-   "title": "Dual-distribution discrepancy with self-supervised refinement for anomaly detection in medical images",
-   "year": 2022,
-   "source": "qualsg",
+   "source": "task1-v6",
    "similarity": null
   },
   {
    "title": "CLIP-based Chest X-ray Anomaly Detection",
    "year": 2025,
-   "source": "qualsg",
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
+   "title": "MedicalCLIP: Anomaly-Detection Domain Generalization with Asymmetric Constraints",
+   "year": 2024,
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Language-Guided Segmentation of Medical Images: A Review of Foundation Models.",
-   "year": 2026,
-   "source": "qualsg",
+   "title": "LesionPaste: One-Shot Anomaly Detection for Medical Images",
+   "year": 2022,
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "Image-conditioned latent rectified flow models for 3D medical anomaly localisation.",
-   "year": 2026,
-   "source": "qualsg",
+   "title": "Dual-distribution discrepancy with self-supervised refinement for anomaly detection in medical images",
+   "year": 2023,
+   "source": "task1-v6",
    "similarity": null
   },
   {
-   "title": "MegAD: An Expert in Meta-Learning Guided Few-Shot Anomaly Detection",
-   "year": 2026,
-   "source": "qualsg",
+   "title": "Prompt as Knowledge Bank: Boost Vision-language model via Structural Representation for zero-shot medical detection",
+   "year": 2025,
+   "source": "task1-v6",
    "similarity": null
+  },
+  {
+   "title": "OV-AS: Zero-Shot/Few-Shot Open-Vocabulary Anomaly Segmentation Based on CLIP",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Multi-Scale Memory Comparison for Zero-/Few-Shot Anomaly Detection",
+   "year": 2023,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "FusionCLIP-AD: Hierarchical Global-Local Adaptation with Learnable Embeddings for Robust Medical Image Anomaly Detection",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Adapting Spatial Organization Consistency for Cross-Modal Medical Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Coreset Based Medical Image Anomaly Detection and Segmentation",
+   "year": 2024,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "MedSAD-CLIP: Supervised CLIP with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Dual Anchors, Do It Better: Hierarchical Group Merging for Zero-Shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Parameter-efficient contrastive language-image pre-training (CLIP) adaptation for few-shot anomaly detection in ultra-widefield fundus images",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Graph Interaction Prompt Network for Few-Shot Medical Image Anomaly Detection",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Res$^2$CLIP: Few-Shot Generalist Anomaly Detection with Residual-to-Residual Alignment",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "A Contrastive Learning-Guided Confident Meta-Learning for Zero Shot Anomaly Detection",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "VD-DeepStack: Bridging Visual Comparison and Language Reasoning for Few-Shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Co-Evolutionary Prompt Optimization with Cross-Category Transfer for Zero-Shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Registration based Few-Shot Anomaly Detection",
+   "year": 2022,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Mitigating Source-Domain Dependency for Target-Free Zero-Shot Medical Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "VFAD: Variational Semantic Prompting Meets Frequency-Adaptive Representation Learning for Zero-Shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Multi-Scale Feature and Prompt Learning for Few-Shot Medical Image Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Consistency Margin Adapter for Few-Shot Medical Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Adapting Vision-Language Models by Pseudo Anomalies Screening for One-Shot Medical Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "QueCo: Query-conditioned consensus over unverified evidence for training-free zero-shot anomaly detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "LaRP-CLIP: Layer-Aware Refinement with Prototype Guidance for Zero-Shot Anomaly Detection",
+   "year": 2026,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+   "year": 2025,
+   "source": "task1-v6",
+   "similarity": null
+  },
+  {
+   "title": "Anomaly-aware prompt learning and multi-scale feature adaptation for zero-shot anomaly detection",
+   "year": 2026,
+   "source": "citing:task1",
+   "similarity": 0.224
   },
   {
    "title": "HieClip: Hierarchical CLIP with Explicit Alignment for Zero-Shot Anomaly Detection",
    "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.219
+   "source": "citing:s2+task1",
+   "similarity": 0.216
   },
   {
    "title": "Transferring Vision-Language Models for Zero-Shot Anomaly Detection via Adaptive Feature Fusion",
    "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.2
+   "source": "citing:s2+task1",
+   "similarity": 0.199
   },
   {
    "title": "ClipMPCAD: Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion",
    "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.193
-  },
-  {
-   "title": "Zero-Shot Anomaly Detection in Medical Images Using Conditional Denoising Diffusion Models and Data Augmentation",
-   "year": 2024,
-   "source": "s2-citing",
-   "similarity": 0.186
+   "source": "citing:s2+task1",
+   "similarity": 0.191
   },
   {
    "title": "Hybrid Semantic Alignment with Layer-Wise Residual Adaptation for Multi-Granular Industrial Anomaly Detection",
    "year": 2026,
-   "source": "s2-citing",
-   "similarity": 0.184
+   "source": "citing:s2+task1",
+   "similarity": 0.185
+  },
+  {
+   "title": "Normal-Variation-Aware Cross-Domain Zero-Shot Anomaly Detection via Multi-Prompt Learning With CLIP",
+   "year": 2026,
+   "source": "citing:task1",
+   "similarity": 0.182
+  },
+  {
+   "title": "Zero-Shot Anomaly Detection in Medical Images Using Conditional Denoising Diffusion Models and Data Augmentation",
+   "year": 2024,
+   "source": "citing:s2+task1",
+   "similarity": 0.179
+  },
+  {
+   "title": "DDE-CLIP: Detail-Guided Dual-Modal Enhancement for Zero-Shot Anomaly Detection",
+   "year": 2025,
+   "source": "citing:task1",
+   "similarity": 0.177
   },
   {
    "title": "AULoRA: Anomaly Understanding With Low-Rank Adaptation for Zero-Shot Anomaly Detection",
    "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.17
+   "source": "citing:s2+task1",
+   "similarity": 0.172
   },
   {
    "title": "Advancing Generalizable Tumor Segmentation with Anomaly-Aware Open-Vocabulary Attention Maps and Frozen Foundation Diffusion Models",
    "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.169
-  },
-  {
-   "title": "Local Enhancement and Semantic Alignment for Zero-Shot Anomaly Detection",
-   "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.166
-  },
-  {
-   "title": "One-to-Normal: Anomaly Personalization for Few-shot Anomaly Detection",
-   "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.166
-  },
-  {
-   "title": "TAGS: 3D Tumor-Adaptive Guidance for SAM",
-   "year": 2025,
-   "source": "s2-citing",
-   "similarity": 0.165
+   "source": "citing:s2+task1",
+   "similarity": 0.17
   }
  ],
  "candidates": [
-  {
-   "id": "A1",
-   "group": "Label-efficient adaptation",
-   "versions": [
-    {
-     "problem": "Can MVFA's segmentation adapters be trained without any pixel masks, using only image-level normal/abnormal labels on all six BMAD source datasets, by replacing the Dice + Focal targets with pseudo-masks derived from the frozen CLIP patch features (patches of an abnormal training image that have no close neighbour among the patches of normal images of the same dataset), and how much of the zero-shot pixel-level AUROC and Dice of the mask-supervised MVFA does this recover on a held-out modality?",
-     "rationale": "MVFA's anomaly maps come only from the segmentation adapters, which are trained with Dice and Focal losses on BrainMRI, LiverCT and RESC masks (G3); the three image-only datasets (OCT17, ChestXray, HIS) never contribute localisation supervision, and the few-shot setting additionally assumes K masked abnormal images (G4). The related work shows that weaker signals can supervise localisation: CoDeGraph [30] filters consistent anomalies with batch-level patch graphs and shows that the resulting pseudo-masks can supervise prompt-driven vision-language models; DDAD [54] exploits unlabelled abnormal images alongside normal ones; MediCLIP [10] and SpatioPrompt [20] adapt CLIP from normal images with synthetic anomalies; MedSAD-CLIP [8] instead assumes real masks. None of these tests whether MVFA's multi-level residual adapters, the target method's own component, can be trained from image-level labels alone. The question is fine-grained (one loss target of one branch), feasible on BMAD with one GPU because pseudo-masks are computed once with frozen features, and measurable under the shared protocol: pixel AUROC and Dice on BrainMRI, LiverCT and RESC when held out, compared with the re-run mask-supervised MVFA, plus the effect of adding the three mask-free datasets as localisation sources. A positive answer removes MVFA's dependence on dense expert masks; a negative one quantifies how much masks are worth.",
-     "reviews": {
-      "Clarity": {
-       "review": "The component (segmentation-adapter targets), the supervision (image-level labels on six sources), the pseudo-mask rule and the outcome (fraction of mask-supervised pixel AUROC and Dice recovered) are all named. The pseudo-mask rule leaves its threshold ('no close neighbour') and the feature level it is computed on undefined.",
-       "feedback": "State the pseudo-mask rule operationally: which CLIP level, which distance, and how the threshold is chosen without target labels (for example a percentile of normal-to-normal distances on source validation data).",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Directly addresses G3, the dependence of localisation on dense masks from three datasets, and uses the three image-only BMAD sources that MVFA currently cannot use for localisation. It builds on CoDeGraph's pseudo-mask supervision and the weak-supervision line in the review set.",
-       "feedback": "Make the link to G4 explicit only if the same mechanism is also tested in the few-shot setting; otherwise keep the focus on zero-shot source training.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "Pseudo-masks from patch-level nearest-neighbour discrepancy are known (PatchCore-style scoring, CoDeGraph uses batch-level graphs to supervise prompt-driven VLMs), and weakly supervised localisation is a mature area. The new element is the question of whether MVFA's multi-level adapters can be trained this way and what the image-only datasets contribute; that is a useful but moderate step.",
-       "feedback": "Sharpen what is new relative to CoDeGraph: for example, that the pseudo-masks come from labelled abnormal images rather than unlabeled batches, so image-level labels can veto false positives.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Pseudo-masks are computed once with frozen features and then replace the mask loader; training cost equals MVFA's. The risk is pseudo-mask quality on low-contrast modalities (ChestXray, HIS), which could make the comparison uninformative.",
-       "feedback": "Plan a pseudo-mask quality check on the three masked datasets (pseudo vs true mask IoU) before training, so a negative result can be attributed.",
-       "rating": 4
-      },
-      "Significance": {
-       "review": "Removing the need for dense masks would let MVFA use any image-level labelled archive and would show how much expert annotation actually buys; either outcome is informative for clinical adoption.",
-       "feedback": "Report results as a label-cost curve (no masks, masks on one dataset, masks on three) to make the significance concrete.",
-       "rating": 4
-      }
-     },
-     "mean": 4
-    },
-    {
-     "problem": "Can MVFA's segmentation adapters be trained without pixel masks, using pseudo-masks from labelled abnormal source images only (a patch of an abnormal image is marked anomalous when its frozen CLIP level-4 feature lies farther from every patch of the same dataset's normal images than the 99th percentile of normal-to-normal nearest-neighbour distances on source validation data), and how much of the zero-shot pixel AUROC and Dice of the mask-supervised MVFA does this recover on a held-out modality, as masks are removed from zero, one, or all three masked source datasets?",
-     "rationale": "MVFA's anomaly maps come only from the segmentation adapters, which are trained with Dice and Focal losses on masks of BrainMRI, LiverCT and RESC (G3); the three image-only datasets (OCT17, ChestXray, HIS) never supervise localisation. The question is what dense expert masks actually buy. Unlike CoDeGraph [30], which derives pseudo-masks from unlabelled batches and must first filter consistent anomalies, here image-level labels veto false positives: pseudo-masks are drawn only from images known to be abnormal and are defined against normal images of the same dataset, with a threshold fixed on source data. DDAD [54], MediCLIP [10] and SpatioPrompt [20] use unlabelled or synthetic signals in other frameworks; none tests MVFA's own multi-level adapters. The answer is reported as a label-cost curve (masks on three, one or zero sources, plus the three image-only datasets added as pseudo-mask sources), and pseudo-mask quality is first measured against true masks on the three masked datasets (IoU, pixel AUROC) so that a negative result can be attributed. One loss target of one branch changes; pseudo-masks are computed once with frozen features, so the cost equals MVFA's training under the shared leave-one-modality-out protocol.",
-     "reviews": {
-      "Clarity": {
-       "review": "The pseudo-mask rule is now operational (feature level, distance, threshold fixed on source validation data), and the outcome is a precise label-cost curve.",
-       "feedback": "Keep the threshold percentile as a reported hyper-parameter with a small sensitivity check.",
-       "rating": 5
-      },
-      "Relevance": {
-       "review": "Directly addresses G3 and makes use of the three image-only BMAD sources; the zero-shot focus is now explicit.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "Using image-level labels to restrict pseudo-masks to known abnormal images is a sensible distinction from CoDeGraph's unlabelled batches, but nearest-neighbour pseudo-masks and weakly supervised localisation remain established ideas; the main novelty is the question asked of MVFA.",
-       "feedback": "The originality would rise if the pseudo-masks were refined by MVFA itself during training (self-training) rather than fixed, but that would widen the problem.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Computationally cheap and well planned, with an upfront pseudo-mask quality check. Pseudo-mask quality on ChestXray and HIS remains a risk for the image-only extension.",
-       "feedback": "Treat the image-only extension as secondary so the main result does not depend on it.",
-       "rating": 4
-      },
-      "Significance": {
-       "review": "A label-cost curve would directly tell practitioners how much expert annotation MVFA needs; useful for the field regardless of outcome.",
-       "feedback": "None.",
-       "rating": 4
-      }
-     },
-     "mean": 4.2
-    },
-    {
-     "problem": "How much of the zero-shot localisation quality of MVFA (pixel AUROC and Dice on a held-out modality) is retained when its segmentation adapters are trained without pixel masks, using pseudo-masks drawn only from labelled abnormal source images (a patch is anomalous when its frozen CLIP level-4 feature is farther from every normal patch of the same dataset than the 99th percentile of normal-to-normal nearest-neighbour distances on source validation data), as masks are removed from zero, one, or all three masked source datasets?",
-     "rationale": "MVFA's anomaly maps come only from segmentation adapters trained with Dice and Focal losses on masks of BrainMRI, LiverCT and RESC (G3), so the method cannot learn localisation from image-level labelled archives, and the value of dense expert masks is unknown. Unlike CoDeGraph [30], which builds pseudo-masks from unlabelled batches and must filter consistent anomalies, image-level labels here restrict pseudo-masks to images known to be abnormal and define them against normal images of the same dataset, with a threshold fixed on source data only (its percentile is reported with a small sensitivity check). DDAD [54], MediCLIP [10] and SpatioPrompt [20] use unlabelled or synthetic signals in other frameworks; none tests MVFA's multi-level adapters. The primary result is a label-cost curve on the three masked datasets, preceded by a pseudo-mask quality check against true masks so that a negative result can be attributed; adding the image-only datasets (OCT17, ChestXray, HIS) as pseudo-mask sources is a secondary analysis. One loss target of one branch changes, pseudo-masks are computed once, and training cost equals MVFA's under the shared protocol.",
-     "reviews": {
-      "Clarity": {
-       "review": "One question with an operational pseudo-mask rule, a threshold fixed on source data, and a precisely defined primary outcome (label-cost curve) with a secondary analysis clearly separated.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Relevance": {
-       "review": "Directly addresses G3, the dependence of MVFA's localisation on dense masks.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "The label-restricted pseudo-mask construction is a reasonable twist on known nearest-neighbour pseudo-labelling; the question asked of MVFA is new but the mechanism is not.",
-       "feedback": "None at this stage.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Pseudo-masks computed once; training cost equals MVFA's; the risky image-only extension is now secondary, and the quality check makes negative results interpretable.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Tells practitioners how much expert annotation MVFA needs and whether image-level archives suffice.",
-       "feedback": "None.",
-       "rating": 4
-      }
-     },
-     "mean": 4.4
-    }
-   ],
-   "best_version": 2,
-   "best_mean": 4.4
-  },
   {
    "id": "B1",
    "group": "Score calibration and robust aggregation",
    "versions": [
     {
-     "problem": "Can the transductive test-set min-max normalisation, fixed 0.5 fusion weight and max-over-pixels image score of MVFA's few-shot inference be replaced by a per-image score computed only from the K-shot support images and source-modality validation data, such that image-level AUROC stays within 1 point of the re-run baseline while the scores become threshold-ready (sensitivity at 95% specificity, expected calibration error) and invariant to the composition of the test set (prevalence and outlier resampling)?",
-     "rationale": "The released code normalises each branch with the minimum and maximum over the entire test set before fusing them with weight 0.5 (G8), and the image AUC on masked datasets is the maximum of the fused map, so one spurious pixel decides the label (G9); only threshold-free AUC is reported (G11). A deployed system scores one image at a time, so the published numbers are not those of a usable detector. Recent CLIP detectors in the review set treat scoring and fusion as a design problem of its own: LaRP-CLIP [17] criticises fixed fusion strategies and global-similarity image scores, HeadCLIP [4] proposes a joint anomaly score that uses pixel-level information, and CANOR [55] shows that a handful of calibration scalars and a principled aggregation rule improve CLIP scores without retraining the encoder. None addresses the transductive normalisation that MVFA's results depend on. The problem concerns one component (the inference-time scoring of the few-shot branch), needs no retraining, runs in hours on one GPU, and has measurable outcomes: AUROC change, sensitivity at fixed specificity, ECE, and the variance of an image's score when the rest of the test set is resampled.",
+     "problem": "In MVFA's few-shot inference, the released code min-max normalises the zero-shot (text) branch and the few-shot (memory-bank) branch with the minimum and maximum over the entire test set and adds them with a fixed weight of 0.5; the image score is then the maximum of the fused pixel map. The score of one image, and therefore the reported AUROC, depends on which other images are in the test set, and the scorer cannot be applied to a single incoming image. Can this transductive normalisation be replaced by an inductive, per-image one that normalises each branch with statistics computed only from the K normal support images (leave-one-out scores of each support against the remaining supports' memory bank and against the text anchors), keeping the fusion weight and the max pooling unchanged, and at what cost in image-level and pixel-level AUROC? Outcomes per held-out BMAD dataset and K in {2, 4, 8, 16}: (i) the spread of the original method's AUROC across random test subsets and at shifted prevalence (10% and 50% abnormal), (ii) image- and pixel-level AUROC of inductive versus transductive normalisation, and (iii) sensitivity at 95% specificity and expected calibration error at a threshold fixed from the support scores alone.",
+     "rationale": "The code check turned L10 into a sharper limitation (C1): the fusion is computed with test-set extremes, which makes the method non-deployable on a stream of images and makes its numbers depend on test-set composition; L8 adds that only threshold-free AUROC is reported, so this dependence is invisible. Related work changes representations, prompts and fusion layers (LaRP-CLIP's adaptive fusion [57], HeadCLIP's joint score [17], ClipMPCAD [62]) but evaluates with the same AUROC; QueCo [56] goes further and builds its reference from the unlabelled test set itself, while CANOR [30] shows that a handful of calibration scalars can be learnt cheaply for a frozen CLIP. MVFA already loads K normal support images per modality but never uses them for normalisation, so an inductive normaliser needs no new data and no retraining: the change is confined to the scoring code (test_few.py) and runs on the released checkpoints retrained under the shared protocol. Keeping the pooling fixed isolates one component; the pooling question (L38, C3) can then be studied separately on top of a per-image score.",
      "reviews": {
       "Clarity": {
-       "review": "The three parts of the scoring pipeline that are replaced (test-set min-max, fixed 0.5 weight, max pooling) and the measurable criteria are precise. Bundling three changes makes it less clear which one drives any effect.",
-       "feedback": "Keep one problem but require an ablation order: normalisation first, then fusion weight, then aggregation.",
+       "review": "The defect (test-set min-max normalisation before the 0.5 fusion) and the inductive replacement are precisely described, pooling and fusion weight are explicitly held fixed, and the outcomes are concrete. Three outcomes are bundled, however, and the leave-one-out statistic is ambiguous: it is not said whether min and max, or robust quantiles, of the support scores are used.",
+       "feedback": "Make the inductive normaliser the primary question and the test-set dependence analysis its motivating measurement; specify the statistic (e.g., mean and standard deviation, or the 1st and 99th percentiles, of leave-one-out support scores).",
        "rating": 4
       },
       "Relevance": {
-       "review": "Directly addresses G8 (transductive normalisation verified in the code), G9 (max-pixel image score) and G11 (no thresholded metrics). Every published few-shot number of MVFA depends on the component in question.",
-       "feedback": "None.",
+       "review": "Highly relevant: the code check (C1, L10) shows that MVFA's reported few-shot AUROCs depend on test-set extremes and that the method cannot score single images, which matters for both the validity of the published comparison and deployment.",
+       "feedback": "Mention whether the zero-shot evaluation script uses the same normalisation, which would extend relevance to the zero-shot tables.",
        "rating": 5
       },
       "Originality": {
-       "review": "Inductive score normalisation with validation statistics is standard practice in anomaly-detection tooling, and calibration of CLIP scores appears in CANOR. What is new is identifying that MVFA's reported results rely on transductive normalisation and measuring the deployment gap, including invariance to test-set composition.",
-       "feedback": "Emphasise the invariance test (re-scoring an image under resampled test sets) as the novel measurement.",
+       "review": "Quantifying how a reported AUROC depends on transductive normalisation is uncommon in the CLIP anomaly-detection literature, and using the support set as the reference is a sensible, simple design. Calibration from normal references is, however, standard in classical anomaly detection, so the method itself is not new.",
+       "feedback": "Position the work as an evaluation-validity study with a simple inductive fix rather than as a new fusion method.",
        "rating": 3
       },
       "Feasibility": {
-       "review": "Inference-only: it reuses trained checkpoints and needs a few hours on one GPU.",
-       "feedback": "None.",
-       "rating": 5
+       "review": "Inference-only on retrained checkpoints, confined to test_few.py, with low compute. The weak point is K = 2: leave-one-out scores give two values per branch, so min-max statistics are degenerate and percentiles undefined.",
+       "feedback": "Use pixel-level leave-one-out scores (all patches of the supports) rather than image-level ones, which gives thousands of values even at K = 2.",
+       "rating": 4
       },
       "Significance": {
-       "review": "Turns MVFA into a detector that can score one image at a time and reports thresholded clinical metrics; if AUROC drops, it also corrects the published comparison.",
-       "feedback": "Report the per-image score shift as a headline number; it is what a deploying team needs.",
+       "review": "A per-image score with a threshold fixed from support images is the deployment property that AUROC hides; showing how much the published numbers depend on test-set composition would also change how future CLIP-based methods are evaluated on BMAD.",
+       "feedback": "Report results so that other methods can adopt the inductive normaliser as an evaluation standard.",
        "rating": 4
-      }
-     },
-     "mean": 4.2
-    },
-    {
-     "problem": "How far do MVFA's published few-shot results depend on transductive test-set min-max normalisation, and can an inductive per-image score, in which each branch is standardised with statistics of the K normal support images and source-validation data, recover image AUROC within 1 point while making each image's score invariant to the rest of the test set? Changes are evaluated in a fixed order: normalisation first, then fusion weight, then image-level aggregation, with sensitivity at 95% specificity and expected calibration error reported alongside AUROC.",
-     "rationale": "The released code normalises each branch with the minimum and maximum over the entire test set before fusing with weight 0.5 (G8), takes the image label from the maximum of the fused map (G9), and reports only AUC (G11). A deployed detector scores one image at a time, so the published numbers are not those of a usable system, and the size of this gap has never been measured. Inductive normalisation with validation statistics is common in anomaly-detection tooling, and CANOR [55] calibrates CLIP scores with a handful of scalars, but no medical CLIP detector in the review set (LaRP-CLIP [17], HeadCLIP [4]) measures the effect of transductive normalisation on reported results. The headline measurement is new: the shift of an individual image's score when the rest of the test set is resampled (prevalence 10-50%, with and without outliers), for the original and the inductive pipeline. The ordered ablation attributes any change to one component at a time. The study is inference-only on retrained checkpoints and takes hours on one GPU.",
-     "reviews": {
-      "Clarity": {
-       "review": "The ordered ablation and the invariance measurement make the study well defined. The statement is long and contains two questions (dependence on transductive normalisation and the inductive replacement).",
-       "feedback": "Lead with the single question (the inductive replacement) and present the dependence measurement as its baseline.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G8, G9 and G11 directly, on the component every published few-shot number of MVFA depends on.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "The invariance measurement is a new and useful diagnostic for medical CLIP detectors, but inductive normalisation and calibration are established techniques.",
-       "feedback": "None needed; the measurement is the contribution.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Inference-only on trained checkpoints.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Quantifies a deployment gap in a widely cited method and supplies thresholded metrics that clinical readers need.",
-       "feedback": "None.",
-       "rating": 4
-      }
-     },
-     "mean": 4.2
-    },
-    {
-     "problem": "Can MVFA's few-shot inference be made inductive, scoring each image only with statistics of the K normal support images and source-validation data instead of test-set min-max normalisation, while keeping image AUROC within 1 point of the re-run transductive baseline and making each image's score invariant to the composition of the rest of the test set (prevalence 10-50%, with and without outliers)? The replacement is evaluated component by component (normalisation, then fusion weight, then image-level aggregation), with sensitivity at 95% specificity and expected calibration error reported alongside AUROC.",
-     "rationale": "The released code min-max normalises each branch over the entire test set before fusing with weight 0.5 (G8), takes the image label from the maximum of the fused map (G9), and reports only AUC (G11). A deployed detector scores one image at a time, so the published numbers are not those of a usable system, and the size of the gap has not been measured. Inductive normalisation with validation statistics is common in anomaly-detection tooling and CANOR [55] calibrates CLIP scores with a few scalars, but no medical CLIP detector in the review set (LaRP-CLIP [17], HeadCLIP [4]) measures how transductive normalisation affects reported results. The headline measurement, the shift of an individual image's score when the rest of the test set is resampled, is a new diagnostic for this family of methods, and the transductive baseline's own shift is its reference. The study is inference-only on retrained checkpoints and takes hours on one GPU.",
-     "reviews": {
-      "Clarity": {
-       "review": "The lead question is now clear, and the component-wise evaluation is specified. The statement remains long and carries several metrics and resampling settings in one sentence.",
-       "feedback": "Move the resampling settings into the rationale to keep the problem statement short.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G8, G9 and G11 directly, on the scoring component behind all published few-shot results.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "The score-invariance diagnostic is new for medical CLIP detectors; inductive normalisation itself is established.",
-       "feedback": "None.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Inference-only on trained checkpoints.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Quantifies the deployment gap of a widely cited method and adds clinically interpretable metrics.",
-       "feedback": "None.",
-       "rating": 4
-      }
-     },
-     "mean": 4.2
-    }
-   ],
-   "best_version": 2,
-   "best_mean": 4.2
-  },
-  {
-   "id": "A2",
-   "group": "Label-efficient adaptation",
-   "versions": [
-    {
-     "problem": "In MVFA's few-shot setting, can the K labelled abnormal support images with pixel masks be dropped entirely, adapting the residual adapters per target modality from the K normal support images alone with synthesised lesions (patch pasting and intensity-perturbed blobs whose synthetic masks supervise the Dice + Focal losses), and how much of the image- and pixel-level AUROC of the standard K-normal + K-masked-abnormal protocol does this normal-only variant retain for K in {2, 4, 8, 16}?",
-     "rationale": "The released code defines 'K-shot' as K normal plus K abnormal images with masks from BMAD's valid split (G4), so the paper's few-shot numbers assume the expensive part of clinical labelling, while a clinic adopting a new modality usually has only normal studies at hand; the segmentation branch has no other supervision route (G3). The review set shows that normal-only adaptation of CLIP is viable in other frameworks: MediCLIP [10] fine-tunes CLIP with medical anomaly synthesis from few normal images, SpatioPrompt [20] studies the normal-only few-shot setting explicitly, Fed-LoRA [56] and the UWF-fundus adapter [15] synthesise abnormal exemplars, and AnomalyUWF reports strong results from only 32 training pairs. None of these measures what MVFA's multi-level adapters lose when the abnormal support set is removed. The problem changes one input of one stage (the support set of the few-shot fine-tuning), needs only the public code and BMAD, and has a direct measurable outcome: the fraction of K+K performance retained per modality and K, with 3 support draws under the shared protocol.",
-     "reviews": {
-      "Clarity": {
-       "review": "Clear setting (few-shot, K in 2-16), clear change (drop abnormal masked supports, add synthesised lesions) and clear outcome (fraction of K+K AUROC retained). The synthesis recipe is described only loosely.",
-       "feedback": "Fix the synthesis families and their parameters in the problem, or state that they follow MediCLIP's published recipe.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Targets G4 directly: the few-shot protocol's hidden reliance on masked abnormal images is the main gap between MVFA's claims and clinical few-shot reality.",
-       "feedback": "Mention that the same 3-draw protocol answers the single-draw part of G4.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "Normal-only few-shot adaptation of CLIP with anomaly synthesis is exactly what MediCLIP and SpatioPrompt study; the problem transfers their setting to MVFA's adapters. The contribution is an ablation of MVFA's protocol rather than a new challenge.",
-       "feedback": "Add a distinctive angle, for example whether synthetic supervision should be applied only to the segmentation branch or to both branches, or how synthesis interacts with MVFA's zero-shot pre-training.",
-       "rating": 2
-      },
-      "Feasibility": {
-       "review": "Few-shot fine-tuning on K images is minutes per run; synthesis is cheap; all comparisons use public code and data.",
-       "feedback": "None beyond fixing the synthesis recipe.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Quantifying the retained performance is practically useful, but the expected result (synthesis recovers part of the gap) is predictable from MediCLIP and SpatioPrompt.",
-       "feedback": "Explain what decision the result would change, e.g. whether clinics need any annotated abnormal studies at all.",
-       "rating": 3
-      }
-     },
-     "mean": 3.8
-    },
-    {
-     "problem": "When MVFA's few-shot adaptation receives only K normal support images (no abnormal images, no masks), should synthesised lesions supervise only the segmentation adapters, only the detection adapters, or both, and how much of the image- and pixel-level AUROC of the standard K-normal + K-masked-abnormal protocol does the best normal-only variant retain for K in {2, 4, 8, 16} over three support draws?",
-     "rationale": "The released code defines 'K-shot' as K normal plus K abnormal images with masks (G4), so MVFA's few-shot numbers assume the expensive part of clinical labelling, and the segmentation branch has no other route to supervision (G3). MediCLIP [10] and SpatioPrompt [20] show that CLIP can be adapted from normal images with anomaly synthesis, but in single-branch designs; MVFA separates detection and segmentation adapters at four levels, and synthetic lesions are known to transfer imperfectly to real pathology, so which branch should consume synthetic supervision is an open design question specific to the target method. Synthesis follows MediCLIP's published recipe (fixed families and parameters), so the only variable is where the synthetic supervision is applied. The outcome answers a practical question, whether a clinic needs any annotated abnormal studies to adapt MVFA, and the three-draw protocol also answers the single-draw part of G4. Few-shot fine-tuning takes minutes per run on one GPU.",
-     "reviews": {
-      "Clarity": {
-       "review": "The branch question and the fixed synthesis recipe make the problem well defined; the outcome is clear. The problem statement still mixes two questions (which branch, how much retained).",
-       "feedback": "Make the retained fraction the outcome of the branch comparison rather than a second question.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Directly addresses G4, including the single-draw issue, and the lack of a normal-only route in G3.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Originality": {
-       "review": "Asking which of MVFA's two branches should consume synthetic supervision is specific to the target method and not answered by MediCLIP or SpatioPrompt; the underlying normal-only setting is still known.",
-       "feedback": "None needed for this scope.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Minutes per run; all public.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Practical, but the likely answer (both branches, partial recovery) has limited impact beyond MVFA.",
-       "feedback": "Report the minimal K at which normal-only matches K+K, which is the actionable number.",
-       "rating": 3
       }
      },
      "mean": 4
     },
     {
-     "problem": "When MVFA is adapted from K normal support images only, with synthesised lesions following MediCLIP's recipe, does applying the synthetic supervision to the segmentation adapters, the detection adapters, or both retain the most of the image- and pixel-level AUROC of the standard K-normal + K-masked-abnormal protocol, and what is the smallest K at which the best normal-only variant matches the K+K protocol (K in {2, 4, 8, 16}, three support draws)?",
-     "rationale": "The released code defines 'K-shot' as K normal plus K abnormal images with masks (G4), so MVFA's few-shot results assume abnormal annotations that a clinic adopting a new modality rarely has, and the segmentation branch has no other route to supervision (G3). MediCLIP [10] and SpatioPrompt [20] show normal-only adaptation of CLIP with synthetic anomalies in single-branch designs; MVFA's separate detection and segmentation adapters raise a question those papers do not answer: which branch benefits from synthetic supervision, given that synthetic lesions transfer imperfectly to real pathology. The synthesis recipe is fixed, so the branch choice is the only variable. The smallest K at which normal-only adaptation matches K+K is the actionable number for deployment, and three support draws also answer the single-draw part of G4. Each few-shot run takes minutes on one GPU.",
+     "problem": "In MVFA's few-shot inference, the released code min-max normalises the zero-shot (text) branch and the few-shot (memory-bank) branch with the minimum and maximum over the entire test set and adds them with a fixed weight of 0.5, so the score of one image depends on the rest of the test set and a single incoming image cannot be scored. Can this transductive normalisation be replaced by an inductive one computed only from the K normal support images, at a small cost in AUROC? The inductive normaliser maps each branch's patch scores through the 1st and 99th percentiles of the leave-one-out patch scores of the supports (every patch of support i scored against the memory bank of the other K-1 supports and against the text anchors), which gives thousands of reference values even at K = 2; the fusion weight and the max pooling of the image score are kept fixed. Primary outcome: image-level and pixel-level AUROC of inductive versus transductive normalisation on each held-out BMAD dataset for K in {2, 4, 8, 16}. Motivating measurement: the spread of the original method's AUROC across random half-size test subsets and at shifted prevalence (10% and 50% abnormal). Secondary outcome: sensitivity at 95% specificity with a threshold fixed from the support scores alone.",
+     "rationale": "The code check turned L10 into a sharper limitation (C1): the fusion is computed with test-set extremes, which makes the method non-deployable on a stream of images and makes its numbers depend on test-set composition; L8 adds that only threshold-free AUROC is reported, so this dependence stays invisible. Related work changes representations, prompts and fusion layers (LaRP-CLIP [57], HeadCLIP [17], ClipMPCAD [62]) but evaluates with the same AUROC; QueCo [56] even builds its reference from the unlabelled test set, while CANOR [30] shows that a few calibration scalars can be fitted cheaply for a frozen CLIP. The study is positioned as an evaluation-validity study with a simple inductive fix: it reuses the K normal supports MVFA already loads, needs no retraining, is confined to test_few.py, and runs on checkpoints retrained under the shared protocol. Keeping the pooling fixed isolates one component, and the inductive normaliser can be adopted by other methods evaluated on BMAD.",
      "reviews": {
       "Clarity": {
-       "review": "A single comparison (which branch receives synthetic supervision) with a fixed recipe and an actionable outcome (smallest K matching K+K).",
-       "feedback": "None.",
+       "review": "Primary, motivating and secondary outcomes are now separated, the leave-one-out statistic is defined (1st/99th percentiles of patch scores), and the fixed parts (fusion weight, max pooling) are explicit. The problem is precise and readable.",
+       "feedback": "None of substance.",
        "rating": 5
       },
       "Relevance": {
-       "review": "Directly addresses G4, including the single-draw issue, and the absence of a normal-only route in G3.",
+       "review": "High: it addresses the verified test-set dependence of MVFA's scores (C1, L10) and the missing operating-point evaluation (L8).",
        "feedback": "None.",
        "rating": 5
       },
       "Originality": {
-       "review": "The branch question is specific to MVFA's two-branch design; the normal-only synthetic setting is established.",
-       "feedback": "None.",
+       "review": "Framed as an evaluation-validity study with an inductive fix, it targets a practice the CLIP anomaly-detection literature has not examined ([17], [56], [57]); the fix itself (normalising by reference statistics) is standard.",
+       "feedback": "Show whether other BMAD baselines share the transductive normalisation; that would make the finding broader than MVFA.",
        "rating": 3
       },
       "Feasibility": {
-       "review": "Minutes per run; public code and data.",
+       "review": "Inference-only, confined to one script; the patch-level leave-one-out statistic resolves the K = 2 problem. Compute is minimal.",
        "feedback": "None.",
        "rating": 5
       },
       "Significance": {
-       "review": "Actionable for MVFA users, but the impact on the wider field is limited because the setting is already studied in single-branch methods.",
+       "review": "A per-image score with a support-fixed threshold is a prerequisite for deployment, and quantifying the test-set dependence affects how published BMAD numbers are read.",
+       "feedback": "None of substance.",
+       "rating": 4
+      }
+     },
+     "mean": 4.4
+    },
+    {
+     "problem": "In MVFA's few-shot inference, the released code min-max normalises the zero-shot (text) branch and the few-shot (memory-bank) branch with the minimum and maximum over the entire test set and adds them with a fixed weight of 0.5, so the score of one image depends on the rest of the test set and a single incoming image cannot be scored. Can this transductive normalisation be replaced by an inductive one computed only from the K normal support images, at a small cost in AUROC? The inductive normaliser maps each branch's patch scores through the 1st and 99th percentiles of the leave-one-out patch scores of the supports (every patch of support i scored against the memory bank of the other K-1 supports and against the text anchors); the fusion weight and the max pooling of the image score are kept fixed. Primary outcome: image-level and pixel-level AUROC of inductive versus transductive normalisation on each held-out BMAD dataset for K in {2, 4, 8, 16}. Motivating measurement: the spread of the original method's AUROC across random half-size test subsets and at shifted prevalence (10% and 50% abnormal). Secondary outcome: sensitivity at 95% specificity with a threshold fixed from the support scores alone. Scope check: whether the released code of the strongest BMAD baseline evaluated with MVFA (APRIL-GAN-style memory fusion) uses the same test-set normalisation, in which case the inductive normaliser is applied to it as well.",
+     "rationale": "The code check turned L10 into a sharper limitation (C1): the fusion is computed with test-set extremes, which makes the method non-deployable on a stream of images and makes its numbers depend on test-set composition; L8 adds that only threshold-free AUROC is reported, so this dependence stays invisible. Related work changes representations, prompts and fusion layers (LaRP-CLIP [57], HeadCLIP [17], ClipMPCAD [62]) but evaluates with the same AUROC; QueCo [56] even builds its reference from the unlabelled test set, while CANOR [30] shows that a few calibration scalars can be fitted cheaply for a frozen CLIP. The study is an evaluation-validity study with a simple inductive fix: it reuses the K normal supports MVFA already loads, needs no retraining, is confined to test_few.py, and runs on checkpoints retrained under the shared protocol. Keeping the pooling fixed isolates one component, and the scope check tells whether the finding concerns MVFA alone or the BMAD evaluation practice more broadly.",
+     "reviews": {
+      "Clarity": {
+       "review": "The main problem remains precise, but the added scope check is loosely worded: 'the strongest BMAD baseline evaluated with MVFA (APRIL-GAN-style memory fusion)' does not name a specific code base, so it is unclear what will be inspected and when the inductive normaliser would be applied to it.",
+       "feedback": "Name the baseline and its repository, or drop the scope check and mention it as future work.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "High: verified test-set dependence (C1, L10) and missing operating-point evaluation (L8).",
        "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "Unchanged from the previous version: an evaluation-validity study with a standard inductive fix; the scope check adds breadth but no new idea.",
+       "feedback": "None of substance.",
        "rating": 3
+      },
+      "Feasibility": {
+       "review": "Inference-only and confined to one script; the scope check adds code reading only.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Significance": {
+       "review": "A per-image, support-calibrated score is a prerequisite for deployment and affects how BMAD results are read.",
+       "feedback": "None.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    }
+   ],
+   "best_version": 1,
+   "best_mean": 4.4
+  },
+  {
+   "id": "A1",
+   "group": "Label-efficient adaptation",
+   "versions": [
+    {
+     "problem": "In MVFA's zero-shot (leave-one-modality-out) training, only the segmentation adapters produce the anomaly maps, and the released code trains them with Dice and Focal losses exclusively on the three source datasets that have pixel masks (BrainMRI, LiverCT, RESC); the image-labelled datasets (OCT17, ChestXray, HIS) only train the detection adapters. Can the segmentation adapters be trained from image-level labels alone \u2014 replacing the Dice and Focal terms with a multiple-instance objective on each level's patch-to-text anomaly map (an image-level BCE on the top-k mean of patch anomaly probabilities, k = 1% of patches, so that an abnormal image must contain a few strongly abnormal patches and a normal image none) applied to all five source datasets with every mask discarded \u2014 and how much of the mask-supervised localisation (pixel-level AUROC and AUPRO) and detection (image-level AUROC) on the held-out modality does it retain? The comparison is mask-supervised MVFA versus image-label-supervised MVFA, trained and model-selected under the shared protocol.",
+     "rationale": "Limitations L3, L5 and L18, checked against the released code, show that MVFA's localisation depends on dense expert masks from three datasets and that half of the benchmark never teaches the segmentation branch anything; L4 shows the same dependence in the few-shot mode (K abnormal images with masks). Image-level labels are cheap and exist for every BMAD dataset, but MVFA never uses them to supervise where anomalies are. The related literature does not answer whether text-anchored patch similarities inside a multi-level CLIP adapter can learn localisation from weak labels: MedSAD-CLIP [40] and MLCA [58] keep pixel-level supervision, MadCLIP [29] and the consistency-margin adapter [54] still rely on labelled abnormal images, MediCLIP [22], AnomaMed [53] and the UWF framework [43] replace real labels with synthetic anomalies, and weak image-level supervision has been used for separate generative models (diffusion with classifier guidance [10]) rather than for the adapter's own maps. The question changes only the training signal of one branch, is implemented by replacing the segmentation loss in the public training script, and runs within one GPU budget; a negative result still quantifies what masks are worth for cross-modality localisation, which is exactly the annotation cost that L18 says is never measured.",
+     "reviews": {
+      "Clarity": {
+       "review": "The component (segmentation adapters and their Dice/Focal loss), the change (an image-level BCE on the top-k mean of each level's patch anomaly probabilities, k = 1%, all five source datasets, masks discarded), the comparison and the outcomes are all named. Two details are left open: whether the MIL term is applied at all four adapter levels with equal weight, and whether the detection adapters keep their original loss unchanged.",
+       "feedback": "State that the MIL loss replaces the segmentation loss at every level with the same weights as the original, and that the detection branch is untouched; say that pixel-level metrics can only be computed on the held-out folds that have masks (BrainMRI, LiverCT, RESC).",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Mask dependence of MVFA's localisation is one of its most consequential limitations for clinical use, and the code-verified fact that half the benchmark never trains the segmentation branch (L5) makes the problem concrete. It connects to the annotation-efficiency concerns of [22], [40], [43] and [53].",
+       "feedback": "None of substance; briefly relate the result to the few-shot setting (L4, L18), where the same mask dependence appears.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "Weakly supervised localisation through multiple-instance pooling is an established idea, and MVFA already applies a mean-pooled image-level BCE to its detection branch. The new element is narrower: supervising the text-anchored segmentation maps with image labels and testing whether the resulting localisation transfers to an unseen modality. This is a moderately original combination rather than a new idea.",
+       "feedback": "Make the distinctive hypothesis explicit \u2014 for example, that text-anchored patch similarities let MIL localisation transfer across modalities, or that it emerges only at specific adapter levels \u2014 and test it with a level-wise analysis.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "The change is one loss term in the public training script; BMAD provides image labels for every dataset; compute equals MVFA's own training. Two risks: MIL objectives can collapse to near-constant maps when abnormal images dominate a source dataset, and pixel-level evaluation is possible on only three of the held-out folds.",
+       "feedback": "Run a single-fold pilot first and monitor the fraction of patches above 0.5 on normal validation images to detect collapse; report pixel metrics only where masks exist.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "If localisation can be learnt without masks, MVFA-style adaptation becomes trainable from report-level labels, a substantial practical gain; a negative result still quantifies what masks are worth for cross-modality localisation, which the target paper never measures.",
+       "feedback": "Add a label-budget view (many image-labelled images versus a few masked ones) so the result informs an annotation decision.",
+       "rating": 4
+      }
+     },
+     "mean": 4
+    },
+    {
+     "problem": "In MVFA's zero-shot (leave-one-modality-out) training, the segmentation adapters \u2014 the only part that produces anomaly maps \u2014 are trained with Dice and Focal losses exclusively on the three source datasets that have pixel masks (BrainMRI, LiverCT, RESC), while OCT17, ChestXray and HIS only train the detection adapters. Can the segmentation adapters be trained from image-level labels alone? At every one of the four adapter levels, with the original level weights, the Dice and Focal terms are replaced by an image-level BCE on the top-k mean of the level's patch anomaly probabilities (k = 1% of patches: an abnormal image must contain a few strongly abnormal patches, a normal image none), applied to all five source datasets with every mask discarded; the detection adapters and their loss are unchanged. Hypothesis: because the patch scores are similarities to fixed text anchors shared across modalities, this weak supervision yields localisation that transfers to the unseen modality, and it emerges mainly at the deeper adapter levels. Outcomes on the held-out modality: pixel-level AUROC and AUPRO (on the folds with masks: BrainMRI, LiverCT, RESC), image-level AUROC (all folds), and a level-wise breakdown, comparing mask-supervised MVFA with image-label-supervised MVFA trained and model-selected under the shared protocol; a label-budget curve adds variants with masks for only 10% and 25% of the abnormal source images.",
+     "rationale": "Limitations L3, L5 and L18, checked against the released code, show that MVFA's localisation depends on dense expert masks from three datasets and that half of the benchmark never teaches the segmentation branch anything; L4 shows the same dependence in the few-shot mode. Image-level labels are cheap and available for every BMAD dataset, yet MVFA never uses them to supervise where anomalies are. The related literature does not answer whether text-anchored patch similarities inside a multi-level CLIP adapter can learn transferable localisation from weak labels: MedSAD-CLIP [40] and MLCA [58] keep pixel-level supervision, MadCLIP [29] and the consistency-margin adapter [54] rely on labelled abnormal images, MediCLIP [22], AnomaMed [53] and the UWF framework [43] replace labels with synthetic anomalies, and image-level supervision has been used for separate generative models [10] rather than for the adapter's own maps. The change is one loss term in the public training script at the original compute budget; a one-fold pilot that monitors the fraction of normal-image patches above 0.5 guards against collapsed maps. Either outcome is informative: success makes MVFA trainable from report-level labels, and failure, together with the label-budget curve, quantifies what masks are worth for cross-modality localisation \u2014 the cost that L18 says is never measured.",
+     "reviews": {
+      "Clarity": {
+       "review": "The revision fixes the open details (all four levels, original weights, detection branch unchanged, pixel metrics only on masked folds) and states a testable hypothesis. It has, however, grown: the core comparison, a level-wise analysis and a two-point label-budget curve are now in one problem, which blurs which result is primary.",
+       "feedback": "Mark the mask-free versus mask-supervised comparison as primary and the level-wise analysis and label-budget points as secondary analyses.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Unchanged and high: it addresses the verified mask dependence of MVFA's localisation (L3, L5, L18) and the unused image-labelled half of the benchmark.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "The added hypothesis \u2014 that weak supervision through similarities to modality-shared text anchors gives localisation that transfers to an unseen modality, emerging mainly at deeper levels \u2014 turns a known technique (MIL) into a specific, testable claim about this architecture that the related work ([22], [29], [40], [58]) does not address.",
+       "feedback": "To strengthen the claim, include a control in which the text anchors are replaced by a learned linear head, so that the role of the text anchors is isolated.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "Still a one-term change at the original compute, with a sensible collapse check. The two label-budget variants add two more trainings per fold and seed, roughly tripling the training cost; on one GPU over a few weeks this is manageable but tight with 3 seeds.",
+       "feedback": "Run the label-budget variants with one seed on two folds if time is short.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "If confirmed, MVFA-style adaptation becomes trainable from report-level labels on all five source datasets; the label-budget curve makes the result directly usable for annotation planning.",
+       "feedback": "None of substance.",
+       "rating": 4
+      }
+     },
+     "mean": 4.2
+    },
+    {
+     "problem": "In MVFA's zero-shot (leave-one-modality-out) training, the segmentation adapters \u2014 the only part that produces anomaly maps \u2014 are trained with Dice and Focal losses exclusively on the three source datasets that have pixel masks (BrainMRI, LiverCT, RESC), while OCT17, ChestXray and HIS only train the detection adapters. Primary question: can the segmentation adapters be trained from image-level labels alone, and how much mask-supervised localisation does that retain on the unseen modality? At each of the four adapter levels, with the original level weights, the Dice and Focal terms are replaced by an image-level BCE on the top-k mean of the level's patch-to-text anomaly probabilities (k = 1% of patches), applied to all five source datasets with every mask discarded; the detection adapters and their loss are unchanged. Hypothesis: because patch scores are similarities to text anchors shared by all modalities, this weak supervision yields localisation that transfers to the unseen modality. Primary outcomes: pixel-level AUROC and AUPRO on the held-out folds with masks (BrainMRI, LiverCT, RESC) and image-level AUROC on all folds, mask-supervised versus image-label-supervised MVFA under the shared protocol. Secondary analyses: (i) a control in which the text anchors of the segmentation branch are replaced by a learned linear patch classifier trained with the same MIL loss, isolating the role of the text anchors; (ii) a per-level breakdown; (iii) two label-budget points with masks for 10% and 25% of the abnormal source images (one seed, two folds).",
+     "rationale": "Limitations L3, L5 and L18, checked against the released code, show that MVFA's localisation depends on dense expert masks from three datasets and that half of the benchmark never teaches the segmentation branch anything; L4 shows the same dependence in the few-shot mode. Image-level labels are cheap and available for every BMAD dataset, yet MVFA never uses them to supervise where anomalies are. The related literature does not answer whether text-anchored patch similarities inside a multi-level CLIP adapter can learn transferable localisation from weak labels: MedSAD-CLIP [40] and MLCA [58] keep pixel-level supervision, MadCLIP [29] and the consistency-margin adapter [54] rely on labelled abnormal images, MediCLIP [22], AnomaMed [53] and the UWF framework [43] replace labels with synthetic anomalies, and image-level supervision has been used for separate generative models [10] rather than for the adapter's own maps. The text-anchor control turns the transfer hypothesis into a falsifiable claim about this architecture. The change is one loss term in the public training script at the original compute budget, with a one-fold pilot that checks for collapsed maps; success makes MVFA trainable from report-level labels, and failure, with the label-budget points, quantifies what masks are worth for cross-modality localisation \u2014 the annotation cost that L18 says is never measured.",
+     "reviews": {
+      "Clarity": {
+       "review": "The primary question, primary outcomes and the three secondary analyses are now clearly separated, and every design choice is specified. The problem statement is long, and three secondary analyses stretch the 'one well-delimited question' requirement, although the primary comparison is unambiguous.",
+       "feedback": "Consider moving the per-level breakdown into the rationale or the evaluation plan to keep the problem statement focused.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "High and unchanged: verified mask dependence of localisation (L3, L5, L18) and the unused image-labelled half of the benchmark.",
+       "feedback": "None.",
+       "rating": 5
+      },
+      "Originality": {
+       "review": "The text-anchor control makes the hypothesis falsifiable and specific to MVFA's architecture; the combination of MIL supervision of text-anchored multi-level maps with an unseen-modality test is not covered by [22], [29], [40], [54] or [58].",
+       "feedback": "None of substance.",
+       "rating": 4
+      },
+      "Feasibility": {
+       "review": "The primary comparison costs the same as MVFA's own training; the text-anchor control adds one training per fold and seed, and the label-budget points are restricted to one seed and two folds. Manageable on one GPU in a few weeks, with the collapse pilot as a sensible first step.",
+       "feedback": "Prioritise the primary comparison and the text-anchor control; drop the label-budget points if time runs short.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "Removing the need for dense masks from MVFA's source training would make the method trainable from report-level labels; the result is useful either way.",
+       "feedback": "None.",
+       "rating": 4
       }
      },
      "mean": 4.2
@@ -751,203 +641,99 @@
    "best_mean": 4.2
   },
   {
-   "id": "D2",
-   "group": "Compact normality modelling",
+   "id": "B2",
+   "group": "Score calibration and robust aggregation",
    "versions": [
     {
-     "problem": "Does replacing MVFA's frozen, hand-crafted normal/abnormal prompts (state words averaged over 35 ImageNet templates) with a small set of learnable prompt tokens conditioned on the image's adapted patch features improve zero-shot pixel- and image-level AUROC on a held-out BMAD modality, and does it reduce the sensitivity of MVFA's results to the choice of prompt wording?",
-     "rationale": "MVFA assumes one universal text notion of 'normal' and 'abnormal' across modalities and never analyses prompt sensitivity (G5), although the relation between a compact normal concept and diverse abnormal ones is central to anomaly detection (G7). Most recent CLIP detectors in the review set replace static prompts: AnomalyCLIP [11] learns object-agnostic prompts, AdaCLIP [32] combines static and image-specific dynamic prompts, CoPS [41] and VCF-CLIP [22] synthesise prompts from visual prototypes, IQE-CLIP [7] builds instance-aware query embeddings, and prompt-wording studies on medical vision-language models report unstable performance [50]. Their effect has not been isolated inside MVFA's multi-level adapter framework, where prompts interact with every level's alignment loss. The question changes one component (the text side of the alignment) while keeping the visual adapters fixed in design, is trainable on one GPU, and has measurable outcomes: AUROC on held-out modalities and the spread of AUROC across a fixed set of alternative prompt wordings.",
+     "problem": "MVFA's image-level anomaly score is formed by different pooling rules in different places: the paper's image-level loss (Eq. 3) uses the maximum over the anomaly map, the released code trains the detection adapters with a mean-pooled map, and at inference the image score on datasets with masks is the maximum of the fused pixel map while on datasets without masks it is the mean-pooled detection score. Which image-level pooling of the fused anomaly map \u2014 maximum, mean, or top-k mean with k as a fraction of the image area in {0.1%, 1%, 5%} \u2014 gives the best and most stable few-shot and zero-shot image-level AUROC on each BMAD dataset, and how sensitive is each rule to isolated false-positive pixels, measured by the drop in image-level AUROC when a single high-scoring spurious patch is injected into the maps of normal test images? Training stays as in the released code; only the inference-time pooling changes, and the same rule is applied to all six datasets.",
+     "rationale": "L38 and C3 show that one spurious patch can decide an image's label and that the paper and the code disagree on pooling, while L30 shows that the scoring pipeline differs between datasets, so the reported detection numbers cannot be attributed to the method as described. The related literature varies the scoring head but does not isolate pooling for medical CLIP adapters: PatchCore [15] and WinCLIP [12] use maxima, HeadCLIP [17] and LaRP-CLIP [57] add joint or prototype image scores, and CANOR [30] argues that uniform max or mean aggregation of per-class scores ignores how findings combine in chest X-rays. Medical anomalies range from tiny lesions (BrainMRI, LiverCT) to diffuse changes (ChestXray, HIS), so the best pooling rule plausibly depends on the modality, which makes the question relevant to generalisation. It is inference-only on retrained checkpoints, needs a few lines in the test scripts, and yields a single documented scoring rule plus a robustness measure that complements AUROC (L8).",
      "reviews": {
       "Clarity": {
-       "review": "Clear change (learnable, visually conditioned prompt tokens), clear setting (zero-shot, held-out modality) and two outcomes including prompt-wording sensitivity.",
-       "feedback": "Define the conditioning mechanism and the size of the token set, and the fixed list of alternative wordings.",
-       "rating": 4
+       "review": "The candidate pooling rules and the robustness test are clear, but 'the fused anomaly map' is ambiguous for the three datasets without masks, where the released code scores images from the detection map; the magnitude and size of the injected spurious patch are not defined; and 'most stable' is not operationalised.",
+       "feedback": "Name the map that is pooled on each dataset, define the injected patch (e.g., one patch set to the 99.9th percentile of abnormal-image scores) and define stability as the standard deviation over seeds and support draws.",
+       "rating": 3
       },
       "Relevance": {
-       "review": "Addresses G5 directly and G7 only loosely.",
-       "feedback": "Drop the G7 claim or explain how conditioned prompts model the normal/abnormal asymmetry.",
+       "review": "Addresses L38, C3 and L30 directly: the disagreement between paper and code on pooling and the dataset-dependent scoring make the reported detection numbers hard to attribute.",
+       "feedback": "Connect the result to B-group calibration: the pooling rule changes score distributions and therefore any threshold.",
        "rating": 4
       },
       "Originality": {
-       "review": "Learnable and visually conditioned prompts are the dominant design in the review set (AnomalyCLIP, AdaCLIP, CoPS, VCF-CLIP, IQE-CLIP). Inserting one into MVFA is an incremental combination.",
-       "feedback": "Focus on an under-studied aspect, e.g. whether learned prompts transfer across modalities in the leave-one-modality-out split, which none of these papers isolates.",
+       "review": "Comparing max, mean and top-k pooling is a routine ablation in anomaly detection ([12], [15]); the injected-patch robustness test is a small addition. The question is useful for reproducibility but has little novelty.",
+       "feedback": "Add a hypothesis that goes beyond the ablation, e.g., that the optimal k scales with the typical lesion area of each modality and can be set from source modalities alone.",
        "rating": 2
       },
       "Feasibility": {
-       "review": "Requires training text tokens jointly with adapters; feasible on one GPU but adds hyper-parameters.",
-       "feedback": "Freeze the visual adapters from MVFA's checkpoint and train only prompts to keep cost low.",
-       "rating": 4
+       "review": "Trivially feasible: a few lines in the test scripts, inference on retrained checkpoints, no new training.",
+       "feedback": "None.",
+       "rating": 5
       },
       "Significance": {
-       "review": "Expected gains are modest because MVFA's adapters already align features with fixed prompts.",
-       "feedback": "Report the sensitivity reduction as the main outcome; it is the part not covered by prior work.",
+       "review": "A documented, consistent scoring rule improves reproducibility, but the expected gains in AUROC are small and the result is unlikely to change how the field approaches medical anomaly detection.",
+       "feedback": "Raise significance by linking the choice of k to modality properties that would let a practitioner set it for a new modality.",
        "rating": 3
       }
      },
      "mean": 3.4
     },
     {
-     "problem": "Do prompts learned on source modalities transfer to an unseen modality inside MVFA? With MVFA's visual adapters frozen at their trained checkpoint, learnable normal/abnormal prompt tokens (16 tokens per state, optionally conditioned on the mean adapted patch feature) are trained on the source modalities and compared with the fixed 35-template prompts on the held-out modality, measuring zero-shot AUROC and the spread of AUROC across ten alternative prompt wordings.",
-     "rationale": "MVFA assumes a single universal text notion of normal and abnormal across modalities and never analyses prompt sensitivity (G5). Learnable and visually conditioned prompts are common in the review set (AnomalyCLIP [11], AdaCLIP [32], CoPS [41], VCF-CLIP [22], IQE-CLIP [7]), and medical prompt studies report unstable performance across wordings [50], but none isolates cross-modality transfer of learned prompts under a modality-disjoint split, which is the setting MVFA claims. Freezing the visual adapters isolates the text side and keeps training cheap. The main outcome is the reduction in wording sensitivity; the AUROC change on held-out modalities is secondary.",
+     "problem": "MVFA's image score uses different pooling rules in different places \u2014 the paper's Eq. 3 takes the maximum over the anomaly map, the released code trains the detection adapters with a mean-pooled map, and inference scores masked datasets by the maximum of the fused segmentation map and unmasked datasets by the mean-pooled detection map. Is the best image-level pooling of the fused segmentation map a function of the typical lesion area of a modality, so that it can be chosen for an unseen modality from the source modalities alone? Candidates: maximum, mean, and top-k mean with k in {0.1%, 1%, 5%, 20%} of the patches, applied to the fused segmentation map on all six datasets. The k chosen on the source modalities' validation split (shared protocol) is compared with the best k in hindsight and with the code's dataset-dependent rule, by image-level AUROC (mean and standard deviation over seeds and support draws) in the zero-shot and few-shot settings. Robustness: the drop in image-level AUROC when one patch of each normal test map is set to the 99.9th percentile of abnormal-image patch scores.",
+     "rationale": "L38 and C3 show that one spurious patch can decide an image's label and that the paper and the code disagree on pooling; L30 shows that the scoring pipeline differs between datasets, so the reported detection numbers cannot be attributed to the method as described. Pooling ablations exist in industrial anomaly detection ([12], [15]), and medical CLIP methods add joint or prototype image scores ([17], [57]); CANOR [30] argues that uniform max or mean aggregation ignores how chest X-ray findings combine. What is not known is whether the right pooling transfers across medical modalities whose anomalies range from small focal lesions (BrainMRI, LiverCT) to diffuse changes (ChestXray, HIS). The study is inference-only on retrained checkpoints and needs a few lines in the test scripts; it yields one documented rule and a selection procedure a practitioner can apply to a new modality.",
      "reviews": {
       "Clarity": {
-       "review": "Clear set-up with frozen adapters, fixed token count and a fixed set of wordings.",
-       "feedback": "Specify how the ten wordings are chosen (e.g. clinical vs generic).",
+       "review": "The map being pooled, the k grid, the selection rule and the robustness test are now defined. The central hypothesis relies on the 'typical lesion area' of a modality, which cannot be measured on the three datasets without masks, so the claimed relation cannot be tested on half of the benchmark.",
+       "feedback": "State how lesion area is estimated where masks are absent, or restrict the hypothesis test to the masked datasets.",
        "rating": 4
       },
       "Relevance": {
-       "review": "Addresses G5; G7 is no longer claimed, which is appropriate.",
+       "review": "Addresses L38, C3 and L30; the selection-from-source-modalities framing ties it to the generalisation claim of the target paper.",
        "feedback": "None.",
        "rating": 4
       },
       "Originality": {
-       "review": "Cross-modality transfer of learned prompts under a modality-disjoint split is not isolated in the review set, although learned prompts themselves are common.",
-       "feedback": "None.",
+       "review": "Selecting the pooling rule from source modalities and relating it to lesion size goes a little beyond a routine ablation ([12], [15]), but remains a modest extension.",
+       "feedback": "None of substance.",
        "rating": 3
       },
       "Feasibility": {
-       "review": "Training only prompt tokens on frozen adapters is cheap.",
+       "review": "Inference-only and simple.",
        "feedback": "None.",
        "rating": 5
       },
       "Significance": {
-       "review": "Sensitivity reduction is useful, but the impact is limited to the text side of one method.",
-       "feedback": "None.",
+       "review": "A consistent, transferable pooling rule improves reproducibility; the effect on detection AUROC is likely small.",
+       "feedback": "None of substance.",
        "rating": 3
       }
      },
      "mean": 3.8
     },
     {
-     "problem": "Do prompts learned on source modalities transfer to an unseen modality inside MVFA? With MVFA's visual adapters frozen at their trained checkpoint, learnable normal/abnormal prompt tokens (16 per state, optionally conditioned on the mean adapted patch feature) are trained on the source modalities and compared with the fixed 35-template prompts on the held-out modality, measuring zero-shot AUROC and the spread of AUROC across ten alternative wordings (five clinical, five generic).",
-     "rationale": "MVFA assumes a single universal text notion of normal and abnormal across modalities and never analyses prompt sensitivity (G5). Learnable and conditioned prompts are common in the review set (AnomalyCLIP [11], AdaCLIP [32], CoPS [41], VCF-CLIP [22], IQE-CLIP [7]) and medical prompt studies report instability across wordings [50], but none isolates cross-modality transfer of learned prompts under a modality-disjoint split, the setting MVFA claims. Freezing the visual adapters isolates the text side and keeps training cheap. The main outcome is reduced wording sensitivity; AUROC on held-out modalities is secondary.",
+     "problem": "MVFA's image score uses different pooling rules in different places \u2014 the paper's Eq. 3 takes the maximum over the anomaly map, the released code trains the detection adapters with a mean-pooled map, and inference scores masked datasets by the maximum of the fused segmentation map and unmasked datasets by the mean-pooled detection map. Can one image-level pooling rule for the fused segmentation map be selected on the source modalities and transferred to the unseen one? Candidates: maximum, mean, and top-k mean with k in {0.1%, 1%, 5%, 20%} of the patches, applied to the fused segmentation map on all six datasets; k is chosen on the source modalities' validation split (shared protocol) and compared with the best k in hindsight and with the code's dataset-dependent rule, by image-level AUROC (mean and standard deviation over seeds and support draws) in the zero-shot and few-shot settings. Robustness: the drop in image-level AUROC when one patch of each normal test map is set to the 99.9th percentile of abnormal-image patch scores. Secondary hypothesis, tested on the three datasets with masks only: the best k increases with the median lesion area.",
+     "rationale": "L38 and C3 show that one spurious patch can decide an image's label and that the paper and the code disagree on pooling; L30 shows that the scoring pipeline differs between datasets, so the reported detection numbers cannot be attributed to the method as described. Pooling ablations exist in industrial anomaly detection ([12], [15]), and medical CLIP methods add joint or prototype image scores ([17], [57]); CANOR [30] argues that uniform max or mean aggregation ignores how chest X-ray findings combine. What is not known is whether a pooling rule chosen on some medical modalities transfers to another whose anomalies differ in size. The study is inference-only on retrained checkpoints, needs a few lines in the test scripts, and yields one documented rule with a selection procedure a practitioner can apply to a new modality.",
      "reviews": {
       "Clarity": {
-       "review": "Frozen adapters, fixed token count, conditioning option and a fixed set of ten wordings make the study precise.",
-       "feedback": "None.",
-       "rating": 5
+       "review": "The transfer question, the selection procedure and the robustness test are clear, and the lesion-area hypothesis is now restricted to the masked datasets.",
+       "feedback": "None of substance.",
+       "rating": 4
       },
       "Relevance": {
-       "review": "Addresses G5 directly.",
+       "review": "Addresses L38, C3 and L30.",
        "feedback": "None.",
        "rating": 4
       },
       "Originality": {
-       "review": "Cross-modality transfer of learned prompts under a modality-disjoint split is not isolated in prior work, though learned prompts are common.",
+       "review": "A modest extension of a standard pooling ablation ([12], [15]) with a transfer-selection step.",
        "feedback": "None.",
        "rating": 3
       },
       "Feasibility": {
-       "review": "Cheap prompt-only training.",
+       "review": "Inference-only and simple.",
        "feedback": "None.",
        "rating": 5
       },
       "Significance": {
-       "review": "Limited to the text side of one method; useful mainly as a robustness finding.",
-       "feedback": "None.",
-       "rating": 3
-      }
-     },
-     "mean": 4
-    }
-   ],
-   "best_version": 2,
-   "best_mean": 4
-  },
-  {
-   "id": "D1",
-   "group": "Compact normality modelling",
-   "versions": [
-    {
-     "problem": "Can MVFA's few-shot patch memory bank, which stores every adapted patch feature of the K normal support images at four levels, be replaced by a compact parametric model of normal patch features per level (a small set of prototypes or a Gaussian with shrinkage covariance), and how does this change few-shot pixel- and image-level AUROC, memory footprint and per-image inference time as K grows from 2 to 16?",
-     "rationale": "MVFA compares query patches with a memory bank whose size grows linearly with K and with spatial resolution, without modelling the compact distribution of normal tissue against the diverse distribution of anomalies (G7), and its retrieval cost and the privacy implication of storing raw patient-derived features are not analysed (G13). Related work points toward explicit compact normality: AVA-DINO [14] exploits the asymmetry of compact normals versus diverse anomalies, Spatial-FAD [6] stores compact normal and abnormal prototypes to cut memory while improving few-shot localisation, and the Consistency Margin Adapter [21] aligns representations with a normal reference through margin objectives. Whether a compact normal model suffices for MVFA's adapted features has not been tested. The question isolates one component (the few-shot comparison against stored normals), is feasible because it needs no retraining of the adapters, and has measurable outcomes: AUROC differences relative to the full bank, bytes stored per support image, latency, and the K at which the compact model matches the bank.",
-     "reviews": {
-      "Clarity": {
-       "review": "Clear component (few-shot memory bank), two named replacements, clear outcomes including memory and latency as functions of K.",
-       "feedback": "Specify how prototypes are obtained (k-means per level, number of prototypes) so the comparison is reproducible.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G13 (memory, retrieval cost, storage of patient features) and part of G7 (explicit compact normal model); G5 is not touched.",
-       "feedback": "State the privacy benefit precisely: a parametric model stores statistics rather than raw patch features.",
-       "rating": 4
-      },
-      "Originality": {
-       "review": "Gaussian normal models (PaDiM) and compact prototypes (Spatial-FAD) are known; applying them to MVFA's adapted multi-level features with a K-scaling analysis adds a moderate new angle.",
-       "feedback": "Add the question of whether the adapted features are more Gaussian than raw CLIP features, which would explain when compact models suffice.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "No retraining; fitting a Gaussian or k-means on support features is seconds.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Useful for deployment cost and privacy, but the bank is small at K <= 16, so practical gains may be limited.",
-       "feedback": "Include a high-resolution or larger-K setting where the bank's cost actually matters.",
-       "rating": 3
-      }
-     },
-     "mean": 3.8
-    },
-    {
-     "problem": "Are MVFA's adapted patch features compact enough that a per-level Gaussian with shrinkage covariance, or 32 k-means prototypes, fitted on the K normal support images can replace the few-shot memory bank of raw patch features without losing more than 1 point of pixel or image AUROC, and how do memory, latency and the information stored about patients scale with K (2-64) and input resolution (240 and 448) for each option?",
-     "rationale": "MVFA compares query patches with a memory bank that grows linearly with K and resolution, stores raw patient-derived features, and never models the compact distribution of normal tissue explicitly (G7, G13). Gaussian normal models (PaDiM) and compact prototypes (Spatial-FAD [6]) work for other features, and AVA-DINO [14] argues that normals are compact and anomalies diverse; whether MVFA's adapted features have this property has not been measured. The study first tests Gaussianity of adapted versus raw CLIP features per level, which explains when a compact model suffices, then compares the three options in a regime where the bank's cost matters (K up to 64, 448-pixel input). A parametric model stores statistics rather than raw features, which is the privacy benefit G13 asks about. No retraining is needed; each fit takes seconds.",
-     "reviews": {
-      "Clarity": {
-       "review": "Clear options, thresholds and scaling axes; the Gaussianity test is well motivated.",
-       "feedback": "Name the Gaussianity test (e.g. Mardia's or a per-dimension check) to keep it reproducible.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G13 and the compactness part of G7.",
-       "feedback": "None.",
-       "rating": 4
-      },
-      "Originality": {
-       "review": "Testing whether adapted features are more Gaussian than raw CLIP features is a new diagnostic; the compact models themselves are known.",
-       "feedback": "None.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "No retraining; fits are seconds.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "K = 64 and 448-pixel inputs are outside MVFA's protocol, so the practical relevance of the cost gains is limited.",
-       "feedback": "Justify the extended regime with a clinical scenario.",
-       "rating": 3
-      }
-     },
-     "mean": 3.8
-    },
-    {
-     "problem": "Are MVFA's adapted patch features compact enough that a per-level Gaussian with shrinkage covariance, or 32 k-means prototypes, fitted on the K normal support images can replace the few-shot memory bank without losing more than 1 point of pixel or image AUROC, and how do memory, latency and stored patient information scale with K (2-64) and input resolution (240 and 448) for each option, in a scenario where a site accumulates normal studies over time?",
-     "rationale": "MVFA compares query patches with a memory bank that grows with K and resolution and stores raw patient-derived features (G13), without modelling the compact normal distribution explicitly (G7). PaDiM-style Gaussians and Spatial-FAD's compact prototypes [6] work for other features, and AVA-DINO [14] argues normals are compact while anomalies are diverse; whether MVFA's adapted features share this property is untested. The study first tests per-level Gaussianity of adapted versus raw CLIP features (Mardia's multivariate skewness and kurtosis on a random projection), then compares the three options. The extended K and resolution model a site that keeps adding normal studies, where a growing raw-feature bank becomes a storage and governance burden. No retraining is needed.",
-     "reviews": {
-      "Clarity": {
-       "review": "Clear options, test and scaling axes; the 'stored patient information' outcome is not operationalised.",
-       "feedback": "Define it, e.g. as bytes stored per patient or feasibility of reconstructing patches from stored statistics.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G13 and the compactness aspect of G7.",
-       "feedback": "None.",
-       "rating": 4
-      },
-      "Originality": {
-       "review": "The Gaussianity diagnostic on adapted features is new; compact normal models are known.",
-       "feedback": "None.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "No retraining.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Mostly relevant to long-term deployment scenarios outside MVFA's few-shot protocol.",
+       "review": "Improves reproducibility of MVFA's detection numbers; expected AUROC effects are small.",
        "feedback": "None.",
        "rating": 3
       }
@@ -959,101 +745,101 @@
    "best_mean": 3.8
   },
   {
-   "id": "B2",
-   "group": "Score calibration and robust aggregation",
+   "id": "A2",
+   "group": "Label-efficient adaptation",
    "versions": [
     {
-     "problem": "Which image-level pooling of MVFA's anomaly maps (max as in the paper's Eq. 3, mean as in the released training code, top-k mean, or a noisy-OR over patches), applied consistently in training and testing, gives the best and most robust image-level detection, measured by image AUROC and by its degradation when a small fraction of spurious high-scoring pixels is injected into normal test maps?",
-     "rationale": "The paper defines the image-level loss with a max over the anomaly map, while the released code mean-pools in training and takes the max of the fused segmentation map at test time on masked datasets (G17, G9), so a single spurious pixel can decide an image's label and the reported results cannot be attributed to the method as described. No robust aggregation is tested, and AUC alone hides how fragile the score is (G11). The related work treats the map-to-image step as a design choice: CANOR [55] replaces naive max/mean aggregation with a calibrated noisy-OR, HeadCLIP [4] builds a joint score from pixel-level evidence, and LaRP-CLIP [17] adds a prototype branch because image scores from global similarity are unreliable. The question is narrow (one pooling operator, used consistently), cheap (the pooling changes one line in training and one in testing, so each variant is a single retraining), and measurable on BMAD: image AUROC per held-out modality, and the drop in AUROC under controlled spurious-pixel injection.",
+     "problem": "In MVFA's few-shot mode, the released code defines a K-shot support set as K normal and K abnormal target-domain images, the abnormal ones loaded with expert pixel masks, and uses them both to fine-tune the adapters (Dice, Focal and BCE losses) and to fill the memory bank. Can the K real abnormal images with masks be replaced by synthetic abnormal images made from the K normal supports alone \u2014 lesion-like patches cut from other normal images of the same modality, intensity-perturbed and Poisson-blended into the support, with the pasted region as the free mask \u2014 and how much of the few-shot image-level AUROC, pixel-level AUROC and AUPRO of real-abnormal MVFA does this normal-only variant keep on each BMAD dataset for K in {2, 4, 8, 16}? A memory-bank-only variant (no fine-tuning on target data) is reported as the lower reference.",
+     "rationale": "L4 and L18, confirmed in the released code, show that 'K = 4' means four normal plus four expertly delineated abnormal slices, the most expensive annotation in medical imaging, and the paper never measures what those abnormal images and masks contribute. Several related methods show that synthetic anomalies can stand in for real ones when adapting CLIP to medical images (MediCLIP [22], AnomaMed's anomaly blending [53], the UWF framework's Poisson blending [43], LesionPaste [32]), and [55] shows that selecting informative synthetic images matters; but none of them measures the gap to real abnormal supervision inside the same adapter, on the same support set, under an unseen-modality protocol. The question isolates one component \u2014 the abnormal half of MVFA's few-shot support set \u2014 keeps architecture, losses and evaluation unchanged, and needs only image operations on data that BMAD already provides, so it is feasible on one GPU; its answer tells a hospital whether MVFA's few-shot mode can be used before any abnormal case has been annotated.",
      "reviews": {
       "Clarity": {
-       "review": "One operator, applied consistently in training and testing, four named variants, two named metrics including a controlled spurious-pixel stress test.",
-       "feedback": "None.",
-       "rating": 5
+       "review": "The component (the abnormal half of the K-shot support set), the replacement and the outcomes are stated, and the memory-bank-only lower reference is useful. The synthesis recipe is described loosely: patch size and shape, the intensity perturbation and how many synthetic images are made per support are not given, and it is unclear whether synthetic images also enter the memory bank.",
+       "feedback": "Fix the synthesis parameters (e.g., elliptical patches of 2-15% of the image area, one synthetic image per normal support and epoch) and state that the memory bank keeps only real normal supports.",
+       "rating": 4
       },
       "Relevance": {
-       "review": "Addresses G17 and G9 directly; G11 only through the robustness test.",
-       "feedback": "Tie the stress test to a clinical artefact (e.g. bright vessels or acquisition noise) to strengthen relevance.",
+       "review": "Directly addresses L4 and L18: the released code confirms that K-shot means K expertly masked abnormal images, the costliest annotation, and the paper never measures their contribution.",
+       "feedback": "Frame the outcome as the annotation cost that the synthetic variant removes per target site.",
        "rating": 4
       },
       "Originality": {
-       "review": "Choosing among max, mean, top-k and noisy-OR is a standard ablation; CANOR already proposes noisy-OR aggregation for CLIP chest X-ray scores. The paper/code mismatch is a reproducibility finding rather than a research challenge.",
-       "feedback": "Frame a hypothesis about why one pooling suits MVFA (e.g. lesion size distribution per modality) to go beyond a sweep.",
-       "rating": 2
+       "review": "Synthetic anomalies for adapting CLIP to medical images are already common ([22], [32], [43], [53], [55]). The contribution is a controlled measurement \u2014 synthetic versus real abnormal supports inside the same adapter, with the same support set and protocol \u2014 which is useful but not a new method.",
+       "feedback": "Sharpen the question with a hypothesis that the literature does not settle, e.g., that the gap depends on lesion size or modality (focal BrainMRI/LiverCT lesions versus diffuse ChestXray/HIS findings).",
+       "rating": 3
       },
       "Feasibility": {
-       "review": "One-line changes in training and testing; four retrainings.",
-       "feedback": "None.",
-       "rating": 5
+       "review": "Only image operations on data BMAD already provides, the existing losses and the same training budget as the original few-shot runs; 4 K values x 6 datasets x 3 seeds x 3 draws is a sizeable but manageable grid on one GPU. Poisson blending needs care on single-channel images.",
+       "feedback": "Reduce the grid if needed by running K in {2, 8} for all datasets and the full K range on two datasets.",
+       "rating": 4
       },
       "Significance": {
-       "review": "Resolves an attribution question for MVFA and gives a robustness number, but the likely effect sizes are modest.",
-       "feedback": "Report results stratified by lesion size, where the choice should matter most.",
+       "review": "Practically relevant for deployment at a new site, but the expected outcome \u2014 synthetic anomalies recover part of the gain \u2014 is close to what [22] and [55] already report, so the result is likely to be incremental unless the modality dependence is analysed.",
+       "feedback": "Tie the result to a concrete decision rule (when real abnormal annotations are worth collecting).",
        "rating": 3
+      }
+     },
+     "mean": 3.6
+    },
+    {
+     "problem": "In MVFA's few-shot mode, the released code defines a K-shot support set as K normal and K abnormal target-domain images, the abnormal ones with expert pixel masks, used to fine-tune the adapters (Dice, Focal and BCE losses), while the memory bank holds the normal supports. Can the K real abnormal images with masks be replaced by synthetic abnormal images built from the K normal supports alone, and does the size of the gap depend on the type of lesion? Synthesis: one synthetic image per normal support and epoch, made by Poisson-blending an elliptical patch (2-15% of the image area) cut from a different normal image of the same modality, with random intensity scaling, the pasted region serving as the mask; the memory bank keeps only real normal supports. Outcomes per BMAD dataset for K in {2, 8} (full range K in {2, 4, 8, 16} on BrainMRI and ChestXray): few-shot image-level AUROC, pixel-level AUROC and AUPRO of the synthetic variant relative to real-abnormal MVFA, with a memory-bank-only variant as the lower reference. Hypothesis: the synthetic variant recovers most of the gain on focal-lesion datasets (BrainMRI, LiverCT, RESC) and little on diffuse-finding datasets (ChestXray, HIS, OCT17).",
+     "rationale": "L4 and L18, confirmed in the released code, show that 'K = 4' means four normal plus four expertly delineated abnormal slices, and the paper never measures what those abnormal images contribute. Synthetic anomalies are a known substitute when adapting CLIP to medical images (MediCLIP [22], LesionPaste [32], the UWF framework's Poisson blending [43], AnomaMed [53]), and [55] shows that the choice of synthetic images matters; but none measures the gap to real abnormal supervision inside the same adapter with the same support set, and none asks for which kinds of medical anomaly the substitution fails. The question isolates the abnormal half of the support set, keeps architecture, losses and evaluation unchanged, needs only image operations on BMAD data, and is sized to one GPU; its answer is a decision rule for a new site: when collecting K annotated abnormal cases is worth the expert time.",
+     "reviews": {
+      "Clarity": {
+       "review": "The synthesis recipe, the memory-bank content, the K grid and the hypothesis are now explicit. Two questions remain bundled (can the abnormal supports be replaced, and does the gap depend on lesion type), and 'focal' versus 'diffuse' is asserted for each dataset rather than defined.",
+       "feedback": "Define the focal/diffuse grouping operationally (e.g., median lesion area from masks where available) or present it as a post-hoc analysis.",
+       "rating": 4
+      },
+      "Relevance": {
+       "review": "Addresses L4 and L18 directly; the decision-rule framing makes the deployment relevance explicit.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Originality": {
+       "review": "The lesion-type hypothesis adds a question the synthetic-anomaly literature ([22], [43], [53], [55]) leaves open, but the core manipulation remains a well-known substitution of real by synthetic anomalies.",
+       "feedback": "Consider testing a property specific to MVFA, e.g., whether synthetic supports harm the zero-shot text branch through the shared adapters.",
+       "rating": 3
+      },
+      "Feasibility": {
+       "review": "The reduced grid fits one GPU; synthesis is cheap; all losses and scripts exist.",
+       "feedback": "None.",
+       "rating": 4
+      },
+      "Significance": {
+       "review": "A decision rule about when annotated abnormal cases are worth collecting is useful for practice, and a dataset-dependent answer would be informative; still, the expected result is partly anticipated by [22] and [55].",
+       "feedback": "Report the annotation time saved per site alongside the AUROC gap.",
+       "rating": 4
       }
      },
      "mean": 3.8
     },
     {
-     "problem": "Does the best image-level pooling of MVFA's anomaly maps depend on lesion size? Comparing max (paper, Eq. 3), mean (released training code), top-k mean with k tied to the source datasets' median lesion area, and noisy-OR, each applied identically in training and testing, which gives the highest image AUROC per held-out modality, and how does each degrade when spurious high-scoring pixels mimicking bright vessels or acquisition noise are injected into normal test maps?",
-     "rationale": "The paper and the released code disagree on pooling (G17), and the test-time image score on masked datasets is the maximum of the fused map, so one spurious pixel can decide the label (G9); robustness is never measured (G11). CANOR [55] shows that noisy-OR beats naive max/mean aggregation for CLIP chest X-ray scores, and LaRP-CLIP [17] and HeadCLIP [4] build image scores from pixel evidence, but none relates the choice to lesion size, which differs by an order of magnitude across BMAD (small brain lesions, larger liver tumours, diffuse retinal fluid). The hypothesis is that max suits small lesions and top-k or noisy-OR suit large or diffuse ones. Each variant is a one-line change in training and testing, so four retrainings suffice; results are stratified by lesion-size tertiles on the masked datasets.",
+     "problem": "In MVFA's few-shot mode, the released code defines a K-shot support set as K normal and K abnormal target-domain images, the abnormal ones with expert pixel masks, used to fine-tune the shared adapters (Dice, Focal and BCE losses), while the memory bank holds the normal supports. Primary question: can the K real abnormal images with masks be replaced by synthetic abnormal images built from the K normal supports alone? Synthesis: one synthetic image per normal support and epoch, made by Poisson-blending an elliptical patch (2-15% of the image area) cut from a different normal image of the same modality with random intensity scaling, the pasted region serving as the mask; the memory bank keeps only real normal supports. Outcomes per BMAD dataset for K in {2, 8} (full range K in {2, 4, 8, 16} on BrainMRI and ChestXray): few-shot image-level AUROC, pixel-level AUROC and AUPRO of the synthetic variant relative to real-abnormal MVFA, with a memory-bank-only variant as the lower reference. Post-hoc analysis: the gap as a function of the median lesion area of the dataset's abnormal images, measured from masks on BrainMRI, LiverCT and RESC, and the change in the zero-shot (text) branch's AUROC after fine-tuning on synthetic supports, since the adapters are shared by both branches.",
+     "rationale": "L4 and L18, confirmed in the released code, show that 'K = 4' means four normal plus four expertly delineated abnormal slices, and the paper never measures what those abnormal images contribute. Synthetic anomalies are a known substitute when adapting CLIP to medical images (MediCLIP [22], LesionPaste [32], the UWF framework's Poisson blending [43], AnomaMed [53]), and [55] shows that the choice of synthetic images matters; but none measures the gap to real abnormal supervision inside the same adapter with the same support set, and none checks whether synthetic supports distort the text branch that MVFA's shared adapters also serve. The question isolates the abnormal half of the support set, keeps architecture, losses and evaluation unchanged, needs only image operations on BMAD data and fits one GPU; its answer is a decision rule for a new site on when collecting K annotated abnormal cases is worth the expert time.",
      "reviews": {
       "Clarity": {
-       "review": "Clear variants and hypothesis; the k-to-lesion-area rule needs a definition for datasets without masks.",
-       "feedback": "State how k is set for the image-only datasets (e.g. median over the masked sources).",
+       "review": "The primary question is clear and the post-hoc analyses are defined operationally (median lesion area from masks, text-branch AUROC change). The problem remains somewhat long.",
+       "feedback": "None of substance.",
        "rating": 4
       },
       "Relevance": {
-       "review": "Addresses G17 and G9; G11 through the robustness test.",
+       "review": "Addresses L4 and L18 directly.",
        "feedback": "None.",
        "rating": 4
       },
       "Originality": {
-       "review": "Relating the pooling choice to lesion size across modalities gives a testable hypothesis beyond a sweep.",
-       "feedback": "None.",
+       "review": "The check of whether synthetic supports distort the shared text branch is specific to MVFA's design, but the core manipulation is the well-known substitution of real by synthetic anomalies ([22], [43], [53], [55]).",
+       "feedback": "None of substance.",
        "rating": 3
       },
       "Feasibility": {
-       "review": "Four retrainings with one-line changes.",
-       "feedback": "None.",
-       "rating": 5
-      },
-      "Significance": {
-       "review": "Useful for attribution and robustness, with modest expected effect sizes.",
-       "feedback": "None.",
-       "rating": 3
-      }
-     },
-     "mean": 3.8
-    },
-    {
-     "problem": "Does the best image-level pooling of MVFA's anomaly maps depend on lesion size? Comparing max (paper, Eq. 3), mean (released training code), top-k mean with k set to the median lesion area of the masked source datasets, and noisy-OR, each applied identically in training and testing, which gives the highest image AUROC per held-out modality and per lesion-size tertile, and how does each degrade when spurious high-scoring pixels mimicking bright vessels or acquisition noise are injected into normal test maps?",
-     "rationale": "The paper and the released code disagree on pooling (G17), and the test-time image score on masked datasets is the maximum of the fused map, so a single spurious pixel can decide the label (G9); robustness is not measured (G11). CANOR [55] shows that noisy-OR improves on naive max/mean aggregation for CLIP chest X-ray scores, and LaRP-CLIP [17] and HeadCLIP [4] build image scores from pixel evidence, but none relates the choice to lesion size, which varies by an order of magnitude across BMAD. The hypothesis is that max suits small focal lesions and top-k or noisy-OR suit large or diffuse ones; k is fixed from the masked sources and reused for the image-only datasets. Each variant is a one-line change in training and testing, so four retrainings suffice.",
-     "reviews": {
-      "Clarity": {
-       "review": "Clear variants, hypothesis and stratification; the injection of spurious pixels needs a quantitative specification (number, intensity).",
-       "feedback": "Specify the injection protocol numerically.",
-       "rating": 4
-      },
-      "Relevance": {
-       "review": "Addresses G17 and G9 directly.",
+       "review": "Cheap synthesis, existing losses and a reduced grid that fits one GPU.",
        "feedback": "None.",
        "rating": 4
       },
-      "Originality": {
-       "review": "The lesion-size hypothesis turns a sweep into a testable question.",
-       "feedback": "None.",
-       "rating": 3
-      },
-      "Feasibility": {
-       "review": "Four retrainings with one-line changes.",
-       "feedback": "None.",
-       "rating": 5
-      },
       "Significance": {
-       "review": "Resolves a paper/code discrepancy and informs pooling choices, with modest expected effects.",
+       "review": "Useful decision rule for deployment at a new site; partly anticipated by the synthetic-anomaly literature.",
        "feedback": "None.",
-       "rating": 3
+       "rating": 4
       }
      },
      "mean": 3.8
@@ -1064,7 +850,7 @@
   }
  ],
  "proposed": [
-  "A1",
-  "B1"
+  "B1",
+  "A1"
  ]
 }

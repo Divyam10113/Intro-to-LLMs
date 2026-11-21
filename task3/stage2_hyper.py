@@ -2,7 +2,9 @@
 Stage 2 — Literature-grounded seed ideas with provenance (HypER, Vasu et al. 2025).
 
 Part A: reasoning-chain construction (HypER Section 3, released code RAG_temporal_extension_llama.py)
-  * Source paper p_k = MVFA (2024). Citing papers come from data/s2_citations.json (Semantic Scholar, as in HypER Step 2).
+  * Source paper p_k = MVFA (2024). First-hop citing papers: the union of Task 1's papers with origin 'cites_mvfa'
+    (data/task1/final_ref_set.json) and Semantic Scholar's citing papers (data/s2_citations.json, which also gives the
+    sentences in which they cite MVFA). Second hop: Semantic Scholar (as in HypER Step 2).
   * Step 2: keep citing papers with an abstract published in the two years after the current paper
     (code: years current+1 .. current+2), grouped by year, in chunks of 10.
   * Step 3: LLM relevancy scoring of every chunk with HypER's prompt: 0 irrelevant / 1 inspired / 2 dependent,
@@ -118,7 +120,9 @@ def build_chains(judge):
     b = s2["base"]
     source = dict(paperId=b["paperId"], title=b["title"], abstract=b["abstract"], year=b["year"],
                   citation_count=b.get("citationCount") or 0)
-    hop1 = eligible(s2["hop1"], source["year"])
+    # first hop: Semantic Scholar's citing papers plus those only Task 1 found (corpus.mvfa_citers)
+    from corpus import load_surveygen, mvfa_citers
+    hop1 = eligible(mvfa_citers(load_surveygen()), source["year"])
     scored1, top1 = score_citers(judge, source, hop1, "stage2/relevance/hop1")
     ranked1 = rank(top1)
     branches = ranked1[:BRANCHES]
@@ -149,7 +153,9 @@ def build_chains(judge):
     for i, p1 in enumerate(branches, 1):
         chain = [dict(p1, hop=1)]
         note = "extended"
-        if p1["paperId"] not in s2["hop2"]:
+        if p1["paperId"].startswith("doi:"):
+            note = "stopped: paper found only by Task 1, so no second-hop citations were fetched"
+        elif p1["paperId"] not in s2["hop2"]:
             note = "stopped: second-hop citations not fetched (not among the 40 most-cited first-hop papers)"
         elif not hop2_inputs[p1["paperId"]]:
             note = "stopped: no citing papers with abstracts in the two following years"
