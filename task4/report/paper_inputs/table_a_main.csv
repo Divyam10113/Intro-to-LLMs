@@ -1,0 +1,13 @@
+target,model,n,img AUROC,pix AUROC,AUPRO
+Liver,R0 (paper),–,76.24,97.85,–
+Liver,R0 (reproduced),1,81.19,97.92,92.34
+Liver,M-h,3,80.29 ± 0.63,96.97 ± 0.18,91.39 ± 0.27
+Liver,M-h-ctrl,3,81.63 ± 0.37,96.99 ± 0.31,91.07 ± 0.41
+Brain,R0 (paper),–,78.63,90.27,–
+Brain,R0 (reproduced),1,79.80,89.68,65.35
+Brain,M-h,3,80.25 ± 0.72,91.71 ± 0.71,71.57 ± 2.07
+Brain,M-h-ctrl,3,80.31 ± 0.96,90.05 ± 0.74,66.38 ± 2.12
+Retina_RESC,R0 (paper),–,83.31,92.05,–
+Retina_RESC,R0 (reproduced),1,88.99,90.44,68.75
+Retina_RESC,M-h,3,89.20 ± 0.16,88.76 ± 2.69,67.45 ± 6.15
+Retina_RESC,M-h-ctrl,3,88.92 ± 0.08,89.76 ± 0.46,66.94 ± 1.14

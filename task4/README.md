@@ -39,7 +39,10 @@ python -m pytest -q -p no:anyio tests/ # 27 pre-run checks (~2 min)
 python analyze.py        # early-stop check -> tells you which next command to run
 ./run_all.sh rest        # or: ./run_all.sh rest_early_stop
 python analyze.py        # Step 5 verdicts -> results/analysis.md
+python make_paper_inputs.py   # Step 6 tables + Liver heat maps -> report/paper_inputs/
 ```
+**Status (2026-11-22): all GPU runs done** (bench, phase0, main, rest, m2s; ≈ 20 min on 2 GPUs).
+Results: [`report/TASK4_REPORT.md`](report/TASK4_REPORT.md).
 Both GPUs serve one shared queue: whenever a run finishes, its slot takes the
 next one, so neither card idles while work is left. `GPUS="1" ./run_all.sh ...`
 restricts to one card. Logs go to `logs/`; each run writes
@@ -74,3 +77,6 @@ fixed by its seed).
 | `report/ISSUES_LOG.md` | the issues log Task 4 requires |
 | `report/DECISIONS.md` | every deviation from the plan, with reasons, fixed before GPU runs |
 | `smoke_cpu.sh` | end-to-end CPU test of every script and config |
+| `make_paper_inputs.py` | Step 6 hand-off: tables (a), (b), Liver heat-map figure, copies to `report/paper_inputs/` |
+| `export_transcript.py` | exports the chat with the LLM to `report/transcript/TRANSCRIPT.md` (e-mail redacted) |
+| `report/TASK4_REPORT.md` | the Step 6 report |
