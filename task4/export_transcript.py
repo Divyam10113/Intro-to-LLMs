@@ -10,7 +10,7 @@ Included: every user message, every assistant reply, every tool call (tool
 name, its description and input) and tool output (truncated to keep the file
 readable). Left out: the model's hidden reasoning blocks, and system-inserted
 context (<system-reminder> blocks), which is app plumbing, not conversation.
-The user's e-mail address is redacted.
+The user's e-mail address and other people's account names are redacted.
 """
 import json
 import re
@@ -32,10 +32,15 @@ def _author_local_part():
 
 
 _LOCAL = _author_local_part()
+import getpass  # noqa: E402
+SELF_USER = getpass.getuser()
+OTHER_USER = re.compile(r"\bf20\d{2}\w*\+?")  # this machine's account-name scheme
 
 
 def redact(s):
     s = EMAIL.sub(lambda m: m.group(0) if m.group(0) in KEEP_EMAIL else "[email redacted]", s)
+    # other people's accounts on this shared machine (they are not part of this work)
+    s = OTHER_USER.sub(lambda m: m.group(0) if m.group(0).startswith(SELF_USER) else "[other user]", s)
     if _LOCAL:
         s = re.sub(_LOCAL[:8] + r"\w*", "[email redacted]", s, flags=re.I)  # also partial mentions
     return s
@@ -143,7 +148,7 @@ def main():
            "Conversation between the author and Claude (Claude Code, Opus 5.5) that produced Task 4, "
            "exported by `task4/export_transcript.py` from the app's session files. "
            "Times are UTC. Tool outputs are truncated; the model's hidden reasoning and "
-           "app-inserted system context are left out; the author's e-mail is redacted.\n"]
+           "app-inserted system context are left out; the author's e-mail and other people's account names on the shared machine are redacted.\n"]
     seen = set()
     for n, path in enumerate(args, 1):
         ms = load(path)
