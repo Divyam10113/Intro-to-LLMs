@@ -11,3 +11,4 @@ task4/logs/
 *.npz
 *.tar.gz
 *.zip
+*.lock
