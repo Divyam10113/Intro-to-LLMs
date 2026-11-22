@@ -17,7 +17,9 @@
   - G1b (GPU smoke and timing) is checked by pre-set criteria inside `go.sh`; review `report/gpu_checks.md` afterwards.
   - Teammate's instruction (verbatim): *"prepare for this, so that whenever we get the GPUs free, we can directly run"*.
 
-## Next command (when you want it to start; it waits for free GPUs by itself)
+## Next command (morning, after the current runs are paused; R3-3b)
+
+The current runs must **free** their GPU memory. Stopping them works. Suspending them (Ctrl-Z / `kill -STOP`) does not, because a suspended process keeps its ~96 GB. Check with `nvidia-smi`: both GPUs should show almost no memory used. `go.sh` waits until at least 45 GB per GPU is free.
 
 ```bash
 cd /home/f20241442/divyam-backup-imported/proj/task4r3
