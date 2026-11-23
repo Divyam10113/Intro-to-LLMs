@@ -11,7 +11,8 @@
   - `run_all.sh` has the modes `r3`, `list r3`, `smoke` and `timing`.
   - `analyze3.py` and `RULES.md` were written and **frozen** (`report/FROZEN.sha256`, R3-9).
 - [x] **Tests (§4.3).** 80 pass on CPU: round 2's 41 plus 39 new. The CPU smoke test of all six arms passes (R3-10).
-- [ ] **GPU smoke test (§4.3) and timing check (§4.4).** Not run yet: both GPUs are busy with other users' jobs (R3-3). `go.sh` runs both automatically once the GPUs are free.
+- [x] **GPU smoke test (§4.3) and timing check (§4.4)**, 2026-11-23, after the teammate freed the GPUs. Smoke test: PASS (all six arms). The timing check's cut was a startup artifact; the re-measured slowdown on real epochs is 1.11× → no cut (R3-11, `report/gpu_checks.md`).
+- [~] **Runs: 58-run queue started 2026-11-23 11:06:36** in tmux session `r3` (`./go.sh launch`). About 6.2 h projected, so done ≈ 17:15. Check with `python status.py`. When it finishes, `go.sh` runs `analyze3.py`, and then it is Session B's turn.
 - [~] **Gate G1.**
   - G1a (code, tests, CPU smoke, frozen rules) is ready for the teammate to look at.
   - G1b (GPU smoke and timing) is checked by pre-set criteria inside `go.sh`; review `report/gpu_checks.md` afterwards.
