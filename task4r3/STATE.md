@@ -1,4 +1,4 @@
-# Round 3 state
+# Round 3 state: TASK 4 CLOSED (2026-11-23)
 
 **Resume prompt (new Claude session):** *"Read task4r3/STATE.md and continue from the next step. Do not redo finished steps."*
 
@@ -34,7 +34,7 @@ tmux new -d -s r3 ./go.sh
 
 - [x] **Runs done**, 16:44:31: 58/58, 0 failures. `analyze3.py` ran (`results/analysis.md`).
 - [x] **Session B** (2026-11-23): `report/TASK4R3_REPORT.md` (every run), `report/VERDICT.md`, `report/PAPER_CLAIMS.md`, `report/paper_inputs/task4_r3/` (`make_paper_inputs3.py`), figures (`make_figures.py`), ISSUES_LOG G2 and G3, transcript.
-- [ ] **Gate G2:** the teammate reads the report, the verdict and `PAPER_CLAIMS.md`. Log the reply verbatim in ISSUES_LOG G3; Task 4 is then closed.
+- [x] **Gate G2** (2026-11-23): the teammate's reply is logged verbatim (ISSUES_LOG, "Gate G2"). **Task 4 is closed.** Share zip: `task4_final_share.zip` in the project folder.
   Open points for the teammate: `PAPER_PLAN.md` was not supplied (G3-2); where H4's "matches" goes (G3-3).
 
 ## Session B (done; kept for reference)
