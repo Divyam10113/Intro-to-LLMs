@@ -7,3 +7,6 @@
 2026-11-23 10:57:41 timing: Decision: cut mil_m25 + brain_extra.** 45 runs, ≈ 7.3 h wall-clock if both GPUs stay free.
 2026-11-23 10:57:41 r3 runs started (45 runs in the plan; cuts: mil_m25 brain_extra )
 2026-11-23 11:06:36 r3 runs started (58 runs in the plan; cuts: )
+2026-11-23 16:44:31 r3 runs finished; 0 failed twice
+2026-11-23 16:44:33 analyze3.py done -> results/analysis.md
+2026-11-23 16:44:33 DONE. Next: Session B (plan §4): read task4r3/STATE.md

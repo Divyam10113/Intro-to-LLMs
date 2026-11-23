@@ -1,0 +1,252 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mvfa_Brain_s7] ep 0 step 0/4742 det  Chest           loss 1.6140 (0.736s/step)
+[mvfa_Brain_s7] ep 0 step 500/4742 det  Histopathology  loss 2.5739 (0.038s/step)
+[mvfa_Brain_s7] ep 0 step 1000/4742 det  Histopathology  loss 2.9394 (0.036s/step)
+[mvfa_Brain_s7] ep 0 step 1500/4742 mask Liver           loss 4.9144 (0.035s/step)
+[mvfa_Brain_s7] ep 0 step 2000/4742 det  Chest           loss 2.5729 (0.035s/step)
+[mvfa_Brain_s7] ep 0 step 2500/4742 mask Liver           loss 6.3912 (0.035s/step)
+[mvfa_Brain_s7] ep 0 step 3000/4742 mask Retina_RESC     loss 2.0572 (0.036s/step)
+[mvfa_Brain_s7] ep 0 step 3500/4742 det  Histopathology  loss 1.5854 (0.036s/step)
+[mvfa_Brain_s7] ep 0 step 4000/4742 det  Chest           loss 2.6430 (0.036s/step)
+[mvfa_Brain_s7] ep 0 step 4500/4742 mask Retina_RESC     loss 5.3950 (0.036s/step)
+[mvfa_Brain_s7] epoch 0 done in 173s; source-val image AUROC 0.9299 {'Liver': 0.947, 'Retina_RESC': 0.979, 'Retina_OCT2017': 0.983, 'Chest': 0.884, 'Histopathology': 0.857}
+[mvfa_Brain_s7] ep 1 step 0/4742 det  Retina_OCT2017  loss 1.6831 (0.222s/step)
+[mvfa_Brain_s7] ep 1 step 500/4742 det  Histopathology  loss 2.2735 (0.037s/step)
+[mvfa_Brain_s7] ep 1 step 1000/4742 det  Histopathology  loss 2.7870 (0.038s/step)
+[mvfa_Brain_s7] ep 1 step 1500/4742 det  Chest           loss 1.6606 (0.037s/step)
+[mvfa_Brain_s7] ep 1 step 2000/4742 det  Chest           loss 2.0530 (0.038s/step)
+[mvfa_Brain_s7] ep 1 step 2500/4742 det  Chest           loss 3.0548 (0.038s/step)
+[mvfa_Brain_s7] ep 1 step 3000/4742 det  Chest           loss 1.4253 (0.038s/step)
+[mvfa_Brain_s7] ep 1 step 3500/4742 det  Histopathology  loss 1.3711 (0.038s/step)
+[mvfa_Brain_s7] ep 1 step 4000/4742 det  Chest           loss 3.3447 (0.037s/step)
+[mvfa_Brain_s7] ep 1 step 4500/4742 mask Retina_RESC     loss 1.8370 (0.038s/step)
+[mvfa_Brain_s7] epoch 1 done in 178s; source-val image AUROC 0.9366 {'Liver': 0.937, 'Retina_RESC': 0.99, 'Retina_OCT2017': 0.983, 'Chest': 0.882, 'Histopathology': 0.89}
+[mvfa_Brain_s7] ep 2 step 0/4742 mask Retina_RESC     loss 2.4564 (0.261s/step)
+[mvfa_Brain_s7] ep 2 step 500/4742 det  Histopathology  loss 3.3124 (0.038s/step)
+[mvfa_Brain_s7] ep 2 step 1000/4742 det  Histopathology  loss 2.0097 (0.037s/step)
+[mvfa_Brain_s7] ep 2 step 1500/4742 mask Liver           loss 5.9115 (0.037s/step)
+[mvfa_Brain_s7] ep 2 step 2000/4742 mask Retina_RESC     loss 3.9909 (0.037s/step)
+[mvfa_Brain_s7] ep 2 step 2500/4742 det  Chest           loss 3.9149 (0.037s/step)
+[mvfa_Brain_s7] ep 2 step 3000/4742 mask Retina_RESC     loss 3.7481 (0.038s/step)
+[mvfa_Brain_s7] ep 2 step 3500/4742 mask Retina_RESC     loss 4.3398 (0.038s/step)
+[mvfa_Brain_s7] ep 2 step 4000/4742 det  Retina_OCT2017  loss 1.3315 (0.038s/step)
+[mvfa_Brain_s7] ep 2 step 4500/4742 mask Retina_RESC     loss 10.2535 (0.038s/step)
+[mvfa_Brain_s7] epoch 2 done in 179s; source-val image AUROC 0.9413 {'Liver': 0.958, 'Retina_RESC': 0.993, 'Retina_OCT2017': 0.983, 'Chest': 0.879, 'Histopathology': 0.892}
+[mvfa_Brain_s7] ep 3 step 0/4742 det  Histopathology  loss 1.3052 (0.241s/step)
+[mvfa_Brain_s7] ep 3 step 500/4742 mask Liver           loss 2.6103 (0.037s/step)
+[mvfa_Brain_s7] ep 3 step 1000/4742 det  Retina_OCT2017  loss 1.5106 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 1500/4742 mask Retina_RESC     loss 3.9171 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 2000/4742 mask Retina_RESC     loss 4.0133 (0.037s/step)
+[mvfa_Brain_s7] ep 3 step 2500/4742 det  Histopathology  loss 1.5019 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 3000/4742 det  Retina_OCT2017  loss 1.4125 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 3500/4742 det  Histopathology  loss 3.4223 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 4000/4742 mask Liver           loss 3.1473 (0.038s/step)
+[mvfa_Brain_s7] ep 3 step 4500/4742 det  Retina_OCT2017  loss 1.7810 (0.038s/step)
+[mvfa_Brain_s7] epoch 3 done in 179s; source-val image AUROC 0.9430 {'Liver': 0.938, 'Retina_RESC': 0.994, 'Retina_OCT2017': 1.0, 'Chest': 0.879, 'Histopathology': 0.904}
+[mvfa_Brain_s7] ep 4 step 0/4742 det  Chest           loss 2.7080 (0.250s/step)
+[mvfa_Brain_s7] ep 4 step 500/4742 mask Liver           loss 3.1379 (0.039s/step)
+[mvfa_Brain_s7] ep 4 step 1000/4742 det  Chest           loss 1.4385 (0.039s/step)
+[mvfa_Brain_s7] ep 4 step 1500/4742 mask Retina_RESC     loss 2.1265 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 2000/4742 mask Retina_RESC     loss 2.7354 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 2500/4742 det  Chest           loss 1.3329 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 3000/4742 mask Liver           loss 4.1908 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 3500/4742 det  Chest           loss 3.0105 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 4000/4742 det  Histopathology  loss 4.7957 (0.038s/step)
+[mvfa_Brain_s7] ep 4 step 4500/4742 det  Chest           loss 1.6661 (0.038s/step)
+[mvfa_Brain_s7] epoch 4 done in 178s; source-val image AUROC 0.9525 {'Liver': 0.949, 'Retina_RESC': 0.995, 'Retina_OCT2017': 1.0, 'Chest': 0.896, 'Histopathology': 0.923}
+[mvfa_Brain_s7] ep 5 step 0/4742 det  Chest           loss 2.8290 (0.244s/step)
+[mvfa_Brain_s7] ep 5 step 500/4742 mask Retina_RESC     loss 3.8907 (0.040s/step)
+[mvfa_Brain_s7] ep 5 step 1000/4742 mask Liver           loss 3.2461 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 1500/4742 det  Histopathology  loss 2.8018 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 2000/4742 det  Chest           loss 1.3995 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 2500/4742 mask Retina_RESC     loss 4.4035 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 3000/4742 mask Liver           loss 3.1851 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 3500/4742 det  Histopathology  loss 1.3533 (0.038s/step)
+[mvfa_Brain_s7] ep 5 step 4000/4742 mask Liver           loss 2.8645 (0.037s/step)
+[mvfa_Brain_s7] ep 5 step 4500/4742 mask Retina_RESC     loss 3.8728 (0.037s/step)
+[mvfa_Brain_s7] epoch 5 done in 177s; source-val image AUROC 0.9502 {'Liver': 0.931, 'Retina_RESC': 0.993, 'Retina_OCT2017': 1.0, 'Chest': 0.888, 'Histopathology': 0.939}
+[mvfa_Brain_s7] ep 6 step 0/4742 mask Retina_RESC     loss 4.2783 (0.257s/step)
+[mvfa_Brain_s7] ep 6 step 500/4742 det  Chest           loss 2.8404 (0.039s/step)
+[mvfa_Brain_s7] ep 6 step 1000/4742 mask Retina_RESC     loss 3.7038 (0.039s/step)
+[mvfa_Brain_s7] ep 6 step 1500/4742 mask Retina_RESC     loss 1.9228 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 2000/4742 det  Histopathology  loss 1.4865 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 2500/4742 mask Retina_RESC     loss 3.8501 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 3000/4742 mask Retina_RESC     loss 3.1712 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 3500/4742 det  Histopathology  loss 2.8027 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 4000/4742 mask Retina_RESC     loss 2.0379 (0.038s/step)
+[mvfa_Brain_s7] ep 6 step 4500/4742 mask Liver           loss 2.8528 (0.038s/step)
+[mvfa_Brain_s7] epoch 6 done in 179s; source-val image AUROC 0.9581 {'Liver': 0.96, 'Retina_RESC': 0.996, 'Retina_OCT2017': 1.0, 'Chest': 0.884, 'Histopathology': 0.95}
+[mvfa_Brain_s7] ep 7 step 0/4742 det  Chest           loss 2.8870 (0.246s/step)
+[mvfa_Brain_s7] ep 7 step 500/4742 det  Histopathology  loss 1.2863 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 1000/4742 mask Retina_RESC     loss 2.5247 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 1500/4742 mask Liver           loss 1.9997 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 2000/4742 det  Retina_OCT2017  loss 1.3298 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 2500/4742 det  Retina_OCT2017  loss 1.3962 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 3000/4742 det  Histopathology  loss 1.4172 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 3500/4742 mask Retina_RESC     loss 4.0153 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 4000/4742 det  Retina_OCT2017  loss 2.9015 (0.038s/step)
+[mvfa_Brain_s7] ep 7 step 4500/4742 det  Histopathology  loss 1.3197 (0.038s/step)
+[mvfa_Brain_s7] epoch 7 done in 180s; source-val image AUROC 0.9527 {'Liver': 0.965, 'Retina_RESC': 0.996, 'Retina_OCT2017': 1.0, 'Chest': 0.896, 'Histopathology': 0.906}
+[mvfa_Brain_s7] ep 8 step 0/4742 mask Retina_RESC     loss 4.8101 (0.274s/step)
+[mvfa_Brain_s7] ep 8 step 500/4742 det  Histopathology  loss 2.8178 (0.037s/step)
+[mvfa_Brain_s7] ep 8 step 1000/4742 det  Histopathology  loss 1.6642 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 1500/4742 mask Liver           loss 3.0935 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 2000/4742 det  Histopathology  loss 1.5438 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 2500/4742 mask Retina_RESC     loss 1.9858 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 3000/4742 det  Chest           loss 2.7816 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 3500/4742 mask Retina_RESC     loss 3.8449 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 4000/4742 det  Chest           loss 1.3127 (0.038s/step)
+[mvfa_Brain_s7] ep 8 step 4500/4742 det  Chest           loss 1.7074 (0.038s/step)
+[mvfa_Brain_s7] epoch 8 done in 179s; source-val image AUROC 0.9601 {'Liver': 0.985, 'Retina_RESC': 0.996, 'Retina_OCT2017': 0.986, 'Chest': 0.891, 'Histopathology': 0.943}
+[mvfa_Brain_s7] ep 9 step 0/4742 det  Histopathology  loss 1.5903 (0.242s/step)
+[mvfa_Brain_s7] ep 9 step 500/4742 mask Retina_RESC     loss 3.9883 (0.036s/step)
+[mvfa_Brain_s7] ep 9 step 1000/4742 det  Histopathology  loss 2.8272 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 1500/4742 det  Histopathology  loss 1.3569 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 2000/4742 mask Liver           loss 6.5391 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 2500/4742 det  Chest           loss 1.3408 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 3000/4742 mask Retina_RESC     loss 3.9082 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 3500/4742 det  Histopathology  loss 2.8798 (0.037s/step)
+[mvfa_Brain_s7] ep 9 step 4000/4742 det  Histopathology  loss 2.7814 (0.038s/step)
+[mvfa_Brain_s7] ep 9 step 4500/4742 det  Retina_OCT2017  loss 1.3180 (0.038s/step)
+[mvfa_Brain_s7] epoch 9 done in 178s; source-val image AUROC 0.9641 {'Liver': 0.969, 'Retina_RESC': 0.99, 'Retina_OCT2017': 1.0, 'Chest': 0.91, 'Histopathology': 0.952}
+[mvfa_Brain_s7] ep 10 step 0/4742 mask Retina_RESC     loss 3.8583 (0.315s/step)
+[mvfa_Brain_s7] ep 10 step 500/4742 det  Histopathology  loss 2.7839 (0.039s/step)
+[mvfa_Brain_s7] ep 10 step 1000/4742 mask Retina_RESC     loss 3.8220 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 1500/4742 mask Retina_RESC     loss 2.0063 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 2000/4742 mask Retina_RESC     loss 3.9115 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 2500/4742 det  Histopathology  loss 2.7993 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 3000/4742 mask Liver           loss 4.7365 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 3500/4742 det  Histopathology  loss 1.3802 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 4000/4742 mask Liver           loss 2.9286 (0.038s/step)
+[mvfa_Brain_s7] ep 10 step 4500/4742 mask Liver           loss 5.1602 (0.038s/step)
+[mvfa_Brain_s7] epoch 10 done in 180s; source-val image AUROC 0.9646 {'Liver': 0.976, 'Retina_RESC': 0.995, 'Retina_OCT2017': 1.0, 'Chest': 0.904, 'Histopathology': 0.948}
+[mvfa_Brain_s7] ep 11 step 0/4742 mask Liver           loss 2.8253 (0.244s/step)
+[mvfa_Brain_s7] ep 11 step 500/4742 det  Chest           loss 1.2692 (0.039s/step)
+[mvfa_Brain_s7] ep 11 step 1000/4742 det  Chest           loss 2.8022 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 1500/4742 det  Retina_OCT2017  loss 1.4253 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 2000/4742 det  Chest           loss 2.8232 (0.037s/step)
+[mvfa_Brain_s7] ep 11 step 2500/4742 mask Liver           loss 2.4503 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 3000/4742 det  Retina_OCT2017  loss 1.6119 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 3500/4742 det  Retina_OCT2017  loss 1.4041 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 4000/4742 det  Retina_OCT2017  loss 2.9405 (0.038s/step)
+[mvfa_Brain_s7] ep 11 step 4500/4742 det  Chest           loss 2.7929 (0.038s/step)
+[mvfa_Brain_s7] epoch 11 done in 179s; source-val image AUROC 0.9636 {'Liver': 0.962, 'Retina_RESC': 0.99, 'Retina_OCT2017': 1.0, 'Chest': 0.915, 'Histopathology': 0.952}
+[mvfa_Brain_s7] ep 12 step 0/4742 mask Liver           loss 2.8437 (0.254s/step)
+[mvfa_Brain_s7] ep 12 step 500/4742 det  Chest           loss 1.5329 (0.039s/step)
+[mvfa_Brain_s7] ep 12 step 1000/4742 det  Histopathology  loss 1.6191 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 1500/4742 det  Histopathology  loss 3.8611 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 2000/4742 det  Histopathology  loss 2.7804 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 2500/4742 det  Retina_OCT2017  loss 1.3417 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 3000/4742 det  Retina_OCT2017  loss 1.4197 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 3500/4742 mask Liver           loss 2.8561 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 4000/4742 det  Chest           loss 1.5089 (0.038s/step)
+[mvfa_Brain_s7] ep 12 step 4500/4742 det  Chest           loss 1.2636 (0.038s/step)
+[mvfa_Brain_s7] epoch 12 done in 179s; source-val image AUROC 0.9681 {'Liver': 0.985, 'Retina_RESC': 0.99, 'Retina_OCT2017': 1.0, 'Chest': 0.906, 'Histopathology': 0.959}
+[mvfa_Brain_s7] ep 13 step 0/4742 det  Histopathology  loss 1.2879 (0.231s/step)
+[mvfa_Brain_s7] ep 13 step 500/4742 mask Liver           loss 4.2269 (0.038s/step)
+[mvfa_Brain_s7] ep 13 step 1000/4742 det  Retina_OCT2017  loss 2.8682 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 1500/4742 det  Histopathology  loss 2.7784 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 2000/4742 det  Chest           loss 3.9145 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 2500/4742 det  Histopathology  loss 2.9069 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 3000/4742 det  Histopathology  loss 2.0961 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 3500/4742 det  Retina_OCT2017  loss 1.4069 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 4000/4742 det  Chest           loss 2.7829 (0.037s/step)
+[mvfa_Brain_s7] ep 13 step 4500/4742 det  Histopathology  loss 1.2830 (0.037s/step)
+[mvfa_Brain_s7] epoch 13 done in 178s; source-val image AUROC 0.9647 {'Liver': 0.974, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.912, 'Histopathology': 0.95}
+[mvfa_Brain_s7] ep 14 step 0/4742 det  Chest           loss 2.7546 (0.252s/step)
+[mvfa_Brain_s7] ep 14 step 500/4742 det  Chest           loss 2.9646 (0.037s/step)
+[mvfa_Brain_s7] ep 14 step 1000/4742 det  Histopathology  loss 1.3714 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 1500/4742 det  Retina_OCT2017  loss 1.3669 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 2000/4742 mask Liver           loss 2.8406 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 2500/4742 det  Retina_OCT2017  loss 1.3559 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 3000/4742 mask Liver           loss 1.9192 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 3500/4742 mask Retina_RESC     loss 4.0989 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 4000/4742 det  Retina_OCT2017  loss 1.3646 (0.038s/step)
+[mvfa_Brain_s7] ep 14 step 4500/4742 mask Liver           loss 2.8789 (0.038s/step)
+[mvfa_Brain_s7] epoch 14 done in 179s; source-val image AUROC 0.9677 {'Liver': 0.972, 'Retina_RESC': 0.989, 'Retina_OCT2017': 1.0, 'Chest': 0.919, 'Histopathology': 0.958}
+[mvfa_Brain_s7] ep 15 step 0/4742 mask Liver           loss 1.8709 (0.257s/step)
+[mvfa_Brain_s7] ep 15 step 500/4742 mask Retina_RESC     loss 3.8549 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 1000/4742 det  Histopathology  loss 2.7747 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 1500/4742 det  Histopathology  loss 2.7916 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 2000/4742 det  Histopathology  loss 2.7758 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 2500/4742 det  Retina_OCT2017  loss 1.2842 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 3000/4742 det  Histopathology  loss 2.9572 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 3500/4742 det  Chest           loss 2.7850 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 4000/4742 det  Retina_OCT2017  loss 2.8710 (0.038s/step)
+[mvfa_Brain_s7] ep 15 step 4500/4742 mask Retina_RESC     loss 3.8414 (0.038s/step)
+[mvfa_Brain_s7] epoch 15 done in 179s; source-val image AUROC 0.9707 {'Liver': 0.974, 'Retina_RESC': 0.994, 'Retina_OCT2017': 1.0, 'Chest': 0.926, 'Histopathology': 0.96}
+[mvfa_Brain_s7] ep 16 step 0/4742 mask Retina_RESC     loss 1.9448 (0.254s/step)
+[mvfa_Brain_s7] ep 16 step 500/4742 det  Chest           loss 1.5106 (0.039s/step)
+[mvfa_Brain_s7] ep 16 step 1000/4742 det  Retina_OCT2017  loss 1.3449 (0.039s/step)
+[mvfa_Brain_s7] ep 16 step 1500/4742 det  Retina_OCT2017  loss 1.3143 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 2000/4742 det  Histopathology  loss 2.7605 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 2500/4742 det  Retina_OCT2017  loss 3.1036 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 3000/4742 det  Histopathology  loss 1.2948 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 3500/4742 det  Chest           loss 2.9618 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 4000/4742 mask Retina_RESC     loss 3.8405 (0.038s/step)
+[mvfa_Brain_s7] ep 16 step 4500/4742 det  Retina_OCT2017  loss 1.3506 (0.038s/step)
+[mvfa_Brain_s7] epoch 16 done in 179s; source-val image AUROC 0.9668 {'Liver': 0.975, 'Retina_RESC': 0.993, 'Retina_OCT2017': 1.0, 'Chest': 0.911, 'Histopathology': 0.955}
+[mvfa_Brain_s7] ep 17 step 0/4742 mask Liver           loss 2.9831 (0.256s/step)
+[mvfa_Brain_s7] ep 17 step 500/4742 mask Retina_RESC     loss 2.1387 (0.037s/step)
+[mvfa_Brain_s7] ep 17 step 1000/4742 mask Liver           loss 2.8301 (0.037s/step)
+[mvfa_Brain_s7] ep 17 step 1500/4742 mask Retina_RESC     loss 1.8882 (0.037s/step)
+[mvfa_Brain_s7] ep 17 step 2000/4742 det  Retina_OCT2017  loss 2.8714 (0.038s/step)
+[mvfa_Brain_s7] ep 17 step 2500/4742 det  Chest           loss 1.4823 (0.038s/step)
+[mvfa_Brain_s7] ep 17 step 3000/4742 det  Chest           loss 2.7858 (0.038s/step)
+[mvfa_Brain_s7] ep 17 step 3500/4742 mask Retina_RESC     loss 3.9443 (0.038s/step)
+[mvfa_Brain_s7] ep 17 step 4000/4742 det  Histopathology  loss 2.7991 (0.038s/step)
+[mvfa_Brain_s7] ep 17 step 4500/4742 det  Retina_OCT2017  loss 1.2889 (0.038s/step)
+[mvfa_Brain_s7] epoch 17 done in 179s; source-val image AUROC 0.9655 {'Liver': 0.97, 'Retina_RESC': 0.989, 'Retina_OCT2017': 1.0, 'Chest': 0.915, 'Histopathology': 0.953}
+[mvfa_Brain_s7] ep 18 step 0/4742 det  Histopathology  loss 2.8434 (0.220s/step)
+[mvfa_Brain_s7] ep 18 step 500/4742 det  Histopathology  loss 2.8126 (0.039s/step)
+[mvfa_Brain_s7] ep 18 step 1000/4742 mask Retina_RESC     loss 3.9416 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 1500/4742 mask Liver           loss 3.5214 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 2000/4742 mask Liver           loss 2.8055 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 2500/4742 mask Liver           loss 2.7997 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 3000/4742 det  Chest           loss 2.8033 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 3500/4742 det  Histopathology  loss 2.7958 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 4000/4742 mask Liver           loss 2.7957 (0.038s/step)
+[mvfa_Brain_s7] ep 18 step 4500/4742 mask Liver           loss 2.8206 (0.038s/step)
+[mvfa_Brain_s7] epoch 18 done in 179s; source-val image AUROC 0.9706 {'Liver': 0.988, 'Retina_RESC': 0.997, 'Retina_OCT2017': 1.0, 'Chest': 0.925, 'Histopathology': 0.942}
+[mvfa_Brain_s7] ep 19 step 0/4742 det  Retina_OCT2017  loss 1.2787 (0.224s/step)
+[mvfa_Brain_s7] ep 19 step 500/4742 mask Retina_RESC     loss 3.8095 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 1000/4742 det  Histopathology  loss 1.2757 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 1500/4742 det  Histopathology  loss 2.8233 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 2000/4742 mask Liver           loss 2.8452 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 2500/4742 det  Retina_OCT2017  loss 1.2792 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 3000/4742 det  Retina_OCT2017  loss 1.3717 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 3500/4742 mask Liver           loss 2.8316 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 4000/4742 det  Histopathology  loss 1.2707 (0.038s/step)
+[mvfa_Brain_s7] ep 19 step 4500/4742 det  Retina_OCT2017  loss 1.2951 (0.038s/step)
+[mvfa_Brain_s7] epoch 19 done in 179s; source-val image AUROC 0.9672 {'Liver': 0.974, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.917, 'Histopathology': 0.958}
+{
+ "run_id": "mvfa_Brain_s7",
+ "best_epoch": 15,
+ "val_curve": [
+  0.92995,
+  0.93657,
+  0.94129,
+  0.94302,
+  0.95253,
+  0.9502,
+  0.95815,
+  0.95267,
+  0.96012,
+  0.96411,
+  0.96457,
+  0.96365,
+  0.96807,
+  0.9647,
+  0.96773,
+  0.97067,
+  0.96683,
+  0.96546,
+  0.97057,
+  0.96716
+ ],
+ "n_updates": 94840,
+ "seconds_per_update": 0.03975372143759098,
+ "total_seconds": 3832.7790625095367
+}
+{'eval_dataset': 'Brain', 'img_auroc': 0.5306938516260162, 'pix_auroc': 0.8805601126273572, 'aupro': 0.602668515474655}
