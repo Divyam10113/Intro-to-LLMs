@@ -27,10 +27,11 @@ tmux new -d -s r3 './go.sh launch'   # restart after an interruption; finished r
 | `analyze3.py`, `RULES.md` | plan §5 rules, frozen (`report/FROZEN.sha256`). Writes `results/analysis.md` and `results/per_seed.md` |
 | `make_figures.py` | Liver heat maps (seed-3 runs) and the label-budget curve, written to `report/` |
 | `status.py` | progress without Claude |
+| `make_paper_inputs3.py` | builds `report/paper_inputs/task4_r3/` (tables .md/.csv, figures, numbers) from `results/` |
 | `tests/` | round 2's 41 checks plus 39 for round 3 (`test_r3.py`) |
 | `smoke_cpu.sh` | CPU end-to-end check of the six arms on a few images (used while the GPUs were busy) |
 | `results/results.csv` | one row per (run, evaluated dataset), append-only |
 
 Runs: MVFA, MIL and PU+100 % (Tier 1), then MIL+100 %, MIL+10 % and MIL+25 % (Tier 2). Each runs on the
 Brain, Liver and RESC+OCT17 folds, seeds 3–5, at 20 epochs. MVFA and MIL also run on Brain with seeds 6–7.
-58 runs in total, about 5½–6 h on 2 GPUs.
+58 runs in total; run on 2026-11-23, 11:06–16:44, with no failures. Results: `results/analysis.md`; report: `report/TASK4R3_REPORT.md`; verdict: `report/VERDICT.md`; paper claims: `report/PAPER_CLAIMS.md`.

@@ -1,0 +1,113 @@
+quantity,value,source
+H1 retention mean,0.969,analysis.md H1
+H1 retention Brain,1.019,analysis.md H1
+H1 retention Liver,0.964,analysis.md H1
+H1 retention RESC,0.924,analysis.md H1
+MVFA (re-run) Brain pix_auroc mean,87.84,analysis.md main table
+MVFA (re-run) Brain pix_auroc std,0.87,analysis.md main table
+MVFA (re-run) Brain aupro mean,59.31,analysis.md main table
+MVFA (re-run) Brain aupro std,2.15,analysis.md main table
+MVFA (re-run) Brain img_auroc mean,56.33,analysis.md main table
+MVFA (re-run) Brain img_auroc std,6.73,analysis.md main table
+MVFA (re-run) Liver pix_auroc mean,97.21,analysis.md main table
+MVFA (re-run) Liver pix_auroc std,0.01,analysis.md main table
+MVFA (re-run) Liver aupro mean,91.55,analysis.md main table
+MVFA (re-run) Liver aupro std,0.09,analysis.md main table
+MVFA (re-run) Liver img_auroc mean,60.60,analysis.md main table
+MVFA (re-run) Liver img_auroc std,2.53,analysis.md main table
+MVFA (re-run) RESC pix_auroc mean,86.14,analysis.md main table
+MVFA (re-run) RESC pix_auroc std,0.69,analysis.md main table
+MVFA (re-run) RESC aupro mean,57.66,analysis.md main table
+MVFA (re-run) RESC aupro std,1.39,analysis.md main table
+MVFA (re-run) RESC img_auroc mean,74.29,analysis.md main table
+MVFA (re-run) RESC img_auroc std,2.95,analysis.md main table
+MIL Brain pix_auroc mean,88.56,analysis.md main table
+MIL Brain pix_auroc std,2.77,analysis.md main table
+MIL Brain aupro mean,63.77,analysis.md main table
+MIL Brain aupro std,3.77,analysis.md main table
+MIL Brain img_auroc mean,67.50,analysis.md main table
+MIL Brain img_auroc std,3.70,analysis.md main table
+MIL Liver pix_auroc mean,95.50,analysis.md main table
+MIL Liver pix_auroc std,0.12,analysis.md main table
+MIL Liver aupro mean,88.08,analysis.md main table
+MIL Liver aupro std,0.68,analysis.md main table
+MIL Liver img_auroc mean,67.95,analysis.md main table
+MIL Liver img_auroc std,4.11,analysis.md main table
+MIL RESC pix_auroc mean,83.40,analysis.md main table
+MIL RESC pix_auroc std,3.71,analysis.md main table
+MIL RESC aupro mean,54.31,analysis.md main table
+MIL RESC aupro std,6.52,analysis.md main table
+MIL RESC img_auroc mean,71.27,analysis.md main table
+MIL RESC img_auroc std,0.83,analysis.md main table
+PU+100% Brain pix_auroc mean,89.82,analysis.md main table
+PU+100% Brain pix_auroc std,0.61,analysis.md main table
+PU+100% Brain aupro mean,65.75,analysis.md main table
+PU+100% Brain aupro std,1.72,analysis.md main table
+PU+100% Brain img_auroc mean,67.52,analysis.md main table
+PU+100% Brain img_auroc std,8.31,analysis.md main table
+PU+100% Liver pix_auroc mean,96.57,analysis.md main table
+PU+100% Liver pix_auroc std,0.20,analysis.md main table
+PU+100% Liver aupro mean,91.04,analysis.md main table
+PU+100% Liver aupro std,0.28,analysis.md main table
+PU+100% Liver img_auroc mean,63.86,analysis.md main table
+PU+100% Liver img_auroc std,4.01,analysis.md main table
+PU+100% RESC pix_auroc mean,87.26,analysis.md main table
+PU+100% RESC pix_auroc std,0.98,analysis.md main table
+PU+100% RESC aupro mean,57.78,analysis.md main table
+PU+100% RESC aupro std,2.89,analysis.md main table
+PU+100% RESC img_auroc mean,71.37,analysis.md main table
+PU+100% RESC img_auroc std,1.45,analysis.md main table
+MIL+100% Brain pix_auroc mean,91.48,analysis.md main table
+MIL+100% Brain pix_auroc std,0.98,analysis.md main table
+MIL+100% Brain aupro mean,69.91,analysis.md main table
+MIL+100% Brain aupro std,3.48,analysis.md main table
+MIL+100% Brain img_auroc mean,60.30,analysis.md main table
+MIL+100% Brain img_auroc std,0.65,analysis.md main table
+MIL+100% Liver pix_auroc mean,96.33,analysis.md main table
+MIL+100% Liver pix_auroc std,0.29,analysis.md main table
+MIL+100% Liver aupro mean,90.84,analysis.md main table
+MIL+100% Liver aupro std,0.01,analysis.md main table
+MIL+100% Liver img_auroc mean,63.42,analysis.md main table
+MIL+100% Liver img_auroc std,3.21,analysis.md main table
+MIL+100% RESC pix_auroc mean,88.88,analysis.md main table
+MIL+100% RESC pix_auroc std,0.41,analysis.md main table
+MIL+100% RESC aupro mean,61.97,analysis.md main table
+MIL+100% RESC aupro std,1.04,analysis.md main table
+MIL+100% RESC img_auroc mean,72.25,analysis.md main table
+MIL+100% RESC img_auroc std,2.66,analysis.md main table
+MIL+10% Brain pix_auroc mean,92.63,analysis.md main table
+MIL+10% Brain pix_auroc std,0.76,analysis.md main table
+MIL+10% Brain aupro mean,73.29,analysis.md main table
+MIL+10% Brain aupro std,2.99,analysis.md main table
+MIL+10% Brain img_auroc mean,61.21,analysis.md main table
+MIL+10% Brain img_auroc std,6.40,analysis.md main table
+MIL+10% Liver pix_auroc mean,95.25,analysis.md main table
+MIL+10% Liver pix_auroc std,1.61,analysis.md main table
+MIL+10% Liver aupro mean,88.55,analysis.md main table
+MIL+10% Liver aupro std,2.32,analysis.md main table
+MIL+10% Liver img_auroc mean,65.64,analysis.md main table
+MIL+10% Liver img_auroc std,6.50,analysis.md main table
+MIL+10% RESC pix_auroc mean,86.80,analysis.md main table
+MIL+10% RESC pix_auroc std,1.05,analysis.md main table
+MIL+10% RESC aupro mean,58.03,analysis.md main table
+MIL+10% RESC aupro std,2.16,analysis.md main table
+MIL+10% RESC img_auroc mean,71.58,analysis.md main table
+MIL+10% RESC img_auroc std,2.03,analysis.md main table
+MIL+25% Brain pix_auroc mean,92.42,analysis.md main table
+MIL+25% Brain pix_auroc std,0.80,analysis.md main table
+MIL+25% Brain aupro mean,73.18,analysis.md main table
+MIL+25% Brain aupro std,2.72,analysis.md main table
+MIL+25% Brain img_auroc mean,58.62,analysis.md main table
+MIL+25% Brain img_auroc std,7.55,analysis.md main table
+MIL+25% Liver pix_auroc mean,96.64,analysis.md main table
+MIL+25% Liver pix_auroc std,0.22,analysis.md main table
+MIL+25% Liver aupro mean,90.39,analysis.md main table
+MIL+25% Liver aupro std,0.36,analysis.md main table
+MIL+25% Liver img_auroc mean,68.05,analysis.md main table
+MIL+25% Liver img_auroc std,6.12,analysis.md main table
+MIL+25% RESC pix_auroc mean,88.08,analysis.md main table
+MIL+25% RESC pix_auroc std,0.89,analysis.md main table
+MIL+25% RESC aupro mean,59.88,analysis.md main table
+MIL+25% RESC aupro std,2.04,analysis.md main table
+MIL+25% RESC img_auroc mean,72.71,analysis.md main table
+MIL+25% RESC img_auroc std,1.50,analysis.md main table

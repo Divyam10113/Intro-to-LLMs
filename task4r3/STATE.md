@@ -12,7 +12,7 @@
   - `analyze3.py` and `RULES.md` were written and **frozen** (`report/FROZEN.sha256`, R3-9).
 - [x] **Tests (§4.3).** 80 pass on CPU: round 2's 41 plus 39 new. The CPU smoke test of all six arms passes (R3-10).
 - [x] **GPU smoke test (§4.3) and timing check (§4.4)**, 2026-11-23, after the teammate freed the GPUs. Smoke test: PASS (all six arms). The timing check's cut was a startup artifact; the re-measured slowdown on real epochs is 1.11× → no cut (R3-11, `report/gpu_checks.md`).
-- [~] **Runs: 58-run queue started 2026-11-23 11:06:36** in tmux session `r3` (`./go.sh launch`). About 6.2 h projected, so done ≈ 17:15. Check with `python status.py`. When it finishes, `go.sh` runs `analyze3.py`, and then it is Session B's turn.
+- [x] **Runs: 58-run queue started 2026-11-23 11:06:36** in tmux session `r3` (`./go.sh launch`). About 6.2 h projected, so done ≈ 17:15. Check with `python status.py`. When it finishes, `go.sh` runs `analyze3.py`, and then it is Session B's turn.
 - [~] **Gate G1.**
   - G1a (code, tests, CPU smoke, frozen rules) is ready for the teammate to look at.
   - G1b (GPU smoke and timing) is checked by pre-set criteria inside `go.sh`; review `report/gpu_checks.md` afterwards.
@@ -32,7 +32,12 @@ tmux new -d -s r3 ./go.sh
 - **If the run is interrupted** (booking over, reboot): `tmux new -d -s r3 './go.sh launch'`. Finished runs are skipped.
 - **If only one GPU is free:** `GPUS="0" tmux new -d -s r3 ./go.sh`. This takes about twice as long, and the cut rule still uses compute, not wall-clock.
 
-## Session B (when `status.py` says all runs are done and `results/analysis.md` exists)
+- [x] **Runs done**, 16:44:31: 58/58, 0 failures. `analyze3.py` ran (`results/analysis.md`).
+- [x] **Session B** (2026-11-23): `report/TASK4R3_REPORT.md` (every run), `report/VERDICT.md`, `report/PAPER_CLAIMS.md`, `report/paper_inputs/task4_r3/` (`make_paper_inputs3.py`), figures (`make_figures.py`), ISSUES_LOG G2 and G3, transcript.
+- [ ] **Gate G2:** the teammate reads the report, the verdict and `PAPER_CLAIMS.md`. Log the reply verbatim in ISSUES_LOG G3; Task 4 is then closed.
+  Open points for the teammate: `PAPER_PLAN.md` was not supplied (G3-2); where H4's "matches" goes (G3-3).
+
+## Session B (done; kept for reference)
 
 Kickoff prompt from plan Appendix: *"Read task4r3/STATE.md and Plans/TASK4_ROUND3_PLAN.md §4-§6. Run analyze3.py,
 then write TASK4R3_REPORT.md (every run), VERDICT.md, PAPER_CLAIMS.md and report/paper_inputs/ as the plan says.

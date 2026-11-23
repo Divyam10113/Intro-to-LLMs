@@ -1,0 +1,10 @@
+# OCT17 image AUROC (RESC+OCT17 fold)
+
+| arm | OCT17 img AUROC (seeds 3–5) |
+|---|---|
+| MVFA (re-run) | 70.75 ± 11.09 |
+| MIL | 62.13 ± 3.99 |
+| PU+100% | 65.09 ± 2.37 |
+| MIL+100% | 61.84 ± 3.62 |
+| MIL+10% | 59.27 ± 3.74 |
+| MIL+25% | 64.63 ± 2.90 |
