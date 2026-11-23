@@ -47,3 +47,5 @@ Also:
 - run `python make_figures.py` (Liver heat maps plus the budget curve);
 - add G2 and G3 to `report/ISSUES_LOG.md`, including any cut from `report/gpu_checks.md`;
 - refresh the transcript.
+
+**After closing (2026-11-23):** a separate, pre-registered follow-up on Brain (MIL+10 % vs MVFA, seeds 8–12) is set up in `../task4fu/` (its own STATE.md). Round 3's files are not changed by it.
