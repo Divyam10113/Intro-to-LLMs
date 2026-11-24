@@ -11,4 +11,4 @@
   `python status.py` shows progress. Expected about 1–1.5 h after the GPUs are free. If interrupted: `tmux new -d -s fu './go.sh launch'`.
 - [x] **Result: FU-H CONFIRMED** (AUPRO 5/5, p = 0.031, mean pix Δ +5.35). **Write-up done (2026-11-24):** `report/FU_REPORT.md` (every run, the outcome exactly as the frozen rule gives it); update `../task4r3/report/PAPER_CLAIMS.md` with a short note (headline if CONFIRMED, else the "what did not hold" table / "holds on most seeds"); log the teammate's words; commit; refresh the share zip if asked.
 
-**Follow-up closed.** Report: `report/FU_REPORT.md`. Only open item: refresh the share zip if asked.
+**Follow-up closed.** Report: `report/FU_REPORT.md`. Share zip rebuilt 2026-11-24 (`task4_final_share.zip`, not committed; README adds `task4fu/`). Transcript of rounds 1–3 plus the follow-up: `report/transcript/TRANSCRIPT.md`.
