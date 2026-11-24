@@ -13,6 +13,7 @@ tables in [`paper_inputs/task4_r3/`](paper_inputs/task4_r3/) (PI). Points = AURO
 | **H2:** MIL beats MVFA on Brain | Did not replicate (3/5) | "What did not hold" table |
 | **H3:** PU+100 % beats MVFA | Did not replicate (5/9) | "What did not hold" table |
 | **H5:** MIL+10 % matches MVFA | Trails (Liver pix Δ −1.96) | "What did not hold" table, with the budget curve as description |
+| **FU-H (follow-up, 2026-11-24):** MIL+10 % beats MVFA on Brain | **CONFIRMED** (AUPRO 5/5 pre-registered seeds 8–12, p = 0.031; mean pix Δ +5.35) | **Second headline, Brain only:** contribution 4, Results. See the follow-up section at the end |
 | Round 2, idea #1 (normal-bank-gated MIL) | Falsified | "What did not hold" table |
 | Rounds 1–2, idea #3 (nnPU, estimated π, then fixed π) | Not supported | "What did not hold" table |
 
@@ -74,7 +75,7 @@ These are different protocols, so this section is context, not a claim.
 | Brain / Liver / RESC | img AUROC | 78.63 / 76.24 / 83.31 | 79.80 / 81.19 / 88.99 | 56.33 / 60.60 / 74.29 | 67.52 / 68.05 / 72.71 |
 
 **Reading:**
-- **Brain localisation is above the published model for every arm that adds MIL to some masks,** even though those arms had less data, a shorter schedule and no test-set selection. The best is +2.4 pix AUROC over the paper and +7.9 AUPRO over R0. This is post hoc and Brain-only (report §4), so it is a lead for a pre-registered follow-up, not a claim.
+- **Brain localisation is above the published model for every arm that adds MIL to some masks,** even though those arms had less data, a shorter schedule and no test-set selection. The best is +2.4 pix AUROC over the paper and +7.9 AUPRO over R0. This is post hoc and Brain-only (report §4), so it is a lead for a pre-registered follow-up, not a claim. **Update 2026-11-24: for MIL+10 % vs MVFA, the pre-registered follow-up CONFIRMED it (see the follow-up section at the end). The comparison with the paper itself stays context only.**
 - **On Liver and RESC, nothing reaches the paper.**
 - **Image-level detection is far below the paper on every target** (limitation 2).
 
@@ -106,3 +107,20 @@ These are different protocols, so this section is context, not a claim.
 ## Framing
 
 `PAPER_PLAN.md` §5.2 was not available to this session (ISSUES_LOG G3-2), so the applicable framing is left to the teammate. Based on the outcomes above, the framing that fits is: **a positive headline (H1) inside an honest replication study**. Lead with the image-label result. Give H4 and the budget curve as the practical recipe ("add image-label MIL to whatever masks you have"). Report the retractions in the "what did not hold" table, so the headline cannot be read as selectively reported.
+
+---
+
+## Follow-up (pre-registered, 2026-11-24): MIL+10 % vs MVFA on Brain, CONFIRMED
+
+*Added after Task 4 closed. Source: `../../task4fu/report/FU_REPORT.md`, `../../task4fu/results/analysis_fu.md`. Rule frozen before the run (`task4fu/RULES_FU.md`).*
+
+- **Outcome: CONFIRMED.** MIL+10 % AUPRO is higher than MVFA's on **5/5** fresh seeds (8–12), one-sided sign test p = 0.031. Mean Δ AUPRO **+14.70** (range +12.47 to +19.07). Mean Δ pixel AUROC **+5.35** (higher on every seed).
+- **Means (seeds 8–12):** MIL+10 %: pix **92.36**, AUPRO **72.08**, img 64.37. MVFA re-run: 87.00 / 57.38 / 63.29. Round 3's seeds 3–5 gave 92.63 / 73.29 for MIL+10 %, so the new seeds reproduce it.
+- **Sentence the rule allows:** *"With masks for 10 % of the abnormal source images and image labels elsewhere, MVFA's adapters localise better than full-mask MVFA on unseen brain MRI (AUPRO higher on 5/5 pre-registered seeds, p = 0.031)."*
+- **Suggested contribution 4:** *A small mask budget plus image labels beats full masks on the target where masks transfer worst (Brain; pre-registered, 5/5 seeds).*
+- **Context, not a claim:** MIL+10 % Brain pixel AUROC is above the MVFA paper's 90.27 on 5/5 seeds (mean +2.09), and its AUPRO is above R0's 65.35 on 5/5 seeds (mean +6.73). The protocols differ (subsample, 20 epochs, source-only selection vs the paper's full data, 50 epochs, test-set selection). Wording: "*exceeds the published Brain localisation numbers despite a cheaper protocol*", never "*beats MVFA*".
+- **Limits, to state next to it:**
+  - Brain only. On Liver, MIL+10 % trails MVFA (H5, pix Δ −1.96), and RESC was not re-tested.
+  - Image AUROC is not improved (mean Δ +1.08, lower on 2/5 seeds).
+  - The mechanism is untested. MVFA's top-k falls inside source masks more often (in-mask 0.93 vs 0.79), yet it localises worse on Brain, which is consistent with full masks over-fitting source lesion appearance. That is a hypothesis.
+- **Framing change:** the paper can now lead with two confirmed results: **H1** (image labels nearly match masks, all targets) and **FU-H** (10 % masks + MIL beats full masks on Brain). The "what did not hold" table is unchanged.
