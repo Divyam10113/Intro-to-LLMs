@@ -1,0 +1,18 @@
+# Task 4 environment as used on the server (proj/.venv-task4, Python 3.10.20).
+# torch/torchvision were nightly CUDA 13.2 builds; any recent CUDA build should do.
+torch==2.15.0.dev20260822
+torchvision==0.30.0.dev20260822
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+scikit-learn==1.7.2
+scikit-image==0.25.2
+pillow==12.3.0
+matplotlib==3.10.9
+ftfy==6.3.1
+regex==2026.9.3
+tqdm==4.70.0
+pytest==9.2.0
+gdown==6.5.2            # download_data.sh
+# Plus the MVFA-AD checkout (commit a30bf7b) at $MVFA_DIR, and the BMAD data, zero-shot
+# checkpoints and CLIP ViT-L-14-336 weights at $TASK4_HDD (download_data.sh).

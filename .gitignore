@@ -4,6 +4,7 @@
 # Third-party checkout (pinned at a30bf7b, see task4/README.md) and the environment
 MVFA-AD/
 .venv-task4/
+.venv-pipeline/
 .dl_tmp/
 # Python / test caches
 __pycache__/

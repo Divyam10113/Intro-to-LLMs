@@ -1,0 +1,7 @@
+# Minimal environment for `make smoke` / `make check` (Tasks 0-3; Task 4 uses $TASK4_PYTHON).
+# Python 3.12 or newer. No API client is needed: the smoke runs make no model calls.
+numpy
+pandas
+scipy
+scikit-learn
+requests

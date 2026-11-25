@@ -1,0 +1,10 @@
+# Task 1 QUAL-SG (qual_sg/README.md lists the same packages)
+openai>=1.0
+requests
+pandas
+numpy
+scikit-learn
+rouge-score
+sentence-transformers   # local bge-small-en-v1.5 embeddings (downloaded on first use)
+pypdf                   # anchor bibliography (bib_eval.py)
+# google-generativeai   # only the legacy top-level survey_generation.py

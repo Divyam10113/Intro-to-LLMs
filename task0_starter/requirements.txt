@@ -1,0 +1,5 @@
+# Course starter scripts (Task 0)
+pandas
+scikit-learn
+sentence-transformers   # rank_papers.py (downloads all-MiniLM-L6-v2 on first use)
+openai>=1.0             # generate_review.py (AgentRouter)

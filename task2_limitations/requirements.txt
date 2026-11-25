@@ -1,0 +1,8 @@
+# Task 2 limitation pipeline (README "Run" section)
+openai>=1.0
+requests
+httpx
+numpy
+scikit-learn
+pymupdf                 # PDF full text (imported as fitz)
+# sentence-transformers # optional: better dense retrieval than the TF-IDF/SVD fallback
