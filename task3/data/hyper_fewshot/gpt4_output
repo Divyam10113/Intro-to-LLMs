@@ -1,0 +1,58 @@
+{
+    "1. Randomized indomethacin trial for prevention of intraventricular hemorrhage in very low birth weight infants": {
+        "explanation": "This paper is identical to the source paper, suggesting it might be a duplicate entry or a reiteration of the original study.",
+        "relevance": 2
+    },
+    "2. Indomethacin therapy on the first day of life in infants with very low birth weight": {
+        "explanation": "The hypothesis in this paper is inspired by the findings of the source paper, as it investigates the timing of indomethacin therapy, building on the source paper's results regarding indomethacin's role in preventing intraventricular hemorrhage.",
+        "relevance": 1
+    },
+    "3. Early intravenous indomethacin prolongs respiratory support in very low birth weight infants": {
+        "explanation": "While this paper explores a new angle (impact on respiratory support) of indomethacin treatment, it is partially dependent on the previous findings regarding indomethacin's effects on infants, thus using the source paper's findings as a sub-hypothesis.",
+        "relevance": 2
+    },
+    "4. Prevention of symptomatic patent ductus arteriosus with a single dose of indomethacin": {
+        "explanation": "This paper focuses on the prevention of symptomatic PDA with indomethacin, a subject related but distinct from the source paper's focus on hemorrhage. The hypothesis is inspired by the source paper's findings on indomethacin's effects.",
+        "relevance": 1
+    },
+    "5. Administration of indomethacin for the prevention of periventricular-intraventricular hemorrhage in high-risk neonates": {
+        "explanation": "This study builds on the source paper by further investigating the prevention of hemorrhage using indomethacin, thus directly depending on the source paper's findings.",
+        "relevance": 2
+    },
+    "6. Randomized low-dose indomethacin trial for prevention of intraventricular hemorrhage in very low birth weight neonates": {
+        "explanation": "The hypothesis in this paper is directly related to the source paper, as it tests a variation (low dose) of indomethacin for the same condition (intraventricular hemorrhage) in a similar population.",
+        "relevance": 2
+    },
+    "7. Prophylactic indomethacin for prevention of intraventricular hemorrhage in premature infants": {
+        "explanation": "The study further examines the use of indomethacin prophylactically to prevent intraventricular hemorrhage, clearly building on the source paper's findings.",
+        "relevance": 2
+    },
+    "8. Indomethacin reduces the risks of severe intraventricular hemorrhage": {
+        "explanation": "This research expands on the source paper's findings by focusing on the reduction of severe grades of hemorrhage, indicating a strong dependence on previous studies.",
+        "relevance": 2
+    },
+    "9. [Indomethacin in the prevention of subependymal-intraventricular hemorrhage in preterm newborns with conventional mechanical ventilation]": {
+        "explanation": "The study examines indomethacin's role in preventing hemorrhage in a particular setting (mechanical ventilation), building on the established role of indomethacin from the prior papers.",
+        "relevance": 2
+    },
+    "10. Low-dose indomethacin therapy and extension of intraventricular hemorrhage: a multicenter randomized trial": {
+        "explanation": "This paper further investigates the extension of intraventricular hemorrhage and the use of indomethacin, specifically focusing on low-dose treatment, thus depending on the foundation laid by prior studies.",
+        "relevance": 2
+    },
+    "11. Prophylactic indomethacin therapy in the first twenty-four hours of life for the prevention of patent ductus arteriosus in preterm infants treated prophylactically with surfactant in the delivery room": {
+        "explanation": "This study investigates the use of indomethacin for preventing PDA in conjunction with surfactant therapy, inspired by previous findings on indomethacin's efficacy in preventing PDA.",
+        "relevance": 1
+    },
+    "12. Effects of early indomethacin administration on oxygenation and surfactant requirement in low birth weight infants": {
+        "explanation": "The paper explores a distinct outcome (oxygenation and surfactant requirement) of early indomethacin administration, possibly inspired by previous research on indomethacin's effects.",
+        "relevance": 1
+    },
+    "13. Indomethacin prophylaxis for patent ductus arteriosus (PDA) in infants with a birth weight of less than 1250 grams": {
+        "explanation": "The hypothesis is inspired by earlier research on indomethacin's role in preventing PDA, examining its specific effectiveness in different weight groups.",
+        "relevance": 1
+    },
+    "14. Long-term effects of indomethacin prophylaxis in extremely-low-birth-weight infants": {
+        "explanation": "This study seeks to explore the long-term effects of indomethacin prophylaxis, building on the body of evidence about its short-term benefits, thus depending on earlier findings.",
+        "relevance": 2
+    }
+}

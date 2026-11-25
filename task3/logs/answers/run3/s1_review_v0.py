@@ -1,0 +1,51 @@
+import json
+def R(review, feedback, rating): return f"Review: {review}\nFeedback: {feedback}\nRating (1-5): {rating}"
+A = {}
+c = "stage1/review/A1/v0/"
+A[c+"Clarity"] = R("The component (segmentation adapters and their Dice/Focal loss), the change (an image-level BCE on the top-k mean of each level's patch anomaly probabilities, k = 1%, all five source datasets, masks discarded), the comparison and the outcomes are all named. Two details are left open: whether the MIL term is applied at all four adapter levels with equal weight, and whether the detection adapters keep their original loss unchanged.",
+ "State that the MIL loss replaces the segmentation loss at every level with the same weights as the original, and that the detection branch is untouched; say that pixel-level metrics can only be computed on the held-out folds that have masks (BrainMRI, LiverCT, RESC).", 4)
+A[c+"Relevance"] = R("Mask dependence of MVFA's localisation is one of its most consequential limitations for clinical use, and the code-verified fact that half the benchmark never trains the segmentation branch (L5) makes the problem concrete. It connects to the annotation-efficiency concerns of [22], [40], [43] and [53].",
+ "None of substance; briefly relate the result to the few-shot setting (L4, L18), where the same mask dependence appears.", 5)
+A[c+"Originality"] = R("Weakly supervised localisation through multiple-instance pooling is an established idea, and MVFA already applies a mean-pooled image-level BCE to its detection branch. The new element is narrower: supervising the text-anchored segmentation maps with image labels and testing whether the resulting localisation transfers to an unseen modality. This is a moderately original combination rather than a new idea.",
+ "Make the distinctive hypothesis explicit — for example, that text-anchored patch similarities let MIL localisation transfer across modalities, or that it emerges only at specific adapter levels — and test it with a level-wise analysis.", 3)
+A[c+"Feasibility"] = R("The change is one loss term in the public training script; BMAD provides image labels for every dataset; compute equals MVFA's own training. Two risks: MIL objectives can collapse to near-constant maps when abnormal images dominate a source dataset, and pixel-level evaluation is possible on only three of the held-out folds.",
+ "Run a single-fold pilot first and monitor the fraction of patches above 0.5 on normal validation images to detect collapse; report pixel metrics only where masks exist.", 4)
+A[c+"Significance"] = R("If localisation can be learnt without masks, MVFA-style adaptation becomes trainable from report-level labels, a substantial practical gain; a negative result still quantifies what masks are worth for cross-modality localisation, which the target paper never measures.",
+ "Add a label-budget view (many image-labelled images versus a few masked ones) so the result informs an annotation decision.", 4)
+
+c = "stage1/review/A2/v0/"
+A[c+"Clarity"] = R("The component (the abnormal half of the K-shot support set), the replacement and the outcomes are stated, and the memory-bank-only lower reference is useful. The synthesis recipe is described loosely: patch size and shape, the intensity perturbation and how many synthetic images are made per support are not given, and it is unclear whether synthetic images also enter the memory bank.",
+ "Fix the synthesis parameters (e.g., elliptical patches of 2-15% of the image area, one synthetic image per normal support and epoch) and state that the memory bank keeps only real normal supports.", 4)
+A[c+"Relevance"] = R("Directly addresses L4 and L18: the released code confirms that K-shot means K expertly masked abnormal images, the costliest annotation, and the paper never measures their contribution.",
+ "Frame the outcome as the annotation cost that the synthetic variant removes per target site.", 4)
+A[c+"Originality"] = R("Synthetic anomalies for adapting CLIP to medical images are already common ([22], [32], [43], [53], [55]). The contribution is a controlled measurement — synthetic versus real abnormal supports inside the same adapter, with the same support set and protocol — which is useful but not a new method.",
+ "Sharpen the question with a hypothesis that the literature does not settle, e.g., that the gap depends on lesion size or modality (focal BrainMRI/LiverCT lesions versus diffuse ChestXray/HIS findings).", 3)
+A[c+"Feasibility"] = R("Only image operations on data BMAD already provides, the existing losses and the same training budget as the original few-shot runs; 4 K values x 6 datasets x 3 seeds x 3 draws is a sizeable but manageable grid on one GPU. Poisson blending needs care on single-channel images.",
+ "Reduce the grid if needed by running K in {2, 8} for all datasets and the full K range on two datasets.", 4)
+A[c+"Significance"] = R("Practically relevant for deployment at a new site, but the expected outcome — synthetic anomalies recover part of the gain — is close to what [22] and [55] already report, so the result is likely to be incremental unless the modality dependence is analysed.",
+ "Tie the result to a concrete decision rule (when real abnormal annotations are worth collecting).", 3)
+
+c = "stage1/review/B1/v0/"
+A[c+"Clarity"] = R("The defect (test-set min-max normalisation before the 0.5 fusion) and the inductive replacement are precisely described, pooling and fusion weight are explicitly held fixed, and the outcomes are concrete. Three outcomes are bundled, however, and the leave-one-out statistic is ambiguous: it is not said whether min and max, or robust quantiles, of the support scores are used.",
+ "Make the inductive normaliser the primary question and the test-set dependence analysis its motivating measurement; specify the statistic (e.g., mean and standard deviation, or the 1st and 99th percentiles, of leave-one-out support scores).", 4)
+A[c+"Relevance"] = R("Highly relevant: the code check (C1, L10) shows that MVFA's reported few-shot AUROCs depend on test-set extremes and that the method cannot score single images, which matters for both the validity of the published comparison and deployment.",
+ "Mention whether the zero-shot evaluation script uses the same normalisation, which would extend relevance to the zero-shot tables.", 5)
+A[c+"Originality"] = R("Quantifying how a reported AUROC depends on transductive normalisation is uncommon in the CLIP anomaly-detection literature, and using the support set as the reference is a sensible, simple design. Calibration from normal references is, however, standard in classical anomaly detection, so the method itself is not new.",
+ "Position the work as an evaluation-validity study with a simple inductive fix rather than as a new fusion method.", 3)
+A[c+"Feasibility"] = R("Inference-only on retrained checkpoints, confined to test_few.py, with low compute. The weak point is K = 2: leave-one-out scores give two values per branch, so min-max statistics are degenerate and percentiles undefined.",
+ "Use pixel-level leave-one-out scores (all patches of the supports) rather than image-level ones, which gives thousands of values even at K = 2.", 4)
+A[c+"Significance"] = R("A per-image score with a threshold fixed from support images is the deployment property that AUROC hides; showing how much the published numbers depend on test-set composition would also change how future CLIP-based methods are evaluated on BMAD.",
+ "Report results so that other methods can adopt the inductive normaliser as an evaluation standard.", 4)
+
+c = "stage1/review/B2/v0/"
+A[c+"Clarity"] = R("The candidate pooling rules and the robustness test are clear, but 'the fused anomaly map' is ambiguous for the three datasets without masks, where the released code scores images from the detection map; the magnitude and size of the injected spurious patch are not defined; and 'most stable' is not operationalised.",
+ "Name the map that is pooled on each dataset, define the injected patch (e.g., one patch set to the 99.9th percentile of abnormal-image scores) and define stability as the standard deviation over seeds and support draws.", 3)
+A[c+"Relevance"] = R("Addresses L38, C3 and L30 directly: the disagreement between paper and code on pooling and the dataset-dependent scoring make the reported detection numbers hard to attribute.",
+ "Connect the result to B-group calibration: the pooling rule changes score distributions and therefore any threshold.", 4)
+A[c+"Originality"] = R("Comparing max, mean and top-k pooling is a routine ablation in anomaly detection ([12], [15]); the injected-patch robustness test is a small addition. The question is useful for reproducibility but has little novelty.",
+ "Add a hypothesis that goes beyond the ablation, e.g., that the optimal k scales with the typical lesion area of each modality and can be set from source modalities alone.", 2)
+A[c+"Feasibility"] = R("Trivially feasible: a few lines in the test scripts, inference on retrained checkpoints, no new training.",
+ "None.", 5)
+A[c+"Significance"] = R("A documented, consistent scoring rule improves reproducibility, but the expected gains in AUROC are small and the result is unlikely to change how the field approaches medical anomaly detection.",
+ "Raise significance by linking the choice of k to modality properties that would let a practitioner set it for a new modality.", 3)
+json.dump(A, open("/home/claude/task3/logs/answers/run3/s1_review_v0.json", "w"), indent=1)

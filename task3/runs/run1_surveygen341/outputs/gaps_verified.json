@@ -1,0 +1,255 @@
+{
+ "gaps": [
+  {
+   "id": "G1",
+   "title": "Limited explicit limitation and future-work reporting",
+   "text": "MVFA-AD lacks a dedicated limitations section; its only explicit scope caveat is that in-domain evaluation is treated as secondary, and its future-work statements are generic. The remaining limitations discussed here were therefore inferred from the protocol, architecture, and evaluation design rather than drawn from authorial disclosure.",
+   "component": "metrics/reporting",
+   "kind": "reporting",
+   "codable": "low",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G2",
+   "title": "The zero-shot protocol is not modality- or anatomy-disjoint",
+   "text": "The BMAD leave-one-out setting includes two retinal OCT datasets, RESC and OCT17; when one is held out, the other remains in the training set. For these pairs, evaluation does not test an unseen medical modality or anatomy, which may inflate the reported OCT results. A valid zero-shot protocol should instead group and hold out by modality, anatomy, acquisition device, and site simultaneously.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "high",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G3",
+   "title": "Localisation supervision requires dense masks",
+   "text": "MVFA trains two branches. The detection (classification) adapters receive an image-level BCE loss on every source image, including the three BMAD datasets that have no masks (OCT17, ChestXray, HIS) [E6, E8]. The segmentation adapters, which produce the anomaly maps, are trained only with Dice and Focal losses on pixel-level masks, i.e. only on BrainMRI, LiverCT and RESC [E7]. Localisation therefore depends entirely on dense expert masks from three datasets; no image-level, sparse or normal-only supervision of the segmentation branch is formulated.",
+   "component": "supervision/data",
+   "kind": "method",
+   "codable": "high",
+   "change": "corrected",
+   "evidence": [
+    "E6",
+    "E7",
+    "E8"
+   ]
+  },
+  {
+   "id": "G4",
+   "title": "The few-shot setting needs labelled abnormal images with masks and is evaluated on one draw",
+   "text": "In the released code, 'K-shot' means K normal AND K abnormal images, the abnormal ones with pixel masks, both drawn from BMAD's valid/ split [E15, E16]; the adapters are fine-tuned on them per target task. Clinical few-shot supervision may instead contain only normal or unlabelled images, which the method does not support. Only one fixed draw per dataset is provided [E17]. Training time and compute for the per-task fine-tuning are not reported.",
+   "component": "supervision/data",
+   "kind": "method",
+   "codable": "high",
+   "change": "corrected",
+   "evidence": [
+    "E15",
+    "E16",
+    "E17"
+   ]
+  },
+  {
+   "id": "G5",
+   "title": "Prompting is static, generic, and domain-agnostic",
+   "text": "The text encoder is kept frozen, and the prompts consist of hand-crafted normal/abnormal state descriptions averaged over 35 ImageNet templates. This design presumes a single, universal visual-language concept of \u201cnormal\u201d and \u201cabnormal\u201d that holds uniformly across imaging modalities, and it omits instance-adaptive, visually conditioned, or hybrid prompting strategies. No prompt-sensitivity analysis is provided.",
+   "component": "prompting/text branch",
+   "kind": "method",
+   "codable": "high",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G6",
+   "title": "Anomaly modeling is binary and lacks clinical granularity",
+   "text": "All anomalies are collapsed into a single \u201cabnormal\u201d class. The model performs no differentiation of benign-versus-malignant status, anomaly subcategory, severity, radiological sign, or differential cost, despite clinical workflows requiring category-specific actionability and support for multi-anomaly detection within a single case.",
+   "component": "clinical scope/validation",
+   "kind": "method",
+   "codable": "low",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G7",
+   "title": "Normal/anomaly disentanglement and distributional asymmetry are not made explicit",
+   "text": "The dual- adapter design separates anomaly-classification and anomaly-segmentation features, but it does not explicitly model the compact distribution of normal samples against the comparatively diverse distribution of abnormal samples. The method relies on shared adapted features and a few-shot normal memory bank without routing mechanisms, dual normal/abnormal pathways, or many-to- one, SigLIP-style regularization.",
+   "component": "visual adaptation/architecture",
+   "kind": "method",
+   "codable": "medium",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G8",
+   "title": "Score fusion relies on test-set statistics and fixed weights; hyper-parameters are under-ablated",
+   "text": "Numerous design choices (gamma = 0.1, lambda = 1.0, four feature levels, input resolution 240, learning rate 1e-3, 50 epochs, fixed prompt templates) are presented without sensitivity analysis. In the few-shot branch fusion, the paper describes adding scores on different scales; the released code instead min-max normalises each branch using the minimum and maximum over the ENTIRE TEST SET before fusing them with a fixed weight of 0.5 [E9, E10, E12]. This normalisation is transductive: it cannot score a single incoming image, and the fused score of an image changes with the composition (e.g. prevalence, outliers) of the rest of the test set.",
+   "component": "score fusion/aggregation",
+   "kind": "method",
+   "codable": "high",
+   "change": "corrected",
+   "evidence": [
+    "E9",
+    "E10",
+    "E12"
+   ]
+  },
+  {
+   "id": "G9",
+   "title": "Image-level aggregation is inconsistent and outlier-sensitive",
+   "text": "The image-level score is computed differently in training and testing and across datasets: training mean-pools the detection map [E5]; for datasets with masks, the reported image AUC uses the MAX over the fused segmentation map, so a single spurious high-scoring pixel decides the image label [E11]; for datasets without masks, mean-pooled detection scores are used [E12]. No robust aggregation, calibration or uncertainty estimate is used.",
+   "component": "score fusion/aggregation",
+   "kind": "method",
+   "codable": "high",
+   "change": "corrected",
+   "evidence": [
+    "E5",
+    "E11",
+    "E12"
+   ]
+  },
+  {
+   "id": "G10",
+   "title": "Evaluation lacks patient-level leakage controls and variance estimates",
+   "text": "Patient-level splits are not reported. Few-shot support images come from a single fixed file per dataset and shot number [E13, E17] with one default seed [E14]; no standard deviations or confidence intervals are reported, although few-shot selection is known to be variance-sensitive.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "medium",
+   "change": "evidence added",
+   "evidence": [
+    "E13",
+    "E14",
+    "E17"
+   ]
+  },
+  {
+   "id": "G11",
+   "title": "Metrics are too narrow for clinical readiness",
+   "text": "Only image-level and pixel-level AUC are reported. The paper does not report Dice, IoU, or PRO scores; thresholded accuracy, F1, sensitivity, specificity, PPV, or NPV; false positives per patient; calibration or expected calibration error (ECE); or prevalence-adjusted and rare-category performance. AUC alone can obscure poor performance under severe class imbalance and does not by itself demonstrate clinical utility.",
+   "component": "metrics/reporting",
+   "kind": "evaluation",
+   "codable": "high",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G12",
+   "title": "Baselines and benchmark details are incomplete",
+   "text": "Missing comparisons include PatchCore under a few-shot normal-only setting, full CLIP fine-tuning, and other vision-language-model adaptation methods. In-domain MVTec is evaluated only under the few-shot regime, with zero-shot in-domain evaluation absent entirely. The benchmark is described only as \u201cbased on BMAD,\u201d without specifying official splits, which limits comparability across future work.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "high",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G13",
+   "title": "Scalability, memory, and privacy considerations are unaddressed",
+   "text": "The method uses a CLIP ViT-L/14 backbone and trains six separate leave-one-out models for 50 epochs each on a single RTX 3090 GPU; training and inference time, memory footprint, and parameter counts are not reported. The term \u201clightweight\u201d refers only to the adapters, not to the overall system. The few-shot memory bank grows with K and with spatial resolution, yet retrieval cost and the privacy and governance implications of storing patient-derived features are not analyzed. Downscaling to a 240 \u00d7 240 resolution and processing volumetric data as 2D slices may cause small lesions and broader 3D CT/MRI context to be lost.",
+   "component": "efficiency/privacy",
+   "kind": "method",
+   "codable": "medium",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G14",
+   "title": "Cross-domain, acquisition, and modality generalism is limited",
+   "text": "Evaluation covers brain MRI, liver CT, retinal OCT, chest X-ray, and histopathology; ultrasound, PET, mammography, and dermoscopy are not modeled, nor are shifts in acquisition device, site, or imaging protocol. The medical-specific, text-prompt-dependent design may generalize poorly to broader semantic or medical anomaly types and to combined industrial-and-medical generalist settings.",
+   "component": "clinical scope/validation",
+   "kind": "evaluation",
+   "codable": "medium",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G15",
+   "title": "Interpretability and clinical validation are absent",
+   "text": "The model outputs anomaly scores and maps only, without language-based reasoning, radiological explanation, or multimodal-LLM-style justification. The paper provides no external or multi-institution validation, no prospective or reader study, no demographic (sex, age), scanner, or site fairness analysis, no uncertainty or failure-mode analysis, and no discussion of regulatory or clinical-workflow integration or independent clinical- precision assessment; prior evaluations in the literature suggest that CLIP-based zero-shot anomaly detection precision may fall short of clinical requirements.",
+   "component": "clinical scope/validation",
+   "kind": "evaluation",
+   "codable": "low",
+   "change": "unchanged",
+   "evidence": []
+  },
+  {
+   "id": "G16",
+   "title": "Model selection on the target test set",
+   "text": "Both the zero-shot and few-shot training scripts evaluate on the target dataset's test set during training and keep the checkpoint with the best test AUC [E1-E4]. BMAD's valid/ split exists and is used to draw few-shot supports [E15, E16], but not for model selection. In the zero-shot setting this means the target modality, which is supposed to be unseen, is used to choose the model, so the reported zero-shot and few-shot results are optimistically biased and are not comparable with methods that select models without test data.",
+   "evidence": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E15",
+    "E16"
+   ],
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "high",
+   "change": "new"
+  },
+  {
+   "id": "G17",
+   "title": "Paper and code disagree on image-level pooling",
+   "text": "Eq. (3) of the paper defines the image-level loss with a max over the h x w anomaly map, while the released code mean-pools [E5]. Results in the paper therefore cannot be attributed to the method as described, and the effect of the pooling choice on detection is unknown.",
+   "evidence": [
+    "E5"
+   ],
+   "component": "score fusion/aggregation",
+   "kind": "reporting",
+   "codable": "high",
+   "change": "new"
+  }
+ ],
+ "groups": [
+  {
+   "name": "Label-efficient adaptation",
+   "members": [
+    "G3",
+    "G4"
+   ],
+   "root_cause": "MVFA's only adaptation signal is dense pixel-level masks (and labelled abnormal K-shot images), so the method cannot be trained or adapted when only image-level labels or normal-only data exist."
+  },
+  {
+   "name": "Score calibration and robust aggregation",
+   "members": [
+    "G8",
+    "G9",
+    "G11",
+    "G17"
+   ],
+   "root_cause": "Anomaly evidence is turned into image scores and fused with rules that depend on the whole test set (min-max normalisation), a fixed weight and a max over pixels, and is evaluated only by threshold-free AUC, so per-image deployability, calibration and outlier sensitivity are never measured."
+  },
+  {
+   "name": "Leakage-free generalisation protocol",
+   "members": [
+    "G2",
+    "G10",
+    "G12",
+    "G16"
+   ],
+   "root_cause": "Model selection on the target test set, same-modality data (RESC/OCT17), possible patient overlap and single few-shot draws all leak target information into 'zero-shot' evaluation."
+  },
+  {
+   "name": "Compact normality modelling",
+   "members": [
+    "G5",
+    "G7",
+    "G13"
+   ],
+   "root_cause": "MVFA assumes a single static text notion of normal/abnormal and stores raw patch features in a growing memory bank instead of explicitly modelling a compact normal distribution against a diverse abnormal one."
+  },
+  {
+   "name": "Clinical granularity and scope",
+   "members": [
+    "G6",
+    "G14",
+    "G15"
+   ],
+   "root_cause": "The task is formulated as binary detection on five modalities with score maps only, which leaves anomaly type, unseen modalities/sites and clinician-facing explanation outside the problem definition."
+  }
+ ],
+ "ungrouped": [
+  "G1"
+ ],
+ "source": "stage0 + stage0b code verification"
+}

@@ -1,0 +1,223 @@
+{
+ "repository": "https://github.com/MediaBrain-SJTU/MVFA-AD",
+ "commit": "a30bf7bb2c51772a36e7be58d3c072be480620fe",
+ "evidence": [
+  {
+   "id": "E1",
+   "file": "train_zero.py",
+   "lines": [
+    104
+   ],
+   "code": "score = test(args, model, test_loader, text_feature_list[CLASS_INDEX[args.obj]])",
+   "finding": "Zero-shot training evaluates the model on the TARGET dataset's test loader five times per epoch and saves the checkpoint with the best test score (model selection on the test set).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L104"
+  },
+  {
+   "id": "E2",
+   "file": "train_zero.py",
+   "lines": [
+    105
+   ],
+   "code": "if score >= save_score:",
+   "finding": "The saved zero-shot checkpoint is the one maximising test AUC (image AUC + pixel AUC).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L105"
+  },
+  {
+   "id": "E3",
+   "file": "train_few.py",
+   "lines": [
+    182
+   ],
+   "code": "result = test(args, model, test_loader, text_features, seg_mem_features, det_mem_features)",
+   "finding": "Few-shot training likewise evaluates on the target test set every epoch ...",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L182"
+  },
+  {
+   "id": "E4",
+   "file": "train_few.py",
+   "lines": [
+    183
+   ],
+   "code": "if result > best_result:",
+   "finding": "... and keeps the best-on-test checkpoint.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L183"
+  },
+  {
+   "id": "E5",
+   "file": "train_zero.py",
+   "lines": [
+    130
+   ],
+   "code": "anomaly_score = torch.mean(anomaly_map, dim=-1)",
+   "finding": "The image-level training loss pools the patch anomaly map with a MEAN, whereas Eq. (3) of the paper states a MAX over h x w.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L130"
+  },
+  {
+   "id": "E6",
+   "file": "train_zero.py",
+   "lines": [
+    131
+   ],
+   "code": "det_loss += loss_bce(anomaly_score, image_label)",
+   "finding": "Image-level BCE on the detection (classification) branch is applied to every training image.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L131"
+  },
+  {
+   "id": "E7",
+   "file": "train_zero.py",
+   "lines": [
+    134
+   ],
+   "code": "if seg_idx > 0:",
+   "finding": "Dice + Focal pixel losses on the segmentation branch are applied only to datasets with masks (seg_idx > 0: Brain, Liver, RESC).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L134"
+  },
+  {
+   "id": "E8",
+   "file": "train_zero.py",
+   "lines": [
+    160
+   ],
+   "code": "loss = det_loss",
+   "finding": "Datasets without masks (OCT17, Chest, Histopathology; seg_idx < 0) train only the detection adapters with the image-level loss \u2014 they are used, but never supervise localisation.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L160"
+  },
+  {
+   "id": "E9",
+   "file": "test_few.py",
+   "lines": [
+    220
+   ],
+   "code": "seg_score_map_zero = (seg_score_map_zero - seg_score_map_zero.min()) / (seg_score_map_zero.max() - seg_score_map_zero.min())",
+   "finding": "Before fusion, each branch's maps are min-max normalised using the minimum and maximum over the ENTIRE TEST SET (transductive normalisation; not computable for a single incoming image).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L220"
+  },
+  {
+   "id": "E10",
+   "file": "test_few.py",
+   "lines": [
+    223
+   ],
+   "code": "segment_scores = 0.5 * seg_score_map_zero + 0.5 * seg_score_map_few",
+   "finding": "The normalised zero-shot and few-shot pixel maps are fused with a fixed weight of 0.5.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L223"
+  },
+  {
+   "id": "E11",
+   "file": "test_few.py",
+   "lines": [
+    228
+   ],
+   "code": "roc_auc_im = roc_auc_score(gt_list, np.max(segment_scores_flatten, axis=1))",
+   "finding": "For datasets with masks, the image-level score is the MAX over the fused pixel map (the detection branch is not used for image scores on these datasets).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L228"
+  },
+  {
+   "id": "E12",
+   "file": "test_few.py",
+   "lines": [
+    238
+   ],
+   "code": "det_image_scores_zero = (det_image_scores_zero - det_image_scores_zero.min()) / (det_image_scores_zero.max() - det_image_scores_zero.min())",
+   "finding": "For datasets without masks, image scores are the test-set min-max normalised detection-branch scores (mean-pooled), fused with weight 0.5.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/test_few.py#L238"
+  },
+  {
+   "id": "E13",
+   "file": "dataset/medical_few.py",
+   "lines": [
+    108,
+    143
+   ],
+   "code": "with open(f'./dataset/fewshot_seed/{self.class_name}/{self.shot}-shot.txt', 'r', encoding='utf-8') as infile:",
+   "finding": "Few-shot support images are read from one fixed file per dataset and shot number (a single draw).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L108"
+  },
+  {
+   "id": "E14",
+   "file": "train_few.py",
+   "lines": [
+    53
+   ],
+   "code": "parser.add_argument('--seed', type=int, default=111)",
+   "finding": "A single default random seed (111).",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L53"
+  },
+  {
+   "id": "E15",
+   "file": "dataset/medical_few.py",
+   "lines": [
+    100
+   ],
+   "code": "img_dir = os.path.join(self.dataset_path, 'valid', 'good', 'img')",
+   "finding": "Few-shot NORMAL support images are drawn from BMAD's valid/ split ...",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L100"
+  },
+  {
+   "id": "E16",
+   "file": "dataset/medical_few.py",
+   "lines": [
+    133
+   ],
+   "code": "img_dir = os.path.join(self.dataset_path, 'valid', 'Ungood', 'img')",
+   "finding": "... and K ABNORMAL support images WITH masks are drawn from the same valid/ split, so 'K-shot' means K normal + K abnormal annotated images (2K images). A validation split therefore exists but is not used for model selection.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/medical_few.py#L133"
+  },
+  {
+   "id": "E17",
+   "file": "dataset/fewshot_seed/Brain/4-shot.txt",
+   "lines": [
+    1
+   ],
+   "code": "a-0: 01388_60.png 01471_60.png 00154_60.png 01646_90.png",
+   "finding": "Each seed file contains a single draw (a-0 / n-0) per dataset and shot number.",
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/dataset/fewshot_seed/Brain/4-shot.txt#L1"
+  }
+ ],
+ "later_findings": [
+  {
+   "id": "E18",
+   "file": "train_zero.py",
+   "lines": [
+    50
+   ],
+   "code": "parser.add_argument(\"--learning_rate\", type=float, default=0.0001, help=\"learning rate\")",
+   "finding": "Zero-shot training defaults to a learning rate of 1e-4, while the paper reports 1e-3 (train_few.py uses 1e-3).",
+   "related_gaps": [
+    "G8",
+    "G17"
+   ],
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L50"
+  },
+  {
+   "id": "E19",
+   "file": "train_zero.py",
+   "lines": [
+    76,
+    169
+   ],
+   "code": "train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, **kwargs)",
+   "finding": "Training uses a batch size of 1 (hard-coded), while the paper reports a batch size of 16.",
+   "related_gaps": [
+    "G8",
+    "G17"
+   ],
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_zero.py#L76"
+  },
+  {
+   "id": "E20",
+   "file": "train_few.py",
+   "lines": [
+    91
+   ],
+   "code": "train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, **kwargs)",
+   "finding": "Few-shot training also uses a hard-coded batch size of 1.",
+   "related_gaps": [
+    "G8",
+    "G17"
+   ],
+   "url": "https://github.com/MediaBrain-SJTU/MVFA-AD/blob/a30bf7bb2c51772a36e7be58d3c072be480620fe/train_few.py#L91"
+  }
+ ],
+ "later_findings_note": "Found after Stage 1 ran; recorded here and in the report, not merged into gap texts."
+}

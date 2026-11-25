@@ -1,0 +1,805 @@
+{
+ "problem": "B1",
+ "problem_text": "Can MVFA's few-shot inference be made inductive, scoring each image only with statistics of the K normal support images and source-validation data instead of test-set min-max normalisation, while keeping image AUROC within 1 point of the re-run transductive baseline and making each image's score invariant to the composition of the rest of the test set (prevalence 10-50%, with and without outliers)? The replacement is evaluated component by component (normalisation, then fusion weight, then image-level aggregation), with sensitivity at 95% specificity and expected calibration error reported alongside AUROC.",
+ "pool_size": 24,
+ "shortlist": [
+  "B1-g3-o5",
+  "B1-g1-o2",
+  "B1-g2-o1",
+  "B1-g0-C5",
+  "B1-g2-o3",
+  "B1-g3-o1",
+  "B1-g1-o3",
+  "B1-g3-o3",
+  "B1-g0-C1",
+  "B1-g2-o6",
+  "B1-g2-o4",
+  "B1-g3-o4"
+ ],
+ "families": {
+  "Conformal p-values and their combination": [
+   "B1-g0-C1",
+   "B1-g1-o2",
+   "B1-g2-o1",
+   "B1-g2-o3",
+   "B1-g2-o6",
+   "B1-g3-o5",
+   "B1-g3-o6"
+  ],
+  "Probability calibration of branch scores": [
+   "B1-g0-C2",
+   "B1-g0-C5",
+   "B1-g1-o1",
+   "B1-g1-o3",
+   "B1-g2-o4",
+   "B1-g3-o1",
+   "B1-g3-o2"
+  ],
+  "Deployment decision rules": [
+   "B1-g2-o5",
+   "B1-g3-o4"
+  ],
+  "Robust image-level aggregation": [
+   "B1-g0-C6",
+   "B1-g1-o4",
+   "B1-g1-o5",
+   "B1-g1-o6",
+   "B1-g2-o2"
+  ],
+  "Support-anchored rescaling and joint score models": [
+   "B1-g0-C3",
+   "B1-g0-C4",
+   "B1-g3-o3"
+  ]
+ },
+ "ranking": [
+  {
+   "id": "B1-g3-o5",
+   "title": "Cauchy-combined level-wise conformal few-shot evidence fused in log-odds with a temperature-calibrated zero-shot branch",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 118.74,
+   "final": 0.825,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Layer-wise multiple-testing fusion of conformal p-values exists for OOD detection; combining level-wise few-shot p-values with a temperature-calibrated zero-shot probability for MVFA is new.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only; source episodes are cheap.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Combination rule and fusion specified; episode settings could be fixed more precisely.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Makes MVFA deployable per image with an error guarantee for the few-shot test.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Valid under dependence between levels; exchangeability of supports and test normals is assumed.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "conformal p-values anomaly detection Cauchy combination multiple layers deep features",
+    "closest": [
+     {
+      "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+      "url": "https://arxiv.org/pdf/2403.10803",
+      "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+     },
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     },
+     {
+      "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+      "url": "https://arxiv.org/pdf/2303.12748",
+      "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 1
+  },
+  {
+   "id": "B1-g1-o2",
+   "title": "Conformal few-shot p-values and temperature-calibrated zero-shot probabilities fused in log-odds",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 109.59,
+   "final": 0.7764,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Leave-one-out conformal anomaly detectors and CLIP temperature calibration exist separately; treating MVFA's two branches by their nature and fusing them is a new combination.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clearly specified; pixel-level reference subsampling is a practical detail.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Directly replaces the transductive normalisation with a guarantee-bearing per-image score.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Finite-sample guarantee for the few-shot branch under exchangeability.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "conformal anomaly detection few-shot calibration CLIP anomaly scores false positive rate guarantee",
+    "closest": [
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     },
+     {
+      "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+      "url": "https://arxiv.org/pdf/2303.12748",
+      "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 2
+  },
+  {
+   "id": "B1-g2-o1",
+   "title": "Level-wise conformal p-values combined with the Cauchy rule and calibrated isotonically",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 102.51,
+   "final": 0.7388,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Layer-wise conformal combination exists for OOD detection; the Cauchy rule over MVFA's eight views plus isotonic calibration is a new combination.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear; the zero-shot conformal scores are well defined.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Same deployability gain with level-specific evidence.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Cauchy combination is approximately valid under arbitrary dependence; small-K resolution remains.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "conformal p-values anomaly detection Cauchy combination multiple layers deep features isotonic",
+    "closest": [
+     {
+      "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+      "url": "https://arxiv.org/pdf/2403.10803",
+      "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+     },
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 3
+  },
+  {
+   "id": "B1-g0-C5",
+   "title": "Log-odds fusion of temperature-calibrated MVFA branches for inductive scoring",
+   "family": "Probability calibration of branch scores",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 96.32,
+   "final": 0.706,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Temperature scaling of CLIP zero-shot outputs is known (calibration of zero-shot VLM inference); its use to undo MVFA's min-max is a direct application.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only with small fits.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Restores probabilistic meaning and threshold stability.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Sound; depends on transfer of the source temperature.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "temperature scaling calibration CLIP zero-shot anomaly detection scores min-max normalization test set transductive",
+    "closest": [
+     {
+      "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+      "url": "https://arxiv.org/pdf/2303.12748",
+      "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 4
+  },
+  {
+   "id": "B1-g2-o3",
+   "title": "Weighted conformal scoring that borrows source-modality normals to stabilise small support sets",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.4,
+   "fitness": 90.59,
+   "final": 0.5705,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Weighted conformal anomaly detection in low-data regimes is studied directly in recent work, which covers the core mechanism.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Needs scoring of 500 source normals per target; manageable.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Weights and pooling specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Fixes the small-K resolution problem.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Weighted conformal is valid under covariate shift if the weights approximate likelihood ratios; the similarity kernel is a heuristic.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "weighted conformal prediction covariate shift borrowing calibration data anomaly detection small calibration set",
+    "closest": [
+     {
+      "title": "Between Resolution Collapse and Variance Inflation: Weighted Conformal Anomaly Detection in Low-Data Regimes (arXiv 2603.23205)",
+      "url": "https://arxiv.org/pdf/2603.23205",
+      "relation": "studies weighted conformal anomaly detection when calibration sets are small, very close to borrowing weighted source normals"
+     },
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 10,
+    "Clarity": 4,
+    "Impact": 7,
+    "Validity": 1
+   },
+   "overall_rank": 5
+  },
+  {
+   "id": "B1-g0-C1",
+   "title": "Leave-one-out empirical-CDF normalisation for inductive per-image MVFA scoring",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 70.37,
+   "final": 0.5682,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Leave-one-out conformal anomaly detection and empirical-CDF normalisation are established.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Exact test-set invariance for MVFA's scores.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Sound; coarse at K = 2.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "leave-one-out conformal empirical CDF anomaly score normalisation support set",
+    "closest": [
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 6
+  },
+  {
+   "id": "B1-g1-o3",
+   "title": "Support-CDF scores with source-episode isotonic calibration of the fused score",
+   "family": "Probability calibration of branch scores",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.6,
+   "fitness": 79.66,
+   "final": 0.5475,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Isotonic calibration of anomaly scores is standard; applying it to CDF-normalised scores is a minor variation.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Improves calibration without changing ranking.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Isotonic maps cannot change AUROC; transfer across modalities is tested.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "isotonic regression calibration anomaly scores transfer across datasets probability anomaly detector",
+    "closest": [
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+     },
+     {
+      "title": "PyOD detector combination methods",
+      "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+      "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 7,
+    "Validity": 1
+   },
+   "overall_rank": 7
+  },
+  {
+   "id": "B1-g3-o4",
+   "title": "Online false-discovery-rate control over a stream of MVFA-scored images",
+   "family": "Deployment decision rules",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 62.24,
+   "final": 0.525,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Online FDR control has been applied to time-series anomaly detection; applying it to per-image medical screening with MVFA is new.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Stream simulation on existing test sets.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Procedure and metrics specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Provides a prevalence-robust decision rule, directly relevant to deployment.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "LORD guarantees FDR given valid p-values; validity rests on the conformal p-values.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "online FDR control LORD anomaly detection stream conformal p-values",
+    "closest": [
+     {
+      "title": "Online false discovery rate control for anomaly detection in time series (arXiv 2112.03196)",
+      "url": "https://arxiv.org/pdf/2112.03196",
+      "relation": "applies LORD-type online FDR control to anomaly detection streams"
+     },
+     {
+      "title": "FDR control for Online Anomaly Detection (arXiv 2312.01969)",
+      "url": "https://ar5iv.labs.arxiv.org/html/2312.01969",
+      "relation": "online FDR procedures tailored to anomaly detection"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 8
+  },
+  {
+   "id": "B1-g2-o6",
+   "title": "Weight-free fusion of MVFA branches by a Bonferroni-corrected minimum p-value",
+   "family": "Conformal p-values and their combination",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 68.43,
+   "final": 0.5229,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Bonferroni and minimum-p combinations of detectors are textbook.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "No fitted parameters.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Simple, valid fusion; may lose power.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Valid under arbitrary dependence.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "combining dependent p-values minimum Bonferroni anomaly detectors branches",
+    "closest": [
+     {
+      "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+      "url": "https://arxiv.org/pdf/2403.10803",
+      "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+     },
+     {
+      "title": "PyOD detector combination methods",
+      "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+      "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 7,
+    "Validity": 1
+   },
+   "overall_rank": 9
+  },
+  {
+   "id": "B1-g3-o1",
+   "title": "Empirical-Bayes shrinkage of support statistics for stable per-image MVFA scores at small K",
+   "family": "Probability calibration of branch scores",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 3,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.2,
+   "fitness": 85.09,
+   "final": 0.5063,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Empirical-Bayes shrinkage of few-shot statistics parallels distribution calibration in few-shot learning; new for anomaly scoring.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Episode collection and prior fitting are cheap.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "The covariate used to express the prior relative to the target is described loosely.",
+     "score": 3
+    },
+    "Impact": {
+     "review": "Stabilises small-K results.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Transfer of the prior to an unseen modality is assumed, not justified.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "empirical Bayes shrinkage few-shot calibration statistics prior from base classes distribution calibration",
+    "closest": [
+     {
+      "title": "Free Lunch for Few-shot Learning: Distribution Calibration (arXiv 2101.06395)",
+      "url": "https://arxiv.org/pdf/2101.06395",
+      "relation": "calibrates few-shot class statistics by borrowing from base-class statistics, the few-shot analogue of empirical-Bayes shrinkage"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 10,
+    "Clarity": 12,
+    "Impact": 7,
+    "Validity": 10
+   },
+   "overall_rank": 10
+  },
+  {
+   "id": "B1-g3-o3",
+   "title": "Joint score-space density of support normals for fusing MVFA's two branches",
+   "family": "Support-anchored rescaling and joint score models",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.2,
+   "fitness": 74.16,
+   "final": 0.4483,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Joint models of multiple detector scores (Mahalanobis or density in score space) are known in detector ensembling.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Requires source normals scored against target supports.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear, with Gaussian and KDE variants.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Helps where branches are correlated.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Two-dimensional density estimation at small K relies heavily on source normals.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "combining multiple anomaly detector scores joint density Mahalanobis score space fusion unsupervised ensemble",
+    "closest": [
+     {
+      "title": "Unsupervised Layer-wise Score Aggregation for Textual OOD Detection (arXiv 2302.09852)",
+      "url": "https://arxiv.org/pdf/2302.09852",
+      "relation": "aggregates per-layer anomaly scores without labels, including Mahalanobis-style joint models"
+     },
+     {
+      "title": "PyOD detector combination methods",
+      "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+      "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 10,
+    "Clarity": 4,
+    "Impact": 7,
+    "Validity": 10
+   },
+   "overall_rank": 11
+  },
+  {
+   "id": "B1-g2-o4",
+   "title": "Extreme-value (peaks-over-threshold) calibration of per-image MVFA scores",
+   "family": "Probability calibration of branch scores",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.4,
+   "fitness": 64.87,
+   "final": 0.434,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Extreme-value normalisation of anomaly scores is established (EVT detection rules, EVT-based normalisation).",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Useful at small K.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Generalised Pareto fits on pooled, spatially correlated patches can be unstable.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "extreme value theory generalized Pareto anomaly score calibration deep anomaly detection threshold",
+    "closest": [
+     {
+      "title": "LSTM-Based Anomaly Detection: Detection Rules from Extreme Value Theory (arXiv 1909.06041)",
+      "url": "https://arxiv.org/pdf/1909.06041",
+      "relation": "sets anomaly thresholds from generalised Pareto tail fits of scores"
+     },
+     {
+      "title": "Anomaly score normalisation based on extreme value theory (US patent 12614096)",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12614096",
+      "relation": "normalises anomaly scores with extreme-value tail models"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 6,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 7,
+    "Validity": 10
+   },
+   "overall_rank": 12
+  }
+ ],
+ "top5": [
+  "B1-g3-o5",
+  "B1-g1-o2",
+  "B1-g0-C5",
+  "B1-g1-o3",
+  "B1-g3-o4"
+ ],
+ "skipped_for_diversity": [
+  {
+   "id": "B1-g2-o1",
+   "reason": "family 'Conformal p-values and their combination' already has 2 selected ideas"
+  },
+  {
+   "id": "B1-g2-o3",
+   "reason": "family 'Conformal p-values and their combination' already has 2 selected ideas"
+  },
+  {
+   "id": "B1-g0-C1",
+   "reason": "family 'Conformal p-values and their combination' already has 2 selected ideas"
+  }
+ ],
+ "weights": {
+  "review": 0.7,
+  "fitness": 0.3,
+  "max_per_family": 2
+ }
+}

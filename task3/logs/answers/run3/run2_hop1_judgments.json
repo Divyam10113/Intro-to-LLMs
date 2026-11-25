@@ -1,0 +1,772 @@
+{
+"multimodal model for computational pathology:representation learning and image compression": [
+[
+0,
+"Review paper.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"medsad-clip: supervised clip with token-patch cross-attention for medical anomaly detection and segmentation": [
+[
+1,
+"Supervised CLIP adaptation for medical AD that departs from the source paper's averaged handcrafted prompts and simple fusion; inspired by, but not dependent on, its findings.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"s2swclip: semantic-optimized prompts with spatial-wavelet synergy for zero-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"pdd: manifold-prior diverse distillation for medical anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"dual distillation for few-shot anomaly detection": [
+[
+0,
+"Distillation-based few-shot AD; the source paper is only a baseline.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"a test-time clinically adaptive framework for detecting multiple fundus diseases harnessing ophthalmic foundation models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"clipdxnet: a new frontier in cross-modal medical image recognition": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"medclipseg: probabilistic vision-language adaptation for data-efficient and generalizable medical image segmentation": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"raid: retrieval-augmented anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"beyond static cropping: layer-adaptive visual localization and decoding enhancement": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk2"
+]
+],
+"an evidence-based post-hoc adjustment framework for anomaly detection under data contamination": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"patient-centric statistical multi-modal fusion for medical diagnosis: integrating dicom, radiomics, and patient attributes": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"video anomaly detection: a comprehensive survey of deep learning approaches": [
+[
+0,
+"Survey of video anomaly detection.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"normal-abnormal guided generalist anomaly detection": [
+[
+0,
+"Uses the source paper only as a few-shot baseline; the normal-abnormal generalist hypothesis is independent.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"zsdd: zero-shot detection and segmentation of surface defects using pre-trained models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"fine-tuning clip models with convolutional features for medical anomaly detection": [
+[
+2,
+"MLCA directly extends the source paper: same multi-level residual adapters and pixel-level visual-text alignment loss, plus a ConvTokenizer; its hypothesis depends on the source's finding that multi-level adaptation transfers CLIP to medical AD.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"local enhancement and semantic alignment for zero-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"tmuad: enhancing logical capabilities in unified anomaly detection models with a text memory bank": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"a contrastive learning-guided confident meta-learning for zero shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"evt-clip: enhancing zero-shot anomaly segmentation with vision-text models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk1"
+]
+],
+"bridging vision foundation model priors with clip for spatial-aware few-shot anomaly detection in medical images": [
+[
+2,
+"Spatial-FAD adopts the source paper's CLIP ViT-L/14 setting and residual adapters and extends them with a vision-foundation-model spatial prior; its hypothesis depends on the source's adapter framework.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"proximity-clip: text-guided semantic proximity learning for zero-shot anomaly detection": [
+[
+1,
+"Inspired by the multi-level visual feature aggregation of VAND and the source paper; proposes visually calibrated text prototypes and compares with MVFA-AD.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"cfr-net:collaborative feature refinement network for medical image anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"unitransad: unified translation framework for anomaly detection in brain mri": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"cl-anomaly: layer-adaptive mixture-of-experts with multimodal large language model for continual learning in anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"fed-lora: cross-domain generative knowledge feedback for few-shot medical anomaly detection": [
+[
+2,
+"Fed-LoRA fine-tunes MVFA-AD itself as the final anomaly detector on its augmented data, so its results depend directly on the source paper.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"univad v2: unified visual anomaly detection via support-conditioned boundary construction": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"benchmark evaluation of multi-modal large language models for ophthalmic diagnosis in real world": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"ladbench: a benchmark for logical fault detection in images": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"dual knowledge distillation framework with class-adaptive temperature and topk feature perturbation for few-shot prompt learning": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk0"
+]
+],
+"come: dual structure-semantic learning with collaborative moe for universal lesion detection across heterogeneous ultrasound datasets": [
+[
+0,
+"Lists the source paper in a comparison table only; universal ultrasound lesion detection is an independent hypothesis.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"anomalymoe: towards a language-free generalist model for unified visual anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"cops: conditional prompt synthesis for zero-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"q-former autoencoder: a modern framework for medical anomaly detection": [
+[
+0,
+"Unsupervised autoencoder approach; the source paper is only a compared method.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"roadbench: a vision-language foundation model and benchmark for road damage understanding": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"toward long-tailed online anomaly detection through class-agnostic concepts": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"prototype-guided pseudo-labeling with neighborhood-aware consistency for unsupervised adaptation": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"a comprehensive survey for real-world industrial defect detection: challenges, approaches, and prospects": [
+[
+0,
+"Survey paper.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"towards fine-grained adaptation of clip via a self-trained alignment score": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"madpot: medical anomaly detection with clip adaptation and partial optimal transport": [
+[
+1,
+"Combines visual adapters (as introduced by the source paper for medical AD) with prompt learning and partial optimal transport; inspired by, but not dependent on, the source's findings.",
+"stage2/relevance/hop1/2025/chunk2"
+]
+],
+"foundation models for anomaly detection: vision and challenges": [
+[
+0,
+"Survey paper.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"applications of large models in medicine": [
+[
+0,
+"Review paper.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"one-to-normal: anomaly personalization for few-shot anomaly detection": [
+[
+0,
+"Borrows prompt templates only; the personalization hypothesis is independent.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"a computer vision system for recognition and defect detection for reusable containers": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"filo++: zero-/few-shot anomaly detection by fused fine-grained descriptions and deformable localization": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"kanoclip: zero-shot anomaly detection through knowledge-driven prompt learning and enhanced cross-modal integration": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"a dual-state-based surface anomaly detection model for rail transit trains using vision-language model": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"iiim-sam: zero-shot texture anomaly detection without external prompts": [
+[
+0,
+"Mentions the source paper in related work only.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"aulora: anomaly understanding with low-rank adaptation for zero-shot anomaly detection": [
+[
+0,
+"Cites adapter modules generally; LoRA-based adaptation is independent.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"dadm: denoising and attention-driven diffusion model for anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk6"
+]
+],
+"madclip: few-shot medical anomaly detection with clip": [
+[
+2,
+"MadCLIP builds on the source paper's adapters in the CLIP vision encoder for medical few-shot AD and modifies them into normal/abnormal dual branches with SigLIP loss and no memory bank, so its hypothesis partly depends on the source's findings.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"slide-clip: a simple and effective pruning method for clip": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"ultraad: fine-grained ultrasound anomaly classification via few-shot clip adaptation": [
+[
+1,
+"Few-shot CLIP adaptation for ultrasound inspired by the source line of work; it compares with MVFA and targets fine-grained classification.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"taming vision-language models for medical image analysis: a comprehensive review": [
+[
+0,
+"Review paper.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"iqe-clip: instance-aware query embedding for zero-/few-shot anomaly detection in medical domain": [
+[
+1,
+"Medical zero-/few-shot AD that positions itself against the source paper's multi-level adaptation and proposes instance-aware query embeddings instead.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"3d-rad: a comprehensive 3d radiology med-vqa dataset with multi-temporal analysis and diverse diagnostic tasks": [
+[
+0,
+"3D Med-VQA dataset; cites the source only for the natural-medical domain gap.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"monetv2: enhanced motion network for freehand 3-d ultrasound reconstruction": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"piad: pose and illumination agnostic anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"inp-former++: advancing universal anomaly detection via intrinsic normal prototypes and residual learning": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"continual-mega: a large-scale benchmark for generalizable continual anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk3"
+]
+],
+"transferring vision-language models for zero-shot anomaly detection via adaptive feature fusion": [
+[
+1,
+"Inserts lightweight residual adapters into the CLIP encoder and fuses multi-level intermediate features for zero-shot AD, following the source paper's multi-level residual adaptation idea; it compares directly against MVFA-AD.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"clipmpcad: few-shot anomaly detection with llm-guided prompts and multi-attention fusion": [
+[
+1,
+"Its cross-domain few-shot design builds on adapter-based alignment of prior VLM methods including the source paper, adding LLM prompts and multi-attention fusion on medical and industrial data.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"frequency-guided feature refinement for zero-shot anomaly detection": [
+[
+0,
+"Cites the source paper only in related work; its hypothesis (frequency-guided refinement) is independent.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"intestinal robot-based abnormality detection via pixel-level annotation and vision-language model visualization": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"explainable visual anomaly detection via concept bottleneck models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"musc-v2: zero-shot multimodal industrial anomaly classification and segmentation with mutual scoring of unlabeled samples": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"uniadc: a unified framework for anomaly detection and classification": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"cross-task generalization in handwriting-based alzheimer's screening via vision language adaptation": [
+[
+1,
+"Explicitly motivated by the source paper's multi-level visual adaptation and prompt ensembling, transferring them to handwriting-based Alzheimer's screening.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"adaptation of foundation models for medical image analysis: strategies, challenges, and future directions": [
+[
+0,
+"Review paper.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"towards fine-grained vision-language alignment for few-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk0"
+]
+],
+"improving surface defect detection for trains based on visual-language knowledge guidance on tiny datasets": [
+[
+0,
+"Train surface defects; the source paper appears only in related work.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"adapting foundation vision-language models to medical diagnosis via query-driven expert bridging": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"sd-mad: sign-driven few-shot multi-anomaly detection in medical images": [
+[
+1,
+"Multi-anomaly few-shot medical AD that follows the source paper's evaluation protocol and extends it with binary-prediction and multi-category protocols.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"tags: 3d tumor-adaptive guidance for sam": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"mmrl++: parameter-efficient and interaction-aware representation learning for vision-language models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"learning to detect multi-class anomalies with just one normal image prompt": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"advancing generalizable tumor segmentation with anomaly-aware open-vocabulary attention maps and frozen foundation diffusion models": [
+[
+0,
+"Tumor segmentation with diffusion models; the source paper is only a baseline.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"visual-language foundation models in medical imaging: a systematic review and meta-analysis of diagnostic and analytical applications": [
+[
+0,
+"Systematic review.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"anomaly detection in medical images using encoder-attention-2decoders reconstruction": [
+[
+0,
+"Reconstruction-based medical AD; cites the source paper only for context.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"hieclip: hierarchical clip with explicit alignment for zero-shot anomaly detection": [
+[
+0,
+"Hierarchical prompt alignment for ZSAD; no evidence of dependence on the source paper.",
+"stage2/relevance/hop1/2025/chunk4"
+]
+],
+"boosting time-series domain adaptation via a time-frequency consensus framework": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"the clinical significance of imaging biomarkers discoverable by anomaly detection methods in retinal diseases: a review": [
+[
+0,
+"Review paper.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"g-anomaly: a pyramid graph transformer-based vision-language model for general industrial anomaly detection": [
+[
+1,
+"Industrial VLM AD inspired by the source paper's multi-level trainable adapters for calibrating CLIP features; compares with MVFA.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"visual language models: foundations and applications": [
+[
+0,
+"Survey paper.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"gravlm: a hierarchical graph-aligned vision\u2013language model for cross-modal retrieval in remote sensing": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"distribution-aware prompt learning for vision-language models with dynamic boundary prototype": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"open set industrial surface defect recognition with high frequency feature enhancement and class mutual-information constraint": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"hd-clip: hierarchical dynamic prompting and decoupled learning for zero-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"tcfmad: tri-consistency foundation model-based few-shot manufacturing anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"tunclip: adaptive multi-scale zero-shot anomaly detection via vision-language feature infiltration and semantic enhancement": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk3"
+]
+],
+"multi-level feature adaptation and embeddings alignment for zero-shot anomaly detection": [
+[
+1,
+"Hierarchical adaptation of intermediate visual-encoder layers for zero-shot AD, inspired by the multi-level feature adaptation introduced by the source paper.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"anatomy-aware text-visual fusion with dual-perspective prompts for fine-grained lumbar spine segmentation": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"mmrl: multi-modal representation learning for vision-language models": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"anomalypainter: vision-language-diffusion synergy for zero-shot realistic and diverse industrial anomaly synthesis": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"advanced vision-language pipelines: contextual learning and interactive segmentation for medical imaging": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"aa-clip: enhancing zero-shot anomaly detection via anomaly-aware clip": [
+[
+1,
+"AA-CLIP refines patch-level visual features with adapters in the line of the source paper and adds anomaly-aware text anchors; evaluated on the same medical datasets.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"exploring intrinsic normal prototypes within a single image for universal anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"when unsupervised domain adaptation meets one-class anomaly detection: addressing the two-fold unsupervised curse by leveraging anomaly scarcity": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"multi-label classification of medical images based on feature fusion": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"towards zero-shot anomaly detection and reasoning with multimodal large language models": [
+[
+0,
+"MLLM-based anomaly reasoning; independent of the source paper's hypothesis.",
+"stage2/relevance/hop1/2025/chunk5"
+]
+],
+"da-clip: mitigating granularity mismatch in zero-shot anomaly detection via decoupled text-visual alignment": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models": [
+[
+1,
+"Few-shot medical AD that builds on the source paper's hierarchical adaptation and adds a text-feature adapter and fine-grained descriptions.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"beyond normal references: discriminative few-shot anomaly detection": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"any2any 3d diffusion models with knowledge transfer: a radiotherapy planning study": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"mtl-mad: multi-task learners are effective medical anomaly detectors": [
+[
+0,
+"Self-supervised multi-task medical AD; cites the source paper's cross-modality setting but its hypothesis is independent.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"adapting vision-language models by pseudo anomalies screening for one-shot medical anomaly detection": [
+[
+1,
+"Motivated by the source paper's reliance on auxiliary datasets with pixel-level anomaly labels; proposes normal-only adaptation with screened pseudo-anomalies.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"hybrid semantic alignment with layer-wise residual adaptation for multi-granular industrial anomaly detection": [
+[
+1,
+"Layer-wise residual adapters at multiple visual levels with Dice and Focal losses, in the style of the source paper, applied to industrial ZSAD.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"incorporating large vision model distillation and fuzzy perception for improving disease diagnosis": [
+[
+0,
+"No connection between this paper's key hypothesis and the source paper; the source is not used beyond a generic mention, if at all.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"medic-ad: towards medical vision-language model's clinical intelligence": [
+[
+0,
+"Medical VLM for clinical intelligence; cites multi-level aggregation generally.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+],
+"semantic iterative reconstruction: one-shot universal anomaly detection": [
+[
+0,
+"Reconstruction-based universal AD; the source paper appears in related work only.",
+"stage2/relevance/hop1/2026/chunk1"
+]
+]
+}

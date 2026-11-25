@@ -1,0 +1,38 @@
+import json
+def V(r, c, w): return f"REASONING: {r}\nCONFIDENCE: {c}\nWINNER={w}"
+P = "stage3/{p}/compare/{p}-g0-{x}__vs__{p}-g0-{y}"
+A = {}
+def add(p, x, y, r, c, w): A[P.format(p=p, x=x, y=y)] = V(r, c, w)
+# ---------------- A1
+add("A1","C1","C4","A acts directly on the segmentation loss with the observation that normal images give pixel labels for free, a mechanism specific to MVFA's mask-only seg branch; B adds an external DINO model and an offline propagation stage for a gain that is less directly tied to the missing masks.","MEDIUM","A")
+add("A1","C1","C5","A changes only the supervision of the segmentation branch and is testable with one loss swap; B's stage-1 text adapter learned on five source datasets risks overfitting the anchors to source modalities, which works against zero-shot transfer.","MEDIUM","A")
+add("A1","C1","C6","A supplies the missing supervision signal itself, whereas B is a generic smoothness regulariser that presupposes a working weak signal and would apply to any segmentation model.","HIGH","A")
+add("A1","C2","C1","Both are specific to MVFA, but B's asymmetric objective rests on a clear, verifiable fact (all patches of normal images are normal), while A depends on the detection branch's mean-pooled maps localising lesions, which the code gives no evidence for.","MEDIUM","B")
+add("A1","C2","C3","A exploits MVFA's own image-label-trained detection branch as a teacher, a mechanism specific to this architecture; B's synthetic anomalies are a generic recipe whose transfer to real lesions is the known weak point.","MEDIUM","A")
+add("A1","C2","C4","A uses components already in MVFA and a cross-level agreement filter specific to its four-level design; B adds an external foundation model, making the gain harder to attribute to solving the mask dependence.","LOW","A")
+add("A1","C2","C5","A turns the existing detection branch into a mask-free teacher and is directly testable via pseudo-mask precision; B's learned anchors are plausible but add a stage whose generalisation to unseen modalities is uncertain.","LOW","A")
+add("A1","C3","C1","B is a single, targeted loss change with a crisp falsification criterion; A combines synthetic masks and MIL, so a gain could come from the synthetic data alone and the comparison to the mask-free goal is less clean.","MEDIUM","B")
+add("A1","C3","C4","B grows MIL evidence along anatomically coherent DINO affinities, supported by Spatial-FAD's findings; A's synthetic anomalies are generic and their realism for medical lesions is unverified.","LOW","B")
+add("A1","C5","C3","A targets the text-anchor separation that MIL localisation depends on in MVFA, grounded in AA-CLIP; B relies on synthetic anomalies, a generic signal not specific to the mask problem.","LOW","A")
+add("A1","C5","C4","A addresses the anchor quality that governs every patch score in MVFA with a small trainable component; B introduces an external model and an offline pipeline, which is heavier and less specific.","LOW","A")
+add("A1","C5","C6","A provides a better reference for the weak signal grounded in AA-CLIP; B is a generic smoothness prior with weak evidence from an industrial paper.","MEDIUM","A")
+add("A1","C6","C2","B produces dense pseudo-masks from MVFA's own detection branch; A only regularises maps and does not create supervision where MIL gives none.","MEDIUM","B")
+add("A1","C6","C3","B at least supplies precise mask supervision (synthetic) plus real-image MIL; A's Laplacian prior is generic and its evidence comes from industrial graph models.","LOW","B")
+add("A1","C6","C4","B's affinity propagation uses a strong spatial prior from DINO with evidence from Spatial-FAD; A's hand-set graph regulariser is weaker and generic.","MEDIUM","B")
+# ---------------- B1
+add("B1","C1","C2","Both remove test-set statistics; B's empirical p-values put every level and branch on a common, distribution-free scale and give the threshold a direct false-positive interpretation, which A's clipped z-scores only approximate.","LOW","B")
+add("B1","C1","C4","A fixes exactly the fusion step identified in the code and is inference-only; B replaces the whole few-shot branch with a Gaussian model, so it changes more than the problem requires and its evidence is a different method.","MEDIUM","A")
+add("B1","C1","C5","A delivers the per-image fused score that the problem asks for; B is an aggregation rule that itself relies on such a normalisation and addresses only the image-pooling part.","MEDIUM","A")
+add("B1","C2","C4","A solves the fusion and threshold problem with a statistic that is calibrated by construction; B changes the few-shot scoring model and still needs a separate fusion rule.","MEDIUM","A")
+add("B1","C3","C1","B is a direct, assumption-light replacement of test-set normalisation; A depends on synthetic anomalies being representative of real lesions to fit its calibrator, an unverified assumption.","MEDIUM","B")
+add("B1","C3","C2","B's p-value fusion is inductive and calibrated without generating data; A adds a synthetic-anomaly generator whose realism determines the calibration and cannot be checked without target labels.","MEDIUM","B")
+add("B1","C3","C5","B targets the verified max-pixel image-score defect with a concrete robustness test; A's calibration hinges on synthetic anomalies with weak evidence.","LOW","B")
+add("B1","C4","C3","A's Mahalanobis scores have an analytic reference distribution supported by Spatial-FAD's compact prototypes; B's calibrator depends on synthetic data whose relevance is unverified.","LOW","A")
+add("B1","C4","C6","A provides per-image, analytically standardised scores; B updates statistics from model-selected arrivals, which risks self-confirmation and depends on stream order.","MEDIUM","A")
+add("B1","C5","C2","B replaces the transductive fusion that the problem is about; A changes only image pooling and assumes a normalisation is already in place.","MEDIUM","B")
+add("B1","C5","C4","A fixes the verified single-pixel max rule with a falsifiable false-positive test while keeping MVFA's branches; B replaces a branch and is further from the stated problem.","MEDIUM","A")
+add("B1","C5","C6","A addresses a verified defect with a concrete robustness test; B's streaming updates are order-dependent and only weakly grounded.","MEDIUM","A")
+add("B1","C6","C1","B is per-image and support-only, with no dependence on arrival order; A's online updates reintroduce a dependence on other test images.","HIGH","B")
+add("B1","C6","C2","B is inductive and calibrated by construction; A's streaming statistics depend on other images and on a self-selected gate.","HIGH","B")
+add("B1","C6","C3","Both add assumptions, but B's calibrator is fixed before deployment and does not depend on stream order or self-selected images.","LOW","B")
+json.dump(A, open("/home/claude/task3/logs/answers/stage3_g0_compare.json","w"), indent=1); print(len(A))

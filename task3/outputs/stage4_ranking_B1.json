@@ -1,0 +1,827 @@
+{
+ "problem": "B1",
+ "problem_text": "In MVFA's few-shot inference, the released code min-max normalises the zero-shot (text) branch and the few-shot (memory-bank) branch with the minimum and maximum over the entire test set and adds them with a fixed weight of 0.5, so the score of one image depends on the rest of the test set and a single incoming image cannot be scored. Can this transductive normalisation be replaced by an inductive one computed only from the K normal support images, at a small cost in AUROC? The inductive normaliser maps each branch's patch scores through the 1st and 99th percentiles of the leave-one-out patch scores of the supports (every patch of support i scored against the memory bank of the other K-1 supports and against the text anchors), which gives thousands of reference values even at K = 2; the fusion weight and the max pooling of the image score are kept fixed. Primary outcome: image-level and pixel-level AUROC of inductive versus transductive normalisation on each held-out BMAD dataset for K in {2, 4, 8, 16}. Motivating measurement: the spread of the original method's AUROC across random half-size test subsets and at shifted prevalence (10% and 50% abnormal). Secondary outcome: sensitivity at 95% specificity with a threshold fixed from the support scores alone.",
+ "pool_size": 24,
+ "shortlist": [
+  "B1-g2-o1",
+  "B1-g3-o4",
+  "B1-g1-o3",
+  "B1-g3-o5",
+  "B1-g2-o4",
+  "B1-g1-o5",
+  "B1-g3-o2",
+  "B1-g2-o3",
+  "B1-g2-o6",
+  "B1-g0-C1",
+  "B1-g1-o4",
+  "B1-g3-o6"
+ ],
+ "families": {
+  "Global support-reference normalisers": [
+   "B1-g0-C1",
+   "B1-g1-o4",
+   "B1-g2-o3",
+   "B1-g2-o4"
+  ],
+  "Positional and per-image residual normalisers": [
+   "B1-g0-C5",
+   "B1-g1-o2",
+   "B1-g1-o3",
+   "B1-g2-o1",
+   "B1-g2-o2",
+   "B1-g2-o5",
+   "B1-g3-o3",
+   "B1-g3-o5",
+   "B1-g3-o6"
+  ],
+  "Learned or analytic scale from source modalities": [
+   "B1-g0-C2",
+   "B1-g0-C6",
+   "B1-g1-o6",
+   "B1-g3-o1",
+   "B1-g3-o4"
+  ],
+  "Two-anchor and prototype scaling": [
+   "B1-g0-C3",
+   "B1-g0-C4",
+   "B1-g1-o1"
+  ],
+  "Thresholds and image-score calibration": [
+   "B1-g1-o5",
+   "B1-g2-o6",
+   "B1-g3-o2"
+  ]
+ },
+ "ranking": [
+  {
+   "id": "B1-g2-o1",
+   "title": "Alignment-adaptive residual CDF: weighting the positional correction by measured anatomy alignment",
+   "family": "Positional and per-image residual normalisers",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 129.87,
+   "final": 0.825,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "CDF normalisation on held-out normal scores exists in anomaly-detection libraries and positional normality is used in atlas-based brain methods; weighting a positional correction by an alignment statistic measured on the few-shot supports is new.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only, a few array operations, no training.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Alignment statistic, residual and reference construction are specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Gives an inductive, anatomy-aware normaliser that is safe on unaligned modalities \u2014 the deployability property the problem targets.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Sound fallback logic; small-K bias of the residual references remains (addressed by the exact leave-one-out variant).",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "position-wise normal score atlas normalization anomaly map medical images spatially aligned residual normalization",
+    "closest": [
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     },
+     {
+      "title": "BrainNorm: A Foundation Model that knows Normal via Semantic Atlas Pretraining (arXiv 2608.17521)",
+      "url": "https://arxiv.org/pdf/2608.17521",
+      "relation": "encodes position-dependent normality through atlas pretraining for brain images; related to positional normal references but requires registration to an atlas"
+     },
+     {
+      "title": "How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)",
+      "url": "https://arxiv.org/pdf/2610.00236",
+      "relation": "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 2
+   },
+   "overall_rank": 1
+  },
+  {
+   "id": "B1-g3-o4",
+   "title": "Content-conditioned expected-normal-score regression",
+   "family": "Learned or analytic scale from source modalities",
+   "scores": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 120.72,
+   "final": 0.7764,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Predicting the expected normal score of a patch from its content is related to Patch2Loc's learned normal expectations, but using a source-trained regressor to normalise MVFA's branch scores on an unseen modality is new.",
+     "score": 4
+    },
+    "Feasibility": {
+     "review": "A small MLP per branch and level trained on source normal patches; cheap.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Regressor, re-centring and baselines are specified.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Works on aligned and unaligned modalities alike; addresses the anatomy-offset problem generally.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Re-centring with supports handles the shift of the regressor's output to the unseen modality; transfer of the content-to-offset mapping remains the main assumption.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "anomaly score depends on image content normal variation regression expected normal score patch anomaly false positives anatomy",
+    "closest": [
+     {
+      "title": "Patch2Loc: Learning to Localize Patches for Unsupervised Brain Lesion Detection (arXiv 2506.22504)",
+      "url": "https://www.alphaxiv.org/abs/2506.22504",
+      "relation": "learns from normal brain MRI to predict where a patch belongs and uses the prediction error as anomaly score, i.e. content-conditioned expectations of normal anatomy"
+     },
+     {
+      "title": "SubspaceAD: Training-Free Few-Shot Anomaly Detection via Subspace Modeling (arXiv 2602.23013)",
+      "url": "https://arxiv.org/pdf/2602.23013",
+      "relation": "training-free few-shot anomaly detection that models normal support features; it scores against a normal model but does not address branch normalisation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 10,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 2
+   },
+   "overall_rank": 2
+  },
+  {
+   "id": "B1-g2-o4",
+   "title": "Extreme-value tail extension of the support CDF",
+   "family": "Global support-reference normalisers",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 101.72,
+   "final": 0.6755,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Extreme-value normalisation of anomaly scores is known (patent on EVT score normalisation; EVT score adaptation in inspection); applying a GPD tail to fix ceiling ties of empirical-CDF normalisation under max pooling is a specific, new observation.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "A GPD fit per branch and level; trivial cost.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Threshold, fit and diagnostics are fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Matters mainly at small K.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Peaks-over-threshold theory justifies the tail model; thousands of support patches make the fit stable.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "extreme value theory generalized Pareto anomaly score calibration image anomaly detection",
+    "closest": [
+     {
+      "title": "Anomaly score normalisation based on extreme value theory (US patent 12614096)",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12614096",
+      "relation": "normalises anomaly scores with extreme value theory, the principle behind the GPD tail extension; not for few-shot medical image maps"
+     },
+     {
+      "title": "Sequential Score Adaptation with Extreme Value Theory for Robust Railway Track Inspection (arXiv 1510.05822)",
+      "url": "https://arxiv.org/pdf/1510.05822",
+      "relation": "adapts image anomaly scores with EVT tail models in an inspection setting"
+     },
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 2
+   },
+   "overall_rank": 3
+  },
+  {
+   "id": "B1-g3-o5",
+   "title": "Exact leave-one-out, alignment-adaptive residual CDF",
+   "family": "Positional and per-image residual normalisers",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 5
+   },
+   "review_mean": 3.8,
+   "fitness": 107.45,
+   "final": 0.671,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "A strict leave-one-out construction is a correctness refinement rather than a new idea.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only; slightly more bookkeeping.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Improves threshold reliability at small K.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Removes a real bias of the residual references; methodologically the most careful normaliser in the pool.",
+     "score": 5
+    }
+   },
+   "novelty": {
+    "query": "few-shot anomaly detection score normalization support set empirical CDF inductive per-image anomaly score test-set normalization",
+    "closest": [
+     {
+      "title": "How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)",
+      "url": "https://arxiv.org/pdf/2610.00236",
+      "relation": "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"
+     },
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 1
+   },
+   "overall_rank": 4
+  },
+  {
+   "id": "B1-g1-o3",
+   "title": "Empirical CDF of anatomy residuals for inductive MVFA scoring",
+   "family": "Positional and per-image residual normalisers",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.6,
+   "fitness": 113.64,
+   "final": 0.6688,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Location-scale separation with a positional location and a global CDF scale is a sensible design not found in the medical few-shot anomaly-detection literature.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Useful on aligned modalities; no fallback for unaligned ones.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Its residual references include each support in its own positional median, which biases thresholds at small K.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "position-wise normal score atlas normalization anomaly map medical images spatially aligned residual normalization",
+    "closest": [
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     },
+     {
+      "title": "BrainNorm: A Foundation Model that knows Normal via Semantic Atlas Pretraining (arXiv 2608.17521)",
+      "url": "https://arxiv.org/pdf/2608.17521",
+      "relation": "encodes position-dependent normality through atlas pretraining for brain images; related to positional normal references but requires registration to an atlas"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 9
+   },
+   "overall_rank": 5
+  },
+  {
+   "id": "B1-g1-o5",
+   "title": "Split-conformal image thresholds from support leave-one-out maxima",
+   "family": "Thresholds and image-score calibration",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 96.22,
+   "final": 0.6113,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Very close prior work: a 2026 study calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's normal images and analyses distribution-free certification (industrial data); the medical CLIP setting is the main difference.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear quantile rule and validity cells.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Gives a deployable decision rule with a stated bound, which AUROC-only evaluation lacks.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Valid under exchangeability; the prior work shows that certification is hard, which the idea should discuss.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "conformal anomaly detection medical images false positive rate guarantee few normal calibration images weighted conformal covariate shift",
+    "closest": [
+     {
+      "title": "How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)",
+      "url": "https://arxiv.org/pdf/2610.00236",
+      "relation": "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"
+     },
+     {
+      "title": "Between Resolution Collapse and Variance Inflation: Weighted Conformal Anomaly Detection in Low-Data Regimes (arXiv 2603.23205)",
+      "url": "https://arxiv.org/abs/2603.23205",
+      "relation": "weighted conformal anomaly detection under distribution shift with few calibration points, relaxed by weighted KDE; addresses exactly the low-effective-sample problem of similarity-weighted conformal thresholds, not on medical images"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 1,
+    "Validity": 2
+   },
+   "overall_rank": 6
+  },
+  {
+   "id": "B1-g2-o3",
+   "title": "Augmented-support reference sets for inductive normalisation at small K",
+   "family": "Global support-reference normalisers",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 85.29,
+   "final": 0.5533,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Support augmentation for few-shot anomaly detection exists (registration-based FSAD augments supports to estimate the normal distribution).",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only; augmentation is cheap.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Useful at K = 2.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Label-preserving augmentations are reasonable for normal anatomy; flips must respect laterality.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "augmentation of few-shot normal support images memory bank anomaly detection reference distribution",
+    "closest": [
+     {
+      "title": "Few-Shot Anomaly Detection via Category-Agnostic Registration Learning (arXiv 2406.08810)",
+      "url": "https://arxiv.org/pdf/2406.08810",
+      "relation": "augments and registers few-shot support images to estimate the normal feature distribution; closest prior use of support augmentation, in industrial data"
+     },
+     {
+      "title": "APRIL-GAN: A Zero-/Few-Shot Anomaly Classification and Segmentation Method for CVPR 2023 VAND Workshop (arXiv 2305.17382)",
+      "url": "https://arxiv.org/pdf/2305.17382",
+      "relation": "builds the few-shot memory bank from the support images, the design MVFA follows; it does not augment the supports to enlarge a reference distribution"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 2
+   },
+   "overall_rank": 7
+  },
+  {
+   "id": "B1-g3-o2",
+   "title": "Foreground-size-aware Gumbel normalisation of the max-pooled image score",
+   "family": "Thresholds and image-score calibration",
+   "scores": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.6,
+   "fitness": 90.79,
+   "final": 0.5475,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Correcting the max-pooled image score for foreground size with a Gumbel model was not found; StructCore adds map statistics to max pooling but not size dependence.",
+     "score": 4
+    },
+    "Feasibility": {
+     "review": "Foreground masks and a Gumbel fit; cheap.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Helps datasets with strongly varying tissue area.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Intensity-based foreground masks and Gumbel asymptotics from few supports are approximations; patch scores are not independent.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "image max pooling anomaly score bias foreground size Gumbel block maxima calibration anomaly detection",
+    "closest": [
+     {
+      "title": "StructCore: Structure-Aware Image-Level Scoring for Training-Free Unsupervised Anomaly Detection (arXiv 2602.17048)",
+      "url": "https://arxiv.org/pdf/2602.17048",
+      "relation": "keeps max pooling and adds a calibrated term from the anomaly map's dispersion, top-1% mean and roughness relative to normal images; it does not model the dependence of the maximum on foreground size"
+     },
+     {
+      "title": "Anomaly score normalisation based on extreme value theory (US patent 12614096)",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12614096",
+      "relation": "normalises anomaly scores with extreme value theory, the principle behind the GPD tail extension; not for few-shot medical image maps"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 10,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 9
+   },
+   "overall_rank": 8
+  },
+  {
+   "id": "B1-g0-C1",
+   "title": "Leave-one-out empirical-CDF normalisation for inductive MVFA scoring",
+   "family": "Global support-reference normalisers",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 79.56,
+   "final": 0.5229,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "CDF normalisation from held-out normal scores is implemented in common anomaly-detection libraries; leave-one-out construction on supports is the specific contribution.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "A sound baseline for inductive scoring.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Exactly test-set invariant; ceiling ties at small K are a known weakness.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "few-shot anomaly detection score normalization support set empirical CDF inductive per-image anomaly score test-set normalization",
+    "closest": [
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     },
+     {
+      "title": "How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)",
+      "url": "https://arxiv.org/pdf/2610.00236",
+      "relation": "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"
+     },
+     {
+      "title": "SubspaceAD: Training-Free Few-Shot Anomaly Detection via Subspace Modeling (arXiv 2602.23013)",
+      "url": "https://arxiv.org/pdf/2602.23013",
+      "relation": "training-free few-shot anomaly detection that models normal support features; it scores against a normal model but does not address branch normalisation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 4,
+    "Validity": 2
+   },
+   "overall_rank": 9
+  },
+  {
+   "id": "B1-g1-o4",
+   "title": "Matched-support normalisation: normalise each test image against its most similar supports",
+   "family": "Global support-reference normalisers",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.6,
+   "fitness": 74.74,
+   "final": 0.4623,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Choosing the most similar supports as reference per test image is a natural kNN idea, not found as a normaliser for MVFA.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Handles unaligned modalities; small references at small K.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Using only m of K supports increases variance.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "augmentation of few-shot normal support images memory bank anomaly detection reference distribution",
+    "closest": [
+     {
+      "title": "Few-Shot Anomaly Detection via Category-Agnostic Registration Learning (arXiv 2406.08810)",
+      "url": "https://arxiv.org/pdf/2406.08810",
+      "relation": "augments and registers few-shot support images to estimate the normal feature distribution; closest prior use of support augmentation, in industrial data"
+     },
+     {
+      "title": "SubspaceAD: Training-Free Few-Shot Anomaly Detection via Subspace Modeling (arXiv 2602.23013)",
+      "url": "https://arxiv.org/pdf/2602.23013",
+      "relation": "training-free few-shot anomaly detection that models normal support features; it scores against a normal model but does not address branch normalisation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 9
+   },
+   "overall_rank": 10
+  },
+  {
+   "id": "B1-g2-o6",
+   "title": "Similarity-weighted conformal thresholds on residual-CDF scores",
+   "family": "Thresholds and image-score calibration",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.2,
+   "fitness": 80.24,
+   "final": 0.4215,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Weighted conformal anomaly detection in low-data regimes has recent dedicated work, which also documents the effective-sample-size collapse this idea would face.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only; temperature tuning on source validation.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Could reduce the spread of realised false-positive rates.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "With K supports, similarity weights concentrate on few points and the guarantee weakens.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "conformal anomaly detection medical images false positive rate guarantee few normal calibration images weighted conformal covariate shift",
+    "closest": [
+     {
+      "title": "Between Resolution Collapse and Variance Inflation: Weighted Conformal Anomaly Detection in Low-Data Regimes (arXiv 2603.23205)",
+      "url": "https://arxiv.org/abs/2603.23205",
+      "relation": "weighted conformal anomaly detection under distribution shift with few calibration points, relaxed by weighted KDE; addresses exactly the low-effective-sample problem of similarity-weighted conformal thresholds, not on medical images"
+     },
+     {
+      "title": "How Many Categories Are Enough? Distribution-Free Certification Limits for Few-Shot Anomaly Thresholds (arXiv 2610.00236)",
+      "url": "https://arxiv.org/pdf/2610.00236",
+      "relation": "calibrates few-shot anomaly thresholds by leave-one-image-out scoring of the target's few normal images and studies distribution-free certification; industrial data (MVTec AD, VisA, MPDD) and a DINOv2 scorer, not medical CLIP adapters"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 10,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 9
+   },
+   "overall_rank": 11
+  },
+  {
+   "id": "B1-g3-o6",
+   "title": "Multi-scale positional residuals",
+   "family": "Positional and per-image residual normalisers",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 2,
+    "Validity": 4
+   },
+   "review_mean": 3.4,
+   "fitness": 73.37,
+   "final": 0.42,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "An incremental multi-resolution variant of the residual CDF.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Small expected gain.",
+     "score": 2
+    },
+    "Validity": {
+     "review": "Shrinkage across resolutions is a sound bias-variance trade-off.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "position-wise normal score atlas normalization anomaly map medical images spatially aligned residual normalization",
+    "closest": [
+     {
+      "title": "Localizing Anomalies via Multiscale Score Matching Analysis (arXiv 2407.00148)",
+      "url": "https://arxiv.org/abs/2407.00148",
+      "relation": "multiscale analysis of anomaly evidence in medical images; related to multi-resolution treatment of scores"
+     },
+     {
+      "title": "BrainNorm: A Foundation Model that knows Normal via Semantic Atlas Pretraining (arXiv 2608.17521)",
+      "url": "https://arxiv.org/pdf/2608.17521",
+      "relation": "encodes position-dependent normality through atlas pretraining for brain images; related to positional normal references but requires registration to an atlas"
+     },
+     {
+      "title": "anomalib CDF normalisation callback",
+      "url": "https://huggingface.co/spaces/blanchon/MVTec_Padim_Anomalib_Test/blob/4d768839f445852db7b8f533789b67a334f6aa5f/anomalib/utils/callbacks/cdf_normalization.py",
+      "relation": "maps anomaly scores through a CDF fitted on held-out normal/validation scores, i.e. inductive CDF normalisation in a general anomaly-detection library; not leave-one-out on few-shot supports and not per branch"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 7,
+    "Feasibility": 1,
+    "Clarity": 4,
+    "Impact": 12,
+    "Validity": 2
+   },
+   "overall_rank": 12
+  }
+ ],
+ "top5": [
+  "B1-g2-o1",
+  "B1-g3-o4",
+  "B1-g2-o4",
+  "B1-g3-o5",
+  "B1-g1-o5"
+ ],
+ "skipped_for_diversity": [
+  {
+   "id": "B1-g1-o3",
+   "reason": "family 'Positional and per-image residual normalisers' already has 2 selected ideas"
+  }
+ ],
+ "weights": {
+  "review": 0.7,
+  "fitness": 0.3,
+  "max_per_family": 2
+ }
+}
