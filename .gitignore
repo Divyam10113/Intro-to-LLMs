@@ -9,7 +9,7 @@ MVFA-AD/
 __pycache__/
 .pytest_cache/
 # Run logs and large artefacts (checkpoints and maps live on the HDD in runs/)
-task4/logs/
+task4_weak_supervision/round1/logs/
 *.pth
 *.npz
 *.tar.gz
