@@ -1,0 +1,825 @@
+{
+  "n_excluded": 84,
+  "excluded": [
+    {
+      "title": "Diffusion-based vision-language model for zero-shot anomaly detection in medical images",
+      "doi": "10.1016/j.engappai.2025.112181",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Diffusion Prior–Driven Vision-Language Adaptation for Few-Shot Medical Anomaly Detection",
+      "doi": "10.1007/s10278-026-02457-2",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "AnomalyLVM:Vision-language models for zero-shot anomaly detection",
+      "doi": "10.1016/j.eswa.2026.131392",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Taft: Text-Adapted Few-Shot Training for Medical Anomaly Detection with Visual-Language Model",
+      "doi": "10.2139/ssrn.5391521",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "3D brain image anomaly detection using anomaly-guided large vision-language models",
+      "doi": "10.1007/s00371-026-04622-8",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Hierarchical vision-language model with comprehensive language description for video anomaly detection",
+      "doi": "10.1016/j.knosys.2026.115466",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "MedHyCLIP: Hyperbolic CLIP adaptation for universal medical anomaly detection",
+      "doi": "10.1016/j.patcog.2026.114582",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Defect-aware Hybrid Prompt Optimization via Progressive Tuning for Zero-Shot Multi-type Anomaly Detection and Segmentation",
+      "doi": "10.1007/978-3-032-37369-4_6",
+      "selected": false,
+      "missing_or_invalid": [
+        "doi_not_verified"
+      ]
+    },
+    {
+      "title": "Symptom-Aware Adaptation of CLIP for Few-Shot Medical Image Classification_supp1-3685174.pdf",
+      "doi": "10.1109/lsp.2026.3685174/mm2",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "venue",
+        "keywords",
+        "topics",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Symptom-Aware Adaptation of CLIP for Few-Shot Medical Image Classification_supp2-3685174.pdf",
+      "doi": "10.1109/lsp.2026.3685174/mm1",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "venue",
+        "keywords",
+        "topics",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Feature disentanglement and adaptive patch routing: A unified framework for zero-shot anomaly detection with vision foundation models",
+      "doi": "10.1016/j.neucom.2026.134380",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "A global-local deep decoupling and alignment framework for zero-shot industrial anomaly detection with vision-language models",
+      "doi": "10.1016/j.asoc.2026.116368",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "FE-CLIP: Frequency Enhanced CLIP Model for Zero-Shot Anomaly Detection and Segmentation",
+      "doi": "10.1109/iccv51701.2025.01971",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "LoFT-CLIP: Few-shot anomaly detection for railway fasteners based on large vision-language models",
+      "doi": "10.1016/j.patcog.2026.114099",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "PFADet: A few-shot prompt-guided fabric anomaly detection network using Large Vision-Language Models",
+      "doi": "10.1016/j.asoc.2025.114005",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Two-stage coarse-to-fine image anomaly segmentation and detection model",
+      "doi": "10.1016/j.imavis.2023.104817",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "TGRF-CLIP: CLIP-based text-guided fusion of visual residuals for few-shot anomaly detection",
+      "doi": "10.1016/j.eswa.2026.132817",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "DyC-CLIP: Dynamic context-aware multi-modal prompt learning for zero-shot anomaly detection",
+      "doi": "10.1016/j.patcog.2026.113215",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Vision-guided multi-image prompt learning for zero and few-shot pipeline anomaly detection",
+      "doi": "10.1007/s00530-026-02652-9",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Open-World Anomaly Segmentation via Visual-Language Alignment",
+      "doi": "10.1007/978-981-95-4109-6_14",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Figure 1: Overview of the proposed CLIP-guided anomaly detection framework.",
+      "doi": "10.7717/peerj-cs.3896/fig-1",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "venue",
+        "keywords",
+        "topics",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "GA-CLIP: Dual-branch CLIP for generalizable and anomaly-aware zero-shot anomaly detection",
+      "doi": "10.1016/j.knosys.2026.116078",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Diffusion-to-detection (D2D): A training-free framework for zero-shot anomaly detection",
+      "doi": "10.1016/j.neucom.2026.134457",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Unsupervised Anomaly Segmentation for Brain Lesions Using Dual Semantic-Manifold Reconstruction",
+      "doi": "10.1007/978-3-031-30111-7_12",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Multimodal Neurons in Artificial Neural Networks",
+      "doi": "10.23915/distill.00030",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "AugPaste: One-Shot Anomaly Detection for Medical Images",
+      "doi": "10.1007/978-3-031-16525-2_1",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Registration Based Few-Shot Anomaly Detection",
+      "doi": "10.1007/978-3-031-20053-3_18",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.48550/arxiv.2207.07361"
+      ]
+    },
+    {
+      "title": "Automated segmentation of macular edema in OCT using deep neural networks",
+      "doi": "10.1016/j.media.2019.05.002",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1142/9789811270376_0006"
+      ]
+    },
+    {
+      "title": "BMAD: Benchmarks for Medical Anomaly Detection",
+      "doi": "10.48550/arxiv.2306.11876",
+      "selected": true,
+      "missing_or_invalid": [
+        "duplicate_of:10.1109/cvprw63382.2024.00408"
+      ]
+    },
+    {
+      "title": "CLIP-AD: A Language-Guided Staged Dual-Path Model for Zero-shot Anomaly Detection",
+      "doi": "10.48550/arxiv.2311.00453",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1007/978-981-97-9003-6_2"
+      ]
+    },
+    {
+      "title": "AA-CLIP: Enhancing Zero-shot Anomaly Detection via Anomaly-Aware CLIP",
+      "doi": "10.48550/arxiv.2503.06661",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1109/cvpr52734.2025.00447"
+      ]
+    },
+    {
+      "title": "VCP-CLIP: A visual context prompting model for zero-shot anomaly segmentation",
+      "doi": "10.48550/arxiv.2407.12276",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1007/978-3-031-72890-7_18"
+      ]
+    },
+    {
+      "title": "Visualizing Data using t-SNE",
+      "doi": null,
+      "selected": false,
+      "missing_or_invalid": [
+        "doi",
+        "relevance_score",
+        "composite_score",
+        "doi_not_verified"
+      ]
+    },
+    {
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "doi": "10.48550/arxiv.2210.08402",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.52202/068431-1833"
+      ]
+    },
+    {
+      "title": "AFSC: Adaptive Fourier Space Compression for Anomaly Detection",
+      "doi": "10.1109/tii.2024.3423331",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.48550/arxiv.2204.07963"
+      ]
+    },
+    {
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "doi": "10.48550/arxiv.1505.04597",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1007/978-3-319-24574-4_28"
+      ]
+    },
+    {
+      "title": "Towards Total Recall in Industrial Anomaly Detection",
+      "doi": "10.1109/cvpr52688.2022.01392",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.48550/arxiv.2106.08265"
+      ]
+    },
+    {
+      "title": "Zero-Shot Image Anomaly Detection Using Generative Foundation Models",
+      "doi": "10.48550/arxiv.2507.22692",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1109/iccvw69036.2025.00376"
+      ]
+    },
+    {
+      "title": "Proceedings of the 31st ACM International Conference on Multimedia",
+      "doi": "10.1145/3581783",
+      "selected": false,
+      "missing_or_invalid": [
+        "topics"
+      ]
+    },
+    {
+      "title": "Segment Any Anomaly without Training via Hybrid Prompt Regularization",
+      "doi": "10.48550/arxiv.2305.10724",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.48550/arxiv.2305.10724"
+      ]
+    },
+    {
+      "title": "A survey on industrial image anomaly detection: methods, benchmarks and rethinks",
+      "doi": "10.1016/j.measurement.2025.118377",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Multi-Modal Segment Anything Model for Camouflaged Scene Segmentation",
+      "doi": "10.1109/iccv51701.2025.01849",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Forensic-MoE: Exploring Comprehensive Synthetic Image Detection Traces With Mixture of Experts",
+      "doi": "10.1109/iccv51701.2025.01651",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Multimodal feature cooperative refinement for few-shot anomaly detection",
+      "doi": "10.1016/j.aei.2025.103792",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "RRS-AR: Restricted random sampling and attraction–rejection contrastive learning for industrial image anomaly detection",
+      "doi": "10.1016/j.measurement.2025.120125",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Influence-based approaches for tumor classification in noisy brain MRI with deep learning and vision-language models",
+      "doi": "10.1007/s41060-025-00834-8",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "RoCA: Robust Contrastive Adaptation for unsupervised anomaly detection",
+      "doi": "10.1016/j.patcog.2026.113843",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "LOGIC-AD: Cross-domain zero-shot anomaly detection via logit-space consistency",
+      "doi": "10.1016/j.knosys.2026.116215",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "HCLIP-AD: Calibrating text-image foundation models with hierarchical semantic alignment for zero-shot anomaly detection",
+      "doi": "10.1016/j.patcog.2026.114490",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "PAttL-GAN: Pixel Attention Localization Generative Adversarial Network for unsupervised anomaly detection in medical images",
+      "doi": "10.1016/j.neucom.2025.131345",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "StyleGAN-Based Brain MRI Anomaly Detection via Latent Code Retrieval and Partial Swap",
+      "doi": "10.1007/978-3-032-04937-7_54",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "DecoupleMAD: Boosting sensitivity in multimodal anomaly detection via representation decoupling",
+      "doi": "10.1016/j.patcog.2026.114025",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "SimpleZ3D: A simple framework for zero-shot 3D industrial anomaly detection",
+      "doi": "10.1016/j.patcog.2026.114237",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "ERCAD: An embedding replay method for continual anomaly detection and segmentation",
+      "doi": "10.1016/j.patcog.2026.114507",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Applying Best Practices from Image Anomaly Detection to Identifying Infiltration in Chest X-Rays: A Review",
+      "doi": "10.1007/978-3-031-94150-4_41",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Osad-Sam: Customizing Segment Anything Model with Multi-Modal Prompts for One-Shot Anomaly Detection",
+      "doi": "10.2139/ssrn.5364996",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "MEN-AD: Multimodal Zero-Shot Detection of Mucus Anomalies in Endoscopy",
+      "doi": "10.1007/978-981-95-0017-8_8",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "SynCLIP-AD: Vision-Language Anomaly Detection with Contrastive Learning and Controlled Synthetic Data",
+      "doi": "10.1007/978-981-95-4963-4_28",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "E2SAM: Edge-Enhanced SAM with FFC Adapter for Few-Shot Infrared Small Target Detection",
+      "doi": "10.1007/978-3-032-12757-0_9",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "AdCache-CLIP: Adaptive Dynamic Feature Caching and Cross-Modal Alignment for Zero-Shot Anomaly Detection",
+      "doi": "10.1007/978-981-95-5567-3_15",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Advancing Fine-Grained Spine Segmentation Through Visual-Language Model with Omni- and Pixel-Level Semantic Enhancements",
+      "doi": "10.1007/978-981-95-5631-1_3",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "H2SP-AD: hierarchical hybrid softened prompt learning for instance-aware zero-shot industrial anomaly detection",
+      "doi": "10.1007/s10845-026-02806-6",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Foundation Model-Energized Anomaly Detection and Outlier Detection: A Survey",
+      "doi": "10.1007/978-981-92-1468-6_5",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "MMFC: Morphological Prior Mapping with Focused Convolution for Dysmorphic Feature Detection",
+      "doi": "10.1007/978-981-92-3510-0_10",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Multimodal denoising diffusion model for anomaly detection",
+      "doi": "10.1016/j.patcog.2026.114632",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "RoDNet: spatial-frequency collaborative representation learning with bounded activation calibration for dental anomaly detection",
+      "doi": "10.1007/s10044-026-01786-w",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Vision-language models for zero- and few-shot industrial anomaly detection: an evidence-grounded survey",
+      "doi": "10.1007/s00170-026-19446-y",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Fair fine-tuning of medical vision-language models via learned textual embedding of sensitive attributes",
+      "doi": "10.1016/j.patcog.2026.114701",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "SFC-net: Semantic filtering and collaborative contrast for zero-shot anomaly detection",
+      "doi": "10.1016/j.knosys.2026.115906",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "ProMML for robust few-shot adaptation of vision-language models",
+      "doi": "10.1016/j.patcog.2026.114160",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Task-aware text prompt fusion with contrastive learning for zero-shot anomaly detection",
+      "doi": "10.1016/j.eswa.2026.133303",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "CAP-HiCLIP: A class-aware prompting model with hierarchical consistency for zero-shot anomaly detection",
+      "doi": "10.1016/j.eswa.2026.133253",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "FG-VAD: A fast and general framework for few-shot visual anomaly detection",
+      "doi": "10.1016/j.neucom.2026.133876",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "MoRAL: Multimodal region-aware localizer for precise damage detection and reporting in ultrasonic wavefield maps",
+      "doi": "10.1016/j.eswa.2026.132306",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "MultiXpert: Dual-stream synergistic enhancement with cross-modal alignment for zero-shot chest x-ray diagnosis",
+      "doi": "10.1016/j.ipm.2025.104468",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Few-shot medical anomaly detection through centroid consultation back and test-time self-calibration",
+      "doi": "10.1016/j.patcog.2026.113261",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "UniAD: Unified cross-modal prompt regularization for zero-shot anomaly detection across domains",
+      "doi": "10.1016/j.neucom.2025.132372",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Cluster-filter-based pseudo-label refinement for source-free domain adaptation fundus image segmentation",
+      "doi": "10.1016/j.patcog.2025.112996",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Few-shot medical image segmentation via CLIP-driven dual contrastive learning",
+      "doi": "10.1016/j.neucom.2026.132815",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Adaptation of foundation models in medical image analysis: mechanisms, evidence, and deployment considerations",
+      "doi": "10.1007/s10462-026-11733-0",
+      "selected": false,
+      "missing_or_invalid": [
+        "duplicate_of:10.1007/s10462-026-11733-0"
+      ]
+    },
+    {
+      "title": "A survey on electronic health record driven multimodal representation learning",
+      "doi": "10.1016/j.inffus.2025.103810",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "PP-Former: Exploring purified intrinsic normal prototypes for industrial anomaly detection",
+      "doi": "10.1016/j.knosys.2025.114759",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Zoom-Anomaly: Multimodal vision-Language fusion industrial anomaly detection with synthetic data",
+      "doi": "10.1016/j.inffus.2025.103910",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    },
+    {
+      "title": "Prompt-level contrastive learning for context-aware multi-modal image representation in medical diagnosis",
+      "doi": "10.1016/j.patcog.2025.113027",
+      "selected": false,
+      "missing_or_invalid": [
+        "abstract",
+        "relevance_score",
+        "composite_score"
+      ]
+    }
+  ]
+}
