@@ -3,7 +3,8 @@
 
 1. Task 4's frozen files match each report/FROZEN.sha256 (round 3 and the follow-up).
 2. The compatibility symlinks that the frozen analysers rely on resolve
-   (task4_weak_supervision/task4r3 -> round3, etc.; analyze_fu.py reads FU.parent/"task4r3").
+   (task4_weak_supervision/task4r3 -> round3, etc.; analyze_fu.py reads FU.parent/"task4r3"; Plans -> plans
+   keeps the README links ../Plans/... valid).
 3. No model weights or datasets are tracked: no *.pth/*.pt/*.ckpt/*.npz/*.safetensors/*.onnx,
    and no tracked file over 20 MB.
 4. No hard-coded server paths are left in code (the defaults live in shared/config.*).
@@ -53,7 +54,7 @@ def check_frozen(errs):
 
 
 def check_symlinks(errs):
-    for link, target in (("task4", "round1"), ("task4r2", "round2"), ("task4r3", "round3"), ("task4fu", "followup")):
+    for link, target in (("task4", "round1"), ("task4r2", "round2"), ("task4r3", "round3"), ("task4fu", "followup"), ("Plans", "plans")):
         p = T4 / link
         if not (p.is_symlink() and p.resolve() == (T4 / target).resolve()):
             errs.append(f"symlink {p.relative_to(ROOT)} must point to {target}")
