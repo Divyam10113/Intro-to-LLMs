@@ -13,7 +13,8 @@ flowchart LR
     T1 -.->|run v4 review + references| T2
     T2[Task 2 · task2_limitations/<br/>multi-agent limitation extraction<br/>39 limitations] -->|outputs/full_nim/final_limitations.json| T3
     T3[Task 3 · task3_ideation/<br/>ResearchAgent + HypER + HypoEvolve<br/>problems A1, B1 → top-5 ideas] -->|A1: image-label MIL| T4
-    T4[Task 4 · task4_weak_supervision/<br/>3 rounds + pre-registered follow-up<br/>FU-H CONFIRMED on Brain]
+    T4[Task 4 · task4_weak_supervision/<br/>3 rounds + pre-registered follow-up<br/>FU-H CONFIRMED on Brain] -.->|PAPER_CLAIMS.md, paper_inputs/| T5
+    T5[Task 5 · task5_paper/<br/>the paper<br/>to be added]
 ```
 
 Solid arrows are file handoffs that `make sync` copies and `make check` verifies byte-for-byte; [PIPELINE.md](PIPELINE.md) lists every file. The dotted Task 1 → Task 2 arrow is an older handoff: Task 2 was built on Task 1 **run v4**, while Task 3 uses **run v6**. See [PIPELINE.md](PIPELINE.md#known-mismatch-task-2-used-task-1-run-v4) for details.
@@ -39,6 +40,7 @@ Nothing in `smoke`, `check`, `test`, `sync-dry-run` or `taskN-dry-run` calls a p
 | `task2_limitations/` | **Task 2**: multi-agent limitation pipeline (`run_pipeline.py`, `agents.py`, `retrieval.py`, `evaluate.py`), `data/`, `outputs/`, and `deliverables/` (formerly the root `DELIVERABLES/`) | [README](task2_limitations/README.md), [deliverables/task2/TASK2_DOCUMENTATION.md](task2_limitations/deliverables/task2/TASK2_DOCUMENTATION.md) |
 | `task3_ideation/` | **Task 3**: stages 0–4 (`stage*.py`, `run_all.py`), `logs/cache/` (every prompt and answer), `outputs/`, `reports/*.pdf`, `explorer/` | [README](task3_ideation/README.md) |
 | `task4_weak_supervision/` | **Task 4**: `round1/`, `round2/`, `round3/`, `followup/`, `plans/`, `download_data.sh` | [round1](task4_weak_supervision/round1/README.md), [round2](task4_weak_supervision/round2/README.md), [round3](task4_weak_supervision/round3/README.md), [followup](task4_weak_supervision/followup/README.md) |
+| `task5_paper/` | **Task 5** (the paper): placeholder, to be added later. It will likely build on Task 4's `round3/report/PAPER_CLAIMS.md` and `paper_inputs/` | [README](task5_paper/README.md) |
 | `pipeline/` | `sync_handoffs.py` + `handoffs_manifest.json`, `check_repo.py`, `smoke.py` | [PIPELINE.md](PIPELINE.md) |
 | `shared/` | `config.sh` / `config.py`: paths and keys from the environment, then `.env`, then defaults | [Configuration](#configuration) |
 
@@ -75,6 +77,7 @@ On the server, Task 4's rounds were run from `proj/task4*` (outside this repo), 
 | Task 2 limitations | `make task2-dry-run`: compiles and imports every module, `run_pipeline.py --help`, validates 39 limitations and the 223-paper corpus | `make task2` (`LLM_PROVIDER=nim`); then `evaluate.py` as in its README | `NVIDIA_API_KEY` (main run, MiniMax via NIM) or `AGENTROUTER_API_KEY`; network for `build_corpus.py`. Its LLM `cache/` was never committed, so nothing can be replayed |
 | Task 3 ideation | `make task3-dry-run`: deletes the 12 files `run_all.py` writes in a scratch copy, replays stages 0–4 + explorer from `logs/cache/` with the file backend, checks all 18 output files are byte-identical and that no new cache entries or pending prompts appeared | `make task3` replays the cache in place; `LLM_BACKEND=openai LLM_API_KEY=… make task3` calls a model for anything not cached | Nothing to replay. A model API for new prompts; xelatex for `make_reports.py`; Gemini API for `rejudge.py`; a GPU for `colab/` |
 | Task 4 weak supervision | `make task4-dry-run`: frozen hashes; re-runs frozen `analyze3.py` / `analyze_fu.py` on the committed `results.csv` and checks the analyses are byte-identical; parses every shell script; lists the round-3 (58) and follow-up (10) GPU queues without starting them. `make test`: 207 CPU tests. `make task4-smoke-cpu`: round 3's tiny CPU training run | `CONFIRM_GPU=1 make task4` (the follow-up's `go.sh`); rounds 1–3: `task4_weak_supervision/roundN/run_all.sh` | GPUs (2 on the server); BMAD data, MVFA zero-shot checkpoints and CLIP ViT-L/14-336 at `$TASK4_HDD` (`download_data.sh`); the MVFA-AD checkout at `$MVFA_DIR`; `$TASK4_PYTHON` with `task4_weak_supervision/requirements.txt` |
+| Task 5 paper | `make task5-dry-run`: checks the placeholder and that its expected Task 4 inputs exist | `make task5` prints "not added yet" and exits 0, so `make all` still runs | to be decided when Task 5 is added |
 | everything | `make smoke` | `make all` (sync, then task1 → task4; stops at the first stage that lacks a key) | all of the above |
 
 `make task4` and `make all` refuse to start GPU jobs unless `CONFIRM_GPU=1` is set. The GPUs are shared.
@@ -88,6 +91,25 @@ On the server, Task 4's rounds were run from `proj/task4*` (outside this repo), 
 | Task 2 | `outputs/full_nim/final_limitations.json` (39 limitations), `outputs/full_nim/research_gaps.md`; `deliverables/task2/task2_research_gaps.md`; `outputs/evaluation.md` |
 | Task 3 | `outputs/stage4_ranking_{A1,B1}.json` (top 5 per problem), `reports/Task3_Submission.pdf`, `explorer/mvfa_idea_explorer.html` |
 | Task 4 | per round, `results/results.csv` + `results/analysis.md` and `report/*.md`. Follow-up: `followup/results/analysis_fu.md` (FU-H CONFIRMED: MIL+10 % beats MVFA on Brain AUPRO on 5/5 seeds, p = 0.031) |
+
+## Task 4's history
+
+Task 4 was developed in the server project (`proj/`, local git), not on a branch of this repository. Its 17 commits (2f65447 … b31ef7d, 21–24 Nov 2026) are merged into `merged-all` (merge commit "Merge Task 4's full history", strategy *ours*: the files were already here, restructured, so the tree did not change). The fetched branch is kept as `task4-history`. Every earlier version is reachable, e.g.
+
+```bash
+git log --follow -- task4_weak_supervision/round1/common.py   # back to 2f65447 "Task 4 ready to run"
+git show 990d908:task4r2/README.md                            # round 2 as committed then
+```
+
+## Adding a task (e.g. Task 5)
+
+1. **Folder:** `taskN_<name>/` at the top level, with its own `README.md` and `requirements.txt`. Read paths and keys from environment variables (add them to `.env.example`); no absolute paths.
+2. **Makefile:** a real-run target `taskN` and an offline `taskN-dry-run`, each with a `## description` so `make help` lists it, and add `taskN` to `all`.
+3. **Smoke stage:** a `taskN(st)` function in `pipeline/smoke.py`, registered in `STAGES`. It runs in a scratch copy, with no keys and no GPU.
+4. **Handoffs:** if the task copies another task's output into its folder, add the pairs to `HANDOFFS` (and a line to `NOTES`) in `pipeline/sync_handoffs.py`, run `make sync` to write the manifest, and commit both.
+5. **Docs:** a row in the layout and stage tables here and in [PIPELINE.md](PIPELINE.md). Then `make smoke` and `make check` must pass.
+
+For Task 5, `task5_paper/`, the `task5` / `task5-dry-run` targets and a `task5` smoke stage already exist as placeholders: replace them. A Task 5 paper pipeline already exists on the GitHub branch `task4-task5` (commit 7cee4fe, folder `task5_paper/`). It has not been merged here.
 
 ## Configuration
 

@@ -15,8 +15,8 @@ PY_ABS := $(if $(findstring /,$(PYTHON)),$(abspath $(PYTHON)),$(PYTHON))
 TASK4_SUITES := round1 round2 round3 followup
 
 .PHONY: help venv config sync sync-dry-run check test test-fast smoke \
-        task0-dry-run task1-dry-run task2-dry-run task3-dry-run task4-dry-run task4-smoke-cpu \
-        task0 task1 task2 task3 task4 all
+        task0-dry-run task1-dry-run task2-dry-run task3-dry-run task4-dry-run task4-smoke-cpu task5-dry-run \
+        task0 task1 task2 task3 task4 task5 all
 
 help:  ## list the commands
 	@echo "Usage: make <target>   (settings: environment > .env > shared/config.sh defaults)"
@@ -51,7 +51,7 @@ test-fast:  ## the same without round 1 (its model test loads CLIP on CPU)
 	@$(MAKE) --no-print-directory test TASK4_SUITES="round2 round3 followup"
 
 # ----------------------------------------------------------------------------- offline smoke runs
-smoke:  ## every stage's dry run (task0..task4), then check
+smoke:  ## every stage's dry run (task0..task5), then check
 	$(PYTHON) pipeline/smoke.py all
 	@$(MAKE) --no-print-directory check
 
@@ -65,6 +65,9 @@ task3-dry-run:  ## ideation: replay stages 0-4 from logs/cache (no model call) a
 	$(PYTHON) pipeline/smoke.py task3
 task4-dry-run:  ## Task 4: frozen hashes, re-run frozen analysers on committed results, list GPU queues
 	$(PYTHON) pipeline/smoke.py task4
+
+task5-dry-run:  ## Task 5 (the paper): placeholder, not added yet
+	$(PYTHON) pipeline/smoke.py task5
 
 task4-smoke-cpu:  ## Task 4 round 3 end-to-end CPU smoke (tiny training on CPU; needs the data on TASK4_HDD)
 	@$(CONFIG); OUT=$${OUT:-$$(mktemp -d)/task4r3_smoke} bash task4_weak_supervision/round3/smoke_cpu.sh
@@ -89,5 +92,8 @@ task4:  ## Task 4 follow-up end to end on the GPUs (go.sh: tests, GPU wait, smok
 	@test "$${CONFIRM_GPU:-0}" = 1 || { echo "Refusing to start GPU jobs: re-run with CONFIRM_GPU=1"; exit 2; }
 	cd task4_weak_supervision/followup && ./go.sh
 
-all:  ## sync, then task1 -> task2 -> task3 -> task4 for real (keys and CONFIRM_GPU=1 needed)
-	@$(MAKE) --no-print-directory sync task1 task2 task3 task4
+task5:  ## Task 5 (the paper): not added yet; prints a note and exits 0
+	@echo "Task 5 (the paper) is not added yet: see task5_paper/README.md."
+
+all:  ## sync, then task1 -> task2 -> task3 -> task4 -> task5 for real (keys and CONFIRM_GPU=1 needed)
+	@$(MAKE) --no-print-directory sync task1 task2 task3 task4 task5

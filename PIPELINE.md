@@ -26,6 +26,15 @@ As of the restructure (2026-11-26), all nine copies were already byte-identical 
 
 From Task 3 onward, the handoff is an idea rather than a data file. Task 4 does not read these JSON files programmatically. Its plans (`plans/TASK4_PLAN_RECOMMENDED.md`, `plans/TASK4_ROUND2_PLAN.md`, `plans/TASK4_ROUND3_PLAN.md`) cite them, and the copies record exactly which version of A1 was tested.
 
+## Task 5 (to be added)
+
+Task 5, the paper, will be added later in `task5_paper/`. It is expected to read Task 4's:
+- `round3/report/PAPER_CLAIMS.md`;
+- `round3/report/paper_inputs/task4_r3/` (and round 1's `report/paper_inputs/`);
+- the follow-up's `report/FU_REPORT.md` and `results/analysis_fu.md`.
+
+If Task 5 keeps copies of these files, add them as a `task4_to_task5` entry in `HANDOFFS` in `pipeline/sync_handoffs.py` and run `make sync`; see "Adding a task" in [README.md](README.md#adding-a-task-eg-task-5). Until then `make task5` and `make task5-dry-run` only report that Task 5 is not added yet.
+
 ## Known mismatch: Task 2 used Task 1 run v4
 
 Task 2 was built before Task 1's run v6 existed:

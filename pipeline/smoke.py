@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Offline smoke runs, one per stage: no paid API call, no GPU, no change to tracked files.
 
-    python pipeline/smoke.py task0|task1|task2|task3|task4|all [--keep]
+    python pipeline/smoke.py task0|task1|task2|task3|task4|task5|all [--keep]
 
 Every stage runs in a scratch copy (a temporary folder, or $SMOKE_DIR) and the repository is
 left as it was. For the run, API keys are removed from the environment, LLM backends are set to
@@ -24,6 +24,7 @@ the offline "file" mode, network access through HTTP(S) clients is pointed at a 
          analyze_fu.py) on the committed results.csv and compares with the committed analyses,
          parses every shell script, and lists the round 3 and follow-up GPU queues
          (run_all.sh list) without running them.
+  task5  the paper: not added yet; checks the placeholder and that its Task 4 inputs exist.
 
 Exit code 0 means every check passed; differences in regenerated outputs are failures.
 """
@@ -244,7 +245,17 @@ def task4(st: Stage):
                     "CPU test suites; `make task4-smoke-cpu` runs round 3's CPU end-to-end smoke (a few minutes)")
 
 
-STAGES = {"task0": task0, "task1": task1, "task2": task2, "task3": task3, "task4": task4}
+def task5(st: Stage):
+    readme = ROOT / "task5_paper" / "README.md"
+    st.ok(readme.exists(), "task5_paper/ placeholder present")
+    for rel in ("task4_weak_supervision/round3/report/PAPER_CLAIMS.md",
+                "task4_weak_supervision/round3/report/paper_inputs/task4_r3",
+                "task4_weak_supervision/followup/results/analysis_fu.md"):
+        st.ok((ROOT / rel).exists(), f"Task 5 input from Task 4 exists: {rel}")
+    st.notes.append("Task 5 (the paper) is not added yet; this stage only checks the slot and its expected inputs")
+
+
+STAGES = {"task0": task0, "task1": task1, "task2": task2, "task3": task3, "task4": task4, "task5": task5}
 
 
 def git_status():
