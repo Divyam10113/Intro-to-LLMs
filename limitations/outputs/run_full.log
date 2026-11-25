@@ -1,0 +1,58 @@
+[retriever] 880 chunks, dense=tfidf-lsa
+  [queries] gpt-6-astra ok (501 chars)
+[citation] queries: ['zero-shot medical anomaly detection training-free versus supervised cross-domain evaluation', 'medical anomaly detection normal-only training without pixel-level annotations', 'CLIP medical anomaly segmentation small lesions patch resolution limitations', '3D volumetric medical anomaly detection CT MRI inter-slice consistency', 'medical anomaly detection BiomedCLIP MedCLIP backbone comparisons', 'explainable medical anomaly detection pathology-specific prompts language grounding']
+  [rerank] gpt-6-astra ok (579 chars)
+  [rerank] gpt-6-astra ok (579 chars)
+  [rerank] gpt-6-astra ok (611 chars)
+  [rerank] gpt-6-astra ok (579 chars)
+  [rerank] gpt-6-astra ok (515 chars)
+  [rerank] gpt-6-astra ok (578 chars)
+[citation] 18 MVFA-mention passages, 36 reranked >= 8 -> using 30
+  [extractor] gpt-6-astra ok (4127 chars)
+  [judge-extractor] gpt-6-astra ok (4806 chars)
+  [analyzer] gpt-6-astra ok (23340 chars)
+  [extractor-regen] gpt-6-astra ok (9243 chars)
+  [judge-extractor-regen] gpt-6-astra ok (4815 chars)
+  [judge-analyzer] gpt-6-astra ok (4053 chars)
+  [citation] gpt-6-astra ok (14833 chars)
+  [reviewer] gpt-6-astra failed (attempt 2): RuntimeError: stream error: ResponseErrorEvent(code='server_error', message='Upstream service unavailable [trace_id=4023e9699100eb68c4777aa9734c14fc]', param=None, sequence_n
+  [judge-citation] gpt-6-astra ok (4870 chars)
+  [reviewer] gpt-6.1-sol ok (20941 chars)
+  [judge-reviewer] gpt-6-astra ok (3637 chars)
+[workers] 53 raw limitations: extractor=8 (judge 4.6 -> regen), analyzer=19 (judge 9.0), reviewer=16 (judge 8.7), citation=10 (judge 8.3)
+  [verifier] gpt-6-astra ok (13735 chars)
+[verifier] 53 -> 53 with a verbatim quote -> 53 supported/partial
+  [master] gpt-6-astra failed (attempt 1): RuntimeError: stream error: ResponseErrorEvent(code='server_error', message='Upstream service unavailable [trace_id=b6f5a59c267344105c9ed0e16ae9efa8]', param=None, sequence_n
+  [master] gpt-6.1-sol ok (24312 chars)
+[master] 27 consolidated limitations
+[retriever] 329 chunks, dense=tfidf-lsa
+  [status-L2] gpt-6-astra ok (577 chars)
+  [status-L1] gpt-6-astra ok (554 chars)
+  [status-L3] gpt-6-astra ok (491 chars)
+  [status-L4] gpt-6-astra ok (432 chars)
+  [status-L6] gpt-6-astra ok (514 chars)
+  [status-L5] gpt-6-astra ok (484 chars)
+  [status-L8] gpt-6-astra ok (506 chars)
+  [status-L7] gpt-6-astra ok (649 chars)
+  [status-L9] gpt-6-astra ok (503 chars)
+  [status-L11] gpt-6-astra ok (491 chars)
+  [status-L10] gpt-6-astra ok (686 chars)
+  [status-L12] gpt-6-astra ok (592 chars)
+  [status-L13] gpt-6-astra ok (501 chars)
+  [status-L14] gpt-6-astra ok (465 chars)
+  [status-L15] gpt-6-astra ok (610 chars)
+  [status-L17] gpt-6-astra ok (425 chars)
+  [status-L16] gpt-6-astra ok (495 chars)
+  [status-L18] gpt-6-astra ok (478 chars)
+  [status-L19] gpt-6-astra ok (649 chars)
+  [status-L20] gpt-6-astra ok (437 chars)
+  [status-L21] gpt-6-astra ok (476 chars)
+  [status-L22] gpt-6-astra ok (386 chars)
+  [status-L23] gpt-6-astra ok (490 chars)
+  [status-L24] gpt-6-astra ok (455 chars)
+  [status-L25] gpt-6-astra ok (555 chars)
+  [status-L27] gpt-6-astra ok (584 chars)
+  [status-L26] gpt-6-astra ok (487 chars)
+  [problem] gpt-6-astra ok (8244 chars)
+
+[done] /Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/outputs/full/research_gaps.md

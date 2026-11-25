@@ -1,0 +1,413 @@
+{
+  "queries": [
+    "zero-shot medical anomaly detection evaluation protocol pretraining test overlap data leakage",
+    "pixel-level mask supervision annotation cost few-shot medical anomaly detection",
+    "CLIP patch features small lesion localization resolution anomaly segmentation limitations",
+    "2D CLIP medical anomaly detection 3D volumetric CT MRI generalization limitations",
+    "medical anomaly detection benchmark baseline fairness WinCLIP APRIL-GAN comparison",
+    "vision-language medical anomaly detection prompt interpretability clinical semantics"
+  ],
+  "passages": [
+    {
+      "cid": "M000",
+      "pid": "P102",
+      "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+      "year": 2026,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "1 Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "Huang et al. [10] proposed a hierarchical adaptation framework. Jongheo et al. [11] optimized textual prompts through engineering strategies.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M013",
+      "pid": "P019",
+      "title": "MadCLIP: Few-Shot Medical Anomaly Detection with CLIP",
+      "year": 2025,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "Therefore, AD models in medicine must achieve exceptional performance for clinical reliability [8, 28, 34]. Overall, the AD task is approached from two main perspectives in the broader literature: (a) unsupervised techniques (e.g., [6, 26]) and (b) supervised methods (e.g., [13, 35, 32, 31]). Unsupervised methods detect anomalies by leveraging large datasets of normal samples, modeling the normal data distribution, and identifying anomalies as deviations. For example, PatchCore [25] compares test samples to a memory bank of normal embeddings and measures the nearest distance, while CFLOW-AD [9] models normal samples with a Gaussian distribution using normalizing flows. 2 Mahshid Shiri, Cigdem Beyan, and Vittorio Murino While many methods rely on large datasets, real-world applications often include a few labeled anomalies, which provide valuable, application-specific insights and enable recent models to significantly improve the detection of similar anomalies [7].",
+      "mentions_base": true
+    },
+    {
+      "cid": "M033",
+      "pid": "P014",
+      "title": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "1 INTRODUCTION (discusses MVFA)",
+      "part": 0,
+      "text": "Traditional one-class or unsupervised methods [2] often fall short due to the diverse and long-tail distribution of anomalies across domains such as industrial defects and medical lesions, necessitating a generalizable model. Zero-shot anomaly detection (ZSAD) [3–5] is vital for identifying anomalies without extensive training samples, particularly when data privacy concerns or insufficient labeled data are issues. Vision-Language Models (VLMs), like CLIP [6], have advanced ZSAD by leveraging training on large datasets of image-text pairs. † Corresponding author However, CLIP’s original model still faces challenges in anomaly detection due to the task’s complexity. There are two main limitations in applying CLIP to zero-shot anomaly detection: (1) existing",
+      "mentions_base": true
+    },
+    {
+      "cid": "M041",
+      "pid": "P093",
+      "title": "CLIPDxNet: A New Frontier in Cross-modal Medical Image Recognition",
+      "year": 2026,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "2 RELATED WORK (discusses MVFA)",
+      "part": 0,
+      "text": "[20] employ additional linear layers to map image features into a latent feature space, deriving anomaly scores through comparative analysis. Chaoqin Huang [21] integrates multiple residual adapters into a pre-trained visual encoder, guided by multi-level, pixel-wise visual-linguistic feature alignment loss functions. This step-by-step refinement of visual features facilitates a recalibration of the model's focus from object semantics to the recognition of anomalies in medical images, thereby enhancing its generalization across various medical data modalities, including unseen medical patterns and anatomical regions in zero-shot settings. MediCLIP [9] introduces three anomaly synthesis tasks, effectively simulating a variety of abnormal patterns found in medical imagery[31].",
+      "mentions_base": true
+    },
+    {
+      "cid": "M042",
+      "pid": "P005",
+      "title": "UniVAD: A Training-free Unified Model for Few-shot Visual Anomaly Detection",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "1 Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "Such anomalies are rare occurrences but signify critical conditions, including errors, defects, or lesions, that necessitate timely intervention for further analysis. VAD spans multiple fields and 1 arXiv:2412.03342v3 [cs.CV] 10 Mar 2025 has applications across diverse industries, such as industrial anomaly detection [11, 19, 29], logical anomaly detection [14, 21, 25], and medical anomaly detection [2, 16]. However, significant variations in data distributions and anomaly types across domains result in current VAD methods [2, 25, 29] being highly specialized for specific domains, often employing custom detection algorithms and model architectures. Consequently, methods optimized for one domain tend to perform poorly in others.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M047",
+      "pid": "P078",
+      "title": "Vision-language zero-shot models for radiographic image classification: A systematic review",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "3 Module hybridization: Many models combine visual and tex- (discusses MVFA)",
+      "part": 0,
+      "text": "In clinical report generation tasks, although BIUD and BLIP achieve competitive metrics on internal datasets, performance drops on external tests reflect overfitting and highlight the difficulty of generalizing to unseen domains. Similarly, extremely high results in few-shot anomaly detection, such as those reported by MVFA on some metrics (AC/AS AUCs above 99%), should be interpreted with caution, as they may reflect easy datasets, potential data leakage, or measurements that do not capture true clinical difficulty. Generalist models, including ChatGPT-4 and OpenFlamingo, show uneven performance: they can achieve good results on specific datasets but do not offer consistency across different radiological domains. Although many models report AUC as a performance metric, it has important limitations in clinical contexts: because it is aggregated over all possible thresholds, it does not reflect the model’s capability in critical ranges of high sensitivity or low specificity, and it can be high even when the model fails to correctly identify extreme-risk cases.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M049",
+      "pid": "P024",
+      "title": "Foundation Models for Anomaly Detection: Vision and Challenges",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "The detection strategy is to identify the discrepancies between query images and a set of few-shot normal images from the auxiliary data, where anomalies are expected to have larger discrepancies than normal samples. Moreover, ALFA [49] and MVFA [13] propose to solve generalist anomaly detection in zero/few-shot scenarios as well. Specifically, a run-time prompt adaptation strategy is utilized in ALFA to generate informative anomaly prompts for every image. Then, a fine-grained aligner is developed to learn local semantic space projection, which can be generalized to support pixel-level anomaly localization.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M001",
+      "pid": "P102",
+      "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+      "year": 2026,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "2.1 Medical Image Anomaly Detection (discusses MVFA)",
+      "part": 0,
+      "text": "In medical image anomaly detection, challenges like modality diversity and complex lesion shapes must be addressed. Current methods often treat anomaly detection as a one-class problem, using only normal images for training [10]. For example, Jiang et al. proposed the Multi-scale Cross-restoration method [26], combining global and local features via a dual-branch autoencoder. Cai et al. introduced the Dualdistribution Discrepancy method [27], utilizing both normal and unlabeled images through self-supervised learning.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M014",
+      "pid": "P019",
+      "title": "MadCLIP: Few-Shot Medical Anomaly Detection with CLIP",
+      "year": 2025,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "However, the limited samples available during training, for both normal and anomalous classes, often fail to capture their full variability, restricting the model’s ability to generalize to unseen cases [7]. Recently, CLIP [23] based methods have made significant strides in few-shot AD for medical images, e.g., [35, 13]. It is clear that, relying solely on CLIP [23] is insufficient, as its training focuses on aligning with the class semantics of foreground objects, limiting its ability to generalize and capture subtle visual abnormalities, and restricting its direct application in AD. Also, the substantial distribution shift between the data on which CLIP [23] was trained and medical images results in suboptimal performance when CLIP is applied directly to medical AD [13].",
+      "mentions_base": true
+    },
+    {
+      "cid": "M034",
+      "pid": "P014",
+      "title": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "methods (discusses MVFA)",
+      "part": 0,
+      "text": "[3, 4, 6, 7] rely on fixed text descriptions or anomaly prompts. For zero-shot anomaly detection using CLIP, a commonly used text prompt template is \"a photo of a [class] with holes.\" However, these handcrafted prompts require extensive expertise, are time-consuming, and suffer from semantic ambiguity. Inspired by prompt learning in NLP, CoOp [8] utilizes learnable vectors for prompts and requires only a few labeled images.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M043",
+      "pid": "P005",
+      "title": "UniVAD: A Training-free Unified Model for Few-shot Visual Anomaly Detection",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "4.1 Experimental Setups (discusses MVFA)",
+      "part": 0,
+      "text": "Comparison between UniVAD and existing methods under the 4-abnormal-shot setting, where image-level AUC and pixel-level AUC are used to evaluate the performance of imagelevel anomaly detection and pixel-level anomaly localization, respectively. The experimental results in the table are cited from MVFA [16], and the best results are highlighted in bold. Task Dataset DRA BGAD MVFA UniVAD Img-level (AUC) BrainMRI 80.6 83.6 92.4 94.1 LiverCT 59.6 72.5 81.2 87.5 RESC 90.9 86.2 96.2 97.3 HIS 68.7 - 82.7 85.7 ChestXray 75.8 - 82.0 82.4 OCT 99.0 - 99.4 99.7 Px-level (AUC) BrainMRI 74.8 92.7 97.3 98.6 LiverCT 71.8 98.9 99.7 99.7 RESC 77.3 93.8 99.0 99.0 PatchCore [29], WinCLIP [19], AnomalyGPT [11], and UniAD [36] for industrial anomaly detection, ComAD [25] for logical anomaly detection, and MedCLIP [33] for medical anomaly detection. Few-abnormal-shot is a commonly used setting in medical anomaly detection, where testing is performed after training on a small number of normal and abnormal samples from the target dataset.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M048",
+      "pid": "P078",
+      "title": "Vision-language zero-shot models for radiographic image classification: A systematic review",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "3 Module hybridization: Many models combine visual and tex- (discusses MVFA)",
+      "part": 0,
+      "text": "Table 9 Summary table of performance metric results. Model - Article Dataset Key Metrics and Values MedUnA (Rahman et al., 2025) S-TB Top-1 Accuracy: 67.67% M-TB Top-1 Accuracy: 72.41% G-Pneumonia Top-1 Accuracy: 76.12% IDRID Top-1 Accuracy: 32.04% ISIC Top-1 Accuracy: 29.70% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 55.59% Overall Average (GPT-3.5 descr.) Accuracy: 55.79% LaFTer (Rahman et al., 2025) Overall Average (CLIP-ViT-B/32) Top-1 Accuracy: 43.16% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 40.51% TPT (Rahman et al., 2025) Overall Average (CLIP-ViT-B/32) Top-1 Accuracy: 41.07% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 43.44% Zero-Shot (Baseline) (Rahman et al., 2025) Overall Average (MedCLIP-Swin) Top-1 Accuracy: 42.84% MedAlpaca-13B (Baseline) (Rahman et al., 2025) Overall Average Accuracy: 45.34% OpenBioLLM-8B (Baseline) (Rahman et al., 2025) Overall Average Accuracy: 38.29% BIUD (Cao et al., 2024) ChestCT-16K (Report Generation) F1: 85.3%, P: 86.7%, R: 83.9% ChestCT-EXT (External) F1: 70.4%, P: 65.4%, R: 76.3% R2Gen (Cao et al., 2024) ChestCT-EXT F1: 57.2% CMN (Cao et al., 2024) ChestCT-EXT F1: 26.5% RadFM (Cao et al., 2024) ChestCT-EXT F1: 9.9% BLIP (Cao et al., 2024) ChestCT-EXT F1: 80.3% DCL (Cao et al., 2024) ChestCT-EXT F1: 78.5% CP-CLIP (Yu et al., 2025) SIIM-ACR, INbreast, TMED, ChestXray, CheXpert5 × 200 (Zero-Shot) Balanced accuracy higher than MedCLIP (numerical value not provided) VLM (Zhong et al., 2024) CheXpert (Fine-tuned Multi-task) Accuracy Promedio: 72.60% MedNLI (Fine-tuned) Accuracy: 85.79% Open-I (Zero-Shot Semantic Structure) Accuracy: 49.00% ConVIRT (Zhong et al., 2024) CheXpert (Fine-tuned Multi-task) Accuracy Promedio: 36.20% MedNLI (Fine-tuned) Accuracy: 86.80% Open-I (Zero-Shot Semantic Structure) Accuracy: 43.10% GLoRIA (Zhong et al., 2024) CheXpert (Fine-tuned Multi-task) Accuracy Promedio: 50.00% MedNLI (Fine-tuned) Accuracy: 86.64% Open-I (Zero-Shot Semantic Structure) Accuracy: 44.30% MVFA (Huang, Jiang, et al., 2024) Medical AD benchmark (Few-shot K=4, Ensemble) AC AUC: 88.97%, AS AUC: 98.67% HIS (Few-shot K=4) AC AUC: 82.71% LiverCT (Few-shot K=4) AC AUC: 81.18%, AS AUC: 99.73% APRIL-GAN (Huang, Jiang, et al., 2024) Medical AD benchmark (Few-shot K=4) HIS AC AUC: 76.11%, LiverCT AC AUC: 53.05% WinCLIP (Huang, Jiang, et al., 2024) Medical AD benchmark (Few-shot K=4) HIS AC AUC: 67.49%, LiverCT AC AUC: 67.19% CARZero (Lai et al., 2024) ChestXray14 (Zero-Shot) AUC: 0.810, MCC: 0.257, F1: 0.270, ACC: 0.867 KAD (Zhang et al., 2023) CheXpert (Zero-Shot, 5 avg) AUC: 0.905, MCC: 0.589, F1: 0.647, ACC: 0.875 ChestXray14 (Zero-Shot, Macro Avg) AUC: 0.789, MCC: 0.280, F1: 0.323, ACC: 0.816 CheXzero-E (Xie et al., 2024) CheXpert (Zero-Shot, 5 diseases avg) AUC: 88.92%, ACC: 85.75%, F1: 66.51% PairAug-E (Xie et al., 2024) CheXpert (Zero-Shot, 5 diseases avg) AUC: 89.97%, ACC: 86.21%, F1: 67.78% BiomedCLIP (Van, Verma, & Wu, 2024) ALL-IDB2 (Zero-Shot) Test accuracy: 76.92% BTD (Zero-Shot) Test accuracy: 79.14% Overall Average Test accuracy: 71.52% ChatGPT-4 (Van et al., 2024) ALL-IDB2 (Zero-Shot) Test accuracy: 84.85% CX-ray (Zero-Shot) Test accuracy: 61.82% Overall Average Test accuracy: 66.09% OpenFlamingo (Van et al., 2024) CX-ray (Few-shot K=4) Test accuracy: 71.28% Overall Average (Few-shot K=4) Test accuracy: 57.68% (continued on next page) Machine Learning with Applications 23 (2026) 100826 16 A. Guerrero-Tamayo et al. Table 9 (continued).",
+      "mentions_base": true
+    },
+    {
+      "cid": "M050",
+      "pid": "P024",
+      "title": "Foundation Models for Anomaly Detection: Vision and Challenges",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "section": "Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "Then, a fine-grained aligner is developed to learn local semantic space projection, which can be generalized to support pixel-level anomaly localization. As for MVFA, the authors design a multi-level visual feature adaptation architecture for medical image anomaly detection, on the basis of CLIP model. In [37], the authors use relatively small FMs (e.g., 120M parameters) to detect deviations from prior experiences in real time. At the same time, the LLM-based monitor can reason about the safety consequences of anomalous scenarios, thereby determining whether intervention is necessary.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M002",
+      "pid": "P102",
+      "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+      "year": 2026,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "2.3 Few-shot Medical Image Anomaly Detection with (discusses MVFA)",
+      "part": 0,
+      "text": "For example, CLIP-Adapter [9] introduces an image feature adapter to map medical image features into the shared text feature space. MVFA [10] proposes a multi-level feature adaptation framework for optimizing representations at diﬀerent levels, while WinCLIP [30] uses prompt engineering to guide CLIP’s text features for medical applications. These methods directly use the text encoder module without fully leveraging the potential CLIP. The text encoder is primarily optimized for class-level semantics, not ﬁne-grained features, and it emphasizes global rather than local details.",
+      "mentions_base": true
+    },
+    {
+      "cid": "M015",
+      "pid": "P019",
+      "title": "MadCLIP: Few-Shot Medical Anomaly Detection with CLIP",
+      "year": 2025,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "section": "Introduction (discusses MVFA)",
+      "part": 0,
+      "text": "It is clear that, relying solely on CLIP [23] is insufficient, as its training focuses on aligning with the class semantics of foreground objects, limiting its ability to generalize and capture subtle visual abnormalities, and restricting its direct application in AD. Also, the substantial distribution shift between the data on which CLIP [23] was trained and medical images results in suboptimal performance when CLIP is applied directly to medical AD [13]. To effectively leverage CLIP for few-shot AD, it is crucial to address the domain gap and fine-tune or adapt CLIP [23] specifically for the medical AD task. For instance, MVFA [13] utilizes visual adapters in the form of fully connected layers, while MediCLIP [35] uses convolutional layers.",
+      "mentions_base": true
+    },
+    {
+      "pid": "P078",
+      "section": "3 Module hybridization: Many models combine visual and tex-",
+      "part": 12,
+      "text": "on internal datasets, performance drops on external tests reflect overfitting and highlight the difficulty of generalizing to unseen domains. Similarly, extremely high results in few-shot anomaly detection, such as those reported by MVFA on some metrics (AC/AS AUCs above 99%), should be interpreted with caution, as they may reflect easy datasets, potential data leakage, or measurements that do not capture true clinical difficulty. Generalist models, including ChatGPT-4 and OpenFlamingo, show uneven performance: they can achieve good results on specific datasets but do not offer consistency across different radiological domains. Although many models report AUC as a performance metric, it has important limitations in clinical contexts: because it is aggregated over all possible thresholds, it does not reflect the model’s capability in critical ranges of high sensitivity or low specificity, and it can be high even when the model fails to correctly identify extreme-risk cases. This bias is amplified in imbalanced medical datasets, where a high AUC can mask poor performance on the minority class, typically the most relevant for decision-making. Furthermore, discrepancies between validation and external testing, overfitting, or data leakage can inflate AUC without reflecting actual performance, while model calibration and robustness to atypical cases are also not captured (Hancock, Khoshgoftaar, & Johnson, 2023). Therefore, clinical evaluation requires complementing AUC with threshold - specific metrics (sensitivity, specificity, F1, PPV/NPV, Precision–Recall curves) and analyzing relevant subgroups to ensure generalization beyond the training domain. In our view, any diagnostic Machine Learning with Applications 23 (2026) 100826 15 A. Guerrero-Tamayo et al. Table 9 Summary table of performance metric results. Model - Article Dataset Key Metrics and Values MedUnA (Rahman et al., 2025) S-TB Top-1 Accuracy: 67.67% M-TB Top-1 Accuracy: 72.41% G-Pneumonia Top-1 Accuracy: 76.12% IDRID Top-1 Accuracy: 32.04% ISIC Top-1 Accuracy: 29.70% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 55.59% Overall Average (GPT-3.5 descr.) Accuracy: 55.79% LaFTer (Rahman et al., 2025) Overall Average (CLIP-ViT-B/32) Top-1 Accuracy: 43.16% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 40.51% TPT (Rahman et al., 2025) Overall Average (CLIP-ViT-B/32) Top-1 Accuracy: 41.07% Overall Average (MedCLIP-Swin) Top-1 Accuracy: 43.44% Zero-Shot (Baseline) (Rahman et al., 2025) Overall Average (MedCLIP-Swin) Top-1 Accuracy: 42.84% MedAlpaca-13B (Baseline) (Rahman et al., 2025) Overall Average Accuracy: 45.34% OpenBioLLM-8B (Baseline) (Rahman et al., 2025) Overall Average Accuracy: 38.29% BIUD (Cao et al., 2024) ChestCT-16K (Report Generation) F1: 85.3%, P: 86.7%, R: 83.9% ChestCT-EXT (External) F1: 70.4%, P: 65.4%, R: 76.3% R2Gen (Cao et al., 2024) ChestCT-EXT F1: 57.2% CMN (Cao et al., 2024) ChestCT-EXT F1: 26.5% RadFM (Cao et al., 2024) ChestCT-EXT F1: 9.9% BLIP (Cao et al., 2024) ChestCT-EXT F1: 80.3% DCL (Cao et al., 2024) ChestCT-EXT F1: 78.5% CP-CLIP (Yu et al., 2025) SIIM-ACR, INbreast, TMED, ChestXray, CheXpert5 × 200 (Zero-Shot) Balanced accuracy higher than MedCLIP (numerical",
+      "cid": "C0130",
+      "title": "Vision-language zero-shot models for radiographic image classification: A systematic review",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 10
+    },
+    {
+      "pid": "P164",
+      "section": "5 Data Overlap Analysis",
+      "part": 0,
+      "text": "A concern with pre-training on a very large internet dataset is unintentional overlap with downstream evals. This is important to investigate since, in a worst-case scenario, a complete copy of an evaluation dataset could leak into the pre-training dataset and invalidate the evaluation as a meaningful test of generalization. One option to prevent this is to identify and remove all duplicates before training a model. While this guarantees reporting true hold-out performance, it requires knowing all possible data which a model might be evaluated on ahead of time. This has the downside of limiting the scope of benchmarking and analysis. Adding a new evaluation would require an expensive re-train or risk reporting an un-quantiﬁed beneﬁt due to overlap. Instead, we document how much overlap occurs and how performance changes due to these overlaps. To do this, we use the following procedure: 1) For each evaluation dataset, we run a duplicate detector (see Appendix C) on its examples. We then manually inspect the found nearest neighbors and set a per dataset threshold to keep high precision while maximizing recall. Using this threshold, we then create two new subsets, Overlap, which contains all examples which have a similarity to a training example above the threshold, and Clean, which Learning Transferable Visual Models From Natural Language Supervision 18 pug sphynx german_shorthaired shiba_inu beagle great_pyrenees english_setter samoyed saint_bernard pomeranian newfoundland wheaten_terrier scottish_terrier yorkshire_terrier siamese miniature_pinscher havanese keeshond bombay maine_coon chihuahua basset_hound japanese_chin russian_blue american_bulldog persian bengal leonberger abyssinian boxer british_shorthair staffordshire_bull_terrier american_pit_bull_terrier egyptian_mau birman english_cocker_spaniel ragdoll 20 40 60 80 100 Accuracy (%) Zero-Shot CLIP One-Shot Human Zero-Shot Human Figure 16. The hardest problems for CLIP also tend to be the hardest problems for humans. Here we rank image categories by difﬁculty for CLIP as measured as probability of the correct label. contains all examples that are below this threshold. We denote the unaltered full dataset All for reference. From this we ﬁrst record the degree of data contamination as the ratio of the number of examples in Overlap to the size of All. 2) We then compute the zero-shot accuracy of CLIP RN50x64 on the three splits and report All - Clean as our main metric. This is the difference in accuracy due to contamination. When positive it is our estimate of how much the overall reported accuracy on the dataset was in- ﬂated by over-ﬁtting to overlapping data. 3) The amount of overlap is often small so we also run a binomial signiﬁcance test where we use the accuracy on Clean as the null hypothesis and compute the one-tailed (greater) p-value for the Overlap subset. We also calculate 99.5% Clopper-Pearson conﬁdence intervals on Dirty as another check. A summary of this analysis",
+      "cid": "C0355",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "year": 2021,
+      "groups": [
+        "cited_in"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P207",
+      "section": "Abstract",
+      "part": -1,
+      "text": "Abstract Target-free zero-shot medical anomaly detection is a critical yet challenging task for clinical deployment, as models trained on heterogeneous source domains often rely on source-domain characteristics rather than transferable abnormality cues, leading to performance degradation on unseen target domains. We propose a CLIP-based framework that mitigates source-domain dependency without accessing target-domain data. The framework operates at three complementary levels: shared--independent prompt learning separates transferable normal/abnormal semantics from source-specific prompt context; domain-adversarial visual learning suppresses source-identifiable cues in adapted visual representations; and cross-domain normal feature consistency reduces fragmentation among source-domain normal representations through source-only feature mixing. At inference, the model directly produces image-level anomaly scores and pixel-level anomaly maps for unseen target domains. Experiments on six heterogeneous medical imaging datasets under a leave-one-domain-out protocol demonstrate competitive anomaly classification and localization performance against recent CLIP-based zero-shot baselines. Ablation and diagnostic analyses further confirm that reducing source-domain dependency improves target-free generalization in medical anomaly detection, highlighting the importance of domain-aware regularization for robust zero-shot deployment.",
+      "cid": "C0812",
+      "title": "Mitigating Source-Domain Dependency for Target-Free Zero-Shot Medical Anomaly Detection",
+      "year": 2026,
+      "groups": [
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P014",
+      "section": "3.2 MAIN RESULTS",
+      "part": 0,
+      "text": "3.2.1. ZSAD Performance Comparison As illustrated in Tables 1 and 2, our KAnoCLIP model has achieved state-of-the-art results across 12 industrial and medical anomaly detection datasets, surpassing the performance of MVFA-AD and AnomalyCLIP. Notably, in the prominent MVTec-AD and VisA datasets, our method improved pixel-level AUC scores by 3.2 and 2.2, respectively, and enhanced image-level AUC scores by 1.3 and 1.5. This highlights our superior performance in both anomaly segmentation and anomaly classification. Additionally, across six medical datasets, KAnoCLIP exhibited significant improvements, particularly in BrainMRI and LiverCT, with image-level AUC increases of 2.1 and 4.0 and pixel-level AUC enhancements of 1.3 and",
+      "cid": "C0051",
+      "title": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P005",
+      "section": "4.1 Experimental Setups",
+      "part": 0,
+      "text": "Datasets. We conduct extensive experiments on nine datasets spanning industrial, logical, and medical anomaly detection domains. For industrial anomaly detection, we use the widely recognized MVTec-AD [4] and VisA [38] datasets. For logical anomaly detection, we focus on the comprehensive MVTec LOCO [5] dataset. In the medical anomaly detection domain, following the recent BMAD benchmark, we select six datasets: BrainMRI [1], liverCT [6, 23], RetinalOCT [15], ChestXray [32], HIS [3], and OCT17 [20]. Since ChestXray [32], HIS [3], and OCT17 [20] datasets do not provide pixel-level anomaly annotations, we evaluate only image-level anomaly detection performance on these three datasets. A detailed description of the nine datasets is provided in Appendix B. Competing Methods and Baselines. In this study, we compare the performance of UniVAD with state-of-the-art methods from various domains, under two different settings, few-normal-shot and few-abnormal-shot. In the fewnormal-shot setting, the model is not trained on the target dataset; instead, a few normal samples are provided only as reference during testing. Under this setting, we selected 6 Table 2. Comparison between UniVAD and existing methods under the 4-abnormal-shot setting, where image-level AUC and pixel-level AUC are used to evaluate the performance of imagelevel anomaly detection and pixel-level anomaly localization, respectively. The experimental results in the table are cited from MVFA [16], and the best results are highlighted in bold. Task Dataset DRA BGAD MVFA UniVAD Img-level (AUC) BrainMRI 80.6 83.6 92.4 94.1 LiverCT 59.6 72.5 81.2 87.5 RESC 90.9 86.2 96.2 97.3 HIS 68.7 - 82.7 85.7 ChestXray 75.8 - 82.0 82.4 OCT 99.0 - 99.4 99.7 Px-level (AUC) BrainMRI 74.8 92.7 97.3 98.6 LiverCT 71.8 98.9 99.7 99.7 RESC 77.3 93.8 99.0 99.0 PatchCore [29], WinCLIP [19], AnomalyGPT [11], and UniAD [36] for industrial anomaly detection, ComAD [25] for logical anomaly detection, and MedCLIP [33] for medical anomaly detection. Few-abnormal-shot is a commonly used setting in medical anomaly detection, where testing is performed after training on a small number of normal and abnormal samples from the target dataset. To demonstrate the generality of UniVAD, we also compared it with existing methods in the few-abnormal-shot setting, selecting DRA [9], BGAD [35], and MVFA [16] under this setting. Evaluation Protocols. In alignment with established anomaly detection methodologies, we evaluate performance using the Area Under the Receiver Operating Characteristic Curve (AUC). Image-level AUC is used to assess anomaly detection performance, while pixel-level AUC is employed to evaluate anomaly localization performance. Implementation Details. In few-normal-shot setting, we do not conduct any further training on anomaly detection datasets for UniVAD. We resize all images to a resolution of 448x448 pixels, and utilize two widely used vision encoders, CLIP-L/14@336px and DINOv2-G/14, as our image encoders, with their parameters frozen. For image-level anomaly scores, it",
+      "cid": "C0087",
+      "title": "UniVAD: A Training-free Unified Model for Few-shot Visual Anomaly Detection",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P203",
+      "section": "Abstract",
+      "part": -1,
+      "text": "Vision-Language Models such as CLIP enable effective few-shot medical anomaly detection (AD) via strong image-text semantic alignment. However, their globally contrastive pretraining lacks explicit spatial supervision, limiting precise lesion localization. In contrast, Vision Foundation Models (VFMs) such as DINO learn spatially coherent patch representations via self-distillation and local-to-global consistency, better capturing fine-grained anatomical structures. Leveraging this complementarity, we propose Spatial-FAD, a spatial-aware few-shot medical AD framework that improves lesion localization by combining VFM spatial priors with CLIP semantics. Specifically, we introduce a VFM-enhanced adapter that injects a structural affinity prior derived from DINO into CLIP features. This structure-guided refinement encourages visual embeddings to better adhere to lesion boundaries while maintaining semantic alignment. To address the loss of spatial detail from patchification and the limited input resolution of CLIP, we adopt a sliding-window aggregation strategy. This generates high-resolution, spatially dense embeddings to further enhance localization granularity. Moreover, we introduce a prototype-enhanced support memory scheme to efficiently exploit the few-shot support set. This module stores compact prototypes for normal and abnormal patterns, reducing memory costs while boosting performance by fusing patch-to-prototype and image-text similarities. Extensive experiments on three benchmark datasets, including Liver CT, Retinal OCT, and Brain MRI, demonstrate that Spatial-FAD significantly outperforms state-of-the-art methods, especially in lesion segmentation. Notably, in the 4-shot scenario, our method achieves an average improvement of over 11.4% in Dice score and 1.8% in AUC. Code is available at: https://github.com/JuzhengMiao/Spatial-FAD.",
+      "cid": "C0808",
+      "title": "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
+      "year": 2026,
+      "groups": [
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P050",
+      "section": "Abstract",
+      "part": -1,
+      "text": "Zero-shot anomaly detection (ZSAD) is gaining traction in medical imaging as a way to identify abnormalities without task-specific supervision. In this work, we benchmark state-of-the-art CLIP-based ZSAD models -originally developed for industrial inspection -on brain metastasis detection using the BraTS-MET dataset. We evaluate both general-purpose and medical-adapted variants across multiple training paradigms with little to no supervision, emulating real-world scenarios with scarce labeled imaging data. While the models can apply general knowledge to medical images, we show that their accuracy remains limited, especially in peripheral brain regions, and that substantial but still suboptimal performance gains are achieved only via domain-specific fine-tuning. Our findings highlight current limitations in spatial consistency when using 2D-based approaches for 3D problems, and suggest that adaptation is required to make CLIP-based ZSAD viable for clinical use.",
+      "cid": "C0696",
+      "title": "Generalist Models in Specialized Domains: Evaluating Contrastive Language-image Pre-training for Zero-shot Anomaly Detection in Brain MRI",
+      "year": 2025,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P102",
+      "section": "4.2 Comparison with State-of-the-art Methods",
+      "part": 0,
+      "text": "As shown in Table 1, our proposed method TAFT achieves competitive and often superior performance across multiple datasets in the few-shot anomaly detection setting (K=4). For datasets that also provide pixel-level labels we report both classiﬁcation accuracy(AC) and segmentation accuracy(AS), while for dataset that only provide class-level labels we report only classiﬁcation accuracy. Comparison with the full-normal-shot methods. In Table 1 we contrast our TAFT model with classical “normal-only’ methods that are trained on all available normal images. TAFT achieves the best results on every benchmark against the four full-normal-shot methods: CFlowAD, RD4AD, PatchCore and MKD. Comparison with the few-normal-shot methods. Compared with CLIP and WinCLIP—which rely on only a handful of normal images—our approach (TAFT) achieves markedly higher AUC on every dataset, conﬁrming that region-level prompts, text adaptation and a small set of abnormal examples give stronger generalisation than normal-only feature matching. Against MedCLIP we also lead on ﬁve of the six 12 benchmarks, and the sole exception is ChestXray, where MedCLIP’s backbone was pre-trained on a large, domain-speciﬁc chest radiograph corpus, giving it a narrow advantage in that modality. Comparison with the few-shot methods. Against other few-shot approaches—DRA, BGAD, APRIL-GAN and the recent MVFA, our method achieves the highest class-level AUC on ﬁve of the six benchmarks—HIS, ChestXray, OCT17, LiverCT and RESC. For the pixel-level AUC, TAFT outperforms DRA, BGAD and APRIL-GAN but is slightly inferior to MVFA on LiverCT and RESC dataset. These gains arise from our use of region-level prompts and a dedicated text adapter to inject ﬁne-grained medical semantics, plus a joint contrastive loss that leverages even a handful of abnormal examples to sharpen the normal/abnormal boundary. 4.3 Inﬂuence of Shot Number Fig. 6 Comparisons with state-of-the-art few-shot anomaly-detection methods on six datasets unber diﬀerent shot number. The AUCs (and anomaly segmentation (AS) are reported. To explore the impact of shot-number on performance, We switch the number of training images in few-shot from 2 to 16 and conduct experiments on each dataset to explore the advantages of our method under diﬀerent shots. Figure 6 illustrates how classiﬁcation (AC) and, where available, segmentation (AS) performance evolve when the number of labelled training samples per class is gradually increased from 2 to 16. Across all six benchmarks our approach (orange line) maintains a clear advantage at every shot level. In addition, We observe that on OCT17 the AUC brieﬂy dips when increasing from 4 to 8 shots before steadily climbing thereafter. This “valley–then–rise” behavior can be attributed to the interplay between sample diversity and noise. At very low shot counts (Shot = 4), the few selected samples may, 13 Table 2 Performance comparison with state-of-the-art zero-shot methods on diﬀerent datasets. Datasets WinCLIP [[30]] MVFA [[10]] Ours HIS",
+      "cid": "C0018",
+      "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+      "year": 2026,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P019",
+      "section": "Introduction",
+      "part": 1,
+      "text": "as a representative of normal and abnormal classes can aid AD [16, 5, 35, 13]. Since anomaly descriptions might share similarities across different datasets, incorporating textual information reduces reliance only on visual data and, might enhance model performance, particularly in data-scarce scenarios such as few-shot learning. For instance, WinCLIP [16] uses a large set of artificial text prompts, while April- GAN [5] maps visual features extracted from CLIP [23] onto the linear space of text features in addition to using several memory banks. In medical AD, MVFA [13] builds on the principles of April-GAN [5] by employing multi-level adaptation of CLIP and utilizing fixed prompts. Unlike MVFA [13], WinCLIP [16], and April-GAN [5] using fixed prompts, MediCLIP [35] adopts the learnable prompts approach from [36]. Learnable prompts offer a key advantage over fixed prompts, which require careful design and expert knowledge for medical scenarios [35]. Besides visual feature adaptation and text prompts, another common approach is using memory banks (e.g., [5, 13]), though this strategy is relatively costly and often fails to generalize well. Some, e.g., [35], generate extensive synthetic data for the abnormal class to improve generalization. Our approach, MadCLIP extends CLIP [23] with a two-branch architecture using adapters to capture normal and abnormal visual features. We further leverage the role of text in data-scarce scenarios, using it to represent both normal and abnormal distributions separately. MadCLIP is thus designed to learn these distributions from both visual data and text, aiming to obtain a clear distinction between normal and abnormal patterns. As a result, complementary branches exchange signals, and two sets of learnable prompts enable the model to capture distinctive descriptions for both normal and abnormal patterns. In detail, MadCLIP models normal and abnormal representations separately within MadCLIP: Few-shot Medical Anomaly Detection with CLIP 3 Fig. 1. Overview of MadCLIP: A dual-branch design integrates adapters An and Aab into CLIP’s vision encoder to separately capture normal and abnormal features. Learnable text prompts V1, . . . , VM and W1, . . . , WM encode complementary semantics for AD. The outputs are image-level AC ˆc and AS mask ˆ M. a dual optimization process, maximizing multimodal (i.e., text and vision) similarity within each class while minimizing it between classes, thereby simplifying decision-making by subtracting (i.e., contrasting) learned feature representations to achieve better class separation. This enhances AD performance, particularly in cross-dataset settings, while also our pipeline avoids the need for memory banks or additional synthetic data. To perform image-text alignment, unlike the standard Softmax-based loss, we use SigLip [33], justified in the next section, where we also show its performance benefits with an ablation study. MadCLIP was evaluated on six datasets across five medical modalities using both a",
+      "cid": "C0027",
+      "title": "MadCLIP: Few-Shot Medical Anomaly Detection with CLIP",
+      "year": 2025,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P014",
+      "section": "2.4 Overall, KAnoCLIP has demonstrated robust effectiveness and",
+      "part": 0,
+      "text": "generalization across a diverse range of anomaly detection datasets. 3.2.2. Results Analysis and Discussion The original CLIP model performed poorly because its text prompts were designed for image classification, not anomaly detection. Table 3. The ablation results for our KAnoCLIP framework demonstrate the incremental effects of adding each module. MVTec-AD VisA KnPL CLIP-VV Bi-CMCI Conv-Adapter Image-AUC Pixel-AUC Image-AUC Pixel-AUC % % % % 66.8 55.4 58.2 47.1 ! % % % 85.9 87.4 78.6 91.2 ! ! % % 87.5 88.9 80.3 92.3 ! ! ! % 92.0 92.4 82.3 95.8 ! ! ! ! 93.1 94.3 83.8 97.7 CLIP-AC made slight improvements by adding \"normal\" and \"abnormal\" descriptors but still fell short. WinCLIP and APRIL-GAN, with manual crafted anomaly detection prompts, performed better. AnomalyCLIP, using learnable anomaly text prompts, further improved zero-shot performance but overfit to base classes without general knowledge guidance. MVFA-AD, an adapter for WinCLIP, enhanced cross-domain performance but lacked learnable prompts and effective cross-modal interactions. Our KAnoCLIP method achieved the best results by improving cross-modal interactions and integrating global-local context, making it highly effective for zero-shot anomaly detection in industrial and medical applications.",
+      "cid": "C0052",
+      "title": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P014",
+      "section": "Method",
+      "part": 0,
+      "text": "Public Image-AUC Pixel-AUC Image-AUC Pixel-AUC Image-AUC Pixel-AUC Image-AUC Pixel-AUC Image-AUC Pixel-AUC Image-AUC Pixel-AUC CLIP ICML 2021 74.1 38.4 66.4 46.6 54.3 62.1 34.5 30.6 65.7 39 79.6 28.2 CLIP-AC IMCL 2021 71.5 38.2 65 47.8 56.2 58.7 51 32.8 65.2 32.5 82.5 32.7 WinCLIP CVPR 2023 91.8 85.1 78.1 79.6 63.6 76.4 68.2 72.7 84.3 68.8 91.8 87.6 April-GAN CVPR 2023 86.1 87.6 78 94.2 73 94.1 73.6 60.8 79.8 79.8 94.4 92.4 AnomalyCLIP ICLR 2024 91.5 91.1 82.1 95.5 77 96.5 88.3 94.2 84.7 90.6 97.5 95.6 MVFA-AD CVPR 2024 88.9 89.3 82.3 94.8 76.4 96.6 80.1 81.4 82.5 91.7 95.8 95.1 Ours (KAnoCLIP) — 93.1 94.3 83.8 97.7 77.8 98.3 90.6 96.5 86.2 93.2 97.3 96.8 Table 2. ZSAD Performance comparison in medical domain. Since the Br35H, COVID-19, and HeadCT datasets lack pixel-level anomaly segmentation ground truth, we only performed anomaly classification on these three datasets. BrainMRI LiverCT RESC Br35H COVID-19 HeadCT",
+      "cid": "C0048",
+      "title": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P102",
+      "section": "2.3 Few-shot Medical Image Anomaly Detection with",
+      "part": 0,
+      "text": "Vision-Language Model Recently, large-scale vision-language models, such as CLIP [8], have demonstrated signiﬁcant advantages in cross-modal learning for medical image anomaly detection. By aligning 400 million image-text pairs from natural domains, these models enable zero-shot and few-shot learning. Several studies have explored applying CLIP to medical anomaly detection. For example, CLIP-Adapter [9] introduces an image feature adapter to map medical image features into the shared text feature space. MVFA [10] proposes a multi-level feature adaptation framework for optimizing representations at diﬀerent levels, while WinCLIP [30] uses prompt engineering to guide CLIP’s text features for medical applications. These methods directly use the text encoder module without fully leveraging the potential CLIP. The text encoder is primarily optimized for class-level semantics, not ﬁne-grained features, and it emphasizes global rather than local details. This paper addresses these limitations by utilizing several tricks to better exploit the text encoder’s capabilities and unlock the full potential of CLIP. This paper addresses these limitations by utilizing several techniques to better exploit the text encoder’s capabilities and fully realize the potential of CLIP. However, these methods often neglect the potential improvements on CLIP’s text encoder. CLIP’s text encoder is primarily designed for object-level semantics, not anomalyspeciﬁc semantics, and it focuses on global features. Given that medical anomalies often manifest in localized details, existing CLIP-based methods may struggle to accurately localize and identify such anomalies.",
+      "cid": "C0007",
+      "title": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+      "year": 2026,
+      "groups": [
+        "cited_by",
+        "task1"
+      ],
+      "rerank": 9
+    },
+    {
+      "pid": "P164",
+      "section": "5 Data Overlap Analysis",
+      "part": 1,
+      "text": "ﬂated by over-ﬁtting to overlapping data. 3) The amount of overlap is often small so we also run a binomial signiﬁcance test where we use the accuracy on Clean as the null hypothesis and compute the one-tailed (greater) p-value for the Overlap subset. We also calculate 99.5% Clopper-Pearson conﬁdence intervals on Dirty as another check. A summary of this analysis is presented in Figure 17. Out of 35 datasets studied, 9 datasets have no detected overlap at all. Most of these datasets are synthetic or specialized making them unlikely to be posted as normal images on the internet (for instance MNIST, CLEVR, and GTSRB) or are guaranteed to have no overlap due to containing novel data from after the date our dataset was created (ObjectNet and Hateful Memes). This demonstrates our detector has a low-false positive rate which is important as false positives would under-estimate the effect of contamination in our analysis. There is a median overlap of 2.2% and an average overlap of 3.2%. Due to this small amount of overlap, overall accuracy is rarely shifted by more than 0.1% with only 7 datasets above this threshold. Of these, only 2 are statistically signiﬁcant after Bonferroni correction. The max detected improvement is only 0.6% on Birdsnap which has the second largest overlap at 12.1%. The largest overlap is for Country211 at 21.5%. This is due to it being constructed out of YFCC100M, which our pre-training dataset contains a ﬁltered subset of. Despite this large overlap there is only a 0.2% increase in accuracy on Country211. This may be because the training text accompanying an example is often not related to the speciﬁc task a downstream eval measures. Country211 measures geo-localization ability, but inspecting the training text for these duplicates showed they often do not mention the location of the image. We are aware of two potential concerns with our analysis. First our detector is not perfect. While it achieves near 100% accuracy on its proxy training task and manual inspection + threshold tuning results in very high precision with good recall among the found nearest-neighbors, we can not tractably check its recall across 400 million examples. Another potential confounder of our analysis is that the underlying data distribution may shift between the Overlap and Clean subsets. For example, on Kinetics-700 many “overlaps” are in fact all black transition frames. This explains why Kinetics-700 has an apparent 20% accuracy drop on Overlap. We suspect more subtle distribution shifts likely exist. One possibility we noticed on CIFAR-100 is that, due to the very low resolution of its images, many duplicates were false positives of small objects such as birds or planes. Changes in accuracy could instead be due to changes in",
+      "cid": "C0356",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "year": 2021,
+      "groups": [
+        "cited_in"
+      ],
+      "rerank": 8
+    },
+    {
+      "pid": "P078",
+      "section": "5 Final conclusions",
+      "part": 2,
+      "text": "balanced training without introducing class bias, and aligns with the dataset sizes used in reference clinical benchmarks. This strategy ensures representative coverage without requiring excessive computational resources. Furthermore, for each additional language included, it is recommended to add an equivalent set of 5000 image–text pairs per finding, maintaining the consistency and multilingual representativeness of the dataset. We recommend standardizing the following model evaluation protocols: first, report metrics at clinically relevant thresholds, including sensitivity, specificity, F1-score, PPV/NPV, and Precision–Recall curves, complementing AUC to capture performance in critical subgroups and minority classes. Second, include Top-1 accuracy and accuracy per finding type in multi-label tasks, ensuring that models not only discriminate globally but also correctly predict individual findings. Third, evaluate cross-dataset generalization by using external test sets with distributions different from training and validation, to detect overfitting and information leakage. Fourth, report calibration and robustness against atypical cases or outliers through confidence interval analyses and controlled perturbations of input data. Finally, we suggest accompanying all results with a standardized checklist for VLMs in radiology, including:",
+      "cid": "C0159",
+      "title": "Vision-language zero-shot models for radiographic image classification: A systematic review",
+      "year": 2025,
+      "groups": [
+        "cited_by"
+      ],
+      "rerank": 8
+    },
+    {
+      "pid": "P180",
+      "section": "3.2 Evaluation Metrics",
+      "part": 0,
+      "text": "Anomaly detection can be evaluated from the sample level (i.e., detection rate) and the pixel level (i.e., anomaly localization). In BMAD, we take the area under the ROC curve (AUROC) as the major metric to quantify the sample-level and pixel-level performance. It quantifies the trade-off between True Positive Rate (TPR) and False Positive Rate (FPR) across different decision thresholds. For sample-level AUROC, anomaly score is calculated based on the specific algorithm design and different thresholds are applied to determine if a sample is normal or abnormal. The obtained TPR and FPR pairs are recorded for estimating the ROC curve and AUROC value. To calculate the pixel-level AUROC, different thresholds are applied to the anomaly map. If a pixel has an anomaly score greater than the threshold, the pixel is anomalous. Over an entire image, the corresponding TPR and FPR pairs are used for numerical calculation. Note that AUROC has limitations to evaluate samll tumor localization, as incorrect localization of smaller defect regions has a minimal impact on the metric. To address this issue, we follow prior arts [8, 19, 61] and include another threshold-independent metric, per-region overlap (PRO), for anomaly localization evaluation. PRO treats anomaly regions of different size equally, up-weighting the influence of small-size abnormality localization in evaluation. Specifically, for each threshold, detected anomalous pixels are grouped into connected components and then PRO averages localization accuracy over all components. Remark: DICE coefficient sometimes is explored in medical anomaly detection. However, as we stated in the Appendix 8, DICE coefficient is a threshold-dependent metric. The threshold’s optimal value varies depending on algorithms and specific tasks. Therefore, we opted not to include the DICE comparison in the main benchmark. Instead, we reported the DICE values of the 15 algorithms in the Appendix 8 for reference.",
+      "cid": "C0260",
+      "title": "BMAD: Benchmarks for Medical Anomaly Detection",
+      "year": 2024,
+      "groups": [
+        "cited_in",
+        "task1"
+      ],
+      "rerank": 8
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+[score] full: 27 generated vs 3 reference
+  [cov-full-R1] nvidia/nemotron-3-ultra-550b-a55b ok (476 chars)
+  [cov-full-R3] nvidia/nemotron-3-ultra-550b-a55b ok (553 chars)
+  [cov-full-R2] nvidia/nemotron-3-ultra-550b-a55b ok (511 chars)
+  [fsi-full] nvidia/nemotron-3-ultra-550b-a55b ok (1800 chars)
+[score] full_nocite: 25 generated vs 3 reference
+  [cov-full_nocite-R1] nvidia/nemotron-3-ultra-550b-a55b ok (338 chars)
+  [cov-full_nocite-R3] nvidia/nemotron-3-ultra-550b-a55b ok (394 chars)
+  [cov-full_nocite-R2] nvidia/nemotron-3-ultra-550b-a55b ok (1139 chars)
+  [fsi-full_nocite] nvidia/nemotron-3-ultra-550b-a55b ok (1718 chars)
+[score] zero_shot: 15 generated vs 3 reference
+  [cov-zero_shot-R1] nvidia/nemotron-3-ultra-550b-a55b ok (566 chars)
+  [cov-zero_shot-R3] nvidia/nemotron-3-ultra-550b-a55b ok (320 chars)
+  [cov-zero_shot-R2] nvidia/nemotron-3-ultra-550b-a55b ok (461 chars)
+  [fsi-zero_shot] nvidia/nemotron-3-ultra-550b-a55b ok (996 chars)
+[score] old_pipeline: 11 generated vs 3 reference
+  [cov-old_pipeline-R1] nvidia/nemotron-3-ultra-550b-a55b ok (389 chars)
+  [cov-old_pipeline-R2] nvidia/nemotron-3-ultra-550b-a55b ok (671 chars)
+  [cov-old_pipeline-R3] nvidia/nemotron-3-ultra-550b-a55b ok (557 chars)
+  [fsi-old_pipeline] nvidia/nemotron-3-ultra-550b-a55b ok (728 chars)
+[score] full_nim: 39 generated vs 3 reference
+  [cov-full_nim-R1] nvidia/nemotron-3-ultra-550b-a55b ok (515 chars)
+  [cov-full_nim-R2] nvidia/nemotron-3-ultra-550b-a55b ok (468 chars)
+  [cov-full_nim-R3] nvidia/nemotron-3-ultra-550b-a55b ok (593 chars)
+  [fsi-full_nim] nvidia/nemotron-3-ultra-550b-a55b ok (2604 chars)
+
+| system | #lims | C_GT (recall) | C_LLM | F1 | Faith. | Sound. | Import. |
+|---|---|---|---|---|---|---|---|
+| full | 27 | 66.7% | 7.4% | 0.133 | 5.00 | 5.00 | 3.74 |
+| full_nocite | 25 | 33.3% | 4.0% | 0.071 | 5.00 | 5.00 | 3.72 |
+| zero_shot | 15 | 33.3% | 6.7% | 0.111 | 5.00 | 5.00 | 4.60 |
+| old_pipeline | 11 | 66.7% | 27.3% | 0.387 | 5.00 | 5.00 | 4.00 |
+| full_nim | 39 | 100.0% | 10.3% | 0.186 | 5.00 | 4.67 | 4.62 |
