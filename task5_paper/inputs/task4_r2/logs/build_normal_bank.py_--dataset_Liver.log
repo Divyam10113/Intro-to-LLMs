@@ -1,0 +1,14 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+{
+ "dataset": "Liver",
+ "n_normal_images": 500,
+ "n_vectors": 144500,
+ "bank_size": 20000,
+ "n_gated_images": 1166,
+ "gate_mean_normal_train": 0.01452090684324503,
+ "gate_mean_abnormal_train": 0.04057907685637474,
+ "gate_p99_abnormal_train": 0.282958984375,
+ "seconds_bank": 30.91852855682373,
+ "seconds_total": 41.36248230934143
+}

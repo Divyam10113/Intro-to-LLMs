@@ -1,0 +1,57 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[pu_m100_Brain_s0] ep 0 step 0/3500 mask Retina_RESC     loss 8.9697 (1.200s/step)
+[pu_m100_Brain_s0] ep 0 step 500/3500 mask Liver           loss 6.8103 (0.058s/step)
+[pu_m100_Brain_s0] ep 0 step 1000/3500 mask Liver           loss 7.2264 (0.056s/step)
+[pu_m100_Brain_s0] ep 0 step 1500/3500 pair Chest           loss 3.2585 (0.056s/step)
+[pu_m100_Brain_s0] ep 0 step 2000/3500 mask Liver           loss 4.7781 (0.054s/step)
+[pu_m100_Brain_s0] ep 0 step 2500/3500 pair Histopathology  loss 2.3791 (0.054s/step)
+[pu_m100_Brain_s0] ep 0 step 3000/3500 mask Liver           loss 5.7967 (0.054s/step)
+[pu_m100_Brain_s0] epoch 0 done in 188s; source-val image AUROC 0.9247 {'Liver': 0.891, 'Retina_RESC': 0.98, 'Retina_OCT2017': 0.992, 'Chest': 0.89, 'Histopathology': 0.871}
+[pu_m100_Brain_s0] ep 1 step 0/3500 mask Retina_RESC     loss 5.1604 (0.186s/step)
+[pu_m100_Brain_s0] ep 1 step 500/3500 mask Retina_RESC     loss 4.4061 (0.057s/step)
+[pu_m100_Brain_s0] ep 1 step 1000/3500 mask Retina_RESC     loss 2.2633 (0.056s/step)
+[pu_m100_Brain_s0] ep 1 step 1500/3500 pair Histopathology  loss 2.1906 (0.055s/step)
+[pu_m100_Brain_s0] ep 1 step 2000/3500 pair Chest           loss 2.5701 (0.054s/step)
+[pu_m100_Brain_s0] ep 1 step 2500/3500 mask Liver           loss 3.1217 (0.054s/step)
+[pu_m100_Brain_s0] ep 1 step 3000/3500 pair Histopathology  loss 2.3031 (0.054s/step)
+[pu_m100_Brain_s0] epoch 1 done in 187s; source-val image AUROC 0.9410 {'Liver': 0.931, 'Retina_RESC': 0.99, 'Retina_OCT2017': 1.0, 'Chest': 0.89, 'Histopathology': 0.893}
+[pu_m100_Brain_s0] ep 2 step 0/3500 pair Chest           loss 2.2873 (0.189s/step)
+[pu_m100_Brain_s0] ep 2 step 500/3500 pair Histopathology  loss 2.8298 (0.055s/step)
+[pu_m100_Brain_s0] ep 2 step 1000/3500 mask Retina_RESC     loss 2.6803 (0.056s/step)
+[pu_m100_Brain_s0] ep 2 step 1500/3500 mask Liver           loss 5.6779 (0.054s/step)
+[pu_m100_Brain_s0] ep 2 step 2000/3500 mask Liver           loss 3.0724 (0.052s/step)
+[pu_m100_Brain_s0] ep 2 step 2500/3500 pair Chest           loss 2.3642 (0.048s/step)
+[pu_m100_Brain_s0] ep 2 step 3000/3500 pair Retina_OCT2017  loss 2.3002 (0.046s/step)
+[pu_m100_Brain_s0] epoch 2 done in 157s; source-val image AUROC 0.9512 {'Liver': 0.95, 'Retina_RESC': 0.986, 'Retina_OCT2017': 0.989, 'Chest': 0.91, 'Histopathology': 0.922}
+[pu_m100_Brain_s0] ep 3 step 0/3500 pair Chest           loss 2.9139 (0.200s/step)
+[pu_m100_Brain_s0] ep 3 step 500/3500 mask Liver           loss 2.9911 (0.037s/step)
+[pu_m100_Brain_s0] ep 3 step 1000/3500 pair Histopathology  loss 2.3335 (0.040s/step)
+[pu_m100_Brain_s0] ep 3 step 1500/3500 mask Liver           loss 2.8100 (0.041s/step)
+[pu_m100_Brain_s0] ep 3 step 2000/3500 pair Histopathology  loss 3.0495 (0.041s/step)
+[pu_m100_Brain_s0] ep 3 step 2500/3500 mask Liver           loss 2.9822 (0.041s/step)
+[pu_m100_Brain_s0] ep 3 step 3000/3500 mask Liver           loss 2.8624 (0.042s/step)
+[pu_m100_Brain_s0] epoch 3 done in 147s; source-val image AUROC 0.9552 {'Liver': 0.949, 'Retina_RESC': 0.993, 'Retina_OCT2017': 0.986, 'Chest': 0.915, 'Histopathology': 0.933}
+[pu_m100_Brain_s0] ep 4 step 0/3500 pair Retina_OCT2017  loss 2.2055 (0.163s/step)
+[pu_m100_Brain_s0] ep 4 step 500/3500 mask Liver           loss 3.7896 (0.043s/step)
+[pu_m100_Brain_s0] ep 4 step 1000/3500 mask Liver           loss 2.9448 (0.043s/step)
+[pu_m100_Brain_s0] ep 4 step 1500/3500 mask Liver           loss 4.2372 (0.043s/step)
+[pu_m100_Brain_s0] ep 4 step 2000/3500 pair Chest           loss 3.5311 (0.043s/step)
+[pu_m100_Brain_s0] ep 4 step 2500/3500 pair Chest           loss 2.0833 (0.042s/step)
+[pu_m100_Brain_s0] ep 4 step 3000/3500 pair Retina_OCT2017  loss 2.2079 (0.042s/step)
+[pu_m100_Brain_s0] epoch 4 done in 148s; source-val image AUROC 0.9219 {'Liver': 0.91, 'Retina_RESC': 0.913, 'Retina_OCT2017': 0.95, 'Chest': 0.903, 'Histopathology': 0.933}
+{
+ "run_id": "pu_m100_Brain_s0",
+ "best_epoch": 3,
+ "val_curve": [
+  0.9247,
+  0.941,
+  0.95115,
+  0.95519,
+  0.92194
+ ],
+ "n_updates": 17500,
+ "seconds_per_update": 0.05004696681158883,
+ "total_seconds": 971.6270940303802
+}
+{'eval_dataset': 'Brain', 'img_auroc': 0.6941402439024391, 'pix_auroc': 0.8789628679666464, 'aupro': 0.6052873515826407}

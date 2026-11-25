@@ -1,0 +1,158 @@
+{
+  "Retina_RESC": {
+    "Brain": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Liver": {
+      "pi": 0.3,
+      "pi_raw": 0.88916015625,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.3,
+      "pi_raw": 0.4797297297297297,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 0.6897536594073546,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  },
+  "Liver": {
+    "Brain": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Retina_RESC": {
+      "pi": 0.3,
+      "pi_raw": 0.9942363112391931,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.3,
+      "pi_raw": 0.3231833910034603,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  },
+  "Brain": {
+    "Liver": {
+      "pi": 0.3,
+      "pi_raw": 0.753037951018882,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Retina_RESC": {
+      "pi": 0.3,
+      "pi_raw": 0.9580200501253133,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 0.9836956521739131,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.005,
+      "pi_raw": -0.5054671280276817,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 0.9044435158100014,
+      "branch": "det",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  }
+}

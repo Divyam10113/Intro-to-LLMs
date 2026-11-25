@@ -1,0 +1,10 @@
+target,mask-less source,π used (D1),"π estimator raw, seg branch (report only)"
+Liver,Retina_OCT2017,0.0647,1.000
+Liver,Chest,0.0647,0.100
+Liver,Histopathology,0.0647,0.986
+Brain,Retina_OCT2017,0.0636,0.949
+Brain,Chest,0.0636,-0.058
+Brain,Histopathology,0.0636,0.756
+Retina_RESC,Retina_OCT2017,0.0092,1.000
+Retina_RESC,Chest,0.0092,-0.017
+Retina_RESC,Histopathology,0.0092,0.941

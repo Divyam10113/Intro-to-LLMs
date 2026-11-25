@@ -1,0 +1,23 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mvfa_RESC_OCT_s3] ep 0 step 0/4000 mask Brain           loss 6.6941 (1.199s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 500/4000 mask Liver           loss 4.8019 (0.115s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 1000/4000 mask Liver           loss 6.4044 (0.085s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 1500/4000 mask Liver           loss 6.1055 (0.071s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 2000/4000 det  Histopathology  loss 2.8940 (0.064s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 2500/4000 det  Chest           loss 2.6536 (0.060s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 3000/4000 det  Chest           loss 2.7989 (0.058s/step)
+[mvfa_RESC_OCT_s3] ep 0 step 3500/4000 mask Liver           loss 3.7214 (0.056s/step)
+[mvfa_RESC_OCT_s3] epoch 0 done in 217s; source-val image AUROC 0.9043 {'Brain': 0.943, 'Liver': 0.946, 'Chest': 0.873, 'Histopathology': 0.855}
+[mvfa_RESC_OCT_s3] ep 1 step 0/4000 mask Brain           loss 4.0378 (0.211s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 500/4000 det  Chest           loss 2.9178 (0.037s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 1000/4000 det  Chest           loss 2.8788 (0.040s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 1500/4000 det  Histopathology  loss 2.9586 (0.042s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 2000/4000 mask Brain           loss 3.6345 (0.042s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 2500/4000 det  Histopathology  loss 3.3361 (0.043s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 3000/4000 mask Liver           loss 2.8756 (0.043s/step)
+[mvfa_RESC_OCT_s3] ep 1 step 3500/4000 mask Brain           loss 5.6064 (0.044s/step)
+[mvfa_RESC_OCT_s3] epoch 1 done in 175s; source-val image AUROC 0.9080 {'Brain': 0.937, 'Liver': 0.935, 'Chest': 0.873, 'Histopathology': 0.887}
+[mvfa_RESC_OCT_s3] ep 2 step 0/4000 mask Brain           loss 3.3733 (0.187s/step)
+[mvfa_RESC_OCT_s3] ep 2 step 500/4000 mask Liver           loss 2.8645 (0.045s/step)
+[mvfa_RESC_OCT_s3] ep 2 step 1000/4000 det  Histopathology  loss 1.3445 (0.042s/step)

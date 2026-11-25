@@ -1,0 +1,10 @@
+[
+ {
+  "name": "fig1_budget.pdf",
+  "caption": "Label-budget curve (round 3, seeds 3-5, mean \u00b1 SD): target AUPRO when masks are kept for 0/10/25/100 % of the masked sources' abnormal images and MIL is used on all other images. Dashed: MVFA re-run with full masks. Drawn from results.json."
+ },
+ {
+  "name": "fig2_liver_heatmaps_r3.pdf",
+  "caption": "Liver CT heat maps, round 3, seed 3, for four test images fixed by round 1's rule before any map was viewed (cyan: ground-truth outline). Columns: image, R0, MVFA, MIL, PU+100 %, MIL+100 %, MIL+10 %, MIL+25 %. Illustrative only."
+ }
+]

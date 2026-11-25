@@ -1,0 +1,14 @@
+## GPU smoke test (2026-11-23 10:57:03)
+
+Each round 3 arm ran 50 steps on the Brain fold (seed 3, 1 epoch), with validation, the diagnostic and a 16-image target evaluation. Smoke runs are never written to results.csv.
+
+| arm | exit | steps | loss first → last | finite | val AUROC | eval rows | s/step |
+|---|---|---|---|---|---|---|---|
+| mvfa | 0 | 50 | 6.354 → 1.354 | True | 0.775 | 1 | 0.105 |
+| mil | 0 | 50 | 3.264 → 1.740 | True | 0.556 | 1 | 0.104 |
+| pu_m100 | 0 | 50 | 8.341 → 2.935 | True | 0.678 | 1 | 0.106 |
+| mil_m100 | 0 | 50 | 6.354 → 1.453 | True | 0.741 | 1 | 0.104 |
+| mil_m10 | 0 | 50 | 6.354 → 1.532 | True | 0.775 | 1 | 0.104 |
+| mil_m25 | 0 | 50 | 6.354 → 2.311 | True | 0.775 | 1 | 0.118 |
+
+**Smoke test: PASS**

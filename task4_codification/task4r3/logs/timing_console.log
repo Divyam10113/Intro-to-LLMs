@@ -1,0 +1,26 @@
+== 12 jobs on 12 slots 2026-11-23 10:57:03
+[2026-11-23 10:57:03 gpu 0 slot 0] start 0: train2.py --arm mvfa --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 0 slot 2] start 1: train2.py --arm mil --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 0 slot 3] start 2: train2.py --arm pu_m100 --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 0 slot 4] start 3: train2.py --arm mil_m100 --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 0 slot 1] start 4: train2.py --arm mil_m10 --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 0 slot 5] start 5: train2.py --arm mil_m25 --fold Brain --seed 3 --tag timing1 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:0
+[2026-11-23 10:57:03 gpu 1 slot 6] start 6: train2.py --arm mvfa --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:03 gpu 1 slot 7] start 7: train2.py --arm mil --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:03 gpu 1 slot 8] start 8: train2.py --arm pu_m100 --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:03 gpu 1 slot 9] start 9: train2.py --arm mil_m100 --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:03 gpu 1 slot 10] start 10: train2.py --arm mil_m10 --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:03 gpu 1 slot 11] start 11: train2.py --arm mil_m25 --fold Brain --seed 4 --tag timing2 --epochs 1 --max_steps 201 --val_limit 4 --no_eval --no_diag --log_every 50 --device cuda:1
+[2026-11-23 10:57:37 gpu 0 slot 2] done  1
+[2026-11-23 10:57:37 gpu 0 slot 1] done  4
+[2026-11-23 10:57:37 gpu 1 slot 10] done  10
+[2026-11-23 10:57:37 gpu 0 slot 4] done  3
+[2026-11-23 10:57:37 gpu 0 slot 5] done  5
+[2026-11-23 10:57:38 gpu 1 slot 7] done  7
+[2026-11-23 10:57:38 gpu 0 slot 0] done  0
+[2026-11-23 10:57:38 gpu 0 slot 3] done  2
+[2026-11-23 10:57:38 gpu 1 slot 9] done  9
+[2026-11-23 10:57:38 gpu 1 slot 6] done  6
+[2026-11-23 10:57:38 gpu 1 slot 11] done  11
+[2026-11-23 10:57:38 gpu 1 slot 8] done  8
+== phase finished 2026-11-23 10:57:38

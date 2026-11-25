@@ -1,0 +1,33 @@
+arm,target,seed,AUPRO Δ vs MVFA (same seed)
+PU+100%,Brain,3,+4.22
+PU+100%,Brain,4,+4.21
+PU+100%,Brain,5,+10.91
+PU+100%,Liver,3,-0.68
+PU+100%,Liver,4,-0.63
+PU+100%,Liver,5,-0.23
+PU+100%,RESC,3,+2.43
+PU+100%,RESC,4,-4.83
+PU+100%,RESC,5,+2.74
+MIL+100%,Brain,3,+7.92
+MIL+100%,Brain,4,+6.85
+MIL+100%,Brain,5,+17.04
+MIL+100%,Liver,3,-0.61
+MIL+100%,Liver,4,-0.79
+MIL+100%,Liver,5,-0.74
+MIL+100%,RESC,3,+5.72
+MIL+100%,RESC,4,+1.51
+MIL+100%,RESC,5,+5.70
+MIL+10%,Brain,3,+10.89
+MIL+10%,Brain,4,+16.31
+MIL+10%,Brain,5,+14.74
+MIL+10%,Liver,3,-1.75
+MIL+10%,Liver,4,-1.57
+MIL+10%,Liver,5,-5.70
+MIL+10%,RESC,3,+3.67
+MIL+10%,RESC,4,-2.35
+MIL+10%,RESC,5,-0.21
+MIL (H2),Brain,3,-0.40
+MIL (H2),Brain,4,+2.85
+MIL (H2),Brain,5,+10.93
+MIL (H2),Brain,6,-6.95
+MIL (H2),Brain,7,+6.77

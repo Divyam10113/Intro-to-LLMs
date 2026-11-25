@@ -1,0 +1,26 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mvfa_Liver_s5] ep 0 step 0/4742 det  Chest           loss 1.5946 (1.047s/step)
+[mvfa_Liver_s5] ep 0 step 500/4742 mask Brain           loss 5.7394 (0.109s/step)
+[mvfa_Liver_s5] ep 0 step 1000/4742 det  Histopathology  loss 2.5007 (0.083s/step)
+[mvfa_Liver_s5] ep 0 step 1500/4742 det  Retina_OCT2017  loss 1.5443 (0.069s/step)
+[mvfa_Liver_s5] ep 0 step 2000/4742 mask Brain           loss 5.5474 (0.062s/step)
+[mvfa_Liver_s5] ep 0 step 2500/4742 det  Histopathology  loss 2.6259 (0.058s/step)
+[mvfa_Liver_s5] ep 0 step 3000/4742 mask Retina_RESC     loss 2.5695 (0.055s/step)
+[mvfa_Liver_s5] ep 0 step 3500/4742 det  Histopathology  loss 1.5690 (0.053s/step)
+[mvfa_Liver_s5] ep 0 step 4000/4742 mask Retina_RESC     loss 2.5204 (0.052s/step)
+[mvfa_Liver_s5] ep 0 step 4500/4742 mask Retina_RESC     loss 5.0689 (0.050s/step)
+[mvfa_Liver_s5] epoch 0 done in 236s; source-val image AUROC 0.9251 {'Brain': 0.955, 'Retina_RESC': 0.977, 'Retina_OCT2017': 0.981, 'Chest': 0.869, 'Histopathology': 0.844}
+[mvfa_Liver_s5] ep 1 step 0/4742 det  Retina_OCT2017  loss 1.6694 (0.159s/step)
+[mvfa_Liver_s5] ep 1 step 500/4742 det  Histopathology  loss 1.3837 (0.042s/step)
+[mvfa_Liver_s5] ep 1 step 1000/4742 det  Chest           loss 2.8191 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 1500/4742 det  Chest           loss 2.8053 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 2000/4742 det  Histopathology  loss 4.1765 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 2500/4742 mask Brain           loss 4.2245 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 3000/4742 det  Retina_OCT2017  loss 1.5306 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 3500/4742 det  Retina_OCT2017  loss 1.6096 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 4000/4742 det  Chest           loss 2.7154 (0.041s/step)
+[mvfa_Liver_s5] ep 1 step 4500/4742 mask Retina_RESC     loss 3.6664 (0.041s/step)
+[mvfa_Liver_s5] epoch 1 done in 194s; source-val image AUROC 0.9428 {'Brain': 0.958, 'Retina_RESC': 0.994, 'Retina_OCT2017': 1.0, 'Chest': 0.884, 'Histopathology': 0.878}
+[mvfa_Liver_s5] ep 2 step 0/4742 det  Histopathology  loss 2.7833 (0.181s/step)
+[mvfa_Liver_s5] ep 2 step 500/4742 det  Histopathology  loss 2.6849 (0.041s/step)

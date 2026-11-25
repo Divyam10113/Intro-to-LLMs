@@ -1,0 +1,63 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mil_RESC_OCT_s1] ep 0 step 0/4000 weak Liver           loss 2.8806 (0.751s/step)
+[mil_RESC_OCT_s1] ep 0 step 500/4000 weak Liver           loss 3.6058 (0.051s/step)
+[mil_RESC_OCT_s1] ep 0 step 1000/4000 weak Histopathology  loss 5.0897 (0.050s/step)
+[mil_RESC_OCT_s1] ep 0 step 1500/4000 weak Liver           loss 4.1060 (0.048s/step)
+[mil_RESC_OCT_s1] ep 0 step 2000/4000 weak Chest           loss 4.9685 (0.049s/step)
+[mil_RESC_OCT_s1] ep 0 step 2500/4000 weak Histopathology  loss 9.3202 (0.048s/step)
+[mil_RESC_OCT_s1] ep 0 step 3000/4000 weak Liver           loss 2.5534 (0.049s/step)
+[mil_RESC_OCT_s1] ep 0 step 3500/4000 weak Chest           loss 3.6356 (0.047s/step)
+[mil_RESC_OCT_s1] epoch 0 done in 181s; source-val image AUROC 0.8828 {'Brain': 0.938, 'Liver': 0.882, 'Chest': 0.864, 'Histopathology': 0.847}
+[mil_RESC_OCT_s1] ep 1 step 0/4000 weak Brain           loss 2.2506 (0.243s/step)
+[mil_RESC_OCT_s1] ep 1 step 500/4000 weak Histopathology  loss 6.6265 (0.035s/step)
+[mil_RESC_OCT_s1] ep 1 step 1000/4000 weak Chest           loss 3.3893 (0.038s/step)
+[mil_RESC_OCT_s1] ep 1 step 1500/4000 weak Liver           loss 2.9126 (0.041s/step)
+[mil_RESC_OCT_s1] ep 1 step 2000/4000 weak Liver           loss 2.2784 (0.040s/step)
+[mil_RESC_OCT_s1] ep 1 step 2500/4000 weak Brain           loss 2.9837 (0.040s/step)
+[mil_RESC_OCT_s1] ep 1 step 3000/4000 weak Chest           loss 3.5478 (0.039s/step)
+[mil_RESC_OCT_s1] ep 1 step 3500/4000 weak Histopathology  loss 4.8430 (0.041s/step)
+[mil_RESC_OCT_s1] epoch 1 done in 168s; source-val image AUROC 0.9285 {'Brain': 0.977, 'Liver': 0.975, 'Chest': 0.889, 'Histopathology': 0.874}
+[mil_RESC_OCT_s1] ep 2 step 0/4000 weak Histopathology  loss 2.9020 (0.255s/step)
+[mil_RESC_OCT_s1] ep 2 step 500/4000 weak Liver           loss 2.3493 (0.043s/step)
+[mil_RESC_OCT_s1] ep 2 step 1000/4000 weak Chest           loss 2.9824 (0.044s/step)
+[mil_RESC_OCT_s1] ep 2 step 1500/4000 weak Chest           loss 2.0661 (0.044s/step)
+[mil_RESC_OCT_s1] ep 2 step 2000/4000 weak Chest           loss 2.5537 (0.045s/step)
+[mil_RESC_OCT_s1] ep 2 step 2500/4000 weak Brain           loss 3.1247 (0.047s/step)
+[mil_RESC_OCT_s1] ep 2 step 3000/4000 weak Brain           loss 3.6446 (0.047s/step)
+[mil_RESC_OCT_s1] ep 2 step 3500/4000 weak Liver           loss 3.2336 (0.046s/step)
+[mil_RESC_OCT_s1] epoch 2 done in 188s; source-val image AUROC 0.9224 {'Brain': 0.961, 'Liver': 0.931, 'Chest': 0.892, 'Histopathology': 0.905}
+[mil_RESC_OCT_s1] ep 3 step 0/4000 weak Brain           loss 3.1212 (0.249s/step)
+[mil_RESC_OCT_s1] ep 3 step 500/4000 weak Chest           loss 4.2514 (0.051s/step)
+[mil_RESC_OCT_s1] ep 3 step 1000/4000 weak Liver           loss 2.8554 (0.049s/step)
+[mil_RESC_OCT_s1] ep 3 step 1500/4000 weak Brain           loss 2.9188 (0.049s/step)
+[mil_RESC_OCT_s1] ep 3 step 2000/4000 weak Liver           loss 2.1950 (0.049s/step)
+[mil_RESC_OCT_s1] ep 3 step 2500/4000 weak Brain           loss 1.9680 (0.048s/step)
+[mil_RESC_OCT_s1] ep 3 step 3000/4000 weak Chest           loss 8.2935 (0.046s/step)
+[mil_RESC_OCT_s1] ep 3 step 3500/4000 weak Chest           loss 1.8535 (0.046s/step)
+[mil_RESC_OCT_s1] epoch 3 done in 182s; source-val image AUROC 0.9425 {'Brain': 0.983, 'Liver': 0.976, 'Chest': 0.903, 'Histopathology': 0.908}
+[mil_RESC_OCT_s1] ep 4 step 0/4000 weak Chest           loss 2.8029 (0.251s/step)
+[mil_RESC_OCT_s1] ep 4 step 500/4000 weak Chest           loss 1.3765 (0.044s/step)
+[mil_RESC_OCT_s1] ep 4 step 1000/4000 weak Liver           loss 3.0222 (0.044s/step)
+[mil_RESC_OCT_s1] ep 4 step 1500/4000 weak Histopathology  loss 2.8676 (0.043s/step)
+[mil_RESC_OCT_s1] ep 4 step 2000/4000 weak Brain           loss 1.7289 (0.043s/step)
+[mil_RESC_OCT_s1] ep 4 step 2500/4000 weak Chest           loss 1.5538 (0.043s/step)
+[mil_RESC_OCT_s1] ep 4 step 3000/4000 weak Histopathology  loss 1.3888 (0.043s/step)
+[mil_RESC_OCT_s1] ep 4 step 3500/4000 weak Brain           loss 1.9207 (0.043s/step)
+[mil_RESC_OCT_s1] epoch 4 done in 171s; source-val image AUROC 0.9490 {'Brain': 0.984, 'Liver': 0.98, 'Chest': 0.904, 'Histopathology': 0.928}
+{
+ "run_id": "mil_RESC_OCT_s1",
+ "best_epoch": 4,
+ "val_curve": [
+  0.8828,
+  0.92846,
+  0.92243,
+  0.94248,
+  0.94901
+ ],
+ "n_updates": 20000,
+ "seconds_per_update": 0.046760642552375796,
+ "total_seconds": 972.6489403247833
+}
+{'eval_dataset': 'Retina_RESC', 'img_auroc': 0.7502778741745502, 'pix_auroc': 0.6735038364760076, 'aupro': 0.4133269930921915}
+{'eval_dataset': 'Retina_OCT2017', 'img_auroc': 0.6838672221842771, 'pix_auroc': '', 'aupro': ''}

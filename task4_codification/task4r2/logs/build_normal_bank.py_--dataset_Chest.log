@@ -1,0 +1,14 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+{
+ "dataset": "Chest",
+ "n_normal_images": 500,
+ "n_vectors": 144500,
+ "bank_size": 20000,
+ "n_gated_images": 2490,
+ "gate_mean_normal_train": 0.09497738629579544,
+ "gate_mean_abnormal_train": 0.13610447943210602,
+ "gate_p99_abnormal_train": 0.306640625,
+ "seconds_bank": 38.014880657196045,
+ "seconds_total": 91.60730600357056
+}

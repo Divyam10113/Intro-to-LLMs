@@ -1,0 +1,266 @@
+{
+ "problems": [
+  "B1",
+  "A1"
+ ],
+ "seeds": [
+  {
+   "id": "B1-C1",
+   "problem": "B1",
+   "chain": "C1",
+   "chain_papers": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP": "Produces per-image anomaly scores from dual normal/abnormal adapter branches without a memory bank or test-set statistics, showing that a deployable score can depend only on references, not on other test images.",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection": "Adds a non-parametric normal-reference memory and bounds per-image adaptation of the references; it shows that a non-parametric reference distribution of normal scores is enough to make scores comparable without parametric assumptions."
+   },
+   "rationale": "Percentiles use two points of the support distribution and are noisy for small K. Following ReCAP's non-parametric normal memory, each branch can instead be mapped through the full leave-one-out empirical CDF of support-normal patch scores, which places both branches on the same [0, 1] scale defined only by the K supports, before MVFA's unchanged 0.5 fusion and max pooling.",
+   "title": "Leave-one-out empirical-CDF normalisation for inductive MVFA scoring",
+   "summary": "Replace test-set min-max with each branch's (and level's) leave-one-out empirical CDF over support-normal patch scores; keep the 0.5 fusion and max pooling.",
+   "research_idea": "Independent variable: normaliser (test-set min-max; support percentiles as in the problem; support LOO empirical CDF). Reference set R_bl: patch scores of each support computed against a memory bank of the other K-1 supports (few-shot) or the text anchors (zero-shot). F_bl(s) = (rank of s in R_bl + 0.5)/(|R_bl| + 1); fused map = 0.5 F_zero + 0.5 F_few (averaged over levels as in MVFA); image score = max of fused map. Dependent variables: image/pixel AUROC; sensitivity at 95% specificity with tau = 95th percentile of LOO support image scores; realised specificity; per-image score shift under test-set resampling (exactly zero by construction for inductive variants).",
+   "hypothesis": "At K >= 4, LOO empirical-CDF normalisation keeps image and pixel AUROC within 1 point of the transductive pipeline, and its support-derived threshold gives realised specificity within 5 points of 95% on every held-out dataset, with a smaller miss than the percentile normaliser at K = 2.",
+   "method": "1) test_few.py: refactor into score_image(x, model, support_feats, refs) that uses no other test image; remove the test-set min-max block. 2) utils.py: build_refs(support_feats, text_feats): for i in 1..K, few-shot patch scores of support i against the bank of the others and zero-shot scores; store sorted arrays per branch and level. 3) cdf(s, R) via torch.searchsorted. 4) Fusion 0.5/0.5 and max pooling unchanged. Hyper-parameters: none beyond nominal specificity 95%; no training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, ECE after a logistic map fitted on source validation. Falsified if AUROC drops by more than 1 point at K >= 4.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C2",
+   "problem": "B1",
+   "chain": "C2",
+   "chain_papers": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection": "Keeps MVFA's multi-level adapter framework and pixel-level alignment loss while adding a ConvTokenizer, and inherits MVFA's scoring pipeline; it shows the adapter framework carries over across implementations, so a calibration learned on source modalities for this family can plausibly transfer to an unseen modality."
+   },
+   "rationale": "Support statistics from K normal images are noisy for small K. MVFA is trained on five source modalities with validation splits, so the SCALE of each branch can be learned there from simulated few-shot episodes and transferred, while only the LOCATION is set on the target from its K supports. This keeps the 0.5 fusion and max pooling and separates a stable learned scale from a cheap per-modality shift.",
+   "title": "Source-episode scale with support re-centring for inductive MVFA scoring",
+   "summary": "Learn each branch's scale on simulated few-shot episodes from the source modalities and set only its location from the K target supports, replacing test-set min-max.",
+   "research_idea": "Independent variable: normaliser (test-set min-max; support percentiles; source-episode scale + support location). On each source modality's validation split, 50 episodes of K normal supports and 40 queries; for branch b, z_b = (s_b - mu_supp,b) / sigma_b, where mu_supp,b is the median LOO support patch score of the episode and sigma_b is fitted across episodes as the median absolute deviation of normal query patch scores around mu_supp,b. On the target only mu_supp,b is computed. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, per-image score shift.",
+   "hypothesis": "At K = 2, the source-episode scale with support re-centring loses at least 1 AUROC point less than the support-percentile normaliser relative to the transductive pipeline, and at K >= 4 both are within 1 point of it.",
+   "method": "1) calibrate_episodes.py: for each training fold, sample episodes on source validation splits using the trained model's scoring functions; estimate sigma_b per branch and level; save calib.json. 2) test_few.py: per-image z_b with mu from the target supports (LOO) and sigma from calib.json; then the unchanged 0.5 fusion and max pooling; test-set min-max removed. Hyper-parameters: 50 episodes, 40 queries, K matched to the target K; no adapter training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, score shift. Falsified if the source-episode scale is not better than support percentiles at K = 2.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C3",
+   "problem": "B1",
+   "chain": "C3",
+   "chain_papers": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "analysis": {
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images": "Stores compact normal and abnormal prototypes of the support set and fuses patch-to-prototype with image-text similarities; prototypes have natural radii (within-cluster spread), which give a scale for distances that does not depend on the test set."
+   },
+   "rationale": "The few-shot branch's raw score (1 - max cosine to the bank) has no intrinsic scale: what counts as far depends on how spread the normal patches are at that level. Spatial-FAD's prototypes suggest a scale: express each test patch's distance to its nearest normal prototype in units of that prototype's radius. The zero-shot branch is normalised with support percentiles as in the problem, and the 0.5 fusion and max pooling stay unchanged.",
+   "title": "Prototype-radius normalisation of MVFA's few-shot branch",
+   "summary": "Cluster support patch features into normal prototypes per level, score test patches by distance to the nearest prototype divided by its radius, and fuse with the support-normalised zero-shot branch using MVFA's unchanged rule.",
+   "research_idea": "Independent variable: few-shot branch normalisation (test-set min-max; support percentiles; prototype-radius). Per level: k-means (k = min(32, number of support patches / 20)) on support patch features; radius r_k = 90th percentile of member distances; q = min_k ||f - P_k|| / r_k, mapped to [0, 1] by q / (1 + q). Dependent variables: image/pixel AUROC, sensitivity at 95% specificity, per-image score shift, memory and latency.",
+   "hypothesis": "Prototype-radius normalisation matches the percentile normaliser within 1 pixel-AUROC point at K >= 4 and outperforms it by at least 1 point at K = 2, while reducing the few-shot memory by at least 10x.",
+   "method": "1) utils.py: fit_prototypes(support_feats_l, k) with torch k-means (20 iterations); radii. 2) test_few.py: few-shot map from q/(1+q) per level; zero-shot map with support percentiles; 0.5 fusion and max pooling unchanged; test-set min-max removed. 3) Report memory and latency. No training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, sensitivity at 95% specificity, score shift, memory, latency. Falsified if pixel AUROC drops by more than 1 point at K >= 4 relative to the percentile normaliser.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ]
+  },
+  {
+   "id": "B1-C4",
+   "problem": "B1",
+   "chain": "C4",
+   "chain_papers": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection": "Synthesises abnormal exemplars matched to a site's imaging style, showing that synthetic abnormal images are a useful stand-in when real abnormal data are scarce; synthetic anomalies in the target's own supports can provide an 'abnormal' reference point without any real abnormal target data."
+   },
+   "rationale": "Min-max normalisation needs a low and a high anchor; MVFA takes both from the test set, and support percentiles take both from normal data only, so the high anchor is just the tail of normal. Following Fed-LoRA, synthetic lesions pasted into the target's own supports give a genuine high anchor: support normals map to 0 and synthetic lesions to 1, keeping MVFA's two-anchor logic, its 0.5 fusion and max pooling.",
+   "title": "Two-anchor scaling with support normals and synthetic lesions",
+   "summary": "Normalise each MVFA branch between the median score of support-normal patches and the median score of synthetic lesions pasted into those supports, removing all test-set statistics.",
+   "research_idea": "Independent variable: normaliser (test-set min-max; support percentiles; two-anchor synthetic scaling). For branch b and level l: lo = median LOO support-normal patch score; hi = median patch score over pasted-lesion pixels in 20 synthetic variants per support (patches from other supports, Poisson-blended, 1-5% of the area); z = clip((s - lo)/(hi - lo), -1, 3), rescaled to [0, 1]. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, per-image score shift.",
+   "hypothesis": "Two-anchor synthetic scaling keeps image AUROC within 1 point of the transductive pipeline at K >= 4 and yields realised specificity closer to 95% than support percentiles, because the synthetic anchor fixes the relative scale of the two branches.",
+   "method": "1) synth.py: synth_lesion(img, other) with Poisson blending; masks recorded. 2) utils.py: anchors(model, supports) computes lo and hi per branch and level. 3) test_few.py: per-image normalisation, unchanged 0.5 fusion and max pooling; test-set min-max removed. Hyper-parameters: 20 variants per support, area 1-5%, clip [-1, 3]; no training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, score shift. Falsified if AUROC drops by more than 1 point or realised specificity is not closer to 95% than with support percentiles.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C5",
+   "problem": "B1",
+   "chain": "C5",
+   "chain_papers": [
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection": "Shows that adapted CLIP maps on medical images are dominated by anatomy-driven activations and that decoupling anatomy brings the largest gains on anatomy-dominant modalities."
+   },
+   "rationale": "Medical images of one modality are roughly aligned, and ADAN shows that much of an adapted CLIP map reflects anatomy. A single global normaliser per branch therefore mixes positions where normal anatomy scores high (e.g., skull, retinal layers) with positions where it scores low. Normalising each grid position by the support-normal scores at that position (shrunk towards the global statistic because K is small) removes anatomy-driven offsets inductively, before the unchanged 0.5 fusion and max pooling.",
+   "title": "Position-wise support normalisation of MVFA's branches",
+   "summary": "Normalise each branch's patch score by the leave-one-out support scores at the same grid position, shrunk towards the global support statistic, so anatomy-driven offsets are removed without test-set statistics.",
+   "research_idea": "Independent variable: normaliser (test-set min-max; global support percentiles; position-wise support normalisation). For branch b, level l and position j: mu_j, sd_j from the K LOO support scores at j (and its 3x3 neighbourhood), shrunk: mu*_j = (n mu_j + 20 mu_g)/(n + 20), likewise sd; z = (s_j - mu*_j)/sd*_j, mapped by a logistic to [0, 1]. Dependent variables: image/pixel AUROC, false-positive rate in normal images per position (heat map), per-image score shift.",
+   "hypothesis": "On spatially aligned modalities (BrainMRI, LiverCT, RESC, OCT17), position-wise normalisation improves pixel AUROC by at least 1 point over global support percentiles at K >= 4, and it is not worse than global percentiles on ChestXray and HIS by more than 0.5 points.",
+   "method": "1) utils.py: positional_refs(support_maps) computes per-position LOO statistics with a 3x3 neighbourhood and shrinkage weight 20. 2) test_few.py: per-image positional z-scores per branch and level, logistic map, 0.5 fusion and max pooling unchanged; test-set min-max removed. Hyper-parameters: neighbourhood 3x3, shrinkage 20 (ablation {5, 20, 80}); no training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, positional false-positive maps, score shift. Ablations: shrinkage; neighbourhood size. Falsified if no pixel-AUROC gain on aligned modalities.",
+   "provenance": [
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "B1-C6",
+   "problem": "B1",
+   "chain": "C6",
+   "chain_papers": [
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection"
+   ],
+   "analysis": {
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection": "Shows that in vision-language detectors with trained adapters, including MVFA, the score reads the text anchors only through their difference vector and its length; the effective scale of the zero-shot branch is therefore set by anchor geometry, not by meaning."
+   },
+   "rationale": "MVFA's zero-shot branch is a two-way softmax over text anchors, so by Do Words Matter? its scale is fixed by the length of the anchor difference times the feature norm, a quantity that is constant per level and known without any test image. The two branches can then be put on a common scale analytically: express the zero-shot branch as the projection on the unit anchor-difference direction, and standardise it and the few-shot branch with support LOO statistics on that projection. This replaces test-set min-max with a geometry-derived, inductive normaliser and keeps 0.5 fusion and max pooling.",
+   "title": "Anchor-geometry normalisation of MVFA's zero-shot branch",
+   "summary": "Replace the softmax output of the zero-shot branch by the patch projection on the unit anchor-difference direction, standardise both branches with support LOO statistics, and fuse them with MVFA's unchanged rule.",
+   "research_idea": "Independent variable: zero-shot branch representation and normaliser (test-set min-max on softmax; support percentiles on softmax; support standardisation of the unit-direction projection). For level l: u_l = (T_abn - T_nor)/||T_abn - T_nor||; zero-shot score s = <f_j/||f_j||, u_l>; z = (s - median_supp)/MAD_supp; few-shot branch standardised the same way; both mapped by a logistic to [0, 1]. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity, and stability of the operating threshold across held-out modalities.",
+   "hypothesis": "Standardising the unit-direction projection makes the support-derived threshold transfer across held-out modalities with a realised-specificity spread at least 5 points smaller than with percentile-normalised softmax scores, at equal AUROC (within 1 point).",
+   "method": "1) utils.py: anchor_direction(text_features) per level. 2) test_few.py: zero-shot map = projection on u_l; support LOO median and MAD per branch and level; logistic map; 0.5 fusion and max pooling unchanged; test-set min-max removed. Hyper-parameters: none; no training.",
+   "experiment": "Protocol: leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2, 4, 8, 16}; 3 seeds x 3 support draws, mean and std; fusion weight 0.5 and max pooling unchanged in every variant. Baselines: the original transductive pipeline (test-set min-max) and the percentile normaliser of the problem statement (1st/99th percentiles of leave-one-out support patch scores). Motivating measurement for all variants: AUROC spread of the transductive pipeline over random half-size test subsets and at 10% and 50% prevalence. Metrics: image/pixel AUROC, sensitivity at 95% specificity, spread of realised specificity across held-out datasets. Falsified if the threshold spread is not reduced.",
+   "provenance": [
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C1",
+   "problem": "A1",
+   "chain": "C1",
+   "chain_papers": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP": "Builds on MVFA's vision-encoder adapters but separates normal and abnormal evidence into dual branches trained with a SigLIP (pairwise sigmoid) loss against learnable prompts; the sigmoid many-to-one formulation fits patch-level supervision in which many patches map to one anchor.",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection": "Replaces static anchors with bounded, image-conditioned prototypes and keeps a non-parametric normal memory; its observation that normal references are reliable while abnormal ones vary motivates treating normal and abnormal images asymmetrically."
+   },
+   "rationale": "A normal image carries a pixel-level label for free: every patch is normal. Only abnormal images are ambiguous. The problem's symmetric top-k MIL wastes this: a normal image constrains only its k most anomalous patches. An asymmetric objective supervises all patches of normal images and only the most anomalous patches of abnormal images, with MadCLIP's sigmoid patch-text loss, which tolerates the many-to-one patch/anchor relation.",
+   "title": "Asymmetric sigmoid MIL for mask-free MVFA segmentation adapters",
+   "summary": "Train MVFA's segmentation adapters from image labels only: every patch of a normal image is pushed to the normal anchor and the top-1% patches of an abnormal image to the abnormal anchor, with a SigLIP-style sigmoid loss at all four levels.",
+   "research_idea": "Independent variable: segmentation supervision (Dice+Focal on masks; symmetric top-k BCE MIL as in the problem; asymmetric sigmoid MIL). For level l and patch j, z_j = t (cos(f_j, T_abn) - cos(f_j, T_nor)) + b with learnable t, b. Normal image: mean over all patches of softplus(z_j). Abnormal image: mean over the top-k patches (k = 1% of patches, at least 3) of softplus(-z_j), plus 0.1 x mean over the bottom 50% of softplus(z_j) (most of an abnormal image is normal tissue). Dependent variables: pixel AUROC, AUPRO, image AUROC on the held-out modality, and retention = (AUROC_MIL - 0.5)/(AUROC_mask - 0.5).",
+   "hypothesis": "Asymmetric sigmoid MIL on image labels from all five source datasets retains at least 75% of mask-supervised MVFA's pixel-AUROC margin over chance on held-out BrainMRI, LiverCT and RESC, and exceeds the symmetric top-k BCE MIL of the problem statement by at least 2 pixel-AUROC points.",
+   "method": "1) loss.py: add asym_mil_loss(seg_patch_tokens, text_features, label, t, b, k_frac=0.01) computing per-level cosines (tokens L2-normalised as in MVFA), the normal-all-patches term and the abnormal top-k term with the bottom-50% term; sum over the four levels with MVFA's level weights. 2) train_zero.py: replace the seg branch's Focal+Dice block (executed only when the dataset has masks) by asym_mil_loss for every image; t (init 10) and b (init -5) are nn.Parameters in the seg optimizer; detection branch unchanged. 3) Hyper-parameters: Adam, lr and epochs as in the released script, batch size 1 as in the code; k_frac in {0.5%, 1%, 2%}; bottom-term weight 0.1. 4) Inference unchanged (test_zero.py).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA; symmetric top-k BCE MIL (the problem's operator). Ablations: k_frac; bottom-50% term on/off; sigmoid vs. BCE-on-probabilities; which levels receive the loss. Falsified if retention is below 60% or there is no gain over symmetric MIL.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C2",
+   "problem": "A1",
+   "chain": "C2",
+   "chain_papers": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection": "Extends MVFA's multi-level residual adapters with a ConvTokenizer and keeps the pixel-level alignment loss; it shows that the same multi-level architecture localises better with finer input, but still requires masks."
+   },
+   "rationale": "MIL supervises only the top patches and gives fragmented maps, but its maps on abnormal source images contain coarse localisation. Turning the MIL-trained maps into pseudo-masks with cross-level agreement and training the segmentation adapters on them with MVFA's own Dice and Focal losses (self-distillation) can densify the supervision while still never using an expert mask.",
+   "title": "MIL-to-mask self-distillation with cross-level agreement",
+   "summary": "First train the segmentation adapters with the problem's top-k MIL, then convert their multi-level maps on abnormal source images into pseudo-masks (patches anomalous at three or more levels) and retrain with MVFA's Dice and Focal losses on those pseudo-masks.",
+   "research_idea": "Independent variable: segmentation supervision (true masks; top-k MIL only; MIL followed by one or two rounds of pseudo-mask self-distillation). Round 0: top-k MIL (k = 1%) on all source images. Pseudo-mask of an abnormal source image: patches in the image-wise top 5% at >= 3 of the 4 levels, upsampled with nearest neighbour; normal images get empty masks; pixels of abnormal images outside the pseudo-mask but above the image median are ignored in the Focal term. Rounds 1-2: Focal + Dice on pseudo-masks. Dependent variables: pixel AUROC, AUPRO, image AUROC on held-out modalities; pseudo-mask precision and recall against true masks on BrainMRI, LiverCT, RESC source images (analysis only).",
+   "hypothesis": "One round of MIL-to-mask self-distillation increases held-out AUPRO by at least 3 points over MIL alone, and cross-level agreement (>= 3 levels) yields pseudo-masks with at least 1.5x the precision of deepest-level pseudo-masks.",
+   "method": "1) Round 0 as in the problem statement (loss.py: topk_mil). 2) New script make_pseudo_masks.py: run the round-0 seg branch on all source training images, compute per-level probability maps, apply the agreement rule, save masks and ignore maps as .npy. 3) dataset/medical_zero.py: load pseudo-masks for every source dataset (seg_idx >= 0 for all six). 4) train_zero.py round 1: existing Focal + Dice with an ignore weight map. 5) Optional round 2 regenerates pseudo-masks from the round-1 model. Hyper-parameters: top 5%, agreement >= 3 levels, released learning rate and epochs per round.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA; MIL only. Ablations: agreement threshold (2, 3, 4 levels); top percentage (2%, 5%, 10%); number of rounds. Falsified if AUPRO does not improve over MIL only.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C3",
+   "problem": "A1",
+   "chain": "C3",
+   "chain_papers": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "analysis": {
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images": "Extends MVFA-style adapters with a structural affinity prior from DINO that makes CLIP patch embeddings adhere to lesion boundaries; its key finding is that self-supervised vision foundation models provide the spatial coherence that CLIP lacks."
+   },
+   "rationale": "Image-level MIL localises a handful of the most anomalous patches. DINO features are spatially coherent, so a random walk over a DINO patch-affinity graph can grow MIL evidence into region-shaped pseudo-masks that supervise MVFA's segmentation adapters densely, with DINO used only offline during training.",
+   "title": "DINOv2-affinity propagation of MIL evidence into pseudo-masks",
+   "summary": "Refine the MIL-trained patch maps of abnormal source images by propagation over a frozen DINOv2 patch-affinity graph and use the result as pseudo-masks for MVFA's Dice and Focal losses.",
+   "research_idea": "Independent variable: pseudo-mask refinement (none; DINOv2 affinity propagation; CLIP-feature affinity propagation). Stage 1: top-k MIL (problem statement). Stage 2: for each abnormal source image, DINOv2 ViT-S/14 patch features on a grid matched to MVFA's, affinity A_ij = max(0, cos)^8, row-normalised; m' = (0.7 A + 0.3 I)^3 m; pseudo-mask = m' > 0.5 max(m'). Stage 3: Focal + Dice on pseudo-masks. Dependent variables: pseudo-mask IoU (analysis), pixel AUROC, AUPRO, image AUROC on held-out modalities.",
+   "hypothesis": "DINOv2-refined pseudo-masks increase held-out AUPRO by at least 3 points over the unrefined MIL maps and over CLIP-affinity propagation, while image AUROC changes by less than 1 point.",
+   "method": "1) Stage 1: loss.py topk_mil in train_zero.py. 2) New script refine_masks.py: torch.hub DINOv2 ViT-S/14 (frozen), patch features resized to MVFA's patch grid, affinity and propagation in torch; save masks. 3) Stage 3: existing Focal + Dice on pseudo-masks for every source image (normal: empty). 4) DINO is not used at test time; inference cost unchanged. 5) Hyper-parameters: alpha 0.7, beta 8, t 3 (ablation alpha {0.5, 0.7, 0.9}, t {1, 3, 5}).",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA; MIL only; CLIP-affinity propagation. Falsified if AUPRO does not improve over MIL only.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ]
+  },
+  {
+   "id": "A1-C4",
+   "problem": "A1",
+   "chain": "C4",
+   "chain_papers": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection": "Fine-tunes MVFA-AD on synthetic abnormal exemplars generated for each institution and shows that synthetic anomalies improve the downstream MVFA detector; for localisation it implies that synthetic anomalies with exact masks can partly substitute for expert masks."
+   },
+   "rationale": "Synthetic anomalies come with exact masks at zero annotation cost, but alone they teach a model to find artefacts that look synthetic; real abnormal images with image labels carry realistic appearance but no location. A hybrid objective \u2014 Dice and Focal on synthetic anomalies, top-k MIL on real abnormal images \u2014 may give localisation that is both precise and realistic.",
+   "title": "Hybrid supervision: synthetic-lesion masks plus real-image MIL",
+   "summary": "Train the segmentation adapters with Dice + Focal on synthetic lesions pasted into normal source images and with the problem's top-k MIL on real image-labelled abnormal images, never loading an expert mask.",
+   "research_idea": "Independent variable: synthetic-only, MIL-only and hybrid supervision. With probability 0.5, a normal source image receives a synthetic lesion (patch from another normal image of the same dataset, Poisson-blended, 1-10% of the foreground) and its mask is used with Dice + Focal; real abnormal images use top-k MIL (k = 1%); real normal images supervise all patches as normal. Dependent variables: pixel AUROC, AUPRO, image AUROC on held-out modalities.",
+   "hypothesis": "Hybrid supervision exceeds both synthetic-only and MIL-only training by at least 1.5 held-out pixel-AUROC points and retains at least 80% of mask-supervised MVFA's pixel-AUROC margin over chance.",
+   "method": "1) dataset/synthetic.py: wrapper around the training dataset that inserts synthetic lesions into normal images (p = 0.5) and returns their masks. 2) train_zero.py: seg loss = Focal + Dice on synthetic masks + lambda_MIL x topk_mil on real abnormal images (lambda_MIL = 1); real masks never loaded. 3) Hyper-parameters as released; lambda_MIL in {0.5, 1, 2}; insertion probability {0.25, 0.5}.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA; synthetic-only; MIL-only. Falsified if hybrid is not better than both single-signal variants.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C5",
+   "problem": "A1",
+   "chain": "C5",
+   "chain_papers": [
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection"
+   ],
+   "analysis": {
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection": "An adapter framework on frozen CLIP for zero/few-shot medical anomaly detection on BMAD that mitigates anatomy-driven activations and finds the largest gains on anatomy-dominant modalities; it identifies anatomy, not pathology, as a main source of false activations in adapted CLIP maps."
+   },
+   "rationale": "Top-k MIL picks the patches with the highest anomaly score, and on medical images those are often anatomically salient structures (bright bone, vessels, the retinal layers) rather than lesions. ADAN shows such anatomy-driven activations dominate adapted CLIP maps. Two cheap corrections follow from image labels alone: mine the top-k patches of NORMAL images as hard negatives (they are anatomy, by definition), and subtract a per-dataset positional prior of normal anomaly scores before selecting the top-k of abnormal images.",
+   "title": "Anatomy-debiased MIL: normal hard negatives and a positional normal prior",
+   "summary": "Make the problem's top-k MIL pick lesions rather than anatomy by (i) penalising the top-k patches of normal images and (ii) ranking abnormal-image patches after subtracting a running per-position mean of normal-image scores of the same dataset.",
+   "research_idea": "Independent variable: MIL variant (plain top-k MIL; + normal hard-negative top-k; + positional prior; both). For dataset d and level l, maintain an exponential moving average mu_dl(j) of patch anomaly probabilities of normal images at grid position j. Abnormal-image positive term: top-k (k = 1%) of p_j - mu_dl(j). Normal-image term: BCE towards 0 on all patches plus an extra weight 2 on the top-k patches. Dependent variables: pixel AUROC, AUPRO, image AUROC on held-out modalities; fraction of top-k patches that fall inside the true mask on masked source images (analysis).",
+   "hypothesis": "On held-out BrainMRI, LiverCT and RESC, anatomy-debiased MIL increases pixel AUROC by at least 2 points and the fraction of selected top-k patches inside true lesions by at least 10 points compared with plain top-k MIL.",
+   "method": "1) loss.py: debiased_mil(p_l, label, dataset_id, ema_table, k_frac=0.01, w_hard=2). 2) train_zero.py: per-dataset EMA tables (6 x 4 levels x grid) updated with normal images (momentum 0.99); seg loss = debiased_mil at every level; detection branch unchanged. 3) The positional prior is used only during training; inference unchanged. 4) Hyper-parameters: k_frac 1%, w_hard {1, 2, 4}, EMA momentum 0.99.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA; plain top-k MIL. Ablations: each component alone; w_hard; with/without the prior on ChestXray and HIS, where images are not spatially aligned. Falsified if neither component improves pixel AUROC over plain MIL.",
+   "provenance": [
+    "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  {
+   "id": "A1-C6",
+   "problem": "A1",
+   "chain": "C6",
+   "chain_papers": [
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection"
+   ],
+   "analysis": {
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection": "Proves that, for a single normal/abnormal anchor pair read by a trained adapter, the score depends only on the anchor difference and its length; scale-matched random anchors match correct prompts, also in MVFA, and even under frozen zero-shot transfer a random anchor frame transfers as well as the prompt frame \u2014 what matters is coordinate consistency, not meaning."
+   },
+   "rationale": "The problem's hypothesis credits transfer of MIL-learned localisation to text anchors shared by all modalities. Do Words Matter? predicts that what is shared is a fixed coordinate frame and its scale, not linguistic content. This makes the hypothesis sharper and testable: if transfer comes from a fixed frame, scale-matched random anchors should localise as well as text anchors under MIL, and a per-modality learned head (no shared frame) should transfer worse.",
+   "title": "Is it the words or the frame? Anchor controls for MIL-trained segmentation adapters",
+   "summary": "Train the segmentation adapters with the problem's top-k MIL against three references \u2014 MVFA's text anchors, scale-matched random anchors, and a learned linear patch head \u2014 and test which property (meaning, fixed frame, scale) drives transfer of weakly supervised localisation.",
+   "research_idea": "Independent variable: patch-scoring reference during MIL training and testing (text anchors; random anchor pair with the same difference-vector length; random pair with 0.5x and 2x length; learned linear head, i.e. a learnable difference vector). Dependent variables: held-out pixel AUROC, AUPRO, image AUROC; plus the same comparison with mask supervision, so the effect of weak supervision and of the reference can be separated.",
+   "hypothesis": "Under top-k MIL, scale-matched random anchors reach held-out pixel AUROC within 1 point of MVFA's text anchors, while breaking the scale match (0.5x, 2x) reduces it by at least 2 points, and the learned linear head transfers worse than any fixed frame.",
+   "method": "1) utils.py: make_anchors(kind, seed): text (as released), random (Gaussian, normalised, difference rescaled to the text pair's difference length), scaled variants. 2) loss.py: topk_mil as in the problem. 3) train_zero.py: flag --anchors {text, rand, rand05, rand2, learned}; for 'learned' a 768-d difference vector is an nn.Parameter initialised to the text difference. 4) test_zero.py uses the same anchors as training. 5) Hyper-parameters as released; 3 random-anchor draws per seed.",
+   "experiment": "Protocol: BMAD zero-shot, leave-one-modality-out (RESC and OCT17 held out together); all source masks discarded for the image-label variants; checkpoints selected on a validation split of the source modalities by image AUROC (no masks used for selection); mask-supervised MVFA re-run under the same rule as the reference; 3 seeds, mean and std; pixel AUROC and AUPRO on held-out BrainMRI, LiverCT, RESC, image AUROC on all folds; a one-fold pilot monitors the fraction of normal-image patches above 0.5 to detect collapsed maps. Baselines: mask-supervised MVFA with text anchors and with scale-matched random anchors. Falsified if random anchors lose more than 2 points to text anchors under MIL (meaning matters) or if the learned head transfers as well as the fixed frames (frame does not matter).",
+   "provenance": [
+    "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection"
+   ]
+  }
+ ]
+}

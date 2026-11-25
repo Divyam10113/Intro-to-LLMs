@@ -1,0 +1,35 @@
+{
+  "Brain_AD/valid/Ungood/img/00124_60.png": [
+    "Brain_AD/test/Ungood/img/00124_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/00134_60.png": [
+    "Brain_AD/test/Ungood/img/00134_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/00154_60.png": [
+    "Brain_AD/test/Ungood/img/00154_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/00191_60.png": [
+    "Brain_AD/test/Ungood/img/00191_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/00630_60.png": [
+    "Brain_AD/test/Ungood/img/00630_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/01180_60.png": [
+    "Brain_AD/test/Ungood/img/01180_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/01388_60.png": [
+    "Brain_AD/test/Ungood/img/01388_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/01471_60.png": [
+    "Brain_AD/test/Ungood/img/01471_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/01597_60.png": [
+    "Brain_AD/test/Ungood/img/01597_60.png"
+  ],
+  "Brain_AD/valid/Ungood/img/01646_60.png": [
+    "Brain_AD/test/Ungood/img/01646_60.png"
+  ],
+  "Retina_OCT2017_AD/valid/good/img/NORMAL-33350-12.jpeg": [
+    "Retina_OCT2017_AD/test/good/img/NORMAL-33350-2.jpeg"
+  ]
+}

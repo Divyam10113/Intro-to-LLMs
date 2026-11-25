@@ -1,0 +1,591 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.12)  25 NOV 2026 15:52
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./final_paper.tex
+(final_paper.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(cvpr.sty
+Package: cvpr 2025 LaTeX class for IEEE CVPR
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.
+cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex
+.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.
+ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.d
+ef
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.s
+ty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.s
+ty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphi
+cs.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen151
+))
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen152
+) (C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.st
+y
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count283
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count284
+\leftroot@=\count285
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count286
+\DOTSCASE@=\count287
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen153
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count288
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count289
+\dotsspace@=\muskip17
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks19
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks20
+\eqnshift@=\dimen154
+\alignsep@=\dimen155
+\tagshift@=\dimen156
+\tagwidth@=\dimen157
+\totwidth@=\dimen158
+\lineht@=\dimen159
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.st
+y
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.s
+ty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.s
+ty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen160
+\lightrulewidth=\dimen161
+\cmidrulewidth=\dimen162
+\belowrulesep=\dimen163
+\belowbottomsep=\dimen164
+\aboverulesep=\dimen165
+\abovetopsep=\dimen166
+\cmidrulesep=\dimen167
+\cmidrulekern=\dimen168
+\defaultaddspace=\dimen169
+\@cmidla=\count295
+\@cmidlb=\count296
+\@aboverulesep=\dimen170
+\@belowrulesep=\dimen171
+\@thisruleclass=\count297
+\@lastruleclass=\count298
+\@thisrulewidth=\dimen172
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip54
+\bibsep=\skip55
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count299
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/silence\silence.sty
+Package: silence 2012/07/02 v1.5b Selective filtering of warnings and error mes
+sages
+\sl@Save=\count300
+\sl@StateNumber=\count301
+\sl@MessageCount=\count302
+\sl@Casualties=\count303
+\sl@Filter=\toks23
+\sl@Message=\toks24
+\sl@UnexpandedMessage=\toks25
+\sl@Mess@ge=\toks26
+\sl@WarningCount=\count304
+\sl@WarningNumber=\count305
+\sl@WarningCasualties=\count306
+\sl@TempBOW=\toks27
+\sl@BankOfWarnings=\toks28
+LaTeX Info: Redefining \GenericWarning on input line 433.
+\sl@ErrorCount=\count307
+\sl@ErrorNumber=\count308
+\sl@ErrorCasualties=\count309
+\sl@TempBOE=\toks29
+\sl@BankOfErrors=\toks30
+LaTeX Info: Redefining \GenericError on input line 601.
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.s
+ty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count310
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.st
+y
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen173
+\captionmargin=\dimen174
+\caption@leftmargin=\dimen175
+\caption@rightmargin=\dimen176
+\caption@width=\dimen177
+\caption@indent=\dimen178
+\caption@parindent=\dimen179
+\caption@hangindent=\dimen180
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count311
+\c@continuedfloat=\count312
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.
+sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count313
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count314
+) (C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+CVPR 8.5 x 11-Inch Proceedings Style `cvpr.sty'.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.s
+ty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip56
+\enit@outerparindent=\dimen181
+\enit@toks=\toks31
+\enit@inbox=\box55
+\enit@count@id=\count315
+\enitdp@description=\count316
+)) (preamble.tex)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.s
+ty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys
+.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvde
+finekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfesca
+pe.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.s
+ty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftex
+cmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infware
+rr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.st
+y
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.s
+ty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\ge
+ttitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions
+.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count317
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringe
+nc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen182
+\Hy@linkcounter=\count318
+\Hy@pagecounter=\count319
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.s
+ty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count320
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 4066.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing ON on input line 4213.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\backref.st
+y
+Package: backref 2025-06-21 v1.45 Bibliographical back referencing
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\reru
+nfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uni
+quecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigint
+calc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+))
+\c@Hy@tempcnt=\count321
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen183
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count322
+\Field@Width=\dimen184
+\Fld@charsize=\dimen185
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing ON on input line 6091.
+Package hyperref Info: Link coloring ON on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count323
+\c@Item=\count324
+\c@Hfootnote=\count325
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.de
+f
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count326
+\c@bookmark@seq@number=\count327
+\Hy@SectionHShift=\skip57
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/cleveref\cleveref.s
+ty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+30.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+52.
+)
+==> First Aid for cleveref.sty applied!
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+6.
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend
+-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count328
+) (final_paper.aux)
+\openout1 = `final_paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pd
+f.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count329
+\scratchdimen=\dimen186
+\scratchbox=\box56
+\nofMPsegments=\count330
+\nofMParguments=\count331
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count332
+\MPscratchDim=\dimen187
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
+\everyMPtoPDFconversion=\toks33
+)
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstop
+df-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-s
+ys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ ABD: EveryShipout initializing macros
+Package backref Info: ** backref set up for natbib ** on input line 16.
+Package hyperref Info: Link coloring ON on input line 16.
+ (final_paper.out)
+(final_paper.out)
+\@outlinefile=\write3
+\openout3 = `final_paper.out'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+8.
+
+(C:\Users\Vismay VS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+[1{C:/Users/Vismay VS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/User
+s/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+
+
+]
+<figures/fig1_budget.pdf, id=101, 235.92935pt x 134.6429pt>
+File: figures/fig1_budget.pdf Graphic file (type pdf)
+<use figures/fig1_budget.pdf>
+Package pdftex.def Info: figures/fig1_budget.pdf  used on input line 102.
+(pdftex.def)             Requested size: 237.13594pt x 135.33492pt.
+
+[2]
+<figures/fig2_liver_heatmaps_r3.pdf, id=126, 1156.32pt x 578.16pt>
+File: figures/fig2_liver_heatmaps_r3.pdf Graphic file (type pdf)
+<use figures/fig2_liver_heatmaps_r3.pdf>
+Package pdftex.def Info: figures/fig2_liver_heatmaps_r3.pdf  used on input line
+ 166.
+(pdftex.def)             Requested size: 422.33084pt x 211.16338pt.
+ [3 <./figures/fig1_budget.pdf>] [4 <./figures/fig2_liver_heatmaps_r3.pdf>]
+(final_paper.bbl (final_paper.brf)
+\tf@brf=\write4
+\openout4 = `final_paper.brf'.
+
+) [5
+
+] (final_paper.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ ***********
+Package rerunfilecheck Info: File `final_paper.out' has not changed.
+(rerunfilecheck)             Checksum: 90AEF72D11B06FF07D3C5F8C0B077A63;1667.
+Package rerunfilecheck Info: File `final_paper.brf' has not changed.
+(rerunfilecheck)             Checksum: D358168D8C7314C41637254F5F53C5EA;1022.
+ ) 
+Here is how much of TeX's memory you used:
+ 14892 strings out of 467871
+ 248491 string characters out of 5416403
+ 721910 words of memory out of 5000000
+ 43528 multiletter control sequences out of 15000+600000
+ 657410 words of font info for 104 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 90i,11n,98p,1219b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmbx8.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Vismay VS/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Vismay VS/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Visma
+y VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:
+/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mmi9.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmr10.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Vismay VS/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Vismay VS/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/V
+ismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy9.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb><C:/Users/Vismay VS/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Vismay VS/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Vismay VS/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on final_paper.pdf (5 pages, 822197 bytes).
+PDF statistics:
+ 403 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 107 words of extra memory for PDF output out of 10000 (max. 10000000)
+

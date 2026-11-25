@@ -1,0 +1,19 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mil_m100_Brain_s3] ep 0 step 0/50 mask Liver           loss 6.3542 (0.752s/step)
+[mil_m100_Brain_s3] ep 0 step 10/50 mask Liver           loss 5.3597 (0.105s/step)
+[mil_m100_Brain_s3] ep 0 step 20/50 mask Liver           loss 9.1092 (0.083s/step)
+[mil_m100_Brain_s3] ep 0 step 30/50 weak Chest           loss 11.9290 (0.075s/step)
+[mil_m100_Brain_s3] ep 0 step 40/50 weak Chest           loss 1.6420 (0.068s/step)
+[mil_m100_Brain_s3] epoch 0 done in 3s; source-val image AUROC 0.7406 {'Liver': 0.688, 'Retina_RESC': 0.5, 'Retina_OCT2017': 1.0, 'Chest': 0.531, 'Histopathology': 0.984}
+{
+ "run_id": "mil_m100_Brain_s3",
+ "best_epoch": 0,
+ "val_curve": [
+  0.74062
+ ],
+ "n_updates": 50,
+ "seconds_per_update": 0.10391121864318847,
+ "total_seconds": 15.17666482925415
+}
+{'eval_dataset': 'Brain', 'img_auroc': 0.453125, 'pix_auroc': 0.8519425784399164, 'aupro': 0.46548980963999814}

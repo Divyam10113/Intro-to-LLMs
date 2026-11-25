@@ -1,0 +1,80 @@
+{
+  "Liver": {
+    "Retina_OCT2017": {
+      "pi": 0.06472664466127753,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+      }
+    },
+    "Chest": {
+      "pi": 0.06472664466127753,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+      }
+    },
+    "Histopathology": {
+      "pi": 0.06472664466127753,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+      }
+    }
+  },
+  "Brain": {
+    "Retina_OCT2017": {
+      "pi": 0.06355709442868829,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+      }
+    },
+    "Chest": {
+      "pi": 0.06355709442868829,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+      }
+    },
+    "Histopathology": {
+      "pi": 0.06355709442868829,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+      }
+    }
+  },
+  "Retina_RESC": {
+    "Retina_OCT2017": {
+      "pi": 0.009176470339298248,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+      }
+    },
+    "Chest": {
+      "pi": 0.009176470339298248,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+      }
+    },
+    "Histopathology": {
+      "pi": 0.009176470339298248,
+      "method": "D1: mean true patch fraction of masked sources",
+      "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+      }
+    }
+  }
+}
