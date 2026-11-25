@@ -1,0 +1,70 @@
+{
+ "_about": "Written by pipeline/sync_handoffs.py; checked by `make check`. Paths are relative to the repo root.",
+ "handoffs": {
+  "task1.v6_to_handoff": {
+   "note": "Task 1's own export step; the hand-off folder is what other tasks are told to read.",
+   "files": [
+    {
+     "source": "task1_literature_review/runs/v6_2026-11-16/final_ref_set.json",
+     "copy": "task1_literature_review/task3_handoff/final_ref_set.json",
+     "sha256": "7bbbc605ebb1219cc929e7814b0003257aa69315313cc1fa5110938e0e4129bc"
+    },
+    {
+     "source": "task1_literature_review/runs/v6_2026-11-16/intermediates/final_ref_set_excluded.json",
+     "copy": "task1_literature_review/task3_handoff/final_ref_set_excluded.json",
+     "sha256": "29496b2a92eee5948c0dcef7935d056fad520cd18943f53b138b7397bee3e955"
+    }
+   ]
+  },
+  "task1_to_task3": {
+   "note": "Task 3 run 3 reads data/task1/ (Task 1 run v6: 594 candidate papers).",
+   "files": [
+    {
+     "source": "task1_literature_review/task3_handoff/final_ref_set.json",
+     "copy": "task3_ideation/data/task1/final_ref_set.json",
+     "sha256": "7bbbc605ebb1219cc929e7814b0003257aa69315313cc1fa5110938e0e4129bc"
+    },
+    {
+     "source": "task1_literature_review/task3_handoff/final_ref_set_excluded.json",
+     "copy": "task3_ideation/data/task1/final_ref_set_excluded.json",
+     "sha256": "29496b2a92eee5948c0dcef7935d056fad520cd18943f53b138b7397bee3e955"
+    },
+    {
+     "source": "task1_literature_review/task3_handoff/README.md",
+     "copy": "task3_ideation/data/task1/README_task1_output.md",
+     "sha256": "fe11ee154fd10b031527d7cde3b25e9c4ae86cf30b80df170b76fcf40de48777"
+    }
+   ]
+  },
+  "task2_to_task3": {
+   "note": "Task 3 stage 0 reads data/task2/final_limitations.json (39 limitations, MiniMax via NIM). Task 2 was built on Task 1 run v4, not v6: see PIPELINE.md.",
+   "files": [
+    {
+     "source": "task2_limitations/outputs/full_nim/final_limitations.json",
+     "copy": "task3_ideation/data/task2/final_limitations.json",
+     "sha256": "f235aaaa4cc3bfd806e9c3e1c48ef06e00a5907587c76c12fa72c4b133fed01a"
+    },
+    {
+     "source": "task2_limitations/deliverables/task2/task2_research_gaps.md",
+     "copy": "task3_ideation/data/task2/task2_research_gaps.md",
+     "sha256": "b0acffa8cd77ecf3d949e8f820c312571f2028e31e3b9c95477c697a9e4e70ff"
+    }
+   ]
+  },
+  "task3_to_task4": {
+   "note": "Task 4 tests idea family A1 (image-label MIL for MVFA's segmentation adapters); the plans in plans/ cite these two files.",
+   "files": [
+    {
+     "source": "task3_ideation/outputs/stage3_evolution_A1.json",
+     "copy": "task4_weak_supervision/plans/stage3_evolution_A1.json",
+     "sha256": "825f89173b71ea1e6d0ab41ffe4fa25ecd81a74d5d48695f17697554ae2e4e30"
+    },
+    {
+     "source": "task3_ideation/outputs/stage4_ranking_A1.json",
+     "copy": "task4_weak_supervision/plans/stage4_ranking_A1.json",
+     "sha256": "f715ec5d8b791b28af06d752ae23019cbc4ec02e343f8f416d03b7f1e6ee0cb9"
+    }
+   ]
+  }
+ }
+}
