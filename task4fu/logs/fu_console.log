@@ -1,0 +1,22 @@
+== 10 jobs on 10 slots 2026-11-24 20:37:29
+[2026-11-24 20:37:29 gpu 0 slot 0] start 0: train2.py --arm mvfa --fold Brain --seed 8 --epochs 20 --device cuda:0
+[2026-11-24 20:37:31 gpu 0 slot 1] start 1: train2.py --arm mil_m10 --fold Brain --seed 8 --epochs 20 --device cuda:0
+[2026-11-24 20:37:33 gpu 0 slot 2] start 2: train2.py --arm mvfa --fold Brain --seed 9 --epochs 20 --device cuda:0
+[2026-11-24 20:37:35 gpu 0 slot 3] start 3: train2.py --arm mil_m10 --fold Brain --seed 9 --epochs 20 --device cuda:0
+[2026-11-24 20:37:37 gpu 0 slot 4] start 4: train2.py --arm mvfa --fold Brain --seed 10 --epochs 20 --device cuda:0
+[2026-11-24 20:37:39 gpu 1 slot 5] start 5: train2.py --arm mil_m10 --fold Brain --seed 10 --epochs 20 --device cuda:1
+[2026-11-24 20:37:41 gpu 1 slot 6] start 6: train2.py --arm mvfa --fold Brain --seed 11 --epochs 20 --device cuda:1
+[2026-11-24 20:37:43 gpu 1 slot 7] start 7: train2.py --arm mil_m10 --fold Brain --seed 11 --epochs 20 --device cuda:1
+[2026-11-24 20:37:45 gpu 1 slot 8] start 8: train2.py --arm mvfa --fold Brain --seed 12 --epochs 20 --device cuda:1
+[2026-11-24 20:37:47 gpu 1 slot 9] start 9: train2.py --arm mil_m10 --fold Brain --seed 12 --epochs 20 --device cuda:1
+[2026-11-24 21:34:24 gpu 1 slot 6] done  6
+[2026-11-24 21:34:25 gpu 1 slot 8] done  8
+[2026-11-24 21:34:53 gpu 0 slot 0] done  0
+[2026-11-24 21:35:05 gpu 0 slot 2] done  2
+[2026-11-24 21:35:06 gpu 0 slot 4] done  4
+[2026-11-24 21:37:29 gpu 1 slot 5] done  5
+[2026-11-24 21:37:33 gpu 1 slot 7] done  7
+[2026-11-24 21:37:41 gpu 1 slot 9] done  9
+[2026-11-24 21:37:57 gpu 0 slot 1] done  1
+[2026-11-24 21:38:01 gpu 0 slot 3] done  3
+== phase finished 2026-11-24 21:38:02

@@ -1,0 +1,98 @@
+{
+  "Retina_RESC": {
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.005,
+      "pi_raw": -0.01692865779927466,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 0.9408911791451955,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  },
+  "Brain": {
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 0.9489795918367347,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.005,
+      "pi_raw": -0.05840830449826995,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 0.7557313529221827,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  },
+  "Liver": {
+    "Retina_OCT2017": {
+      "pi": 0.3,
+      "pi_raw": 1.0,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 25,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 7225,
+      "n_abnormal_patches": 14450
+    },
+    "Chest": {
+      "pi": 0.10015967484395416,
+      "pi_raw": 0.10015967484395416,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    },
+    "Histopathology": {
+      "pi": 0.3,
+      "pi_raw": 0.9861320470304492,
+      "branch": "seg",
+      "level": "deepest (24)",
+      "n_normal_imgs": 50,
+      "n_abnormal_imgs": 50,
+      "n_normal_patches": 14450,
+      "n_abnormal_patches": 14450
+    }
+  }
+}

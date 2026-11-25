@@ -1,0 +1,96 @@
+ "bank_size": 300,
+ "bank_size": 300,
+ "bank_size": 300,
+ "bank_size": 300,
+ "bank_size": 300,
+ "bank_size": 300,
+== /tmp/task4r2_smoke/logs/train_g.log
+[g_Liver_s0] epoch 0 done in 19s; source-val image AUROC 0.4222 {'Brain': 0.778, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[g_Liver_s0] epoch 1 done in 19s; source-val image AUROC 0.4000 {'Brain': 0.889, 'Retina_RESC': 0.111, 'Retina_OCT2017': 1.0, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_g_m100.log
+[g_m100_Liver_s0] epoch 0 done in 19s; source-val image AUROC 0.4222 {'Brain': 0.778, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[g_m100_Liver_s0] epoch 1 done in 17s; source-val image AUROC 0.4000 {'Brain': 0.778, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_g_m10.log
+[g_m10_Liver_s0] epoch 0 done in 19s; source-val image AUROC 0.4222 {'Brain': 0.778, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[g_m10_Liver_s0] epoch 1 done in 18s; source-val image AUROC 0.4000 {'Brain': 0.889, 'Retina_RESC': 0.111, 'Retina_OCT2017': 1.0, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_g_m25.log
+[g_m25_Liver_s0] epoch 0 done in 20s; source-val image AUROC 0.4222 {'Brain': 0.778, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[g_m25_Liver_s0] epoch 1 done in 18s; source-val image AUROC 0.4000 {'Brain': 0.889, 'Retina_RESC': 0.111, 'Retina_OCT2017': 1.0, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_g_RESC_OCT.log
+[g_RESC_OCT_s1] epoch 0 done in 17s; source-val image AUROC 0.6667 {'Brain': 0.444, 'Liver': 0.667, 'Chest': 0.889, 'Histopathology': 0.667}
+[g_RESC_OCT_s1] epoch 1 done in 19s; source-val image AUROC 0.6944 {'Brain': 0.667, 'Liver': 0.667, 'Chest': 0.778, 'Histopathology': 0.667}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_mil.log
+[mil_Liver_s0] epoch 0 done in 18s; source-val image AUROC 0.4000 {'Brain': 0.667, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[mil_Liver_s0] epoch 1 done in 18s; source-val image AUROC 0.3778 {'Brain': 0.667, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_mvfa.log
+[mvfa_Liver_s0] epoch 0 done in 20s; source-val image AUROC 0.4000 {'Brain': 0.667, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.111, 'Histopathology': 0.0}
+[mvfa_Liver_s0] epoch 1 done in 18s; source-val image AUROC 0.3556 {'Brain': 0.667, 'Retina_RESC': 0.222, 'Retina_OCT2017': 0.889, 'Chest': 0.0, 'Histopathology': 0.0}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_pu_Chest.log
+[pu_Chest_s0_pi5] epoch 0 done in 35s; source-val image AUROC 0.5556 {'Brain': 0.667, 'Liver': 0.778, 'Retina_RESC': 0.444, 'Retina_OCT2017': 0.889, 'Histopathology': 0.0}
+[pu_Chest_s0_pi5] epoch 1 done in 34s; source-val image AUROC 0.6444 {'Brain': 0.667, 'Liver': 0.778, 'Retina_RESC': 0.778, 'Retina_OCT2017': 0.889, 'Histopathology': 0.111}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_pu.log
+[pu_Liver_s0] epoch 0 done in 36s; source-val image AUROC 0.4222 {'Brain': 0.667, 'Retina_RESC': 0.333, 'Retina_OCT2017': 0.889, 'Chest': 0.222, 'Histopathology': 0.0}
+[pu_Liver_s0] epoch 1 done in 35s; source-val image AUROC 0.6444 {'Brain': 0.889, 'Retina_RESC': 0.667, 'Retina_OCT2017': 0.889, 'Chest': 0.333, 'Histopathology': 0.444}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+== /tmp/task4r2_smoke/logs/train_pu_m100.log
+[pu_m100_Liver_s0] epoch 0 done in 22s; source-val image AUROC 0.4889 {'Brain': 0.889, 'Retina_RESC': 0.222, 'Retina_OCT2017': 1.0, 'Chest': 0.333, 'Histopathology': 0.0}
+[pu_m100_Liver_s0] epoch 1 done in 24s; source-val image AUROC 0.5778 {'Brain': 0.667, 'Retina_RESC': 0.556, 'Retina_OCT2017': 1.0, 'Chest': 0.333, 'Histopathology': 0.333}
+Traceback (most recent call last):
+KeyError: 'Brain_AD/valid/Ungood/img/00124_70.png'
+/tmp/task4r2_smoke/runs/g_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/g_m100_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/g_m10_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/g_m25_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/g_RESC_OCT_s1/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/mil_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/mvfa_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/pu_Chest_s0_pi5/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/pu_Liver_s0/:
+adapters.pth
+loss.csv
+
+/tmp/task4r2_smoke/runs/pu_m100_Liver_s0/:
+adapters.pth
+loss.csv
+smoke exit 1

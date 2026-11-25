@@ -1,0 +1,14 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+{
+ "dataset": "Brain",
+ "n_normal_images": 500,
+ "n_vectors": 144500,
+ "bank_size": 20000,
+ "n_gated_images": 1073,
+ "gate_mean_normal_train": 0.08193325996398926,
+ "gate_mean_abnormal_train": 0.13191284239292145,
+ "gate_p99_abnormal_train": 0.327392578125,
+ "seconds_bank": 28.673659324645996,
+ "seconds_total": 35.406095027923584
+}

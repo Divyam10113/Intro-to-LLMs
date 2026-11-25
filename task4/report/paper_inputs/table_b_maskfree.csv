@@ -1,0 +1,7 @@
+target,model,n,img AUROC,pix AUROC,AUPRO,retention (pix−50)/(R0−50),AUPRO / R0 AUPRO
+Liver,M (seeds 0-2),3,73.79 ± 2.52,59.45 ± 15.51,26.28 ± 15.50,-0.002 (s0),0.188 (s0)
+Liver,B0 (seed 0),1,75.17,94.42,85.47,0.927 (s0),0.926 (s0)
+Brain,M (seed 0),1,68.87,89.87,64.50,1.005 (s0),0.987 (s0)
+Brain,B0 (seed 0),1,63.51,89.46,64.53,0.994 (s0),0.987 (s0)
+Retina_RESC,M (seed 0),1,84.53,80.13,58.52,0.745 (s0),0.851 (s0)
+Retina_RESC,B0 (seed 0),1,76.98,89.57,67.29,0.979 (s0),0.979 (s0)

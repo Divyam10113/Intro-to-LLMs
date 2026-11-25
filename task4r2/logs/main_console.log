@@ -1,0 +1,132 @@
+== 65 jobs on 12 slots 15:29:00
+[15:29:00 gpu 0 slot 1] start 0: train2.py --arm mvfa --fold Brain --seed 0 --device cuda:0
+[15:29:00 gpu 0 slot 0] start 1: train2.py --arm g --fold Brain --seed 0 --device cuda:0
+[15:29:00 gpu 0 slot 2] start 2: train2.py --arm mil --fold Brain --seed 0 --device cuda:0
+[15:29:00 gpu 0 slot 3] start 3: train2.py --arm g_m100 --fold Brain --seed 0 --device cuda:0
+[15:29:00 gpu 1 slot 7] start 4: train2.py --arm pu_m100 --fold Brain --seed 0 --device cuda:1
+[15:29:00 gpu 1 slot 8] start 5: train2.py --arm pu --fold Brain --seed 0 --device cuda:1
+[15:29:00 gpu 0 slot 4] start 6: train2.py --arm mvfa --fold Liver --seed 0 --save_maps --device cuda:0
+[15:29:00 gpu 1 slot 10] start 7: train2.py --arm g --fold Liver --seed 0 --save_maps --device cuda:1
+[15:29:00 gpu 1 slot 6] start 8: train2.py --arm mil --fold Liver --seed 0 --save_maps --device cuda:1
+[15:29:00 gpu 1 slot 9] start 9: train2.py --arm g_m100 --fold Liver --seed 0 --save_maps --device cuda:1
+[15:29:00 gpu 0 slot 5] start 10: train2.py --arm pu_m100 --fold Liver --seed 0 --save_maps --device cuda:0
+[15:29:00 gpu 1 slot 11] start 11: train2.py --arm pu --fold Liver --seed 0 --save_maps --device cuda:1
+[15:37:38 gpu 1 slot 11] done  11
+[15:37:38 gpu 1 slot 11] start 12: train2.py --arm mvfa --fold RESC_OCT --seed 0 --device cuda:1
+[15:38:38 gpu 1 slot 8] done  5
+[15:38:38 gpu 1 slot 8] start 13: train2.py --arm g --fold RESC_OCT --seed 0 --device cuda:1
+[15:43:29 gpu 0 slot 5] done  10
+[15:43:29 gpu 0 slot 5] start 14: train2.py --arm mil --fold RESC_OCT --seed 0 --device cuda:0
+[15:45:16 gpu 1 slot 7] done  4
+[15:45:16 gpu 1 slot 7] start 15: train2.py --arm g_m100 --fold RESC_OCT --seed 0 --device cuda:1
+[15:45:44 gpu 0 slot 4] done  6
+[15:45:44 gpu 0 slot 4] start 16: train2.py --arm pu_m100 --fold RESC_OCT --seed 0 --device cuda:0
+[15:46:09 gpu 0 slot 1] done  0
+[15:46:09 gpu 0 slot 1] start 17: train2.py --arm pu --fold RESC_OCT --seed 0 --device cuda:0
+[15:47:51 gpu 0 slot 2] done  2
+[15:47:51 gpu 0 slot 2] start 18: train2.py --arm mvfa --fold Chest --seed 0 --device cuda:0
+[15:49:01 gpu 1 slot 6] done  8
+[15:49:01 gpu 1 slot 6] start 19: train2.py --arm g --fold Chest --seed 0 --device cuda:1
+[15:50:30 gpu 1 slot 10] done  7
+[15:50:30 gpu 1 slot 10] start 20: train2.py --arm mil --fold Chest --seed 0 --device cuda:1
+[15:50:45 gpu 0 slot 0] done  1
+[15:50:45 gpu 0 slot 0] start 21: train2.py --arm pu --fold Chest --seed 0 --device cuda:0
+[15:51:22 gpu 1 slot 9] done  9
+[15:51:22 gpu 1 slot 9] start 22: train2.py --arm mvfa --fold HIS --seed 0 --device cuda:1
+[15:51:44 gpu 1 slot 11] done  12
+[15:51:44 gpu 1 slot 11] start 23: train2.py --arm g --fold HIS --seed 0 --device cuda:1
+[15:52:00 gpu 0 slot 3] done  3
+[15:52:00 gpu 0 slot 3] start 24: train2.py --arm mil --fold HIS --seed 0 --device cuda:0
+[15:52:48 gpu 0 slot 1] done  17
+[15:52:48 gpu 0 slot 1] start 25: train2.py --arm pu --fold HIS --seed 0 --device cuda:0
+[15:54:38 gpu 1 slot 8] done  13
+[15:54:38 gpu 1 slot 8] start 26: train2.py --arm mvfa --fold Brain --seed 1 --device cuda:1
+[16:00:04 gpu 0 slot 0] done  21
+[16:00:04 gpu 0 slot 0] start 27: train2.py --arm g --fold Brain --seed 1 --device cuda:0
+[16:00:29 gpu 0 slot 4] done  16
+[16:00:29 gpu 0 slot 4] start 28: train2.py --arm mil --fold Brain --seed 1 --device cuda:0
+[16:01:18 gpu 0 slot 1] done  25
+[16:01:18 gpu 0 slot 1] start 29: train2.py --arm g_m100 --fold Brain --seed 1 --device cuda:0
+[16:01:28 gpu 0 slot 5] done  14
+[16:01:28 gpu 0 slot 5] start 30: train2.py --arm pu_m100 --fold Brain --seed 1 --device cuda:0
+[16:02:18 gpu 1 slot 7] done  15
+[16:02:18 gpu 1 slot 7] start 31: train2.py --arm pu --fold Brain --seed 1 --device cuda:1
+[16:09:12 gpu 0 slot 2] done  18
+[16:09:12 gpu 0 slot 2] start 32: train2.py --arm mvfa --fold Liver --seed 1 --device cuda:0
+[16:09:21 gpu 1 slot 10] done  20
+[16:09:21 gpu 1 slot 10] start 33: train2.py --arm g --fold Liver --seed 1 --device cuda:1
+[16:09:55 gpu 1 slot 6] done  19
+[16:09:55 gpu 1 slot 6] start 34: train2.py --arm mil --fold Liver --seed 1 --device cuda:1
+[16:10:09 gpu 1 slot 9] done  22
+[16:10:09 gpu 1 slot 9] start 35: train2.py --arm g_m100 --fold Liver --seed 1 --device cuda:1
+[16:11:49 gpu 1 slot 7] done  31
+[16:11:49 gpu 1 slot 7] start 36: train2.py --arm pu_m100 --fold Liver --seed 1 --device cuda:1
+[16:12:11 gpu 0 slot 3] done  24
+[16:12:11 gpu 0 slot 3] start 37: train2.py --arm pu --fold Liver --seed 1 --device cuda:0
+[16:12:12 gpu 1 slot 11] done  23
+[16:12:12 gpu 1 slot 11] start 38: train2.py --arm mvfa --fold RESC_OCT --seed 1 --device cuda:1
+[16:12:17 gpu 1 slot 8] done  26
+[16:12:17 gpu 1 slot 8] start 39: train2.py --arm g --fold RESC_OCT --seed 1 --device cuda:1
+[16:16:54 gpu 0 slot 5] done  30
+[16:16:54 gpu 0 slot 5] start 40: train2.py --arm mil --fold RESC_OCT --seed 1 --device cuda:0
+[16:20:10 gpu 0 slot 3] done  37
+[16:20:10 gpu 0 slot 3] start 41: train2.py --arm g_m100 --fold RESC_OCT --seed 1 --device cuda:0
+[16:20:28 gpu 0 slot 4] done  28
+[16:20:28 gpu 0 slot 4] start 42: train2.py --arm pu_m100 --fold RESC_OCT --seed 1 --device cuda:0
+[16:22:04 gpu 0 slot 0] done  27
+[16:22:04 gpu 0 slot 0] start 43: train2.py --arm pu --fold RESC_OCT --seed 1 --device cuda:0
+[16:24:12 gpu 0 slot 1] done  29
+[16:24:12 gpu 0 slot 1] start 44: train2.py --arm mvfa --fold Brain --seed 2 --device cuda:0
+[16:25:23 gpu 1 slot 7] done  36
+[16:25:23 gpu 1 slot 7] start 45: train2.py --arm g --fold Brain --seed 2 --device cuda:1
+[16:25:41 gpu 0 slot 2] done  32
+[16:25:41 gpu 0 slot 2] start 46: train2.py --arm mil --fold Brain --seed 2 --device cuda:0
+[16:26:20 gpu 1 slot 11] done  38
+[16:26:20 gpu 1 slot 11] start 47: train2.py --arm g_m100 --fold Brain --seed 2 --device cuda:1
+[16:27:21 gpu 1 slot 6] done  34
+[16:27:21 gpu 1 slot 6] start 48: train2.py --arm pu_m100 --fold Brain --seed 2 --device cuda:1
+[16:28:40 gpu 1 slot 10] done  33
+[16:28:40 gpu 1 slot 10] start 49: train2.py --arm pu --fold Brain --seed 2 --device cuda:1
+[16:28:57 gpu 0 slot 0] done  43
+[16:28:57 gpu 0 slot 0] start 50: train2.py --arm mvfa --fold Liver --seed 2 --device cuda:0
+[16:29:08 gpu 1 slot 8] done  39
+[16:29:08 gpu 1 slot 8] start 51: train2.py --arm g --fold Liver --seed 2 --device cuda:1
+[16:30:10 gpu 1 slot 9] done  35
+[16:30:10 gpu 1 slot 9] start 52: train2.py --arm mil --fold Liver --seed 2 --device cuda:1
+[16:33:11 gpu 0 slot 5] done  40
+[16:33:11 gpu 0 slot 5] start 53: train2.py --arm g_m100 --fold Liver --seed 2 --device cuda:0
+[16:33:49 gpu 0 slot 4] done  42
+[16:33:49 gpu 0 slot 4] start 54: train2.py --arm pu_m100 --fold Liver --seed 2 --device cuda:0
+[16:37:18 gpu 1 slot 10] done  49
+[16:37:18 gpu 1 slot 10] start 55: train2.py --arm pu --fold Liver --seed 2 --device cuda:1
+[16:39:11 gpu 0 slot 3] done  41
+[16:39:11 gpu 0 slot 3] start 56: train2.py --arm mvfa --fold RESC_OCT --seed 2 --device cuda:0
+[16:41:32 gpu 0 slot 1] done  44
+[16:41:32 gpu 0 slot 1] start 57: train2.py --arm g --fold RESC_OCT --seed 2 --device cuda:0
+[16:42:39 gpu 1 slot 6] done  48
+[16:42:39 gpu 1 slot 6] start 58: train2.py --arm mil --fold RESC_OCT --seed 2 --device cuda:1
+[16:44:59 gpu 0 slot 0] done  50
+[16:44:59 gpu 0 slot 0] start 59: train2.py --arm g_m100 --fold RESC_OCT --seed 2 --device cuda:0
+[16:45:07 gpu 1 slot 10] done  55
+[16:45:07 gpu 1 slot 10] start 60: train2.py --arm pu_m100 --fold RESC_OCT --seed 2 --device cuda:1
+[16:45:16 gpu 0 slot 2] done  46
+[16:45:16 gpu 0 slot 2] start 61: train2.py --arm pu --fold RESC_OCT --seed 2 --device cuda:0
+[16:46:59 gpu 1 slot 7] done  45
+[16:46:59 gpu 1 slot 7] start 62: train2.py --arm pu --fold Brain --seed 0 --pi 0.05 --tag pi5 --device cuda:1
+[16:48:04 gpu 0 slot 4] done  54
+[16:48:04 gpu 0 slot 4] start 63: train2.py --arm pu --fold Liver --seed 0 --pi 0.05 --tag pi5 --device cuda:0
+[16:48:50 gpu 1 slot 11] done  47
+[16:48:50 gpu 1 slot 11] start 64: train2.py --arm pu --fold RESC_OCT --seed 0 --pi 0.05 --tag pi5 --device cuda:1
+[16:49:35 gpu 1 slot 9] done  52
+[16:50:17 gpu 1 slot 8] done  51
+[16:52:07 gpu 0 slot 2] done  61
+[16:54:16 gpu 0 slot 3] done  56
+[16:55:21 gpu 0 slot 5] done  53
+[16:55:24 gpu 1 slot 11] done  64
+[16:55:37 gpu 0 slot 4] done  63
+[16:55:38 gpu 1 slot 7] done  62
+[16:56:11 gpu 1 slot 10] done  60
+[16:56:40 gpu 1 slot 6] done  58
+[16:57:05 gpu 0 slot 1] done  57
+[16:58:23 gpu 0 slot 0] done  59
+== phase finished 16:58:23

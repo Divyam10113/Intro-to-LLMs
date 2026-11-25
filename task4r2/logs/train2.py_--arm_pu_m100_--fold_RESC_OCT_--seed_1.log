@@ -1,0 +1,53 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[pu_m100_RESC_OCT_s1] ep 0 step 0/3000 pair Chest           loss 8.5697 (0.695s/step)
+[pu_m100_RESC_OCT_s1] ep 0 step 500/3000 mask Brain           loss 6.7272 (0.050s/step)
+[pu_m100_RESC_OCT_s1] ep 0 step 1000/3000 mask Liver           loss 4.9227 (0.046s/step)
+[pu_m100_RESC_OCT_s1] ep 0 step 1500/3000 pair Chest           loss 2.4782 (0.043s/step)
+[pu_m100_RESC_OCT_s1] ep 0 step 2000/3000 pair Histopathology  loss 4.0557 (0.041s/step)
+[pu_m100_RESC_OCT_s1] ep 0 step 2500/3000 pair Histopathology  loss 2.2385 (0.042s/step)
+[pu_m100_RESC_OCT_s1] epoch 0 done in 130s; source-val image AUROC 0.9129 {'Brain': 0.948, 'Liver': 0.94, 'Chest': 0.879, 'Histopathology': 0.884}
+[pu_m100_RESC_OCT_s1] ep 1 step 0/3000 pair Chest           loss 2.4692 (0.291s/step)
+[pu_m100_RESC_OCT_s1] ep 1 step 500/3000 mask Liver           loss 3.2204 (0.055s/step)
+[pu_m100_RESC_OCT_s1] ep 1 step 1000/3000 pair Chest           loss 2.4412 (0.049s/step)
+[pu_m100_RESC_OCT_s1] ep 1 step 1500/3000 pair Histopathology  loss 2.1506 (0.047s/step)
+[pu_m100_RESC_OCT_s1] ep 1 step 2000/3000 mask Liver           loss 4.2650 (0.047s/step)
+[pu_m100_RESC_OCT_s1] ep 1 step 2500/3000 mask Brain           loss 3.4449 (0.049s/step)
+[pu_m100_RESC_OCT_s1] epoch 1 done in 149s; source-val image AUROC 0.9306 {'Brain': 0.974, 'Liver': 0.956, 'Chest': 0.9, 'Histopathology': 0.893}
+[pu_m100_RESC_OCT_s1] ep 2 step 0/3000 pair Histopathology  loss 2.1192 (0.271s/step)
+[pu_m100_RESC_OCT_s1] ep 2 step 500/3000 mask Liver           loss 2.9528 (0.045s/step)
+[pu_m100_RESC_OCT_s1] ep 2 step 1000/3000 pair Histopathology  loss 2.6381 (0.050s/step)
+[pu_m100_RESC_OCT_s1] ep 2 step 1500/3000 mask Brain           loss 3.1730 (0.052s/step)
+[pu_m100_RESC_OCT_s1] ep 2 step 2000/3000 mask Brain           loss 3.2983 (0.051s/step)
+[pu_m100_RESC_OCT_s1] ep 2 step 2500/3000 mask Brain           loss 3.1171 (0.052s/step)
+[pu_m100_RESC_OCT_s1] epoch 2 done in 155s; source-val image AUROC 0.9358 {'Brain': 0.977, 'Liver': 0.957, 'Chest': 0.9, 'Histopathology': 0.91}
+[pu_m100_RESC_OCT_s1] ep 3 step 0/3000 mask Brain           loss 4.5335 (0.336s/step)
+[pu_m100_RESC_OCT_s1] ep 3 step 500/3000 mask Brain           loss 6.4311 (0.045s/step)
+[pu_m100_RESC_OCT_s1] ep 3 step 1000/3000 pair Chest           loss 4.2081 (0.044s/step)
+[pu_m100_RESC_OCT_s1] ep 3 step 1500/3000 mask Brain           loss 3.2615 (0.045s/step)
+[pu_m100_RESC_OCT_s1] ep 3 step 2000/3000 mask Liver           loss 2.8717 (0.045s/step)
+[pu_m100_RESC_OCT_s1] ep 3 step 2500/3000 pair Chest           loss 2.5570 (0.046s/step)
+[pu_m100_RESC_OCT_s1] epoch 3 done in 139s; source-val image AUROC 0.9430 {'Brain': 0.973, 'Liver': 0.978, 'Chest': 0.901, 'Histopathology': 0.92}
+[pu_m100_RESC_OCT_s1] ep 4 step 0/3000 mask Brain           loss 4.8115 (0.246s/step)
+[pu_m100_RESC_OCT_s1] ep 4 step 500/3000 mask Brain           loss 2.9910 (0.048s/step)
+[pu_m100_RESC_OCT_s1] ep 4 step 1000/3000 mask Liver           loss 3.4819 (0.048s/step)
+[pu_m100_RESC_OCT_s1] ep 4 step 1500/3000 mask Brain           loss 3.0223 (0.049s/step)
+[pu_m100_RESC_OCT_s1] ep 4 step 2000/3000 mask Brain           loss 3.0790 (0.048s/step)
+[pu_m100_RESC_OCT_s1] ep 4 step 2500/3000 pair Histopathology  loss 2.7742 (0.048s/step)
+[pu_m100_RESC_OCT_s1] epoch 4 done in 142s; source-val image AUROC 0.9463 {'Brain': 0.972, 'Liver': 0.987, 'Chest': 0.905, 'Histopathology': 0.921}
+{
+ "run_id": "pu_m100_RESC_OCT_s1",
+ "best_epoch": 4,
+ "val_curve": [
+  0.91286,
+  0.93059,
+  0.93579,
+  0.94303,
+  0.94633
+ ],
+ "n_updates": 15000,
+ "seconds_per_update": 0.05070723835627238,
+ "total_seconds": 797.0014064311981
+}
+{'eval_dataset': 'Retina_RESC', 'img_auroc': 0.7905268796113283, 'pix_auroc': 0.8730994851594472, 'aupro': 0.5774279258468618}
+{'eval_dataset': 'Retina_OCT2017', 'img_auroc': 0.6866675773512738, 'pix_auroc': '', 'aupro': ''}

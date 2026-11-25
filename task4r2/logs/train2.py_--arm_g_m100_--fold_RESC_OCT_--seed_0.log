@@ -1,0 +1,63 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[g_m100_RESC_OCT_s0] ep 0 step 0/4000 weak Chest           loss 2.5253 (1.028s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 500/4000 mask Liver           loss 5.0123 (0.049s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 1000/4000 weak Histopathology  loss 5.6437 (0.048s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 1500/4000 mask Brain           loss 5.5740 (0.048s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 2000/4000 mask Liver           loss 6.5109 (0.048s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 2500/4000 weak Chest           loss 4.9129 (0.048s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 3000/4000 weak Chest           loss 8.1445 (0.048s/step)
+[g_m100_RESC_OCT_s0] ep 0 step 3500/4000 weak Chest           loss 5.0465 (0.048s/step)
+[g_m100_RESC_OCT_s0] epoch 0 done in 190s; source-val image AUROC 0.8767 {'Brain': 0.933, 'Liver': 0.817, 'Chest': 0.889, 'Histopathology': 0.868}
+[g_m100_RESC_OCT_s0] ep 1 step 0/4000 weak Chest           loss 3.2442 (0.327s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 500/4000 mask Liver           loss 6.4427 (0.040s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 1000/4000 weak Chest           loss 3.5044 (0.043s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 1500/4000 weak Histopathology  loss 3.5067 (0.044s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 2000/4000 mask Liver           loss 5.2980 (0.044s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 2500/4000 mask Brain           loss 5.5589 (0.043s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 3000/4000 weak Histopathology  loss 4.0949 (0.043s/step)
+[g_m100_RESC_OCT_s0] ep 1 step 3500/4000 mask Liver           loss 4.3064 (0.041s/step)
+[g_m100_RESC_OCT_s0] epoch 1 done in 161s; source-val image AUROC 0.9127 {'Brain': 0.973, 'Liver': 0.914, 'Chest': 0.892, 'Histopathology': 0.872}
+[g_m100_RESC_OCT_s0] ep 2 step 0/4000 weak Histopathology  loss 2.0847 (0.263s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 500/4000 mask Brain           loss 4.7005 (0.044s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 1000/4000 weak Histopathology  loss 4.1323 (0.046s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 1500/4000 weak Chest           loss 3.7716 (0.046s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 2000/4000 weak Chest           loss 10.2107 (0.047s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 2500/4000 mask Liver           loss 3.4884 (0.047s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 3000/4000 weak Chest           loss 3.3087 (0.047s/step)
+[g_m100_RESC_OCT_s0] ep 2 step 3500/4000 mask Brain           loss 4.4713 (0.047s/step)
+[g_m100_RESC_OCT_s0] epoch 2 done in 188s; source-val image AUROC 0.9351 {'Brain': 0.966, 'Liver': 0.947, 'Chest': 0.906, 'Histopathology': 0.922}
+[g_m100_RESC_OCT_s0] ep 3 step 0/4000 mask Liver           loss 4.1354 (0.292s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 500/4000 mask Liver           loss 4.7688 (0.051s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 1000/4000 mask Brain           loss 6.2103 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 1500/4000 weak Chest           loss 3.8450 (0.051s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 2000/4000 mask Brain           loss 4.4203 (0.051s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 2500/4000 mask Brain           loss 4.7051 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 3000/4000 weak Chest           loss 4.7789 (0.051s/step)
+[g_m100_RESC_OCT_s0] ep 3 step 3500/4000 mask Liver           loss 3.5036 (0.050s/step)
+[g_m100_RESC_OCT_s0] epoch 3 done in 201s; source-val image AUROC 0.9324 {'Brain': 0.971, 'Liver': 0.951, 'Chest': 0.909, 'Histopathology': 0.898}
+[g_m100_RESC_OCT_s0] ep 4 step 0/4000 mask Liver           loss 6.5092 (0.245s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 500/4000 weak Chest           loss 7.3333 (0.051s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 1000/4000 weak Histopathology  loss 2.9158 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 1500/4000 mask Brain           loss 2.7646 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 2000/4000 weak Chest           loss 3.1164 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 2500/4000 weak Chest           loss 2.3000 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 3000/4000 mask Brain           loss 4.5133 (0.050s/step)
+[g_m100_RESC_OCT_s0] ep 4 step 3500/4000 mask Liver           loss 3.5559 (0.050s/step)
+[g_m100_RESC_OCT_s0] epoch 4 done in 200s; source-val image AUROC 0.9423 {'Brain': 0.97, 'Liver': 0.953, 'Chest': 0.91, 'Histopathology': 0.937}
+{
+ "run_id": "g_m100_RESC_OCT_s0",
+ "best_epoch": 4,
+ "val_curve": [
+  0.87673,
+  0.91274,
+  0.93514,
+  0.93237,
+  0.94234
+ ],
+ "n_updates": 20000,
+ "seconds_per_update": 0.049126209580898285,
+ "total_seconds": 1017.9670753479004
+}
+{'eval_dataset': 'Retina_RESC', 'img_auroc': 0.7480335058416445, 'pix_auroc': 0.875741934819911, 'aupro': 0.578219677311773}
+{'eval_dataset': 'Retina_OCT2017', 'img_auroc': 0.4517052569268948, 'pix_auroc': '', 'aupro': ''}
