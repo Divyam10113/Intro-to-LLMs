@@ -24,7 +24,7 @@ Solid arrows are file handoffs that `make sync` copies and `make check` verifies
 make help        # every command
 make venv        # .venv-pipeline: Python 3.12+ with requirements-smoke.txt (Tasks 0-3)
 make smoke       # every stage's offline dry run, then `make check` (~5 s, no API call, no GPU)
-make test        # Task 4's CPU test suites (27 + 41 + 80 + 59 tests, ~4 min)
+make test        # Task 4's CPU test suites (27 + 41 + 80 + 59 tests, 2-4 min)
 ```
 
 Nothing in `smoke`, `check`, `test`, `sync-dry-run` or `taskN-dry-run` calls a paid API, uses a GPU or changes a tracked file. `smoke` checks that last point itself.

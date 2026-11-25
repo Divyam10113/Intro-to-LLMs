@@ -42,7 +42,7 @@ check:  ## fail on handoff drift, changed frozen files, broken symlinks, tracked
 	$(PYTHON) pipeline/sync_handoffs.py --check
 	$(PYTHON) pipeline/check_repo.py
 
-test:  ## Task 4 test suites on CPU (round1 27, round2 41, round3 80, followup 59; round1 takes ~4 min)
+test:  ## Task 4 test suites on CPU (round1 27, round2 41, round3 80, followup 59; round1 takes 2-4 min)
 	@$(CONFIG); set -e; for d in $(TASK4_SUITES); do echo "== task4 $$d"; \
 	  (cd task4_weak_supervision/$$d && CUDA_VISIBLE_DEVICES="" PYTHONDONTWRITEBYTECODE=1 \
 	   "$$TASK4_PYTHON" -m pytest -q -p no:cacheprovider tests); done
