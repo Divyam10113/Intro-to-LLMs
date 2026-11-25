@@ -13,7 +13,8 @@
 # Restart after an interruption (booking ended, reboot): tmux new -d -s r3 './go.sh launch'
 set -u
 cd "$(dirname "$0")"
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 export GPUS=${GPUS:-0 1}
 MIN_FREE_MB=${MIN_FREE_MB:-45000} MAX_UTIL=${MAX_UTIL:-20} POLL=${POLL:-300}
 mkdir -p logs

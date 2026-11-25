@@ -15,3 +15,6 @@ task4_weak_supervision/round1/logs/
 *.tar.gz
 *.zip
 *.lock
+
+# Local secrets
+.env

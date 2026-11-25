@@ -15,8 +15,10 @@ import torch.nn.functional as F
 from PIL import Image
 from torchvision import transforms
 
-ROOT = Path(__file__).resolve().parent            # proj/task4
-MVFA_DIR = ROOT.parent / "MVFA-AD"
+ROOT = Path(__file__).resolve().parent            # task4_weak_supervision/round1 (proj/task4 on the server)
+# MVFA-AD checkout: $MVFA_DIR (see shared/config.sh and .env.example); default: the folder that holds
+# this repository, i.e. proj/MVFA-AD on the server, the same checkout as before the restructure.
+MVFA_DIR = Path(os.environ.get("MVFA_DIR", ROOT.parents[2] / "MVFA-AD"))
 sys.path.insert(0, str(MVFA_DIR))
 
 from CLIP.adapter import CLIP_Inplanted, ClipAdapter  # noqa: E402

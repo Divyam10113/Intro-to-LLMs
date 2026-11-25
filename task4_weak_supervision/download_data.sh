@@ -3,9 +3,10 @@
 # The HDD (NTFS/fuseblk) rejects chmod, which gdown needs, so each file is
 # downloaded to a temp dir on the SSD, copied without permissions, then removed.
 set -u
-G=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/gdown
-R=/mnt/HDD1/divyam/task4
-TMP=/home/f20241442/divyam-backup-imported/proj/.dl_tmp
+. "$(cd "$(dirname "$0")" && pwd -P)/../shared/config.sh"   # TASK4_PYTHON, TASK4_HDD, TASK4_DL_TMP
+G=${GDOWN:-$(dirname "$TASK4_PYTHON")/gdown}
+R=$TASK4_HDD
+TMP=$TASK4_DL_TMP
 mkdir -p "$TMP"
 
 fetch() {  # fetch <gdrive-id> <dest-dir> <name>

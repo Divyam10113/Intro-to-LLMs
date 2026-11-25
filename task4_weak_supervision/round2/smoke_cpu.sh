@@ -3,7 +3,8 @@
 # Writes only to $OUT (banks, runs); results.csv is never touched (SMOKE runs are not recorded).
 set -eu
 cd "$(dirname "$0")"
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 OUT=${OUT:-/tmp/task4r2_smoke}
 export TASK4R2_HDD=$OUT OMP_NUM_THREADS=${OMP_NUM_THREADS:-4}
 rm -rf "$OUT"; mkdir -p "$OUT/logs"

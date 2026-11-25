@@ -9,7 +9,8 @@
 # Normally started through ./go.sh, which waits for free GPUs and does smoke -> timing -> r3.
 set -u
 cd "$(dirname "$0")"
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 GPU_IDS=(${GPUS:-0 1})
 LOG=logs; mkdir -p $LOG
 JOBS_PER_GPU=${JOBS_PER_GPU:-6}

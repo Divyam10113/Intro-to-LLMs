@@ -13,7 +13,9 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 BASE_PAPER_DIR = ROOT / "base_paper"
-TASK1_DIR = ROOT / "DELIVERABLES" / "pipeline" / "gap_inputs"
+# Task 1 gap inputs (build_corpus.py only). Before the restructure this was <repo>/DELIVERABLES/pipeline/gap_inputs;
+# DELIVERABLES/ now lives at task2_limitations/deliverables/. The gap_inputs bundle itself was never committed.
+TASK1_DIR = Path(os.getenv("TASK2_TASK1_GAP_INPUTS", HERE / "deliverables" / "pipeline" / "gap_inputs"))
 DATA_DIR = HERE / "data"            # downloaded PDFs, corpus jsonl (gitignored)
 CACHE_DIR = HERE / "cache"          # LLM response cache (gitignored)
 OUT_DIR = HERE / "outputs"

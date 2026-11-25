@@ -6,7 +6,8 @@
 # even for CPU tensors, which fails when other users fill the GPUs (R3-10).
 set -eu
 cd "$(dirname "$0")"
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 OUT=${OUT:-/tmp/task4r3_smoke}
 export CUDA_VISIBLE_DEVICES="" TASK4R3_HDD=$OUT TASK4_RUNS=$OUT/runs OMP_NUM_THREADS=${OMP_NUM_THREADS:-4}
 rm -rf "$OUT"; mkdir -p "$OUT/logs"

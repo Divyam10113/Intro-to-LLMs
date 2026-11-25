@@ -22,7 +22,8 @@
 #      WORKERS=4 data-loader workers per job   DRY_RUN=1 prints the schedule only
 set -u
 cd "$(dirname "$0")"
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 GPU_IDS=(${GPUS:-0 1})
 LOG=logs; mkdir -p $LOG
 JOBS_PER_GPU=${JOBS_PER_GPU:-$(cat $LOG/jobs_per_gpu 2>/dev/null || echo 1)}
@@ -96,7 +97,7 @@ case "${1:-}" in
     $PY set_pi.py | tee $LOG/set_pi.log                     # pi the runs use (DECISIONS D1, D2), CPU
     # Step 2.3: dry run ALONE on one GPU, so seconds_per_update is an unshared timing
     (SLOTS=("${GPU_IDS[0]}"); run_jobs "train.py --config mh --target Liver --seed 0 --steps 50 --tag dryrun --no_eval")
-    jobs=("evaluate.py --target Liver --save_maps /mnt/HDD1/divyam/task4/runs/R0_Liver/maps.npz"
+    jobs=("evaluate.py --target Liver --save_maps $TASK4_HDD/runs/R0_Liver/maps.npz"
           "evaluate.py --target Brain" "evaluate.py --target Retina_RESC")
     for t in "${T[@]}"; do jobs+=("estimate_pi.py --target $t --branch seg" "estimate_pi.py --target $t --branch det"
                                   "validate_pi.py --target $t"); done

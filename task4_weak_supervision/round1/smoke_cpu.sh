@@ -3,7 +3,8 @@
 set -e
 S=${SMOKE_DIR:-/tmp/task4_smoke}
 export TASK4_RESULTS=$S/results TASK4_RUNS=$S/runs
-PY=/home/f20241442/divyam-backup-imported/proj/.venv-task4/bin/python
+. ../../shared/config.sh   # paths and TASK4_PYTHON (env, then ../../.env, then server defaults)
+PY=$TASK4_PYTHON
 cd "$(dirname "$0")"
 rm -rf $S; mkdir -p $S
 T=$(date +%s)
