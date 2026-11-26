@@ -24,7 +24,11 @@ the offline "file" mode, network access through HTTP(S) clients is pointed at a 
          analyze_fu.py) on the committed results.csv and compares with the committed analyses,
          parses every shell script, and lists the round 3 and follow-up GPU queues
          (run_all.sh list) without running them.
-  task5  the paper: not added yet; checks the placeholder and that its Task 4 inputs exist.
+  task5  the paper: rebuilds inputs/results.json from every Task 4 round and compares it with the
+         committed one, runs both verify scripts (554 values against the Task 4 reports), regenerates
+         the raw materials and figures, runs the number, citation, claim and 4+1 page checks, and
+         compiles the LaTeX when pdflatex (or Tectonic: $TECTONIC) is available. PaperOrchestra, which
+         wrote the text with Gemini, is not re-run.
 
 Exit code 0 means every check passed; differences in regenerated outputs are failures.
 """
@@ -65,7 +69,8 @@ def python() -> str:
     """Python for Tasks 0-3: $PYTHON, else the repo's .venv-pipeline (make venv), else this interpreter.
     Needs 3.12+ (Task 3 uses PEP 701 f-strings) with numpy, pandas, scipy and scikit-learn."""
     if os.environ.get("PYTHON"):
-        return os.environ["PYTHON"]
+        v = os.environ["PYTHON"]
+        return str((ROOT / v).resolve()) if "/" in v and not os.path.isabs(v) else v
     venv = ROOT / ".venv-pipeline" / "bin" / "python"
     return str(venv) if venv.exists() else sys.executable
 
@@ -245,14 +250,97 @@ def task4(st: Stage):
                     "CPU test suites; `make task4-smoke-cpu` runs round 3's CPU end-to-end smoke (a few minutes)")
 
 
+def _same_figure(a: Path, b: Path) -> bool:
+    """True when two figures look the same: same pixels (PNG) or the same rendering (PDF).
+    Matplotlib stamps a creation date into PDFs and PNG metadata can differ, so bytes are not compared."""
+    if a.suffix == ".png":
+        from PIL import Image, ImageChops
+        x, y = Image.open(a).convert("RGB"), Image.open(b).convert("RGB")
+        return x.size == y.size and ImageChops.difference(x, y).getbbox() is None
+    if a.suffix == ".pdf":
+        import pymupdf
+        x, y = pymupdf.open(a), pymupdf.open(b)
+        return len(x) == len(y) and all(p.get_pixmap(dpi=100).samples == q.get_pixmap(dpi=100).samples
+                                        for p, q in zip(x, y))
+    return False
+
+
 def task5(st: Stage):
-    readme = ROOT / "task5_paper" / "README.md"
-    st.ok(readme.exists(), "task5_paper/ placeholder present")
-    for rel in ("task4_weak_supervision/round3/report/PAPER_CLAIMS.md",
-                "task4_weak_supervision/round3/report/paper_inputs/task4_r3",
-                "task4_weak_supervision/followup/results/analysis_fu.md"):
-        st.ok((ROOT / rel).exists(), f"Task 5 input from Task 4 exists: {rel}")
-    st.notes.append("Task 5 (the paper) is not added yet; this stage only checks the slot and its expected inputs")
+    """The paper: rebuild results.json, verify it against every Task 4 report, regenerate the raw materials,
+    run the number / citation / claim / page checks, and compile when a LaTeX engine is available."""
+    w = st.copy("task5_paper")
+    st.compile_all(w, skip=("inputs", "runs", "__pycache__"))
+    # check_all.sh and build_all.sh call `python`: point it at the pipeline interpreter
+    shim = st.scratch / "bin"
+    shim.mkdir(exist_ok=True)
+    (shim / "python").write_text(f'#!/bin/sh\nexec "{python()}" "$@"\n')
+    (shim / "python").chmod(0o755)
+    env = offline_env(PATH=f"{shim}:{os.environ.get('PATH', '')}")
+    py = [python(), "-E", "-P"]
+    committed = ROOT / "task5_paper"
+
+    st.run(["bash", "build_all.sh"], w, env)
+    st.same(w / "inputs/results.json", committed / "inputs/results.json", "inputs/results.json (rebuilt from all 4 rounds)")
+    st.run([*py, "scripts/verify_results.py"], w, env)          # round 1 vs its report tables
+    st.run([*py, "scripts/verify_results_all.py"], w, env)      # rounds 2, 3 and follow-up vs their reports
+
+    st.run([*py, "scripts/prepare_raw_materials_final.py"], w, env)
+    raw, raw0 = w / "inputs/raw_materials", committed / "inputs/raw_materials"
+    for f in sorted(p for p in raw0.rglob("*") if p.is_file()):
+        g = raw / f.relative_to(raw0)
+        label = f"inputs/raw_materials/{f.relative_to(raw0)}"
+        if g.exists() and filecmp.cmp(f, g, shallow=False):
+            continue
+        try:
+            st.ok(g.exists() and _same_figure(f, g), f"regenerated figure renders the same: {label}")
+        except ImportError as e:
+            st.fail(f"cannot compare {label}: {e} (pip install -r requirements-smoke.txt)")
+    st.ok(True, "regenerated raw materials match the committed ones")
+
+    tex = "runs/final/latex_writeup"
+    st.run([*py, "scripts/check_numbers.py", f"{tex}/final_paper.tex", "inputs/results.json"], w, env)
+    st.run([*py, "scripts/check_citations.py", f"{tex}/final_paper.tex", f"{tex}/references.bib",
+            "inputs/citation_pool.json"], w, env)
+    st.run([*py, "scripts/audit_claims.py"], w, env)
+    st.run([*py, "scripts/check_pages_pdf.py", f"{tex}/final_paper.pdf"], w, env)   # the committed PDF
+
+    # Compile. The paper was laid out with MiKTeX pdflatex; check_all.sh runs that sequence.
+    for fig in ("fig1_budget.pdf", "fig2_liver_heatmaps_r3.pdf"):
+        shutil.copy(raw / "figures" / fig, w / tex / "figures" / fig)
+    tectonic = os.environ.get("TECTONIC") or shutil.which("tectonic")
+    if shutil.which("pdflatex") and shutil.which("bibtex"):
+        d = w / tex
+        for cmd in (["pdflatex", "-interaction=nonstopmode", "final_paper.tex"], ["bibtex", "final_paper"],
+                    ["pdflatex", "-interaction=nonstopmode", "final_paper.tex"],
+                    ["pdflatex", "-interaction=nonstopmode", "final_paper.tex"]):
+            st.run(cmd, d, env, check=False, quiet=True)
+        st.run([*py, "scripts/check_pages_pdf.py", f"{tex}/final_paper.pdf"], w, env)   # the rebuilt PDF
+    elif tectonic:
+        # --only-cached: no download during the smoke run (warm Tectonic's cache once with a normal compile)
+        r = st.run([tectonic, "-X", "compile", "--only-cached", "--keep-logs", "final_paper.tex"], w / tex, env,
+                   quiet=True)
+        if r.returncode == 0:
+            import pymupdf, re, unicodedata
+
+            def text(p):   # letters only: Tectonic's fonts hyphenate and break lines and pages differently
+                s = unicodedata.normalize("NFKC", " ".join(pg.get_text() for pg in pymupdf.open(p)))
+                return re.sub(r"[^A-Za-z]", "", s)
+            a, b = text(committed / tex / "final_paper.pdf"), text(w / tex / "final_paper.pdf")
+            # Paragraphs can move across a page break, so check that each 40-letter stretch of the committed
+            # paper occurs somewhere in the rebuilt one. About 3 % do not: the sum-sign glyph, and the edges of
+            # blocks that moved (a section start, table and caption text placed differently).
+            chunks = [a[i:i + 40] for i in range(0, len(a) - 40, 40)]
+            found = sum(c in b for c in chunks) / max(len(chunks), 1)
+            st.ok(found > 0.95 and abs(len(a) - len(b)) < 50,
+                  f"Tectonic build compiles; its text matches the committed PDF ({found:.1%} of 40-letter "
+                  f"stretches found; {len(a)} vs {len(b)} letters)")
+            st.notes.append("compiled with Tectonic, not pdflatex: the text matches but the layout differs "
+                            "(hyphenation, 6 pages instead of 5), so the 4+1 page check applies to the committed "
+                            "MiKTeX/pdflatex PDF only")
+    else:
+        st.notes.append("no pdflatex or Tectonic on PATH: compiling skipped (the committed PDF was checked)")
+    st.notes.append("PaperOrchestra (task5_paper/paper-orchestra) generated the text with Gemini; it is not re-run "
+                    "(needs a Gemini key and makes paid calls)")
 
 
 STAGES = {"task0": task0, "task1": task1, "task2": task2, "task3": task3, "task4": task4, "task5": task5}

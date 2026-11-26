@@ -10,6 +10,7 @@
 4. No hard-coded server paths are left in code (the defaults live in shared/config.*).
 5. The git user's e-mail address does not appear in any tracked file (read from git config at
    run time and never printed or written).
+6. Task 5's copies of Task 4's data (task5_paper/inputs/task4_*) match Task 4, line endings aside.
 """
 from __future__ import annotations
 
@@ -33,7 +34,13 @@ ALLOWED_SERVER_PATH_FILES = {
     "task4_weak_supervision/followup/go.sh",
     "task4_weak_supervision/round3/tests/test_r3.py", "task4_weak_supervision/followup/tests/test_fu.py",
 }
+# Snapshots the paper was built from (copies of Task 4's code as it ran); kept verbatim, never edited.
+ALLOWED_SERVER_PATH_PREFIXES = ("task5_paper/inputs/",)
 CODE_SUFFIXES = (".py", ".sh")
+# Task 5 keeps its own copy of each Task 4 round (task5_paper/inputs/task4_*). Its data files must say the same
+# as Task 4's. They are compared with line endings normalised: the copies went through Windows (CRLF).
+TASK4_TO_TASK5 = {"task4_r1": "round1", "task4_r2": "round2", "task4_r3": "round3", "task4_fu": "followup"}
+DATA_SUFFIXES = (".csv", ".json", ".md")
 
 
 def git(*args) -> str:
@@ -70,7 +77,8 @@ def check_tracked(errs):
             errs.append(f"weights tracked: {f}")
         if p.is_file() and not p.is_symlink() and p.stat().st_size > MAX_MB * 2**20:
             errs.append(f"file over {MAX_MB} MB tracked: {f}")
-        if f.endswith(CODE_SUFFIXES) and f not in ALLOWED_SERVER_PATH_FILES and p.is_file() and "/logs/" not in f:
+        if (f.endswith(CODE_SUFFIXES) and f not in ALLOWED_SERVER_PATH_FILES and not f.startswith(ALLOWED_SERVER_PATH_PREFIXES)
+                and p.is_file() and "/logs/" not in f):
             text = p.read_text(errors="ignore")
             for sp in SERVER_PATHS:
                 for i, line in enumerate(text.splitlines(), 1):
@@ -87,10 +95,29 @@ def check_tracked(errs):
             print("  git user's e-mail address: not in any tracked file")
 
 
+def check_task5_inputs(errs):
+    """Task 5's copies of Task 4's results and report data say the same as Task 4 (line endings aside)."""
+    n = 0
+    for copy, rnd in TASK4_TO_TASK5.items():
+        base = ROOT / "task5_paper" / "inputs" / copy
+        for p in sorted(base.rglob("*")):
+            rel = p.relative_to(base)
+            if not (p.is_file() and p.suffix in DATA_SUFFIXES and rel.parts[0] in ("results", "report", "splits")):
+                continue
+            src = T4 / rnd / rel
+            if not src.is_file():
+                errs.append(f"Task 5 input has no source in Task 4: task5_paper/inputs/{copy}/{rel}")
+            elif p.read_bytes().replace(b"\r\n", b"\n") != src.read_bytes().replace(b"\r\n", b"\n"):
+                errs.append(f"Task 5 input differs from Task 4: task5_paper/inputs/{copy}/{rel} vs {rnd}/{rel}")
+            n += 1
+    print(f"  {n} Task 4 data files copied into task5_paper/inputs/ match Task 4 (line endings aside)")
+
+
 if __name__ == "__main__":
     errs: list[str] = []
     check_frozen(errs)
     check_symlinks(errs)
+    check_task5_inputs(errs)
     check_tracked(errs)
     if errs:
         print("\n".join("FAIL " + e for e in errs))

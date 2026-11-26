@@ -5,6 +5,12 @@
 MVFA-AD/
 .venv-task4/
 .venv-pipeline/
+.task5_bin/
+# LaTeX intermediates of Task 5's compile (the .bbl, .log and .pdf are committed)
+task5_paper/runs/final/latex_writeup/*.aux
+task5_paper/runs/final/latex_writeup/*.blg
+task5_paper/runs/final/latex_writeup/*.out
+task5_paper/runs/final/latex_writeup/*.brf
 .dl_tmp/
 # Python / test caches
 __pycache__/

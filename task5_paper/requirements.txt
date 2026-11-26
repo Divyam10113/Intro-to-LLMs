@@ -1,0 +1,8 @@
+# Task 5 (the paper): the checks and figure scripts. Python 3.11+.
+# matplotlib is pinned to the version that drew the committed figures (3.10.7): newer versions
+# change the tight bounding box by a pixel. pdflatex + bibtex (MiKTeX or TeX Live) compile the paper.
+# PaperOrchestra (paper-orchestra/) has its own dependencies and needs a Gemini key; it is not re-run.
+matplotlib==3.10.7
+pymupdf
+pillow
+numpy

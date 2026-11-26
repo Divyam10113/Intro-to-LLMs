@@ -9,7 +9,7 @@
 SHELL := /bin/bash
 .DEFAULT_GOAL := help
 CONFIG := . shared/config.sh
-# Python for Tasks 0-3: 3.12+ with requirements-smoke.txt (smoke) or requirements.txt (real runs).
+# Python for Tasks 0-3 and 5: 3.12+ with requirements-smoke.txt (smoke) or requirements.txt (real runs).
 PYTHON ?= $(if $(wildcard .venv-pipeline/bin/python),.venv-pipeline/bin/python,python3)
 PY_ABS := $(if $(findstring /,$(PYTHON)),$(abspath $(PYTHON)),$(PYTHON))
 TASK4_SUITES := round1 round2 round3 followup
@@ -24,7 +24,7 @@ help:  ## list the commands
 	@grep -hE '^[a-zA-Z0-9_-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  \033[1m%-16s\033[0m %s\n", $$1, $$2}'
 
 # ----------------------------------------------------------------------------- setup
-venv:  ## create .venv-pipeline (Python 3.12+) with requirements-smoke.txt for Tasks 0-3
+venv:  ## create .venv-pipeline (Python 3.12+) with requirements-smoke.txt for Tasks 0-3 and 5
 	@test -x .venv-pipeline/bin/python || $${PYTHON312:-python3} -m venv .venv-pipeline
 	.venv-pipeline/bin/pip install -q -r requirements-smoke.txt
 
@@ -66,7 +66,7 @@ task3-dry-run:  ## ideation: replay stages 0-4 from logs/cache (no model call) a
 task4-dry-run:  ## Task 4: frozen hashes, re-run frozen analysers on committed results, list GPU queues
 	$(PYTHON) pipeline/smoke.py task4
 
-task5-dry-run:  ## Task 5 (the paper): placeholder, not added yet
+task5-dry-run:  ## paper: rebuild results.json, verify 554 values, regenerate figures, run every paper check
 	$(PYTHON) pipeline/smoke.py task5
 
 task4-smoke-cpu:  ## Task 4 round 3 end-to-end CPU smoke (tiny training on CPU; needs the data on TASK4_HDD)
@@ -92,8 +92,12 @@ task4:  ## Task 4 follow-up end to end on the GPUs (go.sh: tests, GPU wait, smok
 	@test "$${CONFIRM_GPU:-0}" = 1 || { echo "Refusing to start GPU jobs: re-run with CONFIRM_GPU=1"; exit 2; }
 	cd task4_weak_supervision/followup && ./go.sh
 
-task5:  ## Task 5 (the paper): not added yet; prints a note and exits 0
-	@echo "Task 5 (the paper) is not added yet: see task5_paper/README.md."
+task5:  ## paper for real: task5_paper/check_all.sh (rebuild numbers, figures, compile with pdflatex, all checks)
+	@command -v pdflatex >/dev/null && command -v bibtex >/dev/null || \
+	  { echo "Task 5 compiles with pdflatex + bibtex (the paper was laid out with MiKTeX); none on PATH."; \
+	    echo "Without LaTeX, 'make task5-dry-run' runs every other step and checks the committed PDF."; exit 2; }
+	@mkdir -p .task5_bin && printf '#!/bin/sh\nexec "%s" "$$@"\n' "$$(command -v $(PY_ABS))" > .task5_bin/python && chmod +x .task5_bin/python
+	PATH="$(CURDIR)/.task5_bin:$$PATH" MPLBACKEND=Agg bash task5_paper/check_all.sh
 
 all:  ## sync, then task1 -> task2 -> task3 -> task4 -> task5 for real (keys and CONFIRM_GPU=1 needed)
 	@$(MAKE) --no-print-directory sync task1 task2 task3 task4 task5

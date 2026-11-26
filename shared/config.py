@@ -47,6 +47,7 @@ API_KEYS = {
     "task1": ["OPENALEX_API_KEY", "GROQ_API_KEY"],
     "task2": ["NVIDIA_API_KEY", "AGENTROUTER_API_KEY"],
     "task3": ["LLM_API_KEY", "JUDGE_API_KEY"],
+    "task5 (PaperOrchestra only)": ["GEMINI_API_KEY", "SEMANTIC_SCHOLAR_API_KEY"],
 }
 
 if __name__ == "__main__":

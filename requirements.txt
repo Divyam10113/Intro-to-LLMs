@@ -1,6 +1,7 @@
-# Everything for Tasks 0-3 (real runs). Python 3.12 or newer: Task 3 uses PEP 701 f-strings.
+# Everything for Tasks 0-3 and 5 (real runs). Python 3.12 or newer: Task 3 uses PEP 701 f-strings.
 # Task 4 has its own environment: task4_weak_supervision/requirements.txt.
 -r task0_starter/requirements.txt
 -r task1_literature_review/requirements.txt
 -r task2_limitations/requirements.txt
 -r task3_ideation/requirements.txt
+-r task5_paper/requirements.txt

@@ -26,14 +26,23 @@ As of the restructure (2026-11-26), all nine copies were already byte-identical 
 
 From Task 3 onward, the handoff is an idea rather than a data file. Task 4 does not read these JSON files programmatically. Its plans (`plans/TASK4_PLAN_RECOMMENDED.md`, `plans/TASK4_ROUND2_PLAN.md`, `plans/TASK4_ROUND3_PLAN.md`) cite them, and the copies record exactly which version of A1 was tested.
 
-## Task 5 (to be added)
+## Task 4 → Task 5: a checked snapshot, not a sync
 
-Task 5, the paper, will be added later in `task5_paper/`. It is expected to read Task 4's:
-- `round3/report/PAPER_CLAIMS.md`;
-- `round3/report/paper_inputs/task4_r3/` (and round 1's `report/paper_inputs/`);
-- the follow-up's `report/FU_REPORT.md` and `results/analysis_fu.md`.
+Task 5 (the paper, `task5_paper/`) reads its own copies of the earlier tasks' outputs, in `task5_paper/inputs/`:
+- `task4_r1/`, `task4_r2/`, `task4_r3/`, `task4_fu/`: each Task 4 round's code, results, reports, splits and logs;
+- `task1/`, `task2/`, `task3/`: the Task 1 reference set, the Task 2 limitations and the Task 3 run.
 
-If Task 5 keeps copies of these files, add them as a `task4_to_task5` entry in `HANDOFFS` in `pipeline/sync_handoffs.py` and run `make sync`; see "Adding a task" in [README.md](README.md#adding-a-task-eg-task-5). Until then `make task5` and `make task5-dry-run` only report that Task 5 is not added yet.
+`tools/build_results.py` turns the four Task 4 folders into `inputs/results.json`, the paper's only source of numbers.
+
+These copies are **not** in `HANDOFFS`, because `make sync` copies byte-for-byte and would change them:
+- the data files went through Windows and have CRLF line endings;
+- the code copies are the versions that actually ran, before this repo's path clean-up (for example `PY=/home/…/.venv-task4/bin/python` instead of `$TASK4_PYTHON`).
+
+Rewriting them would change the paper's record of what it was built from. Instead, `make check` (`check_repo.py`) compares every Task 4 data file in the copies (`results/`, `report/`, `splits/`: 81 `.csv`, `.json` and `.md` files) with Task 4, ignoring line endings. They all match. The code copies are also exempt from the server-path check.
+
+`make task5-dry-run` then rebuilds `results.json` from the copies, checks it is byte-identical to the committed one, and verifies 554 of its values against the Task 4 reports.
+
+If Task 4's results ever change, update the copies in `task5_paper/inputs/task4_*`, then run `make task5` (rebuild, re-check and recompile).
 
 ## Known mismatch: Task 2 used Task 1 run v4
 
