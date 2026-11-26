@@ -1,0 +1,60 @@
+[retriever] 880 chunks, dense=tfidf-lsa
+  [queries] gpt-6.1-sol ok (446 chars)
+[citation] queries: ['medical anomaly detection zero-shot versus training-free evaluation protocols', 'normal-only medical anomaly segmentation without pixel annotations', 'CLIP medical anomaly localization small lesions spatial resolution', '3D volumetric medical anomaly detection CT MRI inter-slice context', 'BioMedCLIP MedCLIP versus CLIP medical anomaly detection', 'interpretable medical anomaly detection lesion-specific language explanations']
+  [rerank] gpt-6.1-sol ok (496 chars)
+  [rerank] gpt-6.1-sol ok (612 chars)
+  [rerank] gpt-6.1-sol ok (547 chars)
+  [rerank] gpt-6.1-sol ok (579 chars)
+  [rerank] gpt-6.1-sol ok (610 chars)
+  [rerank] gpt-6.1-sol ok (610 chars)
+[citation] 18 MVFA-mention passages, 38 reranked >= 8 -> using 30
+  [extractor] gpt-6.1-sol ok (6495 chars)
+  [analyzer] gpt-6.1-sol ok (25527 chars)
+  [judge-extractor] gpt-6.1-sol ok (4683 chars)
+  [judge-analyzer] gpt-6.1-sol ok (4037 chars)
+  [extractor-regen] gpt-6.1-sol ok (20109 chars)
+  [judge-extractor-regen] gpt-6.1-sol ok (4340 chars)
+  [reviewer] gpt-6.1-sol ok (21165 chars)
+  [judge-reviewer] gpt-6.1-sol ok (4464 chars)
+  [citation] gpt-6.1-sol ok (16626 chars)
+  [judge-citation] gpt-6.1-sol ok (3972 chars)
+  [citation-regen] gpt-6.1-sol failed (attempt 2): RuntimeError: stream error: ResponseErrorEvent(code='server_error', message='Upstream service unavailable [trace_id=ed776baa0dc819f79db498e6f0127ae7]', param=None, sequence_n
+Traceback (most recent call last):
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 190, in <module>
+    main()
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 113, in main
+    records = list(ex.map(lambda w: run_worker(w, paper, passages), workers))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 113, in <lambda>
+    records = list(ex.map(lambda w: run_worker(w, paper, passages), workers))
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 76, in run_worker
+    items = (agents.citation(paper, passages, feedback=j1["feedback"]) if name == "citation"
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/agents.py", line 80, in citation
+    return _work("citation", sys, user, feedback)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/agents.py", line 88, in _work
+    items = chat_json(system, user, temperature=0.3, tag=name + ("-regen" if feedback else ""))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/common.py", line 186, in chat_json
+    """chat() that must return JSON. Re-asks once if the reply is not parseable."""
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/common.py", line 181, in chat
+    break
+^^^^^^^^^^
+RuntimeError: All models failed for citation-regen: stream error: ResponseErrorEvent(code='server_error', message='Upstream service unavailable [trace_id=ed776baa0dc819f79db498e6f0127ae7]', param=None, sequence_number=None, type='error')

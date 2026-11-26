@@ -1,0 +1,50 @@
+[workers] 50 raw limitations: extractor=13 (judge 4.3 -> regen), analyzer=21 (judge 8.6), reviewer=16 (judge 8.9)
+  [verifier] gpt-6.1-sol ok (13580 chars)
+[verifier] 50 -> 50 with a verbatim quote -> 50 supported/partial
+  [master] gpt-6.1-sol ok (20516 chars)
+[master] 21 consolidated limitations
+[retriever] 329 chunks, dense=tfidf-lsa
+  [status-L2] gpt-6.1-sol ok (663 chars)
+  [status-L1] gpt-6.1-sol ok (571 chars)
+  [status-L3] gpt-6.1-sol ok (615 chars)
+  [status-L4] gpt-6.1-sol ok (626 chars)
+  [status-L5] gpt-6.1-sol ok (571 chars)
+  [status-L6] gpt-6.1-sol ok (508 chars)
+  [status-L7] gpt-6.1-sol ok (688 chars)
+  [status-L9] gpt-6.1-sol failed (attempt 1): APIError: Your requests to *** for *** in *** have exceeded token rate limit.
+  [status-L10] gpt-6.1-sol ok (556 chars)
+  [status-L8] gpt-6.1-sol ok (555 chars)
+  [status-L11] gpt-6.1-sol failed (attempt 1): APIError: Your requests to *** for *** in *** have exceeded token rate limit.
+  [status-L12] gpt-6.1-sol ok (383 chars)
+Traceback (most recent call last):
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 190, in <module>
+    main()
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 146, in main
+    for lim, st in zip(final, ex.map(status, final)):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/run_pipeline.py", line 143, in status
+    return agents.gap_status(lim, cands, review[:12000])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/agents.py", line 225, in gap_status
+    return chat_json(sys, user, temperature=0, tag=f"status-{lim['lid']}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/common.py", line 187, in chat_json
+    out = chat(system, user, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/divyansh/Desktop/acads/sem 5/project_intro_to_llms/limitations/common.py", line 182, in chat
+    raise RuntimeError(f"All models failed for {tag}: {last_err}")
+RuntimeError: All models failed for status-L9: Your requests to *** for *** in *** have exceeded token rate limit.
