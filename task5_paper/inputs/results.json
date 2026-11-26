@@ -1,0 +1,5690 @@
+{
+ "units": "percent (x100), 2 decimals; std = sample std (ddof=1)",
+ "protocol": {
+  "benchmark": "BMAD",
+  "dataset_count": 6,
+  "masked_source_count": 3,
+  "maskless_source_count": 3,
+  "adapter_levels": 4,
+  "targets": [
+   "Brain",
+   "Liver",
+   "Retina_RESC"
+  ],
+  "source_datasets": [
+   "Brain",
+   "Liver",
+   "Retina_RESC",
+   "Retina_OCT2017",
+   "Chest",
+   "Histopathology"
+  ],
+  "maskless_sources": [
+   "Retina_OCT2017",
+   "Chest",
+   "Histopathology"
+  ],
+  "max_train_images_per_class_per_source": 500,
+  "pi_holdout_fraction": 0.1,
+  "frozen_backbone": "CLIP ViT-L/14",
+  "backbone_layer_count": 14,
+  "aUpro_false_positive_limit": 0.3,
+  "steps_per_run": 2000,
+  "mil_topk_fraction": 0.01,
+  "mil_topk_min_patches": 3,
+  "pixel_auroc_chance_floor": 50.0,
+  "source_plan": "paper/inputs/plans/TASK4_PLAN_RECOMMENDED.md",
+  "source_decisions": "paper/inputs/task4_r1/report/DECISIONS.md"
+ },
+ "rounds": {
+  "r1": {
+   "r0_reproduced": {
+    "Retina_RESC": {
+     "img_auroc": 88.99,
+     "pix_auroc": 90.44,
+     "aupro": 68.75
+    },
+    "Liver": {
+     "img_auroc": 81.19,
+     "pix_auroc": 97.92,
+     "aupro": 92.34
+    },
+    "Brain": {
+     "img_auroc": 79.8,
+     "pix_auroc": 89.68,
+     "aupro": 65.35
+    }
+   },
+   "configs": {
+    "mh_ctrl": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 81.63,
+       "std": 0.37,
+       "values": [
+        82.04,
+        81.51,
+        81.34
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.99,
+       "std": 0.31,
+       "values": [
+        96.68,
+        97.0,
+        97.3
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.07,
+       "std": 0.41,
+       "values": [
+        90.6,
+        91.34,
+        91.26
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 88.92,
+       "std": 0.08,
+       "values": [
+        88.9,
+        89.0,
+        88.84
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 89.76,
+       "std": 0.46,
+       "values": [
+        89.46,
+        90.29,
+        89.53
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 66.94,
+       "std": 1.14,
+       "values": [
+        66.3,
+        68.25,
+        66.27
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.31,
+       "std": 0.96,
+       "values": [
+        81.17,
+        79.28,
+        80.48
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 90.05,
+       "std": 0.74,
+       "values": [
+        89.27,
+        90.74,
+        90.14
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 66.38,
+       "std": 2.12,
+       "values": [
+        64.11,
+        68.31,
+        66.7
+       ]
+      }
+     }
+    },
+    "mh": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.29,
+       "std": 0.63,
+       "values": [
+        79.62,
+        80.86,
+        80.4
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.97,
+       "std": 0.18,
+       "values": [
+        96.88,
+        96.85,
+        97.18
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.39,
+       "std": 0.27,
+       "values": [
+        91.26,
+        91.21,
+        91.7
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 89.2,
+       "std": 0.16,
+       "values": [
+        89.35,
+        89.03,
+        89.2
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.76,
+       "std": 2.69,
+       "values": [
+        87.64,
+        91.82,
+        86.8
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 67.45,
+       "std": 6.15,
+       "values": [
+        64.37,
+        74.53,
+        63.43
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.25,
+       "std": 0.72,
+       "values": [
+        79.63,
+        81.04,
+        80.07
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 91.71,
+       "std": 0.71,
+       "values": [
+        90.99,
+        92.41,
+        91.72
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 71.57,
+       "std": 2.07,
+       "values": [
+        69.53,
+        73.66,
+        71.53
+       ]
+      }
+     }
+    },
+    "m": {
+     "Retina_RESC": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 84.53,
+       "std": null,
+       "values": [
+        84.53
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 80.13,
+       "std": null,
+       "values": [
+        80.13
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 58.52,
+       "std": null,
+       "values": [
+        58.52
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 73.79,
+       "std": 2.52,
+       "values": [
+        74.09,
+        71.14,
+        76.15
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 59.45,
+       "std": 15.51,
+       "values": [
+        49.9,
+        77.34,
+        51.1
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 26.28,
+       "std": 15.5,
+       "values": [
+        17.33,
+        44.17,
+        17.33
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 68.87,
+       "std": null,
+       "values": [
+        68.87
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.87,
+       "std": null,
+       "values": [
+        89.87
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 64.5,
+       "std": null,
+       "values": [
+        64.5
+       ]
+      }
+     }
+    },
+    "b0": {
+     "Liver": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 75.17,
+       "std": null,
+       "values": [
+        75.17
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 94.42,
+       "std": null,
+       "values": [
+        94.42
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 85.47,
+       "std": null,
+       "values": [
+        85.47
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 76.98,
+       "std": null,
+       "values": [
+        76.98
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.57,
+       "std": null,
+       "values": [
+        89.57
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 67.29,
+       "std": null,
+       "values": [
+        67.29
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 63.51,
+       "std": null,
+       "values": [
+        63.51
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.46,
+       "std": null,
+       "values": [
+        89.46
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 64.53,
+       "std": null,
+       "values": [
+        64.53
+       ]
+      }
+     }
+    }
+   },
+   "secondary": [
+    {
+     "run_id": "m_Retina_RESC_s0_r0det",
+     "config": "m",
+     "target": "Retina_RESC",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 87.25,
+     "pix_auroc": 82.11,
+     "aupro": 60.19,
+     "notes": "det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "mh_Liver_s0_pi0.30",
+     "config": "mh",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 80.22,
+     "pix_auroc": 95.99,
+     "aupro": 89.59,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; pi_override=0.3 (sensitivity); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_r0det",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 74.58,
+     "pix_auroc": 38.01,
+     "aupro": 13.39,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_pi0.05",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 69.28,
+     "pix_auroc": 97.14,
+     "aupro": 87.28,
+     "notes": "det_init=fresh; pi_override=0.05 (sensitivity); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Brain_s0_r0det",
+     "config": "m",
+     "target": "Brain",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 81.86,
+     "pix_auroc": 87.02,
+     "aupro": 57.23,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_2S",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 4000,
+     "img_auroc": 63.41,
+     "pix_auroc": 59.88,
+     "aupro": 36.19,
+     "notes": "det_init=fresh; GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    }
+   ],
+   "r0_published": {
+    "Liver": {
+     "img_auroc": 76.24,
+     "pix_auroc": 97.85
+    },
+    "Brain": {
+     "img_auroc": 78.63,
+     "pix_auroc": 90.27
+    },
+    "Retina_RESC": {
+     "img_auroc": 83.31,
+     "pix_auroc": 92.05
+    }
+   },
+   "paired": {
+    "mh-mh_ctrl": {
+     "per_pair": [
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -2.43,
+       "pix_auroc": 0.2,
+       "aupro": 0.66
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": -0.65,
+       "pix_auroc": -0.15,
+       "aupro": -0.13
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": -0.93,
+       "pix_auroc": -0.12,
+       "aupro": 0.44
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": 0.45,
+       "pix_auroc": -1.82,
+       "aupro": -1.92
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": 0.03,
+       "pix_auroc": 1.54,
+       "aupro": 6.27
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 0.36,
+       "pix_auroc": -2.72,
+       "aupro": -2.83
+      },
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": -1.55,
+       "pix_auroc": 1.73,
+       "aupro": 5.42
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": 1.76,
+       "pix_auroc": 1.66,
+       "aupro": 5.35
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": -0.41,
+       "pix_auroc": 1.58,
+       "aupro": 4.82
+      }
+     ],
+     "per_target_mean": {
+      "Liver": {
+       "img_auroc": -1.34,
+       "pix_auroc": -0.03,
+       "aupro": 0.33
+      },
+      "Retina_RESC": {
+       "img_auroc": 0.28,
+       "pix_auroc": -1.0,
+       "aupro": 0.51
+      },
+      "Brain": {
+       "img_auroc": -0.07,
+       "pix_auroc": 1.66,
+       "aupro": 5.2
+      }
+     },
+     "n_pairs": 9,
+     "positive": {
+      "img_auroc": 4,
+      "pix_auroc": 5,
+      "aupro": 6
+     },
+     "sign_test_p_aupro": 0.2539
+    }
+   },
+   "retention": {
+    "m": {
+     "Retina_RESC": {
+      "mean_over_seeds": 0.745,
+      "seed0": 0.745,
+      "aupro_ratio_mean": 0.851,
+      "aupro_ratio_seed0": 0.851
+     },
+     "Liver": {
+      "mean_over_seeds": 0.197,
+      "seed0": -0.002,
+      "aupro_ratio_mean": 0.285,
+      "aupro_ratio_seed0": 0.188
+     },
+     "Brain": {
+      "mean_over_seeds": 1.005,
+      "seed0": 1.005,
+      "aupro_ratio_mean": 0.987,
+      "aupro_ratio_seed0": 0.987
+     },
+     "_mean_seed0_over_targets": 0.583
+    },
+    "b0": {
+     "Liver": {
+      "mean_over_seeds": 0.927,
+      "seed0": 0.927,
+      "aupro_ratio_mean": 0.926,
+      "aupro_ratio_seed0": 0.926
+     },
+     "Retina_RESC": {
+      "mean_over_seeds": 0.978,
+      "seed0": 0.978,
+      "aupro_ratio_mean": 0.979,
+      "aupro_ratio_seed0": 0.979
+     },
+     "Brain": {
+      "mean_over_seeds": 0.994,
+      "seed0": 0.994,
+      "aupro_ratio_mean": 0.987,
+      "aupro_ratio_seed0": 0.987
+     },
+     "_mean_seed0_over_targets": 0.966
+    }
+   },
+   "pi": {
+    "pi.json": {
+     "Liver": {
+      "Retina_OCT2017": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Chest": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Histopathology": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      }
+     },
+     "Brain": {
+      "Retina_OCT2017": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Chest": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Histopathology": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      }
+     },
+     "Retina_RESC": {
+      "Retina_OCT2017": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      },
+      "Chest": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      },
+      "Histopathology": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      }
+     }
+    },
+    "pi_estimated_det.json": {
+     "Retina_RESC": {
+      "Brain": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Liver": {
+       "pi": 0.3,
+       "pi_raw": 0.88916015625,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.3,
+       "pi_raw": 0.4797297297297297,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.6897536594073546,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Liver": {
+      "Brain": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "pi_raw": 0.9942363112391931,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.3,
+       "pi_raw": 0.3231833910034603,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Brain": {
+      "Liver": {
+       "pi": 0.3,
+       "pi_raw": 0.753037951018882,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "pi_raw": 0.9580200501253133,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 0.9836956521739131,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.5054671280276817,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9044435158100014,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     }
+    },
+    "pi_estimated_seg.json": {
+     "Retina_RESC": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.01692865779927466,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9408911791451955,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Brain": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 0.9489795918367347,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.05840830449826995,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.7557313529221827,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Liver": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.10015967484395416,
+       "pi_raw": 0.10015967484395416,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9861320470304492,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     }
+    },
+    "pi_maskfree.json": {
+     "Liver": {
+      "Brain": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     },
+     "Brain": {
+      "Liver": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     },
+     "Retina_RESC": {
+      "Brain": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Liver": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     }
+    },
+    "pi_true_masked_sources.json": {
+     "Brain": 0.010346020571887493,
+     "Retina_RESC": 0.11910726875066757,
+     "Liver": 0.008006920106709003
+    },
+    "pi_validation_Brain.json": {
+     "Liver": {
+      "true_patch_pi": 0.008006920106709003,
+      "seg": {
+       "L6": 0.019136325148179423,
+       "L12": -0.055916955017301095,
+       "L18": -0.15001383891502917,
+       "L24": 0.728627928202008
+      },
+      "det": {
+       "L6": 0.24290627687016342,
+       "L12": 0.46574394463667823,
+       "L18": 0.8109130199891951,
+       "L24": 0.7522514243705201
+      }
+     },
+     "Retina_RESC": {
+      "true_patch_pi": 0.11910726875066757,
+      "seg": {
+       "L6": 0.012181789786037789,
+       "L12": -0.07101995256034588,
+       "L18": 0.9411764705882353,
+       "L24": 0.9385498320268757
+      },
+      "det": {
+       "L6": 0.22214532871972326,
+       "L12": 0.9072664359861592,
+       "L18": 0.9439347604485219,
+       "L24": 0.9585870889159561
+      }
+     }
+    },
+    "pi_validation_Liver.json": {
+     "Brain": {
+      "true_patch_pi": 0.010346020571887493,
+      "seg": {
+       "L6": -0.03814959447281474,
+       "L12": 0.04957168936947065,
+       "L18": 0.9850746268656716,
+       "L24": 0.9982248520710059
+      },
+      "det": {
+       "L6": 0.44063143445435826,
+       "L12": 0.9807213930348259,
+       "L18": 1.0,
+       "L24": 1.0
+      }
+     },
+     "Retina_RESC": {
+      "true_patch_pi": 0.11910726875066757,
+      "seg": {
+       "L6": 0.040152155536770984,
+       "L12": 0.46684005201560463,
+       "L18": 0.995945945945946,
+       "L24": 1.0
+      },
+      "det": {
+       "L6": 0.293888166449935,
+       "L12": 0.9930795847750865,
+       "L18": 1.0,
+       "L24": 0.9944227551589515
+      }
+     }
+    },
+    "pi_validation_Retina_RESC.json": {
+     "Brain": {
+      "true_patch_pi": 0.010346020571887493,
+      "seg": {
+       "L6": 0.11487889273356411,
+       "L12": 0.2668918918918919,
+       "L18": 1.0,
+       "L24": 1.0
+      },
+      "det": {
+       "L6": 0.7810569663692519,
+       "L12": 0.998638529611981,
+       "L18": 1.0,
+       "L24": 1.0
+      }
+     },
+     "Liver": {
+      "true_patch_pi": 0.008006920106709003,
+      "seg": {
+       "L6": 0.2805882352941177,
+       "L12": 0.08836633663366344,
+       "L18": 0.8953831041257367,
+       "L24": -0.28622837370242205
+      },
+      "det": {
+       "L6": 0.3857240905971173,
+       "L12": 0.8865051903114187,
+       "L18": 0.8571788413098237,
+       "L24": 0.8906964921199797
+      }
+     }
+    }
+   }
+  },
+  "r2": {
+   "format": "train2 logger",
+   "main_seeds": [
+    0,
+    1,
+    2
+   ],
+   "baseline": "mvfa",
+   "epochs": [
+    5
+   ],
+   "configs": {
+    "pu": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       3,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 68.44,
+       "std": 4.87,
+       "values": [
+        69.99,
+        72.34,
+        62.98
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 92.18,
+       "std": 3.48,
+       "values": [
+        96.14,
+        90.82,
+        89.59
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 81.57,
+       "std": 5.15,
+       "values": [
+        86.21,
+        82.47,
+        76.02
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 66.73,
+       "std": 2.03,
+       "values": [
+        68.73,
+        64.67,
+        66.78
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 91.04,
+       "std": 2.23,
+       "values": [
+        88.63,
+        91.46,
+        93.02
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 69.42,
+       "std": 5.54,
+       "values": [
+        63.17,
+        71.39,
+        73.71
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 77.18,
+       "std": 1.01,
+       "values": [
+        78.06,
+        77.41,
+        76.07
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 63.31,
+       "std": 11.35,
+       "values": [
+        73.99,
+        51.39,
+        64.56
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 33.06,
+       "std": 8.65,
+       "values": [
+        41.1,
+        23.91,
+        34.15
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 62.05,
+       "std": 6.51,
+       "values": [
+        63.3,
+        67.85,
+        55.0
+       ]
+      }
+     },
+     "Chest": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 49.02,
+       "std": null,
+       "values": [
+        49.02
+       ]
+      }
+     },
+     "Histopathology": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 60.69,
+       "std": null,
+       "values": [
+        60.69
+       ]
+      }
+     }
+    },
+    "pu_m100": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       3,
+       4,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 73.83,
+       "std": 2.89,
+       "values": [
+        70.94,
+        73.83,
+        76.72
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.91,
+       "std": 0.58,
+       "values": [
+        97.31,
+        96.24,
+        97.17
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.19,
+       "std": 1.19,
+       "values": [
+        91.05,
+        90.08,
+        92.44
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       3,
+       4,
+       2
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 70.51,
+       "std": 2.68,
+       "values": [
+        69.41,
+        68.55,
+        73.57
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.77,
+       "std": 0.93,
+       "values": [
+        87.9,
+        89.74,
+        88.67
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 63.32,
+       "std": 2.7,
+       "values": [
+        60.53,
+        65.93,
+        63.5
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 77.49,
+       "std": 1.66,
+       "values": [
+        77.66,
+        79.05,
+        75.75
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.6,
+       "std": 1.54,
+       "values": [
+        88.18,
+        87.31,
+        90.3
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 60.38,
+       "std": 3.4,
+       "values": [
+        59.18,
+        57.74,
+        64.21
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 68.37,
+       "std": 2.12,
+       "values": [
+        70.33,
+        68.67,
+        66.12
+       ]
+      }
+     }
+    },
+    "mvfa": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       2,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 71.16,
+       "std": 8.86,
+       "values": [
+        81.39,
+        66.11,
+        65.99
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.8,
+       "std": 0.61,
+       "values": [
+        96.78,
+        96.19,
+        97.41
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 90.4,
+       "std": 1.13,
+       "values": [
+        90.79,
+        89.12,
+        91.29
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 65.73,
+       "std": 1.97,
+       "values": [
+        66.53,
+        67.17,
+        63.48
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.32,
+       "std": 0.27,
+       "values": [
+        88.54,
+        88.02,
+        88.41
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 61.55,
+       "std": 0.74,
+       "values": [
+        62.28,
+        60.79,
+        61.57
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       2,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 79.98,
+       "std": 6.6,
+       "values": [
+        81.61,
+        85.62,
+        72.72
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 87.92,
+       "std": 0.34,
+       "values": [
+        87.61,
+        88.28,
+        87.88
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 58.93,
+       "std": 2.05,
+       "values": [
+        56.57,
+        60.26,
+        59.96
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       2,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 75.15,
+       "std": 7.38,
+       "values": [
+        81.18,
+        77.36,
+        66.92
+       ]
+      }
+     },
+     "Chest": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 44.57,
+       "std": null,
+       "values": [
+        44.57
+       ]
+      }
+     },
+     "Histopathology": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 61.7,
+       "std": null,
+       "values": [
+        61.7
+       ]
+      }
+     }
+    },
+    "mil": {
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 66.93,
+       "std": 2.8,
+       "values": [
+        68.07,
+        63.74,
+        68.98
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 91.71,
+       "std": 1.49,
+       "values": [
+        90.78,
+        93.43,
+        90.93
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 70.63,
+       "std": 5.05,
+       "values": [
+        67.85,
+        76.47,
+        67.59
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       3,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 69.9,
+       "std": 3.1,
+       "values": [
+        66.69,
+        72.89,
+        70.11
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.19,
+       "std": 0.34,
+       "values": [
+        95.84,
+        96.2,
+        96.53
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 89.26,
+       "std": 1.37,
+       "values": [
+        88.09,
+        88.93,
+        90.78
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 76.47,
+       "std": 2.42,
+       "values": [
+        79.27,
+        75.03,
+        75.11
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 77.14,
+       "std": 9.9,
+       "values": [
+        76.93,
+        67.35,
+        87.15
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 48.8,
+       "std": 10.68,
+       "values": [
+        44.03,
+        41.33,
+        61.04
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 66.04,
+       "std": 6.37,
+       "values": [
+        70.9,
+        68.39,
+        58.83
+       ]
+      }
+     },
+     "Chest": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 45.67,
+       "std": null,
+       "values": [
+        45.67
+       ]
+      }
+     },
+     "Histopathology": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       3
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 72.13,
+       "std": null,
+       "values": [
+        72.13
+       ]
+      }
+     }
+    },
+    "g": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 72.16,
+       "std": 2.54,
+       "values": [
+        74.06,
+        69.27,
+        73.16
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 95.04,
+       "std": 1.31,
+       "values": [
+        93.55,
+        96.0,
+        95.57
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 85.75,
+       "std": 3.25,
+       "values": [
+        82.08,
+        88.26,
+        86.93
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       3
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 64.8,
+       "std": 1.39,
+       "values": [
+        64.24,
+        63.78,
+        66.38
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 86.45,
+       "std": 2.12,
+       "values": [
+        88.45,
+        84.23,
+        86.67
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 55.36,
+       "std": 6.12,
+       "values": [
+        60.92,
+        48.81,
+        56.36
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 79.14,
+       "std": 1.12,
+       "values": [
+        79.19,
+        80.24,
+        78.0
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 81.39,
+       "std": 5.73,
+       "values": [
+        75.03,
+        82.96,
+        86.17
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 52.44,
+       "std": 5.6,
+       "values": [
+        46.22,
+        54.0,
+        57.09
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       4,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 50.13,
+       "std": 11.44,
+       "values": [
+        62.93,
+        46.6,
+        40.87
+       ]
+      }
+     },
+     "Chest": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 43.78,
+       "std": null,
+       "values": [
+        43.78
+       ]
+      }
+     },
+     "Histopathology": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       3
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 70.8,
+       "std": null,
+       "values": [
+        70.8
+       ]
+      }
+     }
+    },
+    "g_m100": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       3,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 69.94,
+       "std": 4.97,
+       "values": [
+        66.66,
+        75.66,
+        67.5
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.51,
+       "std": 0.41,
+       "values": [
+        96.24,
+        96.98,
+        96.31
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 90.3,
+       "std": 0.88,
+       "values": [
+        90.05,
+        91.28,
+        89.57
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 65.76,
+       "std": 2.07,
+       "values": [
+        67.4,
+        66.43,
+        63.43
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 89.82,
+       "std": 0.75,
+       "values": [
+        89.49,
+        90.68,
+        89.29
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 65.96,
+       "std": 2.84,
+       "values": [
+        64.68,
+        69.21,
+        63.99
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 72.28,
+       "std": 6.59,
+       "values": [
+        74.8,
+        64.8,
+        77.24
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 87.79,
+       "std": 0.47,
+       "values": [
+        87.57,
+        87.46,
+        88.33
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 58.59,
+       "std": 1.01,
+       "values": [
+        57.82,
+        58.22,
+        59.73
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "best_epoch": [
+       4,
+       3,
+       4
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 51.91,
+       "std": 11.06,
+       "values": [
+        45.17,
+        45.88,
+        64.67
+       ]
+      }
+     }
+    },
+    "g_m10": {
+     "Liver": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       3
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 64.7,
+       "std": null,
+       "values": [
+        64.7
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 95.48,
+       "std": null,
+       "values": [
+        95.48
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 87.05,
+       "std": null,
+       "values": [
+        87.05
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 71.2,
+       "std": null,
+       "values": [
+        71.2
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 90.24,
+       "std": null,
+       "values": [
+        90.24
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 66.4,
+       "std": null,
+       "values": [
+        66.4
+       ]
+      }
+     }
+    },
+    "g_m25": {
+     "Liver": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       3
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 65.11,
+       "std": null,
+       "values": [
+        65.11
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 96.13,
+       "std": null,
+       "values": [
+        96.13
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 89.03,
+       "std": null,
+       "values": [
+        89.03
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "best_epoch": [
+       4
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 69.14,
+       "std": null,
+       "values": [
+        69.14
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.9,
+       "std": null,
+       "values": [
+        89.9
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 65.5,
+       "std": null,
+       "values": [
+        65.5
+       ]
+      }
+     }
+    }
+   },
+   "configs_all_seeds": {},
+   "secondary": [
+    {
+     "run_id": "pu_RESC_OCT_s0_pi5",
+     "arm": "pu",
+     "target": "Retina_RESC",
+     "seed": 0,
+     "epochs": 5,
+     "pi": "0.05",
+     "img_auroc": 77.81,
+     "pix_auroc": 49.11,
+     "aupro": 18.59
+    },
+    {
+     "run_id": "pu_RESC_OCT_s0_pi5",
+     "arm": "pu",
+     "target": "Retina_OCT2017",
+     "seed": 0,
+     "epochs": 5,
+     "pi": "0.05",
+     "img_auroc": 65.58
+    },
+    {
+     "run_id": "pu_Liver_s0_pi5",
+     "arm": "pu",
+     "target": "Liver",
+     "seed": 0,
+     "epochs": 5,
+     "pi": "0.05",
+     "img_auroc": 72.38,
+     "pix_auroc": 65.79,
+     "aupro": 46.56
+    },
+    {
+     "run_id": "pu_Brain_s0_pi5",
+     "arm": "pu",
+     "target": "Brain",
+     "seed": 0,
+     "epochs": 5,
+     "pi": "0.05",
+     "img_auroc": 67.29,
+     "pix_auroc": 88.24,
+     "aupro": 61.33
+    }
+   ],
+   "paired": {
+    "g-mil": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": -3.83,
+       "pix_auroc": -2.32,
+       "aupro": -6.93
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": 0.04,
+       "pix_auroc": -9.2,
+       "aupro": -27.66
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": -2.59,
+       "pix_auroc": -4.27,
+       "aupro": -11.23
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": 7.37,
+       "pix_auroc": -2.29,
+       "aupro": -6.01
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": -3.62,
+       "pix_auroc": -0.2,
+       "aupro": -0.67
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": 3.05,
+       "pix_auroc": -0.96,
+       "aupro": -3.85
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -0.08,
+       "pix_auroc": -1.89,
+       "aupro": 2.19
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": 5.22,
+       "pix_auroc": 15.61,
+       "aupro": 12.66
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 2.89,
+       "pix_auroc": -0.98,
+       "aupro": -3.95
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -2.13,
+       "mean_delta_pix_auroc": -5.26,
+       "mean_delta_aupro": -15.27
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 2.27,
+       "mean_delta_pix_auroc": -1.15,
+       "mean_delta_aupro": -3.51
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 2,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": 2.68,
+       "mean_delta_pix_auroc": 4.25,
+       "mean_delta_aupro": 3.64
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 5,
+       "pix_auroc": 1,
+       "aupro": 2
+      },
+      "sign_test_p_aupro": 0.9805,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": -2.13,
+        "pix_auroc": -5.26,
+        "aupro": -15.27
+       },
+       "Liver": {
+        "img_auroc": 2.27,
+        "pix_auroc": -1.15,
+        "aupro": -3.51
+       },
+       "Retina_RESC": {
+        "img_auroc": 2.68,
+        "pix_auroc": 4.25,
+        "aupro": 3.64
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    },
+    "pu-mil": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": 0.66,
+       "pix_auroc": -2.15,
+       "aupro": -4.68
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": 0.93,
+       "pix_auroc": -1.97,
+       "aupro": -5.08
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": -2.2,
+       "pix_auroc": 2.09,
+       "aupro": 6.12
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": 3.3,
+       "pix_auroc": 0.3,
+       "aupro": -1.88
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": -0.55,
+       "pix_auroc": -5.38,
+       "aupro": -6.46
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": -7.13,
+       "pix_auroc": -6.94,
+       "aupro": -14.75
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -1.21,
+       "pix_auroc": -2.94,
+       "aupro": -2.93
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": 2.38,
+       "pix_auroc": -15.96,
+       "aupro": -17.42
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 0.96,
+       "pix_auroc": -22.59,
+       "aupro": -26.89
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -0.2,
+       "mean_delta_pix_auroc": -0.67,
+       "mean_delta_aupro": -1.21
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -1.46,
+       "mean_delta_pix_auroc": -4.01,
+       "mean_delta_aupro": -7.7
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 0.71,
+       "mean_delta_pix_auroc": -13.83,
+       "mean_delta_aupro": -15.74
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 5,
+       "pix_auroc": 2,
+       "aupro": 1
+      },
+      "sign_test_p_aupro": 0.998,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": -0.2,
+        "pix_auroc": -0.67,
+        "aupro": -1.21
+       },
+       "Liver": {
+        "img_auroc": -1.46,
+        "pix_auroc": -4.01,
+        "aupro": -7.7
+       },
+       "Retina_RESC": {
+        "img_auroc": 0.71,
+        "pix_auroc": -13.83,
+        "aupro": -15.74
+       }
+      },
+      "pix_higher_targets": 0
+     }
+    },
+    "mil-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": 1.54,
+       "pix_auroc": 2.24,
+       "aupro": 5.57
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": -3.43,
+       "pix_auroc": 5.41,
+       "aupro": 15.67
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": 5.49,
+       "pix_auroc": 2.52,
+       "aupro": 6.02
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -14.7,
+       "pix_auroc": -0.94,
+       "aupro": -2.7
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": 6.78,
+       "pix_auroc": 0.01,
+       "aupro": -0.19
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": 4.13,
+       "pix_auroc": -0.88,
+       "aupro": -0.51
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -2.34,
+       "pix_auroc": -10.68,
+       "aupro": -12.55
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": -10.59,
+       "pix_auroc": -20.93,
+       "aupro": -18.93
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 2.39,
+       "pix_auroc": -0.73,
+       "aupro": 1.08
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 1.2,
+       "mean_delta_pix_auroc": 3.39,
+       "mean_delta_aupro": 9.09
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -1.26,
+       "mean_delta_pix_auroc": -0.6,
+       "mean_delta_aupro": -1.14
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -3.52,
+       "mean_delta_pix_auroc": -10.78,
+       "mean_delta_aupro": -10.13
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 5,
+       "pix_auroc": 4,
+       "aupro": 4
+      },
+      "sign_test_p_aupro": 0.7461,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 1.2,
+        "pix_auroc": 3.39,
+        "aupro": 9.09
+       },
+       "Liver": {
+        "img_auroc": -1.26,
+        "pix_auroc": -0.6,
+        "aupro": -1.14
+       },
+       "Retina_RESC": {
+        "img_auroc": -3.52,
+        "pix_auroc": -10.78,
+        "aupro": -10.13
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    },
+    "g-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": -2.29,
+       "pix_auroc": -0.09,
+       "aupro": -1.36
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": -3.39,
+       "pix_auroc": -3.79,
+       "aupro": -11.99
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": 2.9,
+       "pix_auroc": -1.74,
+       "aupro": -5.21
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -7.33,
+       "pix_auroc": -3.23,
+       "aupro": -8.71
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": 3.17,
+       "pix_auroc": -0.19,
+       "aupro": -0.87
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": 7.17,
+       "pix_auroc": -1.85,
+       "aupro": -4.36
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -2.42,
+       "pix_auroc": -12.57,
+       "aupro": -10.35
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": -5.38,
+       "pix_auroc": -5.32,
+       "aupro": -6.26
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 5.28,
+       "pix_auroc": -1.71,
+       "aupro": -2.87
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -0.93,
+       "mean_delta_pix_auroc": -1.87,
+       "mean_delta_aupro": -6.18
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 1.0,
+       "mean_delta_pix_auroc": -1.76,
+       "mean_delta_aupro": -4.65
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -0.84,
+       "mean_delta_pix_auroc": -6.53,
+       "mean_delta_aupro": -6.5
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 4,
+       "pix_auroc": 0,
+       "aupro": 0
+      },
+      "sign_test_p_aupro": 1.0,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": -0.93,
+        "pix_auroc": -1.87,
+        "aupro": -6.18
+       },
+       "Liver": {
+        "img_auroc": 1.0,
+        "pix_auroc": -1.76,
+        "aupro": -4.65
+       },
+       "Retina_RESC": {
+        "img_auroc": -0.84,
+        "pix_auroc": -6.53,
+        "aupro": -6.5
+       }
+      },
+      "pix_higher_targets": 0
+     }
+    },
+    "pu-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": 2.2,
+       "pix_auroc": 0.09,
+       "aupro": 0.89
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": -2.5,
+       "pix_auroc": 3.45,
+       "aupro": 10.59
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": 3.29,
+       "pix_auroc": 4.62,
+       "aupro": 12.14
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -11.4,
+       "pix_auroc": -0.64,
+       "aupro": -4.58
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": 6.23,
+       "pix_auroc": -5.37,
+       "aupro": -6.65
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": -3.01,
+       "pix_auroc": -7.82,
+       "aupro": -15.27
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -3.55,
+       "pix_auroc": -13.62,
+       "aupro": -15.47
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": -8.21,
+       "pix_auroc": -36.89,
+       "aupro": -36.35
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 3.36,
+       "pix_auroc": -23.32,
+       "aupro": -25.8
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 1.0,
+       "mean_delta_pix_auroc": 2.72,
+       "mean_delta_aupro": 7.87
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -2.72,
+       "mean_delta_pix_auroc": -4.61,
+       "mean_delta_aupro": -8.83
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": -2.8,
+       "mean_delta_pix_auroc": -24.61,
+       "mean_delta_aupro": -25.88
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 4,
+       "pix_auroc": 3,
+       "aupro": 3
+      },
+      "sign_test_p_aupro": 0.9102,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 1.0,
+        "pix_auroc": 2.72,
+        "aupro": 7.87
+       },
+       "Liver": {
+        "img_auroc": -2.72,
+        "pix_auroc": -4.61,
+        "aupro": -8.83
+       },
+       "Retina_RESC": {
+        "img_auroc": -2.8,
+        "pix_auroc": -24.61,
+        "aupro": -25.88
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    },
+    "g_m100-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": 0.88,
+       "pix_auroc": 0.96,
+       "aupro": 2.4
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": -0.74,
+       "pix_auroc": 2.66,
+       "aupro": 8.42
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": -0.05,
+       "pix_auroc": 0.89,
+       "aupro": 2.43
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -14.73,
+       "pix_auroc": -0.55,
+       "aupro": -0.74
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": 9.55,
+       "pix_auroc": 0.79,
+       "aupro": 2.16
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": 1.51,
+       "pix_auroc": -1.1,
+       "aupro": -1.72
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -6.81,
+       "pix_auroc": -0.03,
+       "aupro": 1.25
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": -20.82,
+       "pix_auroc": -0.82,
+       "aupro": -2.04
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 4.52,
+       "pix_auroc": 0.45,
+       "aupro": -0.23
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 0.03,
+       "mean_delta_pix_auroc": 1.5,
+       "mean_delta_aupro": 4.41
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -1.22,
+       "mean_delta_pix_auroc": -0.29,
+       "mean_delta_aupro": -0.1
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -7.7,
+       "mean_delta_pix_auroc": -0.14,
+       "mean_delta_aupro": -0.34
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 4,
+       "pix_auroc": 5,
+       "aupro": 5
+      },
+      "sign_test_p_aupro": 0.5,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 0.03,
+        "pix_auroc": 1.5,
+        "aupro": 4.41
+       },
+       "Liver": {
+        "img_auroc": -1.22,
+        "pix_auroc": -0.29,
+        "aupro": -0.1
+       },
+       "Retina_RESC": {
+        "img_auroc": -7.7,
+        "pix_auroc": -0.14,
+        "aupro": -0.34
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    },
+    "pu_m100-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": 2.89,
+       "pix_auroc": -0.64,
+       "aupro": -1.75
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": 1.38,
+       "pix_auroc": 1.73,
+       "aupro": 5.13
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": 10.08,
+       "pix_auroc": 0.26,
+       "aupro": 1.94
+      },
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -10.45,
+       "pix_auroc": 0.53,
+       "aupro": 0.26
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": 7.72,
+       "pix_auroc": 0.04,
+       "aupro": 0.96
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": 10.73,
+       "pix_auroc": -0.24,
+       "aupro": 1.15
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": -3.95,
+       "pix_auroc": 0.57,
+       "aupro": 2.61
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": -6.57,
+       "pix_auroc": -0.97,
+       "aupro": -2.52
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 3.03,
+       "pix_auroc": 2.42,
+       "aupro": 4.25
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 2,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": 4.78,
+       "mean_delta_pix_auroc": 0.45,
+       "mean_delta_aupro": 1.77
+      },
+      "Liver": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 2.67,
+       "mean_delta_pix_auroc": 0.11,
+       "mean_delta_aupro": 0.79
+      },
+      "Retina_RESC": {
+       "seeds": [
+        0,
+        1,
+        2
+       ],
+       "n": 3,
+       "aupro_positive": 2,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": -2.5,
+       "mean_delta_pix_auroc": 0.67,
+       "mean_delta_aupro": 1.45
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 6,
+       "pix_auroc": 6,
+       "aupro": 7
+      },
+      "sign_test_p_aupro": 0.0898,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 4.78,
+        "pix_auroc": 0.45,
+        "aupro": 1.77
+       },
+       "Liver": {
+        "img_auroc": 2.67,
+        "pix_auroc": 0.11,
+        "aupro": 0.79
+       },
+       "Retina_RESC": {
+        "img_auroc": -2.5,
+        "pix_auroc": 0.67,
+        "aupro": 1.45
+       }
+      },
+      "pix_higher_targets": 3
+     }
+    }
+   },
+   "retention": {
+    "mil": {
+     "Brain": 1.088,
+     "Liver": 0.987,
+     "Retina_RESC": 0.716,
+     "_mean": 0.93,
+     "_min": 0.716
+    },
+    "pu": {
+     "Brain": 1.071,
+     "Liver": 0.901,
+     "Retina_RESC": 0.351,
+     "_mean": 0.774,
+     "_min": 0.351
+    },
+    "g": {
+     "Brain": 0.951,
+     "Liver": 0.962,
+     "Retina_RESC": 0.828,
+     "_mean": 0.914,
+     "_min": 0.828
+    }
+   },
+   "retention_vs_r0": {
+    "mil": {
+     "Brain": 1.051,
+     "Liver": 0.964,
+     "Retina_RESC": 0.671,
+     "_mean": 0.895
+    },
+    "pu": {
+     "Brain": 1.034,
+     "Liver": 0.88,
+     "Retina_RESC": 0.329,
+     "_mean": 0.748
+    },
+    "g": {
+     "Brain": 0.919,
+     "Liver": 0.94,
+     "Retina_RESC": 0.776,
+     "_mean": 0.878
+    }
+   },
+   "inmask": {
+    "pu": {
+     "per_fold": {
+      "Liver": 0.359,
+      "Brain": 0.426,
+      "RESC_OCT": 0.117
+     },
+     "mean_of_folds": 0.301
+    },
+    "pu_m100": {
+     "per_fold": {
+      "Liver": 0.818,
+      "Brain": 0.91,
+      "RESC_OCT": 0.566
+     },
+     "mean_of_folds": 0.765
+    },
+    "mvfa": {
+     "per_fold": {
+      "Liver": 0.818,
+      "Brain": 0.926,
+      "RESC_OCT": 0.562
+     },
+     "mean_of_folds": 0.769
+    },
+    "mil": {
+     "per_fold": {
+      "Brain": 0.583,
+      "Liver": 0.69,
+      "RESC_OCT": 0.206
+     },
+     "mean_of_folds": 0.493
+    },
+    "g": {
+     "per_fold": {
+      "Liver": 0.637,
+      "Brain": 0.6,
+      "RESC_OCT": 0.161
+     },
+     "mean_of_folds": 0.466
+    },
+    "g_m100": {
+     "per_fold": {
+      "Liver": 0.808,
+      "Brain": 0.905,
+      "RESC_OCT": 0.536
+     },
+     "mean_of_folds": 0.75
+    },
+    "g_m10": {
+     "per_fold": {
+      "Liver": 0.671,
+      "Brain": 0.707
+     },
+     "mean_of_folds": 0.689
+    },
+    "g_m25": {
+     "per_fold": {
+      "Liver": 0.713,
+      "Brain": 0.745
+     },
+     "mean_of_folds": 0.729
+    }
+   },
+   "best_epoch": {
+    "n_runs": 61,
+    "last": 39,
+    "last_two": 58,
+    "histogram": {
+     "2": 3,
+     "3": 19,
+     "4": 39
+    },
+    "excluding": {
+     "arms": [
+      "g_m10",
+      "g_m25"
+     ],
+     "n_runs": 57,
+     "last": 37,
+     "last_two": 54
+    }
+   },
+   "source_val_img_auroc": {
+    "mean": 95.51,
+    "max": 96.81
+   },
+   "n_runs": 69,
+   "n_runs_masked_targets": 61,
+   "tests": {}
+  },
+  "r3": {
+   "format": "train2 logger",
+   "main_seeds": [
+    3,
+    4,
+    5
+   ],
+   "baseline": "mvfa",
+   "epochs": [
+    20
+   ],
+   "configs": {
+    "mvfa": {
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       18,
+       14
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 74.29,
+       "std": 2.95,
+       "values": [
+        72.11,
+        73.11,
+        77.65
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 86.14,
+       "std": 0.69,
+       "values": [
+        85.58,
+        86.91,
+        85.93
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 57.66,
+       "std": 1.39,
+       "values": [
+        56.85,
+        59.27,
+        56.87
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       18,
+       14
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 70.75,
+       "std": 11.09,
+       "values": [
+        79.53,
+        74.43,
+        58.3
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       17,
+       18
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 60.6,
+       "std": 2.53,
+       "values": [
+        57.68,
+        61.85,
+        62.25
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 97.21,
+       "std": 0.01,
+       "values": [
+        97.22,
+        97.2,
+        97.21
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.55,
+       "std": 0.09,
+       "values": [
+        91.46,
+        91.63,
+        91.57
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       14,
+       16
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 56.33,
+       "std": 6.73,
+       "values": [
+        51.83,
+        53.1,
+        64.06
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 87.84,
+       "std": 0.87,
+       "values": [
+        88.58,
+        88.05,
+        86.89
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 59.31,
+       "std": 2.15,
+       "values": [
+        60.67,
+        60.43,
+        56.82
+       ]
+      }
+     }
+    },
+    "mil": {
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       12,
+       19,
+       18
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 67.5,
+       "std": 3.7,
+       "values": [
+        66.53,
+        71.59,
+        64.39
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.56,
+       "std": 2.77,
+       "values": [
+        88.59,
+        85.78,
+        91.31
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 63.77,
+       "std": 3.77,
+       "values": [
+        60.27,
+        63.28,
+        67.75
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       18,
+       18,
+       15
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 71.27,
+       "std": 0.83,
+       "values": [
+        70.93,
+        70.67,
+        72.22
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 83.4,
+       "std": 3.71,
+       "values": [
+        85.31,
+        79.13,
+        85.78
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 54.31,
+       "std": 6.52,
+       "values": [
+        53.94,
+        47.99,
+        61.0
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       18,
+       18,
+       15
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 62.13,
+       "std": 3.99,
+       "values": [
+        61.83,
+        66.26,
+        58.29
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       17,
+       10
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 67.95,
+       "std": 4.11,
+       "values": [
+        69.47,
+        63.3,
+        71.09
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 95.5,
+       "std": 0.12,
+       "values": [
+        95.54,
+        95.37,
+        95.6
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 88.08,
+       "std": 0.68,
+       "values": [
+        87.44,
+        88.03,
+        88.78
+       ]
+      }
+     }
+    },
+    "pu_m100": {
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       13,
+       15,
+       16
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 63.86,
+       "std": 4.01,
+       "values": [
+        61.73,
+        61.36,
+        68.48
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.57,
+       "std": 0.2,
+       "values": [
+        96.36,
+        96.6,
+        96.76
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.04,
+       "std": 0.28,
+       "values": [
+        90.78,
+        91.0,
+        91.34
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       16,
+       10,
+       12
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 67.52,
+       "std": 8.31,
+       "values": [
+        73.48,
+        58.03,
+        71.05
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 89.82,
+       "std": 0.61,
+       "values": [
+        89.68,
+        89.29,
+        90.48
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 65.75,
+       "std": 1.72,
+       "values": [
+        64.89,
+        64.64,
+        67.73
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       14,
+       19
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 71.37,
+       "std": 1.45,
+       "values": [
+        70.53,
+        73.05,
+        70.53
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 87.26,
+       "std": 0.98,
+       "values": [
+        87.85,
+        86.13,
+        87.8
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 57.78,
+       "std": 2.89,
+       "values": [
+        59.28,
+        54.44,
+        59.62
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       14,
+       19
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 65.09,
+       "std": 2.37,
+       "values": [
+        66.82,
+        66.06,
+        62.38
+       ]
+      }
+     }
+    },
+    "mil_m100": {
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       13,
+       17,
+       19
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 63.42,
+       "std": 3.21,
+       "values": [
+        59.82,
+        65.98,
+        64.48
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.33,
+       "std": 0.29,
+       "values": [
+        96.0,
+        96.51,
+        96.5
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 90.84,
+       "std": 0.01,
+       "values": [
+        90.85,
+        90.84,
+        90.83
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       13,
+       8
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 60.3,
+       "std": 0.65,
+       "values": [
+        60.95,
+        59.64,
+        60.3
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 91.48,
+       "std": 0.98,
+       "values": [
+        91.07,
+        90.77,
+        92.59
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 69.91,
+       "std": 3.48,
+       "values": [
+        68.59,
+        67.29,
+        73.87
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       18,
+       17
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 72.25,
+       "std": 2.66,
+       "values": [
+        74.83,
+        72.38,
+        69.53
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.88,
+       "std": 0.41,
+       "values": [
+        89.33,
+        88.52,
+        88.79
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 61.97,
+       "std": 1.04,
+       "values": [
+        62.58,
+        60.78,
+        62.57
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       18,
+       17
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 61.84,
+       "std": 3.62,
+       "values": [
+        57.67,
+        64.2,
+        63.65
+       ]
+      }
+     }
+    },
+    "mil_m10": {
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       18,
+       19,
+       13
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 61.21,
+       "std": 6.4,
+       "values": [
+        66.7,
+        54.18,
+        62.74
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 92.63,
+       "std": 0.76,
+       "values": [
+        92.05,
+        93.49,
+        92.35
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 73.29,
+       "std": 2.99,
+       "values": [
+        71.56,
+        76.74,
+        71.56
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       16,
+       11,
+       15
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 71.58,
+       "std": 2.03,
+       "values": [
+        71.57,
+        73.62,
+        69.55
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 86.8,
+       "std": 1.05,
+       "values": [
+        87.92,
+        85.84,
+        86.64
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 58.03,
+       "std": 2.16,
+       "values": [
+        60.52,
+        56.92,
+        56.66
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       16,
+       11,
+       15
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 59.27,
+       "std": 3.74,
+       "values": [
+        62.94,
+        59.39,
+        55.47
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       19,
+       14,
+       10
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 65.64,
+       "std": 6.5,
+       "values": [
+        61.56,
+        62.22,
+        73.14
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 95.25,
+       "std": 1.61,
+       "values": [
+        96.35,
+        96.01,
+        93.41
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 88.55,
+       "std": 2.32,
+       "values": [
+        89.71,
+        90.06,
+        85.87
+       ]
+      }
+     }
+    },
+    "mil_m25": {
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       16,
+       13,
+       16
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 58.62,
+       "std": 7.55,
+       "values": [
+        57.43,
+        66.7,
+        51.73
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 92.42,
+       "std": 0.8,
+       "values": [
+        91.51,
+        92.73,
+        93.03
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 73.18,
+       "std": 2.72,
+       "values": [
+        70.04,
+        74.63,
+        74.87
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       15,
+       19
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 72.71,
+       "std": 1.5,
+       "values": [
+        73.99,
+        71.06,
+        73.08
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.08,
+       "std": 0.89,
+       "values": [
+        88.61,
+        87.05,
+        88.58
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 59.88,
+       "std": 2.04,
+       "values": [
+        61.04,
+        57.52,
+        61.07
+       ]
+      }
+     },
+     "Retina_OCT2017": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       14,
+       15,
+       19
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 64.63,
+       "std": 2.9,
+       "values": [
+        61.37,
+        65.61,
+        66.91
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       3,
+       4,
+       5
+      ],
+      "best_epoch": [
+       8,
+       19,
+       13
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 68.05,
+       "std": 6.12,
+       "values": [
+        65.34,
+        63.75,
+        75.06
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.64,
+       "std": 0.22,
+       "values": [
+        96.85,
+        96.42,
+        96.66
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 90.39,
+       "std": 0.36,
+       "values": [
+        90.17,
+        90.21,
+        90.8
+       ]
+      }
+     }
+    }
+   },
+   "configs_all_seeds": {
+    "mvfa": {
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "best_epoch": [
+       14,
+       14,
+       16,
+       14,
+       15
+      ],
+      "img_auroc": {
+       "n": 5,
+       "mean": 55.47,
+       "std": 4.96,
+       "values": [
+        51.83,
+        53.1,
+        64.06,
+        55.28,
+        53.07
+       ]
+      },
+      "pix_auroc": {
+       "n": 5,
+       "mean": 87.88,
+       "std": 0.62,
+       "values": [
+        88.58,
+        88.05,
+        86.89,
+        87.82,
+        88.06
+       ]
+      },
+      "aupro": {
+       "n": 5,
+       "mean": 59.55,
+       "std": 1.58,
+       "values": [
+        60.67,
+        60.43,
+        56.82,
+        59.57,
+        60.27
+       ]
+      }
+     }
+    },
+    "mil": {
+     "Brain": {
+      "seeds": [
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "best_epoch": [
+       12,
+       19,
+       18,
+       13,
+       17
+      ],
+      "img_auroc": {
+       "n": 5,
+       "mean": 65.49,
+       "std": 3.84,
+       "values": [
+        66.53,
+        71.59,
+        64.39,
+        61.66,
+        63.27
+       ]
+      },
+      "pix_auroc": {
+       "n": 5,
+       "mean": 87.07,
+       "std": 2.95,
+       "values": [
+        88.59,
+        85.78,
+        91.31,
+        83.64,
+        86.05
+       ]
+      },
+      "aupro": {
+       "n": 5,
+       "mean": 62.19,
+       "std": 6.15,
+       "values": [
+        60.27,
+        63.28,
+        67.75,
+        52.61,
+        67.04
+       ]
+      }
+     }
+    }
+   },
+   "secondary": [],
+   "paired": {
+    "mil-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 3,
+       "img_auroc": 14.7,
+       "pix_auroc": 0.0,
+       "aupro": -0.4
+      },
+      {
+       "target": "Brain",
+       "seed": 4,
+       "img_auroc": 18.49,
+       "pix_auroc": -2.28,
+       "aupro": 2.85
+      },
+      {
+       "target": "Brain",
+       "seed": 5,
+       "img_auroc": 0.33,
+       "pix_auroc": 4.42,
+       "aupro": 10.93
+      },
+      {
+       "target": "Brain",
+       "seed": 6,
+       "img_auroc": 6.39,
+       "pix_auroc": -4.18,
+       "aupro": -6.95
+      },
+      {
+       "target": "Brain",
+       "seed": 7,
+       "img_auroc": 10.2,
+       "pix_auroc": -2.0,
+       "aupro": 6.77
+      },
+      {
+       "target": "Liver",
+       "seed": 3,
+       "img_auroc": 11.79,
+       "pix_auroc": -1.68,
+       "aupro": -4.03
+      },
+      {
+       "target": "Liver",
+       "seed": 4,
+       "img_auroc": 1.45,
+       "pix_auroc": -1.83,
+       "aupro": -3.6
+      },
+      {
+       "target": "Liver",
+       "seed": 5,
+       "img_auroc": 8.84,
+       "pix_auroc": -1.61,
+       "aupro": -2.79
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 3,
+       "img_auroc": -1.18,
+       "pix_auroc": -0.27,
+       "aupro": -2.91
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 4,
+       "img_auroc": -2.44,
+       "pix_auroc": -7.78,
+       "aupro": -11.28
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 5,
+       "img_auroc": -5.42,
+       "pix_auroc": -0.15,
+       "aupro": 4.13
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "n": 5,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": 10.02,
+       "mean_delta_pix_auroc": -0.81,
+       "mean_delta_aupro": 2.64
+      },
+      "Liver": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 7.36,
+       "mean_delta_pix_auroc": -1.71,
+       "mean_delta_aupro": -3.47
+      },
+      "Retina_RESC": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -3.01,
+       "mean_delta_pix_auroc": -2.73,
+       "mean_delta_aupro": -3.36
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 6,
+       "pix_auroc": 2,
+       "aupro": 3
+      },
+      "sign_test_p_aupro": 0.9102,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 11.17,
+        "pix_auroc": 0.71,
+        "aupro": 4.46
+       },
+       "Liver": {
+        "img_auroc": 7.36,
+        "pix_auroc": -1.71,
+        "aupro": -3.47
+       },
+       "Retina_RESC": {
+        "img_auroc": -3.01,
+        "pix_auroc": -2.73,
+        "aupro": -3.36
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    },
+    "pu_m100-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 3,
+       "img_auroc": 21.65,
+       "pix_auroc": 1.09,
+       "aupro": 4.22
+      },
+      {
+       "target": "Brain",
+       "seed": 4,
+       "img_auroc": 4.93,
+       "pix_auroc": 1.24,
+       "aupro": 4.21
+      },
+      {
+       "target": "Brain",
+       "seed": 5,
+       "img_auroc": 6.99,
+       "pix_auroc": 3.59,
+       "aupro": 10.91
+      },
+      {
+       "target": "Liver",
+       "seed": 3,
+       "img_auroc": 4.05,
+       "pix_auroc": -0.86,
+       "aupro": -0.68
+      },
+      {
+       "target": "Liver",
+       "seed": 4,
+       "img_auroc": -0.5,
+       "pix_auroc": -0.6,
+       "aupro": -0.63
+      },
+      {
+       "target": "Liver",
+       "seed": 5,
+       "img_auroc": 6.23,
+       "pix_auroc": -0.45,
+       "aupro": -0.23
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 3,
+       "img_auroc": -1.58,
+       "pix_auroc": 2.27,
+       "aupro": 2.43
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 4,
+       "img_auroc": -0.06,
+       "pix_auroc": -0.78,
+       "aupro": -4.83
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 5,
+       "img_auroc": -7.11,
+       "pix_auroc": 1.87,
+       "aupro": 2.74
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 11.19,
+       "mean_delta_pix_auroc": 1.97,
+       "mean_delta_aupro": 6.45
+      },
+      "Liver": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 3.26,
+       "mean_delta_pix_auroc": -0.64,
+       "mean_delta_aupro": -0.51
+      },
+      "Retina_RESC": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 2,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": -2.92,
+       "mean_delta_pix_auroc": 1.12,
+       "mean_delta_aupro": 0.12
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 5,
+       "pix_auroc": 5,
+       "aupro": 5
+      },
+      "sign_test_p_aupro": 0.5,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 11.19,
+        "pix_auroc": 1.97,
+        "aupro": 6.45
+       },
+       "Liver": {
+        "img_auroc": 3.26,
+        "pix_auroc": -0.64,
+        "aupro": -0.51
+       },
+       "Retina_RESC": {
+        "img_auroc": -2.92,
+        "pix_auroc": 1.12,
+        "aupro": 0.12
+       }
+      },
+      "pix_higher_targets": 2
+     }
+    },
+    "mil_m100-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 3,
+       "img_auroc": 9.12,
+       "pix_auroc": 2.48,
+       "aupro": 7.92
+      },
+      {
+       "target": "Brain",
+       "seed": 4,
+       "img_auroc": 6.54,
+       "pix_auroc": 2.72,
+       "aupro": 6.85
+      },
+      {
+       "target": "Brain",
+       "seed": 5,
+       "img_auroc": -3.76,
+       "pix_auroc": 5.7,
+       "aupro": 17.04
+      },
+      {
+       "target": "Liver",
+       "seed": 3,
+       "img_auroc": 2.14,
+       "pix_auroc": -1.23,
+       "aupro": -0.61
+      },
+      {
+       "target": "Liver",
+       "seed": 4,
+       "img_auroc": 4.12,
+       "pix_auroc": -0.7,
+       "aupro": -0.79
+      },
+      {
+       "target": "Liver",
+       "seed": 5,
+       "img_auroc": 2.23,
+       "pix_auroc": -0.71,
+       "aupro": -0.74
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 3,
+       "img_auroc": 2.72,
+       "pix_auroc": 3.75,
+       "aupro": 5.72
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 4,
+       "img_auroc": -0.73,
+       "pix_auroc": 1.61,
+       "aupro": 1.51
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 5,
+       "img_auroc": -8.12,
+       "pix_auroc": 2.86,
+       "aupro": 5.7
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 3.97,
+       "mean_delta_pix_auroc": 3.63,
+       "mean_delta_aupro": 10.61
+      },
+      "Liver": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 2.83,
+       "mean_delta_pix_auroc": -0.88,
+       "mean_delta_aupro": -0.71
+      },
+      "Retina_RESC": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": -2.04,
+       "mean_delta_pix_auroc": 2.74,
+       "mean_delta_aupro": 4.31
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 6,
+       "pix_auroc": 6,
+       "aupro": 6
+      },
+      "sign_test_p_aupro": 0.2539,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 3.97,
+        "pix_auroc": 3.63,
+        "aupro": 10.61
+       },
+       "Liver": {
+        "img_auroc": 2.83,
+        "pix_auroc": -0.88,
+        "aupro": -0.71
+       },
+       "Retina_RESC": {
+        "img_auroc": -2.04,
+        "pix_auroc": 2.74,
+        "aupro": 4.31
+       }
+      },
+      "pix_higher_targets": 2
+     }
+    },
+    "mil_m10-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 3,
+       "img_auroc": 14.87,
+       "pix_auroc": 3.47,
+       "aupro": 10.89
+      },
+      {
+       "target": "Brain",
+       "seed": 4,
+       "img_auroc": 1.08,
+       "pix_auroc": 5.44,
+       "aupro": 16.31
+      },
+      {
+       "target": "Brain",
+       "seed": 5,
+       "img_auroc": -1.32,
+       "pix_auroc": 5.46,
+       "aupro": 14.74
+      },
+      {
+       "target": "Liver",
+       "seed": 3,
+       "img_auroc": 3.88,
+       "pix_auroc": -0.88,
+       "aupro": -1.75
+      },
+      {
+       "target": "Liver",
+       "seed": 4,
+       "img_auroc": 0.37,
+       "pix_auroc": -1.19,
+       "aupro": -1.57
+      },
+      {
+       "target": "Liver",
+       "seed": 5,
+       "img_auroc": 10.89,
+       "pix_auroc": -3.8,
+       "aupro": -5.7
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 3,
+       "img_auroc": -0.54,
+       "pix_auroc": 2.34,
+       "aupro": 3.67
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 4,
+       "img_auroc": 0.51,
+       "pix_auroc": -1.07,
+       "aupro": -2.35
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 5,
+       "img_auroc": -8.09,
+       "pix_auroc": 0.71,
+       "aupro": -0.21
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 4.88,
+       "mean_delta_pix_auroc": 4.79,
+       "mean_delta_aupro": 13.98
+      },
+      "Liver": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 5.05,
+       "mean_delta_pix_auroc": -1.96,
+       "mean_delta_aupro": -3.01
+      },
+      "Retina_RESC": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 1,
+       "sign_test_p_aupro": 0.875,
+       "mean_delta_img_auroc": -2.71,
+       "mean_delta_pix_auroc": 0.66,
+       "mean_delta_aupro": 0.37
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 6,
+       "pix_auroc": 5,
+       "aupro": 4
+      },
+      "sign_test_p_aupro": 0.7461,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 4.88,
+        "pix_auroc": 4.79,
+        "aupro": 13.98
+       },
+       "Liver": {
+        "img_auroc": 5.05,
+        "pix_auroc": -1.96,
+        "aupro": -3.01
+       },
+       "Retina_RESC": {
+        "img_auroc": -2.71,
+        "pix_auroc": 0.66,
+        "aupro": 0.37
+       }
+      },
+      "pix_higher_targets": 2
+     }
+    },
+    "mil_m25-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 3,
+       "img_auroc": 5.6,
+       "pix_auroc": 2.93,
+       "aupro": 9.37
+      },
+      {
+       "target": "Brain",
+       "seed": 4,
+       "img_auroc": 13.6,
+       "pix_auroc": 4.67,
+       "aupro": 14.2
+      },
+      {
+       "target": "Brain",
+       "seed": 5,
+       "img_auroc": -12.33,
+       "pix_auroc": 6.14,
+       "aupro": 18.04
+      },
+      {
+       "target": "Liver",
+       "seed": 3,
+       "img_auroc": 7.66,
+       "pix_auroc": -0.37,
+       "aupro": -1.29
+      },
+      {
+       "target": "Liver",
+       "seed": 4,
+       "img_auroc": 1.89,
+       "pix_auroc": -0.79,
+       "aupro": -1.42
+      },
+      {
+       "target": "Liver",
+       "seed": 5,
+       "img_auroc": 12.81,
+       "pix_auroc": -0.55,
+       "aupro": -0.77
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 3,
+       "img_auroc": 1.88,
+       "pix_auroc": 3.03,
+       "aupro": 4.19
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 4,
+       "img_auroc": -2.05,
+       "pix_auroc": 0.14,
+       "aupro": -1.75
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 5,
+       "img_auroc": -4.57,
+       "pix_auroc": 2.65,
+       "aupro": 4.2
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 3,
+       "sign_test_p_aupro": 0.125,
+       "mean_delta_img_auroc": 2.29,
+       "mean_delta_pix_auroc": 4.58,
+       "mean_delta_aupro": 13.87
+      },
+      "Liver": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 0,
+       "sign_test_p_aupro": 1.0,
+       "mean_delta_img_auroc": 7.45,
+       "mean_delta_pix_auroc": -0.57,
+       "mean_delta_aupro": -1.16
+      },
+      "Retina_RESC": {
+       "seeds": [
+        3,
+        4,
+        5
+       ],
+       "n": 3,
+       "aupro_positive": 2,
+       "sign_test_p_aupro": 0.5,
+       "mean_delta_img_auroc": -1.58,
+       "mean_delta_pix_auroc": 1.94,
+       "mean_delta_aupro": 2.21
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 9,
+      "positive": {
+       "img_auroc": 6,
+       "pix_auroc": 6,
+       "aupro": 5
+      },
+      "sign_test_p_aupro": 0.5,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 2.29,
+        "pix_auroc": 4.58,
+        "aupro": 13.87
+       },
+       "Liver": {
+        "img_auroc": 7.45,
+        "pix_auroc": -0.57,
+        "aupro": -1.16
+       },
+       "Retina_RESC": {
+        "img_auroc": -1.58,
+        "pix_auroc": 1.94,
+        "aupro": 2.21
+       }
+      },
+      "pix_higher_targets": 2
+     }
+    }
+   },
+   "retention": {
+    "mil": {
+     "Brain": 1.019,
+     "Liver": 0.964,
+     "Retina_RESC": 0.924,
+     "_mean": 0.969,
+     "_min": 0.924
+    },
+    "mil_m10": {
+     "Brain": 1.126,
+     "Liver": 0.959,
+     "Retina_RESC": 1.018,
+     "_mean": 1.034,
+     "_min": 0.959
+    },
+    "mil_m25": {
+     "Brain": 1.121,
+     "Liver": 0.988,
+     "Retina_RESC": 1.054,
+     "_mean": 1.054,
+     "_min": 0.988
+    },
+    "mil_m100": {
+     "Brain": 1.096,
+     "Liver": 0.981,
+     "Retina_RESC": 1.076,
+     "_mean": 1.051,
+     "_min": 0.981
+    },
+    "pu_m100": {
+     "Brain": 1.052,
+     "Liver": 0.987,
+     "Retina_RESC": 1.031,
+     "_mean": 1.023,
+     "_min": 0.987
+    }
+   },
+   "retention_vs_r0": {
+    "mil": {
+     "Brain": 0.972,
+     "Liver": 0.95,
+     "Retina_RESC": 0.826,
+     "_mean": 0.916
+    },
+    "mil_m10": {
+     "Brain": 1.074,
+     "Liver": 0.944,
+     "Retina_RESC": 0.91,
+     "_mean": 0.976
+    },
+    "mil_m25": {
+     "Brain": 1.069,
+     "Liver": 0.973,
+     "Retina_RESC": 0.942,
+     "_mean": 0.995
+    },
+    "mil_m100": {
+     "Brain": 1.045,
+     "Liver": 0.967,
+     "Retina_RESC": 0.961,
+     "_mean": 0.991
+    },
+    "pu_m100": {
+     "Brain": 1.003,
+     "Liver": 0.972,
+     "Retina_RESC": 0.921,
+     "_mean": 0.965
+    }
+   },
+   "inmask": {
+    "mvfa": {
+     "per_fold": {
+      "RESC_OCT": 0.59,
+      "Liver": 0.843,
+      "Brain": 0.929
+     },
+     "mean_of_folds": 0.787
+    },
+    "mil": {
+     "per_fold": {
+      "Brain": 0.546,
+      "RESC_OCT": 0.163,
+      "Liver": 0.647
+     },
+     "mean_of_folds": 0.452
+    },
+    "pu_m100": {
+     "per_fold": {
+      "Liver": 0.837,
+      "Brain": 0.929,
+      "RESC_OCT": 0.598
+     },
+     "mean_of_folds": 0.788
+    },
+    "mil_m100": {
+     "per_fold": {
+      "Liver": 0.829,
+      "Brain": 0.919,
+      "RESC_OCT": 0.589
+     },
+     "mean_of_folds": 0.779
+    },
+    "mil_m10": {
+     "per_fold": {
+      "Brain": 0.82,
+      "RESC_OCT": 0.404,
+      "Liver": 0.759
+     },
+     "mean_of_folds": 0.661
+    },
+    "mil_m25": {
+     "per_fold": {
+      "Brain": 0.865,
+      "RESC_OCT": 0.481,
+      "Liver": 0.788
+     },
+     "mean_of_folds": 0.711
+    }
+   },
+   "best_epoch": {
+    "n_runs": 58,
+    "last": 11,
+    "last_two": 18,
+    "histogram": {
+     "8": 2,
+     "10": 3,
+     "11": 1,
+     "12": 2,
+     "13": 7,
+     "14": 9,
+     "15": 5,
+     "16": 6,
+     "17": 5,
+     "18": 7,
+     "19": 11
+    }
+   },
+   "source_val_img_auroc": {
+    "mean": 96.74,
+    "max": 97.45
+   },
+   "n_runs": 58,
+   "n_runs_masked_targets": 58,
+   "tests": {
+    "H2": {
+     "tier": "1",
+     "raw_p": 0.5,
+     "holm_p": 1.0
+    },
+    "H3": {
+     "tier": "1",
+     "raw_p": 0.5,
+     "holm_p": 1.0
+    },
+    "H4": {
+     "tier": "2",
+     "raw_p": 0.2539,
+     "holm_p": 0.5078
+    },
+    "H5": {
+     "tier": "2",
+     "raw_p": 0.7461,
+     "holm_p": 0.7461
+    }
+   }
+  },
+  "fu": {
+   "format": "train2 logger",
+   "main_seeds": [
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "baseline": "mvfa",
+   "epochs": [
+    20
+   ],
+   "configs": {
+    "mvfa": {
+     "Brain": {
+      "seeds": [
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "best_epoch": [
+       15,
+       17,
+       15,
+       13,
+       17
+      ],
+      "img_auroc": {
+       "n": 5,
+       "mean": 63.29,
+       "std": 9.8,
+       "values": [
+        53.71,
+        56.97,
+        70.02,
+        76.96,
+        58.8
+       ]
+      },
+      "pix_auroc": {
+       "n": 5,
+       "mean": 87.0,
+       "std": 0.72,
+       "values": [
+        85.76,
+        86.97,
+        87.45,
+        87.39,
+        87.44
+       ]
+      },
+      "aupro": {
+       "n": 5,
+       "mean": 57.38,
+       "std": 2.01,
+       "values": [
+        53.97,
+        57.25,
+        58.74,
+        58.14,
+        58.8
+       ]
+      }
+     }
+    },
+    "mil_m10": {
+     "Brain": {
+      "seeds": [
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "best_epoch": [
+       12,
+       14,
+       13,
+       17,
+       14
+      ],
+      "img_auroc": {
+       "n": 5,
+       "mean": 64.37,
+       "std": 5.83,
+       "values": [
+        60.59,
+        68.68,
+        70.25,
+        66.06,
+        56.26
+       ]
+      },
+      "pix_auroc": {
+       "n": 5,
+       "mean": 92.36,
+       "std": 0.98,
+       "values": [
+        91.33,
+        92.01,
+        92.56,
+        93.93,
+        91.94
+       ]
+      },
+      "aupro": {
+       "n": 5,
+       "mean": 72.08,
+       "std": 3.44,
+       "values": [
+        68.04,
+        70.53,
+        73.37,
+        77.2,
+        71.27
+       ]
+      }
+     }
+    }
+   },
+   "configs_all_seeds": {},
+   "secondary": [],
+   "paired": {
+    "mil_m10-mvfa": {
+     "per_pair": [
+      {
+       "target": "Brain",
+       "seed": 8,
+       "img_auroc": 6.88,
+       "pix_auroc": 5.58,
+       "aupro": 14.07
+      },
+      {
+       "target": "Brain",
+       "seed": 9,
+       "img_auroc": 11.71,
+       "pix_auroc": 5.04,
+       "aupro": 13.28
+      },
+      {
+       "target": "Brain",
+       "seed": 10,
+       "img_auroc": 0.23,
+       "pix_auroc": 5.11,
+       "aupro": 14.63
+      },
+      {
+       "target": "Brain",
+       "seed": 11,
+       "img_auroc": -10.9,
+       "pix_auroc": 6.54,
+       "aupro": 19.07
+      },
+      {
+       "target": "Brain",
+       "seed": 12,
+       "img_auroc": -2.54,
+       "pix_auroc": 4.5,
+       "aupro": 12.47
+      }
+     ],
+     "per_target": {
+      "Brain": {
+       "seeds": [
+        8,
+        9,
+        10,
+        11,
+        12
+       ],
+       "n": 5,
+       "aupro_positive": 5,
+       "sign_test_p_aupro": 0.0312,
+       "mean_delta_img_auroc": 1.08,
+       "mean_delta_pix_auroc": 5.35,
+       "mean_delta_aupro": 14.7
+      }
+     },
+     "main_seeds": {
+      "n_pairs": 5,
+      "positive": {
+       "img_auroc": 3,
+       "pix_auroc": 5,
+       "aupro": 5
+      },
+      "sign_test_p_aupro": 0.0312,
+      "mean_delta_by_target": {
+       "Brain": {
+        "img_auroc": 1.08,
+        "pix_auroc": 5.35,
+        "aupro": 14.7
+       }
+      },
+      "pix_higher_targets": 1
+     }
+    }
+   },
+   "retention": {
+    "mil_m10": {
+     "Brain": 1.145,
+     "_mean": 1.145,
+     "_min": 1.145
+    }
+   },
+   "retention_vs_r0": {
+    "mil_m10": {
+     "Brain": 1.067,
+     "_mean": 1.067
+    }
+   },
+   "inmask": {
+    "mvfa": {
+     "per_fold": {
+      "Brain": 0.931
+     },
+     "mean_of_folds": 0.931
+    },
+    "mil_m10": {
+     "per_fold": {
+      "Brain": 0.791
+     },
+     "mean_of_folds": 0.791
+    }
+   },
+   "best_epoch": {
+    "n_runs": 10,
+    "last": 0,
+    "last_two": 0,
+    "histogram": {
+     "12": 1,
+     "13": 2,
+     "14": 2,
+     "15": 2,
+     "17": 3
+    }
+   },
+   "source_val_img_auroc": {
+    "mean": 97.11,
+    "max": 97.47
+   },
+   "n_runs": 10,
+   "n_runs_masked_targets": 10,
+   "tests": {}
+  }
+ },
+ "protocol_runs": {
+  "folds": 5,
+  "train_images_per_class_per_source": 500,
+  "oct17_normal_train_images": 242,
+  "max_train_images_per_source": 1000,
+  "validation_images_per_class_cap": 250,
+  "valid_test_duplicates_removed": 11,
+  "valid_test_duplicates_brain_abnormal": 10,
+  "patches_per_image": 289,
+  "patch_grid": 17,
+  "image_size": 240,
+  "topk_patches": 3,
+  "pu_pi_main": 0.01,
+  "pu_pi_sensitivity": 0.05,
+  "normal_bank_size": 20000,
+  "gate_layer": 24,
+  "adam_lr": 0.0001,
+  "batch_size": 1,
+  "mask_budgets_percent": [
+   0,
+   10,
+   25,
+   100
+  ]
+ }
+}

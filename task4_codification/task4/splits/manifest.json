@@ -1,0 +1,44 @@
+{
+  "Brain": {
+    "pi_normal": 50,
+    "train_normal": 450,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "2be71893aa92e48d25500d2499ad5e4b"
+  },
+  "Liver": {
+    "pi_normal": 50,
+    "train_normal": 450,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "f0c1d61df124b8c2a37b077ceff809bf"
+  },
+  "Retina_RESC": {
+    "pi_normal": 50,
+    "train_normal": 450,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "0561d0c55e68377f95668300bc292735"
+  },
+  "Retina_OCT2017": {
+    "pi_normal": 25,
+    "train_normal": 217,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "7c31f689c5cb081420841c7c243742d3"
+  },
+  "Chest": {
+    "pi_normal": 50,
+    "train_normal": 450,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "981c76ebd319465bba79b2730c3826de"
+  },
+  "Histopathology": {
+    "pi_normal": 50,
+    "train_normal": 450,
+    "pi_abnormal": 50,
+    "train_abnormal": 450,
+    "md5": "5ac06c15bcea98837930c2ebc57d1285"
+  }
+}

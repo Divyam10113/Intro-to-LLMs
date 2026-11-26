@@ -1,0 +1,1236 @@
+{
+ "units": "percent (x100), 2 decimals; std = sample std (ddof=1)",
+ "protocol": {
+  "benchmark": "BMAD",
+  "dataset_count": 6,
+  "masked_source_count": 3,
+  "maskless_source_count": 3,
+  "adapter_levels": 4,
+  "targets": [
+   "Brain",
+   "Liver",
+   "Retina_RESC"
+  ],
+  "source_datasets": [
+   "Brain",
+   "Liver",
+   "Retina_RESC",
+   "Retina_OCT2017",
+   "Chest",
+   "Histopathology"
+  ],
+  "maskless_sources": [
+   "Retina_OCT2017",
+   "Chest",
+   "Histopathology"
+  ],
+  "max_train_images_per_class_per_source": 500,
+  "pi_holdout_fraction": 0.1,
+  "frozen_backbone": "CLIP ViT-L/14",
+  "backbone_layer_count": 14,
+  "aUpro_false_positive_limit": 0.3,
+  "steps_per_run": 2000,
+  "mil_topk_fraction": 0.01,
+  "mil_topk_min_patches": 3,
+  "pixel_auroc_chance_floor": 50.0,
+  "source_plan": "paper/inputs/plans/TASK4_PLAN_RECOMMENDED.md",
+  "source_decisions": "paper/inputs/task4_r1/report/DECISIONS.md"
+ },
+ "rounds": {
+  "r1": {
+   "r0_reproduced": {
+    "Retina_RESC": {
+     "img_auroc": 88.99,
+     "pix_auroc": 90.44,
+     "aupro": 68.75
+    },
+    "Liver": {
+     "img_auroc": 81.19,
+     "pix_auroc": 97.92,
+     "aupro": 92.34
+    },
+    "Brain": {
+     "img_auroc": 79.8,
+     "pix_auroc": 89.68,
+     "aupro": 65.35
+    }
+   },
+   "configs": {
+    "mh_ctrl": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 81.63,
+       "std": 0.37,
+       "values": [
+        82.04,
+        81.51,
+        81.34
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.99,
+       "std": 0.31,
+       "values": [
+        96.68,
+        97.0,
+        97.3
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.07,
+       "std": 0.41,
+       "values": [
+        90.6,
+        91.34,
+        91.26
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 88.92,
+       "std": 0.08,
+       "values": [
+        88.9,
+        89.0,
+        88.84
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 89.76,
+       "std": 0.46,
+       "values": [
+        89.46,
+        90.29,
+        89.53
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 66.94,
+       "std": 1.14,
+       "values": [
+        66.3,
+        68.25,
+        66.27
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.31,
+       "std": 0.96,
+       "values": [
+        81.17,
+        79.28,
+        80.48
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 90.05,
+       "std": 0.74,
+       "values": [
+        89.27,
+        90.74,
+        90.14
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 66.38,
+       "std": 2.12,
+       "values": [
+        64.11,
+        68.31,
+        66.7
+       ]
+      }
+     }
+    },
+    "mh": {
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.29,
+       "std": 0.63,
+       "values": [
+        79.62,
+        80.86,
+        80.4
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 96.97,
+       "std": 0.18,
+       "values": [
+        96.88,
+        96.85,
+        97.18
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 91.39,
+       "std": 0.27,
+       "values": [
+        91.26,
+        91.21,
+        91.7
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 89.2,
+       "std": 0.16,
+       "values": [
+        89.35,
+        89.03,
+        89.2
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 88.76,
+       "std": 2.69,
+       "values": [
+        87.64,
+        91.82,
+        86.8
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 67.45,
+       "std": 6.15,
+       "values": [
+        64.37,
+        74.53,
+        63.43
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 80.25,
+       "std": 0.72,
+       "values": [
+        79.63,
+        81.04,
+        80.07
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 91.71,
+       "std": 0.71,
+       "values": [
+        90.99,
+        92.41,
+        91.72
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 71.57,
+       "std": 2.07,
+       "values": [
+        69.53,
+        73.66,
+        71.53
+       ]
+      }
+     }
+    },
+    "m": {
+     "Retina_RESC": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 84.53,
+       "std": null,
+       "values": [
+        84.53
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 80.13,
+       "std": null,
+       "values": [
+        80.13
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 58.52,
+       "std": null,
+       "values": [
+        58.52
+       ]
+      }
+     },
+     "Liver": {
+      "seeds": [
+       0,
+       1,
+       2
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 3,
+       "mean": 73.79,
+       "std": 2.52,
+       "values": [
+        74.09,
+        71.14,
+        76.15
+       ]
+      },
+      "pix_auroc": {
+       "n": 3,
+       "mean": 59.45,
+       "std": 15.51,
+       "values": [
+        49.9,
+        77.34,
+        51.1
+       ]
+      },
+      "aupro": {
+       "n": 3,
+       "mean": 26.28,
+       "std": 15.5,
+       "values": [
+        17.33,
+        44.17,
+        17.33
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 68.87,
+       "std": null,
+       "values": [
+        68.87
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.87,
+       "std": null,
+       "values": [
+        89.87
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 64.5,
+       "std": null,
+       "values": [
+        64.5
+       ]
+      }
+     }
+    },
+    "b0": {
+     "Liver": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 75.17,
+       "std": null,
+       "values": [
+        75.17
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 94.42,
+       "std": null,
+       "values": [
+        94.42
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 85.47,
+       "std": null,
+       "values": [
+        85.47
+       ]
+      }
+     },
+     "Retina_RESC": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 76.98,
+       "std": null,
+       "values": [
+        76.98
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.57,
+       "std": null,
+       "values": [
+        89.57
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 67.29,
+       "std": null,
+       "values": [
+        67.29
+       ]
+      }
+     },
+     "Brain": {
+      "seeds": [
+       0
+      ],
+      "steps": [
+       2000
+      ],
+      "img_auroc": {
+       "n": 1,
+       "mean": 63.51,
+       "std": null,
+       "values": [
+        63.51
+       ]
+      },
+      "pix_auroc": {
+       "n": 1,
+       "mean": 89.46,
+       "std": null,
+       "values": [
+        89.46
+       ]
+      },
+      "aupro": {
+       "n": 1,
+       "mean": 64.53,
+       "std": null,
+       "values": [
+        64.53
+       ]
+      }
+     }
+    }
+   },
+   "secondary": [
+    {
+     "run_id": "m_Retina_RESC_s0_r0det",
+     "config": "m",
+     "target": "Retina_RESC",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 87.25,
+     "pix_auroc": 82.11,
+     "aupro": 60.19,
+     "notes": "det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "mh_Liver_s0_pi0.30",
+     "config": "mh",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 80.22,
+     "pix_auroc": 95.99,
+     "aupro": 89.59,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; pi_override=0.3 (sensitivity); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_r0det",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 74.58,
+     "pix_auroc": 38.01,
+     "aupro": 13.39,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_pi0.05",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 69.28,
+     "pix_auroc": 97.14,
+     "aupro": 87.28,
+     "notes": "det_init=fresh; pi_override=0.05 (sensitivity); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Brain_s0_r0det",
+     "config": "m",
+     "target": "Brain",
+     "seed": 0,
+     "steps": 2000,
+     "img_auroc": 81.86,
+     "pix_auroc": 87.02,
+     "aupro": 57.23,
+     "notes": "loss still falling (last 10% < 0.95x previous 10%): possibly under-trained; det_init=r0 (R0 det adapters: not strictly mask-free); GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    },
+    {
+     "run_id": "m_Liver_s0_2S",
+     "config": "m",
+     "target": "Liver",
+     "seed": 0,
+     "steps": 4000,
+     "img_auroc": 63.41,
+     "pix_auroc": 59.88,
+     "aupro": 36.19,
+     "notes": "det_init=fresh; GPU shared by up to 6 jobs: gpu_minutes is wall time on a shared card"
+    }
+   ],
+   "r0_published": {
+    "Liver": {
+     "img_auroc": 76.24,
+     "pix_auroc": 97.85
+    },
+    "Brain": {
+     "img_auroc": 78.63,
+     "pix_auroc": 90.27
+    },
+    "Retina_RESC": {
+     "img_auroc": 83.31,
+     "pix_auroc": 92.05
+    }
+   },
+   "paired": {
+    "mh-mh_ctrl": {
+     "per_pair": [
+      {
+       "target": "Liver",
+       "seed": 0,
+       "img_auroc": -2.43,
+       "pix_auroc": 0.2,
+       "aupro": 0.66
+      },
+      {
+       "target": "Liver",
+       "seed": 1,
+       "img_auroc": -0.65,
+       "pix_auroc": -0.15,
+       "aupro": -0.13
+      },
+      {
+       "target": "Liver",
+       "seed": 2,
+       "img_auroc": -0.93,
+       "pix_auroc": -0.12,
+       "aupro": 0.44
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 0,
+       "img_auroc": 0.45,
+       "pix_auroc": -1.82,
+       "aupro": -1.92
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 1,
+       "img_auroc": 0.03,
+       "pix_auroc": 1.54,
+       "aupro": 6.27
+      },
+      {
+       "target": "Retina_RESC",
+       "seed": 2,
+       "img_auroc": 0.36,
+       "pix_auroc": -2.72,
+       "aupro": -2.83
+      },
+      {
+       "target": "Brain",
+       "seed": 0,
+       "img_auroc": -1.55,
+       "pix_auroc": 1.73,
+       "aupro": 5.42
+      },
+      {
+       "target": "Brain",
+       "seed": 1,
+       "img_auroc": 1.76,
+       "pix_auroc": 1.66,
+       "aupro": 5.35
+      },
+      {
+       "target": "Brain",
+       "seed": 2,
+       "img_auroc": -0.41,
+       "pix_auroc": 1.58,
+       "aupro": 4.82
+      }
+     ],
+     "per_target_mean": {
+      "Liver": {
+       "img_auroc": -1.34,
+       "pix_auroc": -0.03,
+       "aupro": 0.33
+      },
+      "Retina_RESC": {
+       "img_auroc": 0.28,
+       "pix_auroc": -1.0,
+       "aupro": 0.51
+      },
+      "Brain": {
+       "img_auroc": -0.07,
+       "pix_auroc": 1.66,
+       "aupro": 5.2
+      }
+     },
+     "n_pairs": 9,
+     "positive": {
+      "img_auroc": 4,
+      "pix_auroc": 5,
+      "aupro": 6
+     },
+     "sign_test_p_aupro": 0.2539
+    }
+   },
+   "retention": {
+    "m": {
+     "Retina_RESC": {
+      "mean_over_seeds": 0.745,
+      "seed0": 0.745,
+      "aupro_ratio_mean": 0.851,
+      "aupro_ratio_seed0": 0.851
+     },
+     "Liver": {
+      "mean_over_seeds": 0.197,
+      "seed0": -0.002,
+      "aupro_ratio_mean": 0.285,
+      "aupro_ratio_seed0": 0.188
+     },
+     "Brain": {
+      "mean_over_seeds": 1.005,
+      "seed0": 1.005,
+      "aupro_ratio_mean": 0.987,
+      "aupro_ratio_seed0": 0.987
+     },
+     "_mean_seed0_over_targets": 0.583
+    },
+    "b0": {
+     "Liver": {
+      "mean_over_seeds": 0.927,
+      "seed0": 0.927,
+      "aupro_ratio_mean": 0.926,
+      "aupro_ratio_seed0": 0.926
+     },
+     "Retina_RESC": {
+      "mean_over_seeds": 0.978,
+      "seed0": 0.978,
+      "aupro_ratio_mean": 0.979,
+      "aupro_ratio_seed0": 0.979
+     },
+     "Brain": {
+      "mean_over_seeds": 0.994,
+      "seed0": 0.994,
+      "aupro_ratio_mean": 0.987,
+      "aupro_ratio_seed0": 0.987
+     },
+     "_mean_seed0_over_targets": 0.966
+    }
+   },
+   "pi": {
+    "pi.json": {
+     "Liver": {
+      "Retina_OCT2017": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Chest": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Histopathology": {
+       "pi": 0.06472664466127753,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Retina_RESC": 0.11910726875066757
+       }
+      }
+     },
+     "Brain": {
+      "Retina_OCT2017": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Chest": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      },
+      "Histopathology": {
+       "pi": 0.06355709442868829,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Liver": 0.008006920106709003,
+        "Retina_RESC": 0.11910726875066757
+       }
+      }
+     },
+     "Retina_RESC": {
+      "Retina_OCT2017": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      },
+      "Chest": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      },
+      "Histopathology": {
+       "pi": 0.009176470339298248,
+       "method": "D1: mean true patch fraction of masked sources",
+       "from": {
+        "Brain": 0.010346020571887493,
+        "Liver": 0.008006920106709003
+       }
+      }
+     }
+    },
+    "pi_estimated_det.json": {
+     "Retina_RESC": {
+      "Brain": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Liver": {
+       "pi": 0.3,
+       "pi_raw": 0.88916015625,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.3,
+       "pi_raw": 0.4797297297297297,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.6897536594073546,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Liver": {
+      "Brain": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "pi_raw": 0.9942363112391931,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.3,
+       "pi_raw": 0.3231833910034603,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Brain": {
+      "Liver": {
+       "pi": 0.3,
+       "pi_raw": 0.753037951018882,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "pi_raw": 0.9580200501253133,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 0.9836956521739131,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.5054671280276817,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9044435158100014,
+       "branch": "det",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     }
+    },
+    "pi_estimated_seg.json": {
+     "Retina_RESC": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.01692865779927466,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9408911791451955,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Brain": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 0.9489795918367347,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.005,
+       "pi_raw": -0.05840830449826995,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.7557313529221827,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     },
+     "Liver": {
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "pi_raw": 1.0,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 25,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 7225,
+       "n_abnormal_patches": 14450
+      },
+      "Chest": {
+       "pi": 0.10015967484395416,
+       "pi_raw": 0.10015967484395416,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "pi_raw": 0.9861320470304492,
+       "branch": "seg",
+       "level": "deepest (24)",
+       "n_normal_imgs": 50,
+       "n_abnormal_imgs": 50,
+       "n_normal_patches": 14450,
+       "n_abnormal_patches": 14450
+      }
+     }
+    },
+    "pi_maskfree.json": {
+     "Liver": {
+      "Brain": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     },
+     "Brain": {
+      "Liver": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_RESC": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     },
+     "Retina_RESC": {
+      "Brain": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Liver": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Retina_OCT2017": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Chest": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      },
+      "Histopathology": {
+       "pi": 0.3,
+       "method": "D2: fixed, = plan estimator's clip value"
+      }
+     }
+    },
+    "pi_true_masked_sources.json": {
+     "Brain": 0.010346020571887493,
+     "Retina_RESC": 0.11910726875066757,
+     "Liver": 0.008006920106709003
+    },
+    "pi_validation_Brain.json": {
+     "Liver": {
+      "true_patch_pi": 0.008006920106709003,
+      "seg": {
+       "L6": 0.019136325148179423,
+       "L12": -0.055916955017301095,
+       "L18": -0.15001383891502917,
+       "L24": 0.728627928202008
+      },
+      "det": {
+       "L6": 0.24290627687016342,
+       "L12": 0.46574394463667823,
+       "L18": 0.8109130199891951,
+       "L24": 0.7522514243705201
+      }
+     },
+     "Retina_RESC": {
+      "true_patch_pi": 0.11910726875066757,
+      "seg": {
+       "L6": 0.012181789786037789,
+       "L12": -0.07101995256034588,
+       "L18": 0.9411764705882353,
+       "L24": 0.9385498320268757
+      },
+      "det": {
+       "L6": 0.22214532871972326,
+       "L12": 0.9072664359861592,
+       "L18": 0.9439347604485219,
+       "L24": 0.9585870889159561
+      }
+     }
+    },
+    "pi_validation_Liver.json": {
+     "Brain": {
+      "true_patch_pi": 0.010346020571887493,
+      "seg": {
+       "L6": -0.03814959447281474,
+       "L12": 0.04957168936947065,
+       "L18": 0.9850746268656716,
+       "L24": 0.9982248520710059
+      },
+      "det": {
+       "L6": 0.44063143445435826,
+       "L12": 0.9807213930348259,
+       "L18": 1.0,
+       "L24": 1.0
+      }
+     },
+     "Retina_RESC": {
+      "true_patch_pi": 0.11910726875066757,
+      "seg": {
+       "L6": 0.040152155536770984,
+       "L12": 0.46684005201560463,
+       "L18": 0.995945945945946,
+       "L24": 1.0
+      },
+      "det": {
+       "L6": 0.293888166449935,
+       "L12": 0.9930795847750865,
+       "L18": 1.0,
+       "L24": 0.9944227551589515
+      }
+     }
+    },
+    "pi_validation_Retina_RESC.json": {
+     "Brain": {
+      "true_patch_pi": 0.010346020571887493,
+      "seg": {
+       "L6": 0.11487889273356411,
+       "L12": 0.2668918918918919,
+       "L18": 1.0,
+       "L24": 1.0
+      },
+      "det": {
+       "L6": 0.7810569663692519,
+       "L12": 0.998638529611981,
+       "L18": 1.0,
+       "L24": 1.0
+      }
+     },
+     "Liver": {
+      "true_patch_pi": 0.008006920106709003,
+      "seg": {
+       "L6": 0.2805882352941177,
+       "L12": 0.08836633663366344,
+       "L18": 0.8953831041257367,
+       "L24": -0.28622837370242205
+      },
+      "det": {
+       "L6": 0.3857240905971173,
+       "L12": 0.8865051903114187,
+       "L18": 0.8571788413098237,
+       "L24": 0.8906964921199797
+      }
+     }
+    }
+   }
+  }
+ }
+}

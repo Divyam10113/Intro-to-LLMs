@@ -1,0 +1,10 @@
+[
+    {
+        "name": "fig1_method.pdf",
+        "caption": "Training paths in Round 1. The hybrid M-h fine-tunes segmentation adapters with the mask loss on masked sources and a PU term on mask-less sources; its control omits the PU branch. Fully mask-free M and B0 train both adapter sets without masks."
+    },
+    {
+        "name": "fig2_liver_heatmaps.pdf",
+        "caption": "Liver CT qualitative examples from the fixed, preselected image set. The same images are shown for R0, M-h, M-h-ctrl, M, and B0."
+    }
+]

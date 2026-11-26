@@ -1,0 +1,12 @@
+2026-11-23 10:54:41 tests pass (80 passed, 2 warnings in 11.80s)
+2026-11-23 10:54:41 waiting for free GPUs (0 1; need >= 45000 MiB free and <= 20 % load, 3 checks in a row)
+2026-11-23 10:56:42 GPUs free
+2026-11-23 10:56:42 GPU smoke test
+2026-11-23 10:57:03 smoke test PASS
+2026-11-23 10:57:03 timing check (12 jobs x 201 steps)
+2026-11-23 10:57:41 timing: Decision: cut mil_m25 + brain_extra.** 45 runs, ≈ 7.3 h wall-clock if both GPUs stay free.
+2026-11-23 10:57:41 r3 runs started (45 runs in the plan; cuts: mil_m25 brain_extra )
+2026-11-23 11:06:36 r3 runs started (58 runs in the plan; cuts: )
+2026-11-23 16:44:31 r3 runs finished; 0 failed twice
+2026-11-23 16:44:33 analyze3.py done -> results/analysis.md
+2026-11-23 16:44:33 DONE. Next: Session B (plan §4): read task4r3/STATE.md

@@ -1,0 +1,6 @@
+== 2 jobs on 10 slots 2026-11-24 20:37:09
+[2026-11-24 20:37:09 gpu 0 slot 0] start 0: train2.py --arm mvfa --fold Brain --seed 8 --epochs 1 --max_steps 50 --val_limit 8 --eval_limit 16 --log_every 10 --device cuda:0
+[2026-11-24 20:37:11 gpu 0 slot 1] start 1: train2.py --arm mil_m10 --fold Brain --seed 8 --epochs 1 --max_steps 50 --val_limit 8 --eval_limit 16 --log_every 10 --device cuda:0
+[2026-11-24 20:37:20 gpu 0 slot 0] done  0
+[2026-11-24 20:37:20 gpu 0 slot 1] done  1
+== phase finished 2026-11-24 20:37:29

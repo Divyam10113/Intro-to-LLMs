@@ -1,0 +1,74 @@
+% CVPR 2025-based 4+1 research-paper template.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{cvpr}
+\input{preamble}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\def\paperID{00000000}
+\def\confName{Anonymous Review}
+\def\confYear{2026}
+
+\title{How Far Do Image-Level Labels Go for Localisation in Medical Anomaly Detection?}
+\author{Anonymous authors\\Anonymous affiliation}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+ABSTRACT_TO_BE_WRITTEN_LAST
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+Vision-language models (VLMs) such as CLIP~\cite{clip2021} have established strong foundation capabilities for zero-shot and few-shot visual recognition. In medical imaging, anomaly detection and spatial localization are critical for identifying pathology across diverse clinical modalities~\cite{medicalad_survey2021}. Recent adaptation frameworks, such as Multi-level Visual-Feature Alignment (MVFA)~\cite{huang2024mvfa}, adapt vision-language representations to medical domains by inserting multi-level adapter layers into visual backbones. However, state-of-the-art vision-language adapters rely heavily on dense pixel-level segmentation masks during fine-tuning. While pixel masks are scarce and expensive to acquire across clinical modalities, image-level diagnostic labels (e.g., normal versus abnormal patient scans) are far more accessible across large, unannotated medical datasets~\cite{bmad2024}.
+
+This discrepancy raises a fundamental empirical question: \emph{How far do image-level labels go for spatial localization when adapting multi-modal anomaly detectors?} Specifically, when pixel masks are absent for a subset of source modalities, can patch-level Positive-Unlabelled (PU) risk minimization~\cite{elkan2008pu, kiryo2017nnpu} effectively bridge the gap between image-level weak supervision and dense spatial localization?
+
+In this paper, we present an empirical investigation evaluating positive-unlabelled learning and weakly supervised formulations for multi-modal medical anomaly localization. Using the BMAD benchmark~\cite{bmad2024} under a leave-one-modality-out evaluation protocol across Brain MRI, Liver CT, and Retina RESC, we analyze whether incorporating non-negative PU risk provides a consistent spatial localization benefit over standard fine-tuning controls or weakly supervised Multiple Instance Learning (MIL).
+
+Our findings provide key insights into weakly supervised VLM adaptation for medical anomaly detection:
+\begin{enumerate}
+    \item \textbf{Controlled PU vs. Fine-Tuning Evaluation:} Incorporating non-negative PU risk minimization ($M\text{-}h$) into MVFA visual adapters yields no statistically consistent localization gain over a matched fine-tuning control ($M\text{-}h\text{-ctrl}$) across target modalities (paired sign-test $p = 0.2539$). While $M\text{-}h$ demonstrates a target-specific gain on Brain MRI (AUPRO $71.57 \pm 2.07$ vs. $66.38 \pm 2.12$), performance differences on Liver CT ($91.39 \pm 0.27$ vs. $91.07 \pm 0.41$) and Retina RESC ($67.45 \pm 6.15$ vs. $66.94 \pm 1.14$) are negligible or mixed.
+    \item \textbf{Failure of Mixture-Proportion Estimation:} Attempting to estimate the anomalous patch prior $\pi$ directly from intermediate adapter patch scores fails. The irreducibility assumption required for mixture-proportion estimation (MPE)~\cite{ramaswamy2016mpe} breaks down on uncalibrated neural feature scores, yielding raw patch prior estimates ranging from $-0.286$ to $1.000$ against true masked patch fractions of $0.008$ to $0.119$.
+    \item \textbf{Localization Retention under Top-$k$ MIL:} In a fully mask-free setup where no pixel masks are provided during adaptation, a top-$k$ MIL baseline ($B0$) retains $92.7\%$ to $99.4\%$ of published pixel AUROC performance across target datasets, substantially outperforming fully mask-free PU optimization ($M$, mean pixel retention $0.583$).
+\end{enumerate}
+
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Medical anomaly detection and vision-language adaptation}
+Automated medical anomaly detection identifies subtle pathological lesions across diverse anatomical modalities~\cite{medicalad_survey2021, bmad2024}. Following the success of vision-language models like CLIP~\cite{clip2021} in natural image zero-shot anomaly detection~\cite{winclip2023, aprilgan2023, anomalyclip2023, adaclip2024, vcpclip2024}, recent efforts have increasingly focused on adapting VLMs to medical domains. Methods such as MediCLIP~\cite{mediclip2024}, IQE-CLIP~\cite{iqeclip2026}, and MADPOT~\cite{madpot2026} adapt VLM visual representations using prompt tuning, contrastive alignment, or optimal transport to capture fine-grained medical features.
+
+MVFA~\cite{huang2024mvfa} introduced multi-level visual feature adapters guided by pixel-wise vision-language alignment losses to enable cross-modality zero-shot anomaly detection on the BMAD benchmark~\cite{bmad2024}. However, existing multi-modal adapters require dense pixel-level segmentation masks for source dataset fine-tuning. In contrast, our work investigates whether image-level annotations alone can substitute for dense spatial masks when adapting multi-modal vision-language architectures across unseen target modalities.
+
+\subsection{Weakly supervised and mask-free anomaly localisation}
+Weakly supervised anomaly localization aims to pinpoint spatial abnormalities using only image-level labels, avoiding the high annotation costs of pixel-wise ground-truth masks~\cite{mvtec2019, cycle_seg2021}. Prior studies in industrial and medical anomaly localization have leveraged class activation maps, generative cycle consistency~\cite{cycle_seg2021}, attention-based Multiple Instance Learning (MIL)~\cite{ilse2018attentionmil}, and top-$k$ patch feature adaptation~\cite{adfa2023}. More recently, reasoning-driven MLLM frameworks~\cite{imagelevel2026} explore image-level supervision for interpretability and localization.
+
+In standard MIL formulations for image classification, top-$k$ pooling selects representative positive patches from abnormal images. We systematically compare positive-unlabelled patch formulations against top-$k$ MIL to analyze spatial localization retention when pixel masks are entirely withheld during multi-modal adaptation.
+
+\subsection{Positive-unlabelled learning and mixture-proportion estimation}
+Positive-Unlabelled (PU) learning handles binary classification scenarios where training data consists only of labeled positive instances and unlabelled samples containing an unknown mixture of positive and negative classes~\cite{elkan2008pu}. Non-negative PU (nnPU) learning~\cite{kiryo2017nnpu} addresses empirical risk minimization in deep networks by constraining the estimated negative risk to be non-negative, preventing severe overfitting under high-capacity neural classifiers.
+
+A critical prerequisite for PU risk minimization is accurate knowledge of the class prior $\pi$, which represents the proportion of positive samples within the unlabelled set. Mixture-Proportion Estimation (MPE) methods~\cite{ramaswamy2016mpe} estimate $\pi$ under the irreducibility assumption, which posits that the positive distribution cannot be decomposed as a mixture containing the negative distribution. In our study, we evaluate whether MPE algorithms can estimate anomalous patch fractions from intermediate VLM adapter patch scores, uncovering significant irreducibility violations on neural score distributions.
+
+\section{Problem Formulation}
+\label{sec:problem}
+PROBLEM_FORMULATION_TO_BE_WRITTEN
+
+\section{Methodology}
+\label{sec:method}
+METHODOLOGY_TO_BE_WRITTEN
+
+\section{Experiments}
+\label{sec:experiments}
+EXPERIMENTS_TO_BE_WRITTEN
+
+\section{Conclusion}
+\label{sec:conclusion}
+CONCLUSION_TO_BE_WRITTEN
+
+\clearpage
+{\small
+\bibliographystyle{ieeenat_fullname}
+\bibliography{references}
+}
+\end{document}

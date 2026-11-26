@@ -1,0 +1,13 @@
+........................................................................ [ 90%]
+........                                                                 [100%]
+=============================== warnings summary ===============================
+../MVFA-AD/CLIP/tokenizer.py:6
+  /home/f20241442/divyam-backup-imported/proj/MVFA-AD/CLIP/tokenizer.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import packaging
+
+tests/test_model_r2.py::test_seed_sets_initial_weights
+  /home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+80 passed, 2 warnings in 11.80s

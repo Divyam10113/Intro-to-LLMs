@@ -1,0 +1,71 @@
+{
+ "valid_counts_normal_abnormal": {
+  "Brain_AD": [
+   39,
+   44
+  ],
+  "Chest_AD": [
+   70,
+   1420
+  ],
+  "Histopathology_AD": [
+   117,
+   119
+  ],
+  "Liver_AD": [
+   93,
+   73
+  ],
+  "Retina_OCT2017_AD": [
+   16,
+   24
+  ],
+  "Retina_RESC_AD": [
+   45,
+   70
+  ]
+ },
+ "n_valid": 2130,
+ "n_test": 27172,
+ "same_filename_in_test": 142,
+ "byte_identical_to_a_test_file": 11,
+ "examples": [
+  [
+   "Brain_AD/valid/Ungood/img/00124_60.png",
+   [
+    "Brain_AD/test/Ungood/img/00124_60.png"
+   ]
+  ],
+  [
+   "Brain_AD/valid/Ungood/img/00134_60.png",
+   [
+    "Brain_AD/test/Ungood/img/00134_60.png"
+   ]
+  ],
+  [
+   "Brain_AD/valid/Ungood/img/00154_60.png",
+   [
+    "Brain_AD/test/Ungood/img/00154_60.png"
+   ]
+  ],
+  [
+   "Brain_AD/valid/Ungood/img/00191_60.png",
+   [
+    "Brain_AD/test/Ungood/img/00191_60.png"
+   ]
+  ],
+  [
+   "Brain_AD/valid/Ungood/img/00630_60.png",
+   [
+    "Brain_AD/test/Ungood/img/00630_60.png"
+   ]
+  ]
+ ],
+ "name_examples": [
+  "Brain_AD/valid/Ungood/img/00124_60.png",
+  "Brain_AD/valid/Ungood/img/00134_60.png",
+  "Brain_AD/valid/Ungood/img/00154_60.png",
+  "Brain_AD/valid/Ungood/img/00191_60.png",
+  "Brain_AD/valid/Ungood/img/00630_60.png"
+ ]
+}

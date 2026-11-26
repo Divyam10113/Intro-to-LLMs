@@ -1,0 +1,120 @@
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[mvt(2019)]{mvtec2019}
+{MVTec AD — A Comprehensive Real-World Dataset for Unsupervised Anomaly
+  Detection}, 2019.
+\newblock IEEE Computer Society Conference on Computer Vision and Pattern
+  Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition/Proceedings.
+
+\bibitem[cli(2021)]{clip2021}
+{Learning Transferable Visual Models From Natural Language Supervision}, 2021.
+\newblock arXiv.
+
+\bibitem[cyc(2021)]{cycle_seg2021}
+{Unsupervised Anomaly Segmentation using Image-Semantic Cycle Translation},
+  2021.
+\newblock arXiv.
+
+\bibitem[med(2021)]{medicalad_survey2021}
+{Deep Learning for Medical Anomaly Detection – A Survey}, 2021.
+\newblock ACM Computing Surveys.
+
+\bibitem[pat(2021)]{patchcore2021}
+{Towards Total Recall in Industrial Anomaly Detection}, 2021.
+\newblock arXiv.
+
+\bibitem[adf(2023)]{adfa2023}
+{ADFA: Attention-augmented Differentiable top-k Feature Adaptation for
+  Unsupervised Medical Anomaly Detection}, 2023.
+\newblock Proceedings - International Conference on Image Processing.
+
+\bibitem[ano(2023)]{anomalyclip2023}
+{AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection},
+  2023.
+\newblock arXiv.
+
+\bibitem[apr(2023)]{aprilgan2023}
+{APRIL-GAN: A Zero-/Few-Shot Anomaly Classification and Segmentation Method for
+  CVPR 2023 VAND Workshop Challenge Tracks 1\&2: 1st Place on Zero-shot AD and
+  4th Place on Few-shot AD}, 2023.
+\newblock arXiv.
+
+\bibitem[win(2023)]{winclip2023}
+{WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation}, 2023.
+\newblock IEEE Computer Society Conference on Computer Vision and Pattern
+  Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition/Proceedings.
+
+\bibitem[ada(2024)]{adaclip2024}
+{AdaCLIP: Adapting CLIP with Hybrid Learnable Prompts for Zero-Shot Anomaly
+  Detection}, 2024.
+\newblock Lecture notes in computer science.
+
+\bibitem[bma(2024)]{bmad2024}
+{BMAD: Benchmarks for Medical Anomaly Detection}, 2024.
+\newblock IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  Workshops (CVPRW).
+
+\bibitem[hua(2024)]{huang2024mvfa}
+{Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical
+  Images}, 2024.
+\newblock IEEE Computer Society Conference on Computer Vision and Pattern
+  Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition/Proceedings.
+
+\bibitem[med(2024)]{mediclip2024}
+{MediCLIP: Adapting CLIP for Few-shot Medical Image Anomaly Detection}, 2024.
+\newblock Lecture notes in computer science.
+
+\bibitem[vcp(2024)]{vcpclip2024}
+{VCP-CLIP: A Visual Context Prompting Model for Zero-Shot Anomaly
+  Segmentation}, 2024.
+\newblock Lecture notes in computer science.
+
+\bibitem[ima(2026)]{imagelevel2026}
+{Reasoning-Driven Anomaly Detection and Localization with Image-Level
+  Supervision}, 2026.
+\newblock arXiv.
+
+\bibitem[iqe(2026)]{iqeclip2026}
+{IQE-CLIP: Instance-Aware Query Embedding for Zero-/Few-Shot Anomaly Detection
+  in Medical Domain}, 2026.
+\newblock IEEE Transactions on Image Processing.
+
+\bibitem[mad(2026)]{madpot2026}
+{MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal
+  Transport}, 2026.
+\newblock Lecture notes in computer science.
+
+\bibitem[Elkan and Noto(2008)]{elkan2008pu}
+Charles Elkan and Keith Noto.
+\newblock Learning classifiers from only positive and unlabeled data.
+\newblock In \emph{Proceedings of the 14th ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, 2008.
+
+\bibitem[Ilse et~al.(2018)Ilse, Tomczak, and Welling]{ilse2018attentionmil}
+Maximilian Ilse, Jakub~M. Tomczak, and Max Welling.
+\newblock Attention-based deep multiple instance learning.
+\newblock In \emph{Proceedings of the 35th International Conference on Machine
+  Learning (ICML)}, 2018.
+
+\bibitem[Kiryo et~al.(2017)Kiryo, Niu, du~Plessis, and Sugiyama]{kiryo2017nnpu}
+Ryuichi Kiryo, Gang Niu, Marthinus~Christoffel du Plessis, and Masashi
+  Sugiyama.
+\newblock Positive-unlabeled learning with non-negative risk estimator.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2017.
+
+\bibitem[Ramaswamy et~al.(2016)Ramaswamy, Scott, and Tewari]{ramaswamy2016mpe}
+Harish~G. Ramaswamy, Clayton Scott, and Ambuj Tewari.
+\newblock Mixture proportion estimation via kernel embedding of distributions.
+\newblock In \emph{Proceedings of the 33rd International Conference on Machine
+  Learning (ICML)}, 2016.
+
+\end{thebibliography}

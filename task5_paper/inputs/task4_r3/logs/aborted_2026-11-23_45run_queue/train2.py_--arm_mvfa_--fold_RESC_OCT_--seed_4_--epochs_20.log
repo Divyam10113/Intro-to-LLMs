@@ -1,0 +1,24 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mvfa_RESC_OCT_s4] ep 0 step 0/4000 det  Histopathology  loss 4.0696 (1.318s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 500/4000 mask Brain           loss 4.6101 (0.114s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 1000/4000 mask Liver           loss 6.5781 (0.084s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 1500/4000 det  Histopathology  loss 3.0895 (0.070s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 2000/4000 det  Histopathology  loss 2.8395 (0.063s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 2500/4000 mask Brain           loss 4.9877 (0.059s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 3000/4000 det  Chest           loss 1.6889 (0.056s/step)
+[mvfa_RESC_OCT_s4] ep 0 step 3500/4000 det  Chest           loss 2.8162 (0.054s/step)
+[mvfa_RESC_OCT_s4] epoch 0 done in 209s; source-val image AUROC 0.9121 {'Brain': 0.96, 'Liver': 0.92, 'Chest': 0.889, 'Histopathology': 0.879}
+[mvfa_RESC_OCT_s4] ep 1 step 0/4000 mask Liver           loss 3.3243 (0.189s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 500/4000 det  Histopathology  loss 1.7194 (0.036s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 1000/4000 det  Histopathology  loss 1.3775 (0.039s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 1500/4000 det  Histopathology  loss 4.1811 (0.040s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 2000/4000 mask Brain           loss 3.5398 (0.041s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 2500/4000 mask Brain           loss 4.5439 (0.041s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 3000/4000 det  Chest           loss 2.7396 (0.041s/step)
+[mvfa_RESC_OCT_s4] ep 1 step 3500/4000 det  Histopathology  loss 2.7781 (0.041s/step)
+[mvfa_RESC_OCT_s4] epoch 1 done in 165s; source-val image AUROC 0.9278 {'Brain': 0.983, 'Liver': 0.95, 'Chest': 0.882, 'Histopathology': 0.896}
+[mvfa_RESC_OCT_s4] ep 2 step 0/4000 mask Brain           loss 3.1339 (0.205s/step)
+[mvfa_RESC_OCT_s4] ep 2 step 500/4000 det  Chest           loss 1.6228 (0.041s/step)
+[mvfa_RESC_OCT_s4] ep 2 step 1000/4000 mask Liver           loss 4.7313 (0.041s/step)
+[mvfa_RESC_OCT_s4] ep 2 step 1500/4000 mask Brain           loss 6.8524 (0.040s/step)

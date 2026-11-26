@@ -1,0 +1,11 @@
+2026-11-24 20:36:04 tests pass (59 passed, 2 warnings in 12.21s)
+2026-11-24 20:36:04 waiting for free GPUs (0 1; need >= 45000 MiB free and <= 20 % load, 3 checks in a row)
+2026-11-24 20:36:57 go.sh stopped during the GPU wait at the user's request ('GPUs are free I told na. don't waste time just run them quickly'); relaunched with FORCE=1
+2026-11-24 20:37:09 tests pass (59 passed, 2 warnings in 9.81s)
+2026-11-24 20:37:09 FORCE=1: not waiting for free GPUs
+2026-11-24 20:37:09 GPU smoke test (2 arms x 50 steps)
+2026-11-24 20:37:29 smoke test PASS (both arms ran 50 steps and wrote run.json; nothing recorded in results.csv)
+2026-11-24 20:37:29 follow-up runs started (10 runs in the plan)
+2026-11-24 21:38:02 follow-up runs finished; 0 failed twice
+2026-11-24 21:38:02 FU-H: CONFIRMED  (AUPRO higher 5/5, p = 0.0312, mean pix Δ +5.35) -> /home/f20241442/divyam-backup-imported/proj/task4fu/results/analysis_fu.md
+2026-11-24 21:38:02 DONE. Results: results/analysis_fu.md. Next: Claude writes report/FU_REPORT.md (task4fu/STATE.md)
