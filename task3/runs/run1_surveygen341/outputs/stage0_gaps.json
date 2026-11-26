@@ -1,0 +1,473 @@
+{
+ "gaps": [
+  {
+   "id": "G1",
+   "title": "Limited explicit limitation and future-work reporting",
+   "text": "MVFA-AD lacks a dedicated limitations section; its only explicit scope caveat is that in-domain evaluation is treated as secondary, and its future-work statements are generic. The remaining limitations discussed here were therefore inferred from the protocol, architecture, and evaluation design rather than drawn from authorial disclosure.",
+   "component": "metrics/reporting",
+   "kind": "reporting",
+   "codable": "low"
+  },
+  {
+   "id": "G2",
+   "title": "The zero-shot protocol is not modality- or anatomy-disjoint",
+   "text": "The BMAD leave-one-out setting includes two retinal OCT datasets, RESC and OCT17; when one is held out, the other remains in the training set. For these pairs, evaluation does not test an unseen medical modality or anatomy, which may inflate the reported OCT results. A valid zero-shot protocol should instead group and hold out by modality, anatomy, acquisition device, and site simultaneously.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "high"
+  },
+  {
+   "id": "G3",
+   "title": "Annotation requirements remain clinically heavy",
+   "text": "The adaptation objective is trained on pixel-level anomaly-segmentation masks using a combination of Dice, Focal, and binary cross-entropy losses across four feature levels, including under zero-shot evaluation. This effectively requires dense expert annotation for every training image; the method does not formulate an image-level-only, sparse, or normal-only supervision variant, which weakens its relevance to label-scarce clinical settings.",
+   "component": "supervision/data",
+   "kind": "method",
+   "codable": "high"
+  },
+  {
+   "id": "G4",
+   "title": "The few-shot setting is underspecified and operationally costly",
+   "text": "The K annotated target images must simultaneously supply normal exemplars for the memory bank and abnormal examples for adapter training, yet the partition between the two is left unspecified; for K = 2 this may be infeasible if sufficient exemplars of both classes are required. Clinical few-shot supervision, in practice, may contain only normal or entirely unlabeled data. The method further implies per-task retraining, yet training time and computational cost are not reported.",
+   "component": "supervision/data",
+   "kind": "method",
+   "codable": "high"
+  },
+  {
+   "id": "G5",
+   "title": "Prompting is static, generic, and domain-agnostic",
+   "text": "The text encoder is kept frozen, and the prompts consist of hand-crafted normal/abnormal state descriptions averaged over 35 ImageNet templates. This design presumes a single, universal visual-language concept of \u201cnormal\u201d and \u201cabnormal\u201d that holds uniformly across imaging modalities, and it omits instance-adaptive, visually conditioned, or hybrid prompting strategies. No prompt-sensitivity analysis is provided.",
+   "component": "prompting/text branch",
+   "kind": "method",
+   "codable": "high"
+  },
+  {
+   "id": "G6",
+   "title": "Anomaly modeling is binary and lacks clinical granularity",
+   "text": "All anomalies are collapsed into a single \u201cabnormal\u201d class. The model performs no differentiation of benign-versus-malignant status, anomaly subcategory, severity, radiological sign, or differential cost, despite clinical workflows requiring category-specific actionability and support for multi-anomaly detection within a single case.",
+   "component": "clinical scope/validation",
+   "kind": "method",
+   "codable": "low"
+  },
+  {
+   "id": "G7",
+   "title": "Normal/anomaly disentanglement and distributional asymmetry are not made explicit",
+   "text": "The dual- adapter design separates anomaly-classification and anomaly-segmentation features, but it does not explicitly model the compact distribution of normal samples against the comparatively diverse distribution of abnormal samples. The method relies on shared adapted features and a few-shot normal memory bank without routing mechanisms, dual normal/abnormal pathways, or many-to- one, SigLIP-style regularization.",
+   "component": "visual adaptation/architecture",
+   "kind": "method",
+   "codable": "medium"
+  },
+  {
+   "id": "G8",
+   "title": "Architecture, fusion, and hyperparameters are under-ablated and partly unclear",
+   "text": "Numerous design choices \u2014 including \u03b3 = 0.1, \u03bb = 1.0, four feature levels, an input resolution of 240, a learning rate of 10\u22123, a batch size of 16, 50 training epochs, \u03b2 = 0.5, and fixed prompt templates \u2014 are presented without accompanying sensitivity analysis. The adapter and projector equations and their class-token handling are dimensionally unclear, and the partitioning of the 24-layer Vision Transformer into four stages is non-standard, which hinders reproducibility. The final score fusion combines zero-shot softmax probabilities on the interval [0, 1] with few-shot cosine distances on the interval [0, 2] using a fixed weight of 0.5, without normalization or calibration, so that one branch may arbitrarily dominate the fused score.",
+   "component": "score fusion/aggregation",
+   "kind": "method",
+   "codable": "high"
+  },
+  {
+   "id": "G9",
+   "title": "Classification and aggregation are outlier-sensitive",
+   "text": "Image-level anomaly classification is obtained via max-aggregation over pixel-level anomaly scores, so that a single spurious high-scoring pixel is sufficient to produce a false positive. No robust aggregation, calibration, or uncertainty-estimation mechanism is employed to mitigate this sensitivity.",
+   "component": "score fusion/aggregation",
+   "kind": "method",
+   "codable": "high"
+  },
+  {
+   "id": "G10",
+   "title": "Evaluation lacks patient-level leakage controls and variance estimates",
+   "text": "Patient-level data splits are not reported for either the zero-shot or the few-shot evaluation protocol; the K-shot support images may therefore share patients with the held-out test set, artificially inflating measured performance. Reported results further appear to reflect single runs, without seeds, confidence intervals, or standard deviations \u2014 a concern that is especially acute for few-shot sample selection, which is known to be highly variance-sensitive.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "medium"
+  },
+  {
+   "id": "G11",
+   "title": "Metrics are too narrow for clinical readiness",
+   "text": "Only image-level and pixel-level AUC are reported. The paper does not report Dice, IoU, or PRO scores; thresholded accuracy, F1, sensitivity, specificity, PPV, or NPV; false positives per patient; calibration or expected calibration error (ECE); or prevalence-adjusted and rare-category performance. AUC alone can obscure poor performance under severe class imbalance and does not by itself demonstrate clinical utility.",
+   "component": "metrics/reporting",
+   "kind": "evaluation",
+   "codable": "high"
+  },
+  {
+   "id": "G12",
+   "title": "Baselines and benchmark details are incomplete",
+   "text": "Missing comparisons include PatchCore under a few-shot normal-only setting, full CLIP fine-tuning, and other vision-language-model adaptation methods. In-domain MVTec is evaluated only under the few-shot regime, with zero-shot in-domain evaluation absent entirely. The benchmark is described only as \u201cbased on BMAD,\u201d without specifying official splits, which limits comparability across future work.",
+   "component": "evaluation protocol",
+   "kind": "evaluation",
+   "codable": "high"
+  },
+  {
+   "id": "G13",
+   "title": "Scalability, memory, and privacy considerations are unaddressed",
+   "text": "The method uses a CLIP ViT-L/14 backbone and trains six separate leave-one-out models for 50 epochs each on a single RTX 3090 GPU; training and inference time, memory footprint, and parameter counts are not reported. The term \u201clightweight\u201d refers only to the adapters, not to the overall system. The few-shot memory bank grows with K and with spatial resolution, yet retrieval cost and the privacy and governance implications of storing patient-derived features are not analyzed. Downscaling to a 240 \u00d7 240 resolution and processing volumetric data as 2D slices may cause small lesions and broader 3D CT/MRI context to be lost.",
+   "component": "efficiency/privacy",
+   "kind": "method",
+   "codable": "medium"
+  },
+  {
+   "id": "G14",
+   "title": "Cross-domain, acquisition, and modality generalism is limited",
+   "text": "Evaluation covers brain MRI, liver CT, retinal OCT, chest X-ray, and histopathology; ultrasound, PET, mammography, and dermoscopy are not modeled, nor are shifts in acquisition device, site, or imaging protocol. The medical-specific, text-prompt-dependent design may generalize poorly to broader semantic or medical anomaly types and to combined industrial-and-medical generalist settings.",
+   "component": "clinical scope/validation",
+   "kind": "evaluation",
+   "codable": "medium"
+  },
+  {
+   "id": "G15",
+   "title": "Interpretability and clinical validation are absent",
+   "text": "The model outputs anomaly scores and maps only, without language-based reasoning, radiological explanation, or multimodal-LLM-style justification. The paper provides no external or multi-institution validation, no prospective or reader study, no demographic (sex, age), scanner, or site fairness analysis, no uncertainty or failure-mode analysis, and no discussion of regulatory or clinical-workflow integration or independent clinical- precision assessment; prior evaluations in the literature suggest that CLIP-based zero-shot anomaly detection precision may fall short of clinical requirements.",
+   "component": "clinical scope/validation",
+   "kind": "evaluation",
+   "codable": "low"
+  }
+ ],
+ "groups": [
+  {
+   "name": "Label-efficient adaptation",
+   "members": [
+    "G3",
+    "G4"
+   ],
+   "root_cause": "MVFA's only adaptation signal is dense pixel-level masks (and labelled abnormal K-shot images), so the method cannot be trained or adapted when only image-level labels or normal-only data exist."
+  },
+  {
+   "name": "Score calibration and robust aggregation",
+   "members": [
+    "G8",
+    "G9",
+    "G11"
+   ],
+   "root_cause": "Anomaly evidence from heterogeneous sources (zero-shot softmax in [0,1], few-shot cosine distance in [0,2], individual pixels) is combined by a fixed weight and a max operator without normalisation, and this is invisible because only threshold-free AUC is reported."
+  },
+  {
+   "name": "Leakage-free generalisation protocol",
+   "members": [
+    "G2",
+    "G10",
+    "G12"
+   ],
+   "root_cause": "The leave-one-dataset-out benchmark lets same-modality data (RESC/OCT17), possibly the same patients, and single lucky few-shot draws into evaluation, so measured zero-shot generalisation is not cleanly separated from in-domain transfer."
+  },
+  {
+   "name": "Compact normality modelling",
+   "members": [
+    "G5",
+    "G7",
+    "G13"
+   ],
+   "root_cause": "MVFA assumes a single static text notion of normal/abnormal and stores raw patch features in a growing memory bank instead of explicitly modelling a compact normal distribution against a diverse abnormal one."
+  },
+  {
+   "name": "Clinical granularity and scope",
+   "members": [
+    "G6",
+    "G14",
+    "G15"
+   ],
+   "root_cause": "The task is formulated as binary detection on five modalities with score maps only, which leaves anomaly type, unseen modalities/sites and clinician-facing explanation outside the problem definition."
+  }
+ ],
+ "ungrouped": [
+  "G1"
+ ],
+ "promising": [
+  {
+   "group": "Label-efficient adaptation",
+   "why": "It attacks the most clinically limiting assumption of MVFA (dense masks), can be implemented by replacing the pixel-level loss in the public MVFA code, and is directly measurable on BMAD with one GPU."
+  },
+  {
+   "group": "Score calibration and robust aggregation",
+   "why": "It is a narrow, fully specified defect (branch fusion and max-pooling) whose fixes are cheap to implement and evaluate with thresholded and calibration metrics on existing BMAD outputs."
+  },
+  {
+   "group": "Leakage-free generalisation protocol",
+   "why": "It is less a standalone problem than the evaluation protocol any of the above should adopt, since a modality-disjoint, multi-seed protocol is needed to show that gains are real zero-shot gains."
+  }
+ ],
+ "lexical_clusters": {
+  "4": [
+   "G1",
+   "G12"
+  ],
+  "2": [
+   "G2",
+   "G10",
+   "G14"
+  ],
+  "5": [
+   "G3",
+   "G9",
+   "G11"
+  ],
+  "1": [
+   "G4",
+   "G7",
+   "G13"
+  ],
+  "0": [
+   "G5",
+   "G8"
+  ],
+  "3": [
+   "G6",
+   "G15"
+  ]
+ },
+ "tfidf_similarity": [
+  [
+   1.0,
+   0.02,
+   0.008,
+   0.0,
+   0.022,
+   0.009,
+   0.023,
+   0.012,
+   0.0,
+   0.027,
+   0.0,
+   0.088,
+   0.0,
+   0.037,
+   0.0
+  ],
+  [
+   0.02,
+   1.0,
+   0.034,
+   0.039,
+   0.0,
+   0.0,
+   0.011,
+   0.021,
+   0.0,
+   0.085,
+   0.015,
+   0.049,
+   0.019,
+   0.137,
+   0.023
+  ],
+  [
+   0.008,
+   0.034,
+   1.0,
+   0.042,
+   0.008,
+   0.029,
+   0.053,
+   0.049,
+   0.091,
+   0.045,
+   0.075,
+   0.034,
+   0.011,
+   0.026,
+   0.033
+  ],
+  [
+   0.0,
+   0.039,
+   0.042,
+   1.0,
+   0.025,
+   0.025,
+   0.072,
+   0.019,
+   0.011,
+   0.035,
+   0.013,
+   0.038,
+   0.064,
+   0.0,
+   0.014
+  ],
+  [
+   0.022,
+   0.0,
+   0.008,
+   0.025,
+   1.0,
+   0.02,
+   0.057,
+   0.033,
+   0.013,
+   0.005,
+   0.006,
+   0.027,
+   0.004,
+   0.036,
+   0.016
+  ],
+  [
+   0.009,
+   0.0,
+   0.029,
+   0.025,
+   0.02,
+   1.0,
+   0.039,
+   0.006,
+   0.031,
+   0.026,
+   0.033,
+   0.007,
+   0.014,
+   0.02,
+   0.073
+  ],
+  [
+   0.023,
+   0.011,
+   0.053,
+   0.072,
+   0.057,
+   0.039,
+   1.0,
+   0.013,
+   0.047,
+   0.006,
+   0.01,
+   0.035,
+   0.044,
+   0.014,
+   0.028
+  ],
+  [
+   0.012,
+   0.021,
+   0.049,
+   0.019,
+   0.033,
+   0.006,
+   0.013,
+   1.0,
+   0.012,
+   0.021,
+   0.019,
+   0.023,
+   0.037,
+   0.009,
+   0.017
+  ],
+  [
+   0.0,
+   0.0,
+   0.091,
+   0.011,
+   0.013,
+   0.031,
+   0.047,
+   0.012,
+   1.0,
+   0.035,
+   0.097,
+   0.0,
+   0.005,
+   0.008,
+   0.037
+  ],
+  [
+   0.027,
+   0.085,
+   0.045,
+   0.035,
+   0.005,
+   0.026,
+   0.006,
+   0.021,
+   0.035,
+   1.0,
+   0.049,
+   0.039,
+   0.03,
+   0.012,
+   0.012
+  ],
+  [
+   0.0,
+   0.015,
+   0.075,
+   0.013,
+   0.006,
+   0.033,
+   0.01,
+   0.019,
+   0.097,
+   0.049,
+   1.0,
+   0.0,
+   0.009,
+   0.0,
+   0.03
+  ],
+  [
+   0.088,
+   0.049,
+   0.034,
+   0.038,
+   0.027,
+   0.007,
+   0.035,
+   0.023,
+   0.0,
+   0.039,
+   0.0,
+   1.0,
+   0.011,
+   0.015,
+   0.054
+  ],
+  [
+   0.0,
+   0.019,
+   0.011,
+   0.064,
+   0.004,
+   0.014,
+   0.044,
+   0.037,
+   0.005,
+   0.03,
+   0.009,
+   0.011,
+   1.0,
+   0.022,
+   0.007
+  ],
+  [
+   0.037,
+   0.137,
+   0.026,
+   0.0,
+   0.036,
+   0.02,
+   0.014,
+   0.009,
+   0.008,
+   0.012,
+   0.0,
+   0.015,
+   0.022,
+   1.0,
+   0.012
+  ],
+  [
+   0.0,
+   0.023,
+   0.033,
+   0.014,
+   0.016,
+   0.073,
+   0.028,
+   0.017,
+   0.037,
+   0.012,
+   0.03,
+   0.054,
+   0.007,
+   0.012,
+   1.0
+  ]
+ ]
+}

@@ -1,0 +1,5 @@
+numpy
+pandas
+scipy
+scikit-learn
+openai>=1.0   # only needed for the openai backend

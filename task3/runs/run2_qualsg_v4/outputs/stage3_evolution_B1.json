@@ -1,0 +1,2286 @@
+{
+ "problem": "B1",
+ "settings": {
+  "mu": 6,
+  "lam": 6,
+  "G": 3,
+  "pc": 0.6,
+  "pm": 0.15,
+  "both_orders": false,
+  "prior": 0.1,
+  "seed": 2026,
+  "scale_a": 8.267996028056249
+ },
+ "best": "B1-g3-o5",
+ "final_population": [
+  "B1-g3-o5",
+  "B1-g1-o2",
+  "B1-g2-o1",
+  "B1-g0-C5",
+  "B1-g2-o3",
+  "B1-g3-o1"
+ ],
+ "history": [
+  {
+   "generation": 0,
+   "population": [
+    "B1-g0-C1",
+    "B1-g0-C2",
+    "B1-g0-C3",
+    "B1-g0-C4",
+    "B1-g0-C5",
+    "B1-g0-C6"
+   ],
+   "fitness": {
+    "B1-g0-C1": 66.37,
+    "B1-g0-C2": 55.27,
+    "B1-g0-C3": 33.63,
+    "B1-g0-C4": 20.0,
+    "B1-g0-C5": 80.0,
+    "B1-g0-C6": 44.73
+   }
+  },
+  {
+   "generation": 1,
+   "offspring": [
+    "B1-g1-o1",
+    "B1-g1-o2",
+    "B1-g1-o3",
+    "B1-g1-o4",
+    "B1-g1-o5",
+    "B1-g1-o6"
+   ],
+   "pool_fitness": {
+    "B1-g0-C1": 72.41,
+    "B1-g0-C2": 50.25,
+    "B1-g0-C3": 31.25,
+    "B1-g0-C4": 22.1,
+    "B1-g0-C5": 85.67,
+    "B1-g0-C6": 38.33,
+    "B1-g1-o1": 55.75,
+    "B1-g1-o2": 94.83,
+    "B1-g1-o3": 78.6,
+    "B1-g1-o4": 66.68,
+    "B1-g1-o5": 44.52,
+    "B1-g1-o6": 61.18
+   },
+   "population": [
+    "B1-g1-o2",
+    "B1-g0-C5",
+    "B1-g1-o3",
+    "B1-g0-C1",
+    "B1-g1-o4",
+    "B1-g1-o6"
+   ],
+   "fitness": {
+    "B1-g1-o2": 94.83,
+    "B1-g0-C5": 85.67,
+    "B1-g1-o3": 78.6,
+    "B1-g0-C1": 72.41,
+    "B1-g1-o4": 66.68,
+    "B1-g1-o6": 61.18
+   }
+  },
+  {
+   "generation": 2,
+   "offspring": [
+    "B1-g2-o1",
+    "B1-g2-o2",
+    "B1-g2-o3",
+    "B1-g2-o4",
+    "B1-g2-o5",
+    "B1-g2-o6"
+   ],
+   "pool_fitness": {
+    "B1-g0-C1": 70.37,
+    "B1-g0-C5": 93.22,
+    "B1-g1-o2": 109.45,
+    "B1-g1-o3": 81.3,
+    "B1-g1-o4": 59.14,
+    "B1-g1-o6": 45.88,
+    "B1-g2-o1": 100.3,
+    "B1-g2-o2": 36.72,
+    "B1-g2-o3": 87.03,
+    "B1-g2-o4": 64.87,
+    "B1-g2-o5": 52.95,
+    "B1-g2-o6": 75.8
+   },
+   "population": [
+    "B1-g1-o2",
+    "B1-g2-o1",
+    "B1-g0-C5",
+    "B1-g2-o3",
+    "B1-g1-o3",
+    "B1-g2-o6"
+   ],
+   "fitness": {
+    "B1-g1-o2": 109.45,
+    "B1-g2-o1": 100.3,
+    "B1-g0-C5": 93.22,
+    "B1-g2-o3": 87.03,
+    "B1-g1-o3": 81.3,
+    "B1-g2-o6": 75.8
+   }
+  },
+  {
+   "generation": 3,
+   "offspring": [
+    "B1-g3-o1",
+    "B1-g3-o2",
+    "B1-g3-o3",
+    "B1-g3-o4",
+    "B1-g3-o5",
+    "B1-g3-o6"
+   ],
+   "pool_fitness": {
+    "B1-g0-C5": 96.32,
+    "B1-g1-o2": 109.59,
+    "B1-g1-o3": 79.66,
+    "B1-g2-o1": 102.51,
+    "B1-g2-o3": 90.59,
+    "B1-g2-o6": 68.43,
+    "B1-g3-o1": 85.09,
+    "B1-g3-o2": 46.01,
+    "B1-g3-o3": 74.16,
+    "B1-g3-o4": 62.24,
+    "B1-g3-o5": 118.74,
+    "B1-g3-o6": 55.16
+   },
+   "population": [
+    "B1-g3-o5",
+    "B1-g1-o2",
+    "B1-g2-o1",
+    "B1-g0-C5",
+    "B1-g2-o3",
+    "B1-g3-o1"
+   ],
+   "fitness": {
+    "B1-g3-o5": 118.74,
+    "B1-g1-o2": 109.59,
+    "B1-g2-o1": 102.51,
+    "B1-g0-C5": 96.32,
+    "B1-g2-o3": 90.59,
+    "B1-g3-o1": 85.09
+   }
+  }
+ ],
+ "candidates": {
+  "B1-g0-C1": {
+   "id": "B1-g0-C1",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C1",
+   "title": "Leave-one-out empirical-CDF normalisation for inductive per-image MVFA scoring",
+   "summary": "Replace test-set min-max normalisation with each branch's leave-one-out empirical CDF over support-normal patch scores, fuse in CDF space, and pool with a top-k mean.",
+   "research_idea": "Independent variable: normalisation of the zero-shot and few-shot branches (test-set min-max vs. support LOO empirical CDF vs. support z-score). For level l and branch b, the reference set R_bl contains the patch scores of each support normal computed against a memory bank built from the other K-1 supports (few-shot) or against the text anchors (zero-shot). A test patch score s is mapped to F_bl(s) = (rank of s in R_bl + 0.5)/(|R_bl| + 1). The fused patch score is the mean of F over branches and levels. Image score = mean of the top 1% fused patches. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity with the threshold set at the 95th percentile of support LOO image scores, realised specificity, ECE, and the per-image score shift under test-set resampling.",
+   "hypothesis": "On held-out BMAD modalities with K >= 4, LOO empirical-CDF scoring keeps image AUROC within 1 point of the transductive pipeline, while each image's score is exactly invariant to test-set resampling (shift 0 vs. a median shift above 0.05 for the transductive pipeline) and the support-derived threshold gives realised specificity within 5 points of 95%.",
+   "rationale": "MVFA's few-shot scores come from 1 - max cosine to a support memory bank and from text similarity, two scales that the code reconciles with test-set min-max. ReCAP's non-parametric normal memory suggests calibrating each branch against the empirical distribution of normal scores obtained from the supports themselves. A leave-one-out empirical CDF maps every branch and level to the same [0, 1] scale defined only by the K supports, so each test image can be scored alone and the fused score has a fixed meaning (fraction of normal patches that are less anomalous).",
+   "method": "1) test_few.py: refactor into score_image(x, model, support_feats, refs) that uses no other test image. 2) utils.py: build_refs(support_feats, text_feats): for i in 1..K, memory bank from supports except i; compute few-shot patch scores of support i per level (1 - max cosine) and zero-shot scores (softmax over normal/abnormal anchors, as in MVFA); store sorted arrays R_bl. 3) cdf(s, R) via torch.searchsorted. 4) Fused map = mean over b, l of cdf maps (upsampled as in MVFA). 5) Image score = mean of top 1% pixels; threshold tau = 95th percentile of LOO image scores of the supports. 6) Remove the min-max block (test_few.py lines 220-241). Hyper-parameters: top 1%, nominal specificity 95%; no training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) normalisation only (keep 0.5 weights and max pooling), (ii) + CDF-space fusion, (iii) + top-1% pooling. Metrics: image/pixel AUROC, sensitivity at 95% specificity, realised specificity, ECE (logistic map fitted on source validation), per-image score shift when 50% of the test set is resampled at 10%, 30% and 50% prevalence. Falsified if image AUROC drops by more than 1 point at K >= 4 or realised specificity misses 95% by more than 5 points.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 66.37,
+    "1": 72.41,
+    "2": 70.37
+   }
+  },
+  "B1-g0-C2": {
+   "id": "B1-g0-C2",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C2",
+   "title": "Source-episode Platt calibration with support re-centring for per-image MVFA scores",
+   "summary": "Learn per-branch logistic calibration and fusion weights on simulated few-shot episodes from the source modalities, then re-centre them on the target with the K support normals only.",
+   "research_idea": "Independent variable: calibration (test-set min-max vs. source-episode Platt with support re-centring vs. support-only z-score). On each source modality's validation split, draw 50 episodes of K normal supports plus labelled query images; for branch b compute image-level raw scores (top-1% mean of the branch map) and fit a_b, c_b in p = sigmoid(a_b (s - mu_supp,b) + c_b) jointly over episodes, where mu_supp,b is the mean LOO support score of the episode; fit fusion weight w in logit space. On the target, only mu_supp,b is computed from its K supports. Dependent variables: image AUROC, ECE, Brier score, sensitivity at 95% specificity, per-image score shift under resampling.",
+   "hypothesis": "Source-episode Platt calibration with support re-centring reduces ECE on held-out modalities by at least 50% relative to a support-only z-score while keeping image AUROC within 1 point of the transductive pipeline, and its scores are invariant to test-set resampling.",
+   "rationale": "Support statistics from K normal images are noisy for small K. MVFA is trained on five source modalities with validation splits, so a calibration map can be learned there: simulate few-shot episodes on each source modality's validation data, fit per-branch Platt scaling (and the fusion weight) to make scores probability-like, and transfer the fitted parameters to the held-out modality, where only the K supports are used to set the location. This separates a stable learned scale from a cheap per-modality shift.",
+   "method": "1) calibrate_episodes.py: for each source modality in the training fold, load validation images; for e in 1..50, sample K normal supports and 40 queries (50% abnormal); compute branch scores with the trained model (test_few.py scoring functions); collect (s - mu_supp, label). 2) Fit a_b, c_b by logistic regression (sklearn, L2 C=1) per branch; fit w by logistic regression on the two calibrated logits. 3) Save calib.json per fold. 4) test_few.py: per-image score p = sigmoid(w1 z_zero + w2 z_few + c), z_b = a_b (s_b - mu_supp,b) + c_b, with mu_supp,b from the target supports (LOO). 5) Remove test-set min-max. Hyper-parameters: 50 episodes, 40 queries, K matched to the target K.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) support re-centring only, (ii) + source-episode Platt scale, (iii) + learned fusion weight. Metrics: image/pixel AUROC, ECE (15 bins), Brier, sensitivity at 95% specificity, per-image shift under resampling (10-50% prevalence). Falsified if ECE is not reduced by 50% versus the support-only z-score or if image AUROC drops by more than 1 point.",
+   "provenance": [
+    "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 55.27,
+    "1": 50.25
+   }
+  },
+  "B1-g0-C3": {
+   "id": "B1-g0-C3",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C3",
+   "title": "Two-anchor scaling with support normals and synthetic lesions for inductive MVFA scoring",
+   "summary": "Normalise each MVFA branch between the median score of the support normals and the median score of synthetic lesions pasted into those supports, so no test-set statistics are needed.",
+   "research_idea": "Independent variable: normalisation (test-set min-max vs. two-anchor synthetic scaling vs. support z-score). For each branch b and level l: lo_bl = median LOO patch score over support-normal patches; hi_bl = median patch score over pasted-lesion pixels in 20 synthetic variants per support (CutPaste-style patches from other supports plus Gaussian intensity blobs, 1-5% of the image area). Normalised score z = (s - lo)/(hi - lo), clipped to [-1, 3]; fused with weight 0.5 (then learned on source episodes in the ablation); image score = top-1% mean. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity with tau from support LOO scores, per-image score shift under resampling.",
+   "hypothesis": "Two-anchor synthetic scaling keeps image AUROC within 1 point of the transductive pipeline at K >= 4 and yields lower ECE than a support-only z-score, because the synthetic anchor fixes the scale between branches.",
+   "rationale": "Min-max normalisation needs two anchors, a low and a high value; MVFA takes both from the test set. The K support normals provide the low anchor, but nothing in the target provides a high anchor. Following Fed-LoRA's use of style-matched synthetic abnormal exemplars, synthetic lesions pasted into the target's own support normals can provide the high anchor: scale each branch so that support normals map to 0 and synthetic lesions map to 1. This keeps MVFA's two-anchor logic while removing the dependence on the test set.",
+   "method": "1) synth.py: synth_lesion(img) with CutPaste from another support image and Gaussian-intensity blobs; masks recorded. 2) utils.py: anchors(model, supports): LOO normal patch scores and synthetic-lesion patch scores per branch and level; lo, hi = medians. 3) test_few.py: score_image applies (s - lo)/(hi - lo), clip [-1, 3], fuse 0.5/0.5, top-1% pooling; remove test-set min-max. 4) Threshold tau = 95th percentile of support LOO image scores. Hyper-parameters: 20 synthetic variants per support, area 1-5%, clip range [-1, 3]; no training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) two-anchor normalisation, (ii) + learned fusion weight on source episodes, (iii) + top-1% pooling. Metrics: image/pixel AUROC, ECE, sensitivity at 95% specificity, realised specificity, score shift under resampling. Falsified if AUROC drops by more than 1 point or ECE is not lower than with the support z-score.",
+   "provenance": [
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 33.63,
+    "1": 31.25
+   }
+  },
+  "B1-g0-C4": {
+   "id": "B1-g0-C4",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C4",
+   "title": "Prototype-radius normalisation of MVFA's few-shot branch for per-image scoring",
+   "summary": "Cluster the support patch features into normal prototypes per level, score test patches by distance to the nearest prototype divided by its radius, and fuse with a support-standardised zero-shot branch.",
+   "research_idea": "Independent variable: few-shot branch scoring (MVFA bank + test-set min-max vs. prototype-radius score vs. bank score with support z-score). Per level l: k-means (k = min(32, K*17*17/20)) on support patch features; radius r_k = 90th percentile of member distances. Test patch score q = min_k ||f - P_k|| / r_k. Zero-shot branch: support LOO z-score. Fusion: mean of the two after a log1p transform of q; image score top-1% mean. Dependent variables: image/pixel AUROC, sensitivity at 95% specificity, per-image score shift, memory and latency.",
+   "hypothesis": "Prototype-radius scoring matches the memory-bank few-shot branch within 1 point of pixel AUROC at K >= 4 and makes the fused per-image score invariant to test-set composition, while reducing the few-shot memory by at least 10x.",
+   "rationale": "The few-shot branch's raw score (1 - max cosine to the bank) has no intrinsic scale: what counts as far depends on how spread the normal patches are at that level and location. Spatial-FAD's prototypes suggest a scale: express each test patch's distance to its nearest normal prototype in units of that prototype's radius. This makes the few-shot branch scale-free per level, and the zero-shot branch can be scaled in the same way with support LOO statistics, so both branches are comparable without test-set min-max.",
+   "method": "1) utils.py: fit_prototypes(support_feats_l, k) with torch k-means (20 iterations); radii as 90th percentiles. 2) test_few.py: few-shot map = min_k ||f - P_k||/r_k per level; log1p; zero-shot map standardised by support LOO mean/std; fused mean over levels and branches; remove test-set min-max. 3) Image score top-1% mean; tau from support LOO image scores. 4) Report memory (number of stored vectors) and latency per image. Hyper-parameters: k as above, 90th percentile radius, 20 k-means iterations; no training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) prototype scoring with the original min-max (isolates the scoring), (ii) inductive normalisation, (iii) top-1% pooling. Metrics: image/pixel AUROC, sensitivity at 95% specificity, score shift under resampling, memory, latency. Falsified if pixel AUROC drops by more than 1 point at K >= 4.",
+   "provenance": [
+    "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images"
+   ],
+   "fitness": {
+    "0": 20.0,
+    "1": 22.1
+   }
+  },
+  "B1-g0-C5": {
+   "id": "B1-g0-C5",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C5",
+   "title": "Log-odds fusion of temperature-calibrated MVFA branches for inductive scoring",
+   "summary": "Calibrate the zero-shot branch with a source-fitted temperature, map the few-shot branch to a probability with support statistics, and add the two log-odds instead of min-max normalising and averaging.",
+   "research_idea": "Independent variable: fusion rule (test-set min-max + 0.5 average vs. log-odds sum of calibrated branches vs. average of calibrated probabilities). Zero-shot: p0 = softmax(T^-1 [s_abn, s_norm]) with T fitted on source validation pixels (masked sources) and images (all sources). Few-shot: p1 = sigmoid((d - mu_supp)/sigma_supp * a + c) with a, c fitted on source episodes and mu, sigma from target support LOO. Fused logit = logit(p0) + logit(p1) - logit(pi), pi the source prevalence prior; image score = top-1% mean of fused probabilities. Dependent variables: image/pixel AUROC, ECE, sensitivity at 95% specificity with the fixed threshold 0.5 and with support-derived thresholds, threshold drift across held-out modalities.",
+   "hypothesis": "Log-odds fusion of calibrated branches keeps image AUROC within 1 point of the transductive pipeline and halves ECE, and the fixed threshold 0.5 yields realised specificity that varies by at most 10 points across held-out modalities (versus more than 25 points for a threshold on min-max scores).",
+   "rationale": "MVFA's zero-shot branch is a two-way softmax over normal/abnormal text anchors, so it is already on a probability scale, and min-max normalising it over the test set destroys that meaning and causes threshold drift. A temperature fitted on source validation restores calibration; the few-shot branch can be mapped to a probability with a logistic fitted to support LOO scores and source episodes. Fusing the two in log-odds space (product of experts) gives a principled per-image probability and a threshold that does not drift.",
+   "method": "1) calibrate.py: fit T by minimising NLL of the zero-shot pixel/image predictions on source validation (LBFGS); fit a, c by logistic regression on source episodes (as in Platt scaling). 2) test_few.py: compute p0, p1 per pixel; fused = sigmoid(logit p0 + logit p1 - logit pi); remove test-set min-max; image score = top-1% mean. 3) Report specificity at fixed threshold 0.5 and at support-derived tau. Hyper-parameters: T init 1, LBFGS 100 iterations, 50 episodes; no adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) calibrated branches with average fusion, (ii) log-odds fusion, (iii) top-1% pooling. Metrics: image/pixel AUROC, ECE, Brier, sensitivity/specificity at 0.5 and at tau, spread of realised specificity across held-out modalities. Falsified if AUROC drops more than 1 point or ECE is not halved.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 80.0,
+    "1": 85.67,
+    "2": 93.22,
+    "3": 96.32
+   }
+  },
+  "B1-g0-C6": {
+   "id": "B1-g0-C6",
+   "gen": 0,
+   "parents": [],
+   "operators": [
+    "hyper-seed"
+   ],
+   "chain": "C6",
+   "title": "Region-mass aggregation with support-derived thresholds for robust per-image MVFA scores",
+   "summary": "Standardise both branches with support LOO statistics, threshold the fused map at a support-derived level, and score each image by the excess mass of its strongest connected region.",
+   "research_idea": "Independent variable: image aggregation (max pixel vs. top-1% mean vs. region mass), with support z-score normalisation in all inductive variants. Region mass: tau_pix = 99th percentile of support LOO fused pixel scores; regions = 8-connected components of {x: m(x) > tau_pix}; mass(R) = sum_{x in R} (m(x) - tau_pix); image score = max_R mass(R) (0 if no region). Dependent variables: image AUROC, sensitivity at 95% specificity, AUROC drop under injection of 1-5 spurious single-patch spikes into normal test maps, per-image score shift under resampling.",
+   "hypothesis": "Region-mass aggregation keeps image AUROC within 1 point of max pooling on clean data and loses at most one third as much AUROC as max pooling when 3 spurious spikes are injected into normal test maps.",
+   "rationale": "MVFA's image score is the maximum fused pixel, which one spurious pixel can decide. G-Anomaly's view that anomalies are coherent regions suggests aggregating at region level: threshold the fused map at a support-derived level, form connected regions, and score an image by its strongest region's mass (mean excess score times area). Combined with support-standardised branches, this gives a per-image score that is robust to isolated spikes and needs no test-set statistics.",
+   "method": "1) test_few.py: support LOO z-scores per branch and level; fused map m = mean; remove test-set min-max. 2) utils.py: region_mass(m, tau) with scipy.ndimage.label (8-connectivity). 3) tau_pix from support LOO fused maps (99th percentile); image threshold tau_img = 95th percentile of support LOO image scores. 4) Stress test: inject k in {1, 3, 5} single-patch spikes (value = 99.9th percentile of the image's map + 3 std) at random positions in normal test maps. Hyper-parameters: percentiles 99 and 95; no training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA checkpoints retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws, mean and std. Baselines: the original transductive pipeline (test-set min-max, 0.5, max pooling) and a plain support z-score. Ordered ablation: (i) support z-score normalisation with max pooling, (ii) top-1% mean, (iii) region mass. Metrics: image AUROC, sensitivity at 95% specificity, AUROC under spike injection, score shift under resampling. Falsified if region mass loses more than 1 point of clean AUROC or does not reduce the injected-spike AUROC drop by at least half.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection"
+   ],
+   "fitness": {
+    "0": 44.73,
+    "1": 38.33
+   }
+  },
+  "B1-g1-o1": {
+   "id": "B1-g1-o1",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C5",
+    "B1-g0-C3"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 55.75
+   },
+   "title": "Target-local Platt scaling from support normals and synthetic lesions, fused in log-odds",
+   "summary": "Fit the few-shot branch's logistic calibration on the target itself, using leave-one-out support normals as negatives and synthetic lesions pasted into the supports as positives, keep a source-fitted temperature for the zero-shot branch, and add the two log-odds.",
+   "hypothesis": "Target-local Platt scaling with synthetic positives yields expected calibration error at least 40% lower than source-episode Platt scaling on held-out modalities while keeping image AUROC within 1 point of the transductive pipeline, and the fixed threshold 0.5 gives realised specificity within 10 points of its value on source modalities.",
+   "rationale": "The log-odds parent restores the zero-shot branch's probability meaning but needs source episodes to calibrate the few-shot branch, which may not transfer across modalities; the two-anchor parent obtains a target-specific upper anchor from synthetic lesions but only rescales. Combining them, the synthetic lesions in the target supports become positives for a target-local logistic fit, so the few-shot branch is calibrated on the target modality itself without any real abnormal target data, and the zero-shot branch keeps its source temperature because its softmax is already calibrated in form. Fusion in log-odds then has a probabilistic meaning on the target.",
+   "method": "1) synth.py: 20 synthetic variants per support normal (CutPaste from other supports, Gaussian-intensity blobs, 1-5% area). 2) Negatives: LOO few-shot image scores (top-1% mean) of support normals; positives: few-shot image scores of synthetic variants (bank built without the source support). 3) Fit a, c by logistic regression (L2, C=1) on these; p1 = sigmoid(a s + c). 4) Zero-shot: p0 = softmax(T^-1 logits), T fitted on source validation by NLL (LBFGS). 5) Fused logit = logit p0 + logit p1 - logit pi (pi = 0.5 by default); image score = fused probability at the image level (top-1% mean of pixel log-odds, then sigmoid). 6) test_few.py: remove test-set min-max. No adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) target-local Platt for few-shot only with 0.5 average fusion, (ii) log-odds fusion, (iii) comparison with source-episode Platt. Metrics: image/pixel AUROC, ECE, Brier, specificity at threshold 0.5, score shift under resampling. Falsified if ECE is not reduced by 40% versus source-episode Platt or AUROC drops by more than 1 point.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection"
+   ]
+  },
+  "B1-g1-o2": {
+   "id": "B1-g1-o2",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C5",
+    "B1-g0-C1"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 94.83,
+    "2": 109.45,
+    "3": 109.59
+   },
+   "title": "Conformal few-shot p-values and temperature-calibrated zero-shot probabilities fused in log-odds",
+   "summary": "Turn the few-shot branch into a conformal p-value from the leave-one-out support distribution, keep the zero-shot branch as a temperature-calibrated probability, and combine both in log-odds with weights fitted on source episodes.",
+   "hypothesis": "Fusing a conformal few-shot p-value with a temperature-calibrated zero-shot probability in log-odds keeps image AUROC within 1 point of the transductive pipeline at K >= 4, makes each image's score exactly invariant to the test set, and controls the false-positive rate on normal images at the nominal 5% within 2 points when the few-shot branch alone is thresholded.",
+   "rationale": "The empirical-CDF parent makes scores test-set-invariant but treats both branches as uncalibrated ranks; the log-odds parent shows that the zero-shot branch is already a probability once a temperature is fitted. The two branches differ in nature: the few-shot score is a distance to supports, for which a rank against leave-one-out support scores is a valid conformal p-value with a finite-sample false-positive guarantee, while the zero-shot score is a classifier output. Treating each by its nature, a p-value for the few-shot branch and a probability for the zero-shot branch, and combining them in log-odds with source-fitted weights preserves the guarantee of the first and the calibration of the second.",
+   "method": "1) Few-shot: for each support i, LOO image score r_i (top-1% mean of 1 - max cosine to the bank without i, averaged over levels); test image score s; conformal p = (1 + #{r_i >= s})/(K + 1). 2) Zero-shot: p0 = softmax(T^-1 logits) with T fitted on source validation. 3) Fused logit z = w0 logit(p0) + w1 logit(1 - p) + c, with w0, w1, c fitted by logistic regression on source episodes (50 per source modality, K matched). 4) test_few.py: remove min-max; report thresholded results at p <= 0.05 (few-shot alone) and at z = 0. 5) Pixel maps: the same transform per pixel using LOO pixel reference sets subsampled to 10^5 values. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) conformal few-shot alone, (ii) + calibrated zero-shot with average fusion, (iii) log-odds fusion with source weights. Metrics: image/pixel AUROC, realised FPR at p <= 0.05, ECE, score shift under resampling. Falsified if AUROC drops more than 1 point or realised FPR at nominal 5% exceeds 7%.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g1-o3": {
+   "id": "B1-g1-o3",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C1",
+    "B1-g0-C5"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 78.6,
+    "2": 81.3,
+    "3": 79.66
+   },
+   "title": "Support-CDF scores with source-episode isotonic calibration of the fused score",
+   "summary": "Map both branches through their leave-one-out support CDFs, average them, and convert the fused CDF score into a probability with an isotonic map learned on source-modality episodes.",
+   "hypothesis": "Isotonic calibration of support-CDF scores learned on source episodes lowers ECE on held-out modalities by at least 50% relative to uncalibrated CDF scores while leaving AUROC unchanged (isotonic maps are monotone) and keeping each image's score invariant to the test set.",
+   "rationale": "The CDF parent puts both branches on a common, test-invariant scale but its scores are ranks, not probabilities; the log-odds parent calibrates with parametric maps that may be misspecified. Because CDF scores are already on a modality-independent scale (fraction of support-normal patches exceeded), a single non-parametric monotone map from fused CDF score to probability, learned on source episodes, should transfer to unseen modalities better than parametric calibration of raw scores. Isotonic regression preserves ranking, so AUROC is untouched and only calibration changes.",
+   "method": "1) Branch CDFs as in the CDF parent (LOO support reference sets per branch and level, torch.searchsorted). 2) Fused score u = mean over branches and levels; image score u_img = top-1% mean. 3) Source episodes: for each source modality's validation split, 50 episodes with K supports and 40 labelled queries; collect (u_img, label). 4) Fit sklearn IsotonicRegression(out_of_bounds='clip') on the pooled episodes of the training fold. 5) Target: p = iso(u_img). 6) test_few.py: remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) CDF fusion only, (ii) + isotonic calibration, (iii) isotonic on raw z-scores instead of CDFs (tests the transfer claim). Metrics: image AUROC, ECE, Brier, reliability diagrams, score shift under resampling. Falsified if ECE is not halved or if isotonic on raw z-scores calibrates as well as on CDF scores.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "B1-g1-o4": {
+   "id": "B1-g1-o4",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C5",
+    "B1-g0-C6"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 66.68,
+    "2": 59.14
+   },
+   "title": "Binomial exceedance test: per-image p-values from support-calibrated pixel thresholds",
+   "summary": "Set a pixel threshold so that a known small fraction of support-normal pixels exceed it, and score each test image by the binomial tail probability of its observed number of exceeding pixels.",
+   "hypothesis": "A per-image binomial exceedance p-value with the pixel threshold at the 99th percentile of support LOO fused pixel scores achieves image AUROC within 1 point of the transductive pipeline, controls the realised false-positive rate on normal test images within 2 points of the nominal 5% after a source-fitted overdispersion correction, and is unaffected by single spurious pixels.",
+   "rationale": "The log-odds parent calibrates pixel probabilities and the region-mass parent aggregates excess above a support threshold, but both still need a learned or ad hoc map from pixel evidence to an image decision. A different explanation of what an image score should measure is how surprising the amount of exceedance is under the normal model: if a threshold is set so that a fraction q of normal pixels exceed it, a normal image's exceedance count is approximately binomial (with overdispersion from spatial correlation), and an abnormal image has more exceedances than expected. The resulting tail probability is a per-image p-value defined without test-set statistics, and one spurious pixel changes it by a negligible amount, which addresses the max-pixel fragility verified in MVFA's code.",
+   "method": "1) Fused pixel map m(x): support LOO z-scores per branch and level, averaged (no min-max). 2) Pixel threshold t_q = (1 - q) quantile of LOO support pixel scores, q = 0.01. 3) For a test image with n pixels (on the 17x17 patch grid, n = 289, to limit spatial correlation), count c = #{x: m(x) > t_q}. 4) Overdispersion phi fitted on source-validation normal images: Var(c) = phi n q (1 - q); use a beta-binomial with matching variance. 5) Image p-value = P(C >= c); image score = -log10 p. 6) test_few.py: implement; remove min-max; threshold p <= 0.05. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) support z-score normalisation with max pooling, (ii) exceedance count, (iii) binomial vs beta-binomial p-value. Metrics: image AUROC, realised FPR at p <= 0.05, AUROC under 1-5 injected spikes, score shift under resampling. Falsified if AUROC drops more than 1 point or realised FPR exceeds 7% after the overdispersion correction.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g1-o5": {
+   "id": "B1-g1-o5",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C6"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 44.52
+   },
+   "title": "Upper-tail Wasserstein score: comparing each image's patch-score distribution with the support-normal distribution",
+   "summary": "Score each test image by the 1-Wasserstein distance between the upper tail of its own patch-score distribution and the upper tail of the pooled leave-one-out support-normal patch scores, giving a per-image score that needs no test-set statistics and is insensitive to single pixels.",
+   "hypothesis": "The upper-tail (top 10%) Wasserstein score achieves image AUROC within 1 point of the transductive pipeline on all held-out modalities, at least 1 point above max-pixel scoring on modalities with diffuse abnormalities (RESC, OCT17, ChestXray), and loses less than 0.5 AUROC points when 3 spurious spikes are injected per normal test map.",
+   "rationale": "The inspiring idea aggregates excess evidence over a spatial region. By analogy with distribution-shift detection, an abnormal image can be viewed as one whose distribution of patch scores is shifted upward in its tail relative to normal anatomy, whether the shift is concentrated (focal lesion) or diffuse (fluid, opacities). The Wasserstein distance between upper-tail quantile functions measures this shift in score units, is defined from the support normals alone, and changes by at most 1/n per spurious pixel. Unlike max or region mass, it needs no spatial connectivity assumption, which matters for diffuse findings in OCT and chest X-ray where connected regions are ill-defined.",
+   "method": "1) Fused patch map m (support LOO z-scores per branch and level, averaged; no min-max). 2) Reference: pooled LOO support patch scores; its upper-tail quantile function Q_ref(u) for u in [0.9, 1], evaluated on 50 points. 3) Test image: Q_img(u) over its 289 patches. 4) Score = mean over u of max(Q_img(u) - Q_ref(u), 0) (one-sided W1 on the tail). 5) Tail fraction (5, 10, 20%) selected on source episodes. 6) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score with max pooling. Ordered ablation: (i) support z-score with max pooling, (ii) top-k mean, (iii) upper-tail Wasserstein. Metrics: image AUROC per modality, sensitivity at 95% specificity (threshold from LOO support scores), AUROC under spike injection, score shift under resampling. Falsified if AUROC drops more than 1 point or it does not beat max pooling on at least two diffuse-abnormality modalities.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection",
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP"
+   ]
+  },
+  "B1-g1-o6": {
+   "id": "B1-g1-o6",
+   "gen": 1,
+   "parents": [
+    "B1-g0-C6",
+    "B1-g0-C5"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "1": 61.18,
+    "2": 45.88
+   },
+   "title": "Scan statistic over calibrated log-odds maps with a support-derived null for the image score",
+   "summary": "Score each image by the largest summed log-odds over connected candidate regions of its calibrated anomaly map, and convert it to a p-value with the null distribution of that maximum built from leave-one-out support normals.",
+   "hypothesis": "A region scan statistic over calibrated log-odds maps, referenced to its leave-one-out support null distribution, raises image AUROC by at least 1 point over max-pixel scoring on BrainMRI and LiverCT (focal lesions) without loss on the other modalities, while giving test-set-invariant scores and a realised false-positive rate within 3 points of the nominal 5%.",
+   "rationale": "Region mass aggregates excess above a threshold but its magnitude has no reference, and log-odds fusion produces calibrated pixels but no image-level test. A scan statistic, the maximum over candidate regions of summed evidence, is the classical way to detect a localised signal of unknown position and size, and its multiple-testing problem is solved by comparing the maximum with its distribution under the null. Here the null is available from the K support normals by leave-one-out, so the image score becomes a p-value that accounts for the many candidate regions an image contains, which neither parent does.",
+   "method": "1) Pixel log-odds map l(x): zero-shot branch temperature-calibrated (T on source validation), few-shot branch support z-score mapped through a source-fitted logistic; l = sum of the two log-odds (no min-max). 2) Candidate regions: connected components of {l > 0} on the 17x17 grid plus all 3x3 and 5x5 windows. 3) Scan statistic S = max over regions of sum_{x in R} l(x). 4) Null: S computed on each support normal with the bank built without it (LOO), plus 10 flipped/shifted augmentations per support, giving 11K null values. 5) p = (1 + #{S_null >= S})/(N_null + 1); score = -log10 p. 6) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) calibrated log-odds with max pixel, (ii) region mass, (iii) scan statistic with support null. Metrics: image AUROC per modality, realised FPR at p <= 0.05, score shift under resampling. Falsified if the scan statistic does not improve AUROC on BrainMRI or LiverCT or its FPR exceeds 8%.",
+   "provenance": [
+    "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "B1-g2-o1": {
+   "id": "B1-g2-o1",
+   "gen": 2,
+   "parents": [
+    "B1-g1-o3",
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 100.3,
+    "3": 102.51
+   },
+   "title": "Level-wise conformal p-values combined with the Cauchy rule and calibrated isotonically",
+   "summary": "Compute a conformal p-value for each MVFA feature level and branch from leave-one-out support scores, combine the eight dependent p-values with the Cauchy combination test, and map the result to a probability with a source-fitted isotonic map.",
+   "hypothesis": "Cauchy combination of eight level-wise conformal p-values keeps image AUROC within 1 point of the transductive pipeline, gives a realised false-positive rate within 2 points of the nominal 5% despite the strong dependence between levels, and after isotonic calibration reaches ECE at least 40% lower than the CDF-average parent.",
+   "rationale": "The CDF parent averages branch CDFs, which ignores that averaging dependent ranks is not a valid test; the conformal parent uses a single fused few-shot score and loses level-specific evidence. MVFA's four adapter levels and two branches give eight correlated views of each image. The Cauchy combination test (Liu and Xie, 2020) combines dependent p-values into one whose tail is approximately exact under arbitrary dependence, so level-wise conformal p-values can be combined without modelling their correlation, preserving false-positive control. An isotonic map on the combined statistic then supplies calibrated probabilities.",
+   "method": "1) For level l and branch b: LOO support image scores r_i^{bl} (top-1% mean of that level's map); test score s^{bl}; p_bl = (1 + #{r_i >= s})/(K + 1). For the zero-shot branch the support score is the softmax abnormal probability map at that level. 2) Cauchy statistic T = (1/8) sum tan((0.5 - p_bl) pi); combined p = 0.5 - arctan(T)/pi. 3) Isotonic map from -log p to probability fitted on source episodes. 4) test_few.py: implement; remove test-set min-max. No adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) single fused conformal p-value, (ii) level-wise Cauchy combination, (iii) Fisher combination (assumes independence, expected to be anti-conservative), (iv) + isotonic calibration. Metrics: realised FPR at 0.05, image AUROC, ECE, score shift under resampling. Falsified if Cauchy-combined FPR exceeds 7% or AUROC drops more than 1 point.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "B1-g2-o2": {
+   "id": "B1-g2-o2",
+   "gen": 2,
+   "parents": [
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 36.72
+   },
+   "title": "Augmentation-consistency scoring: true anomalies persist under flips and small shifts, spurious responses do not",
+   "summary": "Score each test image under eight label-preserving augmentations (flips and half-patch shifts), and use a conformal p-value of the augmentation-averaged score together with its across-augmentation spread to down-weight unstable responses.",
+   "hypothesis": "Augmentation-consistency scoring improves image AUROC by at least 1 point over single-view inductive scoring on held-out modalities and reduces the AUROC loss under injected spurious spikes by at least half, while remaining test-set-invariant.",
+   "rationale": "The conformal-log-odds idea makes scores per-image and calibrated but still trusts a single forward pass. By analogy with double reading in radiology, where findings seen by two independent readers are trusted more, a lesion should produce a high score under any reasonable view of the image, whereas spurious high pixels from patch-grid aliasing or noise depend on the exact grid position, a verified property of MVFA's 14-pixel patches. Averaging across augmentations suppresses such responses and the spread gives a per-image uncertainty, without any test-set statistics.",
+   "method": "1) Augmentations: identity, horizontal flip, vertical flip (if anatomically valid for the modality, else omitted), and half-patch shifts (7 px in x, y, both), realigned after scoring. 2) Fused inductive map per view (support LOO z-scores, averaged); averaged map m_bar and per-pixel std s. 3) Image score = top-1% mean of m_bar - 0.5 s. 4) Conformal p-value against support LOO image scores computed the same way. 5) test_few.py: implement; remove min-max. Cost: 8x inference. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: single view; augmentation mean; mean minus 0.5 std. Metrics: image AUROC, AUROC under 1-5 injected spikes, realised FPR at p <= 0.05, latency. Falsified if augmentation consistency does not improve AUROC by 1 point or does not halve the spike-induced loss.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g2-o3": {
+   "id": "B1-g2-o3",
+   "gen": 2,
+   "parents": [
+    "B1-g1-o2",
+    "B1-g1-o3"
+   ],
+   "operators": [
+    "inspiration"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 87.03,
+    "3": 90.59
+   },
+   "title": "Weighted conformal scoring that borrows source-modality normals to stabilise small support sets",
+   "summary": "Enlarge the leave-one-out reference set of the few-shot branch at small K by adding normal source-modality images, weighted by their feature similarity to the target supports (weighted conformal prediction), so per-image p-values remain fine-grained and valid under modality shift.",
+   "hypothesis": "At K = 2 and K = 4, weighted conformal p-values using similarity-weighted source normals reduce the variance of image AUROC across support draws by at least 40% and keep the realised false-positive rate within 3 points of the nominal 5%, whereas unweighted support-only conformal p-values have a resolution of 1/(K + 1) and cannot reach 5% at K = 2.",
+   "rationale": "Both parents rely on the K target supports for their reference distribution, which is too coarse at K = 2 (p-values cannot fall below 1/3). A different mechanism, suggested by the conformal parent's guarantee and the isotonic parent's use of source data, is to borrow normal reference scores from source modalities and correct for the modality shift with likelihood-ratio weights, as in weighted conformal prediction under covariate shift (Tibshirani et al., 2019). Weights are estimated from how similar each source normal's global feature is to the target supports, so similar source anatomy contributes more. This keeps per-image scoring inductive while fixing the small-K resolution problem that limits both parents.",
+   "method": "1) Source reference pool: few-shot scores of 500 normal validation images per source modality, each scored against the target support bank (as a target image would be). 2) Weights: w_j = exp(-||g_j - g_supp||^2/(2 h^2)) with g the mean CLS feature at level 4, g_supp the mean of target supports, h = median pairwise distance; support LOO scores get weight 1 (normalised so their total weight equals that of the source pool when K >= 8, and 25% when K = 2). 3) Weighted p-value p = (sum_{i: r_i >= s} w_i + w_test)/(sum_i w_i + w_test). 4) Combine with the zero-shot branch in log-odds as in the conformal parent. 5) test_few.py: implement; remove min-max. No adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: support-only conformal; unweighted source pool; weighted source pool. Metrics: realised FPR at p <= 0.05 per K, variance of AUROC across support draws, image AUROC, score shift under resampling. Falsified if weighting does not reduce AUROC variance by 40% at K <= 4 or if realised FPR exceeds 8%.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g2-o4": {
+   "id": "B1-g2-o4",
+   "gen": 2,
+   "parents": [
+    "B1-g1-o3"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 64.87
+   },
+   "title": "Extreme-value (peaks-over-threshold) calibration of per-image MVFA scores",
+   "summary": "Fit a generalised Pareto distribution to the upper tail of leave-one-out support-normal patch scores and score each test image by the tail probability of its highest patch scores, which extrapolates beyond the few observed support values.",
+   "hypothesis": "Generalised-Pareto tail probabilities keep image AUROC within 1 point of the transductive pipeline and give realised false-positive rates within 2 points of nominal levels down to 1%, including at K = 2 where empirical CDF and conformal p-values cannot resolve probabilities below 1/(K + 1).",
+   "rationale": "The CDF-isotonic idea calibrates scores non-parametrically, which works only within the range of observed reference values. By analogy with extreme-value statistics in reliability engineering and hydrology, the tail of a distribution can be modelled reliably from exceedances over a high threshold (Pickands-Balkema-de Haan theorem), so probabilities of scores beyond the support maximum, exactly the region where anomalies lie, can be estimated from a handful of normal images. Pooling patches from all supports gives hundreds of exceedances even at K = 2.",
+   "method": "1) Fused patch map m (support LOO z-scores, averaged over levels and branches; no min-max). 2) Pool LOO support patch scores; threshold u = 95th percentile; fit GPD (shape xi, scale sigma) to exceedances by maximum likelihood (scipy.stats.genpareto). 3) Patch tail probability P(m > s) = 0.05 (1 + xi (s - u)/sigma)^(-1/xi) for s > u, empirical below. 4) Image score = -log10 of the mean tail probability of the top 3 patches. 5) Image threshold from the GPD of support LOO image scores (fitted the same way). 6) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: empirical CDF; conformal; GPD tail. Metrics: image AUROC, realised FPR at nominal 5% and 1% per K, score shift under resampling. Falsified if GPD FPRs miss nominal by more than 2 points at K >= 4 or by more than 4 points at K = 2.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "B1-g2-o5": {
+   "id": "B1-g2-o5",
+   "gen": 2,
+   "parents": [
+    "B1-g1-o3",
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "combination",
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 52.95
+   },
+   "title": "Selective per-image MVFA scoring with a conformal abstention band",
+   "summary": "Give each image one of three outputs, normal, abnormal or refer to a reader, by placing an abstention band on its conformal p-value, and measure the risk-coverage trade-off that a deployable MVFA would offer.",
+   "hypothesis": "With an abstention band of p in [0.05, 0.3], selective MVFA scoring reaches at least 95% sensitivity and 95% specificity on the images it does not refer, while referring at most 25% of images on held-out modalities at K >= 4, which the original transductive pipeline cannot provide because its scores have no per-image meaning.",
+   "rationale": "The two-guarantee idea separates false-positive control from probability calibration. By analogy with clinical triage and selective classification, a screening system does not need to decide every case: it can refer uncertain images to a radiologist. A per-image conformal p-value supports exactly this, with a guaranteed false-positive rate for 'abnormal' calls and a calibrated band for referral. Measuring risk versus coverage turns MVFA's scoring into a decision tool and quantifies its clinical usefulness, which AUC alone cannot (G11).",
+   "method": "1) Per-image conformal p-value from the fused inductive score (support LOO, as in the conformal parent). 2) Decision: abnormal if p < alpha_lo, normal if p > alpha_hi, refer otherwise; alpha_lo = 0.05; alpha_hi chosen on source episodes to give 95% negative predictive value. 3) Report coverage, selective sensitivity and specificity, and the risk-coverage curve over alpha_hi in [0.05, 0.5]. 4) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: no abstention; abstention band selected on source episodes; oracle band (upper reference). Metrics: coverage, selective sensitivity/specificity, area under the risk-coverage curve, score shift under resampling. Falsified if selective sensitivity and specificity do not both reach 95% at 75% coverage at K >= 4.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g2-o6": {
+   "id": "B1-g2-o6",
+   "gen": 2,
+   "parents": [
+    "B1-g0-C5",
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "combination",
+    "substitution"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "2": 75.8,
+    "3": 68.43
+   },
+   "title": "Weight-free fusion of MVFA branches by a Bonferroni-corrected minimum p-value",
+   "summary": "Replace inverse-variance fusion weights with a weight-free rule: convert each branch to a support-based conformal p-value and score the image by twice the smaller of the two, which is valid whatever the dependence between branches.",
+   "hypothesis": "Bonferroni-min fusion matches support-reliability-weighted log-odds fusion within 0.5 image-AUROC points on held-out modalities, keeps the realised false-positive rate at or below the nominal 5%, and removes all fitted fusion parameters.",
+   "rationale": "The parent's framing is kept, fusion without source episodes, but inverse-variance weights estimated from K support images are themselves noisy at small K. The minimum p-value with a Bonferroni factor is the simplest valid combination of two tests under arbitrary dependence and needs no estimated weights; it lets whichever branch is more confident for a given image decide, which suits MVFA's complementary zero-shot (semantic) and few-shot (appearance) evidence.",
+   "method": "1) Zero-shot branch: conformal p0 from LOO support scores of the temperature-calibrated softmax map (top-1% mean). 2) Few-shot branch: conformal p1 from LOO support scores. 3) p = min(1, 2 min(p0, p1)); score = -log10 p. 4) Threshold p <= 0.05. 5) test_few.py: implement; remove min-max. No training, no fitted fusion parameters.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: equal-weight log-odds; support-reliability weights (parent); Bonferroni-min; Simes combination (less conservative). Metrics: image AUROC, realised FPR at 0.05, score shift under resampling. Falsified if Bonferroni-min loses more than 0.5 AUROC points relative to the parent or exceeds nominal FPR.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection",
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP"
+   ]
+  },
+  "B1-g3-o1": {
+   "id": "B1-g3-o1",
+   "gen": 3,
+   "parents": [
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 85.09
+   },
+   "title": "Empirical-Bayes shrinkage of support statistics for stable per-image MVFA scores at small K",
+   "summary": "Stabilise the support-derived normalisation statistics used for per-image scoring by shrinking each branch's support mean and spread toward priors learned across source modalities, with the amount of shrinkage set by K, as in small-area estimation.",
+   "hypothesis": "Empirical-Bayes shrinkage of support statistics reduces the across-draw standard deviation of image AUROC at K = 2 and K = 4 by at least 40% relative to raw support statistics, keeps mean image AUROC within 1 point of the transductive pipeline, and has no effect (within 0.3 points) at K = 16.",
+   "rationale": "The conformal parent treats the support set as the whole reference, which is unstable at K = 2. By analogy with small-area estimation in survey statistics, where estimates for small groups are shrunk toward a population prior in proportion to their uncertainty, the support statistics of an unseen modality can borrow strength from the distribution of such statistics across source modalities. The prior captures how support means and spreads typically relate across modalities; with large K the target's own data dominate, so nothing is lost when data are plentiful.",
+   "method": "1) On source episodes (all source modalities, 200 episodes, K matched), record per branch and level the support LOO mean mu and log-std lsd; fit a normal prior over (mu, lsd) per branch and level (mean m0, variance v0) after centring each modality on its own large-sample statistics. 2) On the target: shrunk mu' = (v0 mu_hat + (s^2/K) m0') / (v0 + s^2/K), with m0' the prior mean expressed relative to the target's level-wise text-anchor similarity (a covariate available without labels); same for lsd. 3) Standardise test scores with (mu', exp(lsd')); fuse by averaging; image score top-1% mean. 4) test_few.py: implement; remove min-max. No adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: raw support statistics; shrinkage; oracle statistics from 200 target normals (upper reference). Metrics: mean and across-draw std of image AUROC per K, realised specificity at the support threshold, score shift under resampling. Falsified if shrinkage does not reduce across-draw std by 40% at K <= 4.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "B1-g3-o2": {
+   "id": "B1-g3-o2",
+   "gen": 3,
+   "parents": [
+    "B1-g0-C5"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 46.01
+   },
+   "title": "Subjective-logic fusion of MVFA branches with an explicit uncertainty mass from support size",
+   "summary": "Express each branch's per-image evidence as a subjective-logic opinion (belief in abnormal, belief in normal, uncertainty) whose uncertainty mass shrinks as K grows, fuse the two opinions with the cumulative fusion operator, and score images by projected probability while reporting uncertainty.",
+   "hypothesis": "Subjective-logic fusion keeps image AUROC within 1 point of log-odds fusion at K >= 4, and its uncertainty mass identifies unreliable decisions: among the 20% of images with the highest uncertainty, the error rate at the support threshold is at least twice that of the remaining images, at every K.",
+   "rationale": "The log-odds parent produces a single probability per image, which hides how much evidence it rests on; with K = 2 supports the same probability is far less trustworthy than with K = 16. By analogy with evidential reasoning in sensor fusion (Dempster-Shafer, subjective logic), each branch can contribute belief, disbelief and an explicit uncertainty mass determined by its amount of evidence, here the support size and the branch's agreement with its own leave-one-out statistics. Cumulative fusion combines independent opinions, and the resulting uncertainty is a per-image reliability signal that a clinical user can act on.",
+   "method": "1) For branch b: evidence counts from the calibrated probability p_b (as in the parent) and support size: r_b = W p_b n_b, s_b = W (1 - p_b) n_b with n_b = K for the few-shot branch and n_0 = 16 (source-calibrated) for the zero-shot branch, W = 2; opinion (b, d, u) = (r, s, W)/(r + s + W). 2) Cumulative fusion of the two opinions (Josang's operator). 3) Score = projected probability b + a u (a = 0.5); report u. 4) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: log-odds fusion; subjective-logic fusion. Metrics: image AUROC, error rate in the top-20% uncertainty group vs the rest, risk-coverage curve when abstaining on high-uncertainty images, score shift under resampling. Falsified if the high-uncertainty group's error rate is not at least twice the rest's.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "PSMP-CLIP: Patch-Prompt SAM and Multi-Semantic Prompting for CLIP-Based Zero-Shot Anomaly Detection"
+   ]
+  },
+  "B1-g3-o3": {
+   "id": "B1-g3-o3",
+   "gen": 3,
+   "parents": [
+    "B1-g1-o2"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 74.16
+   },
+   "title": "Joint score-space density of support normals for fusing MVFA's two branches",
+   "summary": "Instead of fusing the zero-shot and few-shot scores by a fixed rule, model the joint distribution of the two branch scores on leave-one-out support normals (plus source normals for stability) and score each image by its negative log-density, so the fusion follows the actual correlation between branches.",
+   "hypothesis": "Scoring images by the negative log-density of their (zero-shot, few-shot) score pair under a support-fitted 2-D model improves image AUROC by at least 1 point over log-odds fusion on held-out modalities where the two branches are strongly correlated on normals (Pearson r > 0.5), and is never more than 0.5 points worse elsewhere.",
+   "rationale": "The log-odds parent adds two branch log-odds as if the branches were independent experts. By analogy with multivariate process monitoring, where correlated sensor readings are monitored jointly (Hotelling's T^2) because an unusual combination can signal a fault even when each reading is ordinary, an abnormal image may show an unusual combination of semantic (zero-shot) and appearance (few-shot) evidence. Fitting the joint normal distribution of the pair on support normals accounts for their correlation without any abnormal data and keeps per-image scoring inductive.",
+   "method": "1) Image-level scores per branch: top-1% mean of the zero-shot (temperature-calibrated) and few-shot (LOO) maps. 2) Normal reference pairs: K LOO support pairs plus 200 source-normal pairs scored against the target supports, the source pairs weighted 0.2. 3) Model: Gaussian with shrinkage covariance (Ledoit-Wolf) and, as an ablation, a 2-D KDE with Scott bandwidth. 4) Score = Mahalanobis distance (one-sided: only directions of increasing anomaly evidence count; the score is set to 0 if both branch scores are below their normal means). 5) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: log-odds fusion; Gaussian joint model; KDE joint model. Metrics: image AUROC per modality, normal-pair correlation per modality, realised specificity at the support threshold, score shift under resampling. Falsified if the joint model does not improve AUROC by 1 point on correlated modalities or loses more than 0.5 elsewhere.",
+   "provenance": [
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP"
+   ]
+  },
+  "B1-g3-o4": {
+   "id": "B1-g3-o4",
+   "gen": 3,
+   "parents": [
+    "B1-g2-o1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 62.24
+   },
+   "title": "Online false-discovery-rate control over a stream of MVFA-scored images",
+   "summary": "Treat deployment as a stream of incoming images, each with a per-image conformal p-value from MVFA, and flag images with an online FDR procedure (LORD) so that the proportion of false alarms among flagged images stays below a target over time, without ever using batch statistics.",
+   "hypothesis": "Applying LORD online FDR control to per-image conformal p-values from MVFA keeps the realised false discovery proportion below 10% on streams of held-out test images at prevalences from 10% to 50%, while flagging at least 70% of abnormal images at K >= 8, whereas a fixed p-value threshold of 0.05 exceeds 10% FDR at 10% prevalence.",
+   "rationale": "The Cauchy-isotonic parent produces calibrated per-image evidence but leaves the decision rule open. By analogy with online multiple testing in A/B testing platforms, where hypotheses arrive one at a time and decisions must be made immediately, a clinical deployment of MVFA sees one image at a time, and the relevant error rate is the fraction of flagged images that are false alarms. Online FDR procedures guarantee this from valid p-values alone, so they complete the inductive pipeline with a decision rule whose guarantee holds at any prevalence, which test-set min-max cannot provide.",
+   "method": "1) Per-image conformal p-value from the Cauchy-combined level-wise evidence (parent). 2) Stream: shuffle each held-out test set into 20 random orders; prevalence variants by subsampling abnormal images (10%, 30%, 50%). 3) LORD++ with target FDR alpha = 0.1 and default gamma sequence; flag image t if p_t <= alpha_t. 4) Compare with fixed thresholds 0.05 and 0.01 and with Benjamini-Hochberg applied offline (batch reference, not deployable). 5) Implemented in a new stream_eval.py; scoring in test_few.py without min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Metrics: realised false discovery proportion, sensitivity (fraction of abnormal images flagged), averaged over orders, per prevalence and K. Falsified if LORD's realised FDP exceeds 10% at any prevalence or its sensitivity is below 70% at K >= 8.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  },
+  "B1-g3-o5": {
+   "id": "B1-g3-o5",
+   "gen": 3,
+   "parents": [
+    "B1-g1-o2",
+    "B1-g2-o1"
+   ],
+   "operators": [
+    "combination"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 118.74
+   },
+   "title": "Cauchy-combined level-wise conformal few-shot evidence fused in log-odds with a temperature-calibrated zero-shot branch",
+   "summary": "Replace the single fused few-shot conformal p-value with a Cauchy combination of the four level-wise conformal p-values, then fuse it with the temperature-calibrated zero-shot probability in log-odds as in the conformal parent.",
+   "hypothesis": "Cauchy-combined level-wise few-shot p-values raise image AUROC by at least 0.5 points over a single fused few-shot p-value on held-out modalities while keeping the realised false-positive rate of the few-shot test within 2 points of 5%, and log-odds fusion with the calibrated zero-shot branch keeps AUROC within 1 point of the transductive pipeline.",
+   "rationale": "The conformal parent treats each branch by its nature but collapses the few-shot branch's four levels into one score before the test; the Cauchy parent keeps level-wise evidence but treats the zero-shot softmax as another p-value, discarding its calibrated probability form. Combining them, the few-shot branch keeps its level-wise conformal p-values combined validly under dependence, and the zero-shot branch keeps its temperature-calibrated probability, each treated by its nature.",
+   "method": "1) Few-shot: per level l, LOO support image scores r_i^l and test score s^l; p_l = (1 + #{r_i^l >= s^l})/(K + 1); Cauchy T = mean_l tan((0.5 - p_l) pi); p_fs = 0.5 - arctan(T)/pi. 2) Zero-shot: p0 with source-fitted temperature. 3) Fused logit z = w0 logit(p0) + w1 logit(1 - p_fs) + c, weights by logistic regression on source episodes. 4) test_few.py: implement; remove min-max. No adapter training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Ordered ablation: (i) single fused conformal p, (ii) Cauchy level-wise p, (iii) + log-odds fusion with calibrated zero-shot. Metrics: image AUROC, realised FPR at 0.05 for the few-shot test, ECE of the fused probability, score shift under resampling. Falsified if level-wise combination does not improve AUROC by 0.5 points or FPR exceeds 7%.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+    "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP"
+   ]
+  },
+  "B1-g3-o6": {
+   "id": "B1-g3-o6",
+   "gen": 3,
+   "parents": [
+    "B1-g2-o1"
+   ],
+   "operators": [
+    "out_of_box"
+   ],
+   "research_idea": null,
+   "fitness": {
+    "3": 55.16
+   },
+   "title": "Random-effects meta-analysis across MVFA levels and branches for per-image scores",
+   "summary": "Treat each of MVFA's level-branch maps as a separate study estimating how abnormal an image is, with its own support-derived standard error, and pool them with a DerSimonian-Laird random-effects model so that inconsistent levels are down-weighted for that image.",
+   "hypothesis": "Random-effects pooling across the eight level-branch estimates improves image AUROC by at least 0.5 points over equal-weight averaging of standardised scores on held-out modalities, and the per-image heterogeneity statistic I^2 is higher on false positives than on true positives at the support threshold.",
+   "rationale": "The Cauchy parent combines dependent p-values validly but treats every level as equally informative for every image. By analogy with meta-analysis, where several studies estimate one effect with different precision and some disagree beyond chance, each level-branch pair gives an estimate (a standardised score) with a precision that can be estimated from the support set; a random-effects model weights precise, consistent levels more and quantifies their disagreement for the specific image. Disagreement among levels (high I^2) is itself a warning sign that is not available from any single fused score.",
+   "method": "1) For level l and branch b: effect y_lb = (s_lb - mu_lb)/sigma_lb with support LOO statistics; within-study variance v_lb = 1 + 1/K (uncertainty of the support estimates). 2) DerSimonian-Laird: Q, tau^2 = max(0, (Q - 7)/(sum w - sum w^2 / sum w)), pooled y* = sum w*_lb y_lb / sum w*_lb with w* = 1/(v + tau^2). 3) Image score = y* / SE(y*); report I^2. 4) The correlation between levels is ignored in the weights (documented limitation; Cauchy combination as comparison). 5) test_few.py: implement; remove min-max. No training.",
+   "experiment": "Leave-one-modality-out on BMAD (RESC and OCT17 held out together), MVFA retrained with source-validation selection; K in {2,4,8,16}; 3 seeds x 3 support draws. Baselines: transductive MVFA pipeline, support z-score. Conditions: equal-weight average of standardised scores; fixed-effect pooling; random-effects pooling; Cauchy combination. Metrics: image AUROC, I^2 distribution for true and false positives, score shift under resampling. Falsified if random effects do not beat equal weighting by 0.5 AUROC points.",
+   "provenance": [
+    "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+    "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection"
+   ]
+  }
+ },
+ "comparisons": [
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g0-C2",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g0-C3",
+   "shown_first": "B1-g0-C3",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g0-C4",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g0-C5",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g0-C6",
+   "shown_first": "B1-g0-C6",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g0-C3",
+   "shown_first": "B1-g0-C3",
+   "winner": "B1-g0-C2",
+   "reasoning": "The winner learns a stable calibration scale on source-modality episodes and uses the target supports only for location, which directly addresses ECE, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g0-C4",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g0-C2",
+   "reasoning": "The winner learns a stable calibration scale on source-modality episodes and uses the target supports only for location, which directly addresses ECE, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g0-C5",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g0-C6",
+   "shown_first": "B1-g0-C6",
+   "winner": "B1-g0-C2",
+   "reasoning": "The winner learns a stable calibration scale on source-modality episodes and uses the target supports only for location, which directly addresses ECE, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g0-C4",
+   "shown_first": "B1-g0-C4",
+   "winner": "B1-g0-C3",
+   "reasoning": "The winner keeps MVFA's two-anchor normalisation logic but takes both anchors from the target supports, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g0-C5",
+   "shown_first": "B1-g0-C3",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g0-C6",
+   "shown_first": "B1-g0-C6",
+   "winner": "B1-g0-C6",
+   "reasoning": "The winner addresses the max-pixel aggregation with a region-level score and a spike-injection test, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g0-C5",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g0-C6",
+   "shown_first": "B1-g0-C4",
+   "winner": "B1-g0-C6",
+   "reasoning": "The winner addresses the max-pixel aggregation with a region-level score and a spike-injection test, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g0-C6",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o5",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g1-o1",
+   "reasoning": "The winner calibrates the few-shot branch on the target modality itself, with synthetic lesions as positives and support normals as negatives, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g0-C2",
+   "winner": "B1-g0-C2",
+   "reasoning": "The winner learns a stable calibration scale on source-modality episodes and uses the target supports only for location, which directly addresses ECE, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C2",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other assumes that a calibration fitted on source modalities transfers to an unseen modality, which the leave-one-modality-out split makes doubtful.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g1-o1",
+   "winner": "B1-g1-o1",
+   "reasoning": "The winner calibrates the few-shot branch on the target modality itself, with synthetic lesions as positives and support normals as negatives, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g0-C3",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o5",
+   "winner": "B1-g1-o5",
+   "reasoning": "The winner handles diffuse abnormalities without a connectivity assumption by comparing upper-tail score distributions in Wasserstein distance, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C3",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other depends on synthetic lesions as the upper anchor, whose scores may not represent real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g1-o1",
+   "winner": "B1-g1-o1",
+   "reasoning": "The winner calibrates the few-shot branch on the target modality itself, with synthetic lesions as positives and support normals as negatives, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g0-C4",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g0-C4",
+   "winner": "B1-g1-o5",
+   "reasoning": "The winner handles diffuse abnormalities without a connectivity assumption by comparing upper-tail score distributions in Wasserstein distance, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C4",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g0-C4",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other changes the few-shot scoring itself as well as the normalisation, which confounds the comparison with MVFA's bank.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g1-o1",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other requires source-episode fitting for the few-shot branch.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o1",
+   "shown_first": "B1-g0-C6",
+   "winner": "B1-g1-o1",
+   "reasoning": "The winner calibrates the few-shot branch on the target modality itself, with synthetic lesions as positives and support normals as negatives, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o5",
+   "winner": "B1-g1-o5",
+   "reasoning": "The winner handles diffuse abnormalities without a connectivity assumption by comparing upper-tail score distributions in Wasserstein distance, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C6",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g0-C6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other addresses aggregation more than the transductive normalisation that the problem leads with.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o1",
+   "b": "B1-g1-o2",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o1",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o1",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o1",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o1",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o5",
+   "winner": "B1-g1-o1",
+   "reasoning": "The winner calibrates the few-shot branch on the target modality itself, with synthetic lesions as positives and support normals as negatives, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o1",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other makes calibration depend on synthetic lesions whose score distribution may differ from real lesions.",
+   "confidence": "LOW",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g1-o3",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o5",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g1-o4",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "HIGH",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g1-o5",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o5",
+   "b": "B1-g1-o6",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other is mainly an aggregation change and leaves the calibration questions of the problem open.",
+   "confidence": "MEDIUM",
+   "generation": 1
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g0-C1",
+   "winner": "B1-g0-C1",
+   "reasoning": "The winner replaces test-set min-max with a support-defined empirical CDF that makes every image's score exactly invariant to the test set, with a clear ordered ablation, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C1",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other inherits the noise of small support sets at K = 2, where the CDF has very few reference values.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other requires source-episode fitting for the few-shot branch.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g2-o2",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other depends on a similarity weighting that may not capture the modality shift.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other needs a further isotonic map for calibrated probabilities.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g2-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other depends on a similarity weighting that may not capture the modality shift.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o5",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g2-o2",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g2-o4",
+   "reasoning": "The winner models the tail of support-normal scores with a generalised Pareto distribution, giving calibrated tail probabilities beyond the observed support maximum at small K, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g1-o4",
+   "winner": "B1-g1-o4",
+   "reasoning": "The winner scores an image by how surprising its number of exceedances is under a support-calibrated normal model, giving a per-image p-value that single spurious pixels barely affect, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o4",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other depends on an overdispersion correction for spatially correlated pixels fitted on source data.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o1",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g1-o6",
+   "reasoning": "The winner uses a scan statistic with a leave-one-out support null, the classical solution to detecting a localised signal of unknown size with multiple-testing control, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g1-o6",
+   "winner": "B1-g2-o4",
+   "reasoning": "The winner models the tail of support-normal scores with a generalised Pareto distribution, giving calibrated tail probabilities beyond the observed support maximum at small K, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o5",
+   "winner": "B1-g2-o5",
+   "reasoning": "The winner turns per-image scores into a three-way decision with a conformal abstention band and reports risk-coverage, directly addressing clinical usefulness, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "LOW",
+   "generation": 2
+  },
+  {
+   "a": "B1-g1-o6",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other builds the null from very few support images, so its tail is coarse at small K.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g2-o2",
+   "shown_first": "B1-g2-o2",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other depends on a similarity weighting that may not capture the modality shift.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o2",
+   "b": "B1-g2-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o2",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g2-o4",
+   "reasoning": "The winner models the tail of support-normal scores with a generalised Pareto distribution, giving calibrated tail probabilities beyond the observed support maximum at small K, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o2",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o2",
+   "winner": "B1-g2-o5",
+   "reasoning": "The winner turns per-image scores into a three-way decision with a conformal abstention band and reports risk-coverage, directly addressing clinical usefulness, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o2",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other multiplies inference cost by eight and addresses robustness more than normalisation.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g2-o4",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "HIGH",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o4",
+   "b": "B1-g2-o5",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g2-o4",
+   "reasoning": "The winner models the tail of support-normal scores with a generalised Pareto distribution, giving calibrated tail probabilities beyond the observed support maximum at small K, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o4",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o4",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other relies on an asymptotic tail model whose fit on pooled, spatially correlated patches may be unstable.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g2-o5",
+   "b": "B1-g2-o6",
+   "shown_first": "B1-g2-o5",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other moves beyond the scoring question of the problem into decision design.",
+   "confidence": "MEDIUM",
+   "generation": 2
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other relies on a prior whose transfer to an unseen modality is assumed.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other requires source-episode fitting for the few-shot branch.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g0-C5",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g0-C5",
+   "winner": "B1-g0-C5",
+   "reasoning": "The winner acts on a verified mechanism: MVFA's zero-shot branch is already a two-way softmax probability that test-set min-max destroys, so restoring it with a source-fitted temperature and fusing in log-odds is principled and directly testable through threshold drift, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g3-o1",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other relies on a prior whose transfer to an unseen modality is assumed.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g3-o3",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other needs source episodes for the fusion weights.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o2",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g1-o2",
+   "winner": "B1-g1-o2",
+   "reasoning": "The winner treats each branch by its verified nature, a conformal p-value with a finite-sample false-positive guarantee for the distance-based few-shot branch and a temperature-calibrated probability for the softmax zero-shot branch, and tests the guarantee directly, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g3-o1",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g3-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g1-o3",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other leaves the scale differences between branches to a simple average before calibration.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g1-o3",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g1-o3",
+   "reasoning": "The winner calibrates test-invariant CDF scores with a monotone isotonic map that cannot change AUROC, and tests whether CDF scores transfer across modalities better than raw scores, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g3-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other relies on a prior whose transfer to an unseen modality is assumed.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g2-o1",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other needs a further isotonic map for calibrated probabilities.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o1",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g2-o1",
+   "reasoning": "The winner uses MVFA's eight level-and-branch views as conformal p-values and combines them with the Cauchy rule, which stays valid under the strong dependence between levels and keeps level-specific evidence, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other relies on a prior whose transfer to an unseen modality is assumed.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g2-o3",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other depends on a similarity weighting that may not capture the modality shift.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o3",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g2-o3",
+   "reasoning": "The winner fixes the small-K resolution limit of conformal p-values by borrowing similarity-weighted source normals, following weighted conformal prediction under covariate shift, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o1",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g2-o6",
+   "winner": "B1-g3-o3",
+   "reasoning": "The winner fuses the two branches through the joint normal distribution of their scores, accounting for their correlation without abnormal data, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other is conservative and may lose power when both branches carry moderate evidence.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g2-o6",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g2-o6",
+   "reasoning": "The winner fuses branches without any fitted parameter by a Bonferroni-corrected minimum p-value that is valid under arbitrary dependence, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o1",
+   "b": "B1-g3-o2",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o1",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g3-o3",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o1",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o1",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other relies on a prior whose transfer to an unseen modality is assumed.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o1",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g3-o1",
+   "reasoning": "The winner stabilises small-K support statistics by empirical-Bayes shrinkage toward source-modality priors, with no effect when K is large, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o2",
+   "b": "B1-g3-o3",
+   "shown_first": "B1-g3-o3",
+   "winner": "B1-g3-o3",
+   "reasoning": "The winner fuses the two branches through the joint normal distribution of their scores, accounting for their correlation without abnormal data, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o2",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g3-o4",
+   "reasoning": "The winner completes per-image scoring with an online FDR decision rule whose guarantee holds at any prevalence, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o2",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o2",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o2",
+   "winner": "B1-g3-o6",
+   "reasoning": "The winner pools level-branch estimates with a random-effects model and reports per-image heterogeneity, whereas the other sets evidence counts by hand, so the uncertainty mass has no calibrated meaning.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o3",
+   "b": "B1-g3-o4",
+   "shown_first": "B1-g3-o4",
+   "winner": "B1-g3-o3",
+   "reasoning": "The winner fuses the two branches through the joint normal distribution of their scores, accounting for their correlation without abnormal data, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o3",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other needs source normals to fit a two-dimensional model at small K.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o3",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g3-o3",
+   "reasoning": "The winner fuses the two branches through the joint normal distribution of their scores, accounting for their correlation without abnormal data, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "MEDIUM",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o4",
+   "b": "B1-g3-o5",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other addresses deployment decisions rather than the score normalisation itself.",
+   "confidence": "HIGH",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o4",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o6",
+   "winner": "B1-g3-o4",
+   "reasoning": "The winner completes per-image scoring with an online FDR decision rule whose guarantee holds at any prevalence, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "LOW",
+   "generation": 3
+  },
+  {
+   "a": "B1-g3-o5",
+   "b": "B1-g3-o6",
+   "shown_first": "B1-g3-o5",
+   "winner": "B1-g3-o5",
+   "reasoning": "The winner keeps each branch in its verified form, level-wise conformal p-values for the four few-shot levels combined validly under dependence and a temperature-calibrated zero-shot probability, fused in log-odds, whereas the other ignores the correlation between levels in its weights.",
+   "confidence": "HIGH",
+   "generation": 3
+  }
+ ]
+}

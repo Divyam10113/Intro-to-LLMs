@@ -1,0 +1,348 @@
+{
+ "_note": "Novelty evidence for the Stage 4 shortlist of run 2 (QUAL-SG corpus). Queries were written by the file-backend model and run with a web search tool on 2026-10-20; novelty_search.py re-runs the same queries against the Semantic Scholar API. 'closest' lists the most relevant hits judged by the model; relation states what they cover.",
+ "A1-g1-o6": {
+  "query": "weakly supervised anomaly segmentation detection branch filter pseudo-masks co-training image-level labels medical",
+  "closest": [
+   {
+    "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
+    "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
+    "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+   },
+   {
+    "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+    "url": "https://arxiv.org/pdf/2507.21587",
+    "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+   }
+  ]
+ },
+ "A1-g3-o3": {
+  "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels gating",
+  "closest": [
+   {
+    "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+    "url": "https://arxiv.org/pdf/2507.21587",
+    "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+   },
+   {
+    "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
+    "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
+    "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
+   },
+   {
+    "title": "Anomaly guided weakly supervised lesion segmentation on retinal OCT",
+    "url": "https://researchconnect.stonybrook.edu/en/publications/anomaly-guided-weakly-supervised-lesion-segmentation-on-retinal-o/",
+    "relation": "uses anomaly-detection evidence to guide weakly supervised lesion segmentation in OCT, the general idea of letting a weakly supervised signal steer segmentation"
+   }
+  ]
+ },
+ "A1-g2-o6": {
+  "query": "occlusion counterfactual attribution pseudo masks weakly supervised segmentation anomaly detection classifier",
+  "closest": [
+   {
+    "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+    "url": "https://arxiv.org/html/2404.12832v2",
+    "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+   },
+   {
+    "title": "Causal Intervention for Weakly-Supervised Semantic Segmentation (NeurIPS 2020)",
+    "url": "https://neurips.cc/virtual/2020/protected/poster_07211688a0869d995947a8fb11b215d6.html",
+    "relation": "uses causal intervention to refine classifier-derived pseudo-masks"
+   }
+  ]
+ },
+ "A1-g3-o1": {
+  "query": "multi-layer feature persistence anomaly localization pseudo labels across layers vision transformer nearest neighbor",
+  "closest": [
+   {
+    "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+    "url": "https://arxiv.org/pdf/2403.10803",
+    "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+   }
+  ]
+ },
+ "A1-g2-o4": {
+  "query": "mean teacher pseudo-label refinement weakly supervised lesion segmentation image-level labels",
+  "closest": [
+   {
+    "title": "Emerging Trends in Pseudo-Label Refinement for Weakly Supervised Semantic Segmentation with Image-Level Supervision (arXiv 2507.21587)",
+    "url": "https://arxiv.org/pdf/2507.21587",
+    "relation": "surveys pseudo-label refinement from image-level labels, including teacher-student and cross-view filtering"
+   },
+   {
+    "title": "Anatomical prior-inspired label refinement for weakly supervised liver tumor segmentation with volume-level labels (BMVC 2022)",
+    "url": "https://bmvc2022.mpi-inf.mpg.de/1054",
+    "relation": "refines pseudo-labels for liver tumours from coarse labels, a medical precedent for iterative label refinement"
+   }
+  ]
+ },
+ "A1-g3-o6": {
+  "query": "Dawid-Skene aggregation of multiple weak pseudo-label sources segmentation weak supervision pixel level",
+  "closest": [
+   {
+    "title": "Semi-Supervised Aggregation of Dependent Weak Supervision Sources with Performance Guarantees (AISTATS 2021)",
+    "url": "https://proceedings.mlr.press/v130/mazzetto21a.html",
+    "relation": "aggregates dependent weak labelling sources with estimated reliabilities, a generalisation of Dawid-Skene"
+   },
+   {
+    "title": "Learning to Segment Under Various Forms of Weak Supervision (CVPR 2015)",
+    "url": "https://openaccess.thecvf.com/content_cvpr_2015/html/Xu_Learning_to_Segment_2015_CVPR_paper.html",
+    "relation": "combines several weak supervision types for segmentation"
+   }
+  ]
+ },
+ "A1-g1-o3": {
+  "query": "self-training pseudo-mask regeneration CLIP anomaly segmentation zero-shot pseudo labels iterative",
+  "closest": [
+   {
+    "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
+    "url": "https://arxiv.org/pdf/2104.11692",
+    "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
+   },
+   {
+    "title": "CLIP Is Also a Good Teacher: inductive zero-shot semantic segmentation (arXiv 2310.02296)",
+    "url": "https://arxiv.org/pdf/2310.02296",
+    "relation": "uses CLIP as a teacher for segmentation pseudo-labels"
+   }
+  ]
+ },
+ "A1-g3-o5": {
+  "query": "self-training counterfactual occlusion pseudo-masks weakly supervised medical segmentation",
+  "closest": [
+   {
+    "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+    "url": "https://arxiv.org/html/2404.12832v2",
+    "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+   },
+   {
+    "title": "A Closer Look at Self-training for Zero-Label Semantic Segmentation (arXiv 2104.11692)",
+    "url": "https://arxiv.org/pdf/2104.11692",
+    "relation": "self-training with regenerated pseudo-labels for unseen classes, the general mechanism of iterative pseudo-label regeneration"
+   }
+  ]
+ },
+ "A1-g2-o2": {
+  "query": "sub-patch shift ensemble vision transformer patch grid resolution anomaly map dense features shifted crops",
+  "closest": [
+   {
+    "title": "Phase Marginalization for Patch-Grid Instability in Vision Transformers (arXiv 2606.08132)",
+    "url": "https://arxiv.org/pdf/2606.08132",
+    "relation": "averages ViT outputs over patch-grid phase shifts, the same mechanism as sub-patch shift ensembles"
+   },
+   {
+    "title": "Divide and Conquer: High-Resolution Industrial Anomaly Detection via Memory Efficient Tiled Ensemble (arXiv 2403.04932)",
+    "url": "https://arxiv.org/html/2403.04932v1",
+    "relation": "ensembles over tiles to raise anomaly-map resolution"
+   }
+  ]
+ },
+ "A1-g2-o1": {
+  "query": "size constrained loss weakly supervised segmentation image-level labels Kervadec constrained CNN losses",
+  "closest": [
+   {
+    "title": "Constrained-CNN losses for weakly supervised segmentation (Kervadec et al., arXiv 1805.04628)",
+    "url": "https://www.arxiv.org/pdf/1805.04628",
+    "relation": "introduces size-constraint losses for segmentation from weak labels; the proposed idea applies this technique to MVFA's segmentation branch"
+   }
+  ]
+ },
+ "A1-g3-o2": {
+  "query": "registration based few-shot anomaly detection normal twin image comparison brain MRI pseudo-healthy retrieval",
+  "closest": [
+   {
+    "title": "Registration Based Few-Shot Anomaly Detection (ECCV 2022)",
+    "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/1729_ECCV_2022_paper.php",
+    "relation": "compares registered query and support features for few-shot anomaly detection, close to normal-twin differencing"
+   },
+   {
+    "title": "COIN: Counterfactual inpainting for weakly supervised semantic segmentation for medical images (arXiv 2404.12832)",
+    "url": "https://arxiv.org/html/2404.12832v2",
+    "relation": "derives segmentation masks from the change in a classifier's output under counterfactual inpainting, close to occlusion attribution and normal-twin differencing"
+   }
+  ]
+ },
+ "A1-g1-o2": {
+  "query": "guided filter joint bilateral upsampling CAM pseudo label refinement weakly supervised segmentation",
+  "closest": [
+   {
+    "title": "Learning Pixel-level Semantic Affinity with Image-level Supervision (AffinityNet, arXiv 1803.10464)",
+    "url": "https://arxiv.org/pdf/1803.10464",
+    "relation": "refines class-activation pseudo-labels with learned pixel affinities; edge-aware refinement of coarse maps is established"
+   },
+   {
+    "title": "High-fidelity Pseudo-labels for Boosting Weakly-Supervised Segmentation (arXiv 2304.02621)",
+    "url": "https://ar5iv.labs.arxiv.org/html/2304.02621",
+    "relation": "refines coarse pseudo-labels with image-guided upsampling"
+   }
+  ]
+ },
+ "B1-g3-o5": {
+  "query": "conformal p-values anomaly detection Cauchy combination multiple layers deep features",
+  "closest": [
+   {
+    "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+    "url": "https://arxiv.org/pdf/2403.10803",
+    "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+   },
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   },
+   {
+    "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+    "url": "https://arxiv.org/pdf/2303.12748",
+    "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+   }
+  ]
+ },
+ "B1-g1-o2": {
+  "query": "conformal anomaly detection few-shot calibration CLIP anomaly scores false positive rate guarantee",
+  "closest": [
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   },
+   {
+    "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+    "url": "https://arxiv.org/pdf/2303.12748",
+    "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+   }
+  ]
+ },
+ "B1-g2-o1": {
+  "query": "conformal p-values anomaly detection Cauchy combination multiple layers deep features isotonic",
+  "closest": [
+   {
+    "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+    "url": "https://arxiv.org/pdf/2403.10803",
+    "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+   },
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   }
+  ]
+ },
+ "B1-g0-C5": {
+  "query": "temperature scaling calibration CLIP zero-shot anomaly detection scores min-max normalization test set transductive",
+  "closest": [
+   {
+    "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models (ICLR 2023 workshop, arXiv 2303.12748)",
+    "url": "https://arxiv.org/pdf/2303.12748",
+    "relation": "fits a temperature for CLIP zero-shot predictions that transfers across datasets; supports temperature calibration of MVFA's zero-shot branch"
+   }
+  ]
+ },
+ "B1-g2-o3": {
+  "query": "weighted conformal prediction covariate shift borrowing calibration data anomaly detection small calibration set",
+  "closest": [
+   {
+    "title": "Between Resolution Collapse and Variance Inflation: Weighted Conformal Anomaly Detection in Low-Data Regimes (arXiv 2603.23205)",
+    "url": "https://arxiv.org/pdf/2603.23205",
+    "relation": "studies weighted conformal anomaly detection when calibration sets are small, very close to borrowing weighted source normals"
+   },
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   }
+  ]
+ },
+ "B1-g3-o1": {
+  "query": "empirical Bayes shrinkage few-shot calibration statistics prior from base classes distribution calibration",
+  "closest": [
+   {
+    "title": "Free Lunch for Few-shot Learning: Distribution Calibration (arXiv 2101.06395)",
+    "url": "https://arxiv.org/pdf/2101.06395",
+    "relation": "calibrates few-shot class statistics by borrowing from base-class statistics, the few-shot analogue of empirical-Bayes shrinkage"
+   }
+  ]
+ },
+ "B1-g1-o3": {
+  "query": "isotonic regression calibration anomaly scores transfer across datasets probability anomaly detector",
+  "closest": [
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   },
+   {
+    "title": "PyOD detector combination methods",
+    "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+    "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+   }
+  ]
+ },
+ "B1-g3-o3": {
+  "query": "combining multiple anomaly detector scores joint density Mahalanobis score space fusion unsupervised ensemble",
+  "closest": [
+   {
+    "title": "Unsupervised Layer-wise Score Aggregation for Textual OOD Detection (arXiv 2302.09852)",
+    "url": "https://arxiv.org/pdf/2302.09852",
+    "relation": "aggregates per-layer anomaly scores without labels, including Mahalanobis-style joint models"
+   },
+   {
+    "title": "PyOD detector combination methods",
+    "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+    "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+   }
+  ]
+ },
+ "B1-g0-C1": {
+  "query": "leave-one-out conformal empirical CDF anomaly score normalisation support set",
+  "closest": [
+   {
+    "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors (arXiv 2402.16388)",
+    "url": "https://arxiv.org/pdf/2402.16388",
+    "relation": "develops leave-one-out conformal p-values for anomaly detectors, the core of support-LOO conformal scoring"
+   }
+  ]
+ },
+ "B1-g2-o6": {
+  "query": "combining dependent p-values minimum Bonferroni anomaly detectors branches",
+  "closest": [
+   {
+    "title": "Enhancing Out-of-Distribution Detection with Multitesting-based Layer-wise Feature Fusion (arXiv 2403.10803)",
+    "url": "https://arxiv.org/pdf/2403.10803",
+    "relation": "combines layer-wise conformal p-values with multiple-testing rules for OOD detection, the general form of level-wise p-value combination"
+   },
+   {
+    "title": "PyOD detector combination methods",
+    "url": "https://pyod.readthedocs.io/en/latest/_sources/examples/combination.rst.txt",
+    "relation": "standard score-combination rules (average, maximum, AOM/MOA) for anomaly detector outputs"
+   }
+  ]
+ },
+ "B1-g2-o4": {
+  "query": "extreme value theory generalized Pareto anomaly score calibration deep anomaly detection threshold",
+  "closest": [
+   {
+    "title": "LSTM-Based Anomaly Detection: Detection Rules from Extreme Value Theory (arXiv 1909.06041)",
+    "url": "https://arxiv.org/pdf/1909.06041",
+    "relation": "sets anomaly thresholds from generalised Pareto tail fits of scores"
+   },
+   {
+    "title": "Anomaly score normalisation based on extreme value theory (US patent 12614096)",
+    "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12614096",
+    "relation": "normalises anomaly scores with extreme-value tail models"
+   }
+  ]
+ },
+ "B1-g3-o4": {
+  "query": "online FDR control LORD anomaly detection stream conformal p-values",
+  "closest": [
+   {
+    "title": "Online false discovery rate control for anomaly detection in time series (arXiv 2112.03196)",
+    "url": "https://arxiv.org/pdf/2112.03196",
+    "relation": "applies LORD-type online FDR control to anomaly detection streams"
+   },
+   {
+    "title": "FDR control for Online Anomaly Detection (arXiv 2312.01969)",
+    "url": "https://ar5iv.labs.arxiv.org/html/2312.01969",
+    "relation": "online FDR procedures tailored to anomaly detection"
+   }
+  ]
+ }
+}

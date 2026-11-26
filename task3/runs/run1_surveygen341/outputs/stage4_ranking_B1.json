@@ -1,0 +1,794 @@
+{
+ "problem": "B1",
+ "problem_text": "Can MVFA's few-shot fusion be made inductive \u2014 scoring each image on its own, without the test-set min-max normalisation of the released code \u2014 without losing AUROC, and does this give a threshold that transfers to unseen modalities? The inductive fusion standardises each branch with leave-one-out statistics of the K normal support images (each support's zero-shot map, and its few-shot map against a memory bank built from the other K-1 supports, pooled over patches and levels), adds the standardised branches, and pools the fused map with the mean of its top 2% pixels; the threshold is the 95th percentile of the supports' leave-one-out image scores. Primary outcome: image- and pixel-level AUROC of inductive versus transductive fusion on every held-out modality and K in {2, 4, 8, 16}. Motivating measurement: the spread of the transductive AUROC across random test subsets and at 10% and 50% prevalence. Secondary outcomes: sensitivity, realised specificity, F1 and expected calibration error at the support-derived threshold. We also record whether the few-shot baselines compared in the target paper (APRIL-GAN, WinCLIP) normalise over the test set in their public code, to judge how widely the finding applies.",
+ "pool_size": 24,
+ "shortlist": [
+  "B1-g2-o6",
+  "B1-g3-o5",
+  "B1-g0-C2",
+  "B1-g3-o1",
+  "B1-g1-o2",
+  "B1-g2-o1",
+  "B1-g3-o3",
+  "B1-g1-o4",
+  "B1-g3-o2",
+  "B1-g0-C1",
+  "B1-g2-o2",
+  "B1-g2-o5"
+ ],
+ "families": {
+  "Support-anchored p-value combination": [
+   "B1-g0-C2",
+   "B1-g2-o6",
+   "B1-g3-o5",
+   "B1-g3-o3",
+   "B1-g1-o6"
+  ],
+  "Support-standardised score normalisation": [
+   "B1-g0-C1",
+   "B1-g1-o2",
+   "B1-g1-o1",
+   "B1-g0-C4",
+   "B1-g1-o3",
+   "B1-g0-C6",
+   "B1-g2-o5"
+  ],
+  "Learned calibration from source episodes or synthetic data": [
+   "B1-g1-o4",
+   "B1-g2-o1",
+   "B1-g2-o3",
+   "B1-g0-C3"
+  ],
+  "Statistical decision guarantees and uncertainty": [
+   "B1-g3-o1",
+   "B1-g2-o4",
+   "B1-g3-o2"
+  ],
+  "Distribution tests and density ratios": [
+   "B1-g1-o5",
+   "B1-g2-o2"
+  ],
+  "Aggregation and robustness add-ons": [
+   "B1-g0-C5",
+   "B1-g3-o4",
+   "B1-g3-o6"
+  ]
+ },
+ "ranking": [
+  {
+   "id": "B1-g2-o6",
+   "title": "Harmonic-mean p-value fusion with region-mass scoring: per-image MVFA scores that stay valid under dependent levels",
+   "family": "Support-anchored p-value combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 120.12,
+   "final": 0.825,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Combining layer-wise p-values, including dependence-robust rules, has been used for DNN input anomaly detection (arXiv 2007.15147); using support-anchored p-values to replace MVFA's verified transductive fusion is the new element.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only changes to the scoring code; trivial compute.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear statistic, pooling and thresholds; the correlation analysis is a good addition.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Delivers deployable per-image scores with a statistically grounded threshold, fixing two verified defects.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "The harmonic mean p-value is approximately valid under dependence; empirical p-values are discrete at small K, which limits resolution at very low levels.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "harmonic mean p-value combining dependent anomaly scores layers detection",
+    "closest": [
+     {
+      "title": "A General Framework For Detecting Anomalous Inputs to DNN Classifiers (arXiv 2007.15147)",
+      "url": "https://arxiv.org/pdf/2007.15147",
+      "relation": "combines layer-wise p-values (including dependence-robust combinations) for DNN input anomaly detection \u2014 same statistical idea in a different setting"
+     },
+     {
+      "title": "The harmonic mean p-value for combining dependent tests (Wilson, PNAS 2019)",
+      "url": "https://www.danielwilson.me.uk/abstracts/wilson_2019.html",
+      "relation": "the combination rule itself"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 1
+  },
+  {
+   "id": "B1-g3-o5",
+   "title": "Brown-corrected Fisher fusion: dependence-adjusted p-value combination estimated from support normals, with region-mass pooling",
+   "family": "Support-anchored p-value combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 110.96,
+   "final": 0.7414,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Empirical Brown's method and layer-wise p-value combination exist; the combination with support-anchored nulls for MVFA is new in application.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only; covariance estimation is cheap.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear formulas for scale and degrees of freedom.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Could keep Fisher's power with corrected validity.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Moment matching from strongly spatially correlated pixels of very few supports may be unstable at K = 2, and Brown's approximation can be poor in the far tail.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "Brown's method dependent p-values combination anomaly detection deep features layers",
+    "closest": [
+     {
+      "title": "A General Framework For Detecting Anomalous Inputs to DNN Classifiers (arXiv 2007.15147)",
+      "url": "https://arxiv.org/pdf/2007.15147",
+      "relation": "layer-wise p-value combination for anomaly detection"
+     },
+     {
+      "title": "Combining Dependent P-values with an Empirical Adaptation of Brown's Method",
+      "url": "https://www.biorxiv.org/content/10.1101/029637.full.pdf",
+      "relation": "empirical Brown's method"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 5
+   },
+   "overall_rank": 2
+  },
+  {
+   "id": "B1-g0-C2",
+   "title": "Empirical p-value fusion across levels and branches (Fisher-MVFA)",
+   "family": "Support-anchored p-value combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 103.88,
+   "final": 0.7038,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Fisher combination of empirical p-values is standard (and used for layer-wise DNN anomaly detection); application to MVFA's fusion is the new part.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only and simple.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear statistic and thresholds.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Fixes the transductive fusion with an interpretable statistic.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Fisher assumes independent p-values; MVFA's levels and branches are strongly dependent, so the statistic is anti-conservative \u2014 a flaw later evolution addressed.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "conformal p-values few-shot anomaly detection CLIP support normal images calibration",
+    "closest": [
+     {
+      "title": "A General Framework For Detecting Anomalous Inputs to DNN Classifiers (arXiv 2007.15147)",
+      "url": "https://arxiv.org/pdf/2007.15147",
+      "relation": "Fisher-style combination of layer-wise p-values"
+     },
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "conformal p-values for anomaly detection with resampling"
+     },
+     {
+      "title": "Conformal Prediction for Zero-Shot Models",
+      "url": "https://arxiv.org/pdf/2505.24693",
+      "relation": "conformal calibration for CLIP-style zero-shot models"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 5
+   },
+   "overall_rank": 3
+  },
+  {
+   "id": "B1-g1-o2",
+   "title": "LOO-Z inductive fusion with region-mass image scoring and a single support-derived operating point",
+   "family": "Support-standardised score normalisation",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 5,
+    "Impact": 4,
+    "Validity": 4
+   },
+   "review_mean": 4,
+   "fitness": 91.96,
+   "final": 0.6755,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Normalising anomaly scores with held-out normal statistics is standard practice in tooling such as Anomalib, and leave-one-out calibration of anomaly detectors exists; the contribution is applying it to MVFA, not a new technique.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only with a small new module.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Exceptionally clear: statistics, clipping, weights, pooling, thresholds and stability analyses are fully specified.",
+     "score": 5
+    },
+    "Impact": {
+     "review": "Directly removes both verified scoring defects and quantifies how much published few-shot numbers depend on test-set composition.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Sound and assumption-light; Gaussian z-scores are a rough tail approximation but adequate for ranking.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "anomaly detection evaluation test-set min-max normalization score fusion leakage per-image deployment",
+    "closest": [
+     {
+      "title": "Anomalib post-processing guide",
+      "url": "https://anomalib.readthedocs.io/en/latest/markdown/guides/how_to/models/post_processor.html",
+      "relation": "standard tooling normalises scores with validation-set statistics, not test-set statistics"
+     },
+     {
+      "title": "Benchmark AUC Is Not Deployable Reliability (arXiv 2606.29506)",
+      "url": "https://arxiv.org/pdf/2606.29506",
+      "relation": "audit showing benchmark AUC does not imply deployable reliability"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 11,
+    "Feasibility": 1,
+    "Clarity": 1,
+    "Impact": 1,
+    "Validity": 1
+   },
+   "overall_rank": 4
+  },
+  {
+   "id": "B1-g3-o1",
+   "title": "FDR-controlled anomaly maps: Benjamini-Yekutieli discoveries per image from support-anchored pixel p-values",
+   "family": "Statistical decision guarantees and uncertainty",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 97.69,
+   "final": 0.6709,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Conformal and FDR-controlled segmentation with guarantees exist (industrial defects 2504.17721; medical instance segmentation 2504.04482); the per-image BY procedure on support-anchored p-values for MVFA is an adaptation.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only; BY on 289 patches is trivial.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear q levels, statistics and evaluation.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Gives the anomaly map a clinically meaningful guarantee on flagged regions.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Patch p-values come from a pooled support null across positions, so exchangeability between support and test patches at different anatomical positions is questionable; BY may be conservative for small lesions.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "false discovery rate control pixel-wise anomaly segmentation conformal p-values",
+    "closest": [
+     {
+      "title": "Conformal Segmentation in Industrial Surface Defect Detection with Statistical Guarantees",
+      "url": "https://arxiv.org/pdf/2504.17721",
+      "relation": "statistical guarantees for defect segmentation"
+     },
+     {
+      "title": "Statistical Management of the False Discovery Rate in Medical Instance Segmentation Based on Conformal Risk Control",
+      "url": "https://arxiv.org/html/2504.04482v2",
+      "relation": "FDR control in medical segmentation"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 5
+   },
+   "overall_rank": 5
+  },
+  {
+   "id": "B1-g2-o1",
+   "title": "Episode-calibrated weighted Fisher fusion: learning per-level weights of support p-values on source-modality episodes",
+   "family": "Learned calibration from source episodes or synthetic data",
+   "scores": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 86.46,
+   "final": 0.6113,
+   "survived": true,
+   "reviews": {
+    "Novelty": {
+     "review": "Episodic few-shot adaptation exists in other anomaly detection domains (audio), but learning p-value weights from simulated source-modality episodes for medical VLM detectors was not found.",
+     "score": 4
+    },
+    "Feasibility": {
+     "review": "Requires scoring many source episodes; moderate compute but feasible on one GPU.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear features, constraints and thresholds.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Uses real labelled source data to calibrate, potentially improving both AUROC and calibration.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Assumes calibration relationships transfer from source to unseen modalities; non-negative weights over correlated -log p terms may be unstable.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "meta-learned score calibration few-shot anomaly detection simulated episodes cross-domain",
+    "closest": [
+     {
+      "title": "Learning to Adapt to Domain Shifts with Few-shot Samples in Anomalous Sound Detection",
+      "url": "https://arxiv.org/pdf/2204.01905",
+      "relation": "episodic few-shot adaptation for anomaly detection (audio)"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 8,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 5
+   },
+   "overall_rank": 6
+  },
+  {
+   "id": "B1-g3-o3",
+   "title": "E-value fusion: dependence-robust, betting-based per-image anomaly evidence from support normals",
+   "family": "Support-anchored p-value combination",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.8,
+   "fitness": 81.04,
+   "final": 0.5825,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Conformal e-values for novelty detection exist (2302.07294); application to dependent multi-level evidence in MVFA is new in application.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear calibrator and decision rule.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Exact guarantees but likely power loss limits practical impact.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Valid by construction under arbitrary dependence.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "e-values conformal anomaly detection combining dependent evidence",
+    "closest": [
+     {
+      "title": "Derandomized Novelty Detection with FDR Control via Conformal E-values",
+      "url": "https://arxiv.org/pdf/2302.07294",
+      "relation": "conformal e-values for novelty detection"
+     },
+     {
+      "title": "Set-Preserving Calibration from Conformal P-Values to E-Values (ICML 2026)",
+      "url": "https://proceedings.mlr.press/v306/alami26a.html",
+      "relation": "p-to-e calibration"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 8,
+    "Validity": 1
+   },
+   "overall_rank": 7
+  },
+  {
+   "id": "B1-g2-o2",
+   "title": "Neyman-Pearson likelihood-ratio scoring: a support-normal density against a cross-modality abnormal density learned on source data",
+   "family": "Distribution tests and density ratios",
+   "scores": {
+    "Novelty": 4,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 4,
+    "Validity": 3
+   },
+   "review_mean": 3.8,
+   "fitness": 63.95,
+   "final": 0.4918,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Combining a target-support normal density with a cross-modality abnormal density learned on source data is not found in the related literature on generalist AD with normal and abnormal references.",
+     "score": 4
+    },
+    "Feasibility": {
+     "review": "PCA and Gaussian mixtures are cheap; requires collecting source abnormal patches.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear models and scoring.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "A two-sided test could give real power gains at small K.",
+     "score": 4
+    },
+    "Validity": {
+     "review": "Relies on the abnormal density transferring across modalities, which is the central and untested assumption.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "likelihood ratio normal density abnormal density few-shot anomaly detection medical cross-domain abnormal prior",
+    "closest": [
+     {
+      "title": "Normal-Abnormal Guided Generalist Anomaly Detection",
+      "url": "https://www.themoonlight.io/es/review/normal-abnormal-guided-generalist-anomaly-detection",
+      "relation": "uses both normal and abnormal references across domains"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 1,
+    "Feasibility": 8,
+    "Clarity": 2,
+    "Impact": 1,
+    "Validity": 5
+   },
+   "overall_rank": 8
+  },
+  {
+   "id": "B1-g0-C1",
+   "title": "Bounded leave-one-out z-score fusion (LOO-Z) for per-image MVFA scoring",
+   "family": "Support-standardised score normalisation",
+   "scores": {
+    "Novelty": 2,
+    "Feasibility": 5,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 4
+   },
+   "review_mean": 3.6,
+   "fitness": 69.45,
+   "final": 0.486,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Validation-statistic normalisation and leave-one-out calibration are established; low novelty.",
+     "score": 2
+    },
+    "Feasibility": {
+     "review": "Inference-only.",
+     "score": 5
+    },
+    "Clarity": {
+     "review": "Clear, with an awkwardly phrased probability-mapping step.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Fixes fusion but keeps outlier-sensitive pooling.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Sound and simple.",
+     "score": 4
+    }
+   },
+   "novelty": {
+    "query": "conformal p-values few-shot anomaly detection CLIP support normal images calibration",
+    "closest": [
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "leave-one-out calibration of anomaly scores"
+     },
+     {
+      "title": "Anomalib post-processing guide",
+      "url": "https://anomalib.readthedocs.io/en/latest/markdown/guides/how_to/models/post_processor.html",
+      "relation": "validation-statistic normalisation in practice"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 11,
+    "Feasibility": 1,
+    "Clarity": 2,
+    "Impact": 8,
+    "Validity": 1
+   },
+   "overall_rank": 9
+  },
+  {
+   "id": "B1-g1-o4",
+   "title": "Episode-trained fusion calibrator: learning how to fuse MVFA's branches from simulated few-shot episodes on source modalities",
+   "family": "Learned calibration from source episodes or synthetic data",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.4,
+   "fitness": 75.54,
+   "final": 0.4833,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Episodic calibration on source data is a moderate adaptation of known ideas.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Requires episode simulation on source modalities.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear features and model.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Improves calibration if transfer holds.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Calibration transfer across modalities is assumed rather than argued; hand-chosen features.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "meta-learned score calibration few-shot anomaly detection simulated episodes cross-domain",
+    "closest": [
+     {
+      "title": "Learning to Adapt to Domain Shifts with Few-shot Samples in Anomalous Sound Detection",
+      "url": "https://arxiv.org/pdf/2204.01905",
+      "relation": "episodic training for few-shot AD under domain shift"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 8,
+    "Clarity": 2,
+    "Impact": 8,
+    "Validity": 5
+   },
+   "overall_rank": 10
+  },
+  {
+   "id": "B1-g3-o2",
+   "title": "Support-bootstrap uncertainty: deciding on the lower confidence bound of a per-image MVFA score",
+   "family": "Statistical decision guarantees and uncertainty",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.4,
+   "fitness": 69.81,
+   "final": 0.4529,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Bootstrap and leave-one-out conformal anomaly detectors exist (2402.16388).",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Thirty resamples per image multiply scoring cost moderately.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear procedure.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Useful per-image uncertainty, but does not change the fusion rule.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "With K = 2 the bootstrap distribution is degenerate (three distinct resamples), weakening the method exactly where it is most needed.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "bootstrap resampling support set uncertainty few-shot anomaly detection decision lower confidence bound",
+    "closest": [
+     {
+      "title": "Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors",
+      "url": "https://arxiv.org/pdf/2402.16388",
+      "relation": "bootstrap-based calibration of anomaly detectors"
+     },
+     {
+      "title": "Unsupervised Anomaly Detection with Rejection",
+      "url": "https://arxiv.org/pdf/2305.13189",
+      "relation": "decision reliability / rejection"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 8,
+    "Clarity": 2,
+    "Impact": 8,
+    "Validity": 5
+   },
+   "overall_rank": 11
+  },
+  {
+   "id": "B1-g2-o5",
+   "title": "Adaptive S-norm for MVFA: cohort score normalisation borrowed from speaker verification",
+   "family": "Support-standardised score normalisation",
+   "scores": {
+    "Novelty": 3,
+    "Feasibility": 4,
+    "Clarity": 4,
+    "Impact": 3,
+    "Validity": 3
+   },
+   "review_mean": 3.4,
+   "fitness": 63.62,
+   "final": 0.42,
+   "survived": false,
+   "reviews": {
+    "Novelty": {
+     "review": "Score normalisation for domain generalisation in anomaly detection exists (2509.10951); importing S-norm from speaker verification is a moderately new angle.",
+     "score": 3
+    },
+    "Feasibility": {
+     "review": "Cohort banks from source modalities are easy to build.",
+     "score": 4
+    },
+    "Clarity": {
+     "review": "Clear Z-norm, T-norm and S-norm definitions.",
+     "score": 4
+    },
+    "Impact": {
+     "review": "Could make one threshold work across modalities, a useful but narrower goal.",
+     "score": 3
+    },
+    "Validity": {
+     "review": "Benefit depends on cohort similarity to the target, which is not guaranteed for distant modalities.",
+     "score": 3
+    }
+   },
+   "novelty": {
+    "query": "S-norm cohort score normalization anomaly detection images threshold across domains",
+    "closest": [
+     {
+      "title": "Local Density-Based Anomaly Score Normalization for Domain Generalization",
+      "url": "https://arxiv.org/pdf/2509.10951",
+      "relation": "score normalisation for domain generalisation in anomaly detection"
+     }
+    ]
+   },
+   "criterion_rank": {
+    "Novelty": 3,
+    "Feasibility": 8,
+    "Clarity": 2,
+    "Impact": 8,
+    "Validity": 5
+   },
+   "overall_rank": 12
+  }
+ ],
+ "top5": [
+  "B1-g2-o6",
+  "B1-g3-o5",
+  "B1-g1-o2",
+  "B1-g3-o1",
+  "B1-g2-o1"
+ ],
+ "skipped_for_diversity": [
+  {
+   "id": "B1-g0-C2",
+   "reason": "family 'Support-anchored p-value combination' already has 2 selected ideas"
+  }
+ ],
+ "weights": {
+  "review": 0.7,
+  "fitness": 0.3,
+  "max_per_family": 2
+ }
+}

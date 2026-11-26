@@ -1,0 +1,1897 @@
+{
+ "model": "microsoft/Phi-3-mini-128k-instruct + HypER LoRA",
+ "train_info": {
+  "model": "microsoft/Phi-3-mini-128k-instruct",
+  "examples": 8638,
+  "skipped": 464,
+  "epochs": 1.0,
+  "steps": 2160,
+  "lr": 0.0002,
+  "max_len": 8192,
+  "lora": {
+   "r": 8,
+   "alpha": 16,
+   "dropout": 0.05,
+   "target": "all-linear"
+  }
+ },
+ "rows": [
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Transferring Vision-Language Models for Zero-Shot Anomaly Detection via Adaptive Feature Fusion",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "ClipMPCAD: Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Frequency-Guided Feature Refinement for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Intestinal Robot-Based Abnormality Detection via Pixel-Level Annotation and Vision-Language Model Visualization",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Explainable Visual Anomaly Detection via Concept Bottleneck Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MuSc-V2: Zero-Shot Multimodal Industrial Anomaly Classification and Segmentation With Mutual Scoring of Unlabeled Samples",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Generalist Models in Specialized Domains: Evaluating Contrastive Language-image Pre-training for Zero-shot Anomaly Detection in Brain MRI",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "UniADC: A Unified Framework for Anomaly Detection and Classification",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Cross-Task Generalization in Handwriting-Based Alzheimer's Screening via Vision Language Adaptation",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adaptation of Foundation Models for Medical Image Analysis: Strategies, Challenges, and Future Directions",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Towards Fine-Grained Vision-Language Alignment for Few-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "An Evidence-Based Post-Hoc Adjustment Framework for Anomaly Detection Under Data Contamination",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Patient-Centric Statistical Multi-Modal Fusion for Medical Diagnosis: Integrating DICOM, Radiomics, and Patient Attributes",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Video Anomaly Detection: A Comprehensive Survey of Deep Learning Approaches",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Normal-Abnormal Guided Generalist Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "ZSDD: Zero-Shot Detection and Segmentation of Surface Defects Using Pre-Trained Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Fine-Tuning CLIP Models with Convolutional Features for Medical Anomaly Detection",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Local Enhancement and Semantic Alignment for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "TMUAD: Enhancing Logical Capabilities in Unified Anomaly Detection Models with a Text Memory Bank",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A Contrastive Learning-Guided Confident Meta-Learning for Zero Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "EVT-CLIP: Enhancing Zero-Shot Anomaly Segmentation with Vision-Text Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "COME: Dual Structure-Semantic Learning with Collaborative MOE for Universal Lesion Detection Across Heterogeneous Ultrasound Datasets",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "AnomalyMoE: Towards a Language-free Generalist Model for Unified Visual Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CoPS: Conditional Prompt Synthesis for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Q-Former Autoencoder: A Modern Framework for Medical Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "RoadBench: A Vision-Language Foundation Model and Benchmark for Road Damage Understanding",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Toward Long-Tailed Online Anomaly Detection Through Class-Agnostic Concepts",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Prototype-Guided Pseudo-Labeling with Neighborhood-Aware Consistency for Unsupervised Adaptation",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A Comprehensive Survey for Real-World Industrial Defect Detection: Challenges, Approaches, and Prospects",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Towards Fine-Grained Adaptation of CLIP via a Self-Trained Alignment Score",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Slide-CLIP: A Simple and Effective Pruning Method for CLIP",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "UltraAD: Fine-Grained Ultrasound Anomaly Classification via Few-Shot CLIP Adaptation",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Taming Vision-Language Models for Medical Image Analysis: A Comprehensive Review",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "IQE-CLIP: Instance-Aware Query Embedding for Zero-/Few-Shot Anomaly Detection in Medical Domain",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "3D-RAD: A Comprehensive 3D Radiology Med-VQA Dataset with Multi-Temporal Analysis and Diverse Diagnostic Tasks",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MoNetV2: Enhanced Motion Network for Freehand 3-D Ultrasound Reconstruction",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "PIAD: Pose and Illumination agnostic Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "INP-Former++: Advancing Universal Anomaly Detection via Intrinsic Normal Prototypes and Residual Learning",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Continual-MEGA: A Large-scale Benchmark for Generalizable Continual Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Improving Surface Defect Detection for Trains Based on Visual-Language Knowledge Guidance on Tiny Datasets",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adapting Foundation Vision-Language Models to Medical Diagnosis via Query-Driven Expert Bridging",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "SD-MAD: Sign-Driven Few-shot Multi-Anomaly Detection in Medical Images",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "TAGS: 3D Tumor-Adaptive Guidance for SAM",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MMRL++: Parameter-Efficient and Interaction-Aware Representation Learning for Vision-Language Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Learning to Detect Multi-class Anomalies with Just One Normal Image Prompt",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Advancing Generalizable Tumor Segmentation with Anomaly-Aware Open-Vocabulary Attention Maps and Frozen Foundation Diffusion Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Visual-language foundation models in medical imaging: A systematic review and meta-analysis of diagnostic and analytical applications",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Anomaly Detection in Medical Images Using Encoder-Attention-2Decoders Reconstruction",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "HieClip: Hierarchical CLIP with Explicit Alignment for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Multi-level Feature Adaptation and Embeddings Alignment for Zero-shot Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Anatomy-Aware Text-Visual Fusion with Dual-Perspective Prompts for Fine-Grained Lumbar Spine Segmentation",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MMRL: Multi-Modal Representation Learning for Vision-Language Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "AnomalyPainter: Vision-Language-Diffusion Synergy for Zero-Shot Realistic and Diverse Industrial Anomaly Synthesis",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Advanced Vision-Language Pipelines: Contextual Learning and Interactive Segmentation for Medical Imaging",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Exploring Intrinsic Normal Prototypes within a Single Image for Universal Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "When Unsupervised Domain Adaptation meets One-class Anomaly Detection: Addressing the Two-fold Unsupervised Curse by Leveraging Anomaly Scarcity",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Multi-label classification of medical images based on feature fusion",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Towards Zero-Shot Anomaly Detection and Reasoning with Multimodal Large Language Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Foundation Models for Anomaly Detection: Vision and Challenges",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Applications of Large Models in Medicine",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "One-to-Normal: Anomaly Personalization for Few-shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A computer vision system for recognition and defect detection for reusable containers",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "FiLo++: Zero-/Few-Shot Anomaly Detection by Fused Fine-Grained Descriptions and Deformable Localization",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "KAnoCLIP: Zero-Shot Anomaly Detection through Knowledge-Driven Prompt Learning and Enhanced Cross-Modal Integration",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A Dual-State-Based Surface Anomaly Detection Model for Rail Transit Trains Using Vision-Language Model",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "IIIM-SAM: Zero-Shot Texture Anomaly Detection Without External Prompts",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "AULoRA: Anomaly Understanding With Low-Rank Adaptation for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "DADM: Denoising and Attention-Driven Diffusion Model for Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Graph Interaction Prompt Network for Few-Shot Medical Image Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Exploring BiomedCLIP\u2019s Capabilities in Medical Image Analysis: A Focus on Scoliosis Detection and Severity Assessment",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Integrating language into medical visual recognition and reasoning: A survey",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "SP-Mamba: Spatial-Perception State Space Model for Unsupervised Medical Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "DDE-CLIP: Detail-Guided Dual-Modal Enhancement for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Vision-language zero-shot models for radiographic image classification: A systematic review",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "DiCLIP: Integrating DINOv2 and CLIP for Zero-Shot and Few-Shot Anomaly Detection with Versatile Combination Prompts",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A comprehensive survey for real-world industrial surface defect detection: Challenges, approaches, and prospects",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Comparative analysis of generic vision-language models in detecting and diagnosing inherited retinal diseases using fundus photographs",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Co-Progression Knowledge Distillation with Knowledge Prototype for Industrial Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "UniAD: Integrating Geometric and Semantic Cues for Unified Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Hierarchical Consistency Fusion for Cross-Domain Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Abnormal events detection in videos",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Prototype-guided Two-branch Multi-class Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Deep learning based infrared small object segmentation: Challenges and future directions",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Progress in Medical AI: Reviewing Large Language Models and Multimodal Systems for Diagnosis",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Image Processing-Based Chip Detection by KIZKI Algorithm and Its Optimization",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adaptive Unsupervised Anomaly Detection in Variable Environment by Online Expectation Maximization",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Patch Feature Transformation: An Anomaly Detection Method with Succinct Feature Filtering",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Proximity-CLIP: Text-Guided Semantic Proximity Learning for Zero-Shot Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CFR-Net:Collaborative Feature Refinement Network for Medical Image Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CL-Anomaly: Layer-Adaptive Mixture-of-Experts with Multimodal Large Language Model for Continual Learning in Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "QueCo: Query-conditioned consensus over unverified evidence for training-free zero-shot anomaly detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Fed-LoRA: Cross-Domain Generative Knowledge Feedback for Few-Shot Medical Anomaly Detection",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "UniVAD v2: Unified Visual Anomaly Detection via Support-Conditioned Boundary Construction",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Benchmark evaluation of multi-modal large language models for ophthalmic diagnosis in real world",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "LADBench: A Benchmark for Logical Fault Detection in Images",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CHSA-CLIP: zero-shot anomaly detection via cross-modal hierarchical semantic alignment",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Dual Knowledge Distillation Framework With Class-Adaptive Temperature and TopK Feature Perturbation for Few-Shot Prompt Learning",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "DA-CLIP: Mitigating Granularity Mismatch in Zero-Shot Anomaly Detection via Decoupled Text-Visual Alignment",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Enhancing medical anomaly detection via text-adapted few-shot learning with visual-language models",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Beyond Normal References: Discriminative Few-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Any2Any 3D Diffusion Models with Knowledge Transfer: A Radiotherapy Planning Study",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MTL-MAD: Multi-Task Learners are Effective Medical Anomaly Detectors",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adapting Vision-Language Models by Pseudo Anomalies Screening for One-Shot Medical Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Hybrid Semantic Alignment with Layer-Wise Residual Adaptation for Multi-Granular Industrial Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Incorporating Large Vision Model Distillation and Fuzzy Perception for Improving Disease Diagnosis",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MEDIC-AD: Towards Medical Vision-Language Model's Clinical Intelligence",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Semantic Iterative Reconstruction: One-Shot Universal Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Multimodal Model for Computational Pathology:Representation Learning and Image Compression",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "S2SWCLIP: semantic-optimized prompts with spatial-wavelet synergy for zero-shot anomaly detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "PDD: Manifold-Prior Diverse Distillation for Medical Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Dual Distillation for Few-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A test-time clinically adaptive framework for detecting multiple fundus diseases harnessing ophthalmic foundation models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CLIPDxNet: A New Frontier in Cross-modal Medical Image Recognition",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "MedCLIPSeg: Probabilistic Vision-Language Adaptation for Data-Efficient and Generalizable Medical Image Segmentation",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "RAID: Retrieval-Augmented Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Beyond Static Cropping: Layer-Adaptive Visual Localization and Decoding Enhancement",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Boosting Time-Series Domain Adaptation via A Time-Frequency Consensus Framework",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "The Clinical Significance of Imaging Biomarkers Discoverable by Anomaly Detection Methods in Retinal Diseases: A Review",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "G-Anomaly: A Pyramid Graph Transformer-Based Vision-Language Model for General Industrial Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Visual Language Models: Foundations and Applications",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "GraVLM: A Hierarchical Graph-Aligned Vision\u2013Language Model for Cross-Modal Retrieval in Remote Sensing",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Distribution-Aware Prompt Learning for Vision-Language Models With Dynamic Boundary Prototype",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Open Set Industrial Surface Defect Recognition With High Frequency Feature Enhancement and Class Mutual-Information Constraint",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "HD-CLIP: Hierarchical Dynamic Prompting and Decoupled Learning for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "TCFMAD: Tri-Consistency Foundation Model-Based Few-Shot Manufacturing Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "TunCLIP: Adaptive Multi-Scale Zero-Shot Anomaly Detection via Vision-Language Feature Infiltration and Semantic Enhancement",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adapting Spatial Organization Consistency for Cross-Modal Medical Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Anatomic-Decoupling Adaptation: A Unified Framework for Zero/Few-Shot Medical Anomaly Detection",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Do Words Matter? What Text Contributes to Few and Full-Shot Vision-Language Anomaly Detection",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Mitigating Source-Domain Dependency for Target-Free Zero-Shot Medical Anomaly Detection",
+   "ours": 2,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Normal-Variation-Aware Cross-Domain Zero-Shot Anomaly Detection via Multi-Prompt Learning With CLIP",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Learning Pathology-Sensitive Representations for Unsupervised Retinal OCT Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Vision-language models in medical imaging: A comprehensive review",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Unsupervised Anomaly Detection in Medical Imaging: A Survey of Methods, Challenges, and Future Directions.",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Anomaly-aware prompt learning and multi-scale feature adaptation for zero-shot anomaly detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Adaptation of foundation models in medical image analysis: mechanisms, evidence, and deployment considerations",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "TIRAD: Text-guided Image Residual Learning for Generalist Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Faclip : Learnable Fine-Grained Prompts and Multi-Scale Fusion for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "The Architecture, Capabilities, and Challenges of Vision-Language Models for Healthcare AI",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Anatomy-Aware Vision-Language Learning for Medical Image Interpretation",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "CDAD: A Multi-Scale Feature Fusion Model for Cross-Domain Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "SSHF-CLIP: Semantic-Guided Scale Selection and Hybrid Fusion for Zero-Shot Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "SEA-Prompt: Structured Expert Adaptation Prompting for Zero-Shot Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Visual-Language Foundation Models and Artificial Intelligence Agents in Healthcare: Bridging from Technological Innovation to Clinical Impact",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Conditional Compatibility Learning for Context-Dependent Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "RCPN: towards robust pseudo-labels in unsupervised CLIP adaptation via consistent prototypes and neighborhoods",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Generative anomaly detection: a comprehensive review of modeling principles, advances, and future opportunities",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "RD-RE: Reverse Distillation with Feature Reconstruction Enhancement for Industrial Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "A survey of deep learning in image processing: developments, applications and challenges",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "HieraFocus: adaptive transformer-based recognition of complex graphic patterns in medical tumor imaging",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Advancements in Medical Information Fusion: A Review of Deep Learning Models and Their Applications",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop1",
+   "paper": "Understanding and Overcoming Cross-modal Fusion Bias in Multimodal Anomaly Detection From A Fisher Information Perspective",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "Bridging Vision Foundation Model Priors with CLIP for Spatial-aware Few-shot Anomaly Detection in Medical Images",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "Beyond Static Anchors: Bounded Prototype Conditioning for Language-Free Medical Anomaly Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "DBT-Bleed: Dual-Branch Temporal Modeling with Key-Frame Selection for Surgical Bleeding Detection",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "LADBench: A Benchmark for Logical Fault Detection in Images",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "MTL-MAD: Multi-Task Learners are Effective Medical Anomaly Detectors",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "HAC: Parameter-Efficient Hyperbolic Adaptation of CLIP for Zero-Shot VQA",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 0}",
+   "parsed": {
+    "relevance_score": 0
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "Latent Anomaly Knowledge Excavation: Unveiling Sparse Sensitive Neurons in Vision-Language Models",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "MedSAD-Clip: Supervised Clip with Token-Patch Cross-Attention for Medical Anomaly Detection and Segmentation",
+   "ours": 1,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-1-hop",
+   "kind": "hop2",
+   "parent": "MadCLIP: Few-shot Medical Anomaly Detection with CLIP",
+   "paper": "HAAF: Hierarchical Adaptation and Alignment of Foundation Models for Few-Shot Pathology Anomaly Detection",
+   "ours": 0,
+   "answer": "{\"relevance_score\": 2}",
+   "parsed": {
+    "relevance_score": 2
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C1",
+   "n_papers": 3,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C2",
+   "n_papers": 2,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C3",
+   "n_papers": 2,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C4",
+   "n_papers": 2,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C5",
+   "n_papers": 2,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c1",
+   "kind": "chain",
+   "chain": "C6",
+   "n_papers": 2,
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C1",
+   "chain": "C1",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C2",
+   "chain": "C2",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C3",
+   "chain": "C3",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C4",
+   "chain": "C4",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C5",
+   "chain": "C5",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "B1-C6",
+   "chain": "C6",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C1",
+   "chain": "C1",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C2",
+   "chain": "C2",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C3",
+   "chain": "C3",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C4",
+   "chain": "C4",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C5",
+   "chain": "C5",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  },
+  {
+   "task": "hyper-multi-hop2_c2",
+   "kind": "seed",
+   "seed": "A1-C6",
+   "chain": "C6",
+   "answer": "{\"validity\": \"valid\", \"invalid_paper_ids\": []}",
+   "parsed": {
+    "validity": "valid",
+    "invalid_paper_ids": []
+   }
+  }
+ ]
+}

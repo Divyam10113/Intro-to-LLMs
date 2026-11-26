@@ -1,0 +1,2 @@
+{"task1": {"file": "data/task1/final_ref_set.json", "version": "Task 1 pipeline run v6 (16 Nov 2026), Task1_output_for_Task3.zip", "code_branch": "Vismay @ c2f404d (run v5 code; v6 code not yet pushed)"},
+ "task2": {"file": "data/task2/final_limitations.json", "source": "branch task2 @ efbdb3e, limitations/outputs/full_nim/final_limitations.json (MiniMax M3.1 Flash via NVIDIA NIM, main result)", "built_on": "Task 1 run v4"}}

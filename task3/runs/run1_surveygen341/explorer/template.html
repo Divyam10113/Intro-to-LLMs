@@ -1,0 +1,403 @@
+<title>MVFA Idea Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a radiology-reading-room notebook — a sticky section rail, a calm reading column, and instrument-like panels for charts and tables. */
+:root {
+  --bg: #f4f6f8; --panel: #ffffff; --ink: #172230; --muted: #5a6878; --line: #d9e0e7;
+  --accent: #2c55c7; --accent-soft: #e3eafb; --heat: #c86a12; --heat-soft: #fbeedd;
+  --good: #1f7a4d; --warn: #9a6a00; --bad: #b3362f;
+  --op-combination: #2c55c7; --op-inspiration: #7a45b8; --op-substitution: #1f7a6e; --op-out_of_box: #c86a12; --op-seed: #5a6878;
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151c; --panel: #161f29; --ink: #e3e9ef; --muted: #9aa8b6; --line: #2a3644;
+  --accent: #7d9df0; --accent-soft: #1d2a45; --heat: #f0a050; --heat-soft: #3a2a17;
+  --good: #5cc28f; --warn: #e2b44a; --bad: #ef7d74;
+  --op-combination: #7d9df0; --op-inspiration: #b590e6; --op-substitution: #59c2b2; --op-out_of_box: #f0a050; --op-seed: #9aa8b6;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f151c; --panel: #161f29; --ink: #e3e9ef; --muted: #9aa8b6; --line: #2a3644;
+  --accent: #7d9df0; --accent-soft: #1d2a45; --heat: #f0a050; --heat-soft: #3a2a17;
+  --good: #5cc28f; --warn: #e2b44a; --bad: #ef7d74;
+  --op-combination: #7d9df0; --op-inspiration: #b590e6; --op-substitution: #59c2b2; --op-out_of_box: #f0a050; --op-seed: #9aa8b6;
+  color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--panel); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--panel); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-block: 10px; }
+.brand { font-family: var(--f-display); font-weight: 700; font-size: 17px; letter-spacing: .01em; }
+nav { display: flex; flex-wrap: wrap; gap: 4px; }
+nav a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 4px 9px; border-radius: 999px; }
+nav a:hover, nav a:focus-visible { color: var(--ink); background: var(--accent-soft); outline: none; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; }
+h2 { font-size: 24px; font-weight: 700; }
+h3 { font-size: 17px; font-weight: 600; }
+section { padding-top: 44px; display: grid; gap: 14px; scroll-margin-top: 70px; }
+section > *, .grid2 > *, .panel > * { min-width: 0; }
+.scroll svg { display: block; max-width: none; }
+.eyebrow { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { max-width: 72ch; color: var(--muted); margin: 0; }
+p { margin: 0; max-width: 75ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; }
+.stat b { display: block; font-family: var(--f-display); font-size: 26px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12.5px; color: var(--muted); }
+.pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; counter-reset: st; }
+.stage { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 4px; align-content: start; }
+.stage .k { font-family: var(--f-mono); font-size: 11px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+.stage .n { font-size: 12.5px; color: var(--muted); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--f-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-weight: 600; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-size: 12.5px; }
+tr.clickable { cursor: pointer; }
+tr.clickable:hover td { background: var(--accent-soft); }
+.pill { display: inline-block; font-family: var(--f-mono); font-size: 11px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+.pill.top { background: var(--heat-soft); color: var(--heat); border-color: transparent; font-weight: 600; }
+.pill.sel { background: var(--accent-soft); color: var(--accent); border-color: transparent; font-weight: 600; }
+.pill.new { color: var(--good); }
+.pill.corr { color: var(--warn); }
+.score { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 4px; font-family: var(--f-mono); font-size: 12px; font-weight: 600; }
+.s1, .s2 { background: color-mix(in srgb, var(--bad) 18%, transparent); color: var(--bad); }
+.s3 { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+.s4, .s5 { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button { font: inherit; font-size: 13.5px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 5px 13px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; }
+.node { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; font-size: 13px; max-width: 280px; min-width: 0; }
+.node .y { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.arrow { align-self: center; color: var(--muted); font-family: var(--f-mono); }
+svg text { fill: var(--muted); font-family: var(--f-mono); font-size: 10px; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.detail { display: grid; gap: 12px; }
+.detail .field h4 { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 3px; font-weight: 600; }
+.detail .field p { white-space: pre-wrap; font-size: 14px; }
+.lineage { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.rate-card { display: grid; gap: 8px; }
+.rate-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.rate-row label { display: grid; gap: 2px; font-size: 11.5px; color: var(--muted); font-family: var(--f-mono); }
+.rate-row select { font: inherit; font-size: 14px; padding: 4px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: var(--ink); }
+.btn { font: inherit; font-weight: 700; font-size: 14px; border: 0; border-radius: 6px; padding: 8px 16px; background: var(--accent); color: #fff; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.status { font-size: 13px; color: var(--muted); }
+.callout { border-left: 3px solid var(--heat); padding: 8px 12px; background: var(--heat-soft); border-radius: 0 var(--r) var(--r) 0; font-size: 14px; }
+code, .mono { font-family: var(--f-mono); font-size: 12.5px; }
+a { color: var(--accent); }
+@media (max-width: 560px) { .rate-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="brand">MVFA Idea Explorer</div>
+  <nav aria-label="Sections">
+    <a href="#overview">Overview</a><a href="#gaps">Gaps &amp; code</a><a href="#problems">Problems</a><a href="#chains">HypER chains</a>
+    <a href="#evolution">Evolution</a><a href="#ranking">Ranking</a><a href="#rate">Rate ideas</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+<section id="overview">
+  <span class="eyebrow">Task 3 · Research problem discovery and ideation · base paper MVFA (CVPR 2024)</span>
+  <h1>From fifteen limitations of MVFA to ten ranked, codable research ideas</h1>
+  <p class="lede">This page follows every step of the pipeline that turned our Task 2 limitations into two research problems (ResearchAgent), grounded seed ideas in citation chains (HypER), evolved them with a genetic algorithm (HypoEvolve) and ranked the results on five criteria. Click any idea to read it in full with its reviews, novelty evidence and family tree.</p>
+  <div class="stats" id="stats"></div>
+  <div class="pipeline" id="pipeline"></div>
+  <p class="status">All LLM calls were answered through the pipeline's file backend by the configured model (claude-opus-5-5) acting as generator and judge; every prompt and answer is stored in <code>logs/cache</code>.</p>
+</section>
+
+<section id="gaps">
+  <span class="eyebrow">Stage 0 and 0b</span>
+  <h2>Limitations, groups, and what the released code actually does</h2>
+  <p class="lede">The 15 Task 2 limitations were grouped into five families. Checking them against MVFA's public code (commit a30bf7b) corrected four gaps and added two new ones; groups A and B were chosen as problem sources and group C became the evaluation protocol of every idea.</p>
+  <div class="panel scroll"><table id="gapTable"></table></div>
+  <div class="panel scroll"><h3 style="margin-bottom:8px">Code evidence</h3><table id="evTable"></table></div>
+</section>
+
+<section id="problems">
+  <span class="eyebrow">Stage 1 · ResearchAgent</span>
+  <h2>Six candidate problems, two selected</h2>
+  <p class="lede">Each candidate was reviewed on Clarity, Relevance, Originality, Feasibility and Significance with ResearchAgent's human-induced rubrics, then refined twice. The run-1 column shows the first-round mean before code verification.</p>
+  <div class="panel scroll"><table id="probTable"></table></div>
+  <div class="grid2" id="probCards"></div>
+</section>
+
+<section id="chains">
+  <span class="eyebrow">Stage 2 · HypER</span>
+  <h2>Literature chains from MVFA's citing papers</h2>
+  <p class="lede" id="chainLede"></p>
+  <div class="grid2" id="chainList"></div>
+</section>
+
+<section id="evolution">
+  <span class="eyebrow">Stage 3 · HypoEvolve</span>
+  <h2>Three generations of idea evolution</h2>
+  <div class="tabs" role="tablist" id="evoTabs"></div>
+  <p class="lede">Each column is one generation's pool (parents plus six offspring) placed by Bradley–Terry fitness. Filled dots survived into the next population; rings were eliminated. Coloured edges link offspring to their parents by operator. Click a dot to open the idea.</p>
+  <div class="legend" id="evoLegend"></div>
+  <div class="panel scroll"><svg id="evoSvg" role="img" aria-label="Fitness of candidate ideas across generations"></svg></div>
+</section>
+
+<section id="ranking">
+  <span class="eyebrow">Stage 4 · Multi-criteria ranking</span>
+  <h2>Shortlist, scores and the selected top five</h2>
+  <div class="tabs" role="tablist" id="rankTabs"></div>
+  <p class="lede">The twelve highest-fitness candidates per problem were reviewed on Novelty, Feasibility, Clarity, Impact and Validity with a literature novelty search. Final score = 0.7 × normalised review mean + 0.3 × normalised fitness; at most two ideas per method family enter the top five.</p>
+  <div class="panel scroll"><table id="rankTable"></table></div>
+  <div class="panel detail" id="detail" aria-live="polite"><p class="status">Select an idea in the table or the evolution chart to read it here.</p></div>
+</section>
+
+<section id="rate">
+  <span class="eyebrow">Human check of the LLM judge</span>
+  <h2>Rate the ten selected ideas</h2>
+  <p class="lede">ResearchAgent validated its LLM reviewers by measuring agreement with human ratings. Score each selected idea on the same five criteria (1 = lowest, 5 = highest); your ratings are saved to this page and compared with the model's scores below. Teammates can add their own ratings from the same link.</p>
+  <div id="rateStatus" class="status">Connecting to the page's rating store…</div>
+  <div class="grid2" id="rateCards"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <button class="btn" id="saveBtn" disabled>Save my ratings</button>
+    <button class="btn ghost" id="exportBtn" hidden>Export all ratings (JSON)</button>
+    <span class="status" id="saveMsg"></span>
+  </div>
+  <div class="panel scroll"><h3 style="margin-bottom:8px">Human–model agreement</h3><table id="agreeTable"></table></div>
+</section>
+</main>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const D = JSON.parse(document.getElementById("data").textContent);
+const CRIT = ["Novelty","Feasibility","Clarity","Impact","Validity"];
+const OPCOL = {combination:"var(--op-combination)", inspiration:"var(--op-inspiration)", substitution:"var(--op-substitution)", out_of_box:"var(--op-out_of_box)", "hyper-seed":"var(--op-seed)"};
+const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) { if (k === "class") e.className = v; else if (k === "html") e.innerHTML = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } for (const k of kids) if (k != null) e.append(k.nodeType ? k : document.createTextNode(k)); return e; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sc = v => `<span class="score s${v}">${v}</span>`;
+const PNAME = {A1: "A1 · Mask-free localisation", B1: "B1 · Per-image scoring"};
+const short = id => id.replace(/^(A1|B1)-/, "");
+
+// ---------------------------------------------------------------- overview
+(function () {
+  const ev = D.evolution, cand = Object.values(ev.A1.candidates).length + Object.values(ev.B1.candidates).length;
+  const stats = [[D.total_calls, "LLM calls, all logged"], [D.gaps.length, "limitations (15 + 2 found in code)"], [6, "candidate problems → 2 selected"],
+                 [cand, "ideas generated and evolved"], [ev.A1.comparisons + ev.B1.comparisons, "pairwise judgments"], [10, "ideas selected (top 5 × 2)"]];
+  stats.forEach(([n, l]) => document.getElementById("stats").append(el("div", {class: "stat"}, el("b", {}, String(n)), el("span", {}, l))));
+  const st = [["Stage 0", "Gap grouping", `${D.groups.length} groups from 15 limitations`], ["Stage 0b", "Code verification", `${D.evidence.length + D.later_evidence.length} pieces of evidence in MVFA's code`],
+              ["Stage 1", "ResearchAgent", `${D.calls.stage1} calls · 6 problems reviewed and refined`], ["Stage 2", "HypER", `${D.calls.stage2} calls · ${D.chains.length} chains, 12 seeds`],
+              ["Stage 3", "HypoEvolve", `${D.calls.stage3} calls · μ=6, λ=6, G=3`], ["Stage 4", "Ranking", `${D.calls.stage4} calls · 24 reviews + novelty search`]];
+  st.forEach(([k, t, n]) => document.getElementById("pipeline").append(el("div", {class: "stage"}, el("span", {class: "k"}, k), el("h3", {}, t), el("span", {class: "n"}, n))));
+})();
+
+// ---------------------------------------------------------------- gaps
+(function () {
+  const grp = {}; D.groups.forEach((g, i) => g.members.forEach(m => grp[m] = g.name));
+  const sel = {"Label-efficient adaptation": "A → problem A1", "Score calibration and robust aggregation": "B → problem B1", "Leakage-free generalisation protocol": "C → shared protocol", "Compact normality modelling": "D (candidate source)", "Clinical granularity and scope": "E (not used)"};
+  const t = document.getElementById("gapTable");
+  t.innerHTML = "<thead><tr><th>ID</th><th>Limitation</th><th>Group</th><th>Kind</th><th>Codable</th><th>Status</th></tr></thead>";
+  const tb = el("tbody");
+  D.gaps.forEach(g => {
+    const status = g.change === "new" ? '<span class="pill new">new (code)</span>' : g.change === "corrected" ? '<span class="pill corr">corrected</span>' : g.change === "evidence added" ? '<span class="pill">evidence added</span>' : "";
+    tb.append(el("tr", {html: `<td class="mono">${g.id}</td><td><b>${esc(g.title)}</b><br><span class="status">${esc(g.text.replace(/ ?\[E[0-9E, -]+\]/g, ""))}</span></td><td>${esc(sel[grp[g.id]] || "—")}</td><td>${esc(g.kind || "")}</td><td>${esc(g.codable || "")}</td><td>${status}</td>`}));
+  });
+  t.append(tb);
+  const e = document.getElementById("evTable");
+  e.innerHTML = "<thead><tr><th>ID</th><th>File : line</th><th>Code</th><th>Finding</th></tr></thead>";
+  const eb = el("tbody");
+  [...D.evidence, ...D.later_evidence].forEach(x => eb.append(el("tr", {html: `<td class="mono">${x.id}</td><td class="mono"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.file)}:${x.lines.join(",")}</a></td><td><code>${esc(x.code)}</code></td><td>${esc(x.finding)}</td>`})));
+  e.append(eb);
+})();
+
+// ---------------------------------------------------------------- problems
+(function () {
+  const t = document.getElementById("probTable");
+  t.innerHTML = `<thead><tr><th>ID</th><th>Group</th>${["Clarity","Relevance","Originality","Feasibility","Significance"].map(c => `<th class="num">${c}</th>`).join("")}<th class="num">Mean by round</th><th class="num">Run 1</th><th></th></tr></thead>`;
+  const tb = el("tbody");
+  Object.values(D.problems).sort((a, b) => b.trajectory.at(-1) - a.trajectory.at(-1)).forEach(p => {
+    tb.append(el("tr", {html: `<td class="mono">${p.id}</td><td>${esc(p.group)}</td>${["Clarity","Relevance","Originality","Feasibility","Significance"].map(c => `<td class="num">${sc(p.scores[c])}</td>`).join("")}<td class="num">${p.trajectory.join(" → ")}</td><td class="num">${p.run1_v0_mean ?? "—"}</td><td>${p.selected ? '<span class="pill sel">selected</span>' : ""}</td>`}));
+  });
+  t.append(tb);
+  D.selected_problems.forEach(id => {
+    const p = D.problems[id];
+    document.getElementById("probCards").append(el("div", {class: "panel detail"}, el("span", {class: "eyebrow"}, PNAME[id] || id), el("div", {class: "field", html: `<h4>Problem</h4><p>${esc(p.problem)}</p>`}), el("div", {class: "field", html: `<h4>Rationale</h4><p>${esc(p.rationale)}</p>`})));
+  });
+})();
+
+// ---------------------------------------------------------------- chains
+(function () {
+  const r = D.hop1_relevance;
+  document.getElementById("chainLede").textContent = `HypER scored the ${(r["0"]||0) + (r["1"]||0) + (r["2"]||0)} papers that cite MVFA in 2025–2026: ${r["2"]||0} depend on MVFA's findings (2), ${r["1"]||0} are inspired by it (1) and ${r["0"]||0} only mention it (0). The best-scoring papers start the six chains; each chain was extended greedily through its own citing papers.`;
+  D.chains.forEach(c => {
+    const box = el("div", {class: "panel", style: "display:grid;gap:8px"}, el("h3", {}, `Chain ${c.id}`));
+    const row = el("div", {class: "chain"}, el("div", {class: "node"}, el("div", {class: "y"}, "2024 · source"), "MVFA"));
+    c.papers.forEach(p => { row.append(el("span", {class: "arrow"}, "→")); row.append(el("div", {class: "node", title: p.explanation}, el("div", {class: "y"}, `${p.year} · relevance ${p.relevance}`), p.title)); });
+    box.append(row, el("p", {class: "status"}, c.note.startsWith("stopped") ? `Chain ends: ${c.note.replace("stopped: ", "")}.` : "Extended to a second citing paper."));
+    document.getElementById("chainList").append(box);
+  });
+})();
+
+// ---------------------------------------------------------------- detail
+function showIdea(pid, id, scroll = true) {
+  const c = D.evolution[pid].candidates[id], d = document.getElementById("detail");
+  const top = D.ranking[pid].top5.includes(id);
+  const parents = c.parents.length ? c.parents.map(p => `${short(p)} (${D.evolution[pid].candidates[p].title})`).join(" + ") : "HypER seed from chain " + (c.chain || "");
+  let html = `<div><span class="eyebrow">${PNAME[pid]} · ${short(id)} · generation ${c.gen}</span><h3 style="margin-top:4px">${esc(c.title)}</h3></div>
+    <div class="lineage">Operators: ${c.operators.join(" → ")} · Parents: ${esc(parents)}</div>`;
+  if (c.scores) html += `<div>${top ? '<span class="pill top">Top 5</span> ' : ""}<span class="pill">rank ${c.rank} of 12</span> <span class="pill">family: ${esc(c.family)}</span> <span class="pill">final ${c.final}</span></div>
+    <div class="scroll"><table><thead><tr>${CRIT.map(k => `<th>${k}</th>`).join("")}</tr></thead><tbody><tr>${CRIT.map(k => `<td>${sc(c.scores[k])}</td>`).join("")}</tr></tbody></table></div>`;
+  for (const [k, v] of [["Summary", c.summary], ["Hypothesis", c.hypothesis], ["Rationale", c.rationale], ["Method", c.method], ["Experiment", c.experiment]]) if (v) html += `<div class="field"><h4>${k}</h4><p>${esc(v)}</p></div>`;
+  if (c.reviews) html += `<div class="field"><h4>Reviews</h4>${CRIT.map(k => `<p><b>${k} ${sc(c.scores[k])}</b> ${esc(c.reviews[k])}</p>`).join("")}</div>`;
+  if (c.novelty) html += `<div class="field"><h4>Novelty search · “${esc(c.novelty.query)}”</h4>${c.novelty.closest.map(p => `<p>• <a href="${p.url}" target="_blank" rel="noopener">${esc(p.title)}</a> — ${esc(p.relation)}</p>`).join("")}</div>`;
+  if (c.provenance && c.provenance.length) html += `<div class="field"><h4>Provenance</h4><p>${c.provenance.map(esc).join("\n")}</p></div>`;
+  d.innerHTML = html;
+  if (scroll) d.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+// ---------------------------------------------------------------- evolution chart
+let EVO = "A1";
+function drawEvo() {
+  const E = D.evolution[EVO], svg = document.getElementById("evoSvg");
+  const W = 1080, H = 440, L = 54, R = 24, T = 20, B = 36;
+  const hist = E.history, gens = hist.length;
+  let lo = Infinity, hi = -Infinity;
+  hist.forEach(h => Object.values(h.pool_fitness).forEach(v => { lo = Math.min(lo, v); hi = Math.max(hi, v); }));
+  lo = Math.floor((lo - 5) / 20) * 20; hi = Math.ceil((hi + 5) / 20) * 20;
+  const x = g => L + (W - L - R) * (g + 0.5) / gens, y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo));
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("width", W); svg.setAttribute("height", H);
+  let s = "";
+  for (let v = lo; v <= hi; v += 20) s += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L - 8}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
+  hist.forEach((h, g) => s += `<text x="${x(g)}" y="${H - 12}" text-anchor="middle">generation ${h.generation}${g === 0 ? " (HypER seeds)" : ""}</text>`);
+  s += `<text x="14" y="${T + (H - T - B) / 2}" transform="rotate(-90 14 ${T + (H - T - B) / 2})" text-anchor="middle">Bradley–Terry fitness</text>`;
+  const pos = {};
+  hist.forEach((h, g) => {
+    const ids = Object.keys(h.pool_fitness).sort((a, b) => h.pool_fitness[b] - h.pool_fitness[a]);
+    ids.forEach((id, i) => { pos[id + "@" + g] = [x(g) + ((i % 3) - 1) * 16, y(h.pool_fitness[id])]; });
+  });
+  // survival lines
+  hist.forEach((h, g) => { if (g === 0) return; Object.keys(h.pool_fitness).forEach(id => { const a = pos[id + "@" + (g - 1)], b = pos[id + "@" + g]; if (a && b) s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="var(--muted)" stroke-opacity=".35" stroke-width="1.2"/>`; }); });
+  // parent edges
+  hist.forEach((h, g) => (h.offspring || []).forEach(id => { const c = E.candidates[id]; const op = c.operators[c.operators.length - 1] === "fallback-copy" ? c.operators[0] : c.operators[0];
+    c.parents.forEach(p => { const a = pos[p + "@" + (g - 1)], b = pos[id + "@" + g]; if (a && b) s += `<path d="M${a[0]},${a[1]} C${(a[0] + b[0]) / 2},${a[1]} ${(a[0] + b[0]) / 2},${b[1]} ${b[0]},${b[1]}" fill="none" stroke="${OPCOL[op]}" stroke-width="1.4" stroke-dasharray="4 3" opacity=".8"/>`; }); }));
+  // dots
+  const top = D.ranking[EVO].top5;
+  hist.forEach((h, g) => Object.keys(h.pool_fitness).forEach(id => {
+    const [cx, cy] = pos[id + "@" + g]; const c = E.candidates[id]; const surv = h.population.includes(id);
+    const col = OPCOL[c.operators[0]] || OPCOL["hyper-seed"]; const isTop = top.includes(id) && g === gens - 1;
+    s += `<g class="dot" data-id="${id}" tabindex="0" role="button" aria-label="${esc(c.title)}" style="cursor:pointer">`;
+    if (isTop) s += `<circle cx="${cx}" cy="${cy}" r="10" fill="none" stroke="var(--heat)" stroke-width="2"/>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="6" fill="${surv ? col : "var(--panel)"}" stroke="${col}" stroke-width="2"/><title>${esc(short(id) + " · " + c.title + " · fitness " + h.pool_fitness[id])}</title></g>`;
+  }));
+  svg.innerHTML = s;
+  svg.querySelectorAll(".dot").forEach(n => { const go = () => showIdea(EVO, n.dataset.id); n.addEventListener("click", go); n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } }); });
+}
+function tabs(hostId, onPick) {
+  const host = document.getElementById(hostId);
+  D.selected_problems.forEach((pid, i) => { const b = el("button", {role: "tab", "aria-selected": i === 0 ? "true" : "false", onclick: () => { host.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", "false")); b.setAttribute("aria-selected", "true"); onPick(pid); }}, PNAME[pid] || pid); host.append(b); });
+}
+(function () {
+  const lg = document.getElementById("evoLegend");
+  [["hyper-seed", "HypER seed"], ["combination", "combination"], ["inspiration", "inspiration"], ["substitution", "substitution"], ["out_of_box", "out-of-box"]].forEach(([k, l]) => lg.append(el("span", {html: `<i style="background:${OPCOL[k]}"></i>${l}`})));
+  lg.append(el("span", {html: `<i style="background:transparent;border:2px solid var(--heat)"></i>selected top 5`}));
+  EVO = D.selected_problems.includes("A1") ? "A1" : D.selected_problems[0];
+  tabs("evoTabs", pid => { EVO = pid; drawEvo(); });
+  drawEvo();
+})();
+
+// ---------------------------------------------------------------- ranking table
+let RANK = "A1", SORT = "rank";
+function drawRank() {
+  const t = document.getElementById("rankTable"), E = D.evolution[RANK].candidates;
+  const rows = D.ranking[RANK].shortlist.map(id => E[id]).sort((a, b) => SORT === "rank" ? a.rank - b.rank : (b.scores[SORT] - a.scores[SORT]) || a.rank - b.rank);
+  const head = [["rank", "#"], ["title", "Idea"], ...CRIT.map(k => [k, k]), ["mean", "Review"], ["fit", "Fitness"], ["final", "Final"], ["fam", "Family"]];
+  t.innerHTML = `<thead><tr>${head.map(([k, l]) => `<th class="${["title","fam"].includes(k) ? "" : "num"}">${CRIT.includes(k) || k === "rank" ? `<button class="sortb" data-k="${k}" style="all:unset;cursor:pointer;text-decoration:${SORT === k ? "underline" : "none"}">${l}</button>` : l}</th>`).join("")}</tr></thead>`;
+  const tb = el("tbody");
+  rows.forEach(c => {
+    const top = D.ranking[RANK].top5.includes(c.id), skip = D.ranking[RANK].skipped.find(s => s.id === c.id);
+    const fit = c.fitness[Object.keys(c.fitness).sort((a, b) => b - a)[0]];
+    const tr = el("tr", {class: "clickable", tabindex: "0", html: `<td class="num">${c.rank}</td><td>${top ? '<span class="pill top">Top 5</span> ' : ""}${skip ? '<span class="pill">skipped: family full</span> ' : ""}<b>${esc(c.title)}</b><br><span class="status mono">${short(c.id)}</span></td>${CRIT.map(k => `<td class="num">${sc(c.scores[k])}</td>`).join("")}<td class="num">${c.review_mean.toFixed(1)}</td><td class="num">${fit.toFixed(1)}</td><td class="num">${c.final.toFixed(3)}</td><td>${esc(c.family)}</td>`});
+    tr.addEventListener("click", () => showIdea(RANK, c.id)); tr.addEventListener("keydown", e => { if (e.key === "Enter") showIdea(RANK, c.id); });
+    tb.append(tr);
+  });
+  t.append(tb);
+  t.querySelectorAll(".sortb").forEach(b => b.addEventListener("click", () => { SORT = b.dataset.k; drawRank(); }));
+}
+(function () { RANK = D.selected_problems.includes("A1") ? "A1" : D.selected_problems[0]; tabs("rankTabs", pid => { RANK = pid; drawRank(); }); drawRank(); showIdea(RANK, D.ranking[RANK].top5[0], false); })();
+
+// ---------------------------------------------------------------- rating
+const IDEAS = D.selected_problems.flatMap(pid => D.ranking[pid].top5.map(id => [pid, id]));
+const MINE = {};
+function rateCards() {
+  const host = document.getElementById("rateCards"); host.innerHTML = "";
+  IDEAS.forEach(([pid, id]) => {
+    const c = D.evolution[pid].candidates[id];
+    const row = el("div", {class: "rate-row"});
+    CRIT.forEach(k => { const sid = `r-${id}-${k}`; const s = el("select", {id: sid, "aria-label": `${k} for ${c.title}`}, el("option", {value: ""}, "–"), ...[1,2,3,4,5].map(v => el("option", {value: String(v)}, String(v))));
+      if (MINE[id]?.[k]) s.value = String(MINE[id][k]);
+      s.addEventListener("change", () => { MINE[id] = MINE[id] || {}; MINE[id][k] = s.value ? +s.value : null; });
+      row.append(el("label", {for: sid}, k, s)); });
+    host.append(el("div", {class: "panel rate-card"}, el("span", {class: "eyebrow"}, `${PNAME[pid]} · ${short(id)}`), el("button", {style: "all:unset;cursor:pointer;font-family:var(--f-display);font-weight:600", onclick: () => showIdea(pid, id)}, c.title), el("p", {class: "status"}, c.summary), row));
+  });
+}
+function spearman(a, b) {
+  const rk = v => { const idx = v.map((x, i) => [x, i]).sort((p, q) => p[0] - q[0]); const r = Array(v.length); let i = 0; while (i < idx.length) { let j = i; while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++; for (let k = i; k <= j; k++) r[idx[k][1]] = (i + j) / 2 + 1; i = j + 1; } return r; };
+  const ra = rk(a), rb = rk(b), n = a.length, ma = ra.reduce((s, x) => s + x, 0) / n, mb = rb.reduce((s, x) => s + x, 0) / n;
+  let num = 0, da = 0, db = 0; for (let i = 0; i < n; i++) { num += (ra[i] - ma) * (rb[i] - mb); da += (ra[i] - ma) ** 2; db += (rb[i] - mb) ** 2; }
+  return da && db ? num / Math.sqrt(da * db) : null;
+}
+let ALL = [];
+function drawAgree() {
+  const t = document.getElementById("agreeTable");
+  const raters = new Set(ALL.map(r => r.rater));
+  t.innerHTML = `<thead><tr><th>Criterion</th><th class="num">Ratings</th><th class="num">Spearman ρ (human vs model)</th><th class="num">Mean human</th><th class="num">Mean model</th></tr></thead>`;
+  const tb = el("tbody");
+  CRIT.forEach(k => {
+    const h = [], m = [];
+    ALL.forEach(r => { const c = D.evolution[r.idea.slice(0, 2)].candidates[r.idea]; if (r.scores[k] && c?.scores) { h.push(r.scores[k]); m.push(c.scores[k]); } });
+    const rho = h.length >= 3 ? spearman(h, m) : null;
+    const mean = v => v.length ? (v.reduce((s, x) => s + x, 0) / v.length).toFixed(2) : "—";
+    tb.append(el("tr", {html: `<td>${k}</td><td class="num">${h.length}</td><td class="num">${rho == null ? "—" : rho.toFixed(2)}</td><td class="num">${mean(h)}</td><td class="num">${mean(m)}</td>`}));
+  });
+  t.append(tb);
+  t.append(el("caption", {style: "caption-side:bottom;text-align:left;padding-top:8px", class: "status"}, raters.size ? `${raters.size} rater(s). ρ needs at least three rated ideas and some variation in scores.` : "No ratings yet. Ratings you save appear here."));
+}
+rateCards(); drawAgree();
+(async () => {
+  const status = document.getElementById("rateStatus"), save = document.getElementById("saveBtn"), msg = document.getElementById("saveMsg");
+  let db = null, user = null, uid = null;
+  try { [db, user] = await Promise.all([window.claude?.use?.("db") ?? null, window.claude?.use?.("user") ?? null]); } catch (e) { db = null; }
+  if (!db) { status.textContent = "Ratings can be saved only when this page is opened while signed in to Claude. You can still read every idea."; return; }
+  try { uid = user ? await user.id() : null; } catch (e) { uid = null; }
+  if (!uid) { status.textContent = "Sign in to save ratings."; return; }
+  const load = async () => {
+    const snap = await db.collection("ratings").get();
+    ALL = [];
+    snap.docs.forEach(d => { const v = d.data() || {}; Object.entries(v.scores || {}).forEach(([idea, s]) => ALL.push({rater: d.id, idea, scores: s})); if (d.id === uid) Object.assign(MINE, v.scores || {}); });
+    drawAgree();
+  };
+  try { await load(); rateCards(); status.textContent = `Signed in. ${new Set(ALL.map(r => r.rater)).size} rater(s) so far.`; save.disabled = false; }
+  catch (e) { status.textContent = "The rating store is not available right now. Reload the page to try again."; return; }
+  let canWrite = null; try { canWrite = await user.can("data.write"); } catch (e) {}
+  if (canWrite === false) { status.textContent += " You have view access only, so you can read ratings but not save your own."; save.disabled = true; }
+  save.addEventListener("click", async () => {
+    save.disabled = true; msg.textContent = "Saving…";
+    const clean = {}; Object.entries(MINE).forEach(([id, s]) => { const t = {}; CRIT.forEach(k => { if (s?.[k]) t[k] = s[k]; }); if (Object.keys(t).length) clean[id] = t; });
+    try { await db.doc("ratings/" + uid).set({scores: clean, updated: new Date().toISOString()}); await load(); msg.textContent = `Saved ${Object.keys(clean).length} idea(s).`; }
+    catch (e) { msg.textContent = e?.code === "invalid_argument" ? "You don't have permission to save ratings on this page." : "Saving failed. Try again in a moment."; }
+    save.disabled = false;
+  });
+  const dl = await (window.claude?.use?.("downloads") ?? null);
+  if (dl) { const ex = document.getElementById("exportBtn"); ex.hidden = false; ex.addEventListener("click", async () => {
+    try { await dl.save({filename: "ratings.json", data: JSON.stringify(ALL, null, 1)}); msg.textContent = "Export offered. Run: python3 agreement.py ratings.json"; } catch (e) { msg.textContent = "Export was cancelled."; } }); }
+})();
+</script>

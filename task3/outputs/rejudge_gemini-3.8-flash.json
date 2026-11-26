@@ -1,0 +1,180 @@
+{
+ "new_judge": "gemini-3.8-flash",
+ "original_judge": "claude-opus-5-5 (file backend)",
+ "stage4": {
+  "A1": {
+   "n": 12,
+   "spearman_per_criterion": {
+    "Novelty": 0.201,
+    "Feasibility": 0.049,
+    "Clarity": null,
+    "Impact": -0.029,
+    "Validity": -0.029
+   },
+   "spearman_mean": -0.406,
+   "top5_original": [
+    "A1-g1-o2",
+    "A1-g3-o3",
+    "A1-g1-o6",
+    "A1-g2-o2",
+    "A1-g3-o2"
+   ],
+   "top5_new": [
+    "A1-g1-o2",
+    "A1-g1-o6",
+    "A1-g3-o2",
+    "A1-g3-o3",
+    "A1-g2-o2"
+   ],
+   "top5_overlap": 5,
+   "top5_fully_independent": {
+    "top5": [
+     "A1-g1-o1",
+     "A1-g1-o2",
+     "A1-g2-o4",
+     "A1-g3-o5",
+     "A1-g2-o1"
+    ],
+    "overlap": 1
+   },
+   "top5_fully_independent_both_orders": {
+    "top5": [
+     "A1-g1-o1",
+     "A1-g2-o5",
+     "A1-g2-o4",
+     "A1-g3-o5",
+     "A1-g2-o1"
+    ],
+    "overlap": 0
+   }
+  },
+  "B1": {
+   "n": 12,
+   "spearman_per_criterion": {
+    "Novelty": 0.538,
+    "Feasibility": null,
+    "Clarity": null,
+    "Impact": -0.029,
+    "Validity": 0.548
+   },
+   "spearman_mean": 0.302,
+   "top5_original": [
+    "B1-g2-o1",
+    "B1-g3-o4",
+    "B1-g2-o4",
+    "B1-g3-o5",
+    "B1-g1-o5"
+   ],
+   "top5_new": [
+    "B1-g2-o1",
+    "B1-g3-o4",
+    "B1-g3-o5",
+    "B1-g2-o4",
+    "B1-g3-o2"
+   ],
+   "top5_overlap": 4,
+   "top5_fully_independent": {
+    "top5": [
+     "B1-g2-o4",
+     "B1-g0-C1",
+     "B1-g3-o5",
+     "B1-g3-o2",
+     "B1-g2-o1"
+    ],
+    "overlap": 3
+   },
+   "top5_fully_independent_both_orders": {
+    "top5": [
+     "B1-g2-o4",
+     "B1-g0-C1",
+     "B1-g3-o5",
+     "B1-g3-o2",
+     "B1-g2-o1"
+    ],
+    "overlap": 3
+   }
+  }
+ },
+ "stage1": {
+  "n": 60,
+  "asked": 60,
+  "unparsed_examples": [],
+  "spearman": 0.704,
+  "exact": 0.533,
+  "within1": 0.983,
+  "mean_original": 3.93,
+  "mean_new": 4.42,
+  "per_criterion": {
+   "Clarity": null,
+   "Feasibility": null,
+   "Originality": 0.577,
+   "Relevance": 0.447,
+   "Significance": 0.816
+  }
+ },
+ "stage2": {
+  "n": 167,
+  "exact": 0.772,
+  "qwk": 0.676
+ },
+ "stage3": {
+  "A1": {
+   "n": 168,
+   "parsed": 168,
+   "unparsed_examples": [],
+   "winner_agreement": 0.565,
+   "winner_agreement_decisive": 0.565,
+   "n_decisive": 168,
+   "share_A_original": 0.571,
+   "share_A_new": 0.577,
+   "ties_original": 0.0,
+   "ties_new": 0.0,
+   "bt_spearman": -0.153,
+   "new_best": "A1-g0-C1",
+   "original_best": "A1-g1-o2"
+  },
+  "B1": {
+   "n": 168,
+   "parsed": 168,
+   "unparsed_examples": [],
+   "winner_agreement": 0.601,
+   "winner_agreement_decisive": 0.601,
+   "n_decisive": 168,
+   "share_A_original": 0.601,
+   "share_A_new": 0.583,
+   "ties_original": 0.0,
+   "ties_new": 0.0,
+   "bt_spearman": 0.07,
+   "new_best": "B1-g2-o4",
+   "original_best": "B1-g2-o1"
+  }
+ },
+ "stage3_swap": {
+  "A1": {
+   "n": 168,
+   "parsed": 168,
+   "unparsed_examples": [],
+   "self_consistency": 0.923,
+   "first_shown_wins": 0.509,
+   "ties_new": 0.0,
+   "agreement_when_consistent": 0.574,
+   "n_consistent": 155,
+   "bt_spearman_both_orders": -0.127,
+   "new_best_both_orders": "A1-g0-C1",
+   "original_best": "A1-g1-o2"
+  },
+  "B1": {
+   "n": 168,
+   "parsed": 168,
+   "unparsed_examples": [],
+   "self_consistency": 0.905,
+   "first_shown_wins": 0.542,
+   "ties_new": 0.0,
+   "agreement_when_consistent": 0.592,
+   "n_consistent": 152,
+   "bt_spearman_both_orders": -0.002,
+   "new_best_both_orders": "B1-g2-o4",
+   "original_best": "B1-g2-o1"
+  }
+ }
+}
