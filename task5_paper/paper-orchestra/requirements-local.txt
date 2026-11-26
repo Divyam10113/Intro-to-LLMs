@@ -1,0 +1,16 @@
+google-genai
+joblib
+json_repair
+openai
+opencv-python
+pydantic
+PyMuPDF
+pymupdf4llm
+pyOpenSSL
+pypdf
+python-dotenv
+requests
+rich
+streamlit
+thefuzz
+tqdm

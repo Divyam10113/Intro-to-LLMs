@@ -1,0 +1,261 @@
+{
+    "plotting_plan": [
+        {
+            "figure_id": "fig_methodology_hybrid_pu_framework",
+            "title": "Overview of Hybrid PU Fine-Tuning and Mask-Free Adapter Training Pipelines",
+            "plot_type": "diagram",
+            "data_source": "both",
+            "objective": "Schematic diagram displaying the BMAD leave-one-modality-out pipeline, illustrating how M-h combines Dice+Focal loss on masked sources with non-negative PU (nnPU) loss on mask-less sources, alongside the M (mask-free PU) and B0 (top-k MIL) adapter retraining setups.",
+            "aspect_ratio": "16:9"
+        },
+        {
+            "figure_id": "fig_experiments_performance_and_prior_failure",
+            "title": "AUPRO Comparison across Targets and Mixture-Proportion Estimator Failure Analysis",
+            "plot_type": "plot",
+            "data_source": "experimental_log.md",
+            "objective": "Dual-panel line and bar chart: (a) Paired AUPRO performance comparing M-h vs. M-h-ctrl across Brain MRI, Liver CT, and RESC targets showing target-specific gains on Brain; (b) Scatter plot of true vs. estimated patch anomaly priors demonstrating the breakdown of the lower-tail MPE estimator on MVFA patch scores.",
+            "aspect_ratio": "16:9"
+        }
+    ],
+    "intro_related_work_plan": {
+        "introduction_strategy": {
+            "hook_hypothesis": "Vision-language models adapted for medical anomaly detection offer strong zero-shot and few-shot capabilities, but rely heavily on expensive pixel-level segmentation masks during fine-tuning.",
+            "problem_gap_hypothesis": "While image-level labels are widely available across unannotated medical datasets, it remains unverified whether positive-unlabelled (PU) patch-level risk minimization provides a consistent localization benefit over plain fine-tuning or weakly supervised multiple instance learning (MIL) when adapting multi-modal anomaly detectors.",
+            "search_directions": [
+                "Find benchmark papers establishing multi-modal vision-language adaptation for medical anomaly detection",
+                "Search for survey papers on weakly supervised medical image segmentation and anomaly localization",
+                "Identify foundational papers on positive-unlabelled learning and mixture proportion estimation in computer vision"
+            ],
+            "citation_candidates": []
+        },
+        "related_work_strategy": {
+            "overview": "Investigate three method clusters to contextualize vision-language medical anomaly detection, weakly supervised localization, and positive-unlabelled learning theory.",
+            "subsections": [
+                {
+                    "subsection_title": "2.1 Medical anomaly detection and vision-language adaptation",
+                    "methodology_cluster": "Vision-Language Adapters & Multi-Modal Anomaly Detection",
+                    "sota_investigation_mission": "Identify foundational and recent SOTA methods adapting models like CLIP for multi-modal medical anomaly detection and segmentation across varied imaging modalities.",
+                    "limitation_hypothesis": "Existing adapter architectures rely on pixel-level spatial masks across source modalities and fail to effectively leverage unannotated image-level data.",
+                    "limitation_search_queries": [
+                        "Vision-language medical anomaly detection adaptation",
+                        "Multi-modal medical anomaly segmentation zero-shot CLIP"
+                    ],
+                    "bridge_to_our_method": "We evaluate how far image-level labels can extend localization performance when adapting vision-language models across leave-one-modality-out benchmarks.",
+                    "citation_candidates": [
+                        "huang2024mvfa",
+                        "bmad2024",
+                        "clip2021",
+                        "winclip2023",
+                        "aprilgan2023",
+                        "anomalyclip2023",
+                        "adaclip2024",
+                        "vcpclip2024",
+                        "iqeclip2026",
+                        "madpot2026",
+                        "mediclip2024",
+                        "medicalad_survey2021"
+                    ]
+                },
+                {
+                    "subsection_title": "2.2 Weakly supervised and mask-free anomaly localisation",
+                    "methodology_cluster": "Weakly Supervised Segmentation & Multiple Instance Learning",
+                    "sota_investigation_mission": "Investigate weakly supervised anomaly localization approaches utilizing image-level annotations, CAMs, or Multiple Instance Learning (MIL) formulations.",
+                    "limitation_hypothesis": "Standard MIL pooling heuristics often suffer from coarse boundary localization or over-focusing on discriminative sub-regions without explicit background modeling.",
+                    "limitation_search_queries": [
+                        "Weakly supervised medical image anomaly localization MIL",
+                        "Top-k multiple instance learning anomaly detection"
+                    ],
+                    "bridge_to_our_method": "We systematically benchmark mask-free MIL (B0) against positive-unlabelled patch formulations (M) to evaluate localization retention.",
+                    "citation_candidates": [
+                        "mvtec2019",
+                        "adfa2023",
+                        "imagelevel2026",
+                        "cycle_seg2021",
+                        "ilse2018attentionmil"
+                    ]
+                },
+                {
+                    "subsection_title": "2.3 Positive-unlabelled learning and mixture-proportion estimation",
+                    "methodology_cluster": "Positive-Unlabelled (PU) Risk Minimization & MPE",
+                    "sota_investigation_mission": "Examine non-negative PU learning algorithms and lower-tail mixture-proportion estimation methods used to learn classifiers from unlabelled/partially labelled data.",
+                    "limitation_hypothesis": "Mixture-proportion estimators rely on irreducibility assumptions that break down when applied to non-calibrated intermediate neural patch scores.",
+                    "limitation_search_queries": [
+                        "Non-negative positive-unlabelled learning risk minimization",
+                        "Mixture proportion estimation irreducibility violation neural network scores"
+                    ],
+                    "bridge_to_our_method": "We provide a empirical failure analysis showing how the irreducibility assumption breaks on MVFA patch scores, necessitating true-fraction baselines.",
+                    "citation_candidates": [
+                        "elkan2008pu",
+                        "kiryo2017nnpu",
+                        "ramaswamy2016mpe"
+                    ]
+                }
+            ]
+        }
+    },
+    "section_plan": [
+        {
+            "section_title": "Abstract",
+            "subsections": [
+                {
+                    "subsection_title": "Abstract Content",
+                    "content_bullets": [
+                        "State the challenge of relying on pixel masks for adapting vision-language models in medical anomaly detection across multi-modal benchmarks.",
+                        "Introduce our empirical study analyzing the utility of patch-level image-label supervision via Positive-Unlabelled (PU) learning versus plain fine-tuning and top-k Multiple Instance Learning (MIL).",
+                        "Highlight key findings: no consistent PU gain over matched control across targets (AUPRO difference +5.20 on Brain, +0.33 on Liver, +0.51 on RESC, paired sign-test p=0.2539), breakdown of the lower-tail prior estimator on MVFA patch scores, and strong localization retention of an unregistered top-k MIL baseline (0.93-0.99 retention)."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "1. Introduction",
+            "subsections": [
+                {
+                    "subsection_title": "1.1 Background and Problem Statement",
+                    "content_bullets": [
+                        "Discuss the rise of vision-language adaptation (e.g., MVFA) for zero-shot and transfer medical anomaly detection across modalities.",
+                        "Detail the reliance on pixel-level ground truth masks from masked source datasets, while mask-less datasets provide only image-level disease labels.",
+                        "Formulate the central research question: How far do image-level labels go for localization in medical anomaly detection, and does non-negative PU learning improve over matched fine-tuning controls?"
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "1.2 Summary of Empirical Contributions",
+                    "content_bullets": [
+                        "Contribution 1: Controlled PU-vs-fine-tuning comparison showing no consistent AUPRO gain across modalities under registered decision rules, with a target-specific signal on Brain MRI.",
+                        "Contribution 2: Failure analysis of lower-tail mixture-proportion estimation (MPE), demonstrating the violation of the irreducibility assumption on MVFA patch-score distributions.",
+                        "Contribution 3: Observation of a mask-free top-k MIL baseline (B0) retaining 0.93-0.99 of fully-supervised localization performance across single-seed target runs.",
+                        "Contribution 4: Implementation audit of the released MVFA evaluation protocol, identifying target-test checkpoint selection practices."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "2. Related Work",
+            "subsections": [
+                {
+                    "subsection_title": "2.1 Medical anomaly detection and vision-language adaptation",
+                    "content_bullets": [
+                        "Review multi-modal vision-language adaptation frameworks in medical imaging, focusing on CLIP ViT-L/14 backbone modifications and multi-level adapter architectures.",
+                        "Highlight reliance on dense segmentation supervision across source modalities."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "2.2 Weakly supervised and mask-free anomaly localisation",
+                    "content_bullets": [
+                        "Summarize weakly supervised anomaly localization paradigms using image-level annotations, class activation maps, and multiple instance learning (MIL).",
+                        "Contextualize top-k MIL formulations as a strong baseline when dense pixel annotations are absent."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "2.3 Positive-unlabelled learning and mixture-proportion estimation",
+                    "content_bullets": [
+                        "Survey non-negative positive-unlabelled (nnPU) learning formulations and risk bounds.",
+                        "Examine lower-tail mixture-proportion estimation (MPE) techniques and the theoretical irreducibility assumption required for prior recovery."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "3. Problem Formulation",
+            "subsections": [
+                {
+                    "subsection_title": "3.1 Setup and Patch-Level Risk Definitions",
+                    "content_bullets": [
+                        "Define normal image patches N sampled from distribution p0 and abnormal image patches U sampled from mixture distribution pi * p1 + (1 - pi) * p0.",
+                        "Formulate the patch anomaly probability via sigmoid(z) where z = s1 - s0 is the network patch score difference.",
+                        "State the non-negative PU risk equation: R_nnPU = (1 - pi) * E_N[l(z, 0)] + max(0, E_U[l(z, 1)] - (1 - pi) * E_N[l(z, 1)]).",
+                        "Explain the hybrid objective for model M-h: combining MVFA's Dice + Focal loss on masked sources with lambda * R_nnPU on mask-less sources, versus M-h-ctrl which omits the PU branch."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "4. Methodology",
+            "subsections": [
+                {
+                    "subsection_title": "4.1 Dataset",
+                    "content_bullets": [
+                        "Describe the BMAD leave-one-modality-out benchmark configuration comprising 6 datasets: 3 masked sources and 3 mask-less sources.",
+                        "Detail target evaluation modalities: Brain MRI, Liver CT, and Retina_RESC.",
+                        "Specify source dataset sampling (max 500 normal, 500 abnormal images per source; held-out 10% subset for prior estimation)."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "4.2 Approach",
+                    "content_bullets": [
+                        "Detail frozen CLIP ViT-L/14 backbone architecture with 4 adapter levels.",
+                        "Describe M-h hybrid fine-tuning initialization from R0 warm-start and prior pi fixed to mean true anomalous-patch fraction from masked sources (D1).",
+                        "Detail matched control model M-h-ctrl (fine-tuning without PU iterations).",
+                        "Describe fully mask-free model M (retraining adapters from scratch using nnPU loss with fixed pi = 0.30, D2).",
+                        "Describe mask-free top-k MIL baseline B0 (retraining adapters with top-k MIL where k = max(3, 1% of patches)).",
+                        "Include reference to Figure 1 illustrating the complete architecture and supervision paths."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "5. Experiments",
+            "subsections": [
+                {
+                    "subsection_title": "5.1 Experimental Setup",
+                    "content_bullets": [
+                        "Specify optimization details: 2000 update steps, AdamW optimizer, random seeds 0, 1, 2.",
+                        "Explain metric definitions: Image AUROC, Pixel AUROC, and AUPRO integrated up to FPR 0.30.",
+                        "Clarify checkpoint selection protocol: fine-tuned models use the last training step without target test set leakage, contrasting R0's published target-test selection."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "5.2 Main Results",
+                    "content_bullets": [
+                        "Present Table 1: Performance comparison of reproduced R0, M-h, and M-h-ctrl across Liver CT, Brain MRI, and Retina_RESC targets.",
+                        "Analyze paired M-h vs M-h-ctrl AUPRO differences: Brain (+5.20), Liver (+0.33), Retina_RESC (+0.51); paired sign-test p=0.2539 (6 of 9 runs positive), proving no consistent cross-modality gain.",
+                        "Present Table 2: Performance of fully mask-free models M and B0 relative to reproduced R0.",
+                        "Evaluate mask-free performance: M achieves mean seed-0 pixel retention of 0.583 and fails on Liver CT (AUPRO 26.28 +- 15.50); unregistered baseline B0 retains 0.93-0.99 of R0 localization (retention 0.966)."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "5.3 Failure Analysis of Prior Estimator",
+                    "content_bullets": [
+                        "Present lower-tail MPE prior estimation evaluation against ground-truth patch fractions (0.008 to 0.119).",
+                        "Show that deepest segmentation level raw estimates range from -0.286 to 1.000.",
+                        "Explain the theoretical implication: MVFA patch score distributions violate the irreducibility assumption, rendering automated MPE unreliable without ground-truth masks."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "5.4 Discussion and Limitations",
+                    "content_bullets": [
+                        "Discuss potential causes of target-specific sensitivity in Brain MRI versus CT and retinal OCT.",
+                        "Disclose limitations: zero-shot subsampled training pools, single-seed evaluation for mask-free models outside Liver, potential domain leakage between OCT2017 source and RESC target, and post-hoc nature of secondary sensitivity runs."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "6. Conclusion",
+            "subsections": [
+                {
+                    "subsection_title": "6.1 Summary of Findings",
+                    "content_bullets": [
+                        "Reiterate main conclusion: image-level positive-unlabelled supervision does not consistently improve medical anomaly localization over standard fine-tuning controls across modalities.",
+                        "Highlight the breakdown of prior estimation on adapter patch scores and the strong performance of simple top-k MIL in mask-free settings.",
+                        "Emphasize the importance of matched controls and rigorous evaluation protocols in medical vision-language adaptation."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        }
+    ]
+}

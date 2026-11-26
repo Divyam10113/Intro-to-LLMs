@@ -1,0 +1,252 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[mil_Liver_s3] ep 0 step 0/4742 weak Histopathology  loss 2.8304 (0.990s/step)
+[mil_Liver_s3] ep 0 step 500/4742 weak Retina_OCT2017  loss 3.7298 (0.042s/step)
+[mil_Liver_s3] ep 0 step 1000/4742 weak Retina_RESC     loss 3.4758 (0.042s/step)
+[mil_Liver_s3] ep 0 step 1500/4742 weak Chest           loss 4.8813 (0.042s/step)
+[mil_Liver_s3] ep 0 step 2000/4742 weak Histopathology  loss 4.6805 (0.042s/step)
+[mil_Liver_s3] ep 0 step 2500/4742 weak Chest           loss 4.2239 (0.043s/step)
+[mil_Liver_s3] ep 0 step 3000/4742 weak Histopathology  loss 1.5961 (0.043s/step)
+[mil_Liver_s3] ep 0 step 3500/4742 weak Chest           loss 2.6381 (0.043s/step)
+[mil_Liver_s3] ep 0 step 4000/4742 weak Brain           loss 3.3350 (0.043s/step)
+[mil_Liver_s3] ep 0 step 4500/4742 weak Histopathology  loss 3.6583 (0.043s/step)
+[mil_Liver_s3] epoch 0 done in 202s; source-val image AUROC 0.9082 {'Brain': 0.933, 'Retina_RESC': 0.95, 'Retina_OCT2017': 0.972, 'Chest': 0.879, 'Histopathology': 0.807}
+[mil_Liver_s3] ep 1 step 0/4742 weak Histopathology  loss 2.3847 (0.237s/step)
+[mil_Liver_s3] ep 1 step 500/4742 weak Brain           loss 3.6776 (0.040s/step)
+[mil_Liver_s3] ep 1 step 1000/4742 weak Histopathology  loss 2.1247 (0.041s/step)
+[mil_Liver_s3] ep 1 step 1500/4742 weak Retina_RESC     loss 3.3510 (0.042s/step)
+[mil_Liver_s3] ep 1 step 2000/4742 weak Chest           loss 2.0316 (0.042s/step)
+[mil_Liver_s3] ep 1 step 2500/4742 weak Brain           loss 3.8246 (0.042s/step)
+[mil_Liver_s3] ep 1 step 3000/4742 weak Retina_OCT2017  loss 1.6471 (0.042s/step)
+[mil_Liver_s3] ep 1 step 3500/4742 weak Histopathology  loss 4.9421 (0.042s/step)
+[mil_Liver_s3] ep 1 step 4000/4742 weak Chest           loss 3.3990 (0.042s/step)
+[mil_Liver_s3] ep 1 step 4500/4742 weak Histopathology  loss 3.3831 (0.043s/step)
+[mil_Liver_s3] epoch 1 done in 202s; source-val image AUROC 0.9316 {'Brain': 0.956, 'Retina_RESC': 0.976, 'Retina_OCT2017': 0.986, 'Chest': 0.883, 'Histopathology': 0.857}
+[mil_Liver_s3] ep 2 step 0/4742 weak Chest           loss 7.3930 (0.278s/step)
+[mil_Liver_s3] ep 2 step 500/4742 weak Chest           loss 10.3840 (0.040s/step)
+[mil_Liver_s3] ep 2 step 1000/4742 weak Retina_RESC     loss 1.6958 (0.041s/step)
+[mil_Liver_s3] ep 2 step 1500/4742 weak Chest           loss 4.0068 (0.042s/step)
+[mil_Liver_s3] ep 2 step 2000/4742 weak Retina_OCT2017  loss 2.8636 (0.042s/step)
+[mil_Liver_s3] ep 2 step 2500/4742 weak Brain           loss 1.7541 (0.042s/step)
+[mil_Liver_s3] ep 2 step 3000/4742 weak Chest           loss 4.3558 (0.042s/step)
+[mil_Liver_s3] ep 2 step 3500/4742 weak Chest           loss 9.4508 (0.042s/step)
+[mil_Liver_s3] ep 2 step 4000/4742 weak Retina_RESC     loss 1.7834 (0.043s/step)
+[mil_Liver_s3] ep 2 step 4500/4742 weak Histopathology  loss 1.3564 (0.043s/step)
+[mil_Liver_s3] epoch 2 done in 203s; source-val image AUROC 0.9462 {'Brain': 0.971, 'Retina_RESC': 0.994, 'Retina_OCT2017': 0.994, 'Chest': 0.884, 'Histopathology': 0.888}
+[mil_Liver_s3] ep 3 step 0/4742 weak Chest           loss 1.4245 (0.278s/step)
+[mil_Liver_s3] ep 3 step 500/4742 weak Chest           loss 5.2635 (0.041s/step)
+[mil_Liver_s3] ep 3 step 1000/4742 weak Brain           loss 3.0259 (0.049s/step)
+[mil_Liver_s3] ep 3 step 1500/4742 weak Brain           loss 3.1277 (0.041s/step)
+[mil_Liver_s3] ep 3 step 2000/4742 weak Retina_OCT2017  loss 2.9936 (0.038s/step)
+[mil_Liver_s3] ep 3 step 2500/4742 weak Brain           loss 3.1943 (0.035s/step)
+[mil_Liver_s3] ep 3 step 3000/4742 weak Retina_RESC     loss 3.2101 (0.034s/step)
+[mil_Liver_s3] ep 3 step 3500/4742 weak Histopathology  loss 1.3150 (0.032s/step)
+[mil_Liver_s3] ep 3 step 4000/4742 weak Brain           loss 3.1137 (0.033s/step)
+[mil_Liver_s3] ep 3 step 4500/4742 weak Histopathology  loss 6.2518 (0.035s/step)
+[mil_Liver_s3] epoch 3 done in 168s; source-val image AUROC 0.9492 {'Brain': 0.989, 'Retina_RESC': 0.981, 'Retina_OCT2017': 0.992, 'Chest': 0.897, 'Histopathology': 0.888}
+[mil_Liver_s3] ep 4 step 0/4742 weak Retina_RESC     loss 1.9517 (0.235s/step)
+[mil_Liver_s3] ep 4 step 500/4742 weak Retina_OCT2017  loss 1.7278 (0.046s/step)
+[mil_Liver_s3] ep 4 step 1000/4742 weak Histopathology  loss 2.8521 (0.046s/step)
+[mil_Liver_s3] ep 4 step 1500/4742 weak Retina_RESC     loss 3.1245 (0.046s/step)
+[mil_Liver_s3] ep 4 step 2000/4742 weak Brain           loss 2.9624 (0.046s/step)
+[mil_Liver_s3] ep 4 step 2500/4742 weak Retina_OCT2017  loss 1.3833 (0.045s/step)
+[mil_Liver_s3] ep 4 step 3000/4742 weak Retina_RESC     loss 3.1715 (0.045s/step)
+[mil_Liver_s3] ep 4 step 3500/4742 weak Retina_RESC     loss 2.8385 (0.045s/step)
+[mil_Liver_s3] ep 4 step 4000/4742 weak Retina_OCT2017  loss 1.4511 (0.046s/step)
+[mil_Liver_s3] ep 4 step 4500/4742 weak Histopathology  loss 3.5198 (0.046s/step)
+[mil_Liver_s3] epoch 4 done in 217s; source-val image AUROC 0.9579 {'Brain': 0.984, 'Retina_RESC': 0.994, 'Retina_OCT2017': 0.992, 'Chest': 0.899, 'Histopathology': 0.921}
+[mil_Liver_s3] ep 5 step 0/4742 weak Histopathology  loss 1.4019 (0.251s/step)
+[mil_Liver_s3] ep 5 step 500/4742 weak Retina_RESC     loss 1.5143 (0.046s/step)
+[mil_Liver_s3] ep 5 step 1000/4742 weak Retina_RESC     loss 3.0007 (0.046s/step)
+[mil_Liver_s3] ep 5 step 1500/4742 weak Retina_OCT2017  loss 3.0540 (0.044s/step)
+[mil_Liver_s3] ep 5 step 2000/4742 weak Retina_OCT2017  loss 2.9680 (0.045s/step)
+[mil_Liver_s3] ep 5 step 2500/4742 weak Retina_RESC     loss 1.6943 (0.045s/step)
+[mil_Liver_s3] ep 5 step 3000/4742 weak Brain           loss 1.6122 (0.045s/step)
+[mil_Liver_s3] ep 5 step 3500/4742 weak Chest           loss 5.5779 (0.045s/step)
+[mil_Liver_s3] ep 5 step 4000/4742 weak Brain           loss 1.7862 (0.045s/step)
+[mil_Liver_s3] ep 5 step 4500/4742 weak Retina_OCT2017  loss 1.4768 (0.046s/step)
+[mil_Liver_s3] epoch 5 done in 216s; source-val image AUROC 0.9598 {'Brain': 0.992, 'Retina_RESC': 0.993, 'Retina_OCT2017': 0.992, 'Chest': 0.894, 'Histopathology': 0.928}
+[mil_Liver_s3] ep 6 step 0/4742 weak Chest           loss 3.1032 (0.237s/step)
+[mil_Liver_s3] ep 6 step 500/4742 weak Histopathology  loss 1.5203 (0.043s/step)
+[mil_Liver_s3] ep 6 step 1000/4742 weak Retina_OCT2017  loss 3.4435 (0.045s/step)
+[mil_Liver_s3] ep 6 step 1500/4742 weak Brain           loss 3.0658 (0.045s/step)
+[mil_Liver_s3] ep 6 step 2000/4742 weak Retina_OCT2017  loss 1.3973 (0.045s/step)
+[mil_Liver_s3] ep 6 step 2500/4742 weak Retina_RESC     loss 1.6382 (0.045s/step)
+[mil_Liver_s3] ep 6 step 3000/4742 weak Retina_RESC     loss 2.8835 (0.045s/step)
+[mil_Liver_s3] ep 6 step 3500/4742 weak Brain           loss 2.8730 (0.046s/step)
+[mil_Liver_s3] ep 6 step 4000/4742 weak Brain           loss 1.7998 (0.045s/step)
+[mil_Liver_s3] ep 6 step 4500/4742 weak Chest           loss 2.6990 (0.045s/step)
+[mil_Liver_s3] epoch 6 done in 215s; source-val image AUROC 0.9584 {'Brain': 0.988, 'Retina_RESC': 0.995, 'Retina_OCT2017': 0.992, 'Chest': 0.897, 'Histopathology': 0.92}
+[mil_Liver_s3] ep 7 step 0/4742 weak Retina_OCT2017  loss 1.6542 (0.262s/step)
+[mil_Liver_s3] ep 7 step 500/4742 weak Retina_RESC     loss 1.6283 (0.047s/step)
+[mil_Liver_s3] ep 7 step 1000/4742 weak Retina_RESC     loss 2.9328 (0.046s/step)
+[mil_Liver_s3] ep 7 step 1500/4742 weak Brain           loss 2.9434 (0.046s/step)
+[mil_Liver_s3] ep 7 step 2000/4742 weak Brain           loss 2.8562 (0.046s/step)
+[mil_Liver_s3] ep 7 step 2500/4742 weak Retina_RESC     loss 2.9470 (0.046s/step)
+[mil_Liver_s3] ep 7 step 3000/4742 weak Histopathology  loss 2.7888 (0.045s/step)
+[mil_Liver_s3] ep 7 step 3500/4742 weak Histopathology  loss 2.9765 (0.045s/step)
+[mil_Liver_s3] ep 7 step 4000/4742 weak Brain           loss 1.7943 (0.046s/step)
+[mil_Liver_s3] ep 7 step 4500/4742 weak Retina_OCT2017  loss 3.4593 (0.046s/step)
+[mil_Liver_s3] epoch 7 done in 217s; source-val image AUROC 0.9603 {'Brain': 0.984, 'Retina_RESC': 0.995, 'Retina_OCT2017': 0.992, 'Chest': 0.908, 'Histopathology': 0.922}
+[mil_Liver_s3] ep 8 step 0/4742 weak Brain           loss 1.7184 (0.308s/step)
+[mil_Liver_s3] ep 8 step 500/4742 weak Retina_RESC     loss 3.2233 (0.047s/step)
+[mil_Liver_s3] ep 8 step 1000/4742 weak Histopathology  loss 1.6559 (0.047s/step)
+[mil_Liver_s3] ep 8 step 1500/4742 weak Retina_RESC     loss 3.2218 (0.046s/step)
+[mil_Liver_s3] ep 8 step 2000/4742 weak Brain           loss 1.7909 (0.045s/step)
+[mil_Liver_s3] ep 8 step 2500/4742 weak Histopathology  loss 2.9020 (0.045s/step)
+[mil_Liver_s3] ep 8 step 3000/4742 weak Histopathology  loss 3.2927 (0.045s/step)
+[mil_Liver_s3] ep 8 step 3500/4742 weak Retina_RESC     loss 1.4342 (0.045s/step)
+[mil_Liver_s3] ep 8 step 4000/4742 weak Retina_RESC     loss 1.9538 (0.045s/step)
+[mil_Liver_s3] ep 8 step 4500/4742 weak Chest           loss 3.2412 (0.046s/step)
+[mil_Liver_s3] epoch 8 done in 216s; source-val image AUROC 0.9600 {'Brain': 0.985, 'Retina_RESC': 0.995, 'Retina_OCT2017': 0.992, 'Chest': 0.901, 'Histopathology': 0.927}
+[mil_Liver_s3] ep 9 step 0/4742 weak Retina_RESC     loss 3.1935 (0.272s/step)
+[mil_Liver_s3] ep 9 step 500/4742 weak Brain           loss 1.6016 (0.045s/step)
+[mil_Liver_s3] ep 9 step 1000/4742 weak Chest           loss 1.6060 (0.044s/step)
+[mil_Liver_s3] ep 9 step 1500/4742 weak Retina_RESC     loss 1.6835 (0.045s/step)
+[mil_Liver_s3] ep 9 step 2000/4742 weak Retina_OCT2017  loss 1.4290 (0.045s/step)
+[mil_Liver_s3] ep 9 step 2500/4742 weak Retina_OCT2017  loss 1.7010 (0.045s/step)
+[mil_Liver_s3] ep 9 step 3000/4742 weak Chest           loss 2.8436 (0.046s/step)
+[mil_Liver_s3] ep 9 step 3500/4742 weak Brain           loss 1.5451 (0.046s/step)
+[mil_Liver_s3] ep 9 step 4000/4742 weak Chest           loss 2.9877 (0.046s/step)
+[mil_Liver_s3] ep 9 step 4500/4742 weak Histopathology  loss 2.8679 (0.045s/step)
+[mil_Liver_s3] epoch 9 done in 215s; source-val image AUROC 0.9633 {'Brain': 0.989, 'Retina_RESC': 0.994, 'Retina_OCT2017': 0.992, 'Chest': 0.905, 'Histopathology': 0.937}
+[mil_Liver_s3] ep 10 step 0/4742 weak Chest           loss 3.1029 (0.255s/step)
+[mil_Liver_s3] ep 10 step 500/4742 weak Histopathology  loss 1.4247 (0.046s/step)
+[mil_Liver_s3] ep 10 step 1000/4742 weak Histopathology  loss 1.8173 (0.046s/step)
+[mil_Liver_s3] ep 10 step 1500/4742 weak Retina_RESC     loss 2.8379 (0.046s/step)
+[mil_Liver_s3] ep 10 step 2000/4742 weak Brain           loss 1.5204 (0.046s/step)
+[mil_Liver_s3] ep 10 step 2500/4742 weak Retina_RESC     loss 1.6722 (0.046s/step)
+[mil_Liver_s3] ep 10 step 3000/4742 weak Histopathology  loss 2.7970 (0.046s/step)
+[mil_Liver_s3] ep 10 step 3500/4742 weak Histopathology  loss 1.8335 (0.045s/step)
+[mil_Liver_s3] ep 10 step 4000/4742 weak Chest           loss 3.9488 (0.045s/step)
+[mil_Liver_s3] ep 10 step 4500/4742 weak Histopathology  loss 1.5095 (0.045s/step)
+[mil_Liver_s3] epoch 10 done in 216s; source-val image AUROC 0.9626 {'Brain': 0.992, 'Retina_RESC': 0.99, 'Retina_OCT2017': 0.992, 'Chest': 0.892, 'Histopathology': 0.948}
+[mil_Liver_s3] ep 11 step 0/4742 weak Brain           loss 1.6930 (0.223s/step)
+[mil_Liver_s3] ep 11 step 500/4742 weak Brain           loss 2.8360 (0.047s/step)
+[mil_Liver_s3] ep 11 step 1000/4742 weak Brain           loss 1.6487 (0.046s/step)
+[mil_Liver_s3] ep 11 step 1500/4742 weak Retina_OCT2017  loss 2.8051 (0.046s/step)
+[mil_Liver_s3] ep 11 step 2000/4742 weak Brain           loss 2.8469 (0.046s/step)
+[mil_Liver_s3] ep 11 step 2500/4742 weak Histopathology  loss 2.7951 (0.045s/step)
+[mil_Liver_s3] ep 11 step 3000/4742 weak Brain           loss 1.6058 (0.045s/step)
+[mil_Liver_s3] ep 11 step 3500/4742 weak Histopathology  loss 3.2788 (0.046s/step)
+[mil_Liver_s3] ep 11 step 4000/4742 weak Histopathology  loss 3.6245 (0.046s/step)
+[mil_Liver_s3] ep 11 step 4500/4742 weak Retina_RESC     loss 3.5956 (0.046s/step)
+[mil_Liver_s3] epoch 11 done in 217s; source-val image AUROC 0.9651 {'Brain': 0.989, 'Retina_RESC': 0.99, 'Retina_OCT2017': 0.989, 'Chest': 0.907, 'Histopathology': 0.95}
+[mil_Liver_s3] ep 12 step 0/4742 weak Retina_RESC     loss 2.8067 (0.292s/step)
+[mil_Liver_s3] ep 12 step 500/4742 weak Histopathology  loss 3.1814 (0.047s/step)
+[mil_Liver_s3] ep 12 step 1000/4742 weak Retina_RESC     loss 1.6271 (0.044s/step)
+[mil_Liver_s3] ep 12 step 1500/4742 weak Retina_OCT2017  loss 1.4375 (0.045s/step)
+[mil_Liver_s3] ep 12 step 2000/4742 weak Histopathology  loss 2.8241 (0.045s/step)
+[mil_Liver_s3] ep 12 step 2500/4742 weak Histopathology  loss 1.7788 (0.045s/step)
+[mil_Liver_s3] ep 12 step 3000/4742 weak Chest           loss 1.3589 (0.045s/step)
+[mil_Liver_s3] ep 12 step 3500/4742 weak Retina_OCT2017  loss 2.8924 (0.045s/step)
+[mil_Liver_s3] ep 12 step 4000/4742 weak Retina_RESC     loss 2.8495 (0.046s/step)
+[mil_Liver_s3] ep 12 step 4500/4742 weak Brain           loss 1.5063 (0.045s/step)
+[mil_Liver_s3] epoch 12 done in 215s; source-val image AUROC 0.9666 {'Brain': 0.989, 'Retina_RESC': 0.994, 'Retina_OCT2017': 0.994, 'Chest': 0.91, 'Histopathology': 0.945}
+[mil_Liver_s3] ep 13 step 0/4742 weak Brain           loss 1.5212 (0.249s/step)
+[mil_Liver_s3] ep 13 step 500/4742 weak Chest           loss 2.9556 (0.047s/step)
+[mil_Liver_s3] ep 13 step 1000/4742 weak Histopathology  loss 3.0815 (0.047s/step)
+[mil_Liver_s3] ep 13 step 1500/4742 weak Brain           loss 1.5165 (0.046s/step)
+[mil_Liver_s3] ep 13 step 2000/4742 weak Chest           loss 2.8499 (0.046s/step)
+[mil_Liver_s3] ep 13 step 2500/4742 weak Histopathology  loss 1.2780 (0.046s/step)
+[mil_Liver_s3] ep 13 step 3000/4742 weak Brain           loss 1.5076 (0.046s/step)
+[mil_Liver_s3] ep 13 step 3500/4742 weak Chest           loss 2.3009 (0.046s/step)
+[mil_Liver_s3] ep 13 step 4000/4742 weak Retina_RESC     loss 1.5994 (0.046s/step)
+[mil_Liver_s3] ep 13 step 4500/4742 weak Brain           loss 1.5587 (0.046s/step)
+[mil_Liver_s3] epoch 13 done in 218s; source-val image AUROC 0.9649 {'Brain': 0.986, 'Retina_RESC': 0.991, 'Retina_OCT2017': 1.0, 'Chest': 0.9, 'Histopathology': 0.948}
+[mil_Liver_s3] ep 14 step 0/4742 weak Retina_OCT2017  loss 3.1580 (0.253s/step)
+[mil_Liver_s3] ep 14 step 500/4742 weak Histopathology  loss 1.3464 (0.047s/step)
+[mil_Liver_s3] ep 14 step 1000/4742 weak Brain           loss 2.9280 (0.047s/step)
+[mil_Liver_s3] ep 14 step 1500/4742 weak Retina_OCT2017  loss 1.3215 (0.047s/step)
+[mil_Liver_s3] ep 14 step 2000/4742 weak Retina_RESC     loss 2.8796 (0.046s/step)
+[mil_Liver_s3] ep 14 step 2500/4742 weak Retina_RESC     loss 1.6648 (0.046s/step)
+[mil_Liver_s3] ep 14 step 3000/4742 weak Retina_OCT2017  loss 3.0307 (0.046s/step)
+[mil_Liver_s3] ep 14 step 3500/4742 weak Brain           loss 2.8765 (0.046s/step)
+[mil_Liver_s3] ep 14 step 4000/4742 weak Retina_OCT2017  loss 1.4491 (0.046s/step)
+[mil_Liver_s3] ep 14 step 4500/4742 weak Retina_RESC     loss 1.9476 (0.046s/step)
+[mil_Liver_s3] epoch 14 done in 218s; source-val image AUROC 0.9702 {'Brain': 0.994, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.915, 'Histopathology': 0.955}
+[mil_Liver_s3] ep 15 step 0/4742 weak Chest           loss 1.9393 (0.268s/step)
+[mil_Liver_s3] ep 15 step 500/4742 weak Retina_RESC     loss 1.6289 (0.047s/step)
+[mil_Liver_s3] ep 15 step 1000/4742 weak Histopathology  loss 1.3165 (0.045s/step)
+[mil_Liver_s3] ep 15 step 1500/4742 weak Retina_RESC     loss 2.9562 (0.045s/step)
+[mil_Liver_s3] ep 15 step 2000/4742 weak Brain           loss 1.5254 (0.046s/step)
+[mil_Liver_s3] ep 15 step 2500/4742 weak Retina_RESC     loss 1.4872 (0.046s/step)
+[mil_Liver_s3] ep 15 step 3000/4742 weak Retina_OCT2017  loss 2.8971 (0.046s/step)
+[mil_Liver_s3] ep 15 step 3500/4742 weak Retina_RESC     loss 2.9839 (0.046s/step)
+[mil_Liver_s3] ep 15 step 4000/4742 weak Histopathology  loss 4.4389 (0.046s/step)
+[mil_Liver_s3] ep 15 step 4500/4742 weak Retina_RESC     loss 2.8040 (0.046s/step)
+[mil_Liver_s3] epoch 15 done in 217s; source-val image AUROC 0.9670 {'Brain': 0.984, 'Retina_RESC': 0.99, 'Retina_OCT2017': 1.0, 'Chest': 0.911, 'Histopathology': 0.95}
+[mil_Liver_s3] ep 16 step 0/4742 weak Chest           loss 1.4144 (0.268s/step)
+[mil_Liver_s3] ep 16 step 500/4742 weak Retina_OCT2017  loss 2.8372 (0.047s/step)
+[mil_Liver_s3] ep 16 step 1000/4742 weak Retina_OCT2017  loss 2.7814 (0.046s/step)
+[mil_Liver_s3] ep 16 step 1500/4742 weak Chest           loss 1.8476 (0.046s/step)
+[mil_Liver_s3] ep 16 step 2000/4742 weak Chest           loss 1.3556 (0.046s/step)
+[mil_Liver_s3] ep 16 step 2500/4742 weak Brain           loss 1.5848 (0.046s/step)
+[mil_Liver_s3] ep 16 step 3000/4742 weak Chest           loss 3.1001 (0.046s/step)
+[mil_Liver_s3] ep 16 step 3500/4742 weak Retina_RESC     loss 2.8093 (0.046s/step)
+[mil_Liver_s3] ep 16 step 4000/4742 weak Retina_OCT2017  loss 1.2919 (0.046s/step)
+[mil_Liver_s3] ep 16 step 4500/4742 weak Retina_OCT2017  loss 3.2339 (0.046s/step)
+[mil_Liver_s3] epoch 16 done in 217s; source-val image AUROC 0.9657 {'Brain': 0.984, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.904, 'Histopathology': 0.953}
+[mil_Liver_s3] ep 17 step 0/4742 weak Chest           loss 1.2897 (0.263s/step)
+[mil_Liver_s3] ep 17 step 500/4742 weak Brain           loss 2.8096 (0.046s/step)
+[mil_Liver_s3] ep 17 step 1000/4742 weak Histopathology  loss 1.2799 (0.047s/step)
+[mil_Liver_s3] ep 17 step 1500/4742 weak Chest           loss 1.7628 (0.046s/step)
+[mil_Liver_s3] ep 17 step 2000/4742 weak Retina_OCT2017  loss 2.9740 (0.046s/step)
+[mil_Liver_s3] ep 17 step 2500/4742 weak Retina_RESC     loss 1.6001 (0.046s/step)
+[mil_Liver_s3] ep 17 step 3000/4742 weak Histopathology  loss 1.2871 (0.045s/step)
+[mil_Liver_s3] ep 17 step 3500/4742 weak Chest           loss 1.7812 (0.045s/step)
+[mil_Liver_s3] ep 17 step 4000/4742 weak Retina_RESC     loss 2.9419 (0.046s/step)
+[mil_Liver_s3] ep 17 step 4500/4742 weak Retina_OCT2017  loss 1.3022 (0.046s/step)
+[mil_Liver_s3] epoch 17 done in 216s; source-val image AUROC 0.9647 {'Brain': 0.986, 'Retina_RESC': 0.987, 'Retina_OCT2017': 0.994, 'Chest': 0.903, 'Histopathology': 0.952}
+[mil_Liver_s3] ep 18 step 0/4742 weak Retina_OCT2017  loss 2.9849 (0.262s/step)
+[mil_Liver_s3] ep 18 step 500/4742 weak Retina_RESC     loss 1.5615 (0.047s/step)
+[mil_Liver_s3] ep 18 step 1000/4742 weak Retina_RESC     loss 2.8033 (0.046s/step)
+[mil_Liver_s3] ep 18 step 1500/4742 weak Retina_OCT2017  loss 1.3758 (0.045s/step)
+[mil_Liver_s3] ep 18 step 2000/4742 weak Retina_RESC     loss 2.8316 (0.045s/step)
+[mil_Liver_s3] ep 18 step 2500/4742 weak Chest           loss 3.1711 (0.045s/step)
+[mil_Liver_s3] ep 18 step 3000/4742 weak Histopathology  loss 1.3020 (0.045s/step)
+[mil_Liver_s3] ep 18 step 3500/4742 weak Brain           loss 2.8141 (0.046s/step)
+[mil_Liver_s3] ep 18 step 4000/4742 weak Brain           loss 2.7867 (0.046s/step)
+[mil_Liver_s3] ep 18 step 4500/4742 weak Brain           loss 2.9820 (0.046s/step)
+[mil_Liver_s3] epoch 18 done in 216s; source-val image AUROC 0.9652 {'Brain': 0.986, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.903, 'Histopathology': 0.95}
+[mil_Liver_s3] ep 19 step 0/4742 weak Retina_OCT2017  loss 1.4052 (0.337s/step)
+[mil_Liver_s3] ep 19 step 500/4742 weak Brain           loss 2.8082 (0.036s/step)
+[mil_Liver_s3] ep 19 step 1000/4742 weak Brain           loss 1.5103 (0.033s/step)
+[mil_Liver_s3] ep 19 step 1500/4742 weak Brain           loss 1.4905 (0.031s/step)
+[mil_Liver_s3] ep 19 step 2000/4742 weak Histopathology  loss 1.4644 (0.030s/step)
+[mil_Liver_s3] ep 19 step 2500/4742 weak Chest           loss 2.9922 (0.029s/step)
+[mil_Liver_s3] ep 19 step 3000/4742 weak Brain           loss 2.8416 (0.028s/step)
+[mil_Liver_s3] ep 19 step 3500/4742 weak Retina_RESC     loss 1.5434 (0.028s/step)
+[mil_Liver_s3] ep 19 step 4000/4742 weak Chest           loss 3.4556 (0.029s/step)
+[mil_Liver_s3] ep 19 step 4500/4742 weak Histopathology  loss 1.4050 (0.031s/step)
+[mil_Liver_s3] epoch 19 done in 148s; source-val image AUROC 0.9677 {'Brain': 0.985, 'Retina_RESC': 0.987, 'Retina_OCT2017': 1.0, 'Chest': 0.912, 'Histopathology': 0.955}
+{
+ "run_id": "mil_Liver_s3",
+ "best_epoch": 14,
+ "val_curve": [
+  0.90815,
+  0.93165,
+  0.94621,
+  0.94917,
+  0.95786,
+  0.9598,
+  0.95845,
+  0.96026,
+  0.95996,
+  0.96329,
+  0.96263,
+  0.96507,
+  0.96656,
+  0.9649,
+  0.97018,
+  0.96699,
+  0.96574,
+  0.96467,
+  0.96518,
+  0.96774
+ ],
+ "n_updates": 94840,
+ "seconds_per_update": 0.04589132080596994,
+ "total_seconds": 4394.090684890747
+}
+{'eval_dataset': 'Liver', 'img_auroc': 0.6947178871548619, 'pix_auroc': 0.9554160443124102, 'aupro': 0.8743529178820957}

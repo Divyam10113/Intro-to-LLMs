@@ -1,0 +1,14 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+{
+ "dataset": "Retina_RESC",
+ "n_normal_images": 500,
+ "n_vectors": 144500,
+ "bank_size": 20000,
+ "n_gated_images": 1115,
+ "gate_mean_normal_train": 0.06657490879297256,
+ "gate_mean_abnormal_train": 0.10983823239803314,
+ "gate_p99_abnormal_train": 0.30419921875,
+ "seconds_bank": 30.489449977874756,
+ "seconds_total": 45.834872007369995
+}

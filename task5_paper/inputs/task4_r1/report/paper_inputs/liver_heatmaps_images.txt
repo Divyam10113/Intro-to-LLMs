@@ -1,0 +1,6 @@
+Rows (top to bottom), Liver test images at positions 1/8, 3/8, 5/8, 7/8 of the sorted abnormal-with-mask list:
+Liver_AD/test/Ungood/img/1_66.png
+Liver_AD/test/Ungood/img/4_468.png
+Liver_AD/test/Ungood/img/6_392.png
+Liver_AD/test/Ungood/img/8_478.png
+Colour scale per column: 1st-99.5th percentile of that model's maps over the Liver test set.

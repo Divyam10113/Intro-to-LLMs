@@ -1,0 +1,14 @@
+== 6 jobs on 6 slots 15:22:50
+[15:22:50 gpu 0 slot 1] start 0: build_normal_bank.py --dataset Brain --device cuda:0
+[15:22:50 gpu 0 slot 2] start 1: build_normal_bank.py --dataset Liver --device cuda:0
+[15:22:50 gpu 1 slot 4] start 2: build_normal_bank.py --dataset Retina_RESC --device cuda:1
+[15:22:50 gpu 0 slot 0] start 3: build_normal_bank.py --dataset Retina_OCT2017 --device cuda:0
+[15:22:50 gpu 1 slot 5] start 4: build_normal_bank.py --dataset Chest --device cuda:1
+[15:22:50 gpu 1 slot 3] start 5: build_normal_bank.py --dataset Histopathology --device cuda:1
+[15:23:26 gpu 0 slot 0] done  3
+[15:23:33 gpu 0 slot 1] done  0
+[15:23:34 gpu 1 slot 3] done  5
+[15:23:39 gpu 0 slot 2] done  1
+[15:23:43 gpu 1 slot 4] done  2
+[15:24:28 gpu 1 slot 5] done  4
+== phase finished 15:24:28

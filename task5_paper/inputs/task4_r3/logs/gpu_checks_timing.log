@@ -1,0 +1,26 @@
+## Timing check (2026-11-23 10:57:40)
+
+First 201 steps of each arm, 2 copies each, 12 concurrent jobs on 2 GPUs (round 2's G2-5 method). Steady s/step = the average over steps 50–200.
+
+| arm | s/step (2 runs) | mean |
+|---|---|---|
+| mvfa | 0.0703, 0.0693 | 0.0698 |
+| mil | 0.0751, 0.0660 | 0.0706 |
+| pu_m100 | 0.0777, 0.0804 | 0.0791 |
+| mil_m100 | 0.0761, 0.0686 | 0.0724 |
+| mil_m10 | 0.0754, 0.0784 | 0.0769 |
+| mil_m25 | 0.0673, 0.0788 | 0.0731 |
+
+GPU memory per job (sampled during timing): max 4966 MiB, median 4966 MiB.
+
+**Projection rule (fixed before any run, R3-4):** round-2-equivalent run-epochs = run-epochs × slowdown, where slowdown = mean over MVFA, MIL and PU+100 % of (measured s/step ÷ round 2's training s/step on the same Brain fold). The plan's 58 runs are 1160 run-epochs at round 2's speed; the cap is 1400 (4× round 2's 345, ≈ 6½ h).
+
+Slowdown: mvfa 0.0698 / 0.0381 = 1.83, mil 0.0706 / 0.0434 = 1.63, pu_m100 0.0791 / 0.0458 = 1.73; mean **1.73**.
+Per-epoch validation and fixed per-run minutes (for the wall-clock estimate) are round 2's medians per fold: Brain val 0.17 / fixed 1.42, Liver val 0.15 / fixed 0.57, RESC_OCT val 0.15 / fixed 0.61
+
+- Cuts none: 58 runs = 1160 run-epochs × 1.73 = **2005** round-2-equivalent run-epochs (5.81× round 2); 6360 job-minutes (5.90× round 2's 1077); wall-clock on 12 slots ≈ 9.5 h
+- Cuts ['mil_m25']: 49 runs = 980 run-epochs × 1.73 = **1694** round-2-equivalent run-epochs (4.91× round 2); 5339 job-minutes (4.96× round 2's 1077); wall-clock on 12 slots ≈ 8.3 h
+- Cuts ['mil_m25', 'brain_extra']: 45 runs = 900 run-epochs × 1.73 = **1556** round-2-equivalent run-epochs (4.51× round 2); 4876 job-minutes (4.53× round 2's 1077); wall-clock on 12 slots ≈ 7.3 h
+- Still above the cap after both cuts: the remaining runs are never cut (plan §4 step 4); running them anyway and logging the overrun.
+
+**Decision: cut mil_m25 + brain_extra.** 45 runs, ≈ 7.3 h wall-clock if both GPUs stay free.

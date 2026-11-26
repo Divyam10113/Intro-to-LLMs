@@ -1,0 +1,14 @@
+/home/f20241442/divyam-backup-imported/my_env/lib/python3.10/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+{
+ "dataset": "Histopathology",
+ "n_normal_images": 500,
+ "n_vectors": 144500,
+ "bank_size": 20000,
+ "n_gated_images": 1236,
+ "gate_mean_normal_train": 0.11161290109157562,
+ "gate_mean_abnormal_train": 0.16601765155792236,
+ "gate_p99_abnormal_train": 0.330078125,
+ "seconds_bank": 26.529064178466797,
+ "seconds_total": 36.41883158683777
+}

@@ -1,0 +1,566 @@
+[
+ {
+  "doi": "10.1109/cvpr52733.2024.01081",
+  "title": "Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical Images",
+  "abstract": "Recent advancements in large-scale visual-language pre-trained models have led to significant progress in zero/few-shot anomaly detection within natural image domains. However, the substantial domain divergence between natural and medical images limits the effectiveness of these methodologies in medical anomaly detection. This paper introduces a novel lightweight multi-level adaptation and comparison framework to repurpose the CLIP model for medical anomaly detection. Our approach integrates multiple residual adapters into the pre-trained visual encoder, enabling a stepwise enhancement of visual features across different levels. This multi-level adaptation is guided by multi-level, pixel-wise visual-language feature alignment loss functions, which recalibrate the model's focus from object semantics in natural imagery to anomaly identification in medical images. The adapted features exhibit improved generalization across various medical data types, even in zero-shot scenarios where the model encounters unseen medical modalities and anatomical regions during training. Our experiments on medical anomaly detection benchmarks demonstrate that our method significantly surpasses current state-of-the-art models, with an average AUC improvement of 6.24% and 7.33% for anomaly classification, 2.03% and 2.37% for anomaly segmentation, under the zero-shot and few-shot settings, respectively. Source code is available at: https://github.com/MediaBrain-SJTU/MVFA-AD",
+  "year": 2024,
+  "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+  "citation_count": 148,
+  "keywords": [
+   "medical anomaly detection",
+   "vision-language models",
+   "CLIP",
+   "domain adaptation",
+   "residual adapters",
+   "zero-shot anomaly detection",
+   "few-shot anomaly detection",
+   "anomaly segmentation",
+   "cross-modal generalization",
+   "medical image analysis"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Multimodal Machine Learning Applications",
+   "Medical Image Segmentation Techniques"
+  ],
+  "relevance_score": 5,
+  "composite_score": 0.591,
+  "origin": [
+   "anchor"
+  ],
+  "selected": true,
+  "citation_key": "huang2024mvfa",
+  "section": "2.1",
+  "inclusion_reason": "MVFA is the study’s base model and benchmark protocol."
+ },
+ {
+  "doi": "10.1109/cvprw63382.2024.00408",
+  "title": "BMAD: Benchmarks for Medical Anomaly Detection",
+  "abstract": "Anomaly detection (AD) is a fundamental research problem in machine learning and computer vision, with practical applications in industrial inspection, video surveillance, and medical diagnosis. In the field of medical imaging, AD plays a crucial role in identifying anomalies that may indicate rare diseases or conditions. However, despite its importance, there is currently a lack of a universal and fair benchmark for evaluating AD methods on medical images, which hinders the development of more generalized and robust AD methods in this specific domain. To address this gap, we present a comprehensive evaluation benchmark for assessing AD methods on medical images. This benchmark consists of six reorganized datasets from five medical domains (i.e. brain MRI, liver CT, retinal OCT, chest X-ray, and digital histopathology) and three key evaluation metrics, and includes a total of fifteen state-of-the-art AD algorithms. This standardized and well-curated medical benchmark with the well-structured codebase enables researchers to easily compare and evaluate different AD methods, and ultimately leads to the development of more effective and robust AD algorithms for medical imaging. More information on BMAD is available in our GitHub repository: https://github.com/DorisBao/BMAD1",
+  "year": 2024,
+  "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+  "citation_count": 127,
+  "keywords": [
+   "medical anomaly detection",
+   "benchmark",
+   "medical image analysis",
+   "brain MRI",
+   "liver CT",
+   "retinal OCT",
+   "chest radiography",
+   "digital histopathology",
+   "evaluation metrics",
+   "rare disease detection",
+   "algorithm comparison"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Medical Image Segmentation Techniques",
+   "Artificial Intelligence in Healthcare and Education"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.5234,
+  "origin": [
+   "co_citation",
+   "mvfa_reference",
+   "search"
+  ],
+  "selected": true,
+  "citation_key": "bmad2024",
+  "section": "2.1",
+  "inclusion_reason": "BMAD defines the six-dataset medical anomaly benchmark."
+ },
+ {
+  "doi": "10.48550/arxiv.2103.00020",
+  "title": "Learning Transferable Visual Models From Natural Language Supervision",
+  "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on. We release our code and pre-trained model weights at https://github.com/OpenAI/CLIP.",
+  "year": 2021,
+  "venue": "arXiv",
+  "citation_count": 19274,
+  "keywords": [
+   "natural language supervision",
+   "zero-shot transfer",
+   "image representation learning",
+   "image captioning",
+   "visual concept learning",
+   "cross-modal learning",
+   "human action recognition",
+   "geolocation",
+   "optical character recognition",
+   "CLIP"
+  ],
+  "topics": [
+   "Multimodal Machine Learning Applications",
+   "Domain Adaptation and Few-Shot Learning",
+   "Advanced Neural Network Applications"
+  ],
+  "relevance_score": 3,
+  "composite_score": 0.5654,
+  "origin": [
+   "co_citation"
+  ],
+  "selected": false,
+  "citation_key": "clip2021",
+  "section": "2.1",
+  "inclusion_reason": "CLIP is the frozen vision-language backbone."
+ },
+ {
+  "doi": "10.1109/cvpr52729.2023.01878",
+  "title": "WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation",
+  "abstract": "Visual anomaly classification and segmentation are vital for automating industrial quality inspection. The focus of prior research in the field has been on training custom models for each quality inspection task, which requires task-specific images and annotation. In this paper we move away from this regime, addressing zero-shot and few-normal-shot anomaly classification and segmentation. Recently CLIP, a vision-language model, has shown revolutionary generality with competitive zero-/few-shot performance in comparison to full-supervision. But CLIP falls short on anomaly classification and segmentation tasks. Hence, we propose window-based CLIP (WinCLIP) with (1) a compositional ensemble on state words and prompt templates and (2) efficient extraction and aggregation of window/patch/image-level features aligned with text. We also propose its few-normal-shot extension Win-CLIP+, which uses complementary information from normal images. In MVTec-AD (and VisA), without further tuning, WinCLIP achieves 91.8%/85.1% (78.1%/79.6%) AU-ROC in zero-shot anomaly classification and segmentation while WinCLIP + does 93.1%/95.2% (83.8%/96.4%) in 1-normal-shot, surpassing state-of-the-art by large margins.",
+  "year": 2023,
+  "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+  "citation_count": 676,
+  "keywords": [
+   "anomaly segmentation",
+   "zero-shot learning",
+   "few-shot learning",
+   "CLIP",
+   "vision-language models",
+   "prompt templates",
+   "industrial inspection",
+   "MVTec AD",
+   "Visa"
+  ],
+  "topics": [
+   "Industrial Vision Systems and Defect Detection",
+   "Anomaly Detection Techniques and Applications",
+   "Domain Adaptation and Few-Shot Learning"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.5471,
+  "origin": [
+   "search",
+   "mvfa_reference"
+  ],
+  "selected": true,
+  "citation_key": "winclip2023",
+  "section": "2.1",
+  "inclusion_reason": "Representative zero/few-shot CLIP anomaly detection and localization."
+ },
+ {
+  "doi": "10.48550/arxiv.2305.17382",
+  "title": "APRIL-GAN: A Zero-/Few-Shot Anomaly Classification and Segmentation Method for CVPR 2023 VAND Workshop Challenge Tracks 1&2: 1st Place on Zero-shot AD and 4th Place on Few-shot AD",
+  "abstract": "In this technical report, we briefly introduce our solution for the Zero/Few-shot Track of the Visual Anomaly and Novelty Detection (VAND) 2023 Challenge. For industrial visual inspection, building a single model that can be rapidly adapted to numerous categories without or with only a few normal reference images is a promising research direction. This is primarily because of the vast variety of the product types. For the zero-shot track, we propose a solution based on the CLIP model by adding extra linear layers. These layers are used to map the image features to the joint embedding space, so that they can compare with the text features to generate the anomaly maps. Besides, when the reference images are available, we utilize multiple memory banks to store their features and compare them with the features of the test images during the testing phase. In this challenge, our method achieved first place in the zero-shot track, especially excelling in segmentation with an impressive F1 score improvement of 0.0489 over the second-ranked participant. Furthermore, in the few-shot track, we secured the fourth position overall, with our classification F1 score of 0.8687 ranking first among all participating teams.",
+  "year": 2023,
+  "venue": "arXiv",
+  "citation_count": 202,
+  "keywords": [
+   "zero-shot anomaly detection",
+   "few-shot anomaly detection",
+   "anomaly segmentation",
+   "anomaly classification",
+   "industrial visual inspection",
+   "CLIP",
+   "memory bank"
+  ],
+  "topics": [
+   "Industrial Vision Systems and Defect Detection",
+   "Anomaly Detection Techniques and Applications",
+   "Advanced Neural Network Applications"
+  ],
+  "relevance_score": 3,
+  "composite_score": 0.508,
+  "origin": [
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "aprilgan2023",
+  "section": "2.1",
+  "inclusion_reason": "CLIP-based anomaly detection/localization baseline family."
+ },
+ {
+  "doi": "10.48550/arxiv.2310.18961",
+  "title": "AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection",
+  "abstract": "Zero-shot anomaly detection (ZSAD) requires detection models trained using auxiliary data to detect anomalies without any training sample in a target dataset. It is a crucial task when training data is not accessible due to various concerns, eg, data privacy, yet it is challenging since the models need to generalize to anomalies across different domains where the appearance of foreground objects, abnormal regions, and background features, such as defects/tumors on different products/organs, can vary significantly. Recently large pre-trained vision-language models (VLMs), such as CLIP, have demonstrated strong zero-shot recognition ability in various vision tasks, including anomaly detection. However, their ZSAD performance is weak since the VLMs focus more on modeling the class semantics of the foreground objects rather than the abnormality/normality in the images. In this paper we introduce a novel approach, namely AnomalyCLIP, to adapt CLIP for accurate ZSAD across different domains. The key insight of AnomalyCLIP is to learn object-agnostic text prompts that capture generic normality and abnormality in an image regardless of its foreground objects. This allows our model to focus on the abnormal image regions rather than the object semantics, enabling generalized normality and abnormality recognition on diverse types of objects. Large-scale experiments on 17 real-world anomaly detection datasets show that AnomalyCLIP achieves superior zero-shot performance of detecting and segmenting anomalies in datasets of highly diverse class semantics from various defect inspection and medical imaging domains. Code will be made available at https://github.com/zqhang/AnomalyCLIP.",
+  "year": 2023,
+  "venue": "arXiv",
+  "citation_count": 257,
+  "keywords": [
+   "zero-shot anomaly detection",
+   "CLIP",
+   "vision-language models",
+   "anomaly segmentation",
+   "domain generalization",
+   "defect detection",
+   "diagnostic imaging",
+   "data privacy"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Industrial Vision Systems and Defect Detection",
+   "Infrastructure Maintenance and Monitoring"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.6094,
+  "origin": [
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "anomalyclip2023",
+  "section": "2.1",
+  "inclusion_reason": "Representative object-agnostic CLIP adaptation for anomaly maps."
+ },
+ {
+  "doi": "10.1007/978-3-031-72761-0_4",
+  "title": "AdaCLIP: Adapting CLIP with Hybrid Learnable Prompts for Zero-Shot Anomaly Detection",
+  "abstract": "Zero-shot anomaly detection (ZSAD) targets the identification of anomalies within images from arbitrary novel categories. This study introduces AdaCLIP for the ZSAD task, leveraging a pre-trained vision-language model (VLM), CLIP. AdaCLIP incorporates learnable prompts into CLIP and optimizes them through training on auxiliary annotated anomaly detection data. Two types of learnable prompts are proposed: static and dynamic. Static prompts are shared across all images, serving to preliminarily adapt CLIP for ZSAD. In contrast, dynamic prompts are generated for each test image, providing CLIP with dynamic adaptation capabilities. The combination of static and dynamic prompts is referred to as hybrid prompts, and yields enhanced ZSAD performance. Extensive experiments conducted across 14 real-world anomaly detection datasets from industrial and medical domains indicate that AdaCLIP outperforms other ZSAD methods and can generalize better to different categories and even domains. Finally, our analysis highlights the importance of diverse auxiliary data and optimized prompts for enhanced generalization capacity. Code is available at https://github.com/caoyunkang/AdaCLIP.",
+  "year": 2024,
+  "venue": "Lecture notes in computer science",
+  "citation_count": 195,
+  "keywords": [
+   "zero-shot anomaly detection",
+   "CLIP",
+   "learnable prompts",
+   "vision-language models",
+   "domain generalization",
+   "industrial anomaly detection",
+   "medical image anomaly detection"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Industrial Vision Systems and Defect Detection",
+   "Advanced Neural Network Applications"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.5599,
+  "origin": [
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "adaclip2024",
+  "section": "2.1",
+  "inclusion_reason": "Representative prompt adaptation for zero-shot anomaly detection."
+ },
+ {
+  "doi": "10.1007/978-3-031-72890-7_18",
+  "title": "VCP-CLIP: A Visual Context Prompting Model for Zero-Shot Anomaly Segmentation",
+  "abstract": "Recently, large-scale vision-language models such as CLIP have demonstrated immense potential in zero-shot anomaly segmentation (ZSAS) task, utilizing a unified model to directly detect anomalies on any unseen product with painstakingly crafted text prompts. However, existing methods often assume that the product category to be inspected is known, thus setting product-specific text prompts, which is difficult to achieve in the data privacy scenarios. Moreover, even the same type of product exhibits significant differences due to specific components and variations in the production process, posing significant challenges to the design of text prompts. In this end, we propose a visual context prompting model (VCP-CLIP) for ZSAS task based on CLIP. The insight behind VCP-CLIP is to employ visual context prompting to activate CLIP's anomalous semantic perception ability. In specific, we first design a Pre-VCP module to embed global visual information into the text prompt, thus eliminating the necessity for product-specific prompts. Then, we propose a novel Post-VCP module, that adjusts the text embeddings utilizing the fine-grained features of the images. In extensive experiments conducted on 10 real-world industrial anomaly segmentation datasets, VCP-CLIP achieved state-of-the-art performance in ZSAS task. The code is available at https://github.com/xiaozhen228/VCP-CLIP.",
+  "year": 2024,
+  "venue": "Lecture notes in computer science",
+  "citation_count": 82,
+  "keywords": [
+   "CLIP",
+   "vision-language models",
+   "text prompts",
+   "industrial anomaly detection",
+   "data privacy"
+  ],
+  "topics": [
+   "Industrial Vision Systems and Defect Detection",
+   "Anomaly Detection Techniques and Applications",
+   "Advanced Neural Network Applications"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.5078,
+  "origin": [
+   "co_citation",
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "vcpclip2024",
+  "section": "2.1",
+  "inclusion_reason": "Representative CLIP-based zero-shot anomaly segmentation."
+ },
+ {
+  "doi": "10.1109/tip.2026.3697648",
+  "title": "IQE-CLIP: Instance-Aware Query Embedding for Zero-/Few-Shot Anomaly Detection in Medical Domain",
+  "abstract": "Recently, the rapid advancements of vision-language models, such as CLIP, have led to significant progress in zero-/few-shot anomaly detection (ZFSAD) tasks. However, most existing CLIP-based ZFSAD methods commonly assume prior knowledge of categories and rely on carefully crafted prompts tailored to specific scenarios. While such meticulously designed text prompts effectively capture semantic information in the textual space, they fall short of distinguishing normal and anomalous instances within the joint embedding space. Moreover, these ZFSAD methods are predominantly explored in industrial scenarios, with few efforts conducted for medical tasks. To this end, we propose an innovative framework for ZFSAD tasks in the medical domain, denoted as IQE-CLIP. We reveal that query embeddings, which incorporate both textual and instance-aware visual information, are better indicators for abnormalities. Specifically, we first introduce class-based prompting tokens and learnable prompting tokens for better adaptation of CLIP to the medical domain. Then, we design an instance-aware query module (IQM) to extract region-level contextual information from both text prompts and visual features, enabling the generation of query embeddings that are more sensitive to anomalies. Extensive experiments conducted on six medical datasets demonstrate that IQE-CLIP achieves state-of-the-art performance on both zero-shot and few-shot tasks. The source code and data are available at https://github.com/hongh0/IQE-CLIP.",
+  "year": 2026,
+  "venue": "IEEE Transactions on Image Processing",
+  "citation_count": 2,
+  "keywords": [
+   "zero-shot anomaly detection",
+   "few-shot anomaly detection",
+   "CLIP",
+   "query embedding",
+   "medical image anomaly detection",
+   "vision-language models"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Multimodal Machine Learning Applications",
+   "Industrial Vision Systems and Defect Detection"
+  ],
+  "relevance_score": 5,
+  "composite_score": 0.5589,
+  "origin": [
+   "search",
+   "cites_mvfa"
+  ],
+  "selected": true,
+  "citation_key": "iqeclip2026",
+  "section": "2.1",
+  "inclusion_reason": "Recent medical-domain zero/few-shot anomaly detection."
+ },
+ {
+  "doi": "10.48550/arxiv.2507.06733",
+  "title": "MADPOT: Medical Anomaly Detection with CLIP Adaptation and Partial Optimal Transport",
+  "abstract": "Medical anomaly detection (AD) is challenging due to diverse imaging modalities, anatomical variations, and limited labeled data. We propose a novel approach combining visual adapters and prompt learning with Partial Optimal Transport (POT) and contrastive learning (CL) to improve CLIP's adaptability to medical images, particularly for AD. Unlike standard prompt learning, which often yields a single representation, our method employs multiple prompts aligned with local features via POT to capture subtle abnormalities. CL further enforces intra-class cohesion and inter-class separation. Our method achieves state-of-the-art results in few-shot, zero-shot, and cross-dataset scenarios without synthetic data or memory banks. The code is available at https://github.com/mahshid1998/MADPOT.",
+  "year": 2026,
+  "venue": "Lecture notes in computer science",
+  "citation_count": 1,
+  "keywords": [
+   "medical anomaly detection",
+   "CLIP",
+   "partial optimal transport",
+   "prompt learning",
+   "contrastive learning",
+   "medical image classification",
+   "few-shot learning",
+   "zero-shot learning",
+   "cross-dataset generalization",
+   "multimodal medical images"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Domain Adaptation and Few-Shot Learning",
+   "Artificial Intelligence in Healthcare and Education"
+  ],
+  "relevance_score": 5,
+  "composite_score": 0.4618,
+  "origin": [
+   "search",
+   "cites_mvfa"
+  ],
+  "selected": true,
+  "citation_key": "madpot2026",
+  "section": "2.1",
+  "inclusion_reason": "Recent medical-domain CLIP adaptation."
+ },
+ {
+  "doi": "10.48550/arxiv.2405.11315",
+  "title": "MediCLIP: Adapting CLIP for Few-shot Medical Image Anomaly Detection",
+  "abstract": "In the field of medical decision-making, precise anomaly detection in medical imaging plays a pivotal role in aiding clinicians. However, previous work is reliant on large-scale datasets for training anomaly detection models, which increases the development cost. This paper first focuses on the task of medical image anomaly detection in the few-shot setting, which is critically significant for the medical field where data collection and annotation are both very expensive. We propose an innovative approach, MediCLIP, which adapts the CLIP model to few-shot medical image anomaly detection through self-supervised fine-tuning. Although CLIP, as a vision-language model, demonstrates outstanding zero-/fewshot performance on various downstream tasks, it still falls short in the anomaly detection of medical images. To address this, we design a series of medical image anomaly synthesis tasks to simulate common disease patterns in medical imaging, transferring the powerful generalization capabilities of CLIP to the task of medical image anomaly detection. When only few-shot normal medical images are provided, MediCLIP achieves state-of-the-art performance in anomaly detection and location compared to other methods. Extensive experiments on three distinct medical anomaly detection tasks have demonstrated the superiority of our approach. The code is available at https://github.com/cnulab/MediCLIP.",
+  "year": 2024,
+  "venue": "Lecture notes in computer science",
+  "citation_count": 56,
+  "keywords": [
+   "medical image anomaly detection",
+   "few-shot learning",
+   "CLIP",
+   "vision-language models",
+   "self-supervised fine-tuning",
+   "anomaly localization",
+   "diagnostic imaging"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Domain Adaptation and Few-Shot Learning",
+   "Medical Image Segmentation Techniques"
+  ],
+  "relevance_score": 5,
+  "composite_score": 0.5743,
+  "origin": [
+   "search",
+   "cites_mvfa"
+  ],
+  "selected": true,
+  "citation_key": "mediclip2024",
+  "section": "2.1",
+  "inclusion_reason": "Recent few-shot medical anomaly detection with CLIP."
+ },
+ {
+  "doi": "10.1145/3464423",
+  "title": "Deep Learning for Medical Anomaly Detection – A Survey",
+  "abstract": "Machine learning–based medical anomaly detection is an important problem that has been extensively studied. Numerous approaches have been proposed across various medical application domains and we observe several similarities across these distinct applications. Despite this comparability, we observe a lack of structured organisation of these diverse research applications such that their advantages and limitations can be studied. The principal aim of this survey is to provide a thorough theoretical analysis of popular deep learning techniques in medical anomaly detection. In particular, we contribute a coherent and systematic review of state-of-the-art techniques, comparing and contrasting their architectural differences as well as training algorithms. Furthermore, we provide a comprehensive overview of deep model interpretation strategies that can be used to interpret model decisions. In addition, we outline the key limitations of existing deep medical anomaly detection techniques and propose key research directions for further investigation.",
+  "year": 2021,
+  "venue": "ACM Computing Surveys",
+  "citation_count": 452,
+  "keywords": [
+   "medical anomaly detection",
+   "deep learning",
+   "medical image analysis",
+   "model interpretability",
+   "explainable AI",
+   "neural network architecture",
+   "training algorithms",
+   "research directions"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Artificial Intelligence in Healthcare and Education",
+   "Medical Image Segmentation Techniques"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.6193,
+  "origin": [
+   "mvfa_reference"
+  ],
+  "selected": true,
+  "citation_key": "medicalad_survey2021",
+  "section": "2.1",
+  "inclusion_reason": "Provides the medical anomaly-detection background taxonomy."
+ },
+ {
+  "doi": "10.1109/cvpr.2019.00982",
+  "title": "MVTec AD — A Comprehensive Real-World Dataset for Unsupervised Anomaly Detection",
+  "abstract": "The detection of anomalous structures in natural image data is of utmost importance for numerous tasks in the field of computer vision. The development of methods for unsupervised anomaly detection requires data on which to train and evaluate new approaches and ideas. We introduce the MVTec Anomaly Detection (MVTec AD) dataset containing 5354 high-resolution color images of different object and texture categories. It contains normal, i.e., defect-free, images intended for training and images with anomalies intended for testing. The anomalies manifest themselves in the form of over 70 different types of defects such as scratches, dents, contaminations, and various structural changes. In addition, we provide pixel-precise ground truth regions for all anomalies. We also conduct a thorough evaluation of current state-of-the-art unsupervised anomaly detection methods based on deep architectures such as convolutional autoencoders, generative adversarial networks, and feature descriptors using pre-trained convolutional neural networks, as well as classical computer vision methods. This initial benchmark indicates that there is considerable room for improvement. To the best of our knowledge, this is the first comprehensive, multi-object, multi-defect dataset for anomaly detection that provides pixel-accurate ground truth regions and focuses on real-world applications.",
+  "year": 2019,
+  "venue": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+  "citation_count": 2424,
+  "keywords": [
+   "unsupervised anomaly detection",
+   "defect detection",
+   "convolutional autoencoder",
+   "generative adversarial networks",
+   "pre-trained convolutional neural networks",
+   "benchmark evaluation",
+   "real-world images"
+  ],
+  "topics": [
+   "Industrial Vision Systems and Defect Detection",
+   "Anomaly Detection Techniques and Applications",
+   "Infrastructure Maintenance and Monitoring"
+  ],
+  "relevance_score": 3,
+  "composite_score": 0.4819,
+  "origin": [
+   "mvfa_reference"
+  ],
+  "selected": true,
+  "citation_key": "mvtec2019",
+  "section": "2.2",
+  "inclusion_reason": "Introduces the anomaly-segmentation benchmark underlying the per-region metric lineage."
+ },
+ {
+  "doi": "10.48550/arxiv.2308.15280",
+  "title": "ADFA: Attention-augmented Differentiable top-k Feature Adaptation for Unsupervised Medical Anomaly Detection",
+  "abstract": "The scarcity of annotated data, particularly for rare diseases, limits the variability of training data and the range of detectable lesions, presenting a significant challenge for supervised anomaly detection in medical imaging. To solve this problem, we propose a novel unsupervised method for medical image anomaly detection: Attention-Augmented Differentiable top-k Feature Adaptation (ADFA). The method utilizes Wide-ResNet50-2 (WR50) network pre-trained on ImageNet to extract initial feature representations. To reduce the channel dimensionality while preserving relevant channel information, we employ an attention-augmented patch descriptor on the extracted features. We then apply differentiable top-k feature adaptation to train the patch descriptor, mapping the extracted feature representations to a new vector space, enabling effective detection of anomalies. Experiments show that ADFA outperforms state-of-the-art (SOTA) methods on multiple challenging medical image datasets, confirming its effectiveness in medical anomaly detection.",
+  "year": 2023,
+  "venue": "Proceedings - International Conference on Image Processing",
+  "citation_count": 14,
+  "keywords": [
+   "medical image anomaly detection",
+   "unsupervised anomaly detection",
+   "rare diseases",
+   "lesion detection"
+  ],
+  "topics": [
+   "Anomaly Detection Techniques and Applications",
+   "Medical Image Segmentation Techniques",
+   "Artificial Intelligence in Healthcare and Education"
+  ],
+  "relevance_score": 4,
+  "composite_score": 0.4407,
+  "origin": [
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "adfa2023",
+  "section": "2.2",
+  "inclusion_reason": "Related patch-selection/top-k anomaly detection."
+ },
+ {
+  "doi": "10.48550/arxiv.2603.27179",
+  "title": "Reasoning-Driven Anomaly Detection and Localization with Image-Level Supervision",
+  "abstract": "Multimodal large language models (MLLMs) have recently demonstrated remarkable reasoning and perceptual abilities for anomaly detection. However, most approaches remain confined to image-level anomaly detection and textual reasoning, while pixel-level localization still relies on external vision modules and dense annotations. In this work, we activate the intrinsic reasoning potential of MLLMs to perform anomaly detection, pixel-level localization, and interpretable reasoning solely from image-level supervision, without any auxiliary components or pixel-wise labels. Specifically, we propose Reasoning-Driven Anomaly Localization (ReAL), which extracts anomaly-related tokens from the autoregressive reasoning process and aggregates their attention responses to produce pixel-level anomaly maps. We further introduce a Consistency-Guided Reasoning Optimization (CGRO) module that leverages reinforcement learning to align reasoning tokens with visual attentions, resulting in more coherent reasoning and accurate anomaly localization. Extensive experiments on four public benchmarks demonstrate that our method significantly improves anomaly detection, localization, and interpretability. Remarkably, despite relying solely on image-level supervision, our approach achieves performance competitive with MLLM-based methods trained under dense pixel-level supervision. Code is available at https://github.com/YizhouJin313/ReADL.",
+  "year": 2026,
+  "venue": "arXiv",
+  "citation_count": 1,
+  "keywords": [
+   "anomaly detection",
+   "anomaly localization",
+   "multimodal large language models",
+   "image-level supervision",
+   "attention aggregation",
+   "reinforcement learning",
+   "interpretability"
+  ],
+  "topics": [
+   "Multimodal Machine Learning Applications",
+   "Anomaly Detection Techniques and Applications",
+   "Industrial Vision Systems and Defect Detection"
+  ],
+  "relevance_score": 3,
+  "composite_score": 0.3655,
+  "origin": [
+   "search"
+  ],
+  "selected": false,
+  "citation_key": "imagelevel2026",
+  "section": "2.2",
+  "inclusion_reason": "Directly relevant image-level supervision for anomaly localization."
+ },
+ {
+  "doi": "10.48550/arxiv.2103.09094",
+  "title": "Unsupervised Anomaly Segmentation using Image-Semantic Cycle Translation",
+  "abstract": "The goal of unsupervised anomaly segmentation (UAS) is to detect the pixel-level anomalies unseen during training. It is a promising field in the medical imaging community, e.g, we can use the model trained with only healthy data to segment the lesions of rare diseases. Existing methods are mainly based on Information Bottleneck, whose underlying principle is modeling the distribution of normal anatomy via learning to compress and recover the healthy data with a low-dimensional manifold, and then detecting lesions as the outlier from this learned distribution. However, this dimensionality reduction inevitably damages the localization information, which is especially essential for pixel-level anomaly detection. In this paper, to alleviate this issue, we introduce the semantic space of healthy anatomy in the process of modeling healthy-data distribution. More precisely, we view the couple of segmentation and synthesis as a special Autoencoder, and propose a novel cycle translation framework with a journey of 'image->semantic->image'. Experimental results on the BraTS and ISLES databases show that the proposed approach achieves significantly superior performance compared to several prior methods and segments the anomalies more accurately.",
+  "year": 2021,
+  "venue": "arXiv",
+  "citation_count": 24,
+  "keywords": [
+   "pixel-level anomaly detection",
+   "information bottleneck",
+   "lesion segmentation",
+   "medical image segmentation",
+   "autoencoder",
+   "BraTS"
+  ],
+  "topics": [
+   "Medical Image Segmentation Techniques",
+   "Anomaly Detection Techniques and Applications",
+   "Brain Tumor Detection and Classification"
+  ],
+  "relevance_score": 3,
+  "composite_score": 0.4369,
+  "origin": [
+   "mvfa_reference"
+  ],
+  "selected": true,
+  "citation_key": "cycle_seg2021",
+  "section": "2.2",
+  "inclusion_reason": "Context for localization without dense anomaly labels."
+ },
+ {
+  "citation_key": "elkan2008pu",
+  "title": "Learning Classifiers from Only Positive and Unlabeled Data",
+  "year": "2008",
+  "doi": "10.1145/1401890.1401920",
+  "section": "2.3",
+  "inclusion_reason": "Foundational positive-unlabelled learning background.",
+  "bibtex": "@inproceedings{elkan2008pu,\n  title     = {Learning Classifiers from Only Positive and Unlabeled Data},\n  author    = {Elkan, Charles and Noto, Keith},\n  booktitle = {Proceedings of the 14th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},\n  year      = {2008},\n  doi       = {10.1145/1401890.1401920}\n}",
+  "authors": []
+ },
+ {
+  "citation_key": "kiryo2017nnpu",
+  "title": "Positive-Unlabeled Learning with Non-Negative Risk Estimator",
+  "year": "2017",
+  "doi": "10.48550/arXiv.1703.00593",
+  "section": "2.3",
+  "inclusion_reason": "Source of the non-negative PU risk used in M-h and M.",
+  "bibtex": "@inproceedings{kiryo2017nnpu,\n  title     = {Positive-Unlabeled Learning with Non-Negative Risk Estimator},\n  author    = {Kiryo, Ryuichi and Niu, Gang and du Plessis, Marthinus Christoffel and Sugiyama, Masashi},\n  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},\n  year      = {2017},\n  doi       = {10.48550/arXiv.1703.00593}\n}",
+  "authors": []
+ },
+ {
+  "citation_key": "ramaswamy2016mpe",
+  "title": "Mixture Proportion Estimation via Kernel Embedding of Distributions",
+  "year": "2016",
+  "doi": "10.48550/arXiv.1603.02501",
+  "section": "2.3",
+  "inclusion_reason": "Mixture-proportion estimation assumptions and identifiability.",
+  "bibtex": "@inproceedings{ramaswamy2016mpe,\n  title     = {Mixture Proportion Estimation via Kernel Embedding of Distributions},\n  author    = {Ramaswamy, Harish G. and Scott, Clayton and Tewari, Ambuj},\n  booktitle = {Proceedings of the 33rd International Conference on Machine Learning (ICML)},\n  year      = {2016},\n  doi       = {10.48550/arXiv.1603.02501}\n}",
+  "authors": []
+ },
+ {
+  "citation_key": "ilse2018attentionmil",
+  "title": "Attention-based Deep Multiple Instance Learning",
+  "year": "2018",
+  "doi": "10.48550/arXiv.1802.04712",
+  "section": "2.2",
+  "inclusion_reason": "Multiple-instance learning background for image-level labels.",
+  "bibtex": "@inproceedings{ilse2018attentionmil,\n  title     = {Attention-based Deep Multiple Instance Learning},\n  author    = {Ilse, Maximilian and Tomczak, Jakub M. and Welling, Max},\n  booktitle = {Proceedings of the 35th International Conference on Machine Learning (ICML)},\n  year      = {2018},\n  doi       = {10.48550/arXiv.1802.04712}\n}",
+  "authors": []
+ },
+ {
+  "citation_key": "patchcore2021",
+  "title": "Towards Total Recall in Industrial Anomaly Detection",
+  "year": "2021",
+  "doi": "10.48550/arxiv.2106.08265",
+  "section": "2.2",
+  "inclusion_reason": "Memory bank of normal patch features; the basis of the normal-bank gate in Task 3's idea #1 (added 2026-11-25, Task 1 relevance 3).",
+  "bibtex": "@misc{patchcore2021,\n  title = {{Towards Total Recall in Industrial Anomaly Detection}},\n  year = {2021},\n  note = {arXiv},\n  doi = {10.48550/arxiv.2106.08265}\n}",
+  "authors": [],
+  "abstract": "Being able to spot defective parts is a critical component in large-scale industrial manufacturing. A particular challenge that we address in this work is the cold-start problem: fit a model using nominal (non-defective) example images only. While handcrafted solutions per class are possible, the goal is to build systems that work well simultaneously on many different tasks automatically. The best performing approaches combine embeddings from ImageNet models with an outlier detection model. In this paper, we extend on this line of work and propose \\textbf{PatchCore}, which uses a maximally representative memory bank of nominal patch-features. PatchCore offers competitive inference times while achieving state-of-the-art performance for both detection and localization. On the challenging, widely used MVTec AD benchmark PatchCore achieves an image-level anomaly detection AUROC score of up to $99.6\\%$, more than halving the error compared to the next best competitor. We further report competitive results on two additional datasets and also find competitive results in the few samples regime.\\freefootnote{$^*$ Work done during a research internship at Amazon AWS.} Code: github.com/amazon-research/patchcore-inspection."
+ }
+]
